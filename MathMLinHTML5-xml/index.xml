@@ -1,0 +1,191 @@
+<!DOCTYPE html><html>
+<head>
+<title>MathML in HTML5 - Implementation Note</title>
+<!--Generated on Tue Oct 31 15:18:52 2017 by LaTeXML (version 0.8.2) http://dlmf.nist.gov/LaTeXML/.-->
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<link rel="stylesheet" href="LaTeXML.css" type="text/css"/>
+<link rel="stylesheet" href="ltx-article.css" type="text/css"/>
+<link rel="stylesheet" href="ltx-listings.css" type="text/css"/>
+<link rel="stylesheet" href="style.css" type="text/css"/>
+<link rel="next" href="S1.html" title="1 Introduction ‣ MathML in HTML5 - Implementation Note"/>
+<link rel="section" href="S1.html" title="1 Introduction ‣ MathML in HTML5 - Implementation Note"/>
+<link rel="section" href="S2.html" title="2 Relation with other technologies ‣ MathML in HTML5 - Implementation Note"/>
+<link rel="section" href="S3.html" title="3 Presentation Markup ‣ MathML in HTML5 - Implementation Note"/>
+<link rel="bibliography" href="bib.html" title="References ‣ MathML in HTML5 - Implementation Note"/>
+<link rel="appendix" href="A1.html" title="Appendix A MathML ‣ MathML in HTML5 - Implementation Note"/>
+<link rel="appendix" href="A2.html" title="Appendix B CSS ‣ MathML in HTML5 - Implementation Note"/>
+<link rel="appendix" href="A3.html" title="Appendix C OpenType ‣ MathML in HTML5 - Implementation Note"/>
+<link rel="appendix" href="A4.html" title="Appendix D Image Fallback ‣ MathML in HTML5 - Implementation Note"/>
+</head>
+<body>
+<div class="ltx_page_main">
+<header class="ltx_page_header">
+<div>
+<a href="S1.html" title="1 Introduction ‣ MathML in HTML5 - Implementation Note" class="ltx_ref" rel="next"><span class="ltx_text ltx_ref_title"><span class="ltx_tag ltx_tag_ref">1 </span>Introduction</span></a>
+</div></header>
+<div class="ltx_page_content">
+<article class="ltx_document">
+<h1 class="ltx_title ltx_title_document">MathML in HTML5 - Implementation Note</h1>
+
+<section id="S0.SSx1" class="ltx_subsection">
+<h2 class="ltx_title ltx_title_subsection">MathML in HTML5 - Implementation Note
+<br class="ltx_break"/>Editor’s Draft, October 31, 2017</h2>
+
+<div id="S0.SSx1.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">Editors:</span> 
+<br class="ltx_break"/>Frédéric Wang</p>
+</div>
+</section>
+<section id="S0.SSx2" class="ltx_subsection">
+<h2 class="ltx_title ltx_title_subsection">Abstract</h2>
+
+<div id="S0.SSx2.p1" class="ltx_para">
+<p class="ltx_p">This document is a detailed technical document for a core subset of presentation
+MathML <cite class="ltx_cite ltx_citemacro_cite">[<a href="bib.html#bibx11" title="" class="ltx_ref">MathML3</a>]</cite> in order to render with high quality the majority of
+mathematical formulas used in practice.
+This document should be understandable by any implementer with
+sufficient knowledge of web rendering engines and text layout.
+Contrary to the official MathML specification, a significant effort is made to
+be as accurate as possible on the visual rendering of mathematical formulas
+using additional rules from the TeXBook’s Appendix G <cite class="ltx_cite ltx_citemacro_cite">[<a href="bib.html#bibx16" title="" class="ltx_ref">TeXBook</a>]</cite> and from
+the Open Font Format version 3 <cite class="ltx_cite ltx_citemacro_cite">[<a href="bib.html#bibx13" title="" class="ltx_ref">OpenFontFormat3</a>]</cite>.
+The priority is to be compatible with existing technologies of web
+rendering engines <cite class="ltx_cite ltx_citemacro_cite">[<a href="bib.html#bibx9" title="" class="ltx_ref">HTML5</a>]</cite> by relying as much as possible on CSS, text &amp;
+table layout and box models. As a consequence, parts of presentation MathML
+that do not fit well in this framework or are rarely used in practice
+have been ommited ; details on these and suggestions for standardization bodies
+are provided in the appendix.</p>
+</div>
+</section>
+<section id="S0.SSx3" class="ltx_subsection">
+<h2 class="ltx_title ltx_title_subsection">Status of This document</h2>
+
+<div id="S0.SSx3.p1" class="ltx_para">
+<p class="ltx_p">This section describes the status of this document at the time of its
+publication. Other documents may supersede this document.</p>
+</div>
+<div id="S0.SSx3.p2" class="ltx_para">
+<p class="ltx_p">This is a draft document and may be updated, replaced or obsoleted by other
+documents at any time. It is inappropriate to cite this document as other than
+work in progress.</p>
+</div>
+</section>
+<section id="S0.SSx4" class="ltx_subsection">
+<h2 class="ltx_title ltx_title_subsection">Copyright</h2>
+
+<div id="S0.SSx4.p1" class="ltx_para">
+<p class="ltx_p">Copyright © 2015-2016 Mondial Association for Tools Handling MathML, Ltd.
+This work is licensed under a
+<a href="http://creativecommons.org/licenses/by/4.0" title="" class="ltx_ref ltx_href">Creative Commons Attribution 4.0 International License</a>.</p>
+</div>
+</section>
+<section id="S0.SSx5" class="ltx_subsection">
+<h2 class="ltx_title ltx_title_subsection">Table of Contents</h2>
+
+<div class="ltx_TOC ltx_role_contents">
+<ul class="ltx_toclist">
+<li class="ltx_tocentry ltx_tocentry_section">
+<a href="S1.html" title="1 Introduction ‣ MathML in HTML5 - Implementation Note" class="ltx_ref"><span class="ltx_text ltx_ref_title"><span class="ltx_tag ltx_tag_ref">1 </span>Introduction</span></a>
+<ul class="ltx_toclist ltx_toclist_section">
+<li class="ltx_tocentry ltx_tocentry_subsection"><a href="S1.html#SS1" title="1.1 Rationale for this Technical Document ‣ 1 Introduction ‣ MathML in HTML5 - Implementation Note" class="ltx_ref"><span class="ltx_text ltx_ref_title"><span class="ltx_tag ltx_tag_ref">1.1 </span>Rationale for this Technical Document</span></a></li>
+<li class="ltx_tocentry ltx_tocentry_subsection"><a href="S1.html#SS2" title="1.2 Remarks ‣ 1 Introduction ‣ MathML in HTML5 - Implementation Note" class="ltx_ref"><span class="ltx_text ltx_ref_title"><span class="ltx_tag ltx_tag_ref">1.2 </span>Remarks</span></a></li>
+<li class="ltx_tocentry ltx_tocentry_subsection"><a href="S1.html#SS3" title="1.3 Terminology ‣ 1 Introduction ‣ MathML in HTML5 - Implementation Note" class="ltx_ref"><span class="ltx_text ltx_ref_title"><span class="ltx_tag ltx_tag_ref">1.3 </span>Terminology</span></a></li>
+</ul>
+</li>
+<li class="ltx_tocentry ltx_tocentry_section">
+<a href="S2.html" title="2 Relation with other technologies ‣ MathML in HTML5 - Implementation Note" class="ltx_ref"><span class="ltx_text ltx_ref_title"><span class="ltx_tag ltx_tag_ref">2 </span>Relation with other technologies</span></a>
+<ul class="ltx_toclist ltx_toclist_section">
+<li class="ltx_tocentry ltx_tocentry_subsection">
+<a href="S2.html#SS1" title="2.1 HTML5 Tree ‣ 2 Relation with other technologies ‣ MathML in HTML5 - Implementation Note" class="ltx_ref"><span class="ltx_text ltx_ref_title"><span class="ltx_tag ltx_tag_ref">2.1 </span>HTML5 Tree</span></a>
+<ul class="ltx_toclist ltx_toclist_subsection">
+<li class="ltx_tocentry ltx_tocentry_subsubsection"><a href="S2.html#SS1.SSS1" title="2.1.1 DOM, HTML, SVG and Javascript ‣ 2.1 HTML5 Tree ‣ 2 Relation with other technologies ‣ MathML in HTML5 - Implementation Note" class="ltx_ref"><span class="ltx_text ltx_ref_title"><span class="ltx_tag ltx_tag_ref">2.1.1 </span>DOM, HTML, SVG and Javascript</span></a></li>
+<li class="ltx_tocentry ltx_tocentry_subsubsection"><a href="S2.html#SS1.SSS2" title="2.1.2 MathML ‣ 2.1 HTML5 Tree ‣ 2 Relation with other technologies ‣ MathML in HTML5 - Implementation Note" class="ltx_ref"><span class="ltx_text ltx_ref_title"><span class="ltx_tag ltx_tag_ref">2.1.2 </span>MathML</span></a></li>
+</ul>
+</li>
+<li class="ltx_tocentry ltx_tocentry_subsection">
+<a href="S2.html#SS2" title="2.2 Text and Math layout ‣ 2 Relation with other technologies ‣ MathML in HTML5 - Implementation Note" class="ltx_ref"><span class="ltx_text ltx_ref_title"><span class="ltx_tag ltx_tag_ref">2.2 </span>Text and Math layout</span></a>
+<ul class="ltx_toclist ltx_toclist_subsection">
+<li class="ltx_tocentry ltx_tocentry_subsubsection"><a href="S2.html#SS2.SSS1" title="2.2.1 Open Font Format ‣ 2.2 Text and Math layout ‣ 2 Relation with other technologies ‣ MathML in HTML5 - Implementation Note" class="ltx_ref"><span class="ltx_text ltx_ref_title"><span class="ltx_tag ltx_tag_ref">2.2.1 </span>Open Font Format</span></a></li>
+<li class="ltx_tocentry ltx_tocentry_subsubsection"><a href="S2.html#SS2.SSS2" title="2.2.2 LaTeX ‣ 2.2 Text and Math layout ‣ 2 Relation with other technologies ‣ MathML in HTML5 - Implementation Note" class="ltx_ref"><span class="ltx_text ltx_ref_title"><span class="ltx_tag ltx_tag_ref">2.2.2 </span>LaTeX</span></a></li>
+</ul>
+</li>
+<li class="ltx_tocentry ltx_tocentry_subsection">
+<a href="S2.html#SS3" title="2.3 CSS Styling ‣ 2 Relation with other technologies ‣ MathML in HTML5 - Implementation Note" class="ltx_ref"><span class="ltx_text ltx_ref_title"><span class="ltx_tag ltx_tag_ref">2.3 </span>CSS Styling</span></a>
+<ul class="ltx_toclist ltx_toclist_subsection">
+<li class="ltx_tocentry ltx_tocentry_subsubsection"><a href="S2.html#SS3.SSS1" title="2.3.1 Properties ‣ 2.3 CSS Styling ‣ 2 Relation with other technologies ‣ MathML in HTML5 - Implementation Note" class="ltx_ref"><span class="ltx_text ltx_ref_title"><span class="ltx_tag ltx_tag_ref">2.3.1 </span>Properties</span></a></li>
+<li class="ltx_tocentry ltx_tocentry_subsubsection"><a href="S2.html#SS3.SSS2" title="2.3.2 User Agent Stylesheet for MathML ‣ 2.3 CSS Styling ‣ 2 Relation with other technologies ‣ MathML in HTML5 - Implementation Note" class="ltx_ref"><span class="ltx_text ltx_ref_title"><span class="ltx_tag ltx_tag_ref">2.3.2 </span>User Agent Stylesheet for MathML</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="ltx_tocentry ltx_tocentry_section">
+<a href="S3.html" title="3 Presentation Markup ‣ MathML in HTML5 - Implementation Note" class="ltx_ref"><span class="ltx_text ltx_ref_title"><span class="ltx_tag ltx_tag_ref">3 </span>Presentation Markup</span></a>
+<ul class="ltx_toclist ltx_toclist_section">
+<li class="ltx_tocentry ltx_tocentry_subsection">
+<a href="S3.html#SS1" title="3.1 Introduction ‣ 3 Presentation Markup ‣ MathML in HTML5 - Implementation Note" class="ltx_ref"><span class="ltx_text ltx_ref_title"><span class="ltx_tag ltx_tag_ref">3.1 </span>Introduction</span></a>
+<ul class="ltx_toclist ltx_toclist_subsection">
+<li class="ltx_tocentry ltx_tocentry_subsubsection"><a href="S3.html#SS1.SSS1" title="3.1.1 Box Model ‣ 3.1 Introduction ‣ 3 Presentation Markup ‣ MathML in HTML5 - Implementation Note" class="ltx_ref"><span class="ltx_text ltx_ref_title"><span class="ltx_tag ltx_tag_ref">3.1.1 </span>Box Model</span></a></li>
+<li class="ltx_tocentry ltx_tocentry_subsubsection"><a href="S3.html#SS1.SSS2" title="3.1.2 Layout Steps ‣ 3.1 Introduction ‣ 3 Presentation Markup ‣ MathML in HTML5 - Implementation Note" class="ltx_ref"><span class="ltx_text ltx_ref_title"><span class="ltx_tag ltx_tag_ref">3.1.2 </span>Layout Steps</span></a></li>
+</ul>
+</li>
+<li class="ltx_tocentry ltx_tocentry_subsection">
+<a href="S3.html#SS2" title="3.2 Token Elements ‣ 3 Presentation Markup ‣ MathML in HTML5 - Implementation Note" class="ltx_ref"><span class="ltx_text ltx_ref_title"><span class="ltx_tag ltx_tag_ref">3.2 </span>Token Elements</span></a>
+<ul class="ltx_toclist ltx_toclist_subsection">
+<li class="ltx_tocentry ltx_tocentry_subsubsection"><a href="S3.html#SS2.SSS1" title="3.2.1 Using images to represent symbols &lt;mglyph/&gt; ‣ 3.2 Token Elements ‣ 3 Presentation Markup ‣ MathML in HTML5 - Implementation Note" class="ltx_ref"><span class="ltx_text ltx_ref_title"><span class="ltx_tag ltx_tag_ref">3.2.1 </span>Using images to represent symbols <span class="ltx_text ltx_font_typewriter">&lt;mglyph/&gt;</span></span></a></li>
+<li class="ltx_tocentry ltx_tocentry_subsubsection"><a href="S3.html#SS2.SSS2" title="3.2.2 Identifier &lt;mi&gt; ‣ 3.2 Token Elements ‣ 3 Presentation Markup ‣ MathML in HTML5 - Implementation Note" class="ltx_ref"><span class="ltx_text ltx_ref_title"><span class="ltx_tag ltx_tag_ref">3.2.2 </span>Identifier <span class="ltx_text ltx_font_typewriter">&lt;mi&gt;</span></span></a></li>
+<li class="ltx_tocentry ltx_tocentry_subsubsection"><a href="S3.html#SS2.SSS3" title="3.2.3 Number &lt;mn&gt; ‣ 3.2 Token Elements ‣ 3 Presentation Markup ‣ MathML in HTML5 - Implementation Note" class="ltx_ref"><span class="ltx_text ltx_ref_title"><span class="ltx_tag ltx_tag_ref">3.2.3 </span>Number <span class="ltx_text ltx_font_typewriter">&lt;mn&gt;</span></span></a></li>
+<li class="ltx_tocentry ltx_tocentry_subsubsection"><a href="S3.html#SS2.SSS4" title="3.2.4 Operator, Fence, Separator or Accent &lt;mo&gt; ‣ 3.2 Token Elements ‣ 3 Presentation Markup ‣ MathML in HTML5 - Implementation Note" class="ltx_ref"><span class="ltx_text ltx_ref_title"><span class="ltx_tag ltx_tag_ref">3.2.4 </span>Operator, Fence, Separator or Accent <span class="ltx_text ltx_font_typewriter">&lt;mo&gt;</span></span></a></li>
+<li class="ltx_tocentry ltx_tocentry_subsubsection"><a href="S3.html#SS2.SSS5" title="3.2.5 Text &lt;mtext&gt; ‣ 3.2 Token Elements ‣ 3 Presentation Markup ‣ MathML in HTML5 - Implementation Note" class="ltx_ref"><span class="ltx_text ltx_ref_title"><span class="ltx_tag ltx_tag_ref">3.2.5 </span>Text <span class="ltx_text ltx_font_typewriter">&lt;mtext&gt;</span></span></a></li>
+<li class="ltx_tocentry ltx_tocentry_subsubsection"><a href="S3.html#SS2.SSS6" title="3.2.6 Space &lt;mspace/&gt; ‣ 3.2 Token Elements ‣ 3 Presentation Markup ‣ MathML in HTML5 - Implementation Note" class="ltx_ref"><span class="ltx_text ltx_ref_title"><span class="ltx_tag ltx_tag_ref">3.2.6 </span>Space <span class="ltx_text ltx_font_typewriter">&lt;mspace/&gt;</span></span></a></li>
+<li class="ltx_tocentry ltx_tocentry_subsubsection"><a href="S3.html#SS2.SSS7" title="3.2.7 String Literal &lt;ms&gt; ‣ 3.2 Token Elements ‣ 3 Presentation Markup ‣ MathML in HTML5 - Implementation Note" class="ltx_ref"><span class="ltx_text ltx_ref_title"><span class="ltx_tag ltx_tag_ref">3.2.7 </span>String Literal <span class="ltx_text ltx_font_typewriter">&lt;ms&gt;</span></span></a></li>
+</ul>
+</li>
+<li class="ltx_tocentry ltx_tocentry_subsection">
+<a href="S3.html#SS3" title="3.3 General Layout Schemata ‣ 3 Presentation Markup ‣ MathML in HTML5 - Implementation Note" class="ltx_ref"><span class="ltx_text ltx_ref_title"><span class="ltx_tag ltx_tag_ref">3.3 </span>General Layout Schemata</span></a>
+<ul class="ltx_toclist ltx_toclist_subsection">
+<li class="ltx_tocentry ltx_tocentry_subsubsection"><a href="S3.html#SS3.SSS1" title="3.3.1 Horizontally Group Sub-Expressions &lt;mrow&gt; ‣ 3.3 General Layout Schemata ‣ 3 Presentation Markup ‣ MathML in HTML5 - Implementation Note" class="ltx_ref"><span class="ltx_text ltx_ref_title"><span class="ltx_tag ltx_tag_ref">3.3.1 </span>Horizontally Group Sub-Expressions <span class="ltx_text ltx_font_typewriter">&lt;mrow&gt;</span></span></a></li>
+<li class="ltx_tocentry ltx_tocentry_subsubsection"><a href="S3.html#SS3.SSS2" title="3.3.2 Fractions &lt;mfrac&gt; ‣ 3.3 General Layout Schemata ‣ 3 Presentation Markup ‣ MathML in HTML5 - Implementation Note" class="ltx_ref"><span class="ltx_text ltx_ref_title"><span class="ltx_tag ltx_tag_ref">3.3.2 </span>Fractions <span class="ltx_text ltx_font_typewriter">&lt;mfrac&gt;</span></span></a></li>
+<li class="ltx_tocentry ltx_tocentry_subsubsection"><a href="S3.html#SS3.SSS3" title="3.3.3 Radicals &lt;msqrt&gt;, &lt;mroot&gt; ‣ 3.3 General Layout Schemata ‣ 3 Presentation Markup ‣ MathML in HTML5 - Implementation Note" class="ltx_ref"><span class="ltx_text ltx_ref_title"><span class="ltx_tag ltx_tag_ref">3.3.3 </span>Radicals <span class="ltx_text ltx_font_typewriter">&lt;msqrt&gt;</span>, <span class="ltx_text ltx_font_typewriter">&lt;mroot&gt;</span></span></a></li>
+<li class="ltx_tocentry ltx_tocentry_subsubsection"><a href="S3.html#SS3.SSS4" title="3.3.4 Style Change &lt;mstyle&gt; ‣ 3.3 General Layout Schemata ‣ 3 Presentation Markup ‣ MathML in HTML5 - Implementation Note" class="ltx_ref"><span class="ltx_text ltx_ref_title"><span class="ltx_tag ltx_tag_ref">3.3.4 </span>Style Change <span class="ltx_text ltx_font_typewriter">&lt;mstyle&gt;</span></span></a></li>
+<li class="ltx_tocentry ltx_tocentry_subsubsection"><a href="S3.html#SS3.SSS5" title="3.3.5 Error Message &lt;merror&gt; ‣ 3.3 General Layout Schemata ‣ 3 Presentation Markup ‣ MathML in HTML5 - Implementation Note" class="ltx_ref"><span class="ltx_text ltx_ref_title"><span class="ltx_tag ltx_tag_ref">3.3.5 </span>Error Message <span class="ltx_text ltx_font_typewriter">&lt;merror&gt;</span></span></a></li>
+<li class="ltx_tocentry ltx_tocentry_subsubsection"><a href="S3.html#SS3.SSS6" title="3.3.6 Adjust Space Around Content &lt;mpadded&gt; ‣ 3.3 General Layout Schemata ‣ 3 Presentation Markup ‣ MathML in HTML5 - Implementation Note" class="ltx_ref"><span class="ltx_text ltx_ref_title"><span class="ltx_tag ltx_tag_ref">3.3.6 </span>Adjust Space Around Content <span class="ltx_text ltx_font_typewriter">&lt;mpadded&gt;</span></span></a></li>
+<li class="ltx_tocentry ltx_tocentry_subsubsection"><a href="S3.html#SS3.SSS7" title="3.3.7 Making Sub-Expressions Invisible &lt;mphantom&gt; ‣ 3.3 General Layout Schemata ‣ 3 Presentation Markup ‣ MathML in HTML5 - Implementation Note" class="ltx_ref"><span class="ltx_text ltx_ref_title"><span class="ltx_tag ltx_tag_ref">3.3.7 </span>Making Sub-Expressions Invisible <span class="ltx_text ltx_font_typewriter">&lt;mphantom&gt;</span></span></a></li>
+<li class="ltx_tocentry ltx_tocentry_subsubsection"><a href="S3.html#SS3.SSS8" title="3.3.8 Expression Inside Pair of Fences &lt;mfenced&gt; ‣ 3.3 General Layout Schemata ‣ 3 Presentation Markup ‣ MathML in HTML5 - Implementation Note" class="ltx_ref"><span class="ltx_text ltx_ref_title"><span class="ltx_tag ltx_tag_ref">3.3.8 </span>Expression Inside Pair of Fences <span class="ltx_text ltx_font_typewriter">&lt;mfenced&gt;</span></span></a></li>
+<li class="ltx_tocentry ltx_tocentry_subsubsection"><a href="S3.html#SS3.SSS9" title="3.3.9 Enclose Expression Inside Notation &lt;menclose&gt; ‣ 3.3 General Layout Schemata ‣ 3 Presentation Markup ‣ MathML in HTML5 - Implementation Note" class="ltx_ref"><span class="ltx_text ltx_ref_title"><span class="ltx_tag ltx_tag_ref">3.3.9 </span>Enclose Expression Inside Notation <span class="ltx_text ltx_font_typewriter">&lt;menclose&gt;</span></span></a></li>
+</ul>
+</li>
+<li class="ltx_tocentry ltx_tocentry_subsection">
+<a href="S3.html#SS4" title="3.4 Script and Limit Schemata ‣ 3 Presentation Markup ‣ MathML in HTML5 - Implementation Note" class="ltx_ref"><span class="ltx_text ltx_ref_title"><span class="ltx_tag ltx_tag_ref">3.4 </span>Script and Limit Schemata</span></a>
+<ul class="ltx_toclist ltx_toclist_subsection">
+<li class="ltx_tocentry ltx_tocentry_subsubsection"><a href="S3.html#SS4.SSS1" title="3.4.1 Subscripts and Superscripts &lt;msub&gt;, &lt;msup&gt;, &lt;msubsup&gt; ‣ 3.4 Script and Limit Schemata ‣ 3 Presentation Markup ‣ MathML in HTML5 - Implementation Note" class="ltx_ref"><span class="ltx_text ltx_ref_title"><span class="ltx_tag ltx_tag_ref">3.4.1 </span>Subscripts and Superscripts <span class="ltx_text ltx_font_typewriter">&lt;msub&gt;</span>, <span class="ltx_text ltx_font_typewriter">&lt;msup&gt;</span>,
+<span class="ltx_text ltx_font_typewriter">&lt;msubsup&gt;</span></span></a></li>
+<li class="ltx_tocentry ltx_tocentry_subsubsection"><a href="S3.html#SS4.SSS2" title="3.4.2 Underscripts and Overscripts &lt;munder&gt;, &lt;mover&gt;, &lt;munderover&gt; ‣ 3.4 Script and Limit Schemata ‣ 3 Presentation Markup ‣ MathML in HTML5 - Implementation Note" class="ltx_ref"><span class="ltx_text ltx_ref_title"><span class="ltx_tag ltx_tag_ref">3.4.2 </span>Underscripts and Overscripts <span class="ltx_text ltx_font_typewriter">&lt;munder&gt;</span>, <span class="ltx_text ltx_font_typewriter">&lt;mover&gt;</span>,
+<span class="ltx_text ltx_font_typewriter">&lt;munderover&gt;</span></span></a></li>
+<li class="ltx_tocentry ltx_tocentry_subsubsection"><a href="S3.html#SS4.SSS3" title="3.4.3 Prescripts and Tensor Indices &lt;mmultiscripts&gt; ‣ 3.4 Script and Limit Schemata ‣ 3 Presentation Markup ‣ MathML in HTML5 - Implementation Note" class="ltx_ref"><span class="ltx_text ltx_ref_title"><span class="ltx_tag ltx_tag_ref">3.4.3 </span>Prescripts and Tensor Indices <span class="ltx_text ltx_font_typewriter">&lt;mmultiscripts&gt;</span></span></a></li>
+</ul>
+</li>
+<li class="ltx_tocentry ltx_tocentry_subsection"><a href="S3.html#SS5" title="3.5 Tabular Math ‣ 3 Presentation Markup ‣ MathML in HTML5 - Implementation Note" class="ltx_ref"><span class="ltx_text ltx_ref_title"><span class="ltx_tag ltx_tag_ref">3.5 </span>Tabular Math</span></a></li>
+<li class="ltx_tocentry ltx_tocentry_subsection"><a href="S3.html#SS6" title="3.6 Elementary Math ‣ 3 Presentation Markup ‣ MathML in HTML5 - Implementation Note" class="ltx_ref"><span class="ltx_text ltx_ref_title"><span class="ltx_tag ltx_tag_ref">3.6 </span>Elementary Math</span></a></li>
+<li class="ltx_tocentry ltx_tocentry_subsection"><a href="S3.html#SS7" title="3.7 Enlivening Expressions ‣ 3 Presentation Markup ‣ MathML in HTML5 - Implementation Note" class="ltx_ref"><span class="ltx_text ltx_ref_title"><span class="ltx_tag ltx_tag_ref">3.7 </span>Enlivening Expressions</span></a></li>
+<li class="ltx_tocentry ltx_tocentry_subsection"><a href="S3.html#SS8" title="3.8 Semantics and Presentation ‣ 3 Presentation Markup ‣ MathML in HTML5 - Implementation Note" class="ltx_ref"><span class="ltx_text ltx_ref_title"><span class="ltx_tag ltx_tag_ref">3.8 </span>Semantics and Presentation</span></a></li>
+</ul>
+</li>
+<li class="ltx_tocentry ltx_tocentry_appendix"><a href="A1.html" title="Appendix A MathML ‣ MathML in HTML5 - Implementation Note" class="ltx_ref"><span class="ltx_text ltx_ref_title"><span class="ltx_tag ltx_tag_ref">A </span>MathML</span></a></li>
+<li class="ltx_tocentry ltx_tocentry_appendix"><a href="A2.html" title="Appendix B CSS ‣ MathML in HTML5 - Implementation Note" class="ltx_ref"><span class="ltx_text ltx_ref_title"><span class="ltx_tag ltx_tag_ref">B </span>CSS</span></a></li>
+<li class="ltx_tocentry ltx_tocentry_appendix"><a href="A3.html" title="Appendix C OpenType ‣ MathML in HTML5 - Implementation Note" class="ltx_ref"><span class="ltx_text ltx_ref_title"><span class="ltx_tag ltx_tag_ref">C </span>OpenType</span></a></li>
+<li class="ltx_tocentry ltx_tocentry_appendix"><a href="A4.html" title="Appendix D Image Fallback ‣ MathML in HTML5 - Implementation Note" class="ltx_ref"><span class="ltx_text ltx_ref_title"><span class="ltx_tag ltx_tag_ref">D </span>Image Fallback</span></a></li>
+</ul>
+</div>
+</section>
+</article>
+</div>
+<footer class="ltx_page_footer">
+<div>
+<a href="bib.html" title="References ‣ MathML in HTML5 - Implementation Note" class="ltx_ref" rel="bibliography"><span class="ltx_text ltx_ref_title">References</span></a><a href="S1.html" title="1 Introduction ‣ MathML in HTML5 - Implementation Note" class="ltx_ref" rel="next"><span class="ltx_text ltx_ref_title"><span class="ltx_tag ltx_tag_ref">1 </span>Introduction</span></a>
+</div>
+<div class="ltx_page_logo">Generated  on Tue Oct 31 15:18:52 2017 by <a href="http://dlmf.nist.gov/LaTeXML/">LaTeXML <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==" alt="[LOGO]"/></a>
+</div></footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html><html>
+<head>
+<title>B CSS‣ MathML in HTML5 - Implementation Note</title>
+<!--Generated on Tue Oct 31 15:18:52 2017 by LaTeXML (version 0.8.2) http://dlmf.nist.gov/LaTeXML/.-->
+<!--Document created on October 31, 2017.-->
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<link rel="stylesheet" href="LaTeXML.css" type="text/css"/>
+<link rel="stylesheet" href="ltx-article.css" type="text/css"/>
+<link rel="stylesheet" href="ltx-listings.css" type="text/css"/>
+<link rel="stylesheet" href="style.css" type="text/css"/>
+<link rel="up" href="." title="MathML in HTML5 - Implementation Note"/>
+<link rel="start" href="." title="MathML in HTML5 - Implementation Note"/>
+<link rel="prev" href="A1.html" title="Appendix A MathML ‣ MathML in HTML5 - Implementation Note"/>
+<link rel="next" href="A3.html" title="Appendix C OpenType ‣ MathML in HTML5 - Implementation Note"/>
+<link rel="section" href="S1.html" title="1 Introduction ‣ MathML in HTML5 - Implementation Note"/>
+<link rel="section" href="S2.html" title="2 Relation with other technologies ‣ MathML in HTML5 - Implementation Note"/>
+<link rel="section" href="S3.html" title="3 Presentation Markup ‣ MathML in HTML5 - Implementation Note"/>
+<link rel="bibliography" href="bib.html" title="References ‣ MathML in HTML5 - Implementation Note"/>
+<link rel="appendix" href="A1.html" title="Appendix A MathML ‣ MathML in HTML5 - Implementation Note"/>
+<link rel="appendix" href="A3.html" title="Appendix C OpenType ‣ MathML in HTML5 - Implementation Note"/>
+<link rel="appendix" href="A4.html" title="Appendix D Image Fallback ‣ MathML in HTML5 - Implementation Note"/>
+</head>
+<body>
+<div class="ltx_page_main">
+<header class="ltx_page_header">
+<div>
+<a href="." title="MathML in HTML5 - Implementation Note" class="ltx_ref" rel="up"><span class="ltx_text ltx_ref_title">MathML in HTML5 - Implementation Note</span></a><a href="A1.html" title="Appendix A MathML ‣ MathML in HTML5 - Implementation Note" class="ltx_ref" rel="prev"><span class="ltx_text ltx_ref_title"><span class="ltx_tag ltx_tag_ref">A </span>MathML</span></a><a href="A3.html" title="Appendix C OpenType ‣ MathML in HTML5 - Implementation Note" class="ltx_ref" rel="next"><span class="ltx_text ltx_ref_title"><span class="ltx_tag ltx_tag_ref">C </span>OpenType</span></a>
+</div></header>
+<div class="ltx_page_content">
+<section class="ltx_appendix">
+<h1 class="ltx_title ltx_title_appendix">
+<span class="ltx_tag ltx_tag_appendix">Appendix B </span>CSS</h1>
+<div class="ltx_date ltx_role_creation"></div>
+
+<div id="p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text ltx_font_italic">This section is non-normative.</span></p>
+</div>
+<div id="p2" class="ltx_para">
+<p class="ltx_p">Some <span class="ltx_text ltx_font_typewriter">mstyle</span> attributes follow the standard CSS inheritance and can be
+easily implemented by mapping them to CSS properties. Five new CSS properties
+would be needed for that purpose and are proposed in section
+<a href="S2.html#SS3.SSS1" title="2.3.1 Properties ‣ 2.3 CSS Styling ‣ 2 Relation with other technologies ‣ MathML in HTML5 - Implementation Note" class="ltx_ref"><span class="ltx_text ltx_ref_tag">2.3.1</span></a>:</p>
+</div>
+<div id="p3" class="ltx_para">
+<ol id="I15" class="ltx_enumerate">
+<li id="I15.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_enumerate">1.</span> 
+<div id="I15.i1.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text ltx_font_typewriter">mathml-math-style</span> (cf table <a href="S2.html#SS3.SSS1" title="2.3.1 Properties ‣ 2.3 CSS Styling ‣ 2 Relation with other technologies ‣ MathML in HTML5 - Implementation Note" class="ltx_ref"><span class="ltx_text ltx_ref_tag">2.3.1</span></a>)</p>
+</div>
+</li>
+<li id="I15.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_enumerate">2.</span> 
+<div id="I15.i2.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text ltx_font_typewriter">mathml-math-variant</span> (cf table <a href="S2.html#SS3.SSS1.tab1" title="2.3.1 Properties ‣ 2.3 CSS Styling ‣ 2 Relation with other technologies ‣ MathML in HTML5 - Implementation Note" class="ltx_ref"><span class="ltx_text ltx_ref_tag">2.3.1</span></a>)</p>
+</div>
+</li>
+<li id="I15.i3" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_enumerate">3.</span> 
+<div id="I15.i3.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text ltx_font_typewriter">mathml-script-level</span> (cf table <a href="S2.html#SS3.SSS1.tab2" title="2.3.1 Properties ‣ 2.3 CSS Styling ‣ 2 Relation with other technologies ‣ MathML in HTML5 - Implementation Note" class="ltx_ref"><span class="ltx_text ltx_ref_tag">2.3.1</span></a>)</p>
+</div>
+</li>
+<li id="I15.i4" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_enumerate">4.</span> 
+<div id="I15.i4.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text ltx_font_typewriter">mathml-script-size-multiplier</span> (cf table <a href="S2.html#SS3.SSS1.tab3" title="2.3.1 Properties ‣ 2.3 CSS Styling ‣ 2 Relation with other technologies ‣ MathML in HTML5 - Implementation Note" class="ltx_ref"><span class="ltx_text ltx_ref_tag">2.3.1</span></a>)</p>
+</div>
+</li>
+<li id="I15.i5" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_enumerate">5.</span> 
+<div id="I15.i5.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text ltx_font_typewriter">mathml-script-min-size</span> (cf table <a href="S2.html#SS3.SSS1.tab4" title="2.3.1 Properties ‣ 2.3 CSS Styling ‣ 2 Relation with other technologies ‣ MathML in HTML5 - Implementation Note" class="ltx_ref"><span class="ltx_text ltx_ref_tag">2.3.1</span></a>)</p>
+</div>
+</li>
+</ol>
+</div>
+<div id="p4" class="ltx_para">
+<p class="ltx_p">In practice, only the first three properties are involved (either implicity
+or explicitly) in documents with MathML content while the default values are
+almost always used for the two last properties. Hence, these three first
+properties seem the most important to consider.
+</p>
+</div>
+</section>
+</div>
+<footer class="ltx_page_footer">
+<div>
+<a href="A1.html" title="Appendix A MathML ‣ MathML in HTML5 - Implementation Note" class="ltx_ref" rel="prev"><span class="ltx_text ltx_ref_title"><span class="ltx_tag ltx_tag_ref">A </span>MathML</span></a><a href="bib.html" title="References ‣ MathML in HTML5 - Implementation Note" class="ltx_ref" rel="bibliography"><span class="ltx_text ltx_ref_title">References</span></a><a href="A3.html" title="Appendix C OpenType ‣ MathML in HTML5 - Implementation Note" class="ltx_ref" rel="next"><span class="ltx_text ltx_ref_title"><span class="ltx_tag ltx_tag_ref">C </span>OpenType</span></a>
+</div>
+<div class="ltx_page_logo">Generated  on Tue Oct 31 15:18:52 2017 by <a href="http://dlmf.nist.gov/LaTeXML/">LaTeXML <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==" alt="[LOGO]"/></a>
+</div></footer>
+</div>
+</body>
+</html>
