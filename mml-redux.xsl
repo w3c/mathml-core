@@ -17,8 +17,7 @@
 <link rel="stylesheet" href="ltx-listings.css" type="text/css"/>
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style type="text/css">
-  .base {background-color: #EEEEEE;}
-  .kwlabel {font-weight:normal}
+  pre { white-space: pre-wrap;}
  </style>
 <style>
   a.loc {
