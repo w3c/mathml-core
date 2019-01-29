@@ -13,3 +13,9 @@ fi
 
 java -jar saxon9he.jar -o:index.html  mml-redux.xml mml-redux.xsl
 
+
+if [ "$TRAVIS" = "true" ]; then
+
+git clean -f
+
+fi
