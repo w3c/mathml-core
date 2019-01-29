@@ -25,6 +25,7 @@ script:
 deploy:
   provider: pages
   skip-cleanup: true
+  target-branch: master
   github-token: $ghtok  # Set in the settings page of your repository, as a secure variable
   keep-history: true
   on:
