@@ -1,0 +1,15 @@
+#!/bin/bash
+
+set -e
+
+if [ ! -f ./saxon9he.jar ]; then
+    if [ -f /tmp/jars/saxon9he.jar ]; then
+	cp /tmp/jars/saxon9he.jar .
+    else
+	echo install saxon9he.jar eg run install-tools
+    fi
+fi
+
+
+java -jar saxon9he.jar -o:index.html  mml-redux.xml mml-redux.xsl
+

@@ -4,7 +4,7 @@
   <title>Straw Man MathML Web Profile</title>
   <editors>David Carlisle (Almost all text taken from  from MathML in HTML5 - Implementation Note Edited by Frédéric Wang</editors>
   <status>
-   <p>Just experimenting...</p>
+   <p>Just experimenting (travis build)...</p>
   </status>
 </front>
 <abstract>

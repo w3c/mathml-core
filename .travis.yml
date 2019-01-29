@@ -1,0 +1,31 @@
+
+branches:
+  only:
+  - master
+  - gh-pages
+
+notifications:
+  email:
+    recipients:
+      - d.p.carlisle@gmail.com
+      
+before_install:
+  - sudo apt-get install -y rxp
+
+install:
+ - ./install-tools
+
+cache:
+  directories:
+    - /tmp/jars
+
+script:
+ - ./run
+
+deploy:
+  provider: pages
+  skip-cleanup: true
+  github-token: $ghtok  # Set in the settings page of your repository, as a secure variable
+  keep-history: true
+  on:
+    branch: master
