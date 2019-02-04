@@ -1,4 +1,3 @@
-<!DOCTYPE HTML>
 <html lang="en">
    <head>
       <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -25,9 +24,7 @@
             <dd><a href="#">...</a></dd>
             <dt>Editors:</dt>
             <dd>
-               <editors>David Carlisle (Almost all text taken from  from MathML in HTML5 - Implementation
-                  Note Edited by Frédéric Wang
-               </editors>
+               <editors>David Carlisle (Almost all text taken from  from MathML in HTML5 - Implementation Note Edited by Frédéric Wang</editors>
             </dd>
          </dl>
          <p class="copyright"><a href="https://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a> © 1998-2017 <a href="https://www.w3.org/"><abbr title="World Wide Web Consortium">W3C</abbr></a><sup>®</sup> (<a href="https://www.csail.mit.edu/"><abbr title="Massachusetts Institute of Technology">MIT</abbr></a>, <a href="https://www.ercim.eu/"><abbr title="European Research Consortium for Informatics and Mathematics">ERCIM</abbr></a>, <a href="https://www.keio.ac.jp/">Keio</a>, <a href="http://ev.buaa.edu.cn/">Beihang</a>). W3C <a href="https://www.w3.org/Consortium/Legal/ipr-notice#Legal_Disclaimer">liability</a>, <a href="https://www.w3.org/Consortium/Legal/ipr-notice#W3C_Trademarks">trademark</a> and <a href="https://www.w3.org/Consortium/Legal/copyright-documents">document use</a> rules apply.
@@ -10678,8 +10675,8 @@
 
 <a name="rncrncmath.attributes" style="color:blue;">math.attributes</a> = <a href="#rncrncCommonAtt">CommonAtt</a>,
                <span style="font-weight:bold;">attribute</span> display {"block" | "inline"}?,
-               <span style="font-weight:bold;">attribute</span> maxwidth {<a href="#rncrnclength">length</a>}?,
-               <span style="font-weight:bold;">attribute</span> overflow {"linebreak" | "scroll" | "elide" | "truncate" | "scale"}?,
+               <span style="color:brown;"># attribute maxwidth {length}?,</span>
+               <span style="color:brown;"># attribute overflow {"linebreak" | "scroll" | "elide" | "truncate" | "scale"}?,</span>
                <span style="font-weight:bold;">attribute</span> altimg {<span style="font-weight:bold;">xsd:anyURI</span>}?,
                <span style="font-weight:bold;">attribute</span> altimg-width {<a href="#rncrnclength">length</a>}?,
                <span style="font-weight:bold;">attribute</span> altimg-height {<a href="#rncrnclength">length</a>}?,
@@ -10781,12 +10778,12 @@
   <span style="font-weight:bold;">attribute</span> rspace {<a href="#rncrnclength">length</a>}?,
   <span style="font-weight:bold;">attribute</span> stretchy {"true" | "false"}?,
   <span style="font-weight:bold;">attribute</span> symmetric {"true" | "false"}?,
-  <span style="font-weight:bold;">attribute</span> maxsize {<a href="#rncrnclength">length</a> | "infinity"}?,
-  <span style="font-weight:bold;">attribute</span> minsize {<a href="#rncrnclength">length</a>}?,
+  <span style="color:brown;"># attribute maxsize {length | "infinity"}?,</span>
+  <span style="color:brown;"># attribute minsize {length}?,</span>
   <span style="font-weight:bold;">attribute</span> largeop {"true" | "false"}?,
   <span style="font-weight:bold;">attribute</span> movablelimits {"true" | "false"}?,
-  <span style="font-weight:bold;">attribute</span> accent {"true" | "false"}?,
-  <span style="font-weight:bold;">attribute</span> linebreak {"auto" | "newline" | "nobreak" | "goodbreak" | "badbreak"}?
+  <span style="font-weight:bold;">attribute</span> accent {"true" | "false"}?
+  <span style="color:brown;"># attribute linebreak {"auto" | "newline" | "nobreak" | "goodbreak" | "badbreak"}?</span>
 
 <a name="rncrncmtext" style="color:blue;">mtext</a> = <span style="font-weight:bold;">element</span> mtext {<a href="#rncrncmtext.attributes">mtext.attributes</a>, <span style="font-weight:bold;">text</span>}
 <a name="rncrncmtext.attributes" style="color:blue;">mtext.attributes</a> = 
@@ -10890,7 +10887,7 @@
 <a name="rncrncmenclose" style="color:blue;">menclose</a> = <span style="font-weight:bold;">element</span> menclose {<a href="#rncrncmenclose.attributes">menclose.attributes</a>, <a href="#rncrncImpliedMrow">ImpliedMrow</a>}
 <a name="rncrncmenclose.attributes" style="color:blue;">menclose.attributes</a> = 
   <a href="#rncrncCommonAtt">CommonAtt</a>, <a href="#rncrncCommonPresAtt">CommonPresAtt</a>,
-  <span style="font-weight:bold;">attribute</span> notation {<span style="font-weight:bold;">text</span>}?
+  <span style="font-weight:bold;">attribute</span> notation {<a href="#rncrncnotationstyle">notationstyle</a>}?
 
 <a name="rncrncmsub" style="color:blue;">msub</a> = <span style="font-weight:bold;">element</span> msub {<a href="#rncrncmsub.attributes">msub.attributes</a>, <a href="#rncrncMathExpression">MathExpression</a>, <a href="#rncrncMathExpression">MathExpression</a>}
 <a name="rncrncmsub.attributes" style="color:blue;">msub.attributes</a> = 
