@@ -27,7 +27,7 @@
  schema may be taken as an informal specification of the structure,
  whatever syntax is used.</p>
  
- <rnc file="mathml3-web.rnc"/>
+ <rnc file="mathml4-web.rnc"/>
  
 </section>
 </spec>
