@@ -14,8 +14,8 @@ CommonAtt = attribute id {xsd:ID}?,
 
 math.attributes = CommonAtt,
                attribute display {"block" | "inline"}?,
-               attribute maxwidth {length}?,
-               attribute overflow {"linebreak" | "scroll" | "elide" | "truncate" | "scale"}?,
+               # attribute maxwidth {length}?,
+               # attribute overflow {"linebreak" | "scroll" | "elide" | "truncate" | "scale"}?,
                attribute altimg {xsd:anyURI}?,
                attribute altimg-width {length}?,
                attribute altimg-height {length}?,
@@ -117,12 +117,12 @@ mo.attributes =
   attribute rspace {length}?,
   attribute stretchy {"true" | "false"}?,
   attribute symmetric {"true" | "false"}?,
-  attribute maxsize {length | "infinity"}?,
-  attribute minsize {length}?,
+  # attribute maxsize {length | "infinity"}?,
+  # attribute minsize {length}?,
   attribute largeop {"true" | "false"}?,
   attribute movablelimits {"true" | "false"}?,
-  attribute accent {"true" | "false"}?,
-  attribute linebreak {"auto" | "newline" | "nobreak" | "goodbreak" | "badbreak"}?
+  attribute accent {"true" | "false"}?
+  # attribute linebreak {"auto" | "newline" | "nobreak" | "goodbreak" | "badbreak"}?
 
 mtext = element mtext {mtext.attributes, text}
 mtext.attributes = 
@@ -226,7 +226,7 @@ mphantom.attributes =
 menclose = element menclose {menclose.attributes, ImpliedMrow}
 menclose.attributes = 
   CommonAtt, CommonPresAtt,
-  attribute notation {text}?
+  attribute notation {notationstyle}?
 
 msub = element msub {msub.attributes, MathExpression, MathExpression}
 msub.attributes = 
