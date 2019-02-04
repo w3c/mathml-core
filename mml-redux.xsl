@@ -4,7 +4,7 @@
 		exclude-result-prefixes="xs"
 		>
 
-<xsl:output method="html" />
+<xsl:output method="html" version="5"/>
 
 <xsl:template  match="spec">
  <html lang="en">
