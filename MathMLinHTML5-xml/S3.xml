@@ -6,18 +6,16 @@
 
 </head>
 <body>
-<section>
+<section id="presentationmarkup">
 <h1>
 <span>3 </span>Presentation Markup</h1>
 <div></div>
 
-<section id="SS1">
-<h2>
-<span>3.1 </span>Introduction</h2>
+<section id="presmintro">
+<h2><span>3.1 </span>Introduction</h2>
 
 <section id="SS1.SSS1">
-<h3>
-<span>3.1.1 </span>Box Model</h3>
+<h3><span>3.1.1 </span>Box Model</h3>
 
 <div id="SS1.SSS1.p1">
 <p>User agents must also follow the rules described in section 4.7.14
@@ -28,7 +26,7 @@ implicit <code>mtext</code> and <code>merror</code> to handle non-conforming Mat
 <p>MathML elements have the following box model. The <span>&lt;math&gt;</span> root may have
 inline or block display, as suggested in section <a href="S2.html#SS3.SSS2" title="2.3.2 User Agent Stylesheet for MathML ‣ 2.3 CSS Styling ‣ 2 Relation with other technologies ‣ MathML in HTML5 - Implementation Note"><span>2.3.2</span></a>.
 Tabular MathML elements have table, table-row and
-table-cell display as discussed in section <a href="#SS5" title="3.5 Tabular Math ‣ 3 Presentation Markup ‣ MathML in HTML5 - Implementation Note"><span>3.5</span></a>.
+table-cell display as discussed in section <a href="#tables" title="3.5 Tabular Math ‣ 3 Presentation Markup ‣ MathML in HTML5 - Implementation Note"><span>3.5</span></a>.
 The <span>&lt;math&gt;</span> and <span>&lt;mtd&gt;</span> elements
 generate an anonymous <span>&lt;mrow&gt;</span> MathML box child that contains the boxes of
 their children and use the box parameters below to layout this anonymous
@@ -242,14 +240,11 @@ for the layout of <code>mtable</code> elements and of the containers of the
 </div>
 </section>
 </section>
-<section id="SS2">
-<h2>
-<span>3.2 </span>Token Elements</h2>
+<section id="tokenelements">
+<h2><span>3.2 </span>Token Elements</h2>
 
 <section id="SS2.SSS1">
-<h3>
-<span>3.2.1 </span>Using images to represent symbols <span>&lt;mglyph/&gt;</span>
-</h3>
+<h3><span>3.2.1 </span>Using images to represent symbols <span>&lt;mglyph/&gt;</span></h3>
 
 <div id="SS2.SSS1.p1">
 <p>The MathML specification describes <code>mglyph</code> as follows <cite>[<a href="bib.html#bibx11" title="">MathML3</a>]</cite>:</p>
@@ -541,7 +536,7 @@ with the following style in the user agent stylesheet as suggested in section
 </div>
 </section>
 </section>
-<section id="SS3">
+<section id="generallayout">
 <h2>
 <span>3.3 </span>General Layout Schemata</h2>
 
@@ -1300,9 +1295,8 @@ instead of relying on the <code>radical</code> notation of the <code>menclose</c
 </div>
 </section>
 </section>
-<section id="SS4">
-<h2>
-<span>3.4 </span>Script and Limit Schemata</h2>
+<section id="scriptsandlimits">
+<h2><span>3.4 </span>Script and Limit Schemata</h2>
 
 <section id="SS4.SSS1">
 <h3>
@@ -1857,9 +1851,8 @@ any italic correction for prescripts.</p>
 </figure>
 </section>
 </section>
-<section id="SS5">
-<h2>
-<span>3.5 </span>Tabular Math</h2>
+<section id="tables">
+<h2><span>3.5 </span>Tabular Math</h2>
 
 <div id="SS5.p1">
 <p>The MathML specification describes tabular math as follows <cite>[<a href="bib.html#bibx11" title="">MathML3</a>]</cite>:</p>
@@ -2015,9 +2008,8 @@ the HTML <code>colspan</code> and <code>rowspan</code> attributes.</p>
 document.</p>
 </div>
 </section>
-<section id="SS6">
-<h2>
-<span>3.6 </span>Elementary Math</h2>
+<section id="elementarymath">
+<h2><span>3.6 </span>Elementary Math</h2>
 
 <div id="SS6.p1">
 <p>Elementary Math was introduced in version 3 of the MathML specification
@@ -2056,9 +2048,8 @@ with a stack of the intermediate computations
 <code>mlongdiv</code> elements.</p>
 </div>
 </section>
-<section id="SS7">
-<h2>
-<span>3.7 </span>Enlivening Expressions</h2>
+<section id="enlivening">
+<h2><span>3.7 </span>Enlivening Expressions</h2>
 
 <div id="SS7.p1">
 <p>The MathML specification describes <code>maction</code> as follows <cite>[<a href="bib.html#bibx11" title="">MathML3</a>]</cite>:</p>
@@ -2112,13 +2103,12 @@ or how to change the default behavior.</p>
 </div>
 <div id="SS7.p4">
 <p>Given the similarity with the <code>semantics</code> element
-described in section <a href="#SS8" title="3.8 Semantics and Presentation ‣ 3 Presentation Markup ‣ MathML in HTML5 - Implementation Note"><span>3.8</span></a>, it is
+described in section <a href="#sematicsandpresntation" title="3.8 Semantics and Presentation ‣ 3 Presentation Markup ‣ MathML in HTML5 - Implementation Note"><span>3.8</span></a>, it is
 suggested to share the implementation of <code>semantics</code> and <code>maction</code>.</p>
 </div>
 </section>
-<section id="SS8">
-<h2>
-<span>3.8 </span>Semantics and Presentation</h2>
+<section id="sematicsandpresntation">
+<h2><span>3.8 </span>Semantics and Presentation</h2>
 
 <div id="SS8.p1">
 <p>The MathML specification describes <code>semantics</code> as follows <cite>[<a href="bib.html#bibx11" title="">MathML3</a>]</cite>:</p>
@@ -2197,7 +2187,7 @@ indicating invalid markup.</p>
 </div>
 <div id="SS8.p4">
 <p>Given the similarity with the <code>maction</code> element
-described in section <a href="#SS7" title="3.7 Enlivening Expressions ‣ 3 Presentation Markup ‣ MathML in HTML5 - Implementation Note"><span>3.7</span></a>, it is
+described in section <a href="#enlivening" title="3.7 Enlivening Expressions ‣ 3 Presentation Markup ‣ MathML in HTML5 - Implementation Note"><span>3.7</span></a>, it is
 suggested to share the implementation of <code>semantics</code> and <code>maction</code>.</p>
 </div>
 </section>

@@ -6,12 +6,12 @@
 
 </head>
 <body>
-<section>
+<section id="introduction">
 <h1>
 <span>1 </span>Introduction</h1>
 <div></div>
 
-<section id="SS1">
+<section id="rationale">
 <h2><span>1.1 </span>Rationale for this Technical Document</h2>
 
 <div id="SS1.p1">
@@ -105,9 +105,8 @@ of presentation MathML by including features that are important in a web context
 e.g. CSS-compatible line breaking.</p>
 </div>
 </section>
-<section id="SS2">
-<h2>
-<span>1.2 </span>Remarks</h2>
+<section id="rem1">
+<h2><span>1.2 </span>Remarks</h2>
 
 <div id="SS2.p1">
 <p><span>This section is non-normative.</span></p>
@@ -150,7 +149,7 @@ implementation &amp; automated testing. Contribution of new tests and error repo
 are welcome.</p>
 </div>
 </section>
-<section id="SS3">
+<section id="terminology">
 <h2>
 <span>1.3 </span>Terminology</h2>
 

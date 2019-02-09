@@ -6,14 +6,13 @@
 
 </head>
 <body>
-<section>
+<section id="othertechnologies">
 <h1>
 <span>2 </span>Relation with other technologies</h1>
 <div></div>
 
-<section id="SS1">
-<h2>
-<span>2.1 </span>HTML5 Tree</h2>
+<section id="html5tree">
+<h2><span>2.1 </span>HTML5 Tree</h2>
 
 <section id="SS1.SSS1">
 <h3>
@@ -131,13 +130,11 @@ proposed in the non-normative Appendix C of <cite>[<a href="bib.html#bibx11" tit
 </div>
 </section>
 </section>
-<section id="SS2">
-<h2>
-<span>2.2 </span>Text and Math layout</h2>
+<section id="textandmath">
+<h2><span>2.2 </span>Text and Math layout</h2>
 
 <section id="SS2.SSS1">
-<h3>
-<span>2.2.1 </span>Open Font Format</h3>
+<h3><span>2.2.1 </span>Open Font Format</h3>
 
 <div id="SS2.SSS1.p1">
 <p>Because math fonts generally contain very tall glyphs such as big integrals,
@@ -258,7 +255,7 @@ space around embellished operators.</p>
 </div>
 </section>
 </section>
-<section id="SS3">
+<section id="cssstyling">
 <h2>
 <span>2.3 </span>CSS Styling</h2>
 

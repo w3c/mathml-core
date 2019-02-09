@@ -6,7 +6,7 @@
 
 </head>
 <body>
-<section>
+<section id="imagefallback">
 <h1>
 <span>Appendix D </span>Image Fallback</h1>
 <div></div>
