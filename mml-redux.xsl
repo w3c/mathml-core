@@ -70,7 +70,7 @@
 
  <!-- toc -->
  <xsl:template match="minh" mode="toc">
-  <xsl:apply-templates mode="toc" select="doc(concat('MathMLinHTML5-xml/',@file,'.xml'))/html/body/div/div/section"/>
+  <xsl:apply-templates mode="toc" select="doc(concat('MathMLinHTML5-xml/',@file,'.xml'))/html/body/section"/>
  </xsl:template>
 
  <xsl:template mode="toc" match="section">
@@ -95,7 +95,7 @@
 
 
  <xsl:template match="minh">
-  <xsl:apply-templates select="doc(concat('MathMLinHTML5-xml/',@file,'.xml'))/html/body/div/div/section"/>
+  <xsl:apply-templates select="doc(concat('MathMLinHTML5-xml/',@file,'.xml'))/html/body/section"/>
  </xsl:template>
 
 

@@ -6,12 +6,6 @@
 
 </head>
 <body>
-<div>
-<header>
-<div>
-<a href="." title="MathML in HTML5 - Implementation Note" rel="up"><span>MathML in HTML5 - Implementation Note</span></a><a href="S1.html" title="1 Introduction ‣ MathML in HTML5 - Implementation Note" rel="prev"><span><span>1 </span>Introduction</span></a><a href="S3.html" title="3 Presentation Markup ‣ MathML in HTML5 - Implementation Note" rel="next"><span><span>3 </span>Presentation Markup</span></a>
-</div></header>
-<div>
 <section>
 <h1>
 <span>2 </span>Relation with other technologies</h1>
@@ -1032,12 +1026,5 @@ mfrac &gt; munderover, mfrac &gt; mmultiscripts, mfrac &gt; mtable, mfrac &gt; m
 </section>
 </section>
 </section>
-</div>
-<footer>
-<div>
-<a href="S1.html" title="1 Introduction ‣ MathML in HTML5 - Implementation Note" rel="prev"><span><span>1 </span>Introduction</span></a><a href="bib.html" title="References ‣ MathML in HTML5 - Implementation Note" rel="bibliography">References</a><a href="S3.html" title="3 Presentation Markup ‣ MathML in HTML5 - Implementation Note" rel="next"><span><span>3 </span>Presentation Markup</span></a>
-</div>
-</footer>
-</div>
 </body>
 </html>

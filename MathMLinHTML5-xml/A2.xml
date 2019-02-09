@@ -6,12 +6,6 @@
 
 </head>
 <body>
-<div>
-<header>
-<div>
-<a href="." title="MathML in HTML5 - Implementation Note" rel="up"><span>MathML in HTML5 - Implementation Note</span></a><a href="A1.html" title="Appendix A MathML ‣ MathML in HTML5 - Implementation Note" rel="prev"><span><span>A </span>MathML</span></a><a href="A3.html" title="Appendix C OpenType ‣ MathML in HTML5 - Implementation Note" rel="next"><span><span>C </span>OpenType</span></a>
-</div></header>
-<div>
 <section>
 <h1>
 <span>Appendix B </span>CSS</h1>
@@ -63,12 +57,5 @@ properties seem the most important to consider.
 </p>
 </div>
 </section>
-</div>
-<footer>
-<div>
-<a href="A1.html" title="Appendix A MathML ‣ MathML in HTML5 - Implementation Note" rel="prev"><span><span>A </span>MathML</span></a><a href="bib.html" title="References ‣ MathML in HTML5 - Implementation Note" rel="bibliography"><span>References</span></a><a href="A3.html" title="Appendix C OpenType ‣ MathML in HTML5 - Implementation Note" rel="next"><span><span>C </span>OpenType</span></a>
-</div>
-</footer>
-</div>
 </body>
 </html>

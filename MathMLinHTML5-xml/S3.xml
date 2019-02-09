@@ -6,12 +6,6 @@
 
 </head>
 <body>
-<div>
-<header>
-<div>
-<a href="." title="MathML in HTML5 - Implementation Note" rel="up"><span>MathML in HTML5 - Implementation Note</span></a><a href="S2.html" title="2 Relation with other technologies ‣ MathML in HTML5 - Implementation Note" rel="prev"><span><span>2 </span>Relation with other technologies</span></a><a href="bib.html" title="References ‣ MathML in HTML5 - Implementation Note" rel="next">References</a>
-</div></header>
-<div>
 <section>
 <h1>
 <span>3 </span>Presentation Markup</h1>
@@ -2208,12 +2202,5 @@ suggested to share the implementation of <code>semantics</code> and <code>mactio
 </div>
 </section>
 </section>
-</div>
-<footer>
-<div>
-<a href="S2.html" title="2 Relation with other technologies ‣ MathML in HTML5 - Implementation Note" rel="prev"><span><span>2 </span>Relation with other technologies</span></a><a href="bib.html" title="References ‣ MathML in HTML5 - Implementation Note" rel="bibliography">References</a><a href="bib.html" title="References ‣ MathML in HTML5 - Implementation Note" rel="next">References</a>
-</div>
-</footer>
-</div>
 </body>
 </html>

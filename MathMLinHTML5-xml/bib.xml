@@ -6,12 +6,6 @@
 
 </head>
 <body>
-<div>
-<header>
-<div>
-<a href="." title="MathML in HTML5 - Implementation Note" rel="up"><span>MathML in HTML5 - Implementation Note</span></a><a href="S3.html" title="3 Presentation Markup ‣ MathML in HTML5 - Implementation Note" rel="prev"><span><span>3 </span>Presentation Markup</span></a><a href="A1.html" title="Appendix A MathML ‣ MathML in HTML5 - Implementation Note" rel="next"><span><span>A </span>MathML</span></a>
-</div></header>
-<div>
 <section>
 <h1>References</h1>
 <div></div>
@@ -181,12 +175,5 @@ David Carlisle, Patrick Ion
 </li>
 </ul>
 </section>
-</div>
-<footer>
-<div>
-<a href="S3.html" title="3 Presentation Markup ‣ MathML in HTML5 - Implementation Note" rel="prev"><span><span>3 </span>Presentation Markup</span></a><a href="A1.html" title="Appendix A MathML ‣ MathML in HTML5 - Implementation Note" rel="next"><span><span>A </span>MathML</span></a>
-</div>
-</footer>
-</div>
 </body>
 </html>
