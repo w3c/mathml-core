@@ -1,112 +1,96 @@
 <!DOCTYPE html><html>
 <head>
 <title>D Image Fallback‣ MathML in HTML5 - Implementation Note</title>
-<!--Generated on Tue Oct 31 15:18:52 2017 by LaTeXML (version 0.8.2) http://dlmf.nist.gov/LaTeXML/.-->
-<!--Document created on October 31, 2017.-->
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-<link rel="stylesheet" href="LaTeXML.css" type="text/css"/>
-<link rel="stylesheet" href="ltx-article.css" type="text/css"/>
-<link rel="stylesheet" href="ltx-listings.css" type="text/css"/>
-<link rel="stylesheet" href="style.css" type="text/css"/>
-<link rel="up" href="." title="MathML in HTML5 - Implementation Note"/>
-<link rel="start" href="." title="MathML in HTML5 - Implementation Note"/>
-<link rel="prev" href="A3.html" title="Appendix C OpenType ‣ MathML in HTML5 - Implementation Note"/>
-<link rel="section" href="S1.html" title="1 Introduction ‣ MathML in HTML5 - Implementation Note"/>
-<link rel="section" href="S2.html" title="2 Relation with other technologies ‣ MathML in HTML5 - Implementation Note"/>
-<link rel="section" href="S3.html" title="3 Presentation Markup ‣ MathML in HTML5 - Implementation Note"/>
-<link rel="bibliography" href="bib.html" title="References ‣ MathML in HTML5 - Implementation Note"/>
-<link rel="appendix" href="A1.html" title="Appendix A MathML ‣ MathML in HTML5 - Implementation Note"/>
-<link rel="appendix" href="A2.html" title="Appendix B CSS ‣ MathML in HTML5 - Implementation Note"/>
-<link rel="appendix" href="A3.html" title="Appendix C OpenType ‣ MathML in HTML5 - Implementation Note"/>
+
 </head>
 <body>
-<div class="ltx_page_main">
-<header class="ltx_page_header">
 <div>
-<a href="." title="MathML in HTML5 - Implementation Note" class="ltx_ref" rel="up"><span class="ltx_text ltx_ref_title">MathML in HTML5 - Implementation Note</span></a><a href="A3.html" title="Appendix C OpenType ‣ MathML in HTML5 - Implementation Note" class="ltx_ref" rel="prev"><span class="ltx_text ltx_ref_title"><span class="ltx_tag ltx_tag_ref">C </span>OpenType</span></a>
+<header>
+<div>
+<a href="." title="MathML in HTML5 - Implementation Note" rel="up"><span>MathML in HTML5 - Implementation Note</span></a><a href="A3.html" title="Appendix C OpenType ‣ MathML in HTML5 - Implementation Note" rel="prev"><span><span>C </span>OpenType</span></a>
 </div></header>
-<div class="ltx_page_content">
-<section class="ltx_appendix">
-<h1 class="ltx_title ltx_title_appendix">
-<span class="ltx_tag ltx_tag_appendix">Appendix D </span>Image Fallback</h1>
-<div class="ltx_date ltx_role_creation"></div>
+<div>
+<section>
+<h1>
+<span>Appendix D </span>Image Fallback</h1>
+<div></div>
 
-<div id="p1" class="ltx_para">
-<p class="ltx_p"><span class="ltx_text ltx_font_italic">This section is non-normative.</span></p>
+<div id="p1">
+<p><span>This section is non-normative.</span></p>
 </div>
-<div id="p2" class="ltx_para">
-<p class="ltx_p">User agents that do not support MathML may decide to
-render the fallback content provided by the <span class="ltx_text ltx_font_typewriter">altimg*</span> attributes in some
+<div id="p2">
+<p>User agents that do not support MathML may decide to
+render the fallback content provided by the <span>altimg*</span> attributes in some
 situations e.g. when they are specified or
 under a preference option. In that case, an approximate implementation is to
-render the <span class="ltx_text ltx_font_typewriter">math</span> element as a HTML <span class="ltx_text ltx_font_typewriter">img</span> element with the
-value of <span class="ltx_text ltx_font_typewriter">altimg</span> as an <span class="ltx_text ltx_font_typewriter">src</span> attribute, the value of
-<span class="ltx_text ltx_font_typewriter">alttext</span> as an <span class="ltx_text ltx_font_typewriter">alt</span> attribute, the value of <span class="ltx_text ltx_font_typewriter">altimg-width</span> as
-the CSS <span class="ltx_text ltx_font_typewriter">width</span> property, the value of <span class="ltx_text ltx_font_typewriter">altimg-height</span> as
-the CSS <span class="ltx_text ltx_font_typewriter">height</span> property and the value of <span class="ltx_text ltx_font_typewriter">altimg-valign</span> as
-the CSS <span class="ltx_text ltx_font_typewriter">vertical-align</span> property <cite class="ltx_cite ltx_citemacro_cite">[<a href="bib.html#bibx9" title="" class="ltx_ref">HTML5</a>]</cite> <cite class="ltx_cite ltx_citemacro_cite">[<a href="bib.html#bibx1" title="" class="ltx_ref">CSS2</a>]</cite>. Here is a
-partial implementation using the <span class="ltx_text ltx_font_typewriter">attr()</span> function of <cite class="ltx_cite ltx_citemacro_cite">[<a href="bib.html#bibx3" title="" class="ltx_ref">CSS3Values</a>]</cite>:</p>
-<div class="ltx_listing ltx_lstlisting ltx_listing">
-<div class="ltx_listing_data"><a href="data:text/plain;base64,bWF0aCB7CiAgZGlzcGxheTogaW5saW5lOwp9Cm1hdGhbZGlzcGxheT0iYmxvY2siXSB7CiAgZGlz%0AcGxheTogYmxvY2s7CiAgdGV4dC1hbGlnbjogY2VudGVyOwp9Cm1hdGggewogIGJhY2tncm91bmQt%0AaW1hZ2U6IGF0dHIoYWx0aW1nIHVybCk7CiAgd2lkdGg6IGF0dHIoYWx0aW1nLXdpZHRoIGxlbmd0%0AaCk7CiAgaGVpZ2h0OiBhdHRyKGFsdGltZy1oZWlnaHQgbGVuZ3RoKTsKICB2ZXJ0aWNhbC1hbGln%0AbjogYXR0cihhbHRpbWctdmFsaWduIGxlbmd0aCk7Cn0KbWF0aCA+ICogewogIGRpc3BsYXk6IG5v%0AbmU7Cn0=%0A">⬇</a></div>
-<div class="ltx_listingline">
-<span class="ltx_text ltx_lst_identifier ltx_font_typewriter">math</span><span class="ltx_text ltx_lst_space ltx_font_typewriter"> </span><span class="ltx_text ltx_font_typewriter">{</span>
+render the <code>math</code> element as a HTML <code>img</code> element with the
+value of <code>altimg</code> as an <code>src</code> attribute, the value of
+<code>alttext</code> as an <code>alt</code> attribute, the value of <span>altimg-width</span> as
+the CSS <code>width</code> property, the value of <span>altimg-height</span> as
+the CSS <code>height</code> property and the value of <span>altimg-valign</span> as
+the CSS <span>vertical-align</span> property <cite>[<a href="bib.html#bibx9" title="">HTML5</a>]</cite> <cite>[<a href="bib.html#bibx1" title="">CSS2</a>]</cite>. Here is a
+partial implementation using the <span>attr()</span> function of <cite>[<a href="bib.html#bibx3" title="">CSS3Values</a>]</cite>:</p>
+<div>
+<div><a href="data:text/plain;base64,bWF0aCB7CiAgZGlzcGxheTogaW5saW5lOwp9Cm1hdGhbZGlzcGxheT0iYmxvY2siXSB7CiAgZGlz%0AcGxheTogYmxvY2s7CiAgdGV4dC1hbGlnbjogY2VudGVyOwp9Cm1hdGggewogIGJhY2tncm91bmQt%0AaW1hZ2U6IGF0dHIoYWx0aW1nIHVybCk7CiAgd2lkdGg6IGF0dHIoYWx0aW1nLXdpZHRoIGxlbmd0%0AaCk7CiAgaGVpZ2h0OiBhdHRyKGFsdGltZy1oZWlnaHQgbGVuZ3RoKTsKICB2ZXJ0aWNhbC1hbGln%0AbjogYXR0cihhbHRpbWctdmFsaWduIGxlbmd0aCk7Cn0KbWF0aCA+ICogewogIGRpc3BsYXk6IG5v%0AbmU7Cn0=%0A">⬇</a></div>
+<div>
+<code>math</code><span> </span><span>{</span>
 </div>
-<div class="ltx_listingline">
-<span class="ltx_text ltx_lst_space ltx_font_typewriter">  </span><span class="ltx_text ltx_lst_identifier ltx_font_typewriter">display</span><span class="ltx_text ltx_font_typewriter">:</span><span class="ltx_text ltx_lst_space ltx_font_typewriter"> </span><span class="ltx_text ltx_lst_identifier ltx_font_typewriter">inline</span><span class="ltx_text ltx_font_typewriter">;</span>
+<div>
+<span>  </span><code>display</code><span>:</span><span> </span><code>inline</code><span>;</span>
 </div>
-<div class="ltx_listingline">
-<span class="ltx_text ltx_font_typewriter">}</span>
+<div>
+<span>}</span>
 </div>
-<div class="ltx_listingline">
-<span class="ltx_text ltx_lst_identifier ltx_font_typewriter">math</span><span class="ltx_text ltx_font_typewriter">[</span><span class="ltx_text ltx_lst_identifier ltx_font_typewriter">display</span><span class="ltx_text ltx_font_typewriter">="</span><span class="ltx_text ltx_lst_identifier ltx_font_typewriter">block</span><span class="ltx_text ltx_font_typewriter">"]</span><span class="ltx_text ltx_lst_space ltx_font_typewriter"> </span><span class="ltx_text ltx_font_typewriter">{</span>
+<div>
+<code>math</code><span>[</span><code>display</code><span>="</span><code>block</code><span>"]</span><span> </span><span>{</span>
 </div>
-<div class="ltx_listingline">
-<span class="ltx_text ltx_lst_space ltx_font_typewriter">  </span><span class="ltx_text ltx_lst_identifier ltx_font_typewriter">display</span><span class="ltx_text ltx_font_typewriter">:</span><span class="ltx_text ltx_lst_space ltx_font_typewriter"> </span><span class="ltx_text ltx_lst_identifier ltx_font_typewriter">block</span><span class="ltx_text ltx_font_typewriter">;</span>
+<div>
+<span>  </span><code>display</code><span>:</span><span> </span><code>block</code><span>;</span>
 </div>
-<div class="ltx_listingline">
-<span class="ltx_text ltx_lst_space ltx_font_typewriter">  </span><span class="ltx_text ltx_lst_identifier ltx_font_typewriter">text</span><span class="ltx_text ltx_font_typewriter">-</span><span class="ltx_text ltx_lst_identifier ltx_font_typewriter">align</span><span class="ltx_text ltx_font_typewriter">:</span><span class="ltx_text ltx_lst_space ltx_font_typewriter"> </span><span class="ltx_text ltx_lst_identifier ltx_font_typewriter">center</span><span class="ltx_text ltx_font_typewriter">;</span>
+<div>
+<span>  </span><code>text</code><span>-</span><code>align</code><span>:</span><span> </span><code>center</code><span>;</span>
 </div>
-<div class="ltx_listingline">
-<span class="ltx_text ltx_font_typewriter">}</span>
+<div>
+<span>}</span>
 </div>
-<div class="ltx_listingline">
-<span class="ltx_text ltx_lst_identifier ltx_font_typewriter">math</span><span class="ltx_text ltx_lst_space ltx_font_typewriter"> </span><span class="ltx_text ltx_font_typewriter">{</span>
+<div>
+<code>math</code><span> </span><span>{</span>
 </div>
-<div class="ltx_listingline">
-<span class="ltx_text ltx_lst_space ltx_font_typewriter">  </span><span class="ltx_text ltx_lst_identifier ltx_font_typewriter">background</span><span class="ltx_text ltx_font_typewriter">-</span><span class="ltx_text ltx_lst_identifier ltx_font_typewriter">image</span><span class="ltx_text ltx_font_typewriter">:</span><span class="ltx_text ltx_lst_space ltx_font_typewriter"> </span><span class="ltx_text ltx_lst_identifier ltx_font_typewriter">attr</span><span class="ltx_text ltx_font_typewriter">(</span><span class="ltx_text ltx_lst_identifier ltx_font_typewriter">altimg</span><span class="ltx_text ltx_lst_space ltx_font_typewriter"> </span><span class="ltx_text ltx_lst_identifier ltx_font_typewriter">url</span><span class="ltx_text ltx_font_typewriter">);</span>
+<div>
+<span>  </span><code>background</code><span>-</span><code>image</code><span>:</span><span> </span><code>attr</code><span>(</span><code>altimg</code><span> </span><code>url</code><span>);</span>
 </div>
-<div class="ltx_listingline">
-<span class="ltx_text ltx_lst_space ltx_font_typewriter">  </span><span class="ltx_text ltx_lst_identifier ltx_font_typewriter">width</span><span class="ltx_text ltx_font_typewriter">:</span><span class="ltx_text ltx_lst_space ltx_font_typewriter"> </span><span class="ltx_text ltx_lst_identifier ltx_font_typewriter">attr</span><span class="ltx_text ltx_font_typewriter">(</span><span class="ltx_text ltx_lst_identifier ltx_font_typewriter">altimg</span><span class="ltx_text ltx_font_typewriter">-</span><span class="ltx_text ltx_lst_identifier ltx_font_typewriter">width</span><span class="ltx_text ltx_lst_space ltx_font_typewriter"> </span><span class="ltx_text ltx_lst_identifier ltx_font_typewriter">length</span><span class="ltx_text ltx_font_typewriter">);</span>
+<div>
+<span>  </span><code>width</code><span>:</span><span> </span><code>attr</code><span>(</span><code>altimg</code><span>-</span><code>width</code><span> </span><code>length</code><span>);</span>
 </div>
-<div class="ltx_listingline">
-<span class="ltx_text ltx_lst_space ltx_font_typewriter">  </span><span class="ltx_text ltx_lst_identifier ltx_font_typewriter">height</span><span class="ltx_text ltx_font_typewriter">:</span><span class="ltx_text ltx_lst_space ltx_font_typewriter"> </span><span class="ltx_text ltx_lst_identifier ltx_font_typewriter">attr</span><span class="ltx_text ltx_font_typewriter">(</span><span class="ltx_text ltx_lst_identifier ltx_font_typewriter">altimg</span><span class="ltx_text ltx_font_typewriter">-</span><span class="ltx_text ltx_lst_identifier ltx_font_typewriter">height</span><span class="ltx_text ltx_lst_space ltx_font_typewriter"> </span><span class="ltx_text ltx_lst_identifier ltx_font_typewriter">length</span><span class="ltx_text ltx_font_typewriter">);</span>
+<div>
+<span>  </span><code>height</code><span>:</span><span> </span><code>attr</code><span>(</span><code>altimg</code><span>-</span><code>height</code><span> </span><code>length</code><span>);</span>
 </div>
-<div class="ltx_listingline">
-<span class="ltx_text ltx_lst_space ltx_font_typewriter">  </span><span class="ltx_text ltx_lst_identifier ltx_font_typewriter">vertical</span><span class="ltx_text ltx_font_typewriter">-</span><span class="ltx_text ltx_lst_identifier ltx_font_typewriter">align</span><span class="ltx_text ltx_font_typewriter">:</span><span class="ltx_text ltx_lst_space ltx_font_typewriter"> </span><span class="ltx_text ltx_lst_identifier ltx_font_typewriter">attr</span><span class="ltx_text ltx_font_typewriter">(</span><span class="ltx_text ltx_lst_identifier ltx_font_typewriter">altimg</span><span class="ltx_text ltx_font_typewriter">-</span><span class="ltx_text ltx_lst_identifier ltx_font_typewriter">valign</span><span class="ltx_text ltx_lst_space ltx_font_typewriter"> </span><span class="ltx_text ltx_lst_identifier ltx_font_typewriter">length</span><span class="ltx_text ltx_font_typewriter">);</span>
+<div>
+<span>  </span><code>vertical</code><span>-</span><code>align</code><span>:</span><span> </span><code>attr</code><span>(</span><code>altimg</code><span>-</span><code>valign</code><span> </span><code>length</code><span>);</span>
 </div>
-<div class="ltx_listingline">
-<span class="ltx_text ltx_font_typewriter">}</span>
+<div>
+<span>}</span>
 </div>
-<div class="ltx_listingline">
-<span class="ltx_text ltx_lst_identifier ltx_font_typewriter">math</span><span class="ltx_text ltx_lst_space ltx_font_typewriter"> </span><span class="ltx_text ltx_font_typewriter">&gt;</span><span class="ltx_text ltx_lst_space ltx_font_typewriter"> </span><span class="ltx_text ltx_font_typewriter">*</span><span class="ltx_text ltx_lst_space ltx_font_typewriter"> </span><span class="ltx_text ltx_font_typewriter">{</span>
+<div>
+<code>math</code><span> </span><span>&gt;</span><span> </span><span>*</span><span> </span><span>{</span>
 </div>
-<div class="ltx_listingline">
-<span class="ltx_text ltx_lst_space ltx_font_typewriter">  </span><span class="ltx_text ltx_lst_identifier ltx_font_typewriter">display</span><span class="ltx_text ltx_font_typewriter">:</span><span class="ltx_text ltx_lst_space ltx_font_typewriter"> </span><span class="ltx_text ltx_lst_identifier ltx_font_typewriter">none</span><span class="ltx_text ltx_font_typewriter">;</span>
+<div>
+<span>  </span><code>display</code><span>:</span><span> </span><code>none</code><span>;</span>
 </div>
-<div class="ltx_listingline">
-<span class="ltx_text ltx_font_typewriter">}</span>
+<div>
+<span>}</span>
 </div>
 </div>
 </div>
 </section>
 </div>
-<footer class="ltx_page_footer">
+<footer>
 <div>
-<a href="A3.html" title="Appendix C OpenType ‣ MathML in HTML5 - Implementation Note" class="ltx_ref" rel="prev"><span class="ltx_text ltx_ref_title"><span class="ltx_tag ltx_tag_ref">C </span>OpenType</span></a><a href="bib.html" title="References ‣ MathML in HTML5 - Implementation Note" class="ltx_ref" rel="bibliography"><span class="ltx_text ltx_ref_title">References</span></a>
+<a href="A3.html" title="Appendix C OpenType ‣ MathML in HTML5 - Implementation Note" rel="prev"><span><span>C </span>OpenType</span></a><a href="bib.html" title="References ‣ MathML in HTML5 - Implementation Note" rel="bibliography"><span>References</span></a>
 </div>
-<div class="ltx_page_logo">Generated  on Tue Oct 31 15:18:52 2017 by <a href="http://dlmf.nist.gov/LaTeXML/">LaTeXML <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==" alt="[LOGO]"/></a>
-</div></footer>
+</footer>
 </div>
 </body>
 </html>

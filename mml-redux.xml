@@ -1,14 +1,14 @@
 <spec>
 
- <front>
-  <title>Straw Man MathML Web Profile</title>
-  <editors>David Carlisle (Almost all text taken from  from MathML in HTML5 - Implementation Note Edited by Frédéric Wang</editors>
+<front>
+  <title>MathML Web Profile</title>
+  <editors>David Carlisle and Frédéric Wang</editors>
   <status>
-   <p>Just experimenting (travis build)...</p>
+   <p>Just experimenting...</p>
   </status>
 </front>
 <abstract>
- <p>Mostly just experimenting with structure (travis build).....</p>
+ <p>Mostly just experimenting with structure.....</p>
 </abstract>
 
 <minh file="S1"/>

@@ -1,200 +1,178 @@
 <!DOCTYPE html><html>
 <head>
 <title>1 Introduction‣ MathML in HTML5 - Implementation Note</title>
-<!--Generated on Tue Oct 31 15:18:52 2017 by LaTeXML (version 0.8.2) http://dlmf.nist.gov/LaTeXML/.-->
-<!--Document created on October 31, 2017.-->
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-<link rel="stylesheet" href="LaTeXML.css" type="text/css"/>
-<link rel="stylesheet" href="ltx-article.css" type="text/css"/>
-<link rel="stylesheet" href="ltx-listings.css" type="text/css"/>
-<link rel="stylesheet" href="style.css" type="text/css"/>
-<link rel="up" href="." title="MathML in HTML5 - Implementation Note"/>
-<link rel="start" href="." title="MathML in HTML5 - Implementation Note"/>
-<link rel="prev" href="." title="MathML in HTML5 - Implementation Note"/>
-<link rel="next" href="S2.html" title="2 Relation with other technologies ‣ MathML in HTML5 - Implementation Note"/>
-<link rel="section" href="S2.html" title="2 Relation with other technologies ‣ MathML in HTML5 - Implementation Note"/>
-<link rel="section" href="S3.html" title="3 Presentation Markup ‣ MathML in HTML5 - Implementation Note"/>
-<link rel="bibliography" href="bib.html" title="References ‣ MathML in HTML5 - Implementation Note"/>
-<link rel="appendix" href="A1.html" title="Appendix A MathML ‣ MathML in HTML5 - Implementation Note"/>
-<link rel="appendix" href="A2.html" title="Appendix B CSS ‣ MathML in HTML5 - Implementation Note"/>
-<link rel="appendix" href="A3.html" title="Appendix C OpenType ‣ MathML in HTML5 - Implementation Note"/>
-<link rel="appendix" href="A4.html" title="Appendix D Image Fallback ‣ MathML in HTML5 - Implementation Note"/>
+
 </head>
 <body>
-<div class="ltx_page_main">
-<header class="ltx_page_header">
 <div>
-<a href="." title="MathML in HTML5 - Implementation Note" class="ltx_ref" rel="up"><span class="ltx_text ltx_ref_title">MathML in HTML5 - Implementation Note</span></a><a href="." title="MathML in HTML5 - Implementation Note" class="ltx_ref" rel="prev"><span class="ltx_text ltx_ref_title">MathML in HTML5 - Implementation Note</span></a><a href="S2.html" title="2 Relation with other technologies ‣ MathML in HTML5 - Implementation Note" class="ltx_ref" rel="next"><span class="ltx_text ltx_ref_title"><span class="ltx_tag ltx_tag_ref">2 </span>Relation with other technologies</span></a>
+<header>
+<div>
+<a href="." title="MathML in HTML5 - Implementation Note" rel="up"><span>MathML in HTML5 - Implementation Note</span></a><a href="." title="MathML in HTML5 - Implementation Note" rel="prev"><span>MathML in HTML5 - Implementation Note</span></a><a href="S2.html" title="2 Relation with other technologies ‣ MathML in HTML5 - Implementation Note" rel="next"><span><span>2 </span>Relation with other technologies</span></a>
 </div></header>
-<div class="ltx_page_content">
-<section class="ltx_section">
-<h1 class="ltx_title ltx_title_section">
-<span class="ltx_tag ltx_tag_section">1 </span>Introduction</h1>
-<div class="ltx_date ltx_role_creation"></div>
+<div>
+<section>
+<h1>
+<span>1 </span>Introduction</h1>
+<div></div>
 
-<section id="SS1" class="ltx_subsection">
-<h2 class="ltx_title ltx_title_subsection">
-<span class="ltx_tag ltx_tag_subsection">1.1 </span>Rationale for this Technical Document</h2>
+<section id="SS1">
+<h2><span>1.1 </span>Rationale for this Technical Document</h2>
 
-<div id="SS1.p1" class="ltx_para">
-<p class="ltx_p"><span class="ltx_text ltx_font_italic">This section is non-normative.</span></p>
+<div id="SS1.p1">
+<p><span>This section is non-normative.</span></p>
 </div>
-<div id="SS1.p2" class="ltx_para">
-<p class="ltx_p">The Mathematical Markup Language is the most popular XML format for describing
+<div id="SS1.p2">
+<p>The Mathematical Markup Language is the most popular XML format for describing
 mathematical notation and capturing both its structure and content
-<cite class="ltx_cite ltx_citemacro_cite">[<a href="bib.html#bibx11" title="" class="ltx_ref">MathML3</a>]</cite>. It has been integrated in various other standards such as
-<cite class="ltx_cite ltx_citemacro_cite">[<a href="bib.html#bibx9" title="" class="ltx_ref">HTML5</a>]</cite>, <cite class="ltx_cite ltx_citemacro_cite">[<a href="bib.html#bibx8" title="" class="ltx_ref">EPUB3</a>]</cite>, <cite class="ltx_cite ltx_citemacro_cite">[<a href="bib.html#bibx12" title="" class="ltx_ref">ODF1</a>]</cite> or <cite class="ltx_cite ltx_citemacro_cite">[<a href="bib.html#bibx5" title="" class="ltx_ref">Daisy3</a>]</cite>. Although
+<cite>[<a href="bib.html#bibx11" title="">MathML3</a>]</cite>. It has been integrated in various other standards such as
+<cite>[<a href="bib.html#bibx9" title="">HTML5</a>]</cite>, <cite>[<a href="bib.html#bibx8" title="">EPUB3</a>]</cite>, <cite>[<a href="bib.html#bibx12" title="">ODF1</a>]</cite> or <cite>[<a href="bib.html#bibx5" title="">Daisy3</a>]</cite>. Although
 the stated goal is “to enable mathematics to be served, received, and
 processed on the World Wide Web”, the MathML specification has
 two serious shortcomings that make it hard to implement presentation MathML in
 web rendering engines:</p>
 </div>
-<div id="SS1.p3" class="ltx_para">
-<ol id="I1" class="ltx_enumerate">
-<li id="I1.i1" class="ltx_item" style="list-style-type:none;">
-<span class="ltx_tag ltx_tag_enumerate">1.</span> 
-<div id="I1.i1.p1" class="ltx_para">
-<p class="ltx_p"><span class="ltx_text ltx_font_italic">The MathML specification intentionally does not contain any detailed
+<div id="SS1.p3">
+<ol id="I1">
+<li id="I1.i1">
+<div id="I1.i1.p1">
+<p><span>The MathML specification intentionally does not contain any detailed
 rendering rules</span>. As a consequence, the fact that web rendering engines are
 compliant with the MathML specification does not necessarily mean that they
 will have the rendering quality expected by most readers.
 For example, the specification essentially just says that
 “mfrac element is used for fractions” and that the default medium
-linethickness “is left up to the rendering agent” <cite class="ltx_cite ltx_citemacro_cite">[<a href="bib.html#bibx11" title="" class="ltx_ref">MathML3</a>]</cite>.
+linethickness “is left up to the rendering agent” <cite>[<a href="bib.html#bibx11" title="">MathML3</a>]</cite>.
 As a comparison, to determine the exact spacing and thickness of
 fractions and stacks the
-TeXBook’s Appendix G <cite class="ltx_cite ltx_citemacro_cite">[<a href="bib.html#bibx16" title="" class="ltx_ref">TeXBook</a>]</cite> relies
-on parameters <math id="I1.i1.p1.m1" class="ltx_Math" alttext="\sigma_{8},\sigma_{9},\xi_{8},{3\xi_{8}},{7\xi_{8}},\sigma_{11}" display="inline"><semantics><mrow><msub><mi>σ</mi><mn>8</mn></msub><mo>,</mo><msub><mi>σ</mi><mn>9</mn></msub><mo>,</mo><msub><mi>ξ</mi><mn>8</mn></msub><mo>,</mo><mrow><mn>3</mn><mo>⁢</mo><msub><mi>ξ</mi><mn>8</mn></msub></mrow><mo>,</mo><mrow><mn>7</mn><mo>⁢</mo><msub><mi>ξ</mi><mn>8</mn></msub></mrow><mo>,</mo><msub><mi>σ</mi><mn>11</mn></msub></mrow><annotation encoding="application/x-tex">\sigma_{8},\sigma_{9},\xi_{8},{3\xi_{8}},{7\xi_{8}},\sigma_{11}</annotation></semantics></math> and
-<math id="I1.i1.p1.m2" class="ltx_Math" alttext="\sigma_{12}" display="inline"><semantics><msub><mi>σ</mi><mn>12</mn></msub><annotation encoding="application/x-tex">\sigma_{12}</annotation></semantics></math> while the MATH table of the Open Font Format
-<cite class="ltx_cite ltx_citemacro_cite">[<a href="bib.html#bibx13" title="" class="ltx_ref">OpenFontFormat3</a>]</cite> extends these to parameters
-<span class="ltx_text MATH ltx_font_typewriter">FractionNumeratorDisplayStyleShiftUp</span>,
-<span class="ltx_text MATH ltx_font_typewriter">FractionNumeratorShiftUp</span>,
-<span class="ltx_text MATH ltx_font_typewriter">FractionNumeratorDisplayStyleGapMin</span>,
-<span class="ltx_text MATH ltx_font_typewriter">FractionNumeratorGapMin</span>,
-<span class="ltx_text MATH ltx_font_typewriter">FractionRuleThickness</span>,
-<span class="ltx_text MATH ltx_font_typewriter">FractionDenominatorDisplayStyleGapMin</span>,
-<span class="ltx_text MATH ltx_font_typewriter">FractionDenominatorGapMin</span>,
-<span class="ltx_text MATH ltx_font_typewriter">FractionDenominatorDisplayStyleShiftDown</span>,
-<span class="ltx_text MATH ltx_font_typewriter">FractionDenominatorShiftDown</span>,
-<span class="ltx_text MATH ltx_font_typewriter">StackTopDisplayStyleShiftUp</span>,
-<span class="ltx_text MATH ltx_font_typewriter">StackTopShiftUp</span>,
-<span class="ltx_text MATH ltx_font_typewriter">StackDisplayStyleGapMin</span>,
-<span class="ltx_text MATH ltx_font_typewriter">StackGapMin</span>,
-<span class="ltx_text MATH ltx_font_typewriter">StackBottomDisplayStyleShiftDown</span> and
-<span class="ltx_text MATH ltx_font_typewriter">StackBottomShiftDown</span>.</p>
+TeXBook’s Appendix G <cite>[<a href="bib.html#bibx16" title="">TeXBook</a>]</cite> relies
+on parameters <math id="I1.i1.p1.m1" alttext="\sigma_{8},\sigma_{9},\xi_{8},{3\xi_{8}},{7\xi_{8}},\sigma_{11}" display="inline"><semantics><mrow><msub><mi>σ</mi><mn>8</mn></msub><mo>,</mo><msub><mi>σ</mi><mn>9</mn></msub><mo>,</mo><msub><mi>ξ</mi><mn>8</mn></msub><mo>,</mo><mrow><mn>3</mn><mo>⁢</mo><msub><mi>ξ</mi><mn>8</mn></msub></mrow><mo>,</mo><mrow><mn>7</mn><mo>⁢</mo><msub><mi>ξ</mi><mn>8</mn></msub></mrow><mo>,</mo><msub><mi>σ</mi><mn>11</mn></msub></mrow><annotation encoding="application/x-tex">\sigma_{8},\sigma_{9},\xi_{8},{3\xi_{8}},{7\xi_{8}},\sigma_{11}</annotation></semantics></math> and
+<math id="I1.i1.p1.m2" alttext="\sigma_{12}" display="inline"><semantics><msub><mi>σ</mi><mn>12</mn></msub><annotation encoding="application/x-tex">\sigma_{12}</annotation></semantics></math> while the MATH table of the Open Font Format
+<cite>[<a href="bib.html#bibx13" title="">OpenFontFormat3</a>]</cite> extends these to parameters
+<code>FractionNumeratorDisplayStyleShiftUp</code>,
+<code>FractionNumeratorShiftUp</code>,
+<code>FractionNumeratorDisplayStyleGapMin</code>,
+<code>FractionNumeratorGapMin</code>,
+<code>FractionRuleThickness</code>,
+<code>FractionDenominatorDisplayStyleGapMin</code>,
+<code>FractionDenominatorGapMin</code>,
+<code>FractionDenominatorDisplayStyleShiftDown</code>,
+<code>FractionDenominatorShiftDown</code>,
+<code>StackTopDisplayStyleShiftUp</code>,
+<code>StackTopShiftUp</code>,
+<code>StackDisplayStyleGapMin</code>,
+<code>StackGapMin</code>,
+<code>StackBottomDisplayStyleShiftDown</code> and
+<code>StackBottomShiftDown</code>.</p>
 </div>
 </li>
-<li id="I1.i2" class="ltx_item" style="list-style-type:none;">
-<span class="ltx_tag ltx_tag_enumerate">2.</span> 
-<div id="I1.i2.p1" class="ltx_para">
-<p class="ltx_p"><span class="ltx_text ltx_font_italic">The MathML specification is designed as an independent
+<li id="I1.i2">
+<div id="I1.i2.p1">
+<p><span>The MathML specification is designed as an independent
 XML language and browser vendors have almost not been involved in the
 standardization process</span>,
-except for integration in <cite class="ltx_cite ltx_citemacro_cite">[<a href="bib.html#bibx9" title="" class="ltx_ref">HTML5</a>]</cite>.
+except for integration in <cite>[<a href="bib.html#bibx9" title="">HTML5</a>]</cite>.
 Instead, the specification is sometimes biased by MathML rendering and
 authoring tools behaving quite differently from web rendering engines.
 Hence it is not always obvious whether all features are fundamental or
 whether they fit well into the web rendering engine codebase.
-For example, the <span class="ltx_text ltx_font_typewriter">&lt;mfenced&gt;</span> element is just a
+For example, the <span>&lt;mfenced&gt;</span> element is just a
 “convenient form in which to express common constructs involving fences”
-but is strictly equivalent to an expanded form with <span class="ltx_text ltx_font_typewriter">&lt;mrow&gt;</span> and
-<span class="ltx_text ltx_font_typewriter">&lt;mo&gt;</span> elements. It requires web rendering engines
+but is strictly equivalent to an expanded form with <span>&lt;mrow&gt;</span> and
+<span>&lt;mo&gt;</span> elements. It requires web rendering engines
 to create many “anonymous”
 rendering frames and keep them up-to-date, to duplicate the logic
 for drawing and exposing the content of fenced expressions etc.
 Another example is the first cell in a
-<span class="ltx_text ltx_font_typewriter">&lt;mlabeledtr&gt;</span> row which is not necessarily positioned the same way as
+<span>&lt;mlabeledtr&gt;</span> row which is not necessarily positioned the same way as
 in HTML table and actually is supposed not to be involved in metric
-computation or border drawing of the table <cite class="ltx_cite ltx_citemacro_cite">[<a href="bib.html#bibx11" title="" class="ltx_ref">MathML3</a>]</cite>.</p>
+computation or border drawing of the table <cite>[<a href="bib.html#bibx11" title="">MathML3</a>]</cite>.</p>
 </div>
 </li>
 </ol>
 </div>
-<div id="SS1.p4" class="ltx_para">
-<p class="ltx_p">This “MathML in HTML5” implementation note intends to address these issues by
+<div id="SS1.p4">
+<p>This “MathML in HTML5” implementation note intends to address these issues by
 being as accurate as
 possible on the visual rendering of mathematical formulas using additional
-rules from the TeXBook’s Appendix G <cite class="ltx_cite ltx_citemacro_cite">[<a href="bib.html#bibx16" title="" class="ltx_ref">TeXBook</a>]</cite> and from
-the Open Font Format <cite class="ltx_cite ltx_citemacro_cite">[<a href="bib.html#bibx13" title="" class="ltx_ref">OpenFontFormat3</a>]</cite>.
+rules from the TeXBook’s Appendix G <cite>[<a href="bib.html#bibx16" title="">TeXBook</a>]</cite> and from
+the Open Font Format <cite>[<a href="bib.html#bibx13" title="">OpenFontFormat3</a>]</cite>.
 Focus has been put on keeping compatible with existing technologies of web
-rendering engines <cite class="ltx_cite ltx_citemacro_cite">[<a href="bib.html#bibx9" title="" class="ltx_ref">HTML5</a>]</cite> by relying as much as possible on CSS, text &amp;
+rendering engines <cite>[<a href="bib.html#bibx9" title="">HTML5</a>]</cite> by relying as much as possible on CSS, text &amp;
 table layout and box models. As a consequence, parts of presentation MathML
 that do not fit well in this framework or are rarely used in practice
 have been ommited ; details on these and suggestions for standardization bodies
 are provided in the Appendix.</p>
 </div>
-<div id="SS1.p5" class="ltx_para">
-<p class="ltx_p">Future versions of this document may describe support for a larger subset
+<div id="SS1.p5">
+<p>Future versions of this document may describe support for a larger subset
 of presentation MathML by including features that are important in a web context
 e.g. CSS-compatible line breaking.</p>
 </div>
 </section>
-<section id="SS2" class="ltx_subsection">
-<h2 class="ltx_title ltx_title_subsection">
-<span class="ltx_tag ltx_tag_subsection">1.2 </span>Remarks</h2>
+<section id="SS2">
+<h2>
+<span>1.2 </span>Remarks</h2>
 
-<div id="SS2.p1" class="ltx_para">
-<p class="ltx_p"><span class="ltx_text ltx_font_italic">This section is non-normative.</span></p>
+<div id="SS2.p1">
+<p><span>This section is non-normative.</span></p>
 </div>
-<div id="SS2.p2" class="ltx_para">
-<p class="ltx_p">This document focuses on the most important points to implement
+<div id="SS2.p2">
+<p>This document focuses on the most important points to implement
 MathML in web rendering engines. Hence it is intentionally short and readers are
-invited to check the MathML 3 specification for details <cite class="ltx_cite ltx_citemacro_cite">[<a href="bib.html#bibx11" title="" class="ltx_ref">MathML3</a>]</cite>.
+invited to check the MathML 3 specification for details <cite>[<a href="bib.html#bibx11" title="">MathML3</a>]</cite>.
 As a convenience, quotations from the MathML 3 specification are referred to
 with the following style:</p>
-<blockquote class="ltx_quote">
-<p class="ltx_p">This is a quotation from the MathML 3 specification.</p>
+<blockquote>
+<p>This is a quotation from the MathML 3 specification.</p>
 </blockquote>
 </div>
-<div id="SS2.p3" class="ltx_para">
-<p class="ltx_p">This document relies on many definitions taken from the MATH specification
-of the Open Font Format <cite class="ltx_cite ltx_citemacro_cite">[<a href="bib.html#bibx13" title="" class="ltx_ref">OpenFontFormat3</a>]</cite>. These values are written with
+<div id="SS2.p3">
+<p>This document relies on many definitions taken from the MATH specification
+of the Open Font Format <cite>[<a href="bib.html#bibx13" title="">OpenFontFormat3</a>]</cite>. These values are written with
 the following style:
-<span class="ltx_text MATH ltx_font_typewriter">This is a definition from the MATH specification</span>.</p>
+<span>This is a definition from the MATH specification</span>.</p>
 </div>
-<div id="SS2.p4" class="ltx_para">
-<p class="ltx_p">This document only deals with the visual rendering of presentation MathML
+<div id="SS2.p4">
+<p>This document only deals with the visual rendering of presentation MathML
 and briefly mentions interactions (javascript, links etc). It does not specify
 how presentation MathML must be exposed to assitive technologies nor does it
 explain how the semantic provided by content MathML can be used.</p>
 </div>
-<div id="SS2.p5" class="ltx_para">
-<p class="ltx_p">This document has been generated by
-<a href="http://dlmf.nist.gov/LaTeXML/" title="" class="ltx_ref ltx_href">LaTeXML</a> from
-<a href="https://gitlab.com/mathml/MathMLinHTML5" title="" class="ltx_ref ltx_href">LaTeX sources</a>. It
+<div id="SS2.p5">
+<p>This document 
 should be read in a browser that supports web technologies
 such as HTML, CSS, SVG and MathML.</p>
 </div>
-<div id="SS2.p6" class="ltx_para">
-<p class="ltx_p">A <a href="http://www.w3c-test.org/mathml/" title="" class="ltx_ref ltx_href">set of tests</a>
+<div id="SS2.p6">
+<p>A <a href="http://www.w3c-test.org/mathml/" title="">set of tests</a>
 following the format and convention of the
-<a href="http://testthewebforward.org/" title="" class="ltx_ref ltx_href">Test The Web Forward project</a>
+<a href="http://testthewebforward.org/" title="">Test The Web Forward project</a>
 are available in a separate
-<a href="https://github.com/w3c/web-platform-tests/tree/master/mathml" title="" class="ltx_ref ltx_href">git repository</a>.
+<a href="https://github.com/w3c/web-platform-tests/tree/master/mathml" title="">git repository</a>.
 Browser vendors are encouraged to use these tests during
 implementation &amp; automated testing. Contribution of new tests and error reports
 are welcome.</p>
 </div>
 </section>
-<section id="SS3" class="ltx_subsection">
-<h2 class="ltx_title ltx_title_subsection">
-<span class="ltx_tag ltx_tag_subsection">1.3 </span>Terminology</h2>
+<section id="SS3">
+<h2>
+<span>1.3 </span>Terminology</h2>
 
-<div id="SS3.p1" class="ltx_para">
-<p class="ltx_p">The key words MUST, MUST NOT, REQUIRED, SHALL, SHALL NOT, SHOULD, SHOULD NOT,
+<div id="SS3.p1">
+<p>The key words MUST, MUST NOT, REQUIRED, SHALL, SHALL NOT, SHOULD, SHOULD NOT,
 RECOMMENDED, MAY, and OPTIONAL, are to be interpreted as described in
-<cite class="ltx_cite ltx_citemacro_cite">[<a href="bib.html#bibx10" title="" class="ltx_ref">IETFRFC2119</a>]</cite>.</p>
+<cite>[<a href="bib.html#bibx10" title="">IETFRFC2119</a>]</cite>.</p>
 </div>
 </section>
 </section>
 </div>
-<footer class="ltx_page_footer">
+<footer>
 <div>
-<a href="." title="MathML in HTML5 - Implementation Note" class="ltx_ref" rel="prev"><span class="ltx_text ltx_ref_title">MathML in HTML5 - Implementation Note</span></a><a href="bib.html" title="References ‣ MathML in HTML5 - Implementation Note" class="ltx_ref" rel="bibliography"><span class="ltx_text ltx_ref_title">References</span></a><a href="S2.html" title="2 Relation with other technologies ‣ MathML in HTML5 - Implementation Note" class="ltx_ref" rel="next"><span class="ltx_text ltx_ref_title"><span class="ltx_tag ltx_tag_ref">2 </span>Relation with other technologies</span></a>
+<a href="." title="MathML in HTML5 - Implementation Note" rel="prev"><span>MathML in HTML5 - Implementation Note</span></a><a href="bib.html" title="References ‣ MathML in HTML5 - Implementation Note" rel="bibliography"><span>References</span></a><a href="S2.html" title="2 Relation with other technologies ‣ MathML in HTML5 - Implementation Note" rel="next"><span><span>2 </span>Relation with other technologies</span></a>
 </div>
-<div class="ltx_page_logo">Generated  on Tue Oct 31 15:18:52 2017 by <a href="http://dlmf.nist.gov/LaTeXML/">LaTeXML <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==" alt="[LOGO]"/></a>
-</div></footer>
+</footer>
 </div>
 </body>
 </html>

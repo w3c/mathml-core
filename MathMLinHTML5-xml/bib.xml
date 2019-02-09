@@ -1,209 +1,192 @@
 <!DOCTYPE html><html>
 <head>
 <title>References‣ MathML in HTML5 - Implementation Note</title>
-<!--Generated on Tue Oct 31 15:18:52 2017 by LaTeXML (version 0.8.2) http://dlmf.nist.gov/LaTeXML/.-->
-<!--Document created on October 31, 2017.-->
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-<link rel="stylesheet" href="LaTeXML.css" type="text/css"/>
-<link rel="stylesheet" href="ltx-article.css" type="text/css"/>
-<link rel="stylesheet" href="ltx-listings.css" type="text/css"/>
-<link rel="stylesheet" href="style.css" type="text/css"/>
-<link rel="up" href="." title="MathML in HTML5 - Implementation Note"/>
-<link rel="start" href="." title="MathML in HTML5 - Implementation Note"/>
-<link rel="prev" href="S3.html" title="3 Presentation Markup ‣ MathML in HTML5 - Implementation Note"/>
-<link rel="next" href="A1.html" title="Appendix A MathML ‣ MathML in HTML5 - Implementation Note"/>
-<link rel="section" href="S1.html" title="1 Introduction ‣ MathML in HTML5 - Implementation Note"/>
-<link rel="section" href="S2.html" title="2 Relation with other technologies ‣ MathML in HTML5 - Implementation Note"/>
-<link rel="section" href="S3.html" title="3 Presentation Markup ‣ MathML in HTML5 - Implementation Note"/>
-<link rel="appendix" href="A1.html" title="Appendix A MathML ‣ MathML in HTML5 - Implementation Note"/>
-<link rel="appendix" href="A2.html" title="Appendix B CSS ‣ MathML in HTML5 - Implementation Note"/>
-<link rel="appendix" href="A3.html" title="Appendix C OpenType ‣ MathML in HTML5 - Implementation Note"/>
-<link rel="appendix" href="A4.html" title="Appendix D Image Fallback ‣ MathML in HTML5 - Implementation Note"/>
+
 </head>
 <body>
-<div class="ltx_page_main">
-<header class="ltx_page_header">
 <div>
-<a href="." title="MathML in HTML5 - Implementation Note" class="ltx_ref" rel="up"><span class="ltx_text ltx_ref_title">MathML in HTML5 - Implementation Note</span></a><a href="S3.html" title="3 Presentation Markup ‣ MathML in HTML5 - Implementation Note" class="ltx_ref" rel="prev"><span class="ltx_text ltx_ref_title"><span class="ltx_tag ltx_tag_ref">3 </span>Presentation Markup</span></a><a href="A1.html" title="Appendix A MathML ‣ MathML in HTML5 - Implementation Note" class="ltx_ref" rel="next"><span class="ltx_text ltx_ref_title"><span class="ltx_tag ltx_tag_ref">A </span>MathML</span></a>
+<header>
+<div>
+<a href="." title="MathML in HTML5 - Implementation Note" rel="up"><span>MathML in HTML5 - Implementation Note</span></a><a href="S3.html" title="3 Presentation Markup ‣ MathML in HTML5 - Implementation Note" rel="prev"><span><span>3 </span>Presentation Markup</span></a><a href="A1.html" title="Appendix A MathML ‣ MathML in HTML5 - Implementation Note" rel="next"><span><span>A </span>MathML</span></a>
 </div></header>
-<div class="ltx_page_content">
-<section class="ltx_bibliography">
-<h1 class="ltx_title ltx_title_bibliography">References</h1>
-<div class="ltx_date ltx_role_creation"></div>
+<div>
+<section>
+<h1>References</h1>
+<div></div>
 
-<ul class="ltx_biblist">
-<li id="bibx1" class="ltx_bibitem">
-<span class="ltx_bibtag ltx_role_refnum">CSS2</span>
-<span class="ltx_bibblock">
+<ul>
+<li id="bibx1">
+<span>CSS2</span>
+<span>
 Bert Bos et al. 
-<br class="ltx_break"/><a href="http://www.w3.org/TR/CSS2/" title="" class="ltx_ref ltx_href">Cascading Style Sheets Level 2 Revision 1 (CSS 2.1) Specification</a> 
-<br class="ltx_break"/>W3C Recommendation 07 June 2011, edited in place 17 December 2014 to point to new work (<a href="http://www.w3.org/TR/CSS2/" title="" class="ltx_ref ltx_href">http://www.w3.org/TR/CSS2/</a>)
+<br/><a href="http://www.w3.org/TR/CSS2/" title="">Cascading Style Sheets Level 2 Revision 1 (CSS 2.1) Specification</a> 
+<br/>W3C Recommendation 07 June 2011, edited in place 17 December 2014 to point to new work (<a href="http://www.w3.org/TR/CSS2/" title="">http://www.w3.org/TR/CSS2/</a>)
 
 </span>
 </li>
-<li id="bibx2" class="ltx_bibitem">
-<span class="ltx_bibtag ltx_role_refnum">CSS3Font</span>
-<span class="ltx_bibblock">
+<li id="bibx2">
+<span>CSS3Font</span>
+<span>
 John Daggett 
-<br class="ltx_break"/><a href="https://drafts.csswg.org/css-fonts-3/" title="" class="ltx_ref ltx_href">CSS Fonts Module</a> 
-<br class="ltx_break"/>Editor’s Draft, 20 October 2014 (<a href="https://drafts.csswg.org/css-fonts-3/" title="" class="ltx_ref ltx_href">https://drafts.csswg.org/css-fonts-3/</a>)
+<br/><a href="https://drafts.csswg.org/css-fonts-3/" title="">CSS Fonts Module</a> 
+<br/>Editor’s Draft, 20 October 2014 (<a href="https://drafts.csswg.org/css-fonts-3/" title="">https://drafts.csswg.org/css-fonts-3/</a>)
 
 </span>
 </li>
-<li id="bibx3" class="ltx_bibitem">
-<span class="ltx_bibtag ltx_role_refnum">CSS3Values</span>
-<span class="ltx_bibblock">
+<li id="bibx3">
+<span>CSS3Values</span>
+<span>
 Tab Atkins and fantasai 
-<br class="ltx_break"/><a href="http://www.w3.org/TR/css3-values" title="" class="ltx_ref ltx_href">CSS Values and Units Module Level 3</a> 
-<br class="ltx_break"/>W3C Candidate Recommendation, 11 June 2015 (<a href="http://www.w3.org/TR/css3-values/" title="" class="ltx_ref ltx_href">http://www.w3.org/TR/css3-values/</a>)
+<br/><a href="http://www.w3.org/TR/css3-values" title="">CSS Values and Units Module Level 3</a> 
+<br/>W3C Candidate Recommendation, 11 June 2015 (<a href="http://www.w3.org/TR/css3-values/" title="">http://www.w3.org/TR/css3-values/</a>)
 
 </span>
 </li>
-<li id="bibx4" class="ltx_bibitem">
-<span class="ltx_bibtag ltx_role_refnum">CTL</span>
-<span class="ltx_bibblock">
+<li id="bibx4">
+<span>CTL</span>
+<span>
 Sharon Correll 
-<br class="ltx_break"/><a href="http://scripts.sil.org/cms/scripts/page.php?site%5C_id=nrsi%5C&amp;item%5C_id=CmplxRndExamples" title="" class="ltx_ref ltx_href">Examples of Complex Rendering</a>
-(<a href="http://scripts.sil.org/cms/scripts/page.php?site%5C_id=nrsi%5C&amp;item%5C_id=CmplxRndExamples" title="" class="ltx_ref ltx_href">http://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&amp;item_id=CmplxRndExamples</a>)
+<br/><a href="http://scripts.sil.org/cms/scripts/page.php?site%5C_id=nrsi%5C&amp;item%5C_id=CmplxRndExamples" title="">Examples of Complex Rendering</a>
+(<a href="http://scripts.sil.org/cms/scripts/page.php?site%5C_id=nrsi%5C&amp;item%5C_id=CmplxRndExamples" title="">http://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&amp;item_id=CmplxRndExamples</a>)
 
 </span>
 </li>
-<li id="bibx5" class="ltx_bibitem">
-<span class="ltx_bibtag ltx_role_refnum">Daisy3</span>
-<span class="ltx_bibblock">
+<li id="bibx5">
+<span>Daisy3</span>
+<span>
 George Kerscher et al. 
-<br class="ltx_break"/><a href="http://www.daisy.org/z3986/2005/Z3986-2005.html" title="" class="ltx_ref ltx_href">Specifications for the Digital Talking Book</a> (<a href="http://www.daisy.org/z3986/2005/Z3986-2005.html" title="" class="ltx_ref ltx_href">http://www.daisy.org/z3986/2005/Z3986-2005.html</a>)
+<br/><a href="http://www.daisy.org/z3986/2005/Z3986-2005.html" title="">Specifications for the Digital Talking Book</a> (<a href="http://www.daisy.org/z3986/2005/Z3986-2005.html" title="">http://www.daisy.org/z3986/2005/Z3986-2005.html</a>)
 
 </span>
 </li>
-<li id="bibx6" class="ltx_bibitem">
-<span class="ltx_bibtag ltx_role_refnum">DOM1</span>
-<span class="ltx_bibblock">
+<li id="bibx6">
+<span>DOM1</span>
+<span>
 Lauren Wood et al. 
-<br class="ltx_break"/><a href="http://www.w3.org/TR/REC-DOM-Level-1/" title="" class="ltx_ref ltx_href">Document Object Model (DOM) Level 1 Specification Version 1.0</a> 
-<br class="ltx_break"/>W3C Recommendation 1 October, 1998 (<a href="http://www.w3.org/TR/REC-DOM-Level-1/" title="" class="ltx_ref ltx_href">http://www.w3.org/TR/REC-DOM-Level-1/</a>)
+<br/><a href="http://www.w3.org/TR/REC-DOM-Level-1/" title="">Document Object Model (DOM) Level 1 Specification Version 1.0</a> 
+<br/>W3C Recommendation 1 October, 1998 (<a href="http://www.w3.org/TR/REC-DOM-Level-1/" title="">http://www.w3.org/TR/REC-DOM-Level-1/</a>)
 
 </span>
 </li>
-<li id="bibx7" class="ltx_bibitem">
-<span class="ltx_bibtag ltx_role_refnum">ECMA262</span>
-<span class="ltx_bibblock">
+<li id="bibx7">
+<span>ECMA262</span>
+<span>
 Ecma International 
-<br class="ltx_break"/><a href="http://people.mozilla.org/~jorendorff/es5.1-final.html" title="" class="ltx_ref ltx_href">ECMAScript Language Specification</a>
-ECMA-262, 5.1 Edition / June 2011 (<a href="http://people.mozilla.org/%5C~jorendorff/es5.1-final.html" title="" class="ltx_ref ltx_href">http://people.mozilla.org/j̃orendorff/es5.1-final.html</a>)
+<br/><a href="http://people.mozilla.org/~jorendorff/es5.1-final.html" title="">ECMAScript Language Specification</a>
+ECMA-262, 5.1 Edition / June 2011 (<a href="http://people.mozilla.org/%5C~jorendorff/es5.1-final.html" title="">http://people.mozilla.org/j̃orendorff/es5.1-final.html</a>)
 
 </span>
 </li>
-<li id="bibx8" class="ltx_bibitem">
-<span class="ltx_bibtag ltx_role_refnum">EPUB3</span>
-<span class="ltx_bibblock">
+<li id="bibx8">
+<span>EPUB3</span>
+<span>
 idpf 
-<br class="ltx_break"/><a href="http://idpf.org/epub/30" title="" class="ltx_ref ltx_href">EPUB 3 Specifications</a>
-(<a href="http://idpf.org/epub/30" title="" class="ltx_ref ltx_href">http://idpf.org/epub/30</a>)
+<br/><a href="http://idpf.org/epub/30" title="">EPUB 3 Specifications</a>
+(<a href="http://idpf.org/epub/30" title="">http://idpf.org/epub/30</a>)
 
 </span>
 </li>
-<li id="bibx9" class="ltx_bibitem">
-<span class="ltx_bibtag ltx_role_refnum">HTML5</span>
-<span class="ltx_bibblock">
+<li id="bibx9">
+<span>HTML5</span>
+<span>
 Ian Hickson et al. 
-<br class="ltx_break"/><a href="http://www.w3.org/TR/html5/" title="" class="ltx_ref ltx_href">A vocabulary and associated APIs for HTML and XHTML</a> 
-<br class="ltx_break"/>W3C Recommendation 28 October 2014 (<a href="http://www.w3.org/TR/html5/" title="" class="ltx_ref ltx_href">http://www.w3.org/TR/html5/</a>)
+<br/><a href="http://www.w3.org/TR/html5/" title="">A vocabulary and associated APIs for HTML and XHTML</a> 
+<br/>W3C Recommendation 28 October 2014 (<a href="http://www.w3.org/TR/html5/" title="">http://www.w3.org/TR/html5/</a>)
 
 </span>
 </li>
-<li id="bibx10" class="ltx_bibitem">
-<span class="ltx_bibtag ltx_role_refnum">IETFRFC2119</span>
-<span class="ltx_bibblock">
+<li id="bibx10">
+<span>IETFRFC2119</span>
+<span>
 S. Bradner 
-<br class="ltx_break"/><a href="http://www.ietf.org/rfc/rfc2119.txt" title="" class="ltx_ref ltx_href">Key words for use in RFCs to Indicate Requirement Levels</a> 
-<br class="ltx_break"/><a href="http://www.ietf.org/rfc/rfc2119.txt" title="" class="ltx_ref ltx_href">http://www.ietf.org/rfc/rfc2119.txt</a>
+<br/><a href="http://www.ietf.org/rfc/rfc2119.txt" title="">Key words for use in RFCs to Indicate Requirement Levels</a> 
+<br/><a href="http://www.ietf.org/rfc/rfc2119.txt" title="">http://www.ietf.org/rfc/rfc2119.txt</a>
 
 </span>
 </li>
-<li id="bibx11" class="ltx_bibitem">
-<span class="ltx_bibtag ltx_role_refnum">MathML3</span>
-<span class="ltx_bibblock">
+<li id="bibx11">
+<span>MathML3</span>
+<span>
 David Carlisle et al. 
-<br class="ltx_break"/><a href="http://www.w3.org/TR/MathML3/" title="" class="ltx_ref ltx_href">Mathematical Markup Language (MathML) Version 3.0 2nd Edition</a> 
-<br class="ltx_break"/>W3C Recommendation 10 April 2014 (<a href="http://www.w3.org/TR/MathML3/" title="" class="ltx_ref ltx_href">http://www.w3.org/TR/MathML3/</a>)
+<br/><a href="http://www.w3.org/TR/MathML3/" title="">Mathematical Markup Language (MathML) Version 3.0 2nd Edition</a> 
+<br/>W3C Recommendation 10 April 2014 (<a href="http://www.w3.org/TR/MathML3/" title="">http://www.w3.org/TR/MathML3/</a>)
 
 </span>
 </li>
-<li id="bibx12" class="ltx_bibitem">
-<span class="ltx_bibtag ltx_role_refnum">ODF1</span>
-<span class="ltx_bibblock">
+<li id="bibx12">
+<span>ODF1</span>
+<span>
 Michael Brauer et al. 
-<br class="ltx_break"/><a href="http://www.oasis-open.org/committees/download.php/12572/OpenDocument-v1.0-os.pdf" title="" class="ltx_ref ltx_href">Open Document Format for Office Applications (OpenDocument) v1.0</a>
-OASIS Standard, 1 May 2005 (<a href="http://www.oasis-open.org/committees/download.php/12572/OpenDocument-v1.0-os.pdf" title="" class="ltx_ref ltx_href">http://www.oasis-open.org/committees/download.php/12572/OpenDocument-v1.0-os.pdf</a>)
+<br/><a href="http://www.oasis-open.org/committees/download.php/12572/OpenDocument-v1.0-os.pdf" title="">Open Document Format for Office Applications (OpenDocument) v1.0</a>
+OASIS Standard, 1 May 2005 (<a href="http://www.oasis-open.org/committees/download.php/12572/OpenDocument-v1.0-os.pdf" title="">http://www.oasis-open.org/committees/download.php/12572/OpenDocument-v1.0-os.pdf</a>)
 
 </span>
 </li>
-<li id="bibx13" class="ltx_bibitem">
-<span class="ltx_bibtag ltx_role_refnum">OpenFontFormat3</span>
-<span class="ltx_bibblock">
+<li id="bibx13">
+<span>OpenFontFormat3</span>
+<span>
 ISO and IEC 
-<br class="ltx_break"/><a href="http://www.iso.org/iso/home/store/catalogue%5C_ics/catalogue%5C_detail%5C_ics.htm?csnumber=66391" title="" class="ltx_ref ltx_href">Information technology – Coding of audio-visual objects – Part 22: Open Font Format Edition 3</a> , International Published Standard, 9th October 2015 (<a href="http://www.iso.org/iso/home/store/catalogue%5C_ics/catalogue%5C_detail%5C_ics.htm?csnumber=66391" title="" class="ltx_ref ltx_href">http://www.iso.org/iso/home/store/catalogue_ics/catalogue_detail_ics.htm?csnumber=66391</a>)
+<br/><a href="http://www.iso.org/iso/home/store/catalogue%5C_ics/catalogue%5C_detail%5C_ics.htm?csnumber=66391" title="">Information technology – Coding of audio-visual objects – Part 22: Open Font Format Edition 3</a> , International Published Standard, 9th October 2015 (<a href="http://www.iso.org/iso/home/store/catalogue%5C_ics/catalogue%5C_detail%5C_ics.htm?csnumber=66391" title="">http://www.iso.org/iso/home/store/catalogue_ics/catalogue_detail_ics.htm?csnumber=66391</a>)
 
 </span>
 </li>
-<li id="bibx14" class="ltx_bibitem">
-<span class="ltx_bibtag ltx_role_refnum">OpenTypeMathIlluminated</span>
-<span class="ltx_bibblock">
+<li id="bibx14">
+<span>OpenTypeMathIlluminated</span>
+<span>
 Ulrik Vieth 
-<br class="ltx_break"/><a href="http://www.tug.org/TUGboat/tb30-1/tb94vieth.pdf" title="" class="ltx_ref ltx_href">OpenType Math Illuminated</a> 
-<br class="ltx_break"/>Biuletyn GUST 25 (2009), pp. 7–16, proceedings of the BachoTEX XVII conference.
-(<a href="http://www.tug.org/TUGboat/tb30-1/tb94vieth.pdf" title="" class="ltx_ref ltx_href">http://www.tug.org/TUGboat/tb30-1/tb94vieth.pdf</a>)
+<br/><a href="http://www.tug.org/TUGboat/tb30-1/tb94vieth.pdf" title="">OpenType Math Illuminated</a> 
+<br/>Biuletyn GUST 25 (2009), pp. 7–16, proceedings of the BachoTEX XVII conference.
+(<a href="http://www.tug.org/TUGboat/tb30-1/tb94vieth.pdf" title="">http://www.tug.org/TUGboat/tb30-1/tb94vieth.pdf</a>)
 
 </span>
 </li>
-<li id="bibx15" class="ltx_bibitem">
-<span class="ltx_bibtag ltx_role_refnum">SVG11</span>
-<span class="ltx_bibblock">
+<li id="bibx15">
+<span>SVG11</span>
+<span>
 Doug Schepers et al. 
-<br class="ltx_break"/><a href="http://www.w3.org/TR/SVG11/" title="" class="ltx_ref ltx_href">Scalable Vector Graphics (SVG) 1.1 (Second Edition)</a> 
-<br class="ltx_break"/>W3C Recommendation 16 August 2011 (<a href="http://www.w3.org/TR/SVG11/" title="" class="ltx_ref ltx_href">http://www.w3.org/TR/SVG11/</a>)
+<br/><a href="http://www.w3.org/TR/SVG11/" title="">Scalable Vector Graphics (SVG) 1.1 (Second Edition)</a> 
+<br/>W3C Recommendation 16 August 2011 (<a href="http://www.w3.org/TR/SVG11/" title="">http://www.w3.org/TR/SVG11/</a>)
 
 </span>
 </li>
-<li id="bibx16" class="ltx_bibitem">
-<span class="ltx_bibtag ltx_role_refnum">TeXBook</span>
-<span class="ltx_bibblock">
+<li id="bibx16">
+<span>TeXBook</span>
+<span>
 Knuth, Donald E. 
-<br class="ltx_break"/>Published by Addison-Wesley Professional (1984) 
-<br class="ltx_break"/>ISBN 10: 0201134489 ISBN 13: 9780201134483 
-<br class="ltx_break"/>Note: <a href="http://www.ctan.org/pkg/texbook" title="" class="ltx_ref ltx_href">The TeXBook source code is
+<br/>Published by Addison-Wesley Professional (1984) 
+<br/>ISBN 10: 0201134489 ISBN 13: 9780201134483 
+<br/>Note: <a href="http://www.ctan.org/pkg/texbook" title="">The TeXBook source code is
 available on CTAN</a>. Read ‘beginchapter Appendix G‘ for layout rules.
 
 </span>
 </li>
-<li id="bibx17" class="ltx_bibitem">
-<span class="ltx_bibtag ltx_role_refnum">ValidatorSchemas</span>
-<span class="ltx_bibblock">
+<li id="bibx17">
+<span>ValidatorSchemas</span>
+<span>
 Henri Sivonen et al. 
-<br class="ltx_break"/><a href="https://github.com/validator/validator/blob/master/schema/.drivers/html5-svg-mathml.rnc" title="" class="ltx_ref ltx_href">HTML5-SVG-MathML schema for Nu Html Checker</a>
+<br/><a href="https://github.com/validator/validator/blob/master/schema/.drivers/html5-svg-mathml.rnc" title="">HTML5-SVG-MathML schema for Nu Html Checker</a>
 
 </span>
 </li>
-<li id="bibx18" class="ltx_bibitem">
-<span class="ltx_bibtag ltx_role_refnum">XMLEntities</span>
-<span class="ltx_bibblock">
+<li id="bibx18">
+<span>XMLEntities</span>
+<span>
 David Carlisle, Patrick Ion 
-<br class="ltx_break"/><a href="http://www.w3.org/TR/xml-entity-names/" title="" class="ltx_ref ltx_href">XML Entity Definitions for Characters (2nd Edition)</a> 
-<br class="ltx_break"/>W3C Recommendation 10 April 2014 (<a href="http://www.w3.org/TR/xml-entity-names/" title="" class="ltx_ref ltx_href">http://www.w3.org/TR/xml-entity-names/</a>)
+<br/><a href="http://www.w3.org/TR/xml-entity-names/" title="">XML Entity Definitions for Characters (2nd Edition)</a> 
+<br/>W3C Recommendation 10 April 2014 (<a href="http://www.w3.org/TR/xml-entity-names/" title="">http://www.w3.org/TR/xml-entity-names/</a>)
 
 </span>
 </li>
 </ul>
 </section>
 </div>
-<footer class="ltx_page_footer">
+<footer>
 <div>
-<a href="S3.html" title="3 Presentation Markup ‣ MathML in HTML5 - Implementation Note" class="ltx_ref" rel="prev"><span class="ltx_text ltx_ref_title"><span class="ltx_tag ltx_tag_ref">3 </span>Presentation Markup</span></a><a href="A1.html" title="Appendix A MathML ‣ MathML in HTML5 - Implementation Note" class="ltx_ref" rel="next"><span class="ltx_text ltx_ref_title"><span class="ltx_tag ltx_tag_ref">A </span>MathML</span></a>
+<a href="S3.html" title="3 Presentation Markup ‣ MathML in HTML5 - Implementation Note" rel="prev"><span><span>3 </span>Presentation Markup</span></a><a href="A1.html" title="Appendix A MathML ‣ MathML in HTML5 - Implementation Note" rel="next"><span><span>A </span>MathML</span></a>
 </div>
-<div class="ltx_page_logo">Generated  on Tue Oct 31 15:18:52 2017 by <a href="http://dlmf.nist.gov/LaTeXML/">LaTeXML <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==" alt="[LOGO]"/></a>
-</div></footer>
+</footer>
 </div>
 </body>
 </html>

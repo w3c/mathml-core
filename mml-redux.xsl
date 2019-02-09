@@ -12,9 +12,6 @@
 <meta http-equiv="Content-type" content="text/html;charset=UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
 <title><xsl:apply-templates mode="title" select="front/title"/></title>
-<link rel="stylesheet" href="LaTeXML.css" type="text/css"/>
-<link rel="stylesheet" href="ltx-article.css" type="text/css"/>
-<link rel="stylesheet" href="ltx-listings.css" type="text/css"/>
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style type="text/css">
   pre { white-space: pre-wrap;}
