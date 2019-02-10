@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>A MathML‣ MathML in HTML5 - Implementation Note</title>
+<title>A MathML</title>
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 
@@ -25,7 +25,7 @@ have obvious mapping to CSS. It is also a performance issue to perform the
 rendering and keep it up-to-date since the rendering on any node may depend on
 its <code>mstyle</code> ancestors. In this document, it instead suggested to keep only
 attributes that are compatible with CSS and five new CSS properties are
-introduced in section <a href="S2.html#SS3.SSS1" title="2.3.1 Properties ‣ 2.3 CSS Styling ‣ 2 Relation with other technologies ‣ MathML in HTML5 - Implementation Note"><span>2.3.1</span></a>.
+introduced in section <a href="S2.html#SS3.SSS1" title="2.3.1 Properties ‣ 2.3 CSS Styling ‣ 2 Relation with other technologies "><span>2.3.1</span></a>.
 These attributes actually correspond to what is used in practice.</p>
 </div>
 <div id="p3">
@@ -53,11 +53,11 @@ used for square roots. We suggest to remove the “radical” notation in
 future version of the MathML specification.</p>
 </div>
 <div id="p5">
-<p>As explained in section <a href="S3.html#SS1.SSS2" title="3.1.2 Layout Steps ‣ 3.1 Introduction ‣ 3 Presentation Markup ‣ MathML in HTML5 - Implementation Note"><span>3.1.2</span></a> it is important in a
+<p>As explained in section <a href="S3.html#SS1.SSS2" title="3.1.2 Layout Steps ‣ 3.1 Introduction ‣ 3 Presentation Markup "><span>3.1.2</span></a> it is important in a
 HTML5 context to be able to determine the min-content width and the max-content
 width for linebreaking purpose. However, the <code>mpadded</code> element may be
 problematic since the pseudo-units allow horizontal metrics to depend on
-vertical metrics. A restriction is proposed in section <a href="S3.html#SS3.SSS6" title="3.3.6 Adjust Space Around Content &lt;mpadded&gt; ‣ 3.3 General Layout Schemata ‣ 3 Presentation Markup ‣ MathML in HTML5 - Implementation Note"><span>3.3.6</span></a> and should
+vertical metrics. A restriction is proposed in section <a href="S3.html#SS3.SSS6" title="3.3.6 Adjust Space Around Content &lt;mpadded&gt; ‣ 3.3 General Layout Schemata ‣ 3 Presentation Markup "><span>3.3.6</span></a> and should
 not be problematic in practice.</p>
 </div>
 <div id="p6">

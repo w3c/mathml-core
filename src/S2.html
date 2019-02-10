@@ -1,6 +1,7 @@
-<!DOCTYPE html><html>
+<!DOCTYPE html>
+<html>
 <head>
-<title>2 Relation with other technologies‣ MathML in HTML5 - Implementation Note</title>
+<title>2 Relation with other technologies</title>
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 
@@ -64,7 +65,7 @@ synchronization with the DOM tree.</p>
 user agents must claim support for the extension of name
 <span>http://www.w3.org/1998/Math/MathML</span>.
 An algorithm to decide the visible child of the <span>&lt;semantics&gt;</span> element is
-proposed in section <a href="S3.html#SS8" title="3.8 Semantics and Presentation ‣ 3 Presentation Markup ‣ MathML in HTML5 - Implementation Note"><span>3.8</span></a>.</p>
+proposed in section <a href="S3.html#SS8" title="3.8 Semantics and Presentation ‣ 3 Presentation Markup "><span>3.8</span></a>.</p>
 </div>
 </section>
 <section id="SS1.SSS2">
@@ -84,7 +85,7 @@ inline styling.</p>
 <code>href</code> on the <code>mrow</code> element with the behavior described in 4.8
 of the HTML5 specification for the <code>a</code> element <cite>[<a href="bib.html#bibx9" title="">HTML5</a>]</cite>. It is
 recommended to make links visually distinguisable by default, for example by
-adding a rule in the user agent stylesheet (section <a href="#SS3.SSS2" title="2.3.2 User Agent Stylesheet for MathML ‣ 2.3 CSS Styling ‣ 2 Relation with other technologies ‣ MathML in HTML5 - Implementation Note"><span>2.3.2</span></a>) such as</p>
+adding a rule in the user agent stylesheet (section <a href="#SS3.SSS2" title="2.3.2 User Agent Stylesheet for MathML ‣ 2.3 CSS Styling ‣ 2 Relation with other technologies "><span>2.3.2</span></a>) such as</p>
 <div>
 <div><a href="data:text/plain;base64,bXJvd1tocmVmXSB7CiAgY29sb3I6IGJsdWU7Cn0=%0A">⬇</a></div>
 <div>
@@ -104,14 +105,14 @@ adding a rule in the user agent stylesheet (section <a href="#SS3.SSS2" title="2
 These attributes allow to specify fallback content and must be ignored by
 user agents for rendering purpose. User agents that do not follow the current
 implementation note, may follow implementation suggestions from Appendix
-<a href="A4.html" title="Appendix D Image Fallback ‣ MathML in HTML5 - Implementation Note"><span>D</span></a> in order to use that fallback image.</p>
+<a href="A4.html" title="Appendix D Image Fallback "><span>D</span></a> in order to use that fallback image.</p>
 </div>
 <div id="SS1.SSS2.p4">
 <p>The toplevel <code>math</code> element also accepts the <code>display</code> attribute,
 <code>mathcolor</code>, <code>mathbackground</code> attributes as well as other attributes
 from the <code>mstyle</code> element. These attributes must be supported and this
 may be achieved using specific rules in the user agent stylesheet
-as described in section <a href="#SS3.SSS2" title="2.3.2 User Agent Stylesheet for MathML ‣ 2.3 CSS Styling ‣ 2 Relation with other technologies ‣ MathML in HTML5 - Implementation Note"><span>2.3.2</span></a>.</p>
+as described in section <a href="#SS3.SSS2" title="2.3.2 User Agent Stylesheet for MathML ‣ 2.3 CSS Styling ‣ 2 Relation with other technologies "><span>2.3.2</span></a>.</p>
 </div>
 <div id="SS1.SSS2.p5">
 <p>In general MathML elements or attributes that are not mentioned in this
@@ -187,7 +188,7 @@ They must also be able to use the <code>MathVariants</code> subtable
 to solve the following problem: given a particular default glyph shape and a
 certain width or height, find a variant shape glyph (or a construct created by
 putting several glyphs together) that has the required measurement.
-More information are provided in see section <a href="S3.html#SS2.SSS4" title="3.2.4 Operator, Fence, Separator or Accent &lt;mo&gt; ‣ 3.2 Token Elements ‣ 3 Presentation Markup ‣ MathML in HTML5 - Implementation Note"><span>3.2.4</span></a>.</p>
+More information are provided in see section <a href="S3.html#SS2.SSS4" title="3.2.4 Operator, Fence, Separator or Accent &lt;mo&gt; ‣ 3.2 Token Elements ‣ 3 Presentation Markup "><span>3.2.4</span></a>.</p>
 </div>
 </section>
 <section id="SS2.SSS2">
@@ -211,21 +212,21 @@ However, it is set to true in the following children:</p>
 <ol id="I3">
 <li id="I3.i1">
 <div id="I3.i1.p1">
-<p>The denominator of an <code>mfrac</code> element. See section <a href="S3.html#SS3.SSS2" title="3.3.2 Fractions &lt;mfrac&gt; ‣ 3.3 General Layout Schemata ‣ 3 Presentation Markup ‣ MathML in HTML5 - Implementation Note"><span>3.3.2</span></a>.</p>
+<p>The denominator of an <code>mfrac</code> element. See section <a href="S3.html#SS3.SSS2" title="3.3.2 Fractions &lt;mfrac&gt; ‣ 3.3 General Layout Schemata ‣ 3 Presentation Markup "><span>3.3.2</span></a>.</p>
 </div>
 </li>
 <li id="I3.i2">
 <div id="I3.i2.p1">
 <p>The subscripts of the <code>msub</code>, <code>msubsup</code>,
 <code>munder</code> and <code>munderover</code> elements.
-See section <a href="S3.html#SS4" title="3.4 Script and Limit Schemata ‣ 3 Presentation Markup ‣ MathML in HTML5 - Implementation Note"><span>3.4</span></a>.</p>
+See section <a href="S3.html#SS4" title="3.4 Script and Limit Schemata ‣ 3 Presentation Markup "><span>3.4</span></a>.</p>
 </div>
 </li>
 <li id="I3.i3">
 <div id="I3.i3.p1">
 <p>The overscript of the
 <code>mover</code> and <code>munderover</code> elements when it is an <code>accent</code> per
-the MathML specification. See section <a href="S3.html#SS4" title="3.4 Script and Limit Schemata ‣ 3 Presentation Markup ‣ MathML in HTML5 - Implementation Note"><span>3.4</span></a>.</p>
+the MathML specification. See section <a href="S3.html#SS4" title="3.4 Script and Limit Schemata ‣ 3 Presentation Markup "><span>3.4</span></a>.</p>
 </div>
 </li>
 <li id="I3.i4">
@@ -282,7 +283,7 @@ specificities of the MathML specification. In particular, the keywords
 equivalent <code>em</code> value. Also, percent and unitless values must be interpreted
 with respect to the appropriate reference value. Note that the <code>mpadded</code>
 element also accepts more general length values as discussed in section
-<a href="S3.html#SS3.SSS6" title="3.3.6 Adjust Space Around Content &lt;mpadded&gt; ‣ 3.3 General Layout Schemata ‣ 3 Presentation Markup ‣ MathML in HTML5 - Implementation Note"><span>3.3.6</span></a>.</p>
+<a href="S3.html#SS3.SSS6" title="3.3.6 Adjust Space Around Content &lt;mpadded&gt; ‣ 3.3 General Layout Schemata ‣ 3 Presentation Markup "><span>3.3.6</span></a>.</p>
 </div>
 <div id="SS3.SSS1.p2">
 <p>User agents must support at least the following properties:</p>
@@ -292,7 +293,7 @@ element also accepts more general length values as discussed in section
 <p><code>display</code>: at least inline, block, inline-table, table-row,
 table-cell and none. It is used for the <code>math</code> and tabular
 elements. Appropriate values may be specified in the user agent stylesheet
-as described in section <a href="#SS3.SSS2" title="2.3.2 User Agent Stylesheet for MathML ‣ 2.3 CSS Styling ‣ 2 Relation with other technologies ‣ MathML in HTML5 - Implementation Note"><span>2.3.2</span></a>.</p>
+as described in section <a href="#SS3.SSS2" title="2.3.2 User Agent Stylesheet for MathML ‣ 2.3 CSS Styling ‣ 2 Relation with other technologies "><span>2.3.2</span></a>.</p>
 </div>
 </li>
 <li id="I4.i2"> 
@@ -318,7 +319,7 @@ mapped to these properties.</p>
 <div id="I4.i5.p1">
 <p><code>visibility</code>. It is is used for the <code>mphantom</code> element and may be
 specified in the user agent stylesheet as described in section
-<a href="#SS3.SSS2" title="2.3.2 User Agent Stylesheet for MathML ‣ 2.3 CSS Styling ‣ 2 Relation with other technologies ‣ MathML in HTML5 - Implementation Note"><span>2.3.2</span></a>.</p>
+<a href="#SS3.SSS2" title="2.3.2 User Agent Stylesheet for MathML ‣ 2.3 CSS Styling ‣ 2 Relation with other technologies "><span>2.3.2</span></a>.</p>
 </div>
 </li>
 </ol>
@@ -326,9 +327,9 @@ specified in the user agent stylesheet as described in section
 <div id="SS3.SSS1.p3">
 <p>User agents must support the <code>displaystyle</code> attribute. This may be
 implemented using a new <span>mathml-math-style</span> property described in
-table <a href="#SS3.SSS1" title="2.3.1 Properties ‣ 2.3 CSS Styling ‣ 2 Relation with other technologies ‣ MathML in HTML5 - Implementation Note"><span>2.3.1</span></a>. The expected behavior may be completely
+table <a href="#SS3.SSS1" title="2.3.1 Properties ‣ 2.3 CSS Styling ‣ 2 Relation with other technologies "><span>2.3.1</span></a>. The expected behavior may be completely
 specified in the user agent stylesheet as described in section
-<a href="#SS3.SSS2" title="2.3.2 User Agent Stylesheet for MathML ‣ 2.3 CSS Styling ‣ 2 Relation with other technologies ‣ MathML in HTML5 - Implementation Note"><span>2.3.2</span></a>.</p>
+<a href="#SS3.SSS2" title="2.3.2 User Agent Stylesheet for MathML ‣ 2.3 CSS Styling ‣ 2 Relation with other technologies "><span>2.3.2</span></a>.</p>
 </div>
 <figure id="SS3.SSS1.tab1">
 <table>
@@ -374,7 +375,7 @@ specified in the user agent stylesheet as described in section
 <td>This value indicates the style to use for mathematical
 formulas. Formulas in <code>display</code> mode will typically make more generous
 use of vertical space than inline formulas. Detailed rules are provided in
-section <a href="S3.html" title="3 Presentation Markup ‣ MathML in HTML5 - Implementation Note"><span>3</span></a>.</td>
+section <a href="S3.html" title="3 Presentation Markup "><span>3</span></a>.</td>
 </tr>
 </tbody>
 </table>
@@ -382,12 +383,12 @@ section <a href="S3.html" title="3 Presentation Markup ‣ MathML in HTML5 - Imp
 <div id="SS3.SSS1.p4">
 <p>User agents must support the <code>mathvariant</code> attribute. This may be
 implemented using a new <span>mathml-math-variant</span> property described in
-table <a href="#SS3.SSS1.tab1" title="2.3.1 Properties ‣ 2.3 CSS Styling ‣ 2 Relation with other technologies ‣ MathML in HTML5 - Implementation Note"><span>2.3.1</span></a>. The expected behavior may be implemented by
+table <a href="#SS3.SSS1.tab1" title="2.3.1 Properties ‣ 2.3 CSS Styling ‣ 2 Relation with other technologies "><span>2.3.1</span></a>. The expected behavior may be implemented by
 mapping <code>mathvariant</code> attributes on the <code>math</code>, <code>mstyle</code> and token
 elements to <span>mathml-math-variant</span>. Then during the rendering of text nodes,
 the <span>mathml-math-variant</span> value must be taken into account to remap
 some characters to their equivalent code points, as specified by the MathML
-specification. However, as indicated in section <a href="S3.html#SS2.SSS2" title="3.2.2 Identifier &lt;mi&gt; ‣ 3.2 Token Elements ‣ 3 Presentation Markup ‣ MathML in HTML5 - Implementation Note"><span>3.2.2</span></a>, when
+specification. However, as indicated in section <a href="S3.html#SS2.SSS2" title="3.2.2 Identifier &lt;mi&gt; ‣ 3.2 Token Elements ‣ 3 Presentation Markup "><span>3.2.2</span></a>, when
 <span>mathml-math-variant</span> is <code>none</code> on an <code>mi</code> element with a single
 character, it must actually be treated as if the mathvariant was <code>italic</code> ;
 this can not be handled via CSS-only.</p>
@@ -479,20 +480,20 @@ Parent}}^{\left(\text{FontSize}_{\text{Child}}-\text{FontSize}_{\text{Parent}}%
 <div id="SS3.SSS1.p6">
 <p>Since the <span>font-size</span> change is typically done in a dedicated CSS module of
 user agents, it may be convenient to introduce a new
-<span>mathml-script-level</span> property described in table <a href="#SS3.SSS1.tab2" title="2.3.1 Properties ‣ 2.3 CSS Styling ‣ 2 Relation with other technologies ‣ MathML in HTML5 - Implementation Note"><span>2.3.1</span></a>.
+<span>mathml-script-level</span> property described in table <a href="#SS3.SSS1.tab2" title="2.3.1 Properties ‣ 2.3 CSS Styling ‣ 2 Relation with other technologies "><span>2.3.1</span></a>.
 User agents may then implement the expected behavior by mapping the
 <code>scriptlevel</code> attribute on the <code>math</code> and <code>mstyle</code> elements to that
 property and adding appropriate rules in the user agent stylesheet
-(section <a href="#SS3.SSS2" title="2.3.2 User Agent Stylesheet for MathML ‣ 2.3 CSS Styling ‣ 2 Relation with other technologies ‣ MathML in HTML5 - Implementation Note"><span>2.3.2</span></a>). However as indicated in section
-<a href="S3.html#SS4.SSS2" title="3.4.2 Underscripts and Overscripts &lt;munder&gt;, &lt;mover&gt;, &lt;munderover&gt; ‣ 3.4 Script and Limit Schemata ‣ 3 Presentation Markup ‣ MathML in HTML5 - Implementation Note"><span>3.4.2</span></a>, the <code>scriptlevel</code> change for underscripts
+(section <a href="#SS3.SSS2" title="2.3.2 User Agent Stylesheet for MathML ‣ 2.3 CSS Styling ‣ 2 Relation with other technologies "><span>2.3.2</span></a>). However as indicated in section
+<a href="S3.html#SS4.SSS2" title="3.4.2 Underscripts and Overscripts &lt;munder&gt;, &lt;mover&gt;, &lt;munderover&gt; ‣ 3.4 Script and Limit Schemata ‣ 3 Presentation Markup "><span>3.4.2</span></a>, the <code>scriptlevel</code> change for underscripts
 and overscripts can not be handled via CSS-only.</p>
 </div>
 <div id="SS3.SSS1.p7">
 <p>If <code>scriptsizemultiplier</code> and <code>scriptminsize</code>
 are supported, then they may also be implemented using new CSS properties
 <span>mathml-script-size-multiplier</span> and <span>mathml-script-min-size</span>
-described in tables <a href="#SS3.SSS1.tab3" title="2.3.1 Properties ‣ 2.3 CSS Styling ‣ 2 Relation with other technologies ‣ MathML in HTML5 - Implementation Note"><span>2.3.1</span></a> and
-<a href="#SS3.SSS1.tab4" title="2.3.1 Properties ‣ 2.3 CSS Styling ‣ 2 Relation with other technologies ‣ MathML in HTML5 - Implementation Note"><span>2.3.1</span></a> respectively. User agents may then implement
+described in tables <a href="#SS3.SSS1.tab3" title="2.3.1 Properties ‣ 2.3 CSS Styling ‣ 2 Relation with other technologies "><span>2.3.1</span></a> and
+<a href="#SS3.SSS1.tab4" title="2.3.1 Properties ‣ 2.3 CSS Styling ‣ 2 Relation with other technologies "><span>2.3.1</span></a> respectively. User agents may then implement
 the expected behavior by mapping the <code>scriptsizemultiplier</code>
 and <code>scriptminsize</code> attributes on the <code>math</code> and <code>mstyle</code> elements
 to these properties.</p>
@@ -547,7 +548,7 @@ Otherwise, the computed value is as specified.</td>
 <th><em>Description:</em></th>
 <td>This describes the scriptlevel of a mathematical
 formulas and affects the computation of <span>font-size</span> as specified by
-equation <a href="#E1" title="(1) ‣ 2.3.1 Properties ‣ 2.3 CSS Styling ‣ 2 Relation with other technologies ‣ MathML in HTML5 - Implementation Note">1</a>.</td>
+equation <a href="#E1" title="(1) ‣ 2.3.1 Properties ‣ 2.3 CSS Styling ‣ 2 Relation with other technologies ">1</a>.</td>
 </tr>
 </tbody>
 </table>
@@ -595,7 +596,7 @@ equation <a href="#E1" title="(1) ‣ 2.3.1 Properties ‣ 2.3 CSS Styling ‣ 2
 <th><em>Description:</em></th>
 <td>Specifies the multiplier to be used to adjust
 <span>font-size</span> due to changes in scriptlevel as specified by equation
-<a href="#E1" title="(1) ‣ 2.3.1 Properties ‣ 2.3 CSS Styling ‣ 2 Relation with other technologies ‣ MathML in HTML5 - Implementation Note"><span>1</span></a>.</td>
+<a href="#E1" title="(1) ‣ 2.3.1 Properties ‣ 2.3 CSS Styling ‣ 2 Relation with other technologies "><span>1</span></a>.</td>
 </tr>
 </tbody>
 </table>
@@ -642,7 +643,7 @@ equation <a href="#E1" title="(1) ‣ 2.3.1 Properties ‣ 2.3 CSS Styling ‣ 2
 <tr>
 <th><em>Description:</em></th>
 <td>Specifies the minimum font size allowed due to changes
-in scriptlevel as specified by equation <a href="#E1" title="(1) ‣ 2.3.1 Properties ‣ 2.3 CSS Styling ‣ 2 Relation with other technologies ‣ MathML in HTML5 - Implementation Note"><span>1</span></a>.</td>
+in scriptlevel as specified by equation <a href="#E1" title="(1) ‣ 2.3.1 Properties ‣ 2.3 CSS Styling ‣ 2 Relation with other technologies "><span>1</span></a>.</td>
 </tr>
 </tbody>
 </table>

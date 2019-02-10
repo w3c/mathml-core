@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>3 Presentation Markup‣ MathML in HTML5 - Implementation Note</title>
+<title>3 Presentation Markup</title>
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 
@@ -24,9 +24,9 @@ implicit <code>mtext</code> and <code>merror</code> to handle non-conforming Mat
 </div>
 <div id="SS1.SSS1.p2">
 <p>MathML elements have the following box model. The <span>&lt;math&gt;</span> root may have
-inline or block display, as suggested in section <a href="S2.html#SS3.SSS2" title="2.3.2 User Agent Stylesheet for MathML ‣ 2.3 CSS Styling ‣ 2 Relation with other technologies ‣ MathML in HTML5 - Implementation Note"><span>2.3.2</span></a>.
+inline or block display, as suggested in section <a href="S2.html#SS3.SSS2" title="2.3.2 User Agent Stylesheet for MathML ‣ 2.3 CSS Styling ‣ 2 Relation with other technologies "><span>2.3.2</span></a>.
 Tabular MathML elements have table, table-row and
-table-cell display as discussed in section <a href="#tables" title="3.5 Tabular Math ‣ 3 Presentation Markup ‣ MathML in HTML5 - Implementation Note"><span>3.5</span></a>.
+table-cell display as discussed in section <a href="#tables" title="3.5 Tabular Math ‣ 3 Presentation Markup "><span>3.5</span></a>.
 The <span>&lt;math&gt;</span> and <span>&lt;mtd&gt;</span> elements
 generate an anonymous <span>&lt;mrow&gt;</span> MathML box child that contains the boxes of
 their children and use the box parameters below to layout this anonymous
@@ -149,10 +149,10 @@ mode.</p>
 <div id="SS1.SSS1.p6">
 <p>The <code>MathItalicsCorrectionInfo</code> table contains the italic
 correction of some glyphs, which provides a measure of how slanted the
-glyphs are (see figure <a href="#F2" title="Figure 2 ‣ 3.1.1 Box Model ‣ 3.1 Introduction ‣ 3 Presentation Markup ‣ MathML in HTML5 - Implementation Note">2</a>). The
+glyphs are (see figure <a href="#F2" title="Figure 2 ‣ 3.1.1 Box Model ‣ 3.1 Introduction ‣ 3 Presentation Markup ">2</a>). The
 <code>MathTopAccentAttachment</code> table also contains a reference
 points that is used for the horizontal positioning of glyphs as an accent
-(see figure <a href="#F3" title="Figure 3 ‣ 3.1.1 Box Model ‣ 3.1 Introduction ‣ 3 Presentation Markup ‣ MathML in HTML5 - Implementation Note"><span>3</span></a>). In later sections, we
+(see figure <a href="#F3" title="Figure 3 ‣ 3.1.1 Box Model ‣ 3.1 Introduction ‣ 3 Presentation Markup "><span>3</span></a>). In later sections, we
 generalize this by claiming that all MathML boxes have italic correction
 and top accent attachment values. The values for glyphs are used to try and
 extend to token elements or to special boxes that do not change child metrics.
@@ -209,8 +209,8 @@ vertical positions <math id="I6.i2.p1.m3" alttext="y" display="inline"><semantic
 <div id="SS1.SSS2.p3">
 <p>In order to perform the first step independently of the second one, the
 horizontal metrics must not depend on the vertical metrics. As described in
-section <a href="#SS3.SSS6" title="3.3.6 Adjust Space Around Content &lt;mpadded&gt; ‣ 3.3 General Layout Schemata ‣ 3 Presentation Markup ‣ MathML in HTML5 - Implementation Note"><span>3.3.6</span></a>, this adds some restrictions on the possible pseudo-units
-of the <code>mpadded</code> element. As indicated in section <a href="#SS2.SSS4" title="3.2.4 Operator, Fence, Separator or Accent &lt;mo&gt; ‣ 3.2 Token Elements ‣ 3 Presentation Markup ‣ MathML in HTML5 - Implementation Note"><span>3.2.4</span></a>,
+section <a href="#SS3.SSS6" title="3.3.6 Adjust Space Around Content &lt;mpadded&gt; ‣ 3.3 General Layout Schemata ‣ 3 Presentation Markup "><span>3.3.6</span></a>, this adds some restrictions on the possible pseudo-units
+of the <code>mpadded</code> element. As indicated in section <a href="#SS2.SSS4" title="3.2.4 Operator, Fence, Separator or Accent &lt;mo&gt; ‣ 3.2 Token Elements ‣ 3 Presentation Markup "><span>3.2.4</span></a>,
 the width of size variants or of the glyph assembly used for vertical stretchy
 operators may depend on the target size to cover. Taking the maximum widths
 for all these size variants or for the glyph assembly during the first step
@@ -222,7 +222,7 @@ small over-estimation.</p>
 are determined from those of the child boxes. User agents must implement
 the “Exception for embellished operators” described in <cite>[<a href="bib.html#bibx11" title="">MathML3</a>]</cite>.
 This means that the actual stretching of operators described in section
-<a href="#SS2.SSS4" title="3.2.4 Operator, Fence, Separator or Accent &lt;mo&gt; ‣ 3.2 Token Elements ‣ 3 Presentation Markup ‣ MathML in HTML5 - Implementation Note"><span>3.2.4</span></a> may be “delayed” until we reach the top of its embellished
+<a href="#SS2.SSS4" title="3.2.4 Operator, Fence, Separator or Accent &lt;mo&gt; ‣ 3.2 Token Elements ‣ 3 Presentation Markup "><span>3.2.4</span></a> may be “delayed” until we reach the top of its embellished
 operator subtree. We then have to apply the current operation again
 to this embellished operator (intrinsic width determination or layout).
 Fortunately, such embellished operator subtrees are not deep in practice.</p>
@@ -321,7 +321,7 @@ However, when an <code>mo</code> element with a single character must be display
 a large operator then instead we use the <code>MathVariants</code>
 table to try and find a glyph of height at least
 <code>DisplayOperatorMinHeight</code>
-(figure <a href="#F4" title="Figure 4 ‣ 3.2.4 Operator, Fence, Separator or Accent &lt;mo&gt; ‣ 3.2 Token Elements ‣ 3 Presentation Markup ‣ MathML in HTML5 - Implementation Note">4</a>). If none is found, we fallback to the
+(figure <a href="#F4" title="Figure 4 ‣ 3.2.4 Operator, Fence, Separator or Accent &lt;mo&gt; ‣ 3.2 Token Elements ‣ 3 Presentation Markup ">4</a>). If none is found, we fallback to the
 largest one. Because this parameter does not always give
 the best size, user agents may also use the following heuristic: ensure
 that the large variant height is at least <math id="SS2.SSS4.p4.m1" alttext="2" display="inline"><semantics><mn>2</mn><annotation encoding="application/x-tex">2</annotation></semantics></math> times as large as the base height
@@ -340,12 +340,12 @@ operator then instead of displaying the normal character we use
 the <code>MathVariants</code> table to try and find a glyph
 that has at least the desired size or an assembly from several glyphs
 to cover at least the desired size
-(figure <a href="#F5" title="Figure 5 ‣ 3.2.4 Operator, Fence, Separator or Accent &lt;mo&gt; ‣ 3.2 Token Elements ‣ 3 Presentation Markup ‣ MathML in HTML5 - Implementation Note"><span>5</span></a>). The rules for vertical stretching
+(figure <a href="#F5" title="Figure 5 ‣ 3.2.4 Operator, Fence, Separator or Accent &lt;mo&gt; ‣ 3.2 Token Elements ‣ 3 Presentation Markup "><span>5</span></a>). The rules for vertical stretching
 are a bit more complicated and are described in section
 “Vertical Stretching Rules” of <cite>[<a href="bib.html#bibx11" title="">MathML3</a>]</cite>. If the operator has property
 <span>symmetric="true"</span>, it must be stretched symmetrically with respect to
 the math axis, which is given by the <code>AxisHeight</code> value.
-Figure <a href="#F6" title="Figure 6 ‣ 3.2.4 Operator, Fence, Separator or Accent &lt;mo&gt; ‣ 3.2 Token Elements ‣ 3 Presentation Markup ‣ MathML in HTML5 - Implementation Note"><span>6</span></a> compares the symmetric
+Figure <a href="#F6" title="Figure 6 ‣ 3.2.4 Operator, Fence, Separator or Accent &lt;mo&gt; ‣ 3.2 Token Elements ‣ 3 Presentation Markup "><span>6</span></a> compares the symmetric
 and non-symmetric stretching.</p>
 </div>
 <div id="SS2.SSS4.p6">
@@ -378,7 +378,7 @@ practice for most math fonts and operators.</p>
 <figcaption><span>Figure 6: </span>Symmetric and non-symmetric stretching of vertical operators</figcaption>
 </figure>
 <div id="SS2.SSS4.p7">
-<p>See section <a href="#SS3.SSS1" title="3.3.1 Horizontally Group Sub-Expressions &lt;mrow&gt; ‣ 3.3 General Layout Schemata ‣ 3 Presentation Markup ‣ MathML in HTML5 - Implementation Note"><span>3.3.1</span></a> for details about how to treat “embellished ancestor”,
+<p>See section <a href="#SS3.SSS1" title="3.3.1 Horizontally Group Sub-Expressions &lt;mrow&gt; ‣ 3.3 General Layout Schemata ‣ 3 Presentation Markup "><span>3.3.1</span></a> for details about how to treat “embellished ancestor”,
 and how decide when to display operators larger or when to stretch them
 vertically &amp; horizontally.</p>
 </div>
@@ -439,7 +439,7 @@ determine logical dimensions
 and max-content width of the text content and use it for both the logical and
 ink values of the <span>&lt;mtext&gt;</span> element. The italic correction and
 top accent attachment are assigned the fallback values indicated in section
-<a href="#SS1.SSS1" title="3.1.1 Box Model ‣ 3.1 Introduction ‣ 3 Presentation Markup ‣ MathML in HTML5 - Implementation Note"><span>3.1.1</span></a></p>
+<a href="#SS1.SSS1" title="3.1.1 Box Model ‣ 3.1 Introduction ‣ 3 Presentation Markup "><span>3.1.1</span></a></p>
 </div>
 </section>
 <section id="SS2.SSS6">
@@ -455,7 +455,7 @@ set by its attributes.</p>
 </div>
 <div id="SS2.SSS6.p2">
 <p>The <code>mspace</code> element is laid out as shown on figure
-<a href="#F7" title="Figure 7 ‣ 3.2.6 Space &lt;mspace/&gt; ‣ 3.2 Token Elements ‣ 3 Presentation Markup ‣ MathML in HTML5 - Implementation Note">7</a>.
+<a href="#F7" title="Figure 7 ‣ 3.2.6 Space &lt;mspace/&gt; ‣ 3.2 Token Elements ‣ 3 Presentation Markup ">7</a>.
 The logical box is determined by the <code>height</code>, <code>depth</code> and <code>width</code>
 attributes defined in <cite>[<a href="bib.html#bibx11" title="">MathML3</a>]</cite>. The ink box matches the logical box.
 The <code>linebreak</code> attribute on the <span>&lt;mspace/&gt;</span> element must be ignored.</p>
@@ -484,7 +484,7 @@ meant to be interpreted by computer algebra systems or other systems containing
 element except that quotes are automatically added around its content.
 The user agents may implement the <code>lquote</code> or <code>rquote</code> attributes
 with the following style in the user agent stylesheet as suggested in section
-<a href="S2.html#SS3.SSS2" title="2.3.2 User Agent Stylesheet for MathML ‣ 2.3 CSS Styling ‣ 2 Relation with other technologies ‣ MathML in HTML5 - Implementation Note"><span>2.3.2</span></a>:</p>
+<a href="S2.html#SS3.SSS2" title="2.3.2 User Agent Stylesheet for MathML ‣ 2.3 CSS Styling ‣ 2 Relation with other technologies "><span>2.3.2</span></a>:</p>
 </div>
 <div id="SS2.SSS7.p3">
 <div>
@@ -580,12 +580,12 @@ for the <code>mrow</code> element, user agents may just ignore linebreaking rule
 <p>User agents must follow the rules for inferred <code>mrow</code>s described in
 <cite>[<a href="bib.html#bibx11" title="">MathML3</a>]</cite>. For example, to layout
 <span>&lt;msqrt&gt;child_1 child_2 child_3 ...&lt;/msqrt&gt;</span>, one must follow the layout
-rules described for <code>msqrt</code> in section <a href="#SS3.SSS3" title="3.3.3 Radicals &lt;msqrt&gt;, &lt;mroot&gt; ‣ 3.3 General Layout Schemata ‣ 3 Presentation Markup ‣ MathML in HTML5 - Implementation Note"><span>3.3.3</span></a> using
+rules described for <code>msqrt</code> in section <a href="#SS3.SSS3" title="3.3.3 Radicals &lt;msqrt&gt;, &lt;mroot&gt; ‣ 3.3 General Layout Schemata ‣ 3 Presentation Markup "><span>3.3.3</span></a> using
 the box of <span>&lt;mrow&gt;child_1 child_2 child_3 ... child_N&lt;/mrow&gt;</span> as the base.</p>
 </div>
 <div id="SS3.SSS1.p4">
 <p>The <span>&lt;mrow&gt;child_1 child_2 child_3 ... child_N&lt;/mrow&gt;</span> element is laid
-out as show on figure <a href="#F8" title="Figure 8 ‣ 3.3.1 Horizontally Group Sub-Expressions &lt;mrow&gt; ‣ 3.3 General Layout Schemata ‣ 3 Presentation Markup ‣ MathML in HTML5 - Implementation Note"><span>8</span></a>. The boxes of <math id="SS3.SSS1.p4.m1" alttext="\text{child}_{1}" display="inline"><semantics><msub><mtext>child</mtext><mn>1</mn></msub><annotation encoding="application/x-tex">\text{child}_{1}</annotation></semantics></math>,
+out as show on figure <a href="#F8" title="Figure 8 ‣ 3.3.1 Horizontally Group Sub-Expressions &lt;mrow&gt; ‣ 3.3 General Layout Schemata ‣ 3 Presentation Markup "><span>8</span></a>. The boxes of <math id="SS3.SSS1.p4.m1" alttext="\text{child}_{1}" display="inline"><semantics><msub><mtext>child</mtext><mn>1</mn></msub><annotation encoding="application/x-tex">\text{child}_{1}</annotation></semantics></math>,
 <math id="SS3.SSS1.p4.m2" alttext="\text{child}_{2}" display="inline"><semantics><msub><mtext>child</mtext><mn>2</mn></msub><annotation encoding="application/x-tex">\text{child}_{2}</annotation></semantics></math>, … <math id="SS3.SSS1.p4.m3" alttext="\text{child}_{N}" display="inline"><semantics><msub><mtext>child</mtext><mi>N</mi></msub><annotation encoding="application/x-tex">\text{child}_{N}</annotation></semantics></math> are put in a horizontal row
 one after the other with all their baselines aligned. As a consequence of this
 and of child box models, graphical elements such as fraction bars
@@ -595,7 +595,7 @@ aligned along the math axis when the
 where the math font is unchanged).</p>
 </div>
 <div id="SS3.SSS1.p5">
-<p>As indicated in section <a href="A1.html" title="Appendix A MathML ‣ MathML in HTML5 - Implementation Note"><span>A</span></a>, we generally do not add special spacing
+<p>As indicated in section <a href="A1.html" title="Appendix A MathML "><span>A</span></a>, we generally do not add special spacing
 around the children. For example, the leading and trailing spacing is already
 included in the box metrics of embellished operators. The only exception is
 for the italic correction: when a “slanted” child is
@@ -612,7 +612,7 @@ as “non-slanted”.</p>
 <div id="SS3.SSS1.p6">
 <p>When the <code>mrow</code> element contains only one child then the previous
 description implies that the box metrics of the <code>mrow</code> is the same as
-the one of its unique child. As indicated in section <a href="#SS1.SSS1" title="3.1.1 Box Model ‣ 3.1 Introduction ‣ 3 Presentation Markup ‣ MathML in HTML5 - Implementation Note"><span>3.1.1</span></a>, we thus
+the one of its unique child. As indicated in section <a href="#SS1.SSS1" title="3.1.1 Box Model ‣ 3.1 Introduction ‣ 3 Presentation Markup "><span>3.1.1</span></a>, we thus
 use the italic correction and top accent attachment of the child as the
 corresponding values of the <code>mrow</code> box.</p>
 </div>
@@ -653,7 +653,7 @@ denominator.
 <div id="SS3.SSS2.p2">
 <p>The <code>displaystyle</code> and <code>scriptlevel</code> changes be achieved with the
 following style in the user agent stylesheet as suggested in section
-<a href="S2.html#SS3.SSS2" title="2.3.2 User Agent Stylesheet for MathML ‣ 2.3 CSS Styling ‣ 2 Relation with other technologies ‣ MathML in HTML5 - Implementation Note"><span>2.3.2</span></a>:</p>
+<a href="S2.html#SS3.SSS2" title="2.3.2 User Agent Stylesheet for MathML ‣ 2.3 CSS Styling ‣ 2 Relation with other technologies "><span>2.3.2</span></a>:</p>
 <div>
 <div><a href="data:text/plain;base64,ICBtZnJhYyA+ICogewogICAgbWF0aG1sLXNjcmlwdC1sZXZlbDogYXV0bzsKICAgIG1hdGhtbC1t%0AYXRoLXN0eWxlOiBpbmxpbmU7CiAgfQ==%0A">⬇</a></div>
 <div>
@@ -687,7 +687,7 @@ The color and visibility of the fraction bar must honor the values given by the
 </div>
 <div id="SS3.SSS2.p5">
 <p>If the actual line thickness is nonzero, the <code>mfrac</code> element is laid out as
-shown on figure <a href="#F9" title="Figure 9 ‣ 3.3.2 Fractions &lt;mfrac&gt; ‣ 3.3 General Layout Schemata ‣ 3 Presentation Markup ‣ MathML in HTML5 - Implementation Note"><span>9</span></a>.
+shown on figure <a href="#F9" title="Figure 9 ‣ 3.3.2 Fractions &lt;mfrac&gt; ‣ 3.3 General Layout Schemata ‣ 3 Presentation Markup "><span>9</span></a>.
 The width is given by the maximum width of the
 numerator and denominator and the numerator and denominator are horizontally
 centered. A fraction bar with the actual thickness is drawn centered on the
@@ -717,7 +717,7 @@ in display style.</p>
 <div id="SS3.SSS2.p6">
 <p>If the actual line thickness is zero,
 the <code>mfrac</code> element is instead laid out as
-shown on figure <a href="#F10" title="Figure 10 ‣ 3.3.2 Fractions &lt;mfrac&gt; ‣ 3.3 General Layout Schemata ‣ 3 Presentation Markup ‣ MathML in HTML5 - Implementation Note">10</a>.
+shown on figure <a href="#F10" title="Figure 10 ‣ 3.3.2 Fractions &lt;mfrac&gt; ‣ 3.3 General Layout Schemata ‣ 3 Presentation Markup ">10</a>.
 The gap between the top and bottom boxes
 is equally split around the axis height. The relevant shift values are now
 <code>StackTopShiftUp</code>,
@@ -786,7 +786,7 @@ the left, along with the index in the case of mroot.</p>
 <div id="SS3.SSS3.p2">
 <p>The <code>displaystyle</code> and <code>scriptlevel</code> changes be achieved with the
 following style in the user agent stylesheet as suggested in section
-<a href="S2.html#SS3.SSS2" title="2.3.2 User Agent Stylesheet for MathML ‣ 2.3 CSS Styling ‣ 2 Relation with other technologies ‣ MathML in HTML5 - Implementation Note"><span>2.3.2</span></a>:</p>
+<a href="S2.html#SS3.SSS2" title="2.3.2 User Agent Stylesheet for MathML ‣ 2.3 CSS Styling ‣ 2 Relation with other technologies "><span>2.3.2</span></a>:</p>
 <div>
 <div><a href="data:text/plain;base64,ICBtcm9vdCA+IDpub3QoOmZpcnN0LWNoaWxkKSB7CiAgICBtYXRobWwtc2NyaXB0LWxldmVsOiBp%0AbmNyZW1lbnQgMjsKICAgIG1hdGhtbC1tYXRoLXN0eWxlOiBpbmxpbmU7CiAgfQ==%0A">⬇</a></div>
 <div>
@@ -822,7 +822,7 @@ the <code>color</code> and <code>visibility</code> CSS properties on the <code>m
 </div>
 <div id="SS3.SSS3.p4">
 <p>The <code>msqrt</code> element is laid out as shown on figure
-<a href="#F11" title="Figure 11 ‣ 3.3.3 Radicals &lt;msqrt&gt;, &lt;mroot&gt; ‣ 3.3 General Layout Schemata ‣ 3 Presentation Markup ‣ MathML in HTML5 - Implementation Note">11</a>.
+<a href="#F11" title="Figure 11 ‣ 3.3.3 Radicals &lt;msqrt&gt;, &lt;mroot&gt; ‣ 3.3 General Layout Schemata ‣ 3 Presentation Markup ">11</a>.
 The width is given by the sum of the width of the surd and of the base.
 The baseline of the square root matches the baseline of the base.
 The ink box is determined from the ink boxes of the surd and base while the
@@ -835,9 +835,9 @@ logical box takes into account the extra ascender</p>
 <figcaption><span>Figure 11: </span>Box model for the <code>msqrt</code> element</figcaption>
 </figure>
 <div id="SS3.SSS3.p5">
-<p>The <code>mroot</code> element is laid out as shown on figure <a href="#F12" title="Figure 12 ‣ 3.3.3 Radicals &lt;msqrt&gt;, &lt;mroot&gt; ‣ 3.3 General Layout Schemata ‣ 3 Presentation Markup ‣ MathML in HTML5 - Implementation Note">12</a>.
+<p>The <code>mroot</code> element is laid out as shown on figure <a href="#F12" title="Figure 12 ‣ 3.3.3 Radicals &lt;msqrt&gt;, &lt;mroot&gt; ‣ 3.3 General Layout Schemata ‣ 3 Presentation Markup ">12</a>.
 We start by ignoring the root index and we layout the base and surd as
-shown on figure <a href="#F11" title="Figure 11 ‣ 3.3.3 Radicals &lt;msqrt&gt;, &lt;mroot&gt; ‣ 3.3 General Layout Schemata ‣ 3 Presentation Markup ‣ MathML in HTML5 - Implementation Note">11</a> to obtain a box <math id="SS3.SSS3.p5.m1" alttext="B" display="inline"><semantics><mi>B</mi><annotation encoding="application/x-tex">B</annotation></semantics></math>.
+shown on figure <a href="#F11" title="Figure 11 ‣ 3.3.3 Radicals &lt;msqrt&gt;, &lt;mroot&gt; ‣ 3.3 General Layout Schemata ‣ 3 Presentation Markup ">11</a> to obtain a box <math id="SS3.SSS3.p5.m1" alttext="B" display="inline"><semantics><mi>B</mi><annotation encoding="application/x-tex">B</annotation></semantics></math>.
 The horizontal metrics of the <code>mroot</code> element are obtained by putting
 <code>RadicalKernBeforeDegree</code>
 before the root index, then placing the root index, then a kerning
@@ -892,7 +892,7 @@ specified for an attribute.</p>
 <p>For the layout algorithm described in this document, the
 <code>mstyle</code> element must be treated the same as the <code>mrow</code> element.
 However, some attributes on the <code>mstyle</code> element must be mapped to CSS
-properties as indicated in section <a href="S2.html#SS3.SSS1" title="2.3.1 Properties ‣ 2.3 CSS Styling ‣ 2 Relation with other technologies ‣ MathML in HTML5 - Implementation Note"><span>2.3.1</span></a>.
+properties as indicated in section <a href="S2.html#SS3.SSS1" title="2.3.1 Properties ‣ 2.3 CSS Styling ‣ 2 Relation with other technologies "><span>2.3.1</span></a>.
 All the other <code>mstyle</code>
 attributes not defined in this document must be ignored.</p>
 </div>
@@ -919,7 +919,7 @@ multiple children. […]</p>
 <code>merror</code> element must be treated the same as the <code>mrow</code> element.
 The user agent stylesheet must set some CSS properties on the <code>merror</code>
 element in order to highlight the error.
-As suggested in section <a href="S2.html#SS3.SSS2" title="2.3.2 User Agent Stylesheet for MathML ‣ 2.3 CSS Styling ‣ 2 Relation with other technologies ‣ MathML in HTML5 - Implementation Note"><span>2.3.2</span></a>, this can for example be achieved
+As suggested in section <a href="S2.html#SS3.SSS2" title="2.3.2 User Agent Stylesheet for MathML ‣ 2.3 CSS Styling ‣ 2 Relation with other technologies "><span>2.3.2</span></a>, this can for example be achieved
 with the rule:</p>
 <div>
 <div><a href="data:text/plain;base64,bWVycm9yIHsKICBvdXRsaW5lOiBzb2xpZCB0aGluIHJlZDsKICBiYWNrZ3JvdW5kLWNvbG9yOiBs%0AaWdodFllbGxvdzsKfQ==%0A">⬇</a></div>
@@ -964,7 +964,7 @@ the value of the <code>width</code> and <code>lspace</code> attributes contains
 </div>
 <div id="SS3.SSS6.p3">
 <p>The <code>mpadded</code> element is laid out as shown on figure
-<a href="#F13" title="Figure 13 ‣ 3.3.6 Adjust Space Around Content &lt;mpadded&gt; ‣ 3.3 General Layout Schemata ‣ 3 Presentation Markup ‣ MathML in HTML5 - Implementation Note">13</a>.
+<a href="#F13" title="Figure 13 ‣ 3.3.6 Adjust Space Around Content &lt;mpadded&gt; ‣ 3.3 General Layout Schemata ‣ 3 Presentation Markup ">13</a>.
 The height, depth and width of the content in <cite>[<a href="bib.html#bibx11" title="">MathML3</a>]</cite> corresponds to
 the logical box of the content. The content of the <code>mpadded</code> element is
 positioned from the origin of the <code>mpadded</code> element as follows: We shift
@@ -1009,7 +1009,7 @@ The <code>mphantom</code> element accepts a single argument possibly being an in
 <code>mphantom</code> element must be treated the same as the <code>mrow</code> element.
 The user agent stylesheet must set some CSS properties on the <code>mphantom</code>
 element in order to hide its content.
-As suggested in section <a href="S2.html#SS3.SSS2" title="2.3.2 User Agent Stylesheet for MathML ‣ 2.3 CSS Styling ‣ 2 Relation with other technologies ‣ MathML in HTML5 - Implementation Note"><span>2.3.2</span></a>, this can for example be achieved
+As suggested in section <a href="S2.html#SS3.SSS2" title="2.3.2 User Agent Stylesheet for MathML ‣ 2.3 CSS Styling ‣ 2 Relation with other technologies "><span>2.3.2</span></a>, this can for example be achieved
 with the rule:</p>
 <div>
 <div><a href="data:text/plain;base64,bXBoYW50b20gewogIHZpc2liaWxpdHk6IGhpZGRlbjsKfQ==%0A">⬇</a></div>
@@ -1095,7 +1095,7 @@ and <code>UnderbarVerticalGap</code> plus
 <code>UnderbarRuleThickness</code> below.
 The gap between the bar and the content is <math id="I7.i1.p1.m2" alttext="3\xi_{8}" display="inline"><semantics><mrow><mn>3</mn><mo>⁢</mo><msub><mi>ξ</mi><mn>8</mn></msub></mrow><annotation encoding="application/x-tex">3\xi_{8}</annotation></semantics></math>.
 The logical box is obtained by adding some space of width
-<math id="I7.i1.p1.m3" alttext="\xi_{8}" display="inline"><semantics><msub><mi>ξ</mi><mn>8</mn></msub><annotation encoding="application/x-tex">\xi_{8}</annotation></semantics></math> on the left of the bar. See figure <a href="#F14" title="Figure 14 ‣ 1. ‣ 3.3.9 Enclose Expression Inside Notation &lt;menclose&gt; ‣ 3.3 General Layout Schemata ‣ 3 Presentation Markup ‣ MathML in HTML5 - Implementation Note">14</a>.</p>
+<math id="I7.i1.p1.m3" alttext="\xi_{8}" display="inline"><semantics><msub><mi>ξ</mi><mn>8</mn></msub><annotation encoding="application/x-tex">\xi_{8}</annotation></semantics></math> on the left of the bar. See figure <a href="#F14" title="Figure 14 ‣ 1. ‣ 3.3.9 Enclose Expression Inside Notation &lt;menclose&gt; ‣ 3.3 General Layout Schemata ‣ 3 Presentation Markup ">14</a>.</p>
 </div>
 <figure id="F14"><svg id="F14.pic1" style="width:304.8pt;height:204.6pt;" height="283.12" overflow="visible" version="1.1" viewBox="-25.32 -141.56 421.78 283.12" width="421.78"><g transform="matrix(1 0 0 -1 0 0)"><g stroke="#000000"><g fill="#000000"><g stroke-width="0.4pt" color="#000000"><g stroke="#E6E6FF" color="#E6E6FF"><g fill="#E6E6FF"><path d="M 0 137.8 L 393.7 137.8 L 393.7 -137.8 L 0 -137.8 Z" style="stroke:none"></path></g></g><g stroke="#FF0000"><g fill="#FF0000"><g stroke="#FFE6E6" color="#FF0000"><g fill="#FFE6E6"><path d="M 78.74 59.06 L 374.02 59.06 L 374.02 -59.06 L 78.74 -59.06 Z" style="stroke:none"></path></g></g><path d="M 78.74 78.74 L 374.02 78.74 L 374.02 -78.74 L 78.74 -78.74 Z" style="fill:none"></path><path d="M 78.74 0 L 374.02 0" style="fill:none"></path></g></g><g stroke="#CCCCCC" color="#CCCCCC"><g fill="#CCCCCC"><path d="M 0 137.8 L 19.69 137.8 L 19.69 -137.8 L 0 -137.8 Z" style="stroke:none"></path></g></g><g stroke-dasharray="3.0pt,3.0pt" stroke-dashoffset="0.0pt"><g stroke="#0000FF" color="#0000FF"><g fill="#0000FF"><path d="M -19.69 137.8 L 374.02 137.8 L 374.02 -137.8 L -19.69 -137.8 Z M 0 0 L 374.02 0" style="fill:none"></path></g></g></g><path d="M 78.74 117.47 L 78.74 98.43 L 78.74 59.69" style="fill:none"></path><g transform="matrix(0 1 -1 0 78.74 117.47)"><path d="M -1.66 2.21 C -1.52 1.38 0 0.14 0.42 0 C 0 -0.14 -1.52 -1.38 -1.66 -2.21" style="fill:none"></path></g><g transform="matrix(0 -1 1 0 78.74 59.69)"><path d="M -1.66 2.21 C -1.52 1.38 0 0.14 0.42 0 C 0 -0.14 -1.52 -1.38 -1.66 -2.21" style="fill:none"></path></g><g transform="matrix(1 0 0 1 83.63 94.97)"><g transform="matrix(1 0 0 -1 0 12.45)"><switch><foreignObject color="#000000" height="100%" overflow="visible" width="207.55">
 <p>Overbar Vertical Gap</p></foreignObject></switch></g></g><path d="M 78.74 118.75 L 78.74 127.95 L 78.74 137.16" style="fill:none"></path><g transform="matrix(0 -1 1 0 78.74 118.75)"><path d="M -1.66 2.21 C -1.52 1.38 0 0.14 0.42 0 C 0 -0.14 -1.52 -1.38 -1.66 -2.21" style="fill:none"></path></g><g transform="matrix(0 1 -1 0 78.74 137.16)"><path d="M -1.66 2.21 C -1.52 1.38 0 0.14 0.42 0 C 0 -0.14 -1.52 -1.38 -1.66 -2.21" style="fill:none"></path></g><g transform="matrix(1 0 0 1 83.63 124.49)"><g transform="matrix(1 0 0 -1 0 12.45)"><switch><foreignObject color="#000000" height="100%" overflow="visible" width="228.31">
@@ -1127,7 +1127,7 @@ The gap between the overbar and the content is
 <code>OverbarVerticalGap</code>.
 The logical box is obtained by adding some space of height
 <code>OverbarExtraAscender</code> above the bar.
-See figure <a href="#F15" title="Figure 15 ‣ 3. ‣ 3.3.9 Enclose Expression Inside Notation &lt;menclose&gt; ‣ 3.3 General Layout Schemata ‣ 3 Presentation Markup ‣ MathML in HTML5 - Implementation Note">15</a>.</p>
+See figure <a href="#F15" title="Figure 15 ‣ 3. ‣ 3.3.9 Enclose Expression Inside Notation &lt;menclose&gt; ‣ 3.3 General Layout Schemata ‣ 3 Presentation Markup ">15</a>.</p>
 </div>
 <figure id="F15"><svg id="F15.pic1" style="width:331.6pt;height:175.6pt;" height="243.03" overflow="visible" version="1.1" viewBox="-3.04 -81.78 458.84 243.03" width="458.84"><g transform="matrix(1 0 0 -1 0 79.47)"><g stroke="#000000"><g fill="#000000"><g stroke-width="0.4pt" color="#000000"><g stroke="#E6E6FF" color="#E6E6FF"><g fill="#E6E6FF"><path d="M 0 137.8 L 452.76 137.8 L 452.76 -78.74 L 0 -78.74 Z" style="stroke:none"></path></g></g><g stroke="#FF0000"><g fill="#FF0000"><g stroke="#FFE6E6" color="#FF0000"><g fill="#FFE6E6"><path d="M 78.74 59.06 L 374.02 59.06 L 374.02 -59.06 L 78.74 -59.06 Z" style="stroke:none"></path></g></g><path d="M 78.74 78.74 L 374.02 78.74 L 374.02 -78.74 L 78.74 -78.74 Z" style="fill:none"></path><path d="M 78.74 0 L 374.02 0" style="fill:none"></path></g></g><g stroke="#CCCCCC" color="#CCCCCC"><g fill="#CCCCCC"><path d="M 0 137.8 L 452.76 137.8 L 452.76 118.11 L 0 118.11 Z" style="stroke:none"></path></g></g><g stroke-dasharray="3.0pt,3.0pt" stroke-dashoffset="0.0pt"><g stroke="#0000FF" color="#0000FF"><g fill="#0000FF"><path d="M 0 157.48 L 452.76 157.48 L 452.76 -78.74 L 0 -78.74 Z M 0 0 L 452.76 0" style="fill:none"></path></g></g></g><path d="M 78.74 117.47 L 78.74 98.43 L 78.74 59.69" style="fill:none"></path><g transform="matrix(0 1 -1 0 78.74 117.47)"><path d="M -1.66 2.21 C -1.52 1.38 0 0.14 0.42 0 C 0 -0.14 -1.52 -1.38 -1.66 -2.21" style="fill:none"></path></g><g transform="matrix(0 -1 1 0 78.74 59.69)"><path d="M -1.66 2.21 C -1.52 1.38 0 0.14 0.42 0 C 0 -0.14 -1.52 -1.38 -1.66 -2.21" style="fill:none"></path></g><g transform="matrix(1 0 0 1 83.63 94.97)"><g transform="matrix(1 0 0 -1 0 12.45)"><switch><foreignObject color="#000000" height="100%" overflow="visible" width="207.55">
 <p>Overbar Vertical Gap</p></foreignObject></switch></g></g><path d="M 78.74 118.75 L 78.74 127.95 L 78.74 137.16" style="fill:none"></path><g transform="matrix(0 -1 1 0 78.74 118.75)"><path d="M -1.66 2.21 C -1.52 1.38 0 0.14 0.42 0 C 0 -0.14 -1.52 -1.38 -1.66 -2.21" style="fill:none"></path></g><g transform="matrix(0 1 -1 0 78.74 137.16)"><path d="M -1.66 2.21 C -1.52 1.38 0 0.14 0.42 0 C 0 -0.14 -1.52 -1.38 -1.66 -2.21" style="fill:none"></path></g><g transform="matrix(1 0 0 1 83.63 124.49)"><g transform="matrix(1 0 0 -1 0 12.45)"><switch><foreignObject color="#000000" height="100%" overflow="visible" width="228.31">
@@ -1161,7 +1161,7 @@ obtained by expanding the ink box by <math id="I7.i6.p1.m1" alttext="\frac{7\xi_
 Using SVG terminology, we draw a rounded rectangle on this expanded box
 with parameters <code>rx</code>, <code>ry</code> and <span>stroke-width</span> set to <math id="I7.i6.p1.m2" alttext="3\xi_{8}" display="inline"><semantics><mrow><mn>3</mn><mo>⁢</mo><msub><mi>ξ</mi><mn>8</mn></msub></mrow><annotation encoding="application/x-tex">3\xi_{8}</annotation></semantics></math>
 <cite>[<a href="bib.html#bibx15" title="">SVG11</a>]</cite>. To obtain the logical box we again add a space of <math id="I7.i6.p1.m3" alttext="\xi_{8}" display="inline"><semantics><msub><mi>ξ</mi><mn>8</mn></msub><annotation encoding="application/x-tex">\xi_{8}</annotation></semantics></math> on
-each side of the ink box. See figure <a href="#F16" title="Figure 16 ‣ 6. ‣ 3.3.9 Enclose Expression Inside Notation &lt;menclose&gt; ‣ 3.3 General Layout Schemata ‣ 3 Presentation Markup ‣ MathML in HTML5 - Implementation Note">16</a>.</p>
+each side of the ink box. See figure <a href="#F16" title="Figure 16 ‣ 6. ‣ 3.3.9 Enclose Expression Inside Notation &lt;menclose&gt; ‣ 3.3 General Layout Schemata ‣ 3 Presentation Markup ">16</a>.</p>
 </div>
 <figure id="F16"><svg id="F16.pic1" style="width:361.9pt;height:233.1pt;" height="322.52" overflow="visible" version="1.1" viewBox="-104.06 -161.99 500.8 322.52" width="500.8"><g transform="matrix(1 0 0 -1 0 -1.46000000000004)"><g stroke="#000000"><g fill="#000000"><g stroke-width="0.4pt" color="#000000"><g stroke="#E6E6FF" color="#E6E6FF"><g fill="#E6E6FF"><path d="M -78.74 137.8 L 374.02 137.8 L 374.02 -137.8 L -78.74 -137.8 Z" style="stroke:none"></path></g></g><g stroke="#FF0000"><g fill="#FF0000"><g stroke="#FFE6E6" color="#FF0000"><g fill="#FFE6E6"><path d="M 0 59.06 L 295.28 59.06 L 295.28 -59.06 L 0 -59.06 Z" style="stroke:none"></path></g></g><path d="M 0 78.74 L 295.28 78.74 L 295.28 -78.74 L 0 -78.74 Z" style="fill:none"></path><path d="M 0 0 L 295.28 0" style="fill:none"></path></g></g><g stroke="#CCCCCC" color="#CCCCCC"><g fill="#CCCCCC"><g stroke-width="12.0pt"><path d="M -19.08 127.95 L 314.36 127.95 C 341.87 127.95 364.17 105.65 364.17 78.14 L 364.17 -78.14 C 364.17 -105.65 341.87 -127.95 314.36 -127.95 L -19.08 -127.95 C -46.6 -127.95 -68.9 -105.65 -68.9 -78.14 L -68.9 78.14 C -68.9 105.65 -46.6 127.95 -19.08 127.95 Z" style="fill:none"></path></g></g></g><g stroke-dasharray="3.0pt,3.0pt" stroke-dashoffset="0.0pt"><g stroke="#0000FF" color="#0000FF"><g fill="#0000FF"><path d="M -98.43 157.48 L 393.7 157.48 L 393.7 -157.48 L -98.43 -157.48 Z M 0 0 L 393.7 0" style="fill:none"></path></g></g></g><path d="M -0.64 0 L -29.53 0 L -58.42 0" style="fill:none"></path><g transform="matrix(1 0 0 1 -0.64 0)"><path d="M -1.66 2.21 C -1.52 1.38 0 0.14 0.42 0 C 0 -0.14 -1.52 -1.38 -1.66 -2.21" style="fill:none"></path></g><g transform="matrix(-1 0 0 -1 -58.42 0)"><path d="M -1.66 2.21 C -1.52 1.38 0 0.14 0.42 0 C 0 -0.14 -1.52 -1.38 -1.66 -2.21" style="fill:none"></path></g><g transform="matrix(1 0 0 1 -42.81 -14.57)"><g transform="matrix(1 0 0 -1 0 12.45)"><switch><foreignObject color="#000000" height="100%" overflow="visible" width="26.57">
 <p><math id="F16.pic1.m1" alttext="3\xi_{8}" display="inline"><semantics><mrow><mn>3</mn><mo>⁢</mo><msub><mi>ξ</mi><mn>8</mn></msub></mrow><annotation encoding="application/x-tex">3\xi_{8}</annotation></semantics></math></p></foreignObject></switch></g></g><path d="M -59.69 0 L -68.9 0 L -78.1 0" style="fill:none"></path><g transform="matrix(1 0 0 1 -59.69 0)"><path d="M -1.66 2.21 C -1.52 1.38 0 0.14 0.42 0 C 0 -0.14 -1.52 -1.38 -1.66 -2.21" style="fill:none"></path></g><g transform="matrix(-1 0 0 -1 -78.1 0)"><path d="M -1.66 2.21 C -1.52 1.38 0 0.14 0.42 0 C 0 -0.14 -1.52 -1.38 -1.66 -2.21" style="fill:none"></path></g><g transform="matrix(1 0 0 1 -76.99 -14.57)"><g transform="matrix(1 0 0 -1 0 12.45)"><switch><foreignObject color="#000000" height="100%" overflow="visible" width="16.19">
@@ -1192,7 +1192,7 @@ notation of the <code>menclose</code> element</figcaption>
 of thickness <math id="I7.i9.p1.m1" alttext="\xi_{8}" display="inline"><semantics><msub><mi>ξ</mi><mn>8</mn></msub><annotation encoding="application/x-tex">\xi_{8}</annotation></semantics></math> and
 vertically centered inside the <code>menclose</code> content.
 This does not change the box metrics.
-See figure <a href="#F17" title="Figure 17 ‣ 9. ‣ 3.3.9 Enclose Expression Inside Notation &lt;menclose&gt; ‣ 3.3 General Layout Schemata ‣ 3 Presentation Markup ‣ MathML in HTML5 - Implementation Note">17</a>.</p>
+See figure <a href="#F17" title="Figure 17 ‣ 9. ‣ 3.3.9 Enclose Expression Inside Notation &lt;menclose&gt; ‣ 3.3 General Layout Schemata ‣ 3 Presentation Markup ">17</a>.</p>
 </div>
 <figure id="F17"><svg id="F17.pic1" style="width:217.8pt;height:118.2pt;" height="163.57" overflow="visible" version="1.1" viewBox="-3.04 -81.78 301.36 163.57" width="301.36"><g transform="matrix(1 0 0 -1 0 0.00999999999999091)"><g stroke="#000000"><g fill="#000000"><g stroke-width="0.4pt" color="#000000"><g stroke="#E6E6FF" color="#E6E6FF"><g fill="#E6E6FF"><path d="M 0 59.06 L 295.28 59.06 L 295.28 -59.06 L 0 -59.06 Z" style="stroke:none"></path></g></g><g stroke="#FF0000"><g fill="#FF0000"><g stroke="#FFE6E6" color="#FF0000"><g fill="#FFE6E6"><path d="M 0 59.06 L 295.28 59.06 L 295.28 -59.06 L 0 -59.06 Z" style="stroke:none"></path></g></g><path d="M 0 78.74 L 295.28 78.74 L 295.28 -78.74 L 0 -78.74 Z" style="fill:none"></path><path d="M 0 0 L 295.28 0" style="fill:none"></path></g></g><g stroke="#CCCCCC" color="#CCCCCC"><g fill="#CCCCCC"><path d="M 0 9.84 L 295.28 9.84 L 295.28 -9.84 L 0 -9.84 Z" style="stroke:none"></path></g></g><g stroke-dasharray="3.0pt,3.0pt" stroke-dashoffset="0.0pt"><g stroke="#0000FF" color="#0000FF"><g fill="#0000FF"><path d="M 0 78.74 L 295.28 78.74 L 295.28 -78.74 L 0 -78.74 Z M 0 0 L 295.28 0" style="fill:none"></path></g></g></g><path d="M 39.37 9.21 L 39.37 0 L 39.37 -9.21" style="fill:none"></path><g transform="matrix(0 1 -1 0 39.37 9.21)"><path d="M -1.66 2.21 C -1.52 1.38 0 0.14 0.42 0 C 0 -0.14 -1.52 -1.38 -1.66 -2.21" style="fill:none"></path></g><g transform="matrix(0 -1 1 0 39.37 -9.21)"><path d="M -1.66 2.21 C -1.52 1.38 0 0.14 0.42 0 C 0 -0.14 -1.52 -1.38 -1.66 -2.21" style="fill:none"></path></g><g transform="matrix(1 0 0 1 44.26 -2.71)"><g transform="matrix(1 0 0 -1 0 12.45)"><switch><foreignObject color="#000000" height="100%" overflow="visible" width="16.19">
 <p><math id="F17.pic1.m1" alttext="\xi_{8}" display="inline"><semantics><msub><mi>ξ</mi><mn>8</mn></msub><annotation encoding="application/x-tex">\xi_{8}</annotation></semantics></math></p></foreignObject></switch></g></g></g></g></g></g></svg>
@@ -1217,7 +1217,7 @@ content to its top right corner. Using SVG terminology, the
 As an approximation, the ink box
 is set equal to the logical box and obtained by increasing the original box
 from each side by <math id="I7.i11.p1.m2" alttext="\frac{\xi_{8}}{2}" display="inline"><semantics><mfrac><msub><mi>ξ</mi><mn>8</mn></msub><mn>2</mn></mfrac><annotation encoding="application/x-tex">\frac{\xi_{8}}{2}</annotation></semantics></math>.
-See figure <a href="#F18" title="Figure 18 ‣ 11. ‣ 3.3.9 Enclose Expression Inside Notation &lt;menclose&gt; ‣ 3.3 General Layout Schemata ‣ 3 Presentation Markup ‣ MathML in HTML5 - Implementation Note">18</a>.</p>
+See figure <a href="#F18" title="Figure 18 ‣ 11. ‣ 3.3.9 Enclose Expression Inside Notation &lt;menclose&gt; ‣ 3.3 General Layout Schemata ‣ 3 Presentation Markup ">18</a>.</p>
 </div>
 <figure id="F18"><svg id="F18.pic1" style="width:246.9pt;height:152.5pt;" height="211.02" overflow="visible" version="1.1" viewBox="-33.53 -91.63 341.69 211.02" width="341.69"><g transform="matrix(1 0 0 -1 0 27.76)"><g stroke="#000000"><g fill="#000000"><g stroke-width="0.4pt" color="#000000"><g stroke="#E6E6FF" color="#E6E6FF"><g fill="#E6E6FF"><path d="M -9.84 88.58 L 305.12 88.58 L 305.12 -78.74 L -9.84 -88.58 Z" style="stroke:none"></path></g></g><g stroke="#FF0000"><g fill="#FF0000"><g stroke="#FFE6E6" color="#FF0000"><g fill="#FFE6E6"><path d="M 0 59.06 L 295.28 59.06 L 295.28 -59.06 L 0 -59.06 Z" style="stroke:none"></path></g></g><path d="M 0 78.74 L 295.28 78.74 L 295.28 -78.74 L 0 -78.74 Z" style="fill:none"></path><path d="M 0 0 L 295.28 0" style="fill:none"></path></g></g><g stroke="#CCCCCC" color="#CCCCCC"><g fill="#CCCCCC"><path d="M -4.63 -70.06 L 290.64 87.42 L 299.91 70.06 L 4.63 -87.42 Z" style="stroke:none"></path></g></g><path d="M 212.78 45.18 L 217.11 37.05 L 221.45 28.93" style="fill:none"></path><g transform="matrix(-0.47123 0.88357 -0.88357 -0.47123 212.78 45.18)"><path d="M -1.66 2.21 C -1.52 1.38 0 0.14 0.42 0 C 0 -0.14 -1.52 -1.38 -1.66 -2.21" style="fill:none"></path></g><g transform="matrix(0.47123 -0.88357 0.88357 0.47123 221.45 28.93)"><path d="M -1.66 2.21 C -1.52 1.38 0 0.14 0.42 0 C 0 -0.14 -1.52 -1.38 -1.66 -2.21" style="fill:none"></path></g><g transform="matrix(1 0 0 1 222 34.34)"><g transform="matrix(1 0 0 -1 0 12.45)"><switch><foreignObject color="#000000" height="100%" overflow="visible" width="16.19">
 <p><math id="F18.pic1.m1" alttext="\xi_{8}" display="inline"><semantics><msub><mi>ξ</mi><mn>8</mn></msub><annotation encoding="application/x-tex">\xi_{8}</annotation></semantics></math></p></foreignObject></switch></g></g><g stroke-dasharray="3.0pt,3.0pt" stroke-dashoffset="0.0pt"><g stroke="#0000FF" color="#0000FF"><g fill="#0000FF"><path d="M -9.84 88.58 L 305.12 88.58 L 305.12 -88.58 L -9.84 -88.58 Z M -9.84 0 L 305.12 0" style="fill:none"></path></g></g></g><path d="M -0.64 0 L -9.21 0" style="fill:none"></path><g transform="matrix(1 0 0 1 -0.64 0)"><path d="M -1.66 2.21 C -1.52 1.38 0 0.14 0.42 0 C 0 -0.14 -1.52 -1.38 -1.66 -2.21" style="fill:none"></path></g><g transform="matrix(-1 0 0 -1 -9.21 0)"><path d="M -1.66 2.21 C -1.52 1.38 0 0.14 0.42 0 C 0 -0.14 -1.52 -1.38 -1.66 -2.21" style="fill:none"></path></g><g transform="matrix(1 0 0 1 -26.15 -4.91)"><g transform="matrix(1 0 0 -1 0 16.95)"><switch><foreignObject color="#000000" height="100%" overflow="visible" width="11.42">
@@ -1239,7 +1239,7 @@ Using SVG terminology, the
 <li id="I7.i13"> 
 <div id="I7.i13.p1">
 <p>The <code>longdiv</code> notation is drawn similarly to the <code>msqrt</code> element
-(figure <a href="#F11" title="Figure 11 ‣ 3.3.3 Radicals &lt;msqrt&gt;, &lt;mroot&gt; ‣ 3.3 General Layout Schemata ‣ 3 Presentation Markup ‣ MathML in HTML5 - Implementation Note">11</a>). It is independent of CSS
+(figure <a href="#F11" title="Figure 11 ‣ 3.3.3 Radicals &lt;msqrt&gt;, &lt;mroot&gt; ‣ 3.3 General Layout Schemata ‣ 3 Presentation Markup ">11</a>). It is independent of CSS
 <code>direction</code> and U+221A SQUARE ROOT is replaced with
 U+0029 RIGHT PARENTHESIS. The rule thickness is <math id="I7.i13.p1.m1" alttext="\xi_{8}" display="inline"><semantics><msub><mi>ξ</mi><mn>8</mn></msub><annotation encoding="application/x-tex">\xi_{8}</annotation></semantics></math>,
 the gap between content and overbar is <math id="I7.i13.p1.m2" alttext="3\xi_{8}" display="inline"><semantics><mrow><mn>3</mn><mo>⁢</mo><msub><mi>ξ</mi><mn>8</mn></msub></mrow><annotation encoding="application/x-tex">3\xi_{8}</annotation></semantics></math> and the extra ascender
@@ -1325,7 +1325,7 @@ unchanged within base. […]</p>
 </blockquote>
 </div>
 <div id="SS4.SSS1.p2">
-<p>As suggested in section section <a href="S2.html#SS3.SSS2" title="2.3.2 User Agent Stylesheet for MathML ‣ 2.3 CSS Styling ‣ 2 Relation with other technologies ‣ MathML in HTML5 - Implementation Note"><span>2.3.2</span></a>, the <code>displaystyle</code> and
+<p>As suggested in section section <a href="S2.html#SS3.SSS2" title="2.3.2 User Agent Stylesheet for MathML ‣ 2.3 CSS Styling ‣ 2 Relation with other technologies "><span>2.3.2</span></a>, the <code>displaystyle</code> and
 <code>scriptlevel</code> changes be achieved with the
 following style in the user agent stylesheet:</p>
 <div>
@@ -1351,7 +1351,7 @@ following style in the user agent stylesheet:</p>
 </div>
 </div>
 <div id="SS4.SSS1.p3">
-<p>The <code>msub</code> element is laid out as shown on figure <a href="#F20" title="Figure 20 ‣ 3.4.1 Subscripts and Superscripts &lt;msub&gt;, &lt;msup&gt;, &lt;msubsup&gt; ‣ 3.4 Script and Limit Schemata ‣ 3 Presentation Markup ‣ MathML in HTML5 - Implementation Note">20</a>.
+<p>The <code>msub</code> element is laid out as shown on figure <a href="#F20" title="Figure 20 ‣ 3.4.1 Subscripts and Superscripts &lt;msub&gt;, &lt;msup&gt;, &lt;msubsup&gt; ‣ 3.4 Script and Limit Schemata ‣ 3 Presentation Markup ">20</a>.
 The baseline is the baseline of the base while the baseline of the script is
 shifted down by <code>SubShift</code>, which is the minimal value honoring the
 following conditions:</p>
@@ -1395,7 +1395,7 @@ by the italic correction of the base.</p>
 <figcaption><span>Figure 20: </span>Box model for the <code>msub</code> element</figcaption>
 </figure>
 <div id="SS4.SSS1.p5">
-<p>The <code>msup</code> element is laid out as shown on figure <a href="#F21" title="Figure 21 ‣ 3.4.1 Subscripts and Superscripts &lt;msub&gt;, &lt;msup&gt;, &lt;msubsup&gt; ‣ 3.4 Script and Limit Schemata ‣ 3 Presentation Markup ‣ MathML in HTML5 - Implementation Note">21</a>.
+<p>The <code>msup</code> element is laid out as shown on figure <a href="#F21" title="Figure 21 ‣ 3.4.1 Subscripts and Superscripts &lt;msub&gt;, &lt;msup&gt;, &lt;msubsup&gt; ‣ 3.4 Script and Limit Schemata ‣ 3 Presentation Markup ">21</a>.
 The baseline is the baseline of the base while the baseline of the script is
 shifted up by <code>SuperShift</code>, which is the minimal value honoring the
 following conditions:</p>
@@ -1404,7 +1404,7 @@ following conditions:</p>
 <div id="I9.i1.p1">
 <p><code>SuperShift</code> is at least
 <code>SuperscriptShiftUpCramped</code> if the <code>msup</code> element is
-cramped (section <a href="A1.html" title="Appendix A MathML ‣ MathML in HTML5 - Implementation Note"><code>A</code></a>) or at least
+cramped (section <a href="A1.html" title="Appendix A MathML "><code>A</code></a>) or at least
 <code>SuperscriptShiftUp</code> otherwise.</p>
 </div>
 </li>
@@ -1442,7 +1442,7 @@ has <span>largeop="true"</span>).</p>
 </figure>
 <div id="SS4.SSS1.p7">
 <p>The <code>msubsup</code> element is laid out as shown on figure
-<a href="#F22" title="Figure 22 ‣ 3.4.1 Subscripts and Superscripts &lt;msub&gt;, &lt;msup&gt;, &lt;msubsup&gt; ‣ 3.4 Script and Limit Schemata ‣ 3 Presentation Markup ‣ MathML in HTML5 - Implementation Note">22</a>.
+<a href="#F22" title="Figure 22 ‣ 3.4.1 Subscripts and Superscripts &lt;msub&gt;, &lt;msup&gt;, &lt;msubsup&gt; ‣ 3.4 Script and Limit Schemata ‣ 3 Presentation Markup ">22</a>.
 The baseline is the baseline of the base while the baseline of the script is
 shifted down by <code>SubShift</code> and the superscript is shifted up by
 <code>SuperShift</code> which is initially set to the minimal values honoring the
@@ -1452,7 +1452,7 @@ following conditions:</p>
 <div id="I10.i1.p1">
 <p><code>SubShift</code> is at least
 <code>SuperscriptShiftUpCramped</code> if the <code>msup</code> element is
-cramped (section <a href="A1.html" title="Appendix A MathML ‣ MathML in HTML5 - Implementation Note"><code>A</code></a>) or at least
+cramped (section <a href="A1.html" title="Appendix A MathML "><code>A</code></a>) or at least
 <code>SuperscriptShiftUp</code> otherwise.</p>
 </div>
 </li>
@@ -1472,7 +1472,7 @@ the baseline of the superscript is at most <code>SuperscriptBaselineDropMax</cod
 <div id="I10.i4.p1">
 <p><code>SubShift</code> is at least
 <code>SuperscriptShiftUpCramped</code> if the <code>msup</code> element is
-cramped (section <a href="A1.html" title="Appendix A MathML ‣ MathML in HTML5 - Implementation Note"><code>A</code></a>) or at least
+cramped (section <a href="A1.html" title="Appendix A MathML "><code>A</code></a>) or at least
 <code>SuperscriptShiftUp</code> otherwise.</p>
 </div>
 </li>
@@ -1601,7 +1601,7 @@ subscript and superscript position, respectively. In this case, the
 the appropriate <code>accent</code> or <code>accentunder</code> value, which can not be done
 using only CSS. However, <code>displaystyle</code> changes can be achieved with the
 following style in the user agent stylesheet, as suggested in section
-<a href="S2.html#SS3.SSS2" title="2.3.2 User Agent Stylesheet for MathML ‣ 2.3 CSS Styling ‣ 2 Relation with other technologies ‣ MathML in HTML5 - Implementation Note"><span>2.3.2</span></a>:</p>
+<a href="S2.html#SS3.SSS2" title="2.3.2 User Agent Stylesheet for MathML ‣ 2.3 CSS Styling ‣ 2 Relation with other technologies "><span>2.3.2</span></a>:</p>
 <div>
 <div><a href="data:text/plain;base64,bXVuZGVyID4gOm5vdCg6Zmlyc3QtY2hpbGQpLAptb3ZlciA+IDpub3QoOmZpcnN0LWNoaWxkKSwK%0AbXVuZGVyb3ZlciA+IDpub3QoOmZpcnN0LWNoaWxkKSB7CiAgbWF0aG1sLW1hdGgtc3R5bGU6IGlu%0AbGluZTsKfQ==%0A">⬇</a></div>
 <div>
@@ -1624,13 +1624,13 @@ following style in the user agent stylesheet, as suggested in section
 <div id="SS4.SSS2.p3">
 <p>In cases where underscript and overscript are drawn as subscript and
 superscript position then the layout algorithm is the same as section
-<a href="#SS4.SSS1" title="3.4.1 Subscripts and Superscripts &lt;msub&gt;, &lt;msup&gt;, &lt;msubsup&gt; ‣ 3.4 Script and Limit Schemata ‣ 3 Presentation Markup ‣ MathML in HTML5 - Implementation Note"><span>3.4.1</span></a>. Note that in that case,
+<a href="#SS4.SSS1" title="3.4.1 Subscripts and Superscripts &lt;msub&gt;, &lt;msup&gt;, &lt;msubsup&gt; ‣ 3.4 Script and Limit Schemata ‣ 3 Presentation Markup "><span>3.4.1</span></a>. Note that in that case,
 <code>accent</code> or <code>accentunder</code> are ignored so the scriptlevel increment is
 always performed.</p>
 </div>
 <div id="SS4.SSS2.p4">
 <p>The general layout of <code>munderover</code> is shown on figure
-<a href="#F23" title="Figure 23 ‣ 3.4.2 Underscripts and Overscripts &lt;munder&gt;, &lt;mover&gt;, &lt;munderover&gt; ‣ 3.4 Script and Limit Schemata ‣ 3 Presentation Markup ‣ MathML in HTML5 - Implementation Note">23</a>.
+<a href="#F23" title="Figure 23 ‣ 3.4.2 Underscripts and Overscripts &lt;munder&gt;, &lt;mover&gt;, &lt;munderover&gt; ‣ 3.4 Script and Limit Schemata ‣ 3 Presentation Markup ">23</a>.
 The overscript is placed above the base, the underscript below the base
 and by default are aligned with respect to their geometrical center.
 If the overscript is an accent and has a <code>TopAccentAttachment</code>
@@ -1773,7 +1773,7 @@ but leaves both attributes unchanged within base. […]</p>
 <div id="SS4.SSS3.p2">
 <p>The <code>displaystyle</code> and <code>scriptlevel</code> changes be achieved with the
 following style in the user agent stylesheet as suggested in section
-<a href="S2.html#SS3.SSS2" title="2.3.2 User Agent Stylesheet for MathML ‣ 2.3 CSS Styling ‣ 2 Relation with other technologies ‣ MathML in HTML5 - Implementation Note"><span>2.3.2</span></a>:</p>
+<a href="S2.html#SS3.SSS2" title="2.3.2 User Agent Stylesheet for MathML ‣ 2.3 CSS Styling ‣ 2 Relation with other technologies "><span>2.3.2</span></a>:</p>
 <div>
 <div><a href="data:text/plain;base64,bW11bHRpc2NyaXB0cyA+IDpub3QoOmZpcnN0LWNoaWxkKSB7CiAgbWF0aG1sLXNjcmlwdC1sZXZl%0AbDogaW5jcmVtZW50IDE7CiAgbWF0aG1sLW1hdGgtc3R5bGU6IGlubGluZTsKfQ==%0A">⬇</a></div>
 <div>
@@ -1793,9 +1793,9 @@ following style in the user agent stylesheet as suggested in section
 <div id="SS4.SSS3.p3">
 <p>Any layout for <code>mmultiscripts</code> is acceptable as long as it follows
 the condition of the MathML 3 specification <cite>[<a href="bib.html#bibx11" title="">MathML3</a>]</cite> and is consistent
-with section <a href="#SS4.SSS1" title="3.4.1 Subscripts and Superscripts &lt;msub&gt;, &lt;msup&gt;, &lt;msubsup&gt; ‣ 3.4 Script and Limit Schemata ‣ 3 Presentation Markup ‣ MathML in HTML5 - Implementation Note"><span>3.4.1</span></a> for <code>mmultiscripts</code>
+with section <a href="#SS4.SSS1" title="3.4.1 Subscripts and Superscripts &lt;msub&gt;, &lt;msup&gt;, &lt;msubsup&gt; ‣ 3.4 Script and Limit Schemata ‣ 3 Presentation Markup "><span>3.4.1</span></a> for <code>mmultiscripts</code>
 contructions that are equivalent to <code>msubsup</code>. Here is a possible algorithm
-that is represented on figure <a href="#F24" title="Figure 24 ‣ 3.4.3 Prescripts and Tensor Indices &lt;mmultiscripts&gt; ‣ 3.4 Script and Limit Schemata ‣ 3 Presentation Markup ‣ MathML in HTML5 - Implementation Note">24</a>.</p>
+that is represented on figure <a href="#F24" title="Figure 24 ‣ 3.4.3 Prescripts and Tensor Indices &lt;mmultiscripts&gt; ‣ 3.4 Script and Limit Schemata ‣ 3 Presentation Markup ">24</a>.</p>
 <ol id="I12">
 <li id="I12.i1"> 
 <div id="I12.i1.p1">
@@ -1813,7 +1813,7 @@ the maximum of the superscript shift for all superscripts.</p>
 <p>For the horizontal layout of postscripts, use the trailing edge of the
 base or of the previous pair as the leading edge of the current pair.
 For each pair, apply the same italic correction described for
-<code>msubsup</code> in section <a href="#SS4.SSS1" title="3.4.1 Subscripts and Superscripts &lt;msub&gt;, &lt;msup&gt;, &lt;msubsup&gt; ‣ 3.4 Script and Limit Schemata ‣ 3 Presentation Markup ‣ MathML in HTML5 - Implementation Note"><span>3.4.1</span></a>.
+<code>msubsup</code> in section <a href="#SS4.SSS1" title="3.4.1 Subscripts and Superscripts &lt;msub&gt;, &lt;msup&gt;, &lt;msubsup&gt; ‣ 3.4 Script and Limit Schemata ‣ 3 Presentation Markup "><span>3.4.1</span></a>.
 Apply the same italic corrections for all these postscripts.</p>
 </div>
 </li>
@@ -1850,7 +1850,7 @@ compatible with HTML tables. First the <code>mtable</code> element must be treat
 a HTML table and by <cite>[<a href="bib.html#bibx11" title="">MathML3</a>]</cite>, <code>mtable</code> must accept a
 <code>displaystyle</code> attribute with default value <code>false</code>. To implement that,
 one may rely on the following rules for the user agent stylesheet as
-suggested in section <a href="S2.html#SS3.SSS2" title="2.3.2 User Agent Stylesheet for MathML ‣ 2.3 CSS Styling ‣ 2 Relation with other technologies ‣ MathML in HTML5 - Implementation Note"><span>2.3.2</span></a>:</p>
+suggested in section <a href="S2.html#SS3.SSS2" title="2.3.2 User Agent Stylesheet for MathML ‣ 2.3 CSS Styling ‣ 2 Relation with other technologies "><span>2.3.2</span></a>:</p>
 <div>
 <div><a href="data:text/plain;base64,ICBtdGFibGUgewogICAgZGlzcGxheTogaW5saW5lLXRhYmxlOwogICAgbWF0aG1sLW1hdGgtc3R5%0AbGU6IGlubGluZTsKICB9CiAgbXRhYmxlW2Rpc3BsYXlzdHlsZT0idHJ1ZSJdIHsKICAgIG1hdGht%0AbC1tYXRoLXN0eWxlOiBkaXNwbGF5OwogIH0=%0A">⬇</a></div>
 <div>
@@ -1920,7 +1920,7 @@ User agents may also support non-default <code>align</code> attribute values.</p
 and the label of <code>mlabeledtr</code> element must be hidden by default.
 The default value of <code>rowalign</code> must be <code>baseline</code>.
 One may rely on the following rules for the user agent stylesheet
-as suggested in section <a href="S2.html#SS3.SSS2" title="2.3.2 User Agent Stylesheet for MathML ‣ 2.3 CSS Styling ‣ 2 Relation with other technologies ‣ MathML in HTML5 - Implementation Note"><span>2.3.2</span></a>:</p>
+as suggested in section <a href="S2.html#SS3.SSS2" title="2.3.2 User Agent Stylesheet for MathML ‣ 2.3 CSS Styling ‣ 2 Relation with other technologies "><span>2.3.2</span></a>:</p>
 </div>
 <div id="SS5.p6">
 <div>
@@ -2083,7 +2083,7 @@ or how to change the default behavior.</p>
 </div>
 <div id="SS7.p4">
 <p>Given the similarity with the <code>semantics</code> element
-described in section <a href="#sematicsandpresntation" title="3.8 Semantics and Presentation ‣ 3 Presentation Markup ‣ MathML in HTML5 - Implementation Note"><span>3.8</span></a>, it is
+described in section <a href="#sematicsandpresntation" title="3.8 Semantics and Presentation ‣ 3 Presentation Markup "><span>3.8</span></a>, it is
 suggested to share the implementation of <code>semantics</code> and <code>maction</code>.</p>
 </div>
 </section>
@@ -2167,7 +2167,7 @@ indicating invalid markup.</p>
 </div>
 <div id="SS8.p4">
 <p>Given the similarity with the <code>maction</code> element
-described in section <a href="#enlivening" title="3.7 Enlivening Expressions ‣ 3 Presentation Markup ‣ MathML in HTML5 - Implementation Note"><span>3.7</span></a>, it is
+described in section <a href="#enlivening" title="3.7 Enlivening Expressions ‣ 3 Presentation Markup "><span>3.7</span></a>, it is
 suggested to share the implementation of <code>semantics</code> and <code>maction</code>.</p>
 </div>
 </section>

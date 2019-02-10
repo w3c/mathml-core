@@ -21,7 +21,7 @@ using additional rules from the TeXBook’s Appendix G <cite>[<a href="bib.html#
 the Open Font Format version 3 <cite>[<a href="bib.html#bibx13" title="">OpenFontFormat3</a>]</cite>.
 The priority is to be compatible with existing technologies of web
 rendering engines <cite>[<a href="bib.html#bibx9" title="">HTML5</a>]</cite> by relying as much as possible on CSS, text &amp;
-table layout and box models. As a S1consequence, parts of presentation MathML
+table layout and box models. As a consequence, parts of presentation MathML
 that do not fit well in this framework or are rarely used in practice
 have been ommited ; details on these and suggestions for standardization bodies
 are provided in the appendix.</p>
