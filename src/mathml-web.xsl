@@ -70,7 +70,7 @@
 
  <!-- toc -->
  <xsl:template match="minh" mode="toc">
-  <xsl:apply-templates mode="toc" select="doc(concat('MathMLinHTML5-xml/',@file,'.xml'))/html/body/section"/>
+  <xsl:apply-templates mode="toc" select="doc(concat(@file,'.xml'))/html/body/section"/>
  </xsl:template>
 
  <xsl:template mode="toc" match="section">
@@ -95,7 +95,7 @@
 
 
  <xsl:template match="minh">
-  <xsl:apply-templates select="doc(concat('MathMLinHTML5-xml/',@file,'.xml'))/html/body/section"/>
+  <xsl:apply-templates select="doc(concat(@file,'.xml'))/html/body/section"/>
  </xsl:template>
 
 
@@ -106,7 +106,7 @@
    <xsl:copy-of select="ancestor::section[@id][1]/@id"/>
    <pre class="example">
    <xsl:copy-of select="@revisionflag"/>
-   <xsl:analyze-string select="replace(unparsed-text(concat('./',@file)),'(\s+$|^\s+)','')" regex="(#.*)">
+   <xsl:analyze-string select="replace(unparsed-text(concat('../',@file)),'(\s+$|^\s+)','')" regex="(#.*)">
     <xsl:matching-substring>
      <comment><xsl:value-of select="."/></comment>
     </xsl:matching-substring>
