@@ -113,7 +113,15 @@
 
 <!-- main mode -->
 
-<xsl:template match="h1|h2|h3">
+
+ <xsl:template match="*">
+  <xsl:copy>
+   <xsl:copy-of select="@*"/>
+   <xsl:apply-templates/>
+  </xsl:copy>
+ </xsl:template>
+
+ <xsl:template match="h1|h2|h3">
  <xsl:copy>
   <xsl:copy-of select="@*"/>
       <span class="secnum">
@@ -125,14 +133,14 @@
  </xsl:copy>
 </xsl:template>
 
- <xsl:template match="*">
-  <xsl:copy>
-   <xsl:copy-of select="@*"/>
-   <xsl:apply-templates/>
-  </xsl:copy>
- </xsl:template>
-
-
+<!-- single file output -->
+<xsl:template match="a">
+ <xsl:copy>
+  <xsl:copy-of select="@*"/>
+  <xsl:attribute name="href" select="replace(@href,'^[a-zA-Z0-9.]+#','#')"/>
+  <xsl:apply-templates/>
+ </xsl:copy>
+</xsl:template>
 
 
 
