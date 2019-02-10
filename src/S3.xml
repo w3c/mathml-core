@@ -8,15 +8,14 @@
 </head>
 <body>
 <section id="presentationmarkup">
-<h1>
-<span>3 </span>Presentation Markup</h1>
+<h1>Presentation Markup</h1>
 <div></div>
 
 <section id="presmintro">
-<h2><span>3.1 </span>Introduction</h2>
+<h2>Introduction</h2>
 
 <section id="SS1.SSS1">
-<h3><span>3.1.1 </span>Box Model</h3>
+<h3>Box Model</h3>
 
 <div id="SS1.SSS1.p1">
 <p>User agents must also follow the rules described in section 4.7.14
@@ -180,8 +179,7 @@ dimensions to negative values.</p>
 </div>
 </section>
 <section id="SS1.SSS2">
-<h3>
-<span>3.1.2 </span>Layout Steps</h3>
+<h3>Layout Steps</h3>
 
 <div id="SS1.SSS2.p1">
 <p>For compatibility with HTML5 rendering, the MathML layout is performed in two
@@ -242,10 +240,10 @@ for the layout of <code>mtable</code> elements and of the containers of the
 </section>
 </section>
 <section id="tokenelements">
-<h2><span>3.2 </span>Token Elements</h2>
+<h2>Token Elements</h2>
 
 <section id="SS2.SSS1">
-<h3><span>3.2.1 </span>Using images to represent symbols <span>&lt;mglyph/&gt;</span></h3>
+<h3>Using images to represent symbols <span>&lt;mglyph/&gt;</span></h3>
 
 <div id="SS2.SSS1.p1">
 <p>The MathML specification describes <code>mglyph</code> as follows <cite>[<a href="bib.html#bibx11" title="">MathML3</a>]</cite>:</p>
@@ -260,8 +258,7 @@ element. User agents may just ignore it.</p>
 </div>
 </section>
 <section id="SS2.SSS2">
-<h3>
-<span>3.2.2 </span>Identifier <span>&lt;mi&gt;</span>
+<h3>Identifier <span>&lt;mi&gt;</span>
 </h3>
 
 <div id="SS2.SSS2.p1">
@@ -280,8 +277,7 @@ element must behave as if <code>mathvariant</code> was actually set to <code>ita
 </div>
 </section>
 <section id="SS2.SSS3">
-<h3>
-<span>3.2.3 </span>Number <span>&lt;mn&gt;</span>
+<h3>Number <span>&lt;mn&gt;</span>
 </h3>
 
 <div id="SS2.SSS3.p1">
@@ -297,8 +293,7 @@ be rendered as a numeric literal.</p>
 </div>
 </section>
 <section id="SS2.SSS4">
-<h3>
-<span>3.2.4 </span>Operator, Fence, Separator or Accent <span>&lt;mo&gt;</span>
+<h3>Operator, Fence, Separator or Accent <span>&lt;mo&gt;</span>
 </h3>
 
 <div id="SS2.SSS4.p1">
@@ -389,8 +384,7 @@ vertically &amp; horizontally.</p>
 </div>
 </section>
 <section id="SS2.SSS5">
-<h3>
-<span>3.2.5 </span>Text <span>&lt;mtext&gt;</span>
+<h3>Text <span>&lt;mtext&gt;</span>
 </h3>
 
 <div id="SS2.SSS5.p1">
@@ -449,8 +443,7 @@ top accent attachment are assigned the fallback values indicated in section
 </div>
 </section>
 <section id="SS2.SSS6">
-<h3>
-<span>3.2.6 </span>Space <span>&lt;mspace/&gt;</span>
+<h3>Space <span>&lt;mspace/&gt;</span>
 </h3>
 
 <div id="SS2.SSS6.p1">
@@ -475,8 +468,7 @@ The <code>linebreak</code> attribute on the <span>&lt;mspace/&gt;</span> element
 </figure>
 </section>
 <section id="SS2.SSS7">
-<h3>
-<span>3.2.7 </span>String Literal <span>&lt;ms&gt;</span>
+<h3>String Literal <span>&lt;ms&gt;</span>
 </h3>
 
 <div id="SS2.SSS7.p1">
@@ -538,12 +530,10 @@ with the following style in the user agent stylesheet as suggested in section
 </section>
 </section>
 <section id="generallayout">
-<h2>
-<span>3.3 </span>General Layout Schemata</h2>
+<h2>General Layout Schemata</h2>
 
 <section id="SS3.SSS1">
-<h3>
-<span>3.3.1 </span>Horizontally Group Sub-Expressions <span>&lt;mrow&gt;</span>
+<h3>Horizontally Group Sub-Expressions <span>&lt;mrow&gt;</span>
 </h3>
 
 <div id="SS3.SSS1.p1">
@@ -640,8 +630,7 @@ corresponding values of the <code>mrow</code> box.</p>
 </figure>
 </section>
 <section id="SS3.SSS2">
-<h3>
-<span>3.3.2 </span>Fractions <span>&lt;mfrac&gt;</span>
+<h3>Fractions <span>&lt;mfrac&gt;</span>
 </h3>
 
 <div id="SS3.SSS2.p1">
@@ -763,8 +752,7 @@ leading and trailing spaces must be added around the fraction.</p>
 </div>
 </section>
 <section id="SS3.SSS3">
-<h3>
-<span>3.3.3 </span>Radicals <span>&lt;msqrt&gt;</span>, <span>&lt;mroot&gt;</span>
+<h3>Radicals <span>&lt;msqrt&gt;</span>, <span>&lt;mroot&gt;</span>
 </h3>
 
 <div id="SS3.SSS3.p1">
@@ -878,8 +866,7 @@ the metrics for the whole box of the <code>mroot</code> element.</p>
 </figure>
 </section>
 <section id="SS3.SSS4">
-<h3>
-<span>3.3.4 </span>Style Change <span>&lt;mstyle&gt;</span>
+<h3>Style Change <span>&lt;mstyle&gt;</span>
 </h3>
 
 <div id="SS3.SSS4.p1">
@@ -911,8 +898,7 @@ attributes not defined in this document must be ignored.</p>
 </div>
 </section>
 <section id="SS3.SSS5">
-<h3>
-<span>3.3.5 </span>Error Message <span>&lt;merror&gt;</span>
+<h3>Error Message <span>&lt;merror&gt;</span>
 </h3>
 
 <div id="SS3.SSS5.p1">
@@ -953,8 +939,7 @@ with the rule:</p>
 </div>
 </section>
 <section id="SS3.SSS6">
-<h3>
-<span>3.3.6 </span>Adjust Space Around Content <span>&lt;mpadded&gt;</span>
+<h3>Adjust Space Around Content <span>&lt;mpadded&gt;</span>
 </h3>
 
 <div id="SS3.SSS6.p1">
@@ -1004,8 +989,7 @@ metrics.
 </figure>
 </section>
 <section id="SS3.SSS7">
-<h3>
-<span>3.3.7 </span>Making Sub-Expressions Invisible <span>&lt;mphantom&gt;</span>
+<h3>Making Sub-Expressions Invisible <span>&lt;mphantom&gt;</span>
 </h3>
 
 <div id="SS3.SSS7.p1">
@@ -1042,8 +1026,7 @@ with the rule:</p>
 </div>
 </section>
 <section id="SS3.SSS8">
-<h3>
-<span>3.3.8 </span>Expression Inside Pair of Fences <span>&lt;mfenced&gt;</span>
+<h3>Expression Inside Pair of Fences <span>&lt;mfenced&gt;</span>
 </h3>
 
 <div id="SS3.SSS8.p1">
@@ -1073,8 +1056,7 @@ constructions with <code>mo</code> and <code>mrow</code> elements.</p>
 </div>
 </section>
 <section id="SS3.SSS9">
-<h3>
-<span>3.3.9 </span>Enclose Expression Inside Notation <span>&lt;menclose&gt;</span>
+<h3>Enclose Expression Inside Notation <span>&lt;menclose&gt;</span>
 </h3>
 
 <div id="SS3.SSS9.p1">
@@ -1297,11 +1279,10 @@ instead of relying on the <code>radical</code> notation of the <code>menclose</c
 </section>
 </section>
 <section id="scriptsandlimits">
-<h2><span>3.4 </span>Script and Limit Schemata</h2>
+<h2>Script and Limit Schemata</h2>
 
 <section id="SS4.SSS1">
-<h3>
-<span>3.4.1 </span>Subscripts and Superscripts <span>&lt;msub&gt;</span>, <span>&lt;msup&gt;</span>,
+<h3>Subscripts and Superscripts <span>&lt;msub&gt;</span>, <span>&lt;msup&gt;</span>,
 <span>&lt;msubsup&gt;</span>
 </h3>
 
@@ -1550,8 +1531,7 @@ to satisfy when determining <code>SubShift</code> and <code>SuperShift</code> re
 </div>
 </section>
 <section id="SS4.SSS2">
-<h3>
-<span>3.4.2 </span>Underscripts and Overscripts <span>&lt;munder&gt;</span>, <span>&lt;mover&gt;</span>,
+<h3>Underscripts and Overscripts <span>&lt;munder&gt;</span>, <span>&lt;mover&gt;</span>,
 <span>&lt;munderover&gt;</span>
 </h3>
 
@@ -1754,8 +1734,7 @@ Note that these values are independent of CSS <code>direction</code>.
 </div>
 </section>
 <section id="SS4.SSS3">
-<h3>
-<span>3.4.3 </span>Prescripts and Tensor Indices <span>&lt;mmultiscripts&gt;</span>
+<h3>Prescripts and Tensor Indices <span>&lt;mmultiscripts&gt;</span>
 </h3>
 
 <div id="SS4.SSS3.p1">
@@ -1853,7 +1832,7 @@ any italic correction for prescripts.</p>
 </section>
 </section>
 <section id="tables">
-<h2><span>3.5 </span>Tabular Math</h2>
+<h2>Tabular Math</h2>
 
 <div id="SS5.p1">
 <p>The MathML specification describes tabular math as follows <cite>[<a href="bib.html#bibx11" title="">MathML3</a>]</cite>:</p>
@@ -2010,7 +1989,7 @@ document.</p>
 </div>
 </section>
 <section id="elementarymath">
-<h2><span>3.6 </span>Elementary Math</h2>
+<h2>Elementary Math</h2>
 
 <div id="SS6.p1">
 <p>Elementary Math was introduced in version 3 of the MathML specification
@@ -2050,7 +2029,7 @@ with a stack of the intermediate computations
 </div>
 </section>
 <section id="enlivening">
-<h2><span>3.7 </span>Enlivening Expressions</h2>
+<h2>Enlivening Expressions</h2>
 
 <div id="SS7.p1">
 <p>The MathML specification describes <code>maction</code> as follows <cite>[<a href="bib.html#bibx11" title="">MathML3</a>]</cite>:</p>
@@ -2109,7 +2088,7 @@ suggested to share the implementation of <code>semantics</code> and <code>mactio
 </div>
 </section>
 <section id="sematicsandpresntation">
-<h2><span>3.8 </span>Semantics and Presentation</h2>
+<h2>Semantics and Presentation</h2>
 
 <div id="SS8.p1">
 <p>The MathML specification describes <code>semantics</code> as follows <cite>[<a href="bib.html#bibx11" title="">MathML3</a>]</cite>:</p>

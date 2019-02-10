@@ -7,16 +7,14 @@
 </head>
 <body>
 <section id="othertechnologies">
-<h1>
-<span>2 </span>Relation with other technologies</h1>
+<h1>Relation with other technologies</h1>
 <div></div>
 
 <section id="html5tree">
-<h2><span>2.1 </span>HTML5 Tree</h2>
+<h2>HTML5 Tree</h2>
 
 <section id="SS1.SSS1">
-<h3>
-<span>2.1.1 </span>DOM, HTML, SVG and Javascript</h3>
+<h3>DOM, HTML, SVG and Javascript</h3>
 
 <div id="SS1.SSS1.p1">
 <p>User agents must use a HTML5 <cite>[<a href="bib.html#bibx9" title="">HTML5</a>]</cite> parser to build a DOM tree
@@ -70,8 +68,7 @@ proposed in section <a href="S3.html#SS8" title="3.8 Semantics and Presentation 
 </div>
 </section>
 <section id="SS1.SSS2">
-<h3>
-<span>2.1.2 </span>MathML</h3>
+<h3>MathML</h3>
 
 <div id="SS1.SSS2.p1">
 <p>All MathML elements accept the <code>id</code>, <code>class</code> and <code>style</code> attributes
@@ -131,10 +128,10 @@ proposed in the non-normative Appendix C of <cite>[<a href="bib.html#bibx11" tit
 </section>
 </section>
 <section id="textandmath">
-<h2><span>2.2 </span>Text and Math layout</h2>
+<h2>Text and Math layout</h2>
 
 <section id="SS2.SSS1">
-<h3><span>2.2.1 </span>Open Font Format</h3>
+<h3>Open Font Format</h3>
 
 <div id="SS2.SSS1.p1">
 <p>Because math fonts generally contain very tall glyphs such as big integrals,
@@ -194,8 +191,7 @@ More information are provided in see section <a href="S3.html#SS2.SSS4" title="3
 </div>
 </section>
 <section id="SS2.SSS2">
-<h3>
-<span>2.2.2 </span>LaTeX</h3>
+<h3>LaTeX</h3>
 
 <div id="SS2.SSS2.p1">
 <p>Mathematical rendering rules in this document are implicitly based on
@@ -256,12 +252,10 @@ space around embellished operators.</p>
 </section>
 </section>
 <section id="cssstyling">
-<h2>
-<span>2.3 </span>CSS Styling</h2>
+<h2>CSS Styling</h2>
 
 <section id="SS3.SSS1">
-<h3>
-<span>2.3.1 </span>Properties</h3>
+<h3>Properties</h3>
 
 <div id="SS3.SSS1.p1">
 <p>User agents must support the CSS language <cite>[<a href="bib.html#bibx1" title="">CSS2</a>]</cite> and must take special
@@ -655,8 +649,7 @@ in scriptlevel as specified by equation <a href="#E1" title="(1) ‣ 2.3.1 Prope
 </figure>
 </section>
 <section id="SS3.SSS2">
-<h3>
-<span>2.3.2 </span>User Agent Stylesheet for MathML</h3>
+<h3>User Agent Stylesheet for MathML</h3>
 
 <div id="SS3.SSS2.p1">
 <p>Because mathematical formulas are generally written with special fonts, the

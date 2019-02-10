@@ -1,10 +1,33 @@
 <xsl:stylesheet version="3.0"
 		xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
 		xmlns:xs="http://www.w3.org/2001/XMLSchema"
-		exclude-result-prefixes="xs"
+		xmlns:f="data:,f"
+		exclude-result-prefixes="xs f"
 		>
 
-<xsl:output method="html" version="5"/>
+ <xsl:output method="html" version="5"/>
+
+
+ <xsl:template match="/">
+  <xsl:variable name="p1">
+  <xsl:apply-templates mode="include"/>
+  </xsl:variable>
+  <xsl:apply-templates select="$p1/node()"/>
+ </xsl:template>
+
+ 
+ 
+ <xsl:template mode="include" match="include">
+  <xsl:copy-of select="doc(concat(@file,'.xml'))/html/body/section"/>
+ </xsl:template>
+
+ <xsl:template mode="include" match="*">
+  <xsl:copy>
+   <xsl:copy-of select="@*"/>
+   <xsl:apply-templates mode="include"/>
+  </xsl:copy>
+ </xsl:template>
+
 
 <xsl:template  match="spec">
  <html lang="en">
@@ -52,13 +75,13 @@
 <nav id="toc">
  <h2 id="tochead">Table of Contents</h2>
  <ol class="toc">
- <xsl:apply-templates mode="toc" select="minh|section"/>
+ <xsl:apply-templates mode="toc" select="div/section"/>
  </ol>
 </nav>
 
 <div class="body">
 
- <xsl:apply-templates select="minh|section"/>
+ <xsl:apply-templates select="div/section"/>
 
 </div>
 
@@ -69,13 +92,17 @@
 
 
  <!-- toc -->
- <xsl:template match="minh" mode="toc">
-  <xsl:apply-templates mode="toc" select="doc(concat(@file,'.xml'))/html/body/section"/>
- </xsl:template>
 
  <xsl:template mode="toc" match="section">
   <li>
-   <a href="#{@id}"><xsl:apply-templates select="(h1|h2|h3)[1]/node()"/></a>
+   <a href="#{@id}">
+    <span>
+     <xsl:if test="../@id='appendix'">Appendix </xsl:if>
+     <xsl:value-of select="f:number(.)"/>
+    </span>
+    <xsl:text> </xsl:text>
+    <xsl:apply-templates select="(h1|h2|h3)[1]/node()"/>
+   </a>
    <xsl:if test="section">
     <ol class="toc">
    <xsl:apply-templates mode="toc" select="section"/>
@@ -86,6 +113,18 @@
 
 <!-- main mode -->
 
+<xsl:template match="h1|h2|h3">
+ <xsl:copy>
+  <xsl:copy-of select="@*"/>
+      <span class="secnum">
+       <xsl:if test="../../@id='appendix'">Appendix </xsl:if>
+       <xsl:value-of select="f:number(parent::section)"/>
+      </span>
+      <xsl:text> </xsl:text>
+    <xsl:apply-templates/>
+ </xsl:copy>
+</xsl:template>
+
  <xsl:template match="*">
   <xsl:copy>
    <xsl:copy-of select="@*"/>
@@ -94,9 +133,7 @@
  </xsl:template>
 
 
- <xsl:template match="minh">
-  <xsl:apply-templates select="doc(concat(@file,'.xml'))/html/body/section"/>
- </xsl:template>
+
 
 
 <!-- hyperlinked rnc listings -->
@@ -175,5 +212,21 @@ select="substring-before(.,':')"/>:</a>
 <xsl:template match="token[starts-with(.,'xsd:')]" priority="6">
   <span style="font-weight:bold;"><xsl:value-of select="."/></span>
 </xsl:template>
+
+
+
+<xsl:function name="f:number">
+ <xsl:param name="e" as="element()"/>
+ <xsl:for-each select="$e">
+  <xsl:choose>
+   <xsl:when  test="ancestor::div[last()]/@id='appendix'">
+    <xsl:number level="multiple" format="A.1"/>
+   </xsl:when>
+   <xsl:otherwise>
+    <xsl:number level="multiple"/>
+   </xsl:otherwise>
+  </xsl:choose>
+ </xsl:for-each>
+</xsl:function>
 
 </xsl:stylesheet>

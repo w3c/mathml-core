@@ -44,7 +44,7 @@
             the Open Font Format version 3 <cite>[<a href="bib.html#bibx13" title="">OpenFontFormat3</a>]</cite>.
             The priority is to be compatible with existing technologies of web
             rendering engines <cite>[<a href="bib.html#bibx9" title="">HTML5</a>]</cite> by relying as much as possible on CSS, text &amp;
-            table layout and box models. As a consequence, parts of presentation MathML
+            table layout and box models. As a S1consequence, parts of presentation MathML
             that do not fit well in this framework or are rarely used in practice
             have been ommited ; details on these and suggestions for standardization bodies
             are provided in the appendix.
@@ -60,137 +60,102 @@
       <nav id="toc">
          <h2 id="tochead">Table of Contents</h2>
          <ol class="toc">
-            <li><a href="#introduction">
-                  <span>1 </span>Introduction</a><ol class="toc">
-                  <li><a href="#rationale"><span>1.1 </span>Rationale for this Technical Document</a></li>
-                  <li><a href="#rem1"><span>1.2 </span>Remarks</a></li>
-                  <li><a href="#terminology">
-                        <span>1.3 </span>Terminology</a></li>
+            <li><a href="#introduction"><span>1</span> Introduction</a><ol class="toc">
+                  <li><a href="#rationale"><span>1.1</span> Rationale for this Technical Document</a></li>
+                  <li><a href="#rem1"><span>1.2</span> Remarks</a></li>
+                  <li><a href="#terminology"><span>1.3</span> Terminology</a></li>
                </ol>
             </li>
-            <li><a href="#othertechnologies">
-                  <span>2 </span>Relation with other technologies</a><ol class="toc">
-                  <li><a href="#html5tree"><span>2.1 </span>HTML5 Tree</a><ol class="toc">
-                        <li><a href="#SS1.SSS1">
-                              <span>2.1.1 </span>DOM, HTML, SVG and Javascript</a></li>
-                        <li><a href="#SS1.SSS2">
-                              <span>2.1.2 </span>MathML</a></li>
+            <li><a href="#othertechnologies"><span>2</span> Relation with other technologies</a><ol class="toc">
+                  <li><a href="#html5tree"><span>2.1</span> HTML5 Tree</a><ol class="toc">
+                        <li><a href="#SS1.SSS1"><span>2.1.1</span> DOM, HTML, SVG and Javascript</a></li>
+                        <li><a href="#SS1.SSS2"><span>2.1.2</span> MathML</a></li>
                      </ol>
                   </li>
-                  <li><a href="#textandmath"><span>2.2 </span>Text and Math layout</a><ol class="toc">
-                        <li><a href="#SS2.SSS1"><span>2.2.1 </span>Open Font Format</a></li>
-                        <li><a href="#SS2.SSS2">
-                              <span>2.2.2 </span>LaTeX</a></li>
+                  <li><a href="#textandmath"><span>2.2</span> Text and Math layout</a><ol class="toc">
+                        <li><a href="#SS2.SSS1"><span>2.2.1</span> Open Font Format</a></li>
+                        <li><a href="#SS2.SSS2"><span>2.2.2</span> LaTeX</a></li>
                      </ol>
                   </li>
-                  <li><a href="#cssstyling">
-                        <span>2.3 </span>CSS Styling</a><ol class="toc">
-                        <li><a href="#SS3.SSS1">
-                              <span>2.3.1 </span>Properties</a></li>
-                        <li><a href="#SS3.SSS2">
-                              <span>2.3.2 </span>User Agent Stylesheet for MathML</a></li>
+                  <li><a href="#cssstyling"><span>2.3</span> CSS Styling</a><ol class="toc">
+                        <li><a href="#SS3.SSS1"><span>2.3.1</span> Properties</a></li>
+                        <li><a href="#SS3.SSS2"><span>2.3.2</span> User Agent Stylesheet for MathML</a></li>
                      </ol>
                   </li>
                </ol>
             </li>
-            <li><a href="#presentationmarkup">
-                  <span>3 </span>Presentation Markup</a><ol class="toc">
-                  <li><a href="#presmintro"><span>3.1 </span>Introduction</a><ol class="toc">
-                        <li><a href="#SS1.SSS1"><span>3.1.1 </span>Box Model</a></li>
-                        <li><a href="#SS1.SSS2">
-                              <span>3.1.2 </span>Layout Steps</a></li>
+            <li><a href="#presentationmarkup"><span>3</span> Presentation Markup</a><ol class="toc">
+                  <li><a href="#presmintro"><span>3.1</span> Introduction</a><ol class="toc">
+                        <li><a href="#SS1.SSS1"><span>3.1.1</span> Box Model</a></li>
+                        <li><a href="#SS1.SSS2"><span>3.1.2</span> Layout Steps</a></li>
                      </ol>
                   </li>
-                  <li><a href="#tokenelements"><span>3.2 </span>Token Elements</a><ol class="toc">
-                        <li><a href="#SS2.SSS1"><span>3.2.1 </span>Using images to represent symbols <span>&lt;mglyph/&gt;</span></a></li>
-                        <li><a href="#SS2.SSS2">
-                              <span>3.2.2 </span>Identifier <span>&lt;mi&gt;</span>
+                  <li><a href="#tokenelements"><span>3.2</span> Token Elements</a><ol class="toc">
+                        <li><a href="#SS2.SSS1"><span>3.2.1</span> Using images to represent symbols <span>&lt;mglyph/&gt;</span></a></li>
+                        <li><a href="#SS2.SSS2"><span>3.2.2</span> Identifier <span>&lt;mi&gt;</span>
                               </a></li>
-                        <li><a href="#SS2.SSS3">
-                              <span>3.2.3 </span>Number <span>&lt;mn&gt;</span>
+                        <li><a href="#SS2.SSS3"><span>3.2.3</span> Number <span>&lt;mn&gt;</span>
                               </a></li>
-                        <li><a href="#SS2.SSS4">
-                              <span>3.2.4 </span>Operator, Fence, Separator or Accent <span>&lt;mo&gt;</span>
+                        <li><a href="#SS2.SSS4"><span>3.2.4</span> Operator, Fence, Separator or Accent <span>&lt;mo&gt;</span>
                               </a></li>
-                        <li><a href="#SS2.SSS5">
-                              <span>3.2.5 </span>Text <span>&lt;mtext&gt;</span>
+                        <li><a href="#SS2.SSS5"><span>3.2.5</span> Text <span>&lt;mtext&gt;</span>
                               </a></li>
-                        <li><a href="#SS2.SSS6">
-                              <span>3.2.6 </span>Space <span>&lt;mspace/&gt;</span>
+                        <li><a href="#SS2.SSS6"><span>3.2.6</span> Space <span>&lt;mspace/&gt;</span>
                               </a></li>
-                        <li><a href="#SS2.SSS7">
-                              <span>3.2.7 </span>String Literal <span>&lt;ms&gt;</span>
+                        <li><a href="#SS2.SSS7"><span>3.2.7</span> String Literal <span>&lt;ms&gt;</span>
                               </a></li>
                      </ol>
                   </li>
-                  <li><a href="#generallayout">
-                        <span>3.3 </span>General Layout Schemata</a><ol class="toc">
-                        <li><a href="#SS3.SSS1">
-                              <span>3.3.1 </span>Horizontally Group Sub-Expressions <span>&lt;mrow&gt;</span>
+                  <li><a href="#generallayout"><span>3.3</span> General Layout Schemata</a><ol class="toc">
+                        <li><a href="#SS3.SSS1"><span>3.3.1</span> Horizontally Group Sub-Expressions <span>&lt;mrow&gt;</span>
                               </a></li>
-                        <li><a href="#SS3.SSS2">
-                              <span>3.3.2 </span>Fractions <span>&lt;mfrac&gt;</span>
+                        <li><a href="#SS3.SSS2"><span>3.3.2</span> Fractions <span>&lt;mfrac&gt;</span>
                               </a></li>
-                        <li><a href="#SS3.SSS3">
-                              <span>3.3.3 </span>Radicals <span>&lt;msqrt&gt;</span>, <span>&lt;mroot&gt;</span>
+                        <li><a href="#SS3.SSS3"><span>3.3.3</span> Radicals <span>&lt;msqrt&gt;</span>, <span>&lt;mroot&gt;</span>
                               </a></li>
-                        <li><a href="#SS3.SSS4">
-                              <span>3.3.4 </span>Style Change <span>&lt;mstyle&gt;</span>
+                        <li><a href="#SS3.SSS4"><span>3.3.4</span> Style Change <span>&lt;mstyle&gt;</span>
                               </a></li>
-                        <li><a href="#SS3.SSS5">
-                              <span>3.3.5 </span>Error Message <span>&lt;merror&gt;</span>
+                        <li><a href="#SS3.SSS5"><span>3.3.5</span> Error Message <span>&lt;merror&gt;</span>
                               </a></li>
-                        <li><a href="#SS3.SSS6">
-                              <span>3.3.6 </span>Adjust Space Around Content <span>&lt;mpadded&gt;</span>
+                        <li><a href="#SS3.SSS6"><span>3.3.6</span> Adjust Space Around Content <span>&lt;mpadded&gt;</span>
                               </a></li>
-                        <li><a href="#SS3.SSS7">
-                              <span>3.3.7 </span>Making Sub-Expressions Invisible <span>&lt;mphantom&gt;</span>
+                        <li><a href="#SS3.SSS7"><span>3.3.7</span> Making Sub-Expressions Invisible <span>&lt;mphantom&gt;</span>
                               </a></li>
-                        <li><a href="#SS3.SSS8">
-                              <span>3.3.8 </span>Expression Inside Pair of Fences <span>&lt;mfenced&gt;</span>
+                        <li><a href="#SS3.SSS8"><span>3.3.8</span> Expression Inside Pair of Fences <span>&lt;mfenced&gt;</span>
                               </a></li>
-                        <li><a href="#SS3.SSS9">
-                              <span>3.3.9 </span>Enclose Expression Inside Notation <span>&lt;menclose&gt;</span>
+                        <li><a href="#SS3.SSS9"><span>3.3.9</span> Enclose Expression Inside Notation <span>&lt;menclose&gt;</span>
                               </a></li>
                      </ol>
                   </li>
-                  <li><a href="#scriptsandlimits"><span>3.4 </span>Script and Limit Schemata</a><ol class="toc">
-                        <li><a href="#SS4.SSS1">
-                              <span>3.4.1 </span>Subscripts and Superscripts <span>&lt;msub&gt;</span>, <span>&lt;msup&gt;</span>,
+                  <li><a href="#scriptsandlimits"><span>3.4</span> Script and Limit Schemata</a><ol class="toc">
+                        <li><a href="#SS4.SSS1"><span>3.4.1</span> Subscripts and Superscripts <span>&lt;msub&gt;</span>, <span>&lt;msup&gt;</span>,
                               <span>&lt;msubsup&gt;</span>
                               </a></li>
-                        <li><a href="#SS4.SSS2">
-                              <span>3.4.2 </span>Underscripts and Overscripts <span>&lt;munder&gt;</span>, <span>&lt;mover&gt;</span>,
+                        <li><a href="#SS4.SSS2"><span>3.4.2</span> Underscripts and Overscripts <span>&lt;munder&gt;</span>, <span>&lt;mover&gt;</span>,
                               <span>&lt;munderover&gt;</span>
                               </a></li>
-                        <li><a href="#SS4.SSS3">
-                              <span>3.4.3 </span>Prescripts and Tensor Indices <span>&lt;mmultiscripts&gt;</span>
+                        <li><a href="#SS4.SSS3"><span>3.4.3</span> Prescripts and Tensor Indices <span>&lt;mmultiscripts&gt;</span>
                               </a></li>
                      </ol>
                   </li>
-                  <li><a href="#tables"><span>3.5 </span>Tabular Math</a></li>
-                  <li><a href="#elementarymath"><span>3.6 </span>Elementary Math</a></li>
-                  <li><a href="#enlivening"><span>3.7 </span>Enlivening Expressions</a></li>
-                  <li><a href="#sematicsandpresntation"><span>3.8 </span>Semantics and Presentation</a></li>
+                  <li><a href="#tables"><span>3.5</span> Tabular Math</a></li>
+                  <li><a href="#elementarymath"><span>3.6</span> Elementary Math</a></li>
+                  <li><a href="#enlivening"><span>3.7</span> Enlivening Expressions</a></li>
+                  <li><a href="#sematicsandpresntation"><span>3.8</span> Semantics and Presentation</a></li>
                </ol>
             </li>
-            <li><a href="#fullmathml">
-                  <span>Appendix&nbsp;A </span>MathML</a></li>
-            <li><a href="#css">
-                  <span>Appendix&nbsp;B </span>CSS</a></li>
-            <li><a href="#opentype">
-                  <span>Appendix&nbsp;C </span>OpenType</a></li>
-            <li><a href="#imagefallback">
-                  <span>Appendix&nbsp;D </span>Image Fallback</a></li>
-            <li><a href="#rnc">Relax NG</a></li>
-            <li><a href="#references">References</a></li>
+            <li><a href="#fullmathml"><span>Appendix A</span> MathML</a></li>
+            <li><a href="#css"><span>Appendix B</span> CSS</a></li>
+            <li><a href="#opentype"><span>Appendix C</span> OpenType</a></li>
+            <li><a href="#imagefallback"><span>Appendix D</span> Image Fallback</a></li>
+            <li><a href="#rnc"><span>Appendix E</span> Relax NG</a></li>
+            <li><a href="#references"><span>Appendix F</span> References</a></li>
          </ol>
       </nav>
       <div class="body">
          <section id="introduction">
             
-            <h1>
-               <span>1 </span>Introduction
+            <h1><span class="secnum">1</span> Introduction
             </h1>
             
             <div></div>
@@ -198,7 +163,7 @@
             
             <section id="rationale">
                
-               <h2><span>1.1 </span>Rationale for this Technical Document
+               <h2><span class="secnum">1.1</span> Rationale for this Technical Document
                </h2>
                
                
@@ -380,7 +345,7 @@
             
             <section id="rem1">
                
-               <h2><span>1.2 </span>Remarks
+               <h2><span class="secnum">1.2</span> Remarks
                </h2>
                
                
@@ -454,8 +419,7 @@
             
             <section id="terminology">
                
-               <h2>
-                  <span>1.3 </span>Terminology
+               <h2><span class="secnum">1.3</span> Terminology
                </h2>
                
                
@@ -473,8 +437,7 @@
          </section>
          <section id="othertechnologies">
             
-            <h1>
-               <span>2 </span>Relation with other technologies
+            <h1><span class="secnum">2</span> Relation with other technologies
             </h1>
             
             <div></div>
@@ -482,14 +445,13 @@
             
             <section id="html5tree">
                
-               <h2><span>2.1 </span>HTML5 Tree
+               <h2><span class="secnum">2.1</span> HTML5 Tree
                </h2>
                
                
                <section id="SS1.SSS1">
                   
-                  <h3>
-                     <span>2.1.1 </span>DOM, HTML, SVG and Javascript
+                  <h3><span class="secnum">2.1.1</span> DOM, HTML, SVG and Javascript
                   </h3>
                   
                   
@@ -587,8 +549,7 @@
                
                <section id="SS1.SSS2">
                   
-                  <h3>
-                     <span>2.1.2 </span>MathML
+                  <h3><span class="secnum">2.1.2</span> MathML
                   </h3>
                   
                   
@@ -686,13 +647,13 @@
             
             <section id="textandmath">
                
-               <h2><span>2.2 </span>Text and Math layout
+               <h2><span class="secnum">2.2</span> Text and Math layout
                </h2>
                
                
                <section id="SS2.SSS1">
                   
-                  <h3><span>2.2.1 </span>Open Font Format
+                  <h3><span class="secnum">2.2.1</span> Open Font Format
                   </h3>
                   
                   
@@ -776,8 +737,7 @@
                
                <section id="SS2.SSS2">
                   
-                  <h3>
-                     <span>2.2.2 </span>LaTeX
+                  <h3><span class="secnum">2.2.2</span> LaTeX
                   </h3>
                   
                   
@@ -883,15 +843,13 @@
             
             <section id="cssstyling">
                
-               <h2>
-                  <span>2.3 </span>CSS Styling
+               <h2><span class="secnum">2.3</span> CSS Styling
                </h2>
                
                
                <section id="SS3.SSS1">
                   
-                  <h3>
-                     <span>2.3.1 </span>Properties
+                  <h3><span class="secnum">2.3.1</span> Properties
                   </h3>
                   
                   
@@ -1642,8 +1600,7 @@
                
                <section id="SS3.SSS2">
                   
-                  <h3>
-                     <span>2.3.2 </span>User Agent Stylesheet for MathML
+                  <h3><span class="secnum">2.3.2</span> User Agent Stylesheet for MathML
                   </h3>
                   
                   
@@ -2259,8 +2216,7 @@
          </section>
          <section id="presentationmarkup">
             
-            <h1>
-               <span>3 </span>Presentation Markup
+            <h1><span class="secnum">3</span> Presentation Markup
             </h1>
             
             <div></div>
@@ -2268,13 +2224,13 @@
             
             <section id="presmintro">
                
-               <h2><span>3.1 </span>Introduction
+               <h2><span class="secnum">3.1</span> Introduction
                </h2>
                
                
                <section id="SS1.SSS1">
                   
-                  <h3><span>3.1.1 </span>Box Model
+                  <h3><span class="secnum">3.1.1</span> Box Model
                   </h3>
                   
                   
@@ -3507,8 +3463,7 @@
                
                <section id="SS1.SSS2">
                   
-                  <h3>
-                     <span>3.1.2 </span>Layout Steps
+                  <h3><span class="secnum">3.1.2</span> Layout Steps
                   </h3>
                   
                   
@@ -3644,13 +3599,13 @@
             
             <section id="tokenelements">
                
-               <h2><span>3.2 </span>Token Elements
+               <h2><span class="secnum">3.2</span> Token Elements
                </h2>
                
                
                <section id="SS2.SSS1">
                   
-                  <h3><span>3.2.1 </span>Using images to represent symbols <span>&lt;mglyph/&gt;</span></h3>
+                  <h3><span class="secnum">3.2.1</span> Using images to represent symbols <span>&lt;mglyph/&gt;</span></h3>
                   
                   
                   <div id="SS2.SSS1.p1">
@@ -3680,8 +3635,7 @@
                
                <section id="SS2.SSS2">
                   
-                  <h3>
-                     <span>3.2.2 </span>Identifier <span>&lt;mi&gt;</span>
+                  <h3><span class="secnum">3.2.2</span> Identifier <span>&lt;mi&gt;</span>
                      
                   </h3>
                   
@@ -3716,8 +3670,7 @@
                
                <section id="SS2.SSS3">
                   
-                  <h3>
-                     <span>3.2.3 </span>Number <span>&lt;mn&gt;</span>
+                  <h3><span class="secnum">3.2.3</span> Number <span>&lt;mn&gt;</span>
                      
                   </h3>
                   
@@ -3749,8 +3702,7 @@
                
                <section id="SS2.SSS4">
                   
-                  <h3>
-                     <span>3.2.4 </span>Operator, Fence, Separator or Accent <span>&lt;mo&gt;</span>
+                  <h3><span class="secnum">3.2.4</span> Operator, Fence, Separator or Accent <span>&lt;mo&gt;</span>
                      
                   </h3>
                   
@@ -4321,8 +4273,7 @@
                
                <section id="SS2.SSS5">
                   
-                  <h3>
-                     <span>3.2.5 </span>Text <span>&lt;mtext&gt;</span>
+                  <h3><span class="secnum">3.2.5</span> Text <span>&lt;mtext&gt;</span>
                      
                   </h3>
                   
@@ -4419,8 +4370,7 @@
                
                <section id="SS2.SSS6">
                   
-                  <h3>
-                     <span>3.2.6 </span>Space <span>&lt;mspace/&gt;</span>
+                  <h3><span class="secnum">3.2.6</span> Space <span>&lt;mspace/&gt;</span>
                      
                   </h3>
                   
@@ -4529,8 +4479,7 @@
                
                <section id="SS2.SSS7">
                   
-                  <h3>
-                     <span>3.2.7 </span>String Literal <span>&lt;ms&gt;</span>
+                  <h3><span class="secnum">3.2.7</span> String Literal <span>&lt;ms&gt;</span>
                      
                   </h3>
                   
@@ -4638,15 +4587,13 @@
             
             <section id="generallayout">
                
-               <h2>
-                  <span>3.3 </span>General Layout Schemata
+               <h2><span class="secnum">3.3</span> General Layout Schemata
                </h2>
                
                
                <section id="SS3.SSS1">
                   
-                  <h3>
-                     <span>3.3.1 </span>Horizontally Group Sub-Expressions <span>&lt;mrow&gt;</span>
+                  <h3><span class="secnum">3.3.1</span> Horizontally Group Sub-Expressions <span>&lt;mrow&gt;</span>
                      
                   </h3>
                   
@@ -5103,8 +5050,7 @@
                
                <section id="SS3.SSS2">
                   
-                  <h3>
-                     <span>3.3.2 </span>Fractions <span>&lt;mfrac&gt;</span>
+                  <h3><span class="secnum">3.3.2</span> Fractions <span>&lt;mfrac&gt;</span>
                      
                   </h3>
                   
@@ -5570,8 +5516,7 @@
                
                <section id="SS3.SSS3">
                   
-                  <h3>
-                     <span>3.3.3 </span>Radicals <span>&lt;msqrt&gt;</span>, <span>&lt;mroot&gt;</span>
+                  <h3><span class="secnum">3.3.3</span> Radicals <span>&lt;msqrt&gt;</span>, <span>&lt;mroot&gt;</span>
                      
                   </h3>
                   
@@ -5995,8 +5940,7 @@
                
                <section id="SS3.SSS4">
                   
-                  <h3>
-                     <span>3.3.4 </span>Style Change <span>&lt;mstyle&gt;</span>
+                  <h3><span class="secnum">3.3.4</span> Style Change <span>&lt;mstyle&gt;</span>
                      
                   </h3>
                   
@@ -6044,8 +5988,7 @@
                
                <section id="SS3.SSS5">
                   
-                  <h3>
-                     <span>3.3.5 </span>Error Message <span>&lt;merror&gt;</span>
+                  <h3><span class="secnum">3.3.5</span> Error Message <span>&lt;merror&gt;</span>
                      
                   </h3>
                   
@@ -6113,8 +6056,7 @@
                
                <section id="SS3.SSS6">
                   
-                  <h3>
-                     <span>3.3.6 </span>Adjust Space Around Content <span>&lt;mpadded&gt;</span>
+                  <h3><span class="secnum">3.3.6</span> Adjust Space Around Content <span>&lt;mpadded&gt;</span>
                      
                   </h3>
                   
@@ -6331,8 +6273,7 @@
                
                <section id="SS3.SSS7">
                   
-                  <h3>
-                     <span>3.3.7 </span>Making Sub-Expressions Invisible <span>&lt;mphantom&gt;</span>
+                  <h3><span class="secnum">3.3.7</span> Making Sub-Expressions Invisible <span>&lt;mphantom&gt;</span>
                      
                   </h3>
                   
@@ -6394,8 +6335,7 @@
                
                <section id="SS3.SSS8">
                   
-                  <h3>
-                     <span>3.3.8 </span>Expression Inside Pair of Fences <span>&lt;mfenced&gt;</span>
+                  <h3><span class="secnum">3.3.8</span> Expression Inside Pair of Fences <span>&lt;mfenced&gt;</span>
                      
                   </h3>
                   
@@ -6445,8 +6385,7 @@
                
                <section id="SS3.SSS9">
                   
-                  <h3>
-                     <span>3.3.9 </span>Enclose Expression Inside Notation <span>&lt;menclose&gt;</span>
+                  <h3><span class="secnum">3.3.9</span> Enclose Expression Inside Notation <span>&lt;menclose&gt;</span>
                      
                   </h3>
                   
@@ -7945,14 +7884,13 @@
             
             <section id="scriptsandlimits">
                
-               <h2><span>3.4 </span>Script and Limit Schemata
+               <h2><span class="secnum">3.4</span> Script and Limit Schemata
                </h2>
                
                
                <section id="SS4.SSS1">
                   
-                  <h3>
-                     <span>3.4.1 </span>Subscripts and Superscripts <span>&lt;msub&gt;</span>, <span>&lt;msup&gt;</span>,
+                  <h3><span class="secnum">3.4.1</span> Subscripts and Superscripts <span>&lt;msub&gt;</span>, <span>&lt;msup&gt;</span>,
                      <span>&lt;msubsup&gt;</span>
                      
                   </h3>
@@ -8798,8 +8736,7 @@
                
                <section id="SS4.SSS2">
                   
-                  <h3>
-                     <span>3.4.2 </span>Underscripts and Overscripts <span>&lt;munder&gt;</span>, <span>&lt;mover&gt;</span>,
+                  <h3><span class="secnum">3.4.2</span> Underscripts and Overscripts <span>&lt;munder&gt;</span>, <span>&lt;mover&gt;</span>,
                      <span>&lt;munderover&gt;</span>
                      
                   </h3>
@@ -9278,8 +9215,7 @@
                
                <section id="SS4.SSS3">
                   
-                  <h3>
-                     <span>3.4.3 </span>Prescripts and Tensor Indices <span>&lt;mmultiscripts&gt;</span>
+                  <h3><span class="secnum">3.4.3</span> Prescripts and Tensor Indices <span>&lt;mmultiscripts&gt;</span>
                      
                   </h3>
                   
@@ -9610,7 +9546,7 @@
             
             <section id="tables">
                
-               <h2><span>3.5 </span>Tabular Math
+               <h2><span class="secnum">3.5</span> Tabular Math
                </h2>
                
                
@@ -9881,7 +9817,7 @@
             
             <section id="elementarymath">
                
-               <h2><span>3.6 </span>Elementary Math
+               <h2><span class="secnum">3.6</span> Elementary Math
                </h2>
                
                
@@ -9939,7 +9875,7 @@
             
             <section id="enlivening">
                
-               <h2><span>3.7 </span>Enlivening Expressions
+               <h2><span class="secnum">3.7</span> Enlivening Expressions
                </h2>
                
                
@@ -10043,7 +9979,7 @@
             
             <section id="sematicsandpresntation">
                
-               <h2><span>3.8 </span>Semantics and Presentation
+               <h2><span class="secnum">3.8</span> Semantics and Presentation
                </h2>
                
                
@@ -10191,8 +10127,7 @@
          </section>
          <section id="fullmathml">
             
-            <h1>
-               <span>Appendix&nbsp;A </span>MathML
+            <h1><span class="secnum">Appendix A</span> MathML
             </h1>
             
             <div></div>
@@ -10279,8 +10214,7 @@
          </section>
          <section id="css">
             
-            <h1>
-               <span>Appendix&nbsp;B </span>CSS
+            <h1><span class="secnum">Appendix B</span> CSS
             </h1>
             
             <div></div>
@@ -10379,8 +10313,7 @@
          </section>
          <section id="opentype">
             
-            <h1>
-               <span>Appendix&nbsp;C </span>OpenType
+            <h1><span class="secnum">Appendix C</span> OpenType
             </h1>
             
             <div></div>
@@ -10445,8 +10378,7 @@
          </section>
          <section id="imagefallback">
             
-            <h1>
-               <span>Appendix&nbsp;D </span>Image Fallback
+            <h1><span class="secnum">Appendix D</span> Image Fallback
             </h1>
             
             <div></div>
@@ -10564,7 +10496,8 @@
          </section>
          <section id="rnc">
             
-            <h1>Relax NG</h1>
+            <h1><span class="secnum">Appendix E</span> Relax NG
+            </h1>
             
             <p>This section displays a non-normative Relax NG Schema which
                details the elements and attributes defined by this specification.
@@ -10879,7 +10812,8 @@
             </section>
          <section id="references">
             
-            <h1>References</h1>
+            <h1><span class="secnum">Appendix F</span> References
+            </h1>
             
             <div></div>
             
