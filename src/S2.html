@@ -87,16 +87,9 @@ of the HTML5 specification for the <code>a</code> element <cite>[<a href="bib.ht
 recommended to make links visually distinguisable by default, for example by
 adding a rule in the user agent stylesheet (section <a href="#SS3.SSS2" title="2.3.2 User Agent Stylesheet for MathML ‣ 2.3 CSS Styling ‣ 2 Relation with other technologies "><span>2.3.2</span></a>) such as</p>
 <div>
-<div><a href="data:text/plain;base64,bXJvd1tocmVmXSB7CiAgY29sb3I6IGJsdWU7Cn0=%0A">⬇</a></div>
-<div>
-<code>mrow</code><span>[</span><code>href</code><span>]</span><span> </span><span>{</span>
-</div>
-<div>
-<span>  </span><code>color</code><span>:</span><span> </span><code>blue</code><span>;</span>
-</div>
-<div>
-<span>}</span>
-</div>
+<pre>mrow[href] {
+  color: blue;
+}</pre>
 </div>
 </div>
 <div id="SS1.SSS2.p3">
@@ -673,345 +666,114 @@ mfrac &gt; munderover, mfrac &gt; mmultiscripts, mfrac &gt; mtable, mfrac &gt; m
 </div>
 <div id="SS3.SSS2.p3">
 <div>
-<div><a href="data:text/plain;base64,QG5hbWVzcGFjZSB1cmwoaHR0cDovL3d3dy53My5vcmcvMTk5OC9NYXRoL01hdGhNTCk7CgovKiBU%0AaGUgPG1hdGg+IGVsZW1lbnQgKi8KbWF0aCB7CiAgZGlyZWN0aW9uOiBsdHI7CiAgZGlzcGxheTog%0AaW5saW5lOwogIGZvbnQtc2l6ZTogaW5oZXJpdDsKICBmb250LXN0eWxlOiBub3JtYWw7CiAgZm9u%0AdC1mYW1pbHk6IHNlcmlmOwogIG1hdGhtbC1tYXRoLXN0eWxlOiBpbmxpbmU7Cn0KbWF0aFtkaXNw%0AbGF5PSJibG9jayJdIHsKICBkaXNwbGF5OiBibG9jazsKICB0ZXh0LWFsaWduOiBjZW50ZXI7CiAg%0AbWF0aG1sLW1hdGgtc3R5bGU6IGRpc3BsYXk7Cn0KbWF0aFtkaXNwbGF5PSJpbmxpbmUiXSB7CiAg%0AZGlzcGxheTogaW5saW5lOwogIG1hdGhtbC1tYXRoLXN0eWxlOiBpbmxpbmU7Cn0KbWF0aFtkaXNw%0AbGF5c3R5bGU9ImZhbHNlIl0gewogIG1hdGhtbC1tYXRoLXN0eWxlOiBpbmxpbmU7Cn0KbWF0aFtk%0AaXNwbGF5c3R5bGU9InRydWUiXSB7CiAgbWF0aG1sLW1hdGgtc3R5bGU6IGRpc3BsYXk7Cn0KCi8q%0AIExpbmtzICovCm1yb3dbaHJlZl0gewogIGNvbG9yOiBibHVlOwp9CgovKiBUYWJ1bGFyIGVsZW1l%0AbnRzICovCm10YWJsZSB7CiAgZGlzcGxheTogaW5saW5lLXRhYmxlOwogIG1hdGhtbC1tYXRoLXN0%0AeWxlOiBpbmxpbmU7Cn0KbXRhYmxlW2Rpc3BsYXlzdHlsZT0idHJ1ZSJdIHsKICBtYXRobWwtbWF0%0AaC1zdHlsZTogZGlzcGxheTsKfQptdGFibGVbZnJhbWU9Im5vbmUiXSB7CiAgYm9yZGVyOiBub25l%0AOwp9Cm10YWJsZVtmcmFtZT0ic29saWQiXSB7CiAgYm9yZGVyOiBzb2xpZCB0aGluOwp9Cm10YWJs%0AZVtmcmFtZT0iZGFzaGVkIl0gewogIGJvcmRlcjogZGFzaGVkIHRoaW47Cn0KbXRyLCBtbGFiZWxl%0AZHRyIHsKICBkaXNwbGF5OiB0YWJsZS1yb3c7CiAgdmVydGljYWwtYWxpZ246IGJhc2VsaW5lOwp9%0ACm1sYWJlbGVkdHIgPiBtdGQ6Zmlyc3QtY2hpbGQgewogIGRpc3BsYXk6IG5vbmU7Cn0KbXRkIHsK%0AICBkaXNwbGF5OiB0YWJsZS1jZWxsOwogIHZlcnRpY2FsLWFsaWduOiBpbmhlcml0OwogIHRleHQt%0AYWxpZ246IGNlbnRlcjsKICBwYWRkaW5nOiAwLjVleCAwLjRlbTsKfQoKLyogVGhlIDxtcz4gZWxl%0AbWVudCAqLwptcyB7CiAgZGlzcGxheTogaW5saW5lOwp9Cm1zOmJlZm9yZSwgbXM6YWZ0ZXIgewog%0AIGNvbnRlbnQ6ICJcMDAyMiIKfQptc1tscXVvdGVdOmJlZm9yZSB7CiAgY29udGVudDogYXR0cihs%0AcXVvdGUpCn0KbXNbcnF1b3RlXTphZnRlciB7CiAgY29udGVudDogYXR0cihycXVvdGUpCn0KCi8q%0AICBUaGUgPG1lcnJvcj4gZWxlbWVudCAqLwptZXJyb3Igewogb3V0bGluZTogc29saWQgdGhpbiBy%0AZWQ7CiBiYWNrZ3JvdW5kLWNvbG9yOiBsaWdodFllbGxvdzsKfQoKLyogVGhlIDxtcGhhbnRvbT4g%0AZWxlbWVudCAqLwptcGhhbnRvbSB7CiAgdmlzaWJpbGl0eTogaGlkZGVuOwp9CgovKiBTY3JpcHRs%0AZXZlbCBhbmQgZGlzcGxheXN0eWxlIGZvciBvdGhlciBlbGVtZW50cyAqLwptc3R5bGVbZGlzcGxh%0AeXN0eWxlPSJmYWxzZSJdIHsKICBtYXRobWwtbWF0aC1zdHlsZTogaW5saW5lOwp9Cm1zdHlsZVtk%0AaXNwbGF5c3R5bGU9InRydWUiXSB7CiAgbWF0aG1sLW1hdGgtc3R5bGU6IGRpc3BsYXk7Cn0KbWZy%0AYWMgPiAqIHsKICBtYXRobWwtc2NyaXB0LWxldmVsOiBhdXRvOwogIG1hdGhtbC1tYXRoLXN0eWxl%0AOiBpbmxpbmU7Cn0KbXJvb3QgPiA6bm90KDpmaXJzdC1jaGlsZCkgewogIG1hdGhtbC1zY3JpcHQt%0AbGV2ZWw6IGluY3JlbWVudC1ieSAyOwogIG1hdGhtbC1tYXRoLXN0eWxlOiBpbmxpbmU7Cn0KbXN1%0AYiA+IDpub3QoOmZpcnN0LWNoaWxkKSwKbXN1cCA+IDpub3QoOmZpcnN0LWNoaWxkKSwKbXN1YnN1%0AcCA+IDpub3QoOmZpcnN0LWNoaWxkKSwKbW11bHRpc2NyaXB0cyA+IDpub3QoOmZpcnN0LWNoaWxk%0AKSB7CiAgbWF0aG1sLXNjcmlwdC1sZXZlbDogaW5jcmVtZW50LWJ5IDE7CiAgbWF0aG1sLW1hdGgt%0Ac3R5bGU6IGlubGluZTsKfQptdW5kZXIgPiA6bm90KDpmaXJzdC1jaGlsZCksCm1vdmVyID4gOm5v%0AdCg6Zmlyc3QtY2hpbGQpLAptdW5kZXJvdmVyID4gOm5vdCg6Zmlyc3QtY2hpbGQpIHsKICBtYXRo%0AbWwtbWF0aC1zdHlsZTogaW5saW5lOwp9%0A">⬇</a></div>
-<div>
-<span>@namespace</span><span> </span><code>url</code><span>(</span><code>http</code><span>://</span><code>www</code><span>.</span><code>w3</code><span>.</span><code>org</code><span>/1998/</span><code>Math</code><span>/</span><code>MathML</code><span>);</span>
-</div>
-<div>
-</div>
-<div>
-<span>/*</span><span> </span><code>The</code><span> </span><span>&lt;</span><code>math</code><span>&gt;</span><span> </span><code>element</code><span> </span><span>*/</span>
-</div>
-<div>
-<code>math</code><span> </span><span>{</span>
-</div>
-<div>
-<span>  </span><code>direction</code><span>:</span><span> </span><code>ltr</code><span>;</span>
-</div>
-<div>
-<span>  </span><code>display</code><span>:</span><span> </span><code>inline</code><span>;</span>
-</div>
-<div>
-<span>  </span><code>font</code><span>-</span><code>size</code><span>:</span><span> </span><code>inherit</code><span>;</span>
-</div>
-<div>
-<span>  </span><code>font</code><span>-</span><code>style</code><span>:</span><span> </span><code>normal</code><span>;</span>
-</div>
-<div>
-<span>  </span><code>font</code><span>-</span><code>family</code><span>:</span><span> </span><code>serif</code><span>;</span>
-</div>
-<div>
-<span>  </span><code>mathml</code><span>-</span><code>math</code><span>-</span><code>style</code><span>:</span><span> </span><code>inline</code><span>;</span>
-</div>
-<div>
-<span>}</span>
-</div>
-<div>
-<code>math</code><span>[</span><code>display</code><span>="</span><code>block</code><span>"]</span><span> </span><span>{</span>
-</div>
-<div>
-<span>  </span><code>display</code><span>:</span><span> </span><code>block</code><span>;</span>
-</div>
-<div>
-<span>  </span><code>text</code><span>-</span><code>align</code><span>:</span><span> </span><code>center</code><span>;</span>
-</div>
-<div>
-<span>  </span><code>mathml</code><span>-</span><code>math</code><span>-</span><code>style</code><span>:</span><span> </span><code>display</code><span>;</span>
-</div>
-<div>
-<span>}</span>
-</div>
-<div>
-<code>math</code><span>[</span><code>display</code><span>="</span><code>inline</code><span>"]</span><span> </span><span>{</span>
-</div>
-<div>
-<span>  </span><code>display</code><span>:</span><span> </span><code>inline</code><span>;</span>
-</div>
-<div>
-<span>  </span><code>mathml</code><span>-</span><code>math</code><span>-</span><code>style</code><span>:</span><span> </span><code>inline</code><span>;</span>
-</div>
-<div>
-<span>}</span>
-</div>
-<div>
-<code>math</code><span>[</span><code>displaystyle</code><span>="</span><code>false</code><span>"]</span><span> </span><span>{</span>
-</div>
-<div>
-<span>  </span><code>mathml</code><span>-</span><code>math</code><span>-</span><code>style</code><span>:</span><span> </span><code>inline</code><span>;</span>
-</div>
-<div>
-<span>}</span>
-</div>
-<div>
-<code>math</code><span>[</span><code>displaystyle</code><span>="</span><code>true</code><span>"]</span><span> </span><span>{</span>
-</div>
-<div>
-<span>  </span><code>mathml</code><span>-</span><code>math</code><span>-</span><code>style</code><span>:</span><span> </span><code>display</code><span>;</span>
-</div>
-<div>
-<span>}</span>
-</div>
-<div>
-</div>
-<div>
-<span>/*</span><span> </span><code>Links</code><span> </span><span>*/</span>
-</div>
-<div>
-<code>mrow</code><span>[</span><code>href</code><span>]</span><span> </span><span>{</span>
-</div>
-<div>
-<span>  </span><code>color</code><span>:</span><span> </span><code>blue</code><span>;</span>
-</div>
-<div>
-<span>}</span>
-</div>
-<div>
-</div>
-<div>
-<span>/*</span><span> </span><code>Tabular</code><span> </span><code>elements</code><span> </span><span>*/</span>
-</div>
-<div>
-<code>mtable</code><span> </span><span>{</span>
-</div>
-<div>
-<span>  </span><code>display</code><span>:</span><span> </span><code>inline</code><span>-</span><code>table</code><span>;</span>
-</div>
-<div>
-<span>  </span><code>mathml</code><span>-</span><code>math</code><span>-</span><code>style</code><span>:</span><span> </span><code>inline</code><span>;</span>
-</div>
-<div>
-<span>}</span>
-</div>
-<div>
-<code>mtable</code><span>[</span><code>displaystyle</code><span>="</span><code>true</code><span>"]</span><span> </span><span>{</span>
-</div>
-<div>
-<span>  </span><code>mathml</code><span>-</span><code>math</code><span>-</span><code>style</code><span>:</span><span> </span><code>display</code><span>;</span>
-</div>
-<div>
-<span>}</span>
-</div>
-<div>
-<code>mtable</code><span>[</span><code>frame</code><span>="</span><code>none</code><span>"]</span><span> </span><span>{</span>
-</div>
-<div>
-<span>  </span><code>border</code><span>:</span><span> </span><code>none</code><span>;</span>
-</div>
-<div>
-<span>}</span>
-</div>
-<div>
-<code>mtable</code><span>[</span><code>frame</code><span>="</span><code>solid</code><span>"]</span><span> </span><span>{</span>
-</div>
-<div>
-<span>  </span><code>border</code><span>:</span><span> </span><code>solid</code><span> </span><code>thin</code><span>;</span>
-</div>
-<div>
-<span>}</span>
-</div>
-<div>
-<code>mtable</code><span>[</span><code>frame</code><span>="</span><code>dashed</code><span>"]</span><span> </span><span>{</span>
-</div>
-<div>
-<span>  </span><code>border</code><span>:</span><span> </span><code>dashed</code><span> </span><code>thin</code><span>;</span>
-</div>
-<div>
-<span>}</span>
-</div>
-<div>
-<code>mtr</code><span>,</span><span> </span><code>mlabeledtr</code><span> </span><span>{</span>
-</div>
-<div>
-<span>  </span><code>display</code><span>:</span><span> </span><code>table</code><span>-</span><code>row</code><span>;</span>
-</div>
-<div>
-<span>  </span><code>vertical</code><span>-</span><code>align</code><span>:</span><span> </span><code>baseline</code><span>;</span>
-</div>
-<div>
-<span>}</span>
-</div>
-<div>
-<code>mlabeledtr</code><span> </span><span>&gt;</span><span> </span><code>mtd</code><span>:</span><code>first</code><span>-</span><code>child</code><span> </span><span>{</span>
-</div>
-<div>
-<span>  </span><code>display</code><span>:</span><span> </span><code>none</code><span>;</span>
-</div>
-<div>
-<span>}</span>
-</div>
-<div>
-<code>mtd</code><span> </span><span>{</span>
-</div>
-<div>
-<span>  </span><code>display</code><span>:</span><span> </span><code>table</code><span>-</span><code>cell</code><span>;</span>
-</div>
-<div>
-<span>  </span><code>vertical</code><span>-</span><code>align</code><span>:</span><span> </span><code>inherit</code><span>;</span>
-</div>
-<div>
-<span>  </span><code>text</code><span>-</span><code>align</code><span>:</span><span> </span><code>center</code><span>;</span>
-</div>
-<div>
-<span>  </span><code>padding</code><span>:</span><span> </span><span>0.5</span><code>ex</code><span> </span><span>0.4</span><code>em</code><span>;</span>
-</div>
-<div>
-<span>}</span>
-</div>
-<div>
-</div>
-<div>
-<span>/*</span><span> </span><code>The</code><span> </span><span>&lt;</span><code>ms</code><span>&gt;</span><span> </span><code>element</code><span> </span><span>*/</span>
-</div>
-<div>
-<code>ms</code><span> </span><span>{</span>
-</div>
-<div>
-<span>  </span><code>display</code><span>:</span><span> </span><code>inline</code><span>;</span>
-</div>
-<div>
-<span>}</span>
-</div>
-<div>
-<code>ms</code><span>:</span><code>before</code><span>,</span><span> </span><code>ms</code><span>:</span><code>after</code><span> </span><span>{</span>
-</div>
-<div>
-<span>  </span><code>content</code><span>:</span><span> </span><span>"\0022"</span>
-</div>
-<div>
-<span>}</span>
-</div>
-<div>
-<code>ms</code><span>[</span><code>lquote</code><span>]:</span><code>before</code><span> </span><span>{</span>
-</div>
-<div>
-<span>  </span><code>content</code><span>:</span><span> </span><code>attr</code><span>(</span><code>lquote</code><span>)</span>
-</div>
-<div>
-<span>}</span>
-</div>
-<div>
-<code>ms</code><span>[</span><code>rquote</code><span>]:</span><code>after</code><span> </span><span>{</span>
-</div>
-<div>
-<span>  </span><code>content</code><span>:</span><span> </span><code>attr</code><span>(</span><code>rquote</code><span>)</span>
-</div>
-<div>
-<span>}</span>
-</div>
-<div>
-</div>
-<div>
-<span>/*</span><span>  </span><code>The</code><span> </span><span>&lt;</span><code>merror</code><span>&gt;</span><span> </span><code>element</code><span> </span><span>*/</span>
-</div>
-<div>
-<code>merror</code><span> </span><span>{</span>
-</div>
-<div>
-<span> </span><code>outline</code><span>:</span><span> </span><code>solid</code><span> </span><code>thin</code><span> </span><code>red</code><span>;</span>
-</div>
-<div>
-<span> </span><code>background</code><span>-</span><code>color</code><span>:</span><span> </span><code>lightYellow</code><span>;</span>
-</div>
-<div>
-<span>}</span>
-</div>
-<div>
-</div>
-<div>
-<span>/*</span><span> </span><code>The</code><span> </span><span>&lt;</span><code>mphantom</code><span>&gt;</span><span> </span><code>element</code><span> </span><span>*/</span>
-</div>
-<div>
-<code>mphantom</code><span> </span><span>{</span>
-</div>
-<div>
-<span>  </span><code>visibility</code><span>:</span><span> </span><code>hidden</code><span>;</span>
-</div>
-<div>
-<span>}</span>
-</div>
-<div>
-</div>
-<div>
-<span>/*</span><span> </span><code>Scriptlevel</code><span> </span><code>and</code><span> </span><code>displaystyle</code><span> </span><code>for</code><span> </span><code>other</code><span> </span><code>elements</code><span> </span><span>*/</span>
-</div>
-<div>
-<code>mstyle</code><span>[</span><code>displaystyle</code><span>="</span><code>false</code><span>"]</span><span> </span><span>{</span>
-</div>
-<div>
-<span>  </span><code>mathml</code><span>-</span><code>math</code><span>-</span><code>style</code><span>:</span><span> </span><code>inline</code><span>;</span>
-</div>
-<div>
-<span>}</span>
-</div>
-<div>
-<code>mstyle</code><span>[</span><code>displaystyle</code><span>="</span><code>true</code><span>"]</span><span> </span><span>{</span>
-</div>
-<div>
-<span>  </span><code>mathml</code><span>-</span><code>math</code><span>-</span><code>style</code><span>:</span><span> </span><code>display</code><span>;</span>
-</div>
-<div>
-<span>}</span>
-</div>
-<div>
-<code>mfrac</code><span> </span><span>&gt;</span><span> </span><span>*</span><span> </span><span>{</span>
-</div>
-<div>
-<span>  </span><code>mathml</code><span>-</span><code>script</code><span>-</span><code>level</code><span>:</span><span> </span><code>auto</code><span>;</span>
-</div>
-<div>
-<span>  </span><code>mathml</code><span>-</span><code>math</code><span>-</span><code>style</code><span>:</span><span> </span><code>inline</code><span>;</span>
-</div>
-<div>
-<span>}</span>
-</div>
-<div>
-<code>mroot</code><span> </span><span>&gt;</span><span> </span><span>:</span><code>not</code><span>(:</span><code>first</code><span>-</span><code>child</code><span>)</span><span> </span><span>{</span>
-</div>
-<div>
-<span>  </span><code>mathml</code><span>-</span><code>script</code><span>-</span><code>level</code><span>:</span><span> </span><code>increment</code><span>-</span><code>by</code><span> </span><span>2;</span>
-</div>
-<div>
-<span>  </span><code>mathml</code><span>-</span><code>math</code><span>-</span><code>style</code><span>:</span><span> </span><code>inline</code><span>;</span>
-</div>
-<div>
-<span>}</span>
-</div>
-<div>
-<code>msub</code><span> </span><span>&gt;</span><span> </span><span>:</span><code>not</code><span>(:</span><code>first</code><span>-</span><code>child</code><span>),</span>
-</div>
-<div>
-<code>msup</code><span> </span><span>&gt;</span><span> </span><span>:</span><code>not</code><span>(:</span><code>first</code><span>-</span><code>child</code><span>),</span>
-</div>
-<div>
-<code>msubsup</code><span> </span><span>&gt;</span><span> </span><span>:</span><code>not</code><span>(:</span><code>first</code><span>-</span><code>child</code><span>),</span>
-</div>
-<div>
-<code>mmultiscripts</code><span> </span><span>&gt;</span><span> </span><span>:</span><code>not</code><span>(:</span><code>first</code><span>-</span><code>child</code><span>)</span><span> </span><span>{</span>
-</div>
-<div>
-<span>  </span><code>mathml</code><span>-</span><code>script</code><span>-</span><code>level</code><span>:</span><span> </span><code>increment</code><span>-</span><code>by</code><span> </span><span>1;</span>
-</div>
-<div>
-<span>  </span><code>mathml</code><span>-</span><code>math</code><span>-</span><code>style</code><span>:</span><span> </span><code>inline</code><span>;</span>
-</div>
-<div>
-<span>}</span>
-</div>
-<div>
-<code>munder</code><span> </span><span>&gt;</span><span> </span><span>:</span><code>not</code><span>(:</span><code>first</code><span>-</span><code>child</code><span>),</span>
-</div>
-<div>
-<code>mover</code><span> </span><span>&gt;</span><span> </span><span>:</span><code>not</code><span>(:</span><code>first</code><span>-</span><code>child</code><span>),</span>
-</div>
-<div>
-<code>munderover</code><span> </span><span>&gt;</span><span> </span><span>:</span><code>not</code><span>(:</span><code>first</code><span>-</span><code>child</code><span>)</span><span> </span><span>{</span>
-</div>
-<div>
-<span>  </span><code>mathml</code><span>-</span><code>math</code><span>-</span><code>style</code><span>:</span><span> </span><code>inline</code><span>;</span>
-</div>
-<div>
-<span>}</span>
-</div>
+  <pre>@namespace url(http://www.w3.org/1998/Math/MathML);
+/* The &lt;math&gt; element */
+math {
+  direction: ltr;
+  display: inline;
+  font-size: inherit;
+  font-style: normal;
+  font-family: serif;
+  mathml-math-style: inline;
+}
+math[display="block"] {
+  display: block;
+  text-align: center;
+  mathml-math-style: display;
+}
+math[display="inline"] {
+  display: inline;
+  mathml-math-style: inline;
+}
+math[displaystyle="false"] {
+  mathml-math-style: inline;
+}
+math[displaystyle="true"] {
+  mathml-math-style: display;
+}
+/* Links */
+mrow[href] {
+  color: blue;
+}
+/* Tabular elements */
+mtable {
+  display: inline-table;
+  mathml-math-style: inline;
+}
+mtable[displaystyle="true"] {
+  mathml-math-style: display;
+}
+mtable[frame="none"] {
+  border: none;
+}
+mtable[frame="solid"] {
+  border: solid thin;
+}
+mtable[frame="dashed"] {
+  border: dashed thin;
+}
+mtr, mlabeledtr {
+  display: table-row;
+  vertical-align: baseline;
+}
+mlabeledtr > mtd:first-child {
+  display: none;
+}
+mtd {
+  display: table-cell;
+  vertical-align: inherit;
+  text-align: center;
+  padding: 0.5ex 0.4em;
+}
+/* The &lt;ms&gt; element */
+ms {
+  display: inline;
+}
+ms:before, ms:after {
+  content: "\0022"
+}
+ms[lquote]:before {
+  content: attr(lquote)
+}
+ms[rquote]:after {
+  content: attr(rquote)
+}
+/*  The &lt;merror&gt; element */
+merror {
+ outline: solid thin red;
+ background-color: lightYellow;
+}
+/* The &lt;mphantom&gt; element */
+mphantom {
+  visibility: hidden;
+}
+/* Scriptlevel and displaystyle for other elements */
+mstyle[displaystyle="false"] {
+  mathml-math-style: inline;
+}
+mstyle[displaystyle="true"] {
+  mathml-math-style: display;
+}
+mfrac > * {
+  mathml-script-level: auto;
+  mathml-math-style: inline;
+}
+mroot > :not(:first-child) {
+  mathml-script-level: increment-by 2;
+  mathml-math-style: inline;
+}
+msub > :not(:first-child),
+msup > :not(:first-child),
+msubsup > :not(:first-child),
+mmultiscripts > :not(:first-child) {
+  mathml-script-level: increment-by 1;
+  mathml-math-style: inline;
+}
+munder > :not(:first-child),
+mover > :not(:first-child),
+munderover > :not(:first-child) {
+  mathml-math-style: inline;
+}</pre>
 </div>
 </div>
 </section>

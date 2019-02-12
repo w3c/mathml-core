@@ -27,55 +27,22 @@ the CSS <code>height</code> property and the value of <span>altimg-valign</span>
 the CSS <span>vertical-align</span> property <cite>[<a href="bib.html#bibx9" title="">HTML5</a>]</cite> <cite>[<a href="bib.html#bibx1" title="">CSS2</a>]</cite>. Here is a
 partial implementation using the <span>attr()</span> function of <cite>[<a href="bib.html#bibx3" title="">CSS3Values</a>]</cite>:</p>
 <div>
-<div><a href="data:text/plain;base64,bWF0aCB7CiAgZGlzcGxheTogaW5saW5lOwp9Cm1hdGhbZGlzcGxheT0iYmxvY2siXSB7CiAgZGlz%0AcGxheTogYmxvY2s7CiAgdGV4dC1hbGlnbjogY2VudGVyOwp9Cm1hdGggewogIGJhY2tncm91bmQt%0AaW1hZ2U6IGF0dHIoYWx0aW1nIHVybCk7CiAgd2lkdGg6IGF0dHIoYWx0aW1nLXdpZHRoIGxlbmd0%0AaCk7CiAgaGVpZ2h0OiBhdHRyKGFsdGltZy1oZWlnaHQgbGVuZ3RoKTsKICB2ZXJ0aWNhbC1hbGln%0AbjogYXR0cihhbHRpbWctdmFsaWduIGxlbmd0aCk7Cn0KbWF0aCA+ICogewogIGRpc3BsYXk6IG5v%0AbmU7Cn0=%0A">⬇</a></div>
-<div>
-<code>math</code><span> </span><span>{</span>
-</div>
-<div>
-<span>  </span><code>display</code><span>:</span><span> </span><code>inline</code><span>;</span>
-</div>
-<div>
-<span>}</span>
-</div>
-<div>
-<code>math</code><span>[</span><code>display</code><span>="</span><code>block</code><span>"]</span><span> </span><span>{</span>
-</div>
-<div>
-<span>  </span><code>display</code><span>:</span><span> </span><code>block</code><span>;</span>
-</div>
-<div>
-<span>  </span><code>text</code><span>-</span><code>align</code><span>:</span><span> </span><code>center</code><span>;</span>
-</div>
-<div>
-<span>}</span>
-</div>
-<div>
-<code>math</code><span> </span><span>{</span>
-</div>
-<div>
-<span>  </span><code>background</code><span>-</span><code>image</code><span>:</span><span> </span><code>attr</code><span>(</span><code>altimg</code><span> </span><code>url</code><span>);</span>
-</div>
-<div>
-<span>  </span><code>width</code><span>:</span><span> </span><code>attr</code><span>(</span><code>altimg</code><span>-</span><code>width</code><span> </span><code>length</code><span>);</span>
-</div>
-<div>
-<span>  </span><code>height</code><span>:</span><span> </span><code>attr</code><span>(</span><code>altimg</code><span>-</span><code>height</code><span> </span><code>length</code><span>);</span>
-</div>
-<div>
-<span>  </span><code>vertical</code><span>-</span><code>align</code><span>:</span><span> </span><code>attr</code><span>(</span><code>altimg</code><span>-</span><code>valign</code><span> </span><code>length</code><span>);</span>
-</div>
-<div>
-<span>}</span>
-</div>
-<div>
-<code>math</code><span> </span><span>&gt;</span><span> </span><span>*</span><span> </span><span>{</span>
-</div>
-<div>
-<span>  </span><code>display</code><span>:</span><span> </span><code>none</code><span>;</span>
-</div>
-<div>
-<span>}</span>
-</div>
+<pre>math {
+  display: inline;
+}
+math[display="block"] {
+  display: block;
+  text-align: center;
+}
+math {
+  background-image: attr(altimg url);
+  width: attr(altimg-width length);
+  height: attr(altimg-height length);
+  vertical-align: attr(altimg-valign length);
+}
+math > * {
+  display: none;
+}</pre>
 </div>
 </div>
 </section>
