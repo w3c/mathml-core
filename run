@@ -11,7 +11,7 @@ if [ ! -f ./saxon9he.jar ]; then
 fi
 
 
-java -jar saxon9he.jar -o:index.html  src/mathml-web.xml src/mathml-web.xsl
+java -jar saxon9he.jar -o:index.html  src/mathml-core.xml src/mathml-core.xsl
 
 
 if [ "$TRAVIS" = "true" ]; then
