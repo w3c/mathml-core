@@ -47,7 +47,7 @@ are provided in the appendix.</p>
  schema may be taken as an informal specification of the structure,
  whatever syntax is used.</p>
  
- <rnc file="mathml4-web.rnc"/>
+ <rnc file="mathml4-core.rnc"/>
  
 </section>
 

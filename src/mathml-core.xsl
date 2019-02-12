@@ -75,13 +75,13 @@
 <nav id="toc">
  <h2 id="tochead">Table of Contents</h2>
  <ol class="toc">
- <xsl:apply-templates mode="toc" select="div/section"/>
+ <xsl:apply-templates mode="toc" select="./div/section"/>
  </ol>
 </nav>
 
 <div class="body">
 
- <xsl:apply-templates select="div/section"/>
+ <xsl:apply-templates select="./div/section"/>
 
 </div>
 
