@@ -1,3 +1,3 @@
 
-# MathML Web Profile
-straw man  mathml in html experiments
+# MathML Core
+Core MathML features
