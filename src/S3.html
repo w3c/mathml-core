@@ -39,19 +39,19 @@ Each MathML box has the following parameters:</p>
 <ol id="I5">
 <li id="I5.i1"> 
 <div id="I5.i1.p1">
-<p>intrinsic width <math id="I5.i1.p1.m1" alttext="W" display="inline"><semantics><mi>W</mi><annotation encoding="application/x-tex">W</annotation></semantics></math>.
+<p>intrinsic width W.
 </p>
 </div>
 </li>
 <li id="I5.i2"> 
 <div id="I5.i2.p1">
-<p>logical width <math id="I5.i2.p1.m1" alttext="w" display="inline"><semantics><mi>w</mi><annotation encoding="application/x-tex">w</annotation></semantics></math>, ascent above the origin <math id="I5.i2.p1.m2" alttext="a" display="inline"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math> and descent below the
-origin <math id="I5.i2.p1.m3" alttext="b" display="inline"><semantics><mi>b</mi><annotation encoding="application/x-tex">b</annotation></semantics></math>. The height is then <math id="I5.i2.p1.m4" alttext="a+b" display="inline"><semantics><mrow><mi>a</mi><mo>+</mo><mi>b</mi></mrow><annotation encoding="application/x-tex">a+b</annotation></semantics></math>.</p>
+<p>logical width w, ascent above the origin a and descent below the
+origin b. The height is then a + b.</p>
 </div>
 </li>
 <li id="I5.i3"> 
 <div id="I5.i3.p1">
-<p>ink ascent <math id="I5.i3.p1.m1" alttext="A" display="inline"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math> and descent <math id="I5.i3.p1.m2" alttext="B" display="inline"><semantics><mi>B</mi><annotation encoding="application/x-tex">B</annotation></semantics></math>, corresponding to the exact box enclosing
+<p>ink ascent A and descent B, corresponding to the exact box enclosing
 ink of text and bars within the MathML box.</p>
 </div>
 </li>
@@ -79,7 +79,7 @@ ink of text and bars within the MathML box.</p>
 <div id="SS1.SSS1.p4">
 <p>For MathML element containing only text nodes or foreign elements, we assume
 that the content is simple enough to determine these values. For example,
-in most case, this is just a single text node and <math id="SS1.SSS1.p4.m1" alttext="w=W" display="inline"><semantics><mrow><mi>w</mi><mo>=</mo><mi>W</mi></mrow><annotation encoding="application/x-tex">w=W</annotation></semantics></math>.
+in most case, this is just a single text node and w = W.
 A MathML element containing only other MathML elements follow special rules to
 layout their children at position <math id="SS1.SSS1.p4.m2" alttext="(x_{i},y_{i})" display="inline"><semantics><mrow><mo stretchy="false">(</mo><msub><mi>x</mi><mi>i</mi></msub><mo>,</mo><msub><mi>y</mi><mi>i</mi></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(x_{i},y_{i})</annotation></semantics></math> with parameters
 <math id="SS1.SSS1.p4.m3" alttext="W_{i},w_{i},a_{i},b_{i},A_{i},B_{i}" display="inline"><semantics><mrow><msub><mi>W</mi><mi>i</mi></msub><mo>,</mo><msub><mi>w</mi><mi>i</mi></msub><mo>,</mo><msub><mi>a</mi><mi>i</mi></msub><mo>,</mo><msub><mi>b</mi><mi>i</mi></msub><mo>,</mo><msub><mi>A</mi><mi>i</mi></msub><mo>,</mo><msub><mi>B</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">W_{i},w_{i},a_{i},b_{i},A_{i},B_{i}</annotation></semantics></math>. Then as a general rule, its box parameters are given
@@ -140,7 +140,7 @@ i}\right)</annotation></semantics></math></td>
 <div id="SS1.SSS1.p5">
 <p>Note that the schemas in this document are drawn assuming left-to-right
 directionality. If the CSS <code>direction</code> is set to right-to-left, then the
-elements should be layout by making the <math id="SS1.SSS1.p5.m1" alttext="x" display="inline"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>-axis pointing from right-to-left.
+elements should be layout by making the x-axis pointing from right-to-left.
 In this document, we use the terminology of <cite>[<a href="bib.html#bibx11" title="">MathML3</a>]</cite>: “leading”
 means “left” in right-to-left and “right” in right-to-left mode, while
 “trailing” means “right” in right-to-left and “left” in right-to-left
@@ -171,7 +171,7 @@ the width of the box for top accent attachment.</p>
 <figcaption><span>Figure 3: </span>Example of top accent attachment for a circumflex accent</figcaption>
 </figure>
 <div id="SS1.SSS1.p7">
-<p>The present document assumes that <math id="SS1.SSS1.p7.m1" alttext="W,w,a,b,A,B" display="inline"><semantics><mrow><mi>W</mi><mo>,</mo><mi>w</mi><mo>,</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo>,</mo><mi>A</mi><mo>,</mo><mi>B</mi></mrow><annotation encoding="application/x-tex">W,w,a,b,A,B</annotation></semantics></math>, italic correction
+<p>The present document assumes that W, w, a, b, A, B, italic correction
 and top accent attachment are nonnegative values. If computations result
 in negative values, then they must be interpreted as being zero.
 Note that some MathML elements such as <code>mspace</code> or <code>mpadded</code> may set box
@@ -189,9 +189,9 @@ independent steps:</p>
 <ol id="I6">
 <li id="I6.i1"> 
 <div id="I6.i1.p1">
-<p>In the first step, we determine the intrinsic width <math id="I6.i1.p1.m1" alttext="W" display="inline"><semantics><mi>W</mi><annotation encoding="application/x-tex">W</annotation></semantics></math> of MathML boxes.
+<p>In the first step, we determine the intrinsic width W of MathML boxes.
 To do so we just follow the description given in this document for each
-MathML box. We rely on vertical positions <math id="I6.i1.p1.m2" alttext="x" display="inline"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math> as well as values for
+MathML box. We rely on vertical positions x as well as values for
 italic correction and top accent attachment. However, we ignore any vertical
 positioning or metrics.</p>
 </div>
@@ -200,8 +200,8 @@ positioning or metrics.</p>
 <div id="I6.i2.p1">
 <p>In the second step, we do the final layout of MathML boxes following
 the description given in this document. We obtain all the box metrics,
-including the actual width <math id="I6.i2.p1.m1" alttext="w" display="inline"><semantics><mi>w</mi><annotation encoding="application/x-tex">w</annotation></semantics></math>, vertical metrics <math id="I6.i2.p1.m2" alttext="a,b,A,B" display="inline"><semantics><mrow><mi>a</mi><mo>,</mo><mi>b</mi><mo>,</mo><mi>A</mi><mo>,</mo><mi>B</mi></mrow><annotation encoding="application/x-tex">a,b,A,B</annotation></semantics></math> and
-vertical positions <math id="I6.i2.p1.m3" alttext="y" display="inline"><semantics><mi>y</mi><annotation encoding="application/x-tex">y</annotation></semantics></math>.</p>
+including the actual width w, vertical metrics a, b, A, B and
+vertical positions y.</p>
 </div>
 </li>
 </ol>
@@ -324,8 +324,8 @@ table to try and find a glyph of height at least
 (figure <a href="#F4" title="Figure 4 ‣ 3.2.4 Operator, Fence, Separator or Accent &lt;mo&gt; ‣ 3.2 Token Elements ‣ 3 Presentation Markup ">4</a>). If none is found, we fallback to the
 largest one. Because this parameter does not always give
 the best size, user agents may also use the following heuristic: ensure
-that the large variant height is at least <math id="SS2.SSS4.p4.m1" alttext="2" display="inline"><semantics><mn>2</mn><annotation encoding="application/x-tex">2</annotation></semantics></math> times as large as the base height
-for integrals and <math id="SS2.SSS4.p4.m2" alttext="\sqrt{2}" display="inline"><semantics><msqrt><mn>2</mn></msqrt><annotation encoding="application/x-tex">\sqrt{2}</annotation></semantics></math> times as large as the base height for other
+that the large variant height is at least 2 times as large as the base height
+for integrals and √2 times as large as the base height for other
 operators.</p>
 </div>
 <figure id="F4"><svg id="F4.pic1" style="width:662.8pt;height:225.2pt;" height="311.65" overflow="visible" version="1.1" viewBox="-224.85 -298.04 917.11 311.65" width="917.11"><g transform="matrix(1 0 0 -1 0 -284.43)"><g stroke="#000000"><g fill="#000000"><g stroke-width="0.4pt" color="#000000"><g stroke="#000000" color="#000000"><g fill="#000000"><path d="M 248.03 -279.53 C 279.53 -232.28 314.96 -188.98 346.46 -141.73 C 322.83 -94.49 283.46 -55.12 255.91 -7.87 C 263.78 0 279.53 -7.87 295.28 -3.94 C 342.52 -3.94 389.76 -3.94 437.01 -3.94 C 433.07 -19.69 440.94 -62.99 429.13 -62.99 C 425.2 -31.5 393.7 -15.75 362.2 -23.62 C 342.52 -19.69 287.4 -15.75 322.83 -43.31 C 334.65 -78.74 401.57 -114.17 366.14 -149.61 C 342.52 -181.1 318.9 -212.6 295.28 -244.09 C 338.58 -240.16 393.7 -255.91 433.07 -228.35 C 440.94 -216.54 456.69 -196.85 448.82 -224.41 C 452.76 -259.84 437.01 -295.28 393.7 -279.53 C 346.46 -279.53 295.28 -279.53 248.03 -279.53" style="stroke:none"></path></g></g><g stroke="#0000FF" color="#0000FF"><g fill="#0000FF"><path d="M -98.43 -43.94 L -98.43 -235.58" style="fill:none"></path><g transform="matrix(0 1 -1 0 -98.43 -43.94)"><path d="M -1.66 2.21 C -1.52 1.38 0 0.14 0.42 0 C 0 -0.14 -1.52 -1.38 -1.66 -2.21" style="fill:none"></path></g><g transform="matrix(0 -1 1 0 -98.43 -235.58)"><path d="M -1.66 2.21 C -1.52 1.38 0 0.14 0.42 0 C 0 -0.14 -1.52 -1.38 -1.66 -2.21" style="fill:none"></path></g><g transform="matrix(1 0 0 1 -217.47 -46.77)" color="#000000"><g transform="matrix(1 0 0 -1 0 12.45)"><switch><foreignObject color="#0000FF" height="100%" overflow="visible" width="114.15">
@@ -351,7 +351,7 @@ and non-symmetric stretching.</p>
 <div id="SS2.SSS4.p6">
 <p>The size variant or construction used for vertical stretchy operators will
 depend on the target size to cover. To determine the intrinsic
-width <math id="SS2.SSS4.p6.m1" alttext="W" display="inline"><semantics><mi>W</mi><annotation encoding="application/x-tex">W</annotation></semantics></math> of the operator, we consider the maximum of all possible widths
+width W of the operator, we consider the maximum of all possible widths
 for the base size, size variants and construction available for the given
 operator. It is assumed that the width of the
 operator is almost independent of the stretch size, which is the case in
@@ -558,8 +558,7 @@ the box of <span>&lt;mrow&gt;child_1 child_2 child_3 ... child_N&lt;/mrow&gt;</s
 </div>
 <div id="SS3.SSS1.p4">
 <p>The <span>&lt;mrow&gt;child_1 child_2 child_3 ... child_N&lt;/mrow&gt;</span> element is laid
-out as show on figure <a href="#F8" title="Figure 8 ‣ 3.3.1 Horizontally Group Sub-Expressions &lt;mrow&gt; ‣ 3.3 General Layout Schemata ‣ 3 Presentation Markup "><span>8</span></a>. The boxes of <math id="SS3.SSS1.p4.m1" alttext="\text{child}_{1}" display="inline"><semantics><msub><mtext>child</mtext><mn>1</mn></msub><annotation encoding="application/x-tex">\text{child}_{1}</annotation></semantics></math>,
-<math id="SS3.SSS1.p4.m2" alttext="\text{child}_{2}" display="inline"><semantics><msub><mtext>child</mtext><mn>2</mn></msub><annotation encoding="application/x-tex">\text{child}_{2}</annotation></semantics></math>, … <math id="SS3.SSS1.p4.m3" alttext="\text{child}_{N}" display="inline"><semantics><msub><mtext>child</mtext><mi>N</mi></msub><annotation encoding="application/x-tex">\text{child}_{N}</annotation></semantics></math> are put in a horizontal row
+out as show on figure <a href="#F8" title="Figure 8 ‣ 3.3.1 Horizontally Group Sub-Expressions &lt;mrow&gt; ‣ 3.3 General Layout Schemata ‣ 3 Presentation Markup "><span>8</span></a>. The boxes of child<sub>1</sub>, child<sub>2</sub>, … child<sub>N</sub> are put in a horizontal row
 one after the other with all their baselines aligned. As a consequence of this
 and of child box models, graphical elements such as fraction bars
 or symmetric stretchy operators will also be
@@ -792,23 +791,23 @@ logical box takes into account the extra ascender</p>
 <div id="SS3.SSS3.p5">
 <p>The <code>mroot</code> element is laid out as shown on figure <a href="#F12" title="Figure 12 ‣ 3.3.3 Radicals &lt;msqrt&gt;, &lt;mroot&gt; ‣ 3.3 General Layout Schemata ‣ 3 Presentation Markup ">12</a>.
 We start by ignoring the root index and we layout the base and surd as
-shown on figure <a href="#F11" title="Figure 11 ‣ 3.3.3 Radicals &lt;msqrt&gt;, &lt;mroot&gt; ‣ 3.3 General Layout Schemata ‣ 3 Presentation Markup ">11</a> to obtain a box <math id="SS3.SSS3.p5.m1" alttext="B" display="inline"><semantics><mi>B</mi><annotation encoding="application/x-tex">B</annotation></semantics></math>.
+shown on figure <a href="#F11" title="Figure 11 ‣ 3.3.3 Radicals &lt;msqrt&gt;, &lt;mroot&gt; ‣ 3.3 General Layout Schemata ‣ 3 Presentation Markup ">11</a> to obtain a box B.
 The horizontal metrics of the <code>mroot</code> element are obtained by putting
 <code>RadicalKernBeforeDegree</code>
 before the root index, then placing the root index, then a kerning
 of <code>RadicalKernAfterDegree</code>
-after the root index and finally placing <math id="SS3.SSS3.p5.m2" alttext="B" display="inline"><semantics><mi>B</mi><annotation encoding="application/x-tex">B</annotation></semantics></math>. In general
+after the root index and finally placing B. In general
 the kerning before the root index is positive while the kerning after it is
 negative,
 which means that the root element will have some space before it and that the
 root index will overlap the surd.
 For the vertical metrics of the <code>mroot</code> element, we first take the baseline
-of <math id="SS3.SSS3.p5.m3" alttext="B" display="inline"><semantics><mi>B</mi><annotation encoding="application/x-tex">B</annotation></semantics></math> as the baseline. We graduate the ink height of <math id="SS3.SSS3.p5.m4" alttext="B" display="inline"><semantics><mi>B</mi><annotation encoding="application/x-tex">B</annotation></semantics></math> with a linear
+of B as the baseline. We graduate the ink height of B with a linear
 scale going from the bottom at coordinate 0 to the top at coordinate 1.
 Then the ink bottom of the root index will
 be vertically positioned at coordinate
 <code>RadicalDegreeBottomRaisePercent</code>.
-Finally, we take into consideration the box of the root index and <math id="SS3.SSS3.p5.m5" alttext="B" display="inline"><semantics><mi>B</mi><annotation encoding="application/x-tex">B</annotation></semantics></math> to deduce
+Finally, we take into consideration the box of the root index and B to deduce
 the metrics for the whole box of the <code>mroot</code> element.</p>
 </div>
 <figure id="F12"><svg id="F12.pic1" style="width:643.4pt;height:335.3pt;" height="463.9" overflow="visible" version="1.1" viewBox="-454.22 -323.06 890.34 463.9" width="890.34"><g transform="matrix(1 0 0 -1 0 -182.22)"><g stroke="#000000"><g fill="#000000"><g stroke-width="0.4pt" color="#000000"><g stroke="#E6E6FF" color="#E6E6FF"><g fill="#E6E6FF"><path d="M 0 118.11 L 433.07 118.11 L 433.07 -147.64 L 0 -147.64 Z" style="stroke:none"></path></g></g><g stroke="#CCFFCC" color="#CCFFCC"><g fill="#CCFFCC"><path d="M 433.07 98.43 L 157.48 98.43 L 157.48 -78.74 L 78.74 39.37 L 51.18 11.81 L 129.92 -106.3 L 157.48 -147.64 L 196.85 -147.64 L 196.85 68.9 L 433.07 68.9 L 433.07 98.43 M 216.54 19.69 L 433.07 19.69 L 433.07 -118.11 L 216.54 -118.11 Z" style="stroke:none"></path></g></g><g stroke="#00FF00" color="#00FF00"><g fill="#00FF00"><path d="M 51.18 118.11 L 433.07 118.11 L 433.07 -147.64 L 51.18 -147.64 Z M 51.18 -39.37 L 433.07 -39.37" style="fill:none"></path></g></g><g stroke="#FF0000"><g fill="#FF0000"><g stroke="#FFE6E6" color="#FF0000"><g fill="#FFE6E6"><path d="M 39.37 118.11 L 137.8 118.11 L 137.8 0 L 39.37 0 Z" style="stroke:none"></path></g></g><path d="M 39.37 137.8 L 137.8 137.8 L 137.8 -19.69 L 39.37 -19.69 Z" style="fill:none"></path><path d="M 39.37 59.06 L 137.8 59.06" style="fill:none"></path></g></g><g stroke-dasharray="3.0pt,3.0pt" stroke-dashoffset="0.0pt"><g stroke="#0000FF" color="#0000FF"><g fill="#0000FF"><path d="M 0 137.8 L 433.07 137.8 L 433.07 -147.64 L 0 -147.64 Z M 0 -39.37 L 433.07 -39.37" style="fill:none"></path></g></g></g><g stroke-dasharray="3.0pt,3.0pt" stroke-dashoffset="0.0pt"><g stroke="#FF8000" color="#FF8000"><g fill="#FF8000"><path d="M 433.07 -147.64 L -78.74 -147.64" style="fill:none"></path><g transform="matrix(1 0 0 1 -197.78 -151.1)" color="#000000"><g transform="matrix(1 0 0 -1 0 12.45)"><switch><foreignObject color="#FF8000" height="100%" overflow="visible" width="114.15">
@@ -1012,11 +1011,12 @@ given by the <code>color</code> and <code>visibility</code> CSS properties on th
 <code>menclose</code> element.</p>
 </div>
 <div id="SS3.SSS9.p3">
-<p>Based on <cite>[<a href="bib.html#bibx13" title="">OpenFontFormat3</a>]</cite> <cite>[<a href="bib.html#bibx16" title="">TeXBook</a>]</cite>, we use the notation <math id="SS3.SSS9.p3.m1" alttext="\xi_{8}" display="inline"><semantics><msub><mi>ξ</mi><mn>8</mn></msub><annotation encoding="application/x-tex">\xi_{8}</annotation></semantics></math>
-from the TeXBook to denote the default rule thickness and use <math id="SS3.SSS9.p3.m2" alttext="3\xi_{8}" display="inline"><semantics><mrow><mn>3</mn><mo>⁢</mo><msub><mi>ξ</mi><mn>8</mn></msub></mrow><annotation encoding="application/x-tex">3\xi_{8}</annotation></semantics></math> for gaps.
-We actually let <math id="SS3.SSS9.p3.m3" alttext="\xi_{8}" display="inline"><semantics><msub><mi>ξ</mi><mn>8</mn></msub><annotation encoding="application/x-tex">\xi_{8}</annotation></semantics></math> be <code>OverbarRuleThickness</code>.
+  <p>Based on <cite>[<a href="bib.html#bibx13" title="">OpenFontFormat3</a>]</cite> <cite>[<a href="bib.html#bibx16" title="">TeXBook</a>]</cite>, we use the notation ξ<sub>8</sub>
+    from the TeXBook to denote the default rule thickness and use
+3ξ<sub>8</sub> for gaps.
+We actually let ξ<sub>8</sub> be <code>OverbarRuleThickness</code>.
 Note that contrary to what is done in general and unless specified otherwise,
-the <math id="SS3.SSS9.p3.m4" alttext="x" display="inline"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>-axis direction of notations is assumed to be independent of the CSS
+the x-axis direction of notations is assumed to be independent of the CSS
 <code>direction</code>.
 In order to determine the metrics of the <code>menclose</code> notation, we
 compute each notation individually and take the union of the metrics:</p>
@@ -1026,15 +1026,15 @@ compute each notation individually and take the union of the metrics:</p>
 <li id="I7.i1"> 
 <div id="I7.i1.p1">
 <p>The <code>left</code> notation is drawn by putting a vertical bar of thickness
-<math id="I7.i1.p1.m1" alttext="\xi_{8}" display="inline"><semantics><msub><mi>ξ</mi><mn>8</mn></msub><annotation encoding="application/x-tex">\xi_{8}</annotation></semantics></math> on the left of the content of the <code>menclose</code> element.
+ξ<sub>8</sub> on the left of the content of the <code>menclose</code> element.
 The length of the bar is obtained by extending the height of the content
 with <code>OverbarVerticalGap</code> plus
 <code>OverbarRuleThickness</code> above
 and <code>UnderbarVerticalGap</code> plus
 <code>UnderbarRuleThickness</code> below.
-The gap between the bar and the content is <math id="I7.i1.p1.m2" alttext="3\xi_{8}" display="inline"><semantics><mrow><mn>3</mn><mo>⁢</mo><msub><mi>ξ</mi><mn>8</mn></msub></mrow><annotation encoding="application/x-tex">3\xi_{8}</annotation></semantics></math>.
+The gap between the bar and the content is 3ξ<sub>8</sub>.
 The logical box is obtained by adding some space of width
-<math id="I7.i1.p1.m3" alttext="\xi_{8}" display="inline"><semantics><msub><mi>ξ</mi><mn>8</mn></msub><annotation encoding="application/x-tex">\xi_{8}</annotation></semantics></math> on the left of the bar. See figure <a href="#F14" title="Figure 14 ‣ 1. ‣ 3.3.9 Enclose Expression Inside Notation &lt;menclose&gt; ‣ 3.3 General Layout Schemata ‣ 3 Presentation Markup ">14</a>.</p>
+ξ<sub>8</sub> on the left of the bar. See figure <a href="#F14" title="Figure 14 ‣ 1. ‣ 3.3.9 Enclose Expression Inside Notation &lt;menclose&gt; ‣ 3.3 General Layout Schemata ‣ 3 Presentation Markup ">14</a>.</p>
 </div>
 <figure id="F14"><svg id="F14.pic1" style="width:304.8pt;height:204.6pt;" height="283.12" overflow="visible" version="1.1" viewBox="-25.32 -141.56 421.78 283.12" width="421.78"><g transform="matrix(1 0 0 -1 0 0)"><g stroke="#000000"><g fill="#000000"><g stroke-width="0.4pt" color="#000000"><g stroke="#E6E6FF" color="#E6E6FF"><g fill="#E6E6FF"><path d="M 0 137.8 L 393.7 137.8 L 393.7 -137.8 L 0 -137.8 Z" style="stroke:none"></path></g></g><g stroke="#FF0000"><g fill="#FF0000"><g stroke="#FFE6E6" color="#FF0000"><g fill="#FFE6E6"><path d="M 78.74 59.06 L 374.02 59.06 L 374.02 -59.06 L 78.74 -59.06 Z" style="stroke:none"></path></g></g><path d="M 78.74 78.74 L 374.02 78.74 L 374.02 -78.74 L 78.74 -78.74 Z" style="fill:none"></path><path d="M 78.74 0 L 374.02 0" style="fill:none"></path></g></g><g stroke="#CCCCCC" color="#CCCCCC"><g fill="#CCCCCC"><path d="M 0 137.8 L 19.69 137.8 L 19.69 -137.8 L 0 -137.8 Z" style="stroke:none"></path></g></g><g stroke-dasharray="3.0pt,3.0pt" stroke-dashoffset="0.0pt"><g stroke="#0000FF" color="#0000FF"><g fill="#0000FF"><path d="M -19.69 137.8 L 374.02 137.8 L 374.02 -137.8 L -19.69 -137.8 Z M 0 0 L 374.02 0" style="fill:none"></path></g></g></g><path d="M 78.74 117.47 L 78.74 98.43 L 78.74 59.69" style="fill:none"></path><g transform="matrix(0 1 -1 0 78.74 117.47)"><path d="M -1.66 2.21 C -1.52 1.38 0 0.14 0.42 0 C 0 -0.14 -1.52 -1.38 -1.66 -2.21" style="fill:none"></path></g><g transform="matrix(0 -1 1 0 78.74 59.69)"><path d="M -1.66 2.21 C -1.52 1.38 0 0.14 0.42 0 C 0 -0.14 -1.52 -1.38 -1.66 -2.21" style="fill:none"></path></g><g transform="matrix(1 0 0 1 83.63 94.97)"><g transform="matrix(1 0 0 -1 0 12.45)"><switch><foreignObject color="#000000" height="100%" overflow="visible" width="207.55">
 <p>Overbar Vertical Gap</p></foreignObject></switch></g></g><path d="M 78.74 118.75 L 78.74 127.95 L 78.74 137.16" style="fill:none"></path><g transform="matrix(0 -1 1 0 78.74 118.75)"><path d="M -1.66 2.21 C -1.52 1.38 0 0.14 0.42 0 C 0 -0.14 -1.52 -1.38 -1.66 -2.21" style="fill:none"></path></g><g transform="matrix(0 1 -1 0 78.74 137.16)"><path d="M -1.66 2.21 C -1.52 1.38 0 0.14 0.42 0 C 0 -0.14 -1.52 -1.38 -1.66 -2.21" style="fill:none"></path></g><g transform="matrix(1 0 0 1 83.63 124.49)"><g transform="matrix(1 0 0 -1 0 12.45)"><switch><foreignObject color="#000000" height="100%" overflow="visible" width="228.31">
@@ -1061,7 +1061,7 @@ but with the vertical bar placed on the right.
 <code>OverbarRuleThickness</code>
 over the content of the <code>menclose</code> element.
 The length of the bar is obtained by extending the width of the content
-with <math id="I7.i3.p1.m1" alttext="4\xi_{8}" display="inline"><semantics><mrow><mn>4</mn><mo>⁢</mo><msub><mi>ξ</mi><mn>8</mn></msub></mrow><annotation encoding="application/x-tex">4\xi_{8}</annotation></semantics></math> on each side.
+with 4ξ<sub>8</sub> on each side.
 The gap between the overbar and the content is
 <code>OverbarVerticalGap</code>.
 The logical box is obtained by adding some space of height
@@ -1096,10 +1096,10 @@ and <code>UnderExtraDescender</code>.</p>
 <li id="I7.i6"> 
 <div id="I7.i6.p1">
 <p>To draw the <code>roundedbox</code> notation, we consider the box
-obtained by expanding the ink box by <math id="I7.i6.p1.m1" alttext="\frac{7\xi_{8}}{2}" display="inline"><semantics><mfrac><mrow><mn>7</mn><mo>⁢</mo><msub><mi>ξ</mi><mn>8</mn></msub></mrow><mn>2</mn></mfrac><annotation encoding="application/x-tex">\frac{7\xi_{8}}{2}</annotation></semantics></math> on each side.
+  obtained by expanding the ink box by 7ξ<sub>8</sub> / 2 on each side.
 Using SVG terminology, we draw a rounded rectangle on this expanded box
-with parameters <code>rx</code>, <code>ry</code> and <span>stroke-width</span> set to <math id="I7.i6.p1.m2" alttext="3\xi_{8}" display="inline"><semantics><mrow><mn>3</mn><mo>⁢</mo><msub><mi>ξ</mi><mn>8</mn></msub></mrow><annotation encoding="application/x-tex">3\xi_{8}</annotation></semantics></math>
-<cite>[<a href="bib.html#bibx15" title="">SVG11</a>]</cite>. To obtain the logical box we again add a space of <math id="I7.i6.p1.m3" alttext="\xi_{8}" display="inline"><semantics><msub><mi>ξ</mi><mn>8</mn></msub><annotation encoding="application/x-tex">\xi_{8}</annotation></semantics></math> on
+with parameters <code>rx</code>, <code>ry</code> and <span>stroke-width</span> set to 3ξ<sub>8</sub>
+<cite>[<a href="bib.html#bibx15" title="">SVG11</a>]</cite>. To obtain the logical box we again add a space of ξ<sub>8</sub> on
 each side of the ink box. See figure <a href="#F16" title="Figure 16 ‣ 6. ‣ 3.3.9 Enclose Expression Inside Notation &lt;menclose&gt; ‣ 3.3 General Layout Schemata ‣ 3 Presentation Markup ">16</a>.</p>
 </div>
 <figure id="F16"><svg id="F16.pic1" style="width:361.9pt;height:233.1pt;" height="322.52" overflow="visible" version="1.1" viewBox="-104.06 -161.99 500.8 322.52" width="500.8"><g transform="matrix(1 0 0 -1 0 -1.46000000000004)"><g stroke="#000000"><g fill="#000000"><g stroke-width="0.4pt" color="#000000"><g stroke="#E6E6FF" color="#E6E6FF"><g fill="#E6E6FF"><path d="M -78.74 137.8 L 374.02 137.8 L 374.02 -137.8 L -78.74 -137.8 Z" style="stroke:none"></path></g></g><g stroke="#FF0000"><g fill="#FF0000"><g stroke="#FFE6E6" color="#FF0000"><g fill="#FFE6E6"><path d="M 0 59.06 L 295.28 59.06 L 295.28 -59.06 L 0 -59.06 Z" style="stroke:none"></path></g></g><path d="M 0 78.74 L 295.28 78.74 L 295.28 -78.74 L 0 -78.74 Z" style="fill:none"></path><path d="M 0 0 L 295.28 0" style="fill:none"></path></g></g><g stroke="#CCCCCC" color="#CCCCCC"><g fill="#CCCCCC"><g stroke-width="12.0pt"><path d="M -19.08 127.95 L 314.36 127.95 C 341.87 127.95 364.17 105.65 364.17 78.14 L 364.17 -78.14 C 364.17 -105.65 341.87 -127.95 314.36 -127.95 L -19.08 -127.95 C -46.6 -127.95 -68.9 -105.65 -68.9 -78.14 L -68.9 78.14 C -68.9 105.65 -46.6 127.95 -19.08 127.95 Z" style="fill:none"></path></g></g></g><g stroke-dasharray="3.0pt,3.0pt" stroke-dashoffset="0.0pt"><g stroke="#0000FF" color="#0000FF"><g fill="#0000FF"><path d="M -98.43 157.48 L 393.7 157.48 L 393.7 -157.48 L -98.43 -157.48 Z M 0 0 L 393.7 0" style="fill:none"></path></g></g></g><path d="M -0.64 0 L -29.53 0 L -58.42 0" style="fill:none"></path><g transform="matrix(1 0 0 1 -0.64 0)"><path d="M -1.66 2.21 C -1.52 1.38 0 0.14 0.42 0 C 0 -0.14 -1.52 -1.38 -1.66 -2.21" style="fill:none"></path></g><g transform="matrix(-1 0 0 -1 -58.42 0)"><path d="M -1.66 2.21 C -1.52 1.38 0 0.14 0.42 0 C 0 -0.14 -1.52 -1.38 -1.66 -2.21" style="fill:none"></path></g><g transform="matrix(1 0 0 1 -42.81 -14.57)"><g transform="matrix(1 0 0 -1 0 12.45)"><switch><foreignObject color="#000000" height="100%" overflow="visible" width="26.57">
@@ -1128,7 +1128,7 @@ notation of the <code>menclose</code> element</figcaption>
 <li id="I7.i9"> 
 <div id="I7.i9.p1">
 <p>The <code>horizontalstrike</code> notation is drawn with an horizontal bar
-of thickness <math id="I7.i9.p1.m1" alttext="\xi_{8}" display="inline"><semantics><msub><mi>ξ</mi><mn>8</mn></msub><annotation encoding="application/x-tex">\xi_{8}</annotation></semantics></math> and
+of thickness ξ<sub>8</sub> and
 vertically centered inside the <code>menclose</code> content.
 This does not change the box metrics.
 See figure <a href="#F17" title="Figure 17 ‣ 9. ‣ 3.3.9 Enclose Expression Inside Notation &lt;menclose&gt; ‣ 3.3 General Layout Schemata ‣ 3 Presentation Markup ">17</a>.</p>
@@ -1143,19 +1143,19 @@ notation of the <code>menclose</code> element</figcaption>
 <div id="I7.i10.p1">
 <p>The <code>verticalstrike</code> notation is drawn the same as
 <code>horizontalstrike</code> but with a vertical bar
-of thickness <math id="I7.i10.p1.m1" alttext="\xi_{8}" display="inline"><semantics><msub><mi>ξ</mi><mn>8</mn></msub><annotation encoding="application/x-tex">\xi_{8}</annotation></semantics></math> and horizontally centered inside the <code>menclose</code>
+of thickness ξ<sub>8</sub> and horizontally centered inside the <code>menclose</code>
 content.</p>
 </div>
 </li>
 <li id="I7.i11"> 
 <div id="I7.i11.p1">
 <p>The <code>updiagonalstrike</code> notation is drawn with a line
-of thickness <math id="I7.i11.p1.m1" alttext="\xi_{8}" display="inline"><semantics><msub><mi>ξ</mi><mn>8</mn></msub><annotation encoding="application/x-tex">\xi_{8}</annotation></semantics></math> going from the bottom left corner of the <code>menclose</code>
+of thickness ξ<sub>8</sub> going from the bottom left corner of the <code>menclose</code>
 content to its top right corner. Using SVG terminology, the
 <span>stroke-linecap</span> of the line is <code>butt</code> <cite>[<a href="bib.html#bibx15" title="">SVG11</a>]</cite>.
 As an approximation, the ink box
 is set equal to the logical box and obtained by increasing the original box
-from each side by <math id="I7.i11.p1.m2" alttext="\frac{\xi_{8}}{2}" display="inline"><semantics><mfrac><msub><mi>ξ</mi><mn>8</mn></msub><mn>2</mn></mfrac><annotation encoding="application/x-tex">\frac{\xi_{8}}{2}</annotation></semantics></math>.
+from each side by ξ<sub>8</sub> / 2.
 See figure <a href="#F18" title="Figure 18 ‣ 11. ‣ 3.3.9 Enclose Expression Inside Notation &lt;menclose&gt; ‣ 3.3 General Layout Schemata ‣ 3 Presentation Markup ">18</a>.</p>
 </div>
 <figure id="F18"><svg id="F18.pic1" style="width:246.9pt;height:152.5pt;" height="211.02" overflow="visible" version="1.1" viewBox="-33.53 -91.63 341.69 211.02" width="341.69"><g transform="matrix(1 0 0 -1 0 27.76)"><g stroke="#000000"><g fill="#000000"><g stroke-width="0.4pt" color="#000000"><g stroke="#E6E6FF" color="#E6E6FF"><g fill="#E6E6FF"><path d="M -9.84 88.58 L 305.12 88.58 L 305.12 -78.74 L -9.84 -88.58 Z" style="stroke:none"></path></g></g><g stroke="#FF0000"><g fill="#FF0000"><g stroke="#FFE6E6" color="#FF0000"><g fill="#FFE6E6"><path d="M 0 59.06 L 295.28 59.06 L 295.28 -59.06 L 0 -59.06 Z" style="stroke:none"></path></g></g><path d="M 0 78.74 L 295.28 78.74 L 295.28 -78.74 L 0 -78.74 Z" style="fill:none"></path><path d="M 0 0 L 295.28 0" style="fill:none"></path></g></g><g stroke="#CCCCCC" color="#CCCCCC"><g fill="#CCCCCC"><path d="M -4.63 -70.06 L 290.64 87.42 L 299.91 70.06 L 4.63 -87.42 Z" style="stroke:none"></path></g></g><path d="M 212.78 45.18 L 217.11 37.05 L 221.45 28.93" style="fill:none"></path><g transform="matrix(-0.47123 0.88357 -0.88357 -0.47123 212.78 45.18)"><path d="M -1.66 2.21 C -1.52 1.38 0 0.14 0.42 0 C 0 -0.14 -1.52 -1.38 -1.66 -2.21" style="fill:none"></path></g><g transform="matrix(0.47123 -0.88357 0.88357 0.47123 221.45 28.93)"><path d="M -1.66 2.21 C -1.52 1.38 0 0.14 0.42 0 C 0 -0.14 -1.52 -1.38 -1.66 -2.21" style="fill:none"></path></g><g transform="matrix(1 0 0 1 222 34.34)"><g transform="matrix(1 0 0 -1 0 12.45)"><switch><foreignObject color="#000000" height="100%" overflow="visible" width="16.19">
@@ -1180,18 +1180,21 @@ Using SVG terminology, the
 <p>The <code>longdiv</code> notation is drawn similarly to the <code>msqrt</code> element
 (figure <a href="#F11" title="Figure 11 ‣ 3.3.3 Radicals &lt;msqrt&gt;, &lt;mroot&gt; ‣ 3.3 General Layout Schemata ‣ 3 Presentation Markup ">11</a>). It is independent of CSS
 <code>direction</code> and U+221A SQUARE ROOT is replaced with
-U+0029 RIGHT PARENTHESIS. The rule thickness is <math id="I7.i13.p1.m1" alttext="\xi_{8}" display="inline"><semantics><msub><mi>ξ</mi><mn>8</mn></msub><annotation encoding="application/x-tex">\xi_{8}</annotation></semantics></math>,
-the gap between content and overbar is <math id="I7.i13.p1.m2" alttext="3\xi_{8}" display="inline"><semantics><mrow><mn>3</mn><mo>⁢</mo><msub><mi>ξ</mi><mn>8</mn></msub></mrow><annotation encoding="application/x-tex">3\xi_{8}</annotation></semantics></math> and the extra ascender
-is <math id="I7.i13.p1.m3" alttext="\xi_{8}" display="inline"><semantics><msub><mi>ξ</mi><mn>8</mn></msub><annotation encoding="application/x-tex">\xi_{8}</annotation></semantics></math>.</p>
+U+0029 RIGHT PARENTHESIS. The rule thickness is ξ<sub>8</sub>,
+the gap between content and overbar is 3ξ<sub>8</sub> and the extra ascender
+is ξ<sub>8</sub>.</p>
 </div>
 </li>
 <li id="I7.i14"> 
 <div id="I7.i14.p1">
 <p>To draw the <code>circle</code> notation, we first consider the ink box of
-width <math id="I7.i14.p1.m1" alttext="w" display="inline"><semantics><mi>w</mi><annotation encoding="application/x-tex">w</annotation></semantics></math> and height <math id="I7.i14.p1.m2" alttext="h" display="inline"><semantics><mi>h</mi><annotation encoding="application/x-tex">h</annotation></semantics></math>. We draw the ellipse
+width w and height h. We draw the ellipse
 of axes the axes of symmetry of this ink box, of radii
-<math id="I7.i14.p1.m3" alttext="\frac{\sqrt{2}}{2}w" display="inline"><semantics><mrow><mfrac><msqrt><mn>2</mn></msqrt><mn>2</mn></mfrac><mo>⁢</mo><mi>w</mi></mrow><annotation encoding="application/x-tex">\frac{\sqrt{2}}{2}w</annotation></semantics></math> and <math id="I7.i14.p1.m4" alttext="\frac{\sqrt{2}}{2}h" display="inline"><semantics><mrow><mfrac><msqrt><mn>2</mn></msqrt><mn>2</mn></mfrac><mo>⁢</mo><mi>h</mi></mrow><annotation encoding="application/x-tex">\frac{\sqrt{2}}{2}h</annotation></semantics></math> and of thickness <math id="I7.i14.p1.m5" alttext="\xi_{8}" display="inline"><semantics><msub><mi>ξ</mi><mn>8</mn></msub><annotation encoding="application/x-tex">\xi_{8}</annotation></semantics></math>.
-We ensure that the logical box also has space <math id="I7.i14.p1.m6" alttext="\xi_{8}" display="inline"><semantics><msub><mi>ξ</mi><mn>8</mn></msub><annotation encoding="application/x-tex">\xi_{8}</annotation></semantics></math> around each side
+w * √2 / 2
+  and
+h * √2 / 2
+  and of thickness ξ<sub>8</sub>.
+We ensure that the logical box also has space ξ<sub>8</sub> around each side
 of the ellipse ink box.</p>
 </div>
 <figure id="F19"><svg id="F19.pic1" style="width:363.4pt;height:182.0pt;" height="251.86" overflow="visible" version="1.1" viewBox="-251.69 -125.93 502.9 251.86" width="502.9"><g transform="matrix(1 0 0 -1 0 0)"><g stroke="#000000"><g fill="#000000"><g stroke-width="0.4pt" color="#000000"><g stroke="#CCCCFF" color="#CCCCFF"><g fill="#CCCCFF"><path d="M -228.48 103.2 M -228.48 103.2 L -228.48 -103.2 L 228.48 -103.2 L 228.48 103.2 Z M 228.48 -103.2" style="stroke:none"></path></g></g><g stroke="#FF0000"><g fill="#FF0000"><g stroke="#FFE6E6" color="#FF0000"><g fill="#FFE6E6"><path d="M -147.64 59.06 L 147.64 59.06 L 147.64 -59.06 L -147.64 -59.06 Z" style="stroke:none"></path></g></g><path d="M -147.64 78.74 L 147.64 78.74 L 147.64 -78.74 L -147.64 -78.74 Z" style="fill:none"></path><path d="M -147.64 0 L 147.64 0" style="fill:none"></path></g></g><g stroke="#CCCCCC" color="#CCCCCC"><g fill="#CCCCCC"><g stroke-width="12.0pt"><path d="M 0 0 M 218.63 0 C 218.63 -51.56 120.75 -93.36 0 -93.36 C -120.75 -93.36 -218.63 -51.56 -218.63 0 C -218.63 51.56 -120.75 93.36 0 93.36 C 120.75 93.36 218.63 51.56 218.63 0 Z M 0 0" style="fill:none"></path></g></g></g><g stroke="#CCCCCC" color="#CCCCCC"><g fill="#CCCCCC"><path d="M -147.64 59.06 M -147.64 59.06 L -147.64 -59.06 L 147.64 -59.06 L 147.64 59.06 Z M 147.64 -59.06" style="fill:none"></path></g></g><g stroke-dasharray="3.0pt,3.0pt" stroke-dashoffset="0.0pt"><g stroke="#0000FF" color="#0000FF"><g fill="#0000FF"><path d="M -248.16 122.89 M -248.16 122.89 L -248.16 -122.89 L 248.16 -122.89 L 248.16 122.89 Z M 248.16 -122.89 M -248.16 0 L 248.16 0" style="fill:none"></path></g></g></g><path d="M -247.52 0 L -236.22 0 L -229.11 0" style="fill:none"></path><g transform="matrix(-1 0 0 -1 -247.52 0)"><path d="M -1.66 2.21 C -1.52 1.38 0 0.14 0.42 0 C 0 -0.14 -1.52 -1.38 -1.66 -2.21" style="fill:none"></path></g><g transform="matrix(1 0 0 1 -229.11 0)"><path d="M -1.66 2.21 C -1.52 1.38 0 0.14 0.42 0 C 0 -0.14 -1.52 -1.38 -1.66 -2.21" style="fill:none"></path></g><g transform="matrix(1 0 0 1 -244.31 -14.57)"><g transform="matrix(1 0 0 -1 0 12.45)"><switch><foreignObject color="#000000" height="100%" overflow="visible" width="16.19">
