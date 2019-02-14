@@ -140,12 +140,10 @@
                   <li><a href="#sematicsandpresntation"><span>3.7</span> Semantics and Presentation</a></li>
                </ol>
             </li>
-            <li><a href="#fullmathml"><span>Appendix A</span> MathML</a></li>
-            <li><a href="#css"><span>Appendix B</span> CSS</a></li>
-            <li><a href="#opentype"><span>Appendix C</span> OpenType</a></li>
-            <li><a href="#imagefallback"><span>Appendix D</span> Image Fallback</a></li>
-            <li><a href="#rnc"><span>Appendix E</span> Relax NG</a></li>
-            <li><a href="#references"><span>Appendix F</span> References</a></li>
+            <li><a href="#opentype"><span>Appendix A</span> OpenType</a></li>
+            <li><a href="#imagefallback"><span>Appendix B</span> Image Fallback</a></li>
+            <li><a href="#rnc"><span>Appendix C</span> Relax NG</a></li>
+            <li><a href="#references"><span>Appendix D</span> References</a></li>
          </ol>
       </nav>
       <div class="body">
@@ -8015,195 +8013,9 @@ mlabeledtr &gt; mtd:first-child {
             </section>
             
          </section>
-         <section id="fullmathml">
-            
-            <h1><span class="secnum">Appendix A</span> MathML
-            </h1>
-            
-            <div></div>
-            
-            
-            <div id="p1">
-               
-               <p><span>This section is non-normative.</span></p>
-               
-            </div>
-            
-            <div id="p2">
-               
-               <p>The <code>mstyle</code> element duplicates the CSS inheritance mechanism in a
-                  CSS-incompatible way and has many exceptions to workaround the fact that
-                  attribute names may be used for different purposes. In practice, many of its
-                  attributes are not useful and never used. It is a burden for implementers since
-                  they essentially have to reimplement a specific “attribute” inheritance
-                  mechanism to support the general case even if the most prominent attributes
-                  have obvious mapping to CSS. It is also a performance issue to perform the
-                  rendering and keep it up-to-date since the rendering on any node may depend on
-                  its <code>mstyle</code> ancestors. In this document, it instead suggested to keep only
-                  attributes that are compatible with CSS and five new CSS properties are
-                  introduced in section <a href="#SS3.SSS1" title="2.3.1 Properties ‣ 2.3 CSS Styling ‣ 2 Relation with other technologies "><span>2.3.1</span></a>.
-                  These attributes actually correspond to what is used in practice.
-               </p>
-               
-            </div>
-            
-            <div id="p3">
-               
-               <p>The <span>&lt;mfenced&gt;</span> element is just a
-                  “convenient form in which to express common constructs involving fences”
-                  but is strictly equivalent to an expanded form with <span>&lt;mrow&gt;</span> and
-                  <span>&lt;mo&gt;</span> elements and has many exceptions to handle.
-                  It is thus not actually necessary and just requires more
-                  code for implementers and may lead to rendering inconsistencies with the
-                  expanded form. It requires web rendering engines to create many
-                  “anonymous” rendering frames (or similar) and keep them up-to-date which may
-                  lead to rendering, performance or security issues. Because the text of fences
-                  and separators is included in attributes and not in MathML elements then by
-                  default it may not be possible to search, select, copy it. It may also not be
-                  exposed to assitive technologies without further effort. In this document
-                  support for <code>mfenced</code> is not required.
-                  Authors are encouraged to use the expanded form and we recommend that the
-                  element is dropped from future version of the MathML specification.
-               </p>
-               
-            </div>
-            
-            <div id="p4">
-               
-               <p>The “radical” notation of the <span>&lt;menclose&gt;</span> element is equivalent to the
-                  <span>&lt;msqrt&gt;</span> element. Again, this adds duplicate logic for visual rendering and
-                  exposure to assistive technologies. In practice, the <span>&lt;msqrt&gt;</span> is always
-                  used for square roots. We suggest to remove the “radical” notation in
-                  future version of the MathML specification.
-               </p>
-               
-            </div>
-            
-            <div id="p5">
-               
-               <p>As explained in section <a href="#SS1.SSS2" title="3.1.2 Layout Steps ‣ 3.1 Introduction ‣ 3 Presentation Markup "><span>3.1.2</span></a> it is important in a
-                  HTML5 context to be able to determine the min-content width and the max-content
-                  width for linebreaking purpose. However, the <code>mpadded</code> element may be
-                  problematic since the pseudo-units allow horizontal metrics to depend on
-                  vertical metrics. A restriction is proposed in section <a href="#SS3.SSS6" title="3.3.6 Adjust Space Around Content <mpadded&gt; ‣ 3.3 General Layout Schemata ‣ 3 Presentation Markup "><span>3.3.6</span></a> and should
-                  not be problematic in practice.
-               </p>
-               
-            </div>
-            
-            <div id="p6">
-               
-               <p>The TeXBook’s Appendix G as well as the OpenType MATH table rely on the
-                  “cramped” concept to adjust spacing. This is absent from the MathML
-                  specification. A simple way to determine when an element is cramped is
-                  proposed in section .
-               </p>
-               
-            </div>
-            
-         </section>
-         <section id="css">
-            
-            <h1><span class="secnum">Appendix B</span> CSS
-            </h1>
-            
-            <div></div>
-            
-            
-            <div id="p1">
-               
-               <p><span>This section is non-normative.</span></p>
-               
-            </div>
-            
-            <div id="p2">
-               
-               <p>Some <code>mstyle</code> attributes follow the standard CSS inheritance and can be
-                  easily implemented by mapping them to CSS properties. Five new CSS properties
-                  would be needed for that purpose and are proposed in section
-                  <a href="#SS3.SSS1" title="2.3.1 Properties ‣ 2.3 CSS Styling ‣ 2 Relation with other technologies "><span>2.3.1</span></a>:
-               </p>
-               
-            </div>
-            
-            <div id="p3">
-               
-               <ol id="I15">
-                  
-                  <li id="I15.i1"> 
-                     
-                     <div id="I15.i1.p1">
-                        
-                        <p><span>mathml-math-style</span> (cf table <a href="#SS3.SSS1" title="2.3.1 Properties ‣ 2.3 CSS Styling ‣ 2 Relation with other technologies "><span>2.3.1</span></a>)
-                        </p>
-                        
-                     </div>
-                     
-                  </li>
-                  
-                  <li id="I15.i2"> 
-                     
-                     <div id="I15.i2.p1">
-                        
-                        <p><span>mathml-math-variant</span> (cf table <a href="#SS3.SSS1.tab1" title="2.3.1 Properties ‣ 2.3 CSS Styling ‣ 2 Relation with other technologies "><span>2.3.1</span></a>)
-                        </p>
-                        
-                     </div>
-                     
-                  </li>
-                  
-                  <li id="I15.i3"> 
-                     
-                     <div id="I15.i3.p1">
-                        
-                        <p><span>mathml-script-level</span> (cf table <a href="#SS3.SSS1.tab2" title="2.3.1 Properties ‣ 2.3 CSS Styling ‣ 2 Relation with other technologies "><span>2.3.1</span></a>)
-                        </p>
-                        
-                     </div>
-                     
-                  </li>
-                  
-                  <li id="I15.i4"> 
-                     
-                     <div id="I15.i4.p1">
-                        
-                        <p><span>mathml-script-size-multiplier</span> (cf table <a href="#SS3.SSS1.tab3" title="2.3.1 Properties ‣ 2.3 CSS Styling ‣ 2 Relation with other technologies "><span>2.3.1</span></a>)
-                        </p>
-                        
-                     </div>
-                     
-                  </li>
-                  
-                  <li id="I15.i5"> 
-                     
-                     <div id="I15.i5.p1">
-                        
-                        <p><span>mathml-script-min-size</span> (cf table <a href="#SS3.SSS1.tab4" title="2.3.1 Properties ‣ 2.3 CSS Styling ‣ 2 Relation with other technologies "><span>2.3.1</span></a>)
-                        </p>
-                        
-                     </div>
-                     
-                  </li>
-                  
-               </ol>
-               
-            </div>
-            
-            <div id="p4">
-               
-               <p>In practice, only the first three properties are involved (either implicity
-                  or explicitly) in documents with MathML content while the default values are
-                  almost always used for the two last properties. Hence, these three first
-                  properties seem the most important to consider.
-                  
-               </p>
-               
-            </div>
-            
-         </section>
          <section id="opentype">
             
-            <h1><span class="secnum">Appendix C</span> OpenType
+            <h1><span class="secnum">Appendix A</span> OpenType
             </h1>
             
             <div></div>
@@ -8268,7 +8080,7 @@ mlabeledtr &gt; mtd:first-child {
          </section>
          <section id="imagefallback">
             
-            <h1><span class="secnum">Appendix D</span> Image Fallback
+            <h1><span class="secnum">Appendix B</span> Image Fallback
             </h1>
             
             <div></div>
@@ -8319,7 +8131,7 @@ math &gt; * {
          </section>
          <section id="rnc">
             
-            <h1><span class="secnum">Appendix E</span> Relax NG
+            <h1><span class="secnum">Appendix C</span> Relax NG
             </h1>
             
             <p>This section displays a non-normative Relax NG Schema which
@@ -8635,7 +8447,7 @@ math &gt; * {
             </section>
          <section id="references">
             
-            <h1><span class="secnum">Appendix F</span> References
+            <h1><span class="secnum">Appendix D</span> References
             </h1>
             
             <div></div>

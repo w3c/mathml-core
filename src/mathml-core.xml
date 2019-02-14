@@ -33,8 +33,6 @@
 <div id="appendix">
 <include file="A1"/>
 <include file="A2"/>
-<include file="A3"/>
-<include file="A4"/>
 <section id="rnc">
  <h1>Relax NG</h1>
  <p>This section displays a non-normative Relax NG Schema which
