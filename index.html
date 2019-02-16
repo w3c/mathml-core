@@ -8142,8 +8142,7 @@ math &gt; * {
                whatever syntax is used.
             </p>
             
-            <pre class="example"><span style="color:brown;">## mathml3-common, simplified</span>
-
+            <pre class="example"><span style="color:brown;"># mathml4-core</span>
 <span style="font-weight:bold;">default</span> <span style="font-weight:bold;">namespace</span> <a name="rncrncnamespacem" style="color:blue;">m</a> = "http://www.w3.org/1998/Math/MathML"
 
 <a name="rncrncstart" style="color:blue;">start</a> = <a href="#rncrncmath">math</a>
@@ -8295,7 +8294,7 @@ math &gt; * {
 <a name="rncrncmsline.attributes" style="color:blue;">msline.attributes</a> = 
   <a href="#rncrncCommonAtt">CommonAtt</a>,  <a href="#rncrncCommonPresAtt">CommonPresAtt</a>,
   <span style="font-weight:bold;">attribute</span> position {<span style="font-weight:bold;">xsd:integer</span>}?,
-  <span style="font-weight:bold;">attribute</span> length {<span style="font-weight:bold;">xsd:positive-integer</span>}?,
+  <span style="font-weight:bold;">attribute</span> length {<span style="font-weight:bold;">xsd:positiveInteger</span>}?,
   <span style="font-weight:bold;">attribute</span> leftoverhang {<a href="#rncrnclength">length</a>}?,
   <span style="font-weight:bold;">attribute</span> rightoverhang {<a href="#rncrnclength">length</a>}?,
   <span style="font-weight:bold;">attribute</span> mslinethickness {<a href="#rncrnclength">length</a> | "thin" | "medium" | "thick"}?
@@ -8432,8 +8431,8 @@ math &gt; * {
 <a name="rncrncmtd" style="color:blue;">mtd</a> = <span style="font-weight:bold;">element</span> mtd {<a href="#rncrncmtd.attributes">mtd.attributes</a>, <a href="#rncrncImpliedMrow">ImpliedMrow</a>}
 <a name="rncrncmtd.attributes" style="color:blue;">mtd.attributes</a> = 
   <a href="#rncrncCommonAtt">CommonAtt</a>, <a href="#rncrncCommonPresAtt">CommonPresAtt</a>,
-  <span style="font-weight:bold;">attribute</span> rowspan {<span style="font-weight:bold;">xsd:positive-integer</span>}?,
-  <span style="font-weight:bold;">attribute</span> columnspan {<span style="font-weight:bold;">xsd:positive-integer</span>}?,
+  <span style="font-weight:bold;">attribute</span> rowspan {<span style="font-weight:bold;">xsd:positiveInteger</span>}?,
+  <span style="font-weight:bold;">attribute</span> columnspan {<span style="font-weight:bold;">xsd:positiveInteger</span>}?,
   <span style="font-weight:bold;">attribute</span> rowalign {"top" | "bottom" | "center" | "baseline" | "axis"}?,
   <span style="font-weight:bold;">attribute</span> columnalign {<a href="#rncrnccolumnalignstyle">columnalignstyle</a>}?
 
@@ -8441,7 +8440,7 @@ math &gt; * {
 <a name="rncrncmaction.attributes" style="color:blue;">maction.attributes</a> = 
   <a href="#rncrncCommonAtt">CommonAtt</a>, <a href="#rncrncCommonPresAtt">CommonPresAtt</a>,
   <span style="font-weight:bold;">attribute</span> actiontype {<span style="font-weight:bold;">text</span>},
-  <span style="font-weight:bold;">attribute</span> selection {<span style="font-weight:bold;">xsd:positive-integer</span>}?
+  <span style="font-weight:bold;">attribute</span> selection {<span style="font-weight:bold;">xsd:positiveInteger</span>}?
 </pre>
             
             </section>
