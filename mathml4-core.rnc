@@ -1,5 +1,4 @@
-## mathml3-common, simplified
-
+# mathml4-core
 default namespace m = "http://www.w3.org/1998/Math/MathML"
 
 start = math
@@ -151,7 +150,7 @@ msline = element msline {msline.attributes,empty}
 msline.attributes = 
   CommonAtt,  CommonPresAtt,
   attribute position {xsd:integer}?,
-  attribute length {xsd:positive-integer}?,
+  attribute length {xsd:positiveInteger}?,
   attribute leftoverhang {length}?,
   attribute rightoverhang {length}?,
   attribute mslinethickness {length | "thin" | "medium" | "thick"}?
@@ -288,8 +287,8 @@ mtr.attributes =
 mtd = element mtd {mtd.attributes, ImpliedMrow}
 mtd.attributes = 
   CommonAtt, CommonPresAtt,
-  attribute rowspan {xsd:positive-integer}?,
-  attribute columnspan {xsd:positive-integer}?,
+  attribute rowspan {xsd:positiveInteger}?,
+  attribute columnspan {xsd:positiveInteger}?,
   attribute rowalign {"top" | "bottom" | "center" | "baseline" | "axis"}?,
   attribute columnalign {columnalignstyle}?
 
@@ -297,5 +296,5 @@ maction = element maction {maction.attributes, MathExpression+}
 maction.attributes = 
   CommonAtt, CommonPresAtt,
   attribute actiontype {text},
-  attribute selection {xsd:positive-integer}?
+  attribute selection {xsd:positiveInteger}?
 
