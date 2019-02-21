@@ -81,61 +81,20 @@ ink of text and bars within the MathML box.</p>
 that the content is simple enough to determine these values. For example,
 in most case, this is just a single text node and w = W.
 A MathML element containing only other MathML elements follow special rules to
-layout their children at position <math id="SS1.SSS1.p4.m2" alttext="(x_{i},y_{i})" display="inline"><semantics><mrow><mo stretchy="false">(</mo><msub><mi>x</mi><mi>i</mi></msub><mo>,</mo><msub><mi>y</mi><mi>i</mi></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(x_{i},y_{i})</annotation></semantics></math> with parameters
-<math id="SS1.SSS1.p4.m3" alttext="W_{i},w_{i},a_{i},b_{i},A_{i},B_{i}" display="inline"><semantics><mrow><msub><mi>W</mi><mi>i</mi></msub><mo>,</mo><msub><mi>w</mi><mi>i</mi></msub><mo>,</mo><msub><mi>a</mi><mi>i</mi></msub><mo>,</mo><msub><mi>b</mi><mi>i</mi></msub><mo>,</mo><msub><mi>A</mi><mi>i</mi></msub><mo>,</mo><msub><mi>B</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">W_{i},w_{i},a_{i},b_{i},A_{i},B_{i}</annotation></semantics></math>. Then as a general rule, its box parameters are given
+  layout their children at position
+(x<sub>i</sub>, y<sub>i</sub>) with parameters
+W<sub>i</sub>, w<sub>i</sub>, a<sub>i</sub>, b<sub>i</sub>, A<sub>i</sub>,
+B<sub>i</sub>. Then as a general rule, its box parameters are given
 by taking the union of child boxes, that is:</p>
-<table id="Ex1">
 
-<tr>
-<td></td>
-<td><math id="Ex1.m1" alttext="w=\left(\max_{1\leq i\leq n}{x_{i}+w_{i}}\right)-\left(\min_{1\leq i\leq n}x_{%
-i}\right)" display="block"><semantics><mrow><mi>w</mi><mo>=</mo><mrow><mrow><mo>(</mo><mrow><mrow><munder><mi>max</mi><mrow><mn>1</mn><mo>≤</mo><mi>i</mi><mo>≤</mo><mi>n</mi></mrow></munder><mo>⁡</mo><msub><mi>x</mi><mi>i</mi></msub></mrow><mo>+</mo><msub><mi>w</mi><mi>i</mi></msub></mrow><mo>)</mo></mrow><mo>-</mo><mrow><mo>(</mo><mrow><munder><mi>min</mi><mrow><mn>1</mn><mo>≤</mo><mi>i</mi><mo>≤</mo><mi>n</mi></mrow></munder><mo>⁡</mo><msub><mi>x</mi><mi>i</mi></msub></mrow><mo>)</mo></mrow></mrow></mrow><annotation encoding="application/x-tex">w=\left(\max_{1\leq i\leq n}{x_{i}+w_{i}}\right)-\left(\min_{1\leq i\leq n}x_{%
-i}\right)</annotation></semantics></math></td>
-<td></td>
-</tr>
-</table>
-<table id="Ex2">
-
-<tr>
-<td></td>
-<td><math id="Ex2.m1" alttext="W=\left(\max_{1\leq i\leq n}{x_{i}+W_{i}}\right)-\left(\min_{1\leq i\leq n}x_{%
-i}\right)" display="block"><semantics><mrow><mi>W</mi><mo>=</mo><mrow><mrow><mo>(</mo><mrow><mrow><munder><mi>max</mi><mrow><mn>1</mn><mo>≤</mo><mi>i</mi><mo>≤</mo><mi>n</mi></mrow></munder><mo>⁡</mo><msub><mi>x</mi><mi>i</mi></msub></mrow><mo>+</mo><msub><mi>W</mi><mi>i</mi></msub></mrow><mo>)</mo></mrow><mo>-</mo><mrow><mo>(</mo><mrow><munder><mi>min</mi><mrow><mn>1</mn><mo>≤</mo><mi>i</mi><mo>≤</mo><mi>n</mi></mrow></munder><mo>⁡</mo><msub><mi>x</mi><mi>i</mi></msub></mrow><mo>)</mo></mrow></mrow></mrow><annotation encoding="application/x-tex">W=\left(\max_{1\leq i\leq n}{x_{i}+W_{i}}\right)-\left(\min_{1\leq i\leq n}x_{%
-i}\right)</annotation></semantics></math></td>
-<td></td>
-</tr>
-</table>
-<table id="Ex3">
-
-<tr>
-<td></td>
-<td><math id="Ex3.m1" alttext="a=\max_{1\leq i\leq n}{a_{i}-y_{i}}" display="block"><semantics><mrow><mi>a</mi><mo>=</mo><mrow><mrow><munder><mi>max</mi><mrow><mn>1</mn><mo>≤</mo><mi>i</mi><mo>≤</mo><mi>n</mi></mrow></munder><mo>⁡</mo><msub><mi>a</mi><mi>i</mi></msub></mrow><mo>-</mo><msub><mi>y</mi><mi>i</mi></msub></mrow></mrow><annotation encoding="application/x-tex">a=\max_{1\leq i\leq n}{a_{i}-y_{i}}</annotation></semantics></math></td>
-<td></td>
-</tr>
-</table>
-<table id="Ex4">
-
-<tr>
-<td></td>
-<td><math id="Ex4.m1" alttext="b=\max_{1\leq i\leq n}{b_{i}+y_{i}}" display="block"><semantics><mrow><mi>b</mi><mo>=</mo><mrow><mrow><munder><mi>max</mi><mrow><mn>1</mn><mo>≤</mo><mi>i</mi><mo>≤</mo><mi>n</mi></mrow></munder><mo>⁡</mo><msub><mi>b</mi><mi>i</mi></msub></mrow><mo>+</mo><msub><mi>y</mi><mi>i</mi></msub></mrow></mrow><annotation encoding="application/x-tex">b=\max_{1\leq i\leq n}{b_{i}+y_{i}}</annotation></semantics></math></td>
-<td></td>
-</tr>
-</table>
-<table id="Ex5">
-
-<tr>
-<td></td>
-<td><math id="Ex5.m1" alttext="A=\max_{1\leq i\leq n}{A_{i}-y_{i}}" display="block"><semantics><mrow><mi>A</mi><mo>=</mo><mrow><mrow><munder><mi>max</mi><mrow><mn>1</mn><mo>≤</mo><mi>i</mi><mo>≤</mo><mi>n</mi></mrow></munder><mo>⁡</mo><msub><mi>A</mi><mi>i</mi></msub></mrow><mo>-</mo><msub><mi>y</mi><mi>i</mi></msub></mrow></mrow><annotation encoding="application/x-tex">A=\max_{1\leq i\leq n}{A_{i}-y_{i}}</annotation></semantics></math></td>
-<td></td>
-</tr>
-</table>
-<table id="Ex6">
-
-<tr>
-<td></td>
-<td><math id="Ex6.m1" alttext="B=\max_{1\leq i\leq n}{B_{i}+y_{i}}" display="block"><semantics><mrow><mi>B</mi><mo>=</mo><mrow><mrow><munder><mi>max</mi><mrow><mn>1</mn><mo>≤</mo><mi>i</mi><mo>≤</mo><mi>n</mi></mrow></munder><mo>⁡</mo><msub><mi>B</mi><mi>i</mi></msub></mrow><mo>+</mo><msub><mi>y</mi><mi>i</mi></msub></mrow></mrow><annotation encoding="application/x-tex">B=\max_{1\leq i\leq n}{B_{i}+y_{i}}</annotation></semantics></math></td>
-<td></td>
-</tr>
-</table>
+<p>w = max<sub>1 ≤ i ≤ n</sub> (x<sub>i</sub> + w<sub>i</sub>) − 
+       max<sub>1 ≤ i ≤ n</sub> x<sub>i</sub></p>
+<p>W = max<sub>1 ≤ i ≤ n</sub> (x<sub>i</sub> + W<sub>i</sub>) − 
+       max<sub>1 ≤ i ≤ n</sub> x<sub>i</sub></p>
+<p>a = max<sub>1 ≤ i ≤ n</sub> (a<sub>i</sub> − y<sub>i</sub>)</p>
+<p>b = max<sub>1 ≤ i ≤ n</sub> (b<sub>i</sub> + y<sub>i</sub>)</p>
+<p>A = max<sub>1 ≤ i ≤ n</sub> (A<sub>i</sub> − y<sub>i</sub>)</p>
+<p>B = max<sub>1 ≤ i ≤ n</sub> (B<sub>i</sub> + y<sub>i</sub>)</p>
 </div>
 <div id="SS1.SSS1.p5">
 <p>Note that the schemas in this document are drawn assuming left-to-right
