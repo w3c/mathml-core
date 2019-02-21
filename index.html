@@ -2329,17 +2329,9 @@ munderover &gt; :not(:first-child) {
                   
                   <div id="SS2.SSS2.p1">
                      
-                     <p>The MathML specification describes <code>mi</code> as follows <cite>[<a href="#bibx11" title="">MathML3</a>]</cite>:
+                     <p>An <code>mi</code> element represents a symbolic name or arbitrary text that should be rendered as an
+                        identifier. Identifiers can include variables, function names, and symbolic constants.
                      </p>
-                     
-                     <blockquote>
-                        
-                        <p>An <code>mi</code> element represents a symbolic name or arbitrary text that should
-                           be rendered as an identifier.
-                           
-                        </p>
-                        
-                     </blockquote>
                      
                   </div>
                   
@@ -2364,16 +2356,10 @@ munderover &gt; :not(:first-child) {
                   
                   <div id="SS2.SSS3.p1">
                      
-                     <p>The MathML specification describes <code>mn</code> as follows <cite>[<a href="#bibx11" title="">MathML3</a>]</cite>:
+                     <p>An <code>mn</code> element represents a "numeric literal" or other data that should be rendered as a
+                        numeric literal. Generally speaking, a numeric literal is a sequence of digits, perhaps
+                        including a decimal point, representing an unsigned integer or real number.
                      </p>
-                     
-                     <blockquote>
-                        
-                        <p>An <code>mn</code> element represents a ”numeric literal” or other data that should
-                           be rendered as a numeric literal.
-                        </p>
-                        
-                     </blockquote>
                      
                   </div>
                   
@@ -2396,16 +2382,17 @@ munderover &gt; :not(:first-child) {
                   
                   <div id="SS2.SSS4.p1">
                      
-                     <p>The MathML specification describes <code>mo</code> as follows <cite>[<a href="#bibx11" title="">MathML3</a>]</cite>:
+                     <p>An <code>mo</code> element represents an operator or anything that should be rendered as an operator.
+                        In general, the notational conventions for mathematical operators are quite complicated,
+                        and therefore MathML provides a relatively sophisticated mechanism for specifying
+                        the rendering behavior of an <code>mo</code> element. As a consequence, in MathML the list of things that should "render as an
+                        operator" includes a number of notations that are not mathematical operators in the
+                        ordinary sense. Besides ordinary operators with infix, prefix, or postfix forms, these
+                        include fence characters such as braces, parentheses, and "absolute value" bars; separators
+                        such as comma and semicolon; and mathematical accents such as a bar or tilde over
+                        a symbol. We will use the term "operator" in this chapter to refer to operators in
+                        this broad sense.
                      </p>
-                     
-                     <blockquote>
-                        
-                        <p>An <code>mo</code> element represents an operator or anything that should be
-                           rendered as an operator.
-                        </p>
-                        
-                     </blockquote>
                      
                   </div>
                   
@@ -2947,16 +2934,9 @@ munderover &gt; :not(:first-child) {
                   
                   <div id="SS2.SSS5.p1">
                      
-                     <p>The MathML specification describes <code>mtext</code> as follows <cite>[<a href="#bibx11" title="">MathML3</a>]</cite>:
+                     <p>An <code>mtext</code> element is used to represent arbitrary text that should be rendered as itself. In
+                        general, the <code>mtext</code> element is intended to denote commentary text.
                      </p>
-                     
-                     <blockquote>
-                        
-                        <p>An <code>mtext</code> element is used to represent arbitrary text that should be
-                           rendered as itself.
-                        </p>
-                        
-                     </blockquote>
                      
                   </div>
                   
@@ -3044,16 +3024,8 @@ munderover &gt; :not(:first-child) {
                   
                   <div id="SS2.SSS6.p1">
                      
-                     <p>The MathML specification describes <code>ms</code> as follows <cite>[<a href="#bibx11" title="">MathML3</a>]</cite>:
+                     <p>An <code>mspace</code> empty element represents a blank space of any desired size, as set by its attributes.
                      </p>
-                     
-                     <blockquote>
-                        
-                        <p>An <code>mspace</code> empty element represents a blank space of any desired size, as
-                           set by its attributes.
-                        </p>
-                        
-                     </blockquote>
                      
                   </div>
                   
@@ -3153,17 +3125,9 @@ munderover &gt; :not(:first-child) {
                   
                   <div id="SS2.SSS7.p1">
                      
-                     <p>The MathML specification describes <code>ms</code> as follows <cite>[<a href="#bibx11" title="">MathML3</a>]</cite>:
+                     <p>The <code>ms</code> element is used to represent "string literals" in expressions meant to be interpreted
+                        by computer algebra systems or other systems containing "programming languages".
                      </p>
-                     
-                     <blockquote>
-                        
-                        <p>The <code>ms</code> element is used to represent ”string literals” in expressions
-                           meant to be interpreted by computer algebra systems or other systems containing
-                           ”programming languages”.
-                        </p>
-                        
-                     </blockquote>
                      
                   </div>
                   
@@ -3212,44 +3176,9 @@ ms[rquote]:after {
                   
                   <div id="SS3.SSS1.p1">
                      
-                     <p>The MathML specification describes <code>mrow</code> as follows <cite>[<a href="#bibx11" title="">MathML3</a>]</cite>:
+                     <p>An <code>mrow</code> element is used to group together any number of sub-expressions, usually consisting
+                        of one or more <code>mo</code> elements acting as "operators" on one or more other expressions that are their "operands".
                      </p>
-                     
-                     <blockquote>
-                        
-                        <p>An <code>mrow</code> element is used to group together any number of sub-expressions,
-                           usually consisting of one or more <code>mo</code> elements acting as ”operators” on
-                           one or more other expressions that are their ”operands”.
-                           
-                           <br>
-                           Several elements automatically treat their arguments as if they were
-                           contained in an <code>mrow</code> element. See the discussion of inferred <code>mrow</code>s
-                           in Section 3.1.3 Required Arguments. […]
-                           
-                           <br>
-                           <code>mrow</code> elements are typically rendered visually as a horizontal row of
-                           their arguments, left to right in the order in which the arguments occur
-                           within a context with LTR directionality, or right to left within a context
-                           with RTL directionality. The <code>dir</code> attribute can be used to specify the
-                           directionality for a specific mrow, otherwise it inherits the directionality
-                           from the context. […] The description in Section 3.2.5 Operator, Fence,
-                           Separator or Accent <span>&lt;mo&gt;</span> of suggested rendering rules for <code>mo</code>
-                           elements assumes that all horizontal spacing between operators and their
-                           operands is added by the rendering of mo elements (or, more generally,
-                           embellished operators), not by the rendering of the <code>mrow</code>s they are
-                           contained in.
-                           
-                           <br>
-                           MathML provides support for both automatic and manual linebreaking of
-                           expressions (that is, to break excessively long expressions into several
-                           lines). All such linebreaks take place within mrows, whether they are
-                           explicitly marked up in the document, or inferred (See Section 3.1.3.1
-                           Inferred <span>&lt;mrow&gt;</span>s), although the control of linebreaking is effected
-                           through attributes on other elements (See Section 3.1.7 Linebreaking of
-                           Expressions).
-                        </p>
-                        
-                     </blockquote>
                      
                   </div>
                   
@@ -3641,26 +3570,12 @@ ms[rquote]:after {
                   
                   <div id="SS3.SSS2.p1">
                      
-                     <p>The MathML specification describes <code>mfrac</code> as follows <cite>[<a href="#bibx11" title="">MathML3</a>]</cite>:
+                     <p>The <code>mfrac</code> element is used for fractions. It can also be used to mark up fraction-like objects
+                        such as binomial coefficients and Legendre symbols. The syntax for <code>mfrac</code> is
+                        <br>
+                        <span>&lt;mfrac&gt; numerator denominator &lt;/mfrac&gt;</span>
+                        
                      </p>
-                     
-                     <blockquote>
-                        
-                        <p>The <code>mfrac</code> element is used for fractions. It can also be used to mark up
-                           fraction-like objects such as binomial coefficients and Legendre symbols.
-                           The syntax for <code>mfrac</code> is
-                           
-                           <br>
-                           <span>&lt;mfrac&gt; numerator denominator &lt;/mfrac&gt;</span>
-                           
-                           <br>
-                           The <code>mfrac</code> element sets <code>displaystyle</code> to <span>"false"</span>, or if it was
-                           already false increments <code>scriptlevel</code> by 1, within numerator and
-                           denominator.
-                           
-                        </p>
-                        
-                     </blockquote>
                      
                   </div>
                   
@@ -4080,37 +3995,15 @@ ms[rquote]:after {
                   
                   <div id="SS3.SSS3.p1">
                      
-                     <p>The MathML specification describes radicals as follows <cite>[<a href="#bibx11" title="">MathML3</a>]</cite>:
+                     <p>These elements construct radicals. The <code>msqrt</code> element is used for square
+                        roots, while the <code>mroot</code> element is used to draw radicals with indices,
+                        e.g. a cube root. The syntax for these elements is:
+                        <br>
+                        <span>&lt;msqrt&gt; base &lt;/msqrt&gt; 
+                           <br>
+                           &lt;mroot&gt; base index &lt;/mroot&gt;</span>
+                        
                      </p>
-                     
-                     <blockquote>
-                        
-                        <p>These elements construct radicals. The <code>msqrt</code> element is used for square
-                           roots, while the <code>mroot</code> element is used to draw radicals with indices,
-                           e.g. a cube root. The syntax for these elements is:
-                           
-                           <br>
-                           <span>&lt;msqrt&gt; base &lt;/msqrt&gt; 
-                              <br>
-                              &lt;mroot&gt; base index &lt;/mroot&gt;</span>
-                           
-                           <br>
-                           The <code>mroot</code> element requires exactly 2 arguments. However, <code>msqrt</code>
-                           accepts a single argument, possibly being an inferred <code>mrow</code> of multiple
-                           children.
-                           
-                           <br>
-                           The <code>mroot</code> element increments scriptlevel by 2, and sets displaystyle to
-                           <span>"false"</span>,
-                           within index, but leaves both attributes unchanged within base. The
-                           <code>msqrt</code> element leaves both attributes unchanged within its argument. […]
-                           
-                           <br>
-                           Note that in a RTL directionality, the surd begins on the right, rather than
-                           the left, along with the index in the case of mroot.
-                        </p>
-                        
-                     </blockquote>
                      
                   </div>
                   
@@ -4455,28 +4348,9 @@ ms[rquote]:after {
                   
                   <div id="SS3.SSS4.p1">
                      
-                     <p>The MathML specification has a long description of <code>mstyle</code> with several
-                        ways to interpret the attributes, to handle inheritance and to deal with
-                        additional exceptions. The most important points are <cite>[<a href="#bibx11" title="">MathML3</a>]</cite>:
+                     <p>The <code>mstyle</code> element is used to make style changes that affect the
+                        rendering of its contents.
                      </p>
-                     
-                     <blockquote>
-                        
-                        <p>The <code>mstyle</code> element is used to make style changes that affect the
-                           rendering of its contents. […]
-                           
-                           <br>
-                           The <code>mstyle</code> element accepts a single argument, possibly being an inferred
-                           <code>mrow</code> of multiple children […]
-                           
-                           <br>
-                           Loosely speaking, the effect of the <code>mstyle</code> element is to change the
-                           default value of an attribute for the elements it contains. Style changes work
-                           in one of several ways, depending on the way in which default values are
-                           specified for an attribute.
-                        </p>
-                        
-                     </blockquote>
                      
                   </div>
                   
@@ -4503,22 +4377,10 @@ ms[rquote]:after {
                   
                   <div id="SS3.SSS5.p1">
                      
-                     <p>The MathML specification describes <code>merror</code> as follows <cite>[<a href="#bibx11" title="">MathML3</a>]</cite>:
+                     <p>The <code>merror</code> element displays its contents as an ”error message”. This might be done, for example,
+                        by displaying the contents in red, flashing the
+                        contents, or changing the background color.
                      </p>
-                     
-                     <blockquote>
-                        
-                        <p>The <code>merror</code> element displays its contents as an ”error message”. This
-                           might be done, for example, by displaying the contents in red, flashing the
-                           contents, or changing the background color. The contents can be any expression
-                           or expression sequence.
-                           
-                           <br>
-                           <code>merror</code> accepts a single argument possibly being an inferred <code>mrow</code> of
-                           multiple children. […]
-                        </p>
-                        
-                     </blockquote>
                      
                   </div>
                   
@@ -4552,21 +4414,10 @@ ms[rquote]:after {
                   
                   <div id="SS3.SSS6.p1">
                      
-                     <p>The MathML specification describes <code>mpadded</code> as follows <cite>[<a href="#bibx11" title="">MathML3</a>]</cite>:
+                     <p>An <code>mpadded</code> element renders the same as its child content, but with the
+                        size of the child’s bounding box and the relative positioning point of its
+                        content modified according to <code>mpadded</code>’s attributes.
                      </p>
-                     
-                     <blockquote>
-                        
-                        <p>An <code>mpadded</code> element renders the same as its child content, but with the
-                           size of the child’s bounding box and the relative positioning point of its
-                           content modified according to <code>mpadded</code>’s attributes. […]
-                           
-                           <br>
-                           The <code>mpadded</code> element accepts a single argument which may be an inferred
-                           <code>mrow</code> of multiple children
-                        </p>
-                        
-                     </blockquote>
                      
                   </div>
                   
@@ -4769,21 +4620,9 @@ ms[rquote]:after {
                   
                   <div id="SS3.SSS7.p1">
                      
-                     <p>The MathML specification describes <code>mphantom</code> as follows <cite>[<a href="#bibx11" title="">MathML3</a>]</cite>:
+                     <p>The <code>mphantom</code> element renders invisibly, but with the same size and other dimensions, including
+                        baseline position, that its contents would have if they were rendered normally.
                      </p>
-                     
-                     <blockquote>
-                        
-                        <p>The <code>mphantom</code> element renders invisibly, but with the same size and other
-                           dimensions, including baseline position, that its contents would have if they
-                           were rendered normally. […]
-                           
-                           <br>
-                           The <code>mphantom</code> element accepts a single argument possibly being an inferred
-                           <code>mrow</code> of multiple children […]
-                        </p>
-                        
-                     </blockquote>
                      
                   </div>
                   
@@ -4817,17 +4656,9 @@ ms[rquote]:after {
                   
                   <div id="SS3.SSS9.p1">
                      
-                     <p>The MathML specification describes <code>menclose</code> as follows <cite>[<a href="#bibx11" title="">MathML3</a>]</cite>:
+                     <p>The <code>menclose</code> element renders its content inside the enclosing notation specified by its notation
+                        attribute.
                      </p>
-                     
-                     <blockquote>
-                        
-                        <p>The <code>menclose</code> element renders its content inside the enclosing notation
-                           specified by its notation attribute. <code>menclose</code> accepts a single argument
-                           possibly being an inferred <code>mrow</code> of multiple children […]
-                        </p>
-                        
-                     </blockquote>
                      
                   </div>
                   
@@ -6078,47 +5909,24 @@ ms[rquote]:after {
                   
                   <div id="SS4.SSS1.p1">
                      
-                     <p>The MathML specification describes Subscripts and Superscripts as
-                        follows <cite>[<a href="#bibx11" title="">MathML3</a>]</cite>:
+                     <p>The msub element attaches a subscript to a base using the syntax
+                        <br>
+                        <span>&lt;msub&gt;</span> base subscript <span>&lt;/msub&gt;</span>
+                        
                      </p>
                      
-                     <blockquote>
+                     <p>The <code>msup</code> element attaches a superscript to a base using the syntax
+                        <br>
+                        <span>&lt;msup&gt;</span> base superscript <span>&lt;/msup&gt;</span>
                         
-                        <p>The msub element attaches a subscript to a base using the syntax
-                           
-                           <br>
-                           <span>&lt;msub&gt;</span> base subscript <span>&lt;/msub&gt;</span>
-                           
-                           <br>
-                           It increments <code>scriptlevel</code> by 1, and sets <code>displaystyle</code> to
-                           <span>"false"</span>, within subscript, but leaves both attributes unchanged within
-                           base. […]
-                           
-                           <br>
-                           The <code>msup</code> element attaches a superscript to a base using the syntax
-                           
-                           <br>
-                           <span>&lt;msup&gt;</span> base superscript <span>&lt;/msup&gt;</span>
-                           
-                           <br>
-                           It increments <code>scriptlevel</code> by 1, and sets <code>displaystyle</code> to
-                           <span>"false"</span>, within superscript, but leaves both attributes unchanged within
-                           base. […]
-                           
-                           <br>
-                           The <code>msubsup</code> element is used to attach both a subscript and superscript to
-                           a base expression.
-                           
-                           <br>
-                           <span>&lt;msubsup&gt;</span> base subscript superscript <span>&lt;/msubsup&gt;</span>
-                           
-                           <br>
-                           It increments <code>scriptlevel</code> by 1, and sets <code>displaystyle</code> to
-                           <span>"false"</span>, within subscript and superscript, but leaves both attributes
-                           unchanged within base. […]
-                        </p>
+                     </p>
+                     
+                     <p>The <code>msubsup</code> element is used to attach both a subscript and superscript to
+                        a base expression.
+                        <br>
+                        <span>&lt;msubsup&gt;</span> base subscript superscript <span>&lt;/msubsup&gt;</span>
                         
-                     </blockquote>
+                     </p>
                      
                   </div>
                   
@@ -6888,70 +6696,42 @@ msubsup &gt; :not(:first-child) {
                   
                   <div id="SS4.SSS2.p1">
                      
-                     <p>The MathML specification describes Underscripts and Overscripts as
-                        follows <cite>[<a href="#bibx11" title="">MathML3</a>]</cite>:
+                     <p>The <code>munder</code> element attaches an accent or limit placed under a base using
+                        the syntax
+                        <br>
+                        <span>&lt;munder&gt;</span> base underscript <span>&lt;/munder&gt;</span>
+                        <br>
+                        If base is an operator with <span>movablelimits="true"</span> (or an embellished
+                        operator whose <code>mo</code> element core has <span>movablelimits="true"</span>), and
+                        <span>displaystyle="false"</span>, then underscript is drawn in a subscript position.
+                        In this case, the <code>accentunder</code> attribute is ignored. […]
+                        
                      </p>
                      
-                     <blockquote>
-                        
-                        <p>The <code>munder</code> element attaches an accent or limit placed under a base using
-                           the syntax
-                           
-                           <br>
-                           <span>&lt;munder&gt;</span> base underscript <span>&lt;/munder&gt;</span>
-                           
-                           <br>
-                           It always sets <code>displaystyle</code> to <span>"false"</span> within the underscript, but
-                           increments <code>scriptlevel</code> by 1 only when <code>accentunder</code> is
-                           <span>"false"</span>. Within base, it always leaves both attributes unchanged.[…]
-                           
-                           <br>
-                           If base is an operator with <span>movablelimits="true"</span> (or an embellished
-                           operator whose <code>mo</code> element core has <span>movablelimits="true"</span>), and
-                           <span>displaystyle="false"</span>, then underscript is drawn in a subscript position.
-                           In this case, the <code>accentunder</code> attribute is ignored. […]
-                           
-                           <br>
-                           The <code>mover</code> element attaches an accent or limit placed over a base using
-                           the syntax
-                           
-                           <br>
-                           <span>&lt;mover&gt; base overscript &lt;/mover&gt;</span>
-                           
-                           <br>
-                           It always sets <code>displaystyle</code> to <span>"false"</span> within overscript, but
-                           increments <code>scriptlevel</code> by 1 only when accent is <span>"false"</span>.
-                           Within base, it
-                           always leaves both attributes unchanged.[…]
-                           
-                           <br>
-                           If base is an operator with <span>movablelimits="true"</span> (or an embellished
-                           operator whose <code>mo</code> element core has <span>movablelimits="true"</span>), and
-                           <span>displaystyle="false"</span>, then overscript is drawn in a superscript position.
-                           In this case, the <code>accent</code> attribute is ignored.[…]
-                           
-                           <br>
-                           The <code>munderover</code> element attaches accents or limits placed both over and
-                           under a base using the syntax
-                           
-                           <br>
-                           <span>&lt;munderover&gt; base underscript overscript &lt;/munderover&gt;</span>
-                           
-                           <br>
-                           It always sets <code>displaystyle</code> to <span>"false"</span> within underscript and
-                           overscript, but increments <code>scriptlevel</code> by 1 only when <code>accentunder</code>
-                           or <code>accent</code>, respectively, are <span>"false"</span>. Within base, it always leaves
-                           both attributes unchanged. […]
-                           
-                           <br>
-                           If base is an operator with <span>movablelimits="true"</span> (or an embellished
-                           operator whose <code>mo</code> element core has <span>movablelimits="true"</span>), and
-                           <span>displaystyle="false"</span>, then underscript and overscript are drawn in a
-                           subscript and superscript position, respectively. In this case, the
-                           <code>accentunder</code> and <code>accent</code> attributes are ignored. […]
-                        </p>
-                        
-                     </blockquote>
+                     <p>
+                        The <code>mover</code> element attaches an accent or limit placed over a base using
+                        the syntax
+                        <br>
+                        <span>&lt;mover&gt; base overscript &lt;/mover&gt;</span>
+                        <br>
+                        If base is an operator with <span>movablelimits="true"</span> (or an embellished
+                        operator whose <code>mo</code> element core has <span>movablelimits="true"</span>), and
+                        <span>displaystyle="false"</span>, then overscript is drawn in a superscript position.
+                        In this case, the <code>accent</code> attribute is ignored.
+                     </p>
+                     
+                     <p> 
+                        The <code>munderover</code> element attaches accents or limits placed both over and
+                        under a base using the syntax
+                        <br>
+                        <span>&lt;munderover&gt; base underscript overscript &lt;/munderover&gt;</span>
+                        <br>
+                        If base is an operator with <span>movablelimits="true"</span> (or an embellished
+                        operator whose <code>mo</code> element core has <span>movablelimits="true"</span>), and
+                        <span>displaystyle="false"</span>, then underscript and overscript are drawn in a
+                        subscript and superscript position, respectively. In this case, the
+                        <code>accentunder</code> and <code>accent</code> attributes are ignored.
+                     </p>
                      
                   </div>
                   
@@ -7333,42 +7113,25 @@ munderover &gt; :not(:first-child) {
                   
                   <div id="SS4.SSS3.p1">
                      
-                     <p>The MathML specification describes the <code>mmultiscripts</code> element as
-                        follows <cite>[<a href="#bibx11" title="">MathML3</a>]</cite>:
+                     <p>Presubscripts and tensor notations are represented by a single element,
+                        <code>mmultiscripts</code>, using the syntax:
+                        <br>
+                        <span>&lt;mmultiscripts&gt; 
+                           <br>
+                           base 
+                           <br>
+                           (subscript superscript)* 
+                           <br>
+                           [ &lt;mprescripts/&gt; (presubscript presuperscript)* ] 
+                           <br>
+                           &lt;/mmultiscripts&gt;</span>
+                        <br>
+                        This element allows the representation of any number of vertically-aligned
+                        pairs of subscripts and superscripts, attached to one base expression. It
+                        supports both postscripts and prescripts. Missing scripts can be represented
+                        by the empty element <code>none</code>.
+                        
                      </p>
-                     
-                     <blockquote>
-                        
-                        <p>Presubscripts and tensor notations are represented by a single element,
-                           <code>mmultiscripts</code>, using the syntax:
-                           
-                           <br>
-                           <span>&lt;mmultiscripts&gt; 
-                              <br>
-                              base 
-                              <br>
-                              (subscript superscript)* 
-                              <br>
-                              [ &lt;mprescripts/&gt; (presubscript presuperscript)* ] 
-                              <br>
-                              &lt;/mmultiscripts&gt;</span>
-                           
-                           <br>
-                           This element allows the representation of any number of vertically-aligned
-                           pairs of subscripts and superscripts, attached to one base expression. It
-                           supports both postscripts and prescripts. Missing scripts can be represented
-                           by the empty element <code>none</code>.
-                           
-                           <br>
-                           […]
-                           
-                           <br>
-                           The <code>mmultiscripts</code> element increments <code>scriptlevel</code> by 1, and sets
-                           <code>displaystyle</code> to <span>"false"</span>, within each of its arguments except base,
-                           but leaves both attributes unchanged within base. […]
-                        </p>
-                        
-                     </blockquote>
                      
                   </div>
                   
@@ -7644,19 +7407,12 @@ munderover &gt; :not(:first-child) {
                
                <div id="SS5.p1">
                   
-                  <p>The MathML specification describes tabular math as follows <cite>[<a href="#bibx11" title="">MathML3</a>]</cite>:
+                  <p>Matrices, arrays and other table-like mathematical notation are marked up using
+                     <code>mtable</code>, <code>mtr</code>, <code>mlabeledtr</code> and <code>mtd</code> elements. These
+                     elements are similar to the table, tr and td elements of HTML, except that they
+                     provide specialized attributes for the fine layout control necessary for
+                     commutative diagrams, block matrices and so on.
                   </p>
-                  
-                  <blockquote>
-                     
-                     <p>Matrices, arrays and other table-like mathematical notation are marked up using
-                        <code>mtable</code>, <code>mtr</code>, <code>mlabeledtr</code> and <code>mtd</code> elements. These
-                        elements are similar to the table, tr and td elements of HTML, except that they
-                        provide specialized attributes for the fine layout control necessary for
-                        commutative diagrams, block matrices and so on.
-                     </p>
-                     
-                  </blockquote>
                   
                </div>
                
@@ -7779,20 +7535,13 @@ mlabeledtr &gt; mtd:first-child {
                
                <div id="SS7.p1">
                   
-                  <p>The MathML specification describes <code>maction</code> as follows <cite>[<a href="#bibx11" title="">MathML3</a>]</cite>:
+                  <p>To provide a mechanism for binding actions to expressions, MathML provides the
+                     maction element. This element accepts any number of sub-expressions as
+                     arguments and the type of action that should happen is controlled by the
+                     actiontype attribute. Only three actions are predefined by MathML, but the list
+                     of possible actions is open.
+                     
                   </p>
-                  
-                  <blockquote>
-                     
-                     <p>To provide a mechanism for binding actions to expressions, MathML provides the
-                        maction element. This element accepts any number of sub-expressions as
-                        arguments and the type of action that should happen is controlled by the
-                        actiontype attribute. Only three actions are predefined by MathML, but the list
-                        of possible actions is open.
-                        
-                     </p>
-                     
-                  </blockquote>
                   
                   <p>User agents must display at most one of the child of a <code>maction</code> element.
                      User agents must determine the visible child as follows:
@@ -7883,22 +7632,15 @@ mlabeledtr &gt; mtd:first-child {
                
                <div id="SS8.p1">
                   
-                  <p>The MathML specification describes <code>semantics</code> as follows <cite>[<a href="#bibx11" title="">MathML3</a>]</cite>:
+                  <p>The <code>semantics</code> element is the container element that associates
+                     annotations with a MathML expression. The semantics element has as its first
+                     child the expression to be annotated. Any MathML expression may appear as the
+                     first child of the semantics element. Subsequent annotation and annotation-xml
+                     children enclose the annotations. An annotation represented in XML is enclosed
+                     in an <span>annotation-xml</span> element. An annotation represented in character data
+                     is enclosed in an <code>annotation</code> element.
+                     
                   </p>
-                  
-                  <blockquote>
-                     
-                     <p>The <code>semantics</code> element is the container element that associates
-                        annotations with a MathML expression. The semantics element has as its first
-                        child the expression to be annotated. Any MathML expression may appear as the
-                        first child of the semantics element. Subsequent annotation and annotation-xml
-                        children enclose the annotations. An annotation represented in XML is enclosed
-                        in an <span>annotation-xml</span> element. An annotation represented in character data
-                        is enclosed in an <code>annotation</code> element.
-                        […]
-                     </p>
-                     
-                  </blockquote>
                   
                </div>
                
