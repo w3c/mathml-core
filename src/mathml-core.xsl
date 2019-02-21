@@ -294,15 +294,6 @@ select="substring-before(.,':')"/>:</a>
 				else codepoints-to-string($d)"/>
 	 </th>
 	 <th class="uname">
-<!--
-	 <xsl:if test="string-length(../description) &gt; 50">
-	   <xsl:attribute name="style">
-	     <xsl:text>font-size: </xsl:text>
-	     <xsl:value-of select="5000 idiv string-length(../description)"/>
-	     <xsl:text>%;</xsl:text>
-	   </xsl:attribute>
-	 </xsl:if>
--->
 	 <xsl:value-of select="lower-case(../description)"/></th>
 	 <th><xsl:value-of select="@form"/></th>
 	 <xsl:for-each select="$c">
@@ -324,5 +315,59 @@ select="substring-before(.,':')"/>:</a>
 <xsl:text>&#10;</xsl:text>
 </xsl:template>
 
+
+
+<!-- combining character mapping -->
+<xsl:key name="id" match="*[@id]" use="@id"/>
+
+<xsl:template match="combequiv">
+ <section id="comb-comb">
+  <h2>Combining</h2>
+  <table>
+   <thead>
+    <tr>
+     <th colspan="2">Non Combining</th>
+     <th>Style</th>
+     <th colspan="2">Combining</th>
+    </tr>
+   </thead>
+   <tbody>
+    <xsl:for-each select="doc('unicode.xml')/unicode/charlist/character/combref">
+     <tr>
+      <td><xsl:value-of select="replace(../@id,'U0?','U+')"/></td>
+      <td><xsl:value-of select="lower-case(../description)"/></td>
+      <td><xsl:value-of select="@style"/></td>
+      <td><xsl:value-of select="replace(@ref,'U0?','U+')"/></td>
+      <td><xsl:value-of select="lower-case(key('id',@ref)/description)"/></td>
+      </tr>
+    </xsl:for-each>
+   </tbody>
+  </table>
+ </section>
+ <section id="comb-noncomb">
+  <h2>Non Combining</h2>
+  <!-- not clear both of these are needed-->
+  <table>
+   <thead>
+    <tr>
+     <th colspan="2">Combining</th>
+     <th>Style</th>
+     <th colspan="2">Non Combining</th>
+    </tr>
+   </thead>
+   <tbody>
+    <xsl:for-each select="doc('unicode.xml')/unicode/charlist/character/noncombref">
+     <tr>
+      <td><xsl:value-of select="replace(../@id,'U0?','U+')"/></td>
+      <td><xsl:value-of select="lower-case(../description)"/></td>
+      <td><xsl:value-of select="@style"/></td>
+      <td><xsl:value-of select="replace(@ref,'U0?','U+')"/></td>
+      <td><xsl:value-of select="lower-case(key('id',@ref)/description)"/></td>
+      </tr>
+    </xsl:for-each>
+   </tbody>
+  </table>
+ </section>
+</xsl:template>
 
 </xsl:stylesheet>
