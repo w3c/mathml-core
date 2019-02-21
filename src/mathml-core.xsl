@@ -34,6 +34,7 @@
   <head>
 <meta http-equiv="Content-type" content="text/html;charset=UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+<script src="sorttable.js"/>
 <title><xsl:apply-templates mode="title" select="front/title"/></title>
 <link rel="stylesheet" href="style.css" type="text/css"/>
 <style type="text/css">
@@ -236,5 +237,92 @@ select="substring-before(.,':')"/>:</a>
   </xsl:choose>
  </xsl:for-each>
 </xsl:function>
+
+
+<!-- operator dictionary -->
+
+<xsl:template  match="opdict">
+
+
+ <xsl:variable  name="c" select="'priority','lspace','rspace'"/>
+ <xsl:variable  name="p" select="'fence','stretchy','separator','accent','largeop','movablelimits', 'symmetric'"/>
+ <xsl:variable name="v" select="'linebreakstyle','minsize'"/>
+<xsl:text>&#10;</xsl:text>
+ <table class="sortable">
+<xsl:text>&#10;</xsl:text>
+   <thead>
+<xsl:text>&#10;</xsl:text>
+     <tr>
+<xsl:text>&#10;</xsl:text>
+       <xsl:for-each select="'Character','Glyph','Name','form',$c,'Properties'">
+	 <th><xsl:value-of select="."/></th>
+       </xsl:for-each>
+     </tr>
+<xsl:text>&#10;</xsl:text>
+   </thead>
+<xsl:text>&#10;</xsl:text>
+   <tbody>
+<xsl:text>&#10;</xsl:text>
+     <xsl:for-each select="doc('unicode.xml')/unicode/charlist/character/operator-dictionary">
+       <xsl:sort select="xs:integer(@priority)"/>
+       <xsl:text>&#10;</xsl:text>
+       <tr>
+
+	<xsl:if test="../@id='U02ADC'">
+          <xsl:attribute name="class" select="'diff-chg'"/>
+	</xsl:if>
+	 <xsl:variable name="od" select="."/>
+	 <xsl:variable name="d" select="for $i in tokenize(../@dec,'-') return xs:integer($i)"/>
+	 <xsl:text>&#10;</xsl:text>
+	 <th>
+	  <xsl:attribute name="abbr" select="$d[1]"/>
+	   <xsl:choose>
+	     <xsl:when test="empty($d[. &gt;127])">
+	     <xsl:value-of select="replace(replace(codepoints-to-string($d),'&amp;','&amp;amp;'),'&lt;','&amp;lt;')"/>
+	     </xsl:when>
+	     <xsl:otherwise>
+	       <xsl:value-of select="replace(../@id,'[U-]0*([0-9A-F]*)','&amp;#x$1;')"/>
+	     </xsl:otherwise>
+	   </xsl:choose>
+	 </th>
+	 <th>
+	  <xsl:value-of select="
+				if($d=9001)
+				 then '&#x3008;'
+				else if($d=9002) then
+				'&#x3009;'
+				else codepoints-to-string($d)"/>
+	 </th>
+	 <th class="uname">
+<!--
+	 <xsl:if test="string-length(../description) &gt; 50">
+	   <xsl:attribute name="style">
+	     <xsl:text>font-size: </xsl:text>
+	     <xsl:value-of select="5000 idiv string-length(../description)"/>
+	     <xsl:text>%;</xsl:text>
+	   </xsl:attribute>
+	 </xsl:if>
+-->
+	 <xsl:value-of select="lower-case(../description)"/></th>
+	 <th><xsl:value-of select="@form"/></th>
+	 <xsl:for-each select="$c">
+	   <td><xsl:value-of select="$od/@*[name()=current()]"/></td>
+	 </xsl:for-each>
+	 <td>
+	   <xsl:value-of select="
+				 $p[$od/@*[.='true']/name()=.],
+				 $od/@*[name()=$v]/concat(name(),'=',.)
+            " separator=", "/>
+	 </td>
+<xsl:text>&#10;</xsl:text>
+       </tr>
+<xsl:text>&#10;</xsl:text>
+     </xsl:for-each>
+   </tbody>
+<xsl:text>&#10;</xsl:text>
+ </table>
+<xsl:text>&#10;</xsl:text>
+</xsl:template>
+
 
 </xsl:stylesheet>
