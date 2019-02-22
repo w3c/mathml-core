@@ -30,12 +30,12 @@ If it is more than 3em then none of the available sizes satisfies the
 condition. How to interpret that? Should we pick the largest as a fallback?
 If it is 3em, the desired size will be selected for the integral in display
 size but the one selected for the sum in display size will be too large.
-A heuristic is proposed in section <a href="S3.html#SS2.SSS4" title="3.2.4 Operator, Fence, Separator or Accent &lt;mo&gt; ‣ 3.2 Token Elements ‣ 3 Presentation Markup "><span>3.2.4</span></a> to workaround limitations
+A heuristic is proposed in section <a href="S3.html#tokenmo" title="3.2.4 Operator, Fence, Separator or Accent &lt;mo&gt; ‣ 3.2 Token Elements ‣ 3 Presentation Markup "><span>3.2.4</span></a> to workaround limitations
 of <code>DisplayOperatorMinHeight</code>.</p>
 </div>
 <div id="p3">
 <p>The OpenType MATH specification does not seem to take into account
-linebreaking. As explained in section <a href="S3.html#SS1.SSS2" title="3.1.2 Layout Steps ‣ 3.1 Introduction ‣ 3 Presentation Markup "><span>3.1.2</span></a> it is important in a
+linebreaking. As explained in section <a href="S3.html#layoutsteps" title="3.1.2 Layout Steps ‣ 3.1 Introduction ‣ 3 Presentation Markup "><span>3.1.2</span></a> it is important in a
 HTML5 context to be able to determine the min-content width and the max-content
 width. However when an operator is stretched vertically to cover a target size,
 it is not possible to know the selected size variant or glyph assembly without
@@ -45,7 +45,7 @@ independent on its stretch size. Should that be a requirement of the
 OpenType MATH specification?</p>
 </div>
 <div id="p4">
-<p>In section <a href="S3.html#SS3.SSS9" title="3.3.9 Enclose Expression Inside Notation &lt;menclose&gt; ‣ 3.3 General Layout Schemata ‣ 3 Presentation Markup "><span>3.3.9</span></a> we describe the MathML <code>menclose</code> element. This
+<p>In section <a href="S3.html#menclose" title="3.3.9 Enclose Expression Inside Notation &lt;menclose&gt; ‣ 3.3 General Layout Schemata ‣ 3 Presentation Markup "><span>3.3.9</span></a> we describe the MathML <code>menclose</code> element. This
 one contains many notations that are not mentioned in the OpenType MATH
 specification. Some rendering suggestions are given based on the value of
 <code>OverbarRuleThickness</code> but perhaps new values should be

@@ -20,14 +20,14 @@ Appendix.</p>
 <section id="oper-dict_index"><h2>Indexing of the operator dictionary</h2>
 
 <p>Note that the dictionary is indexed not just by the element
-content, but by the element content and <att>form</att> attribute
+content, but by the element content and <code>form</code> attribute
 value, together. Operators with more than one possible form have more
 than one entry. The MathML specification describes how the renderer
-chooses (<q>infers</q>) which form to use when no <att>form</att>
+chooses (<q>infers</q>) which form to use when no <code>form</code>
 attribute is given; see <specref ref="presm_formdefval"/>. </p>
 
-<p>Having made that choice, or with the <att>form</att> attribute
-explicitly specified in the <el role="starttag">mo</el> element's start
+<p>Having made that choice, or with the <code>form</code> attribute
+explicitly specified in the <code>&lt;mo&gt;</code> element's start
 tag, the MathML renderer uses the remaining attributes from the
 dictionary entry for the appropriate single form of that operator,
 ignoring the entries for the other possible forms.</p>
@@ -45,22 +45,21 @@ for a given character in MathML has no effect on its rendering.</p>
 
 <p>Each row of the table is indexed as described above by the both the character
 (given by code point and Unicode Name) and the value of the form attribute.
-The fourth column gives the <kw>priority</kw> which as described in <specref ref="presm_mrow"/>),
-is significant for the proper grouping of sub-expressions using <el role="starttag">mrow</el>.
+The fourth column gives the <kw>priority</kw> which as described in <a href="#">??</a>),
+is significant for the proper grouping of sub-expressions using <code>mrow</code>.
 The rule described
 there is especially relevant to the automatic generation of MathML by
 conversion from other formats for displayed mathematics, such as T<sub>E</sub>X,
 which do not always specify how sub-expressions nest.</p>
 
-<p>The length valued attributes such as <att>lspace</att> are given explicitly in the following columns.
-Boolean valued attributes such as <att>stretchy</att> are specified together in the final <kw>Properties</kw>
+<p>The length valued attributes such as <code>lspace</code> are given explicitly in the following columns.
+Boolean valued attributes such as <code>stretchy</code> are specified together in the final <kw>Properties</kw>
 column by listing the attribute name if its value should be set to <kw>true</kw> by the dictionary.
-<phrase>Finally some rarely used non-boolean properties are shown in the Properties column together with a value,
-for example <att>linebreakstyle</att>=after.</phrase></p>
+Finally some rarely used non-boolean properties are shown in the Properties column together with a value,
+for example <code>linebreakstyle</code>=after.</p>
 
 <p>Any attribute not listed for some entry has its default value,
-which is given in parentheses in the table of attributes in <specref
-ref="presm_mo"/>.</p>
+which is given in parentheses in the table of attributes in <a href="#">??</a>.</p>
 
 <table>
    <tbody>
@@ -78,10 +77,10 @@ ref="presm_mo"/>.</p>
    </tbody>
 </table>
 
-<p>could be expressed as an <el>mo</el> element by:
-<eg role='mathml'><![CDATA[
+<p>could be expressed as an <code>mo</code> element by:
+<pre><![CDATA[
 <mo form="prefix" fence="true" stretchy="true" lspace="0em" rspace="0em"> ( </mo>
-]]></eg>
+]]></pre>
 (note the whitespace added around the content for readability;
 Such whitespace will be ignored by a MathML system,
 as described in <specref ref="fund_collapse" />.</p>
@@ -102,10 +101,10 @@ to cause the table to be ordered by that column.</p>
 </section>
 
 
-<section id="oper-dict_space"><h2>Notes on <att>lspace</att> and 
-<att>rspace</att> attributes</h2>
+<section id="oper-dict_space"><h2>Notes on <code>lspace</code> and 
+<code>rspace</code> attributes</h2>
 
-<p>The values for <att>lspace</att> and <att>rspace</att> given here range from 0 to 7,
+<p>The values for <code>lspace</code> and <code>rspace</code> given here range from 0 to 7,
 they are given numerically in order to save space in the table,
 the values should be taken as referring to the named mathematical spaces, as follows.</p>
 <table>
