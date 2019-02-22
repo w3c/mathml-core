@@ -29,6 +29,31 @@
  </xsl:template>
 
 
+ <xsl:template match="img[matches(@src,'^figures.*svg')]" >
+  <xsl:apply-templates mode="svg" select="doc(@src)/node()">
+   <xsl:with-param name="file" select="substring-after(@src,'figures/')" tunnel="yes"/>
+  </xsl:apply-templates>
+ </xsl:template>
+
+<!-- svg mode unnamespaces elements and makes ids unique-->
+ <xsl:template match="@*|node()" mode="svg">
+  <xsl:copy>
+   <xsl:apply-templates select="@*,node()" mode="svg"/>
+  </xsl:copy>
+ </xsl:template>
+
+ <xsl:template match="*" mode="svg" priority="2">
+  <xsl:element name="{local-name(.)}">
+   <xsl:apply-templates select="@*,node()" mode="svg"/>
+  </xsl:element>
+ </xsl:template>
+
+<!-- would need to make use of the ids match as well if theer were any-->
+ <xsl:template match="@id" mode="svg">
+  <xsl:param name="file" tunnel="yes"/>
+  <xsl:attribute name="id" select="concat($file,'.',.)"/>
+ </xsl:template>
+ 
 <xsl:template  match="spec">
  <html lang="en">
   <head>
