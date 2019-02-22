@@ -1,6 +1,6 @@
 ---
 name: MathML-Core Specification issue template
-about: Issue Template for MathML core
+about: Please use the main  MathML repository https://github.com/mathml-refresh/mathml/issuse
 title: ''
 labels: ''
 assignees: ''
