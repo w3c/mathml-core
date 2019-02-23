@@ -61,8 +61,12 @@ TeXBook’s Appendix G <cite>[<a href="bib.html#bibx16" title="">TeXBook</a>]</c
 <div id="I1.i2.p1">
 <p><span>The MathML 3 specification is designed as an independent
 XML language and browser vendors have almost not been involved in the
-standardization process</span>,
-except for integration in <cite>[<a href="bib.html#bibx9" title="">HTML5</a>]</cite>.
+standardization process</span>. The Math WG and WHATWG worked together to
+integrate MathML in <cite>[<a href="bib.html#bibx9" title="">HTML5</a>]</cite>
+but MathML3 has inconsistencies and lacks of details when it comes to
+interaction with CSS / HTML5 features: vertical writing mode,
+user stylesheet, <code>mstyle</code> inheritance, out-of-flow elements,
+attributes sensitiveness, definition of space characters...
 The MathML 3 specification is sometimes biased by MathML rendering and
 authoring tools behaving quite differently from web rendering engines.
 Hence it is not always obvious whether all features are fundamental or
@@ -74,10 +78,7 @@ but is strictly equivalent to an expanded form with <span>&lt;mrow&gt;</span> an
 to create many “anonymous”
 rendering frames and keep them up-to-date, to duplicate the logic
 for drawing and exposing the content of fenced expressions etc.
-Another example is the first cell in a
-<span>&lt;mlabeledtr&gt;</span> row which is not necessarily positioned the same way as
-in HTML table and actually is supposed not to be involved in metric
-computation or border drawing of the table <cite>[<a href="bib.html#bibx11" title="">MathML3</a>]</cite>.</p>
+<cite>[<a href="bib.html#bibx11" title="">MathML3</a>]</cite>.</p>
 </div>
 </li>
 </ol>
@@ -92,35 +93,19 @@ Focus has been put on keeping compatible with existing technologies of web
 rendering engines <cite>[<a href="bib.html#bibx9" title="">HTML5</a>]</cite> by relying as much as possible on CSS, text &amp;
 table layout and box models. As a consequence, parts of MathML 3
 that do not fit well in this framework or are rarely used in practice
-have been ommited.</p>
+have been ommited and moved into a larger specification
+<cite>[<a href="bib.html#bibx11bis" title="">MathML4</a>]</cite>.</p>
 </div>
-<div id="mathml3diff.p5">
-<p>Future versions of this document may describe support for a larger subset
-of presentation MathML by including features that are important in a web context
-e.g. CSS-compatible line breaking.</p>
-</div>
-</section>
-<section id="rem1">
-<h2>Remarks</h2>
 
-<div id="remarks1.p1">
-<p><span>This section is non-normative.</span></p>
-</div>
-<div id="remarks1.p2">
-</div>
-<div id="remarks1.p3">
-<p>This document relies on many definitions taken from the MATH specification
-of the Open Font Format <cite>[<a href="bib.html#bibx13" title="">OpenFontFormat3</a>]</cite>. These values are written with
-the following style:
-<span>This is a definition from the MATH specification</span>.</p>
-</div>
-<div id="remarks1.p6">
-<p>A <a href="http://www.w3c-test.org/mathml/" title="">set of tests</a>
-are available in a separate
-<a href="https://github.com/w3c/web-platform-tests/tree/master/mathml" title="">git repository</a>.
-Browser vendors are encouraged to use these tests during
-implementation &amp; automated testing. Contribution of new tests and error reports
-are welcome.</p>
+<div id="mathml3diff.p5">
+<p>By increasing the level of implementation details and by focusing more on
+  browser-driven design, this specification is expected to greatly improve
+  MathML interoperability. A
+  <a href="http://www.w3c-test.org/mathml/" title="">set of tests</a>
+  is available in a separate
+  <a href="https://github.com/w3c/web-platform-tests/tree/master/mathml" title="">git repository</a>. Browser vendors are encouraged to use these tests during
+  implementation &amp; automated testing. Contribution of new tests and error
+  reports are welcome.</p>
 </div>
 </section>
 <section id="terminology">
@@ -131,6 +116,14 @@ are welcome.</p>
 RECOMMENDED, MAY, and OPTIONAL, are to be interpreted as described in
 <cite>[<a href="bib.html#bibx10" title="">IETFRFC2119</a>]</cite>.</p>
 </div>
+
+<div id="openfontformat">
+<p>This document relies on many definitions taken from the MATH specification
+of the Open Font Format <cite>[<a href="bib.html#bibx13" title="">OpenFontFormat3</a>]</cite>. These values are written with
+the following style:
+<span>This is a definition from the MATH specification</span>.</p>
+</div>
+
 </section>
 </section>
 </body>
