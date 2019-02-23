@@ -91,10 +91,10 @@ means “left” in right-to-left and “right” in right-to-left mode, while
 mode.</p>
 </div>
 <div id="boxmodel.p6">
-<p>The <code>MathItalicsCorrectionInfo</code> table contains the italic
+<p>The <code class="MATH">MathItalicsCorrectionInfo</code> table contains the italic
 correction of some glyphs, which provides a measure of how slanted the
 glyphs are (see figure <a href="#F2" title="Figure 2 ‣ 3.1.1 Box Model ‣ 3.1 Introduction ‣ 3 Presentation Markup ">2</a>). The
-<code>MathTopAccentAttachment</code> table also contains a reference
+<code class="MATH">MathTopAccentAttachment</code> table also contains a reference
 points that is used for the horizontal positioning of glyphs as an accent
 (see figure <a href="#F3" title="Figure 3 ‣ 3.1.1 Box Model ‣ 3.1 Introduction ‣ 3 Presentation Markup "><span>3</span></a>). In later sections, we
 generalize this by claiming that all MathML boxes have italic correction
@@ -235,9 +235,9 @@ each side of the <code>mo</code> element (or its outermost embellished ancestor)
 <div id="tokenmo.p4">
 <p>In most cases, the <code>mo</code> element is treated as an <code>mtext</code> element.
 However, when an <code>mo</code> element with a single character must be displayed as
-a large operator then instead we use the <code>MathVariants</code>
+a large operator then instead we use the <code class="MATH">MathVariants</code>
 table to try and find a glyph of height at least
-<code>DisplayOperatorMinHeight</code>
+<code class="MATH">DisplayOperatorMinHeight</code>
 (figure <a href="#F4" title="Figure 4 ‣ 3.2.4 Operator, Fence, Separator or Accent &lt;mo&gt; ‣ 3.2 Token Elements ‣ 3 Presentation Markup ">4</a>). If none is found, we fallback to the
 largest one. Because this parameter does not always give
 the best size, user agents may also use the following heuristic: ensure
@@ -254,14 +254,14 @@ operators.</p>
 <p>When an <code>mo</code> element with a single character must be displayed as a
 horizontal or vertical
 operator then instead of displaying the normal character we use
-the <code>MathVariants</code> table to try and find a glyph
+the <code class="MATH">MathVariants</code> table to try and find a glyph
 that has at least the desired size or an assembly from several glyphs
 to cover at least the desired size
 (figure <a href="#F5" title="Figure 5 ‣ 3.2.4 Operator, Fence, Separator or Accent &lt;mo&gt; ‣ 3.2 Token Elements ‣ 3 Presentation Markup "><span>5</span></a>). The rules for vertical stretching
 are a bit more complicated and are described in section
 “Vertical Stretching Rules” of <cite>[<a href="bib.html#bibx11" title="">MathML3</a>]</cite>. If the operator has property
 <span>symmetric="true"</span>, it must be stretched symmetrically with respect to
-the math axis, which is given by the <code>AxisHeight</code> value.
+the math axis, which is given by the <code class="MATH">AxisHeight</code> value.
 Figure <a href="#F6" title="Figure 6 ‣ 3.2.4 Operator, Fence, Separator or Accent &lt;mo&gt; ‣ 3.2 Token Elements ‣ 3 Presentation Markup "><span>6</span></a> compares the symmetric
 and non-symmetric stretching.</p>
 </div>
@@ -317,16 +317,16 @@ element.</p>
 </div>
 <div id="tokenmtext.p3">
 <p>If the trailing glyph of the text content has an entry in the
-<code>MathItalicsCorrectionInfo</code> table then the specified
+<code class="MATH">MathItalicsCorrectionInfo</code> table then the specified
 value is used as the italic correction.
 User agents may subtract the advance width from the abscissa of the trailing
 ink edge as a heuristic value for the italic correction of the <span>&lt;mtext&gt;</span>
 element when it is not specified in the
-<code>MathItalicsCorrectionInfo</code> table.</p>
+<code class="MATH">MathItalicsCorrectionInfo</code> table.</p>
 </div>
 <div id="tokenmtext.p4">
 <p>If the text content is made of a single glyph and this glyph
-has an entry in the <code>MathTopAccentAttachment</code> table
+has an entry in the <code class="MATH">MathTopAccentAttachment</code> table
 then the specified value is used as the top accent attachment of the
 <span>&lt;mtext&gt;</span> element.</p>
 </div>
@@ -338,12 +338,12 @@ unless it contradicts what the page author has specified with the
 </div>
 <div id="tokenmtext.p6">
 <p>If <span>&lt;mtext&gt;</span> is used at a non-zero scriptlevel then user agents must
-enable the <code>ssty</code> OpenType feature on text nodes unless it contradicts
+enable the <code class="MATH">ssty</code> OpenType feature on text nodes unless it contradicts
 what the page author has specified with the <span>font-feature-settings</span>
 CSS property.</p>
 </div>
 <div id="tokenmtext.p7">
-<p><a href="https://gitlab.com/mathml/MathMLinHTML5/issues/2" title="">Add detailed rules for <code>ssty</code></a></p>
+<p><a href="https://gitlab.com/mathml/MathMLinHTML5/issues/2" title="">Add detailed rules for <code class="MATH">ssty</code></a></p>
 </div>
 <div id="tokenmtext.p8">
 <p>In the most general case, the <span>&lt;mtext&gt;</span> element may contain text with line
@@ -437,7 +437,7 @@ one after the other with all their baselines aligned. As a consequence of this
 and of child box models, graphical elements such as fraction bars
 or symmetric stretchy operators will also be
 aligned along the math axis when the
-<code>AxisHeight</code> is unchanged (e.g. in the typical case
+<code class="MATH">AxisHeight</code> is unchanged (e.g. in the typical case
 where the math font is unchanged).</p>
 </div>
 <div id="mrow.p5">
@@ -499,11 +499,11 @@ following style in the user agent stylesheet as suggested in section
 </div>
 <div id="mfrac.p3">
 <p>The axis of the <code>mfrac</code> element is always given by
-<code>AxisHeight</code>.</p>
+<code class="MATH">AxisHeight</code>.</p>
 </div>
 <div id="mfrac.p4">
 <p>The default line thickness is given by
-<code>FractionRuleThickness</code>
+<code class="MATH">FractionRuleThickness</code>
 Use the <code>linethickness</code> attribute <cite>[<a href="bib.html#bibx11" title="">MathML3</a>]</cite> to determine the
 actual thickness of the fraction bar. A percent or unitless length is
 interpreted as a multiple of the default rule thickness and
@@ -519,17 +519,17 @@ The width is given by the maximum width of the
 numerator and denominator and the numerator and denominator are horizontally
 centered. A fraction bar with the actual thickness is drawn centered on the
 axis height. The numerator and denominator are shifted
-up and down using the values <code>FractionNumeratorShiftUp</code>,
-<code>FractionDenominatorShiftDown</code> in inline style and
-<code>FractionNumeratorDisplayStyleShiftUp</code>,
-<code>FractionDenominatorDisplayStyleShiftDown</code>
+up and down using the values <code class="MATH">FractionNumeratorShiftUp</code>,
+<code class="MATH">FractionDenominatorShiftDown</code> in inline style and
+<code class="MATH">FractionNumeratorDisplayStyleShiftUp</code>,
+<code class="MATH">FractionDenominatorDisplayStyleShiftDown</code>
 in display style.
 If necessary, these shift values are increased to ensure that the gaps between
 the numerator/denominator and fraction bar satisfy the minimal values provided
-by <code>FractionDenominatorGapMin</code> and
-<code>FractionNumeratorGapMin</code> in inline style and
-<code>FractionDenominatorDisplayStyleGapMin</code> and
-<code>FractionNumeratorDisplayStyleGapMin</code>
+by <code class="MATH">FractionDenominatorGapMin</code> and
+<code class="MATH">FractionNumeratorGapMin</code> in inline style and
+<code class="MATH">FractionDenominatorDisplayStyleGapMin</code> and
+<code class="MATH">FractionNumeratorDisplayStyleGapMin</code>
 in display style.</p>
 </div>
 <figure id="F9"><svg id="F9.pic1" style="width:559.4pt;height:288.9pt;" height="399.79" overflow="visible" version="1.1" viewBox="-278.87 -121.15 774.04 399.79" width="774.04"><g transform="matrix(1 0 0 -1 0 157.49)"><g stroke="#000000"><g fill="#000000"><g stroke-width="0.4pt" color="#000000"><g stroke="#E6E6FF" color="#E6E6FF"><g fill="#E6E6FF"><path d="M 0 255.91 L 492.13 255.91 L 492.13 -98.43 L 0 -98.43 Z" style="stroke:none"></path></g></g><g stroke="#FF0000"><g fill="#FF0000"><g stroke="#FFE6E6" color="#FF0000"><g fill="#FFE6E6"><path d="M 0 255.91 L 492.13 255.91 L 492.13 137.8 L 0 137.8 Z" style="stroke:none"></path></g></g><path d="M 0 275.59 L 492.13 275.59 L 492.13 118.11 L 0 118.11 Z" style="fill:none"></path><path d="M 0 196.85 L 492.13 196.85" style="fill:none"></path></g></g><g stroke="#00FF00"><g fill="#00FF00"><g stroke="#E6FFE6" color="#00FF00"><g fill="#E6FFE6"><path d="M 147.64 19.69 L 344.49 19.69 L 344.49 -98.43 L 147.64 -98.43 Z" style="stroke:none"></path></g></g><path d="M 147.64 39.37 L 344.49 39.37 L 344.49 -118.11 L 147.64 -118.11 Z" style="fill:none"></path><path d="M 147.64 -39.37 L 344.49 -39.37" style="fill:none"></path></g></g><g stroke-dasharray="3.0pt,3.0pt" stroke-dashoffset="0.0pt"><g stroke="#0000FF" color="#0000FF"><g fill="#0000FF"><path d="M 0 275.59 L 492.13 275.59 L 492.13 -118.11 L 0 -118.11 Z M 0 0 L 492.13 0" style="fill:none"></path></g></g></g><g stroke="#CCCCCC" color="#CCCCCC"><g fill="#CCCCCC"><path d="M 0 98.43 L 492.13 98.43 L 492.13 59.06 L 0 59.06 Z" style="stroke:none"></path></g></g><g stroke="#000000" color="#000000"><g fill="#000000"><path d="M 0 98.43 L 492.13 98.43 L 492.13 59.06 L 0 59.06 Z M 0 78.74 L 492.13 78.74" style="fill:none"></path></g></g><g stroke="#0000FF" color="#0000FF"><g fill="#0000FF"><path d="M -19.69 0 L -19.69 39.37 L -19.69 78.1" style="fill:none"></path><g transform="matrix(0 1 -1 0 -19.69 78.1)"><path d="M -1.66 2.21 C -1.52 1.38 0 0.14 0.42 0 C 0 -0.14 -1.52 -1.38 -1.66 -2.21" style="fill:none"></path></g><g transform="matrix(1 0 0 1 -138.73 35.91)" color="#000000"><g transform="matrix(1 0 0 -1 0 12.45)"><switch><foreignObject color="#0000FF" height="100%" overflow="visible" width="114.15">
@@ -547,14 +547,14 @@ the <code>mfrac</code> element is instead laid out as
 shown on figure <a href="#F10" title="Figure 10 ‣ 3.3.2 Fractions &lt;mfrac&gt; ‣ 3.3 General Layout Schemata ‣ 3 Presentation Markup ">10</a>.
 The gap between the top and bottom boxes
 is equally split around the axis height. The relevant shift values are now
-<code>StackTopShiftUp</code>,
-<code>StackBottomShiftDown</code> in inline style and
-<code>StackTopDisplayStyleShiftUp</code>,
-<code>StackBottomDisplayStyleShiftDown</code> in display style.
+<code class="MATH">StackTopShiftUp</code>,
+<code class="MATH">StackBottomShiftDown</code> in inline style and
+<code class="MATH">StackTopDisplayStyleShiftUp</code>,
+<code class="MATH">StackBottomDisplayStyleShiftDown</code> in display style.
 If necessary, the two shift values are increased by a same value to ensure
 the gap between the top and bottom boxes satisfy the values provided by
-by <code>StackGapMin</code> in inline style and
-<code>StackDisplayStyleGapMin</code> in display style.</p>
+by <code class="MATH">StackGapMin</code> in inline style and
+<code class="MATH">StackDisplayStyleGapMin</code> in display style.</p>
 </div>
 <figure id="F10"><svg id="F10.pic1" style="width:508.8pt;height:288.9pt;" height="399.79" overflow="visible" version="1.1" viewBox="-208.91 -121.15 704.08 399.79" width="704.08"><g transform="matrix(1 0 0 -1 0 157.49)"><g stroke="#000000"><g fill="#000000"><g stroke-width="0.4pt" color="#000000"><g stroke="#E6E6FF" color="#E6E6FF"><g fill="#E6E6FF"><path d="M 0 255.91 L 492.13 255.91 L 492.13 -98.43 L 0 -98.43 Z" style="stroke:none"></path></g></g><g stroke="#FF0000"><g fill="#FF0000"><g stroke="#FFE6E6" color="#FF0000"><g fill="#FFE6E6"><path d="M 0 255.91 L 492.13 255.91 L 492.13 137.8 L 0 137.8 Z" style="stroke:none"></path></g></g><path d="M 0 275.59 L 492.13 275.59 L 492.13 118.11 L 0 118.11 Z" style="fill:none"></path><path d="M 0 196.85 L 492.13 196.85" style="fill:none"></path></g></g><g stroke="#00FF00"><g fill="#00FF00"><g stroke="#E6FFE6" color="#00FF00"><g fill="#E6FFE6"><path d="M 147.64 19.69 L 344.49 19.69 L 344.49 -98.43 L 147.64 -98.43 Z" style="stroke:none"></path></g></g><path d="M 147.64 39.37 L 344.49 39.37 L 344.49 -118.11 L 147.64 -118.11 Z" style="fill:none"></path><path d="M 147.64 -39.37 L 344.49 -39.37" style="fill:none"></path></g></g><g stroke-dasharray="3.0pt,3.0pt" stroke-dashoffset="0.0pt"><g stroke="#0000FF" color="#0000FF"><g fill="#0000FF"><path d="M 0 275.59 L 492.13 275.59 L 492.13 -118.11 L 0 -118.11 Z M 0 0 L 492.13 0" style="fill:none"></path></g></g></g><g stroke="#000000" color="#000000"><g fill="#000000"><g stroke-dasharray="3.0pt,3.0pt" stroke-dashoffset="0.0pt"><path d="M 0 78.74 L 492.13 78.74" style="fill:none"></path></g></g></g><g stroke="#0000FF" color="#0000FF"><g fill="#0000FF"><path d="M -19.69 0 L -19.69 39.37 L -19.69 78.1" style="fill:none"></path><g transform="matrix(0 1 -1 0 -19.69 78.1)"><path d="M -1.66 2.21 C -1.52 1.38 0 0.14 0.42 0 C 0 -0.14 -1.52 -1.38 -1.66 -2.21" style="fill:none"></path></g><g transform="matrix(1 0 0 1 -138.73 35.91)" color="#000000"><g transform="matrix(1 0 0 -1 0 12.45)"><switch><foreignObject color="#0000FF" height="100%" overflow="visible" width="114.15">
 <p><span style="color:#0000FF;">Axis Height</span></p></foreignObject></switch></g></g></g></g><g stroke="#FF0000" color="#FF0000"><g fill="#FF0000"><path d="M -9.84 78.74 L -9.84 157.48 L -9.84 196.21" style="fill:none"></path><g transform="matrix(0 1 -1 0 -9.84 196.21)"><path d="M -1.66 2.21 C -1.52 1.38 0 0.14 0.42 0 C 0 -0.14 -1.52 -1.38 -1.66 -2.21" style="fill:none"></path></g><g transform="matrix(1 0 0 1 -170.4 154.02)" color="#000000"><g transform="matrix(1 0 0 -1 0 12.45)"><switch><foreignObject color="#FF0000" height="100%" overflow="visible" width="155.66">
@@ -604,12 +604,12 @@ following style in the user agent stylesheet as suggested in section
 </div>
 <div id="msqrt.p3">
 <p>The line thickness of the overbar is given by
-<code>RadicalRuleThickness</code>.
+<code class="MATH">RadicalRuleThickness</code>.
 The gap between the overbar and base is given by
-<code>RadicalVerticalGap</code>
-in inline style and <code>RadicalDisplayStyleVerticalGap</code>
+<code class="MATH">RadicalVerticalGap</code>
+in inline style and <code class="MATH">RadicalDisplayStyleVerticalGap</code>
 in display style.
-The ascent above the overbase is given by <code>RadicalExtraAscender</code>.
+The ascent above the overbase is given by <code class="MATH">RadicalExtraAscender</code>.
 The surd is drawn by trying to vertically stretch the character
 U+221A SQUARE ROOT
 to at least the sum of the ink height of the base, the radical gap and the
@@ -638,9 +638,9 @@ logical box takes into account the extra ascender</p>
 We start by ignoring the root index and we layout the base and surd as
 shown on figure <a href="#F11" title="Figure 11 ‣ 3.3.3 Radicals &lt;msqrt&gt;, &lt;mroot&gt; ‣ 3.3 General Layout Schemata ‣ 3 Presentation Markup ">11</a> to obtain a box B.
 The horizontal metrics of the <code>mroot</code> element are obtained by putting
-<code>RadicalKernBeforeDegree</code>
+<code class="MATH">RadicalKernBeforeDegree</code>
 before the root index, then placing the root index, then a kerning
-of <code>RadicalKernAfterDegree</code>
+of <code class="MATH">RadicalKernAfterDegree</code>
 after the root index and finally placing B. In general
 the kerning before the root index is positive while the kerning after it is
 negative,
@@ -651,7 +651,7 @@ of B as the baseline. We graduate the ink height of B with a linear
 scale going from the bottom at coordinate 0 to the top at coordinate 1.
 Then the ink bottom of the root index will
 be vertically positioned at coordinate
-<code>RadicalDegreeBottomRaisePercent</code>.
+<code class="MATH">RadicalDegreeBottomRaisePercent</code>.
 Finally, we take into consideration the box of the root index and B to deduce
 the metrics for the whole box of the <code>mroot</code> element.</p>
 </div>
@@ -789,7 +789,7 @@ given by the <code>color</code> and <code>visibility</code> CSS properties on th
   <p>Based on <cite>[<a href="bib.html#bibx13" title="">OpenFontFormat3</a>]</cite> <cite>[<a href="bib.html#bibx16" title="">TeXBook</a>]</cite>, we use the notation ξ<sub>8</sub>
     from the TeXBook to denote the default rule thickness and use
 3ξ<sub>8</sub> for gaps.
-We actually let ξ<sub>8</sub> be <code>OverbarRuleThickness</code>.
+We actually let ξ<sub>8</sub> be <code class="MATH">OverbarRuleThickness</code>.
 Note that contrary to what is done in general and unless specified otherwise,
 the x-axis direction of notations is assumed to be independent of the CSS
 <code>direction</code>.
@@ -803,10 +803,10 @@ compute each notation individually and take the union of the metrics:</p>
 <p>The <code>left</code> notation is drawn by putting a vertical bar of thickness
 ξ<sub>8</sub> on the left of the content of the <code>menclose</code> element.
 The length of the bar is obtained by extending the height of the content
-with <code>OverbarVerticalGap</code> plus
-<code>OverbarRuleThickness</code> above
-and <code>UnderbarVerticalGap</code> plus
-<code>UnderbarRuleThickness</code> below.
+with <code class="MATH">OverbarVerticalGap</code> plus
+<code class="MATH">OverbarRuleThickness</code> above
+and <code class="MATH">UnderbarVerticalGap</code> plus
+<code class="MATH">UnderbarRuleThickness</code> below.
 The gap between the bar and the content is 3ξ<sub>8</sub>.
 The logical box is obtained by adding some space of width
 ξ<sub>8</sub> on the left of the bar. See figure <a href="#F14" title="Figure 14 ‣ 1. ‣ 3.3.9 Enclose Expression Inside Notation &lt;menclose&gt; ‣ 3.3 General Layout Schemata ‣ 3 Presentation Markup ">14</a>.</p>
@@ -833,14 +833,14 @@ but with the vertical bar placed on the right.
 <li id="I7.i3"> 
 <div id="I7.i3.p1">
 <p>The <code>top</code> notation is drawn by putting an overbar of thickness
-<code>OverbarRuleThickness</code>
+<code class="MATH">OverbarRuleThickness</code>
 over the content of the <code>menclose</code> element.
 The length of the bar is obtained by extending the width of the content
 with 4ξ<sub>8</sub> on each side.
 The gap between the overbar and the content is
-<code>OverbarVerticalGap</code>.
+<code class="MATH">OverbarVerticalGap</code>.
 The logical box is obtained by adding some space of height
-<code>OverbarExtraAscender</code> above the bar.
+<code class="MATH">OverbarExtraAscender</code> above the bar.
 See figure <a href="#F15" title="Figure 15 ‣ 3. ‣ 3.3.9 Enclose Expression Inside Notation &lt;menclose&gt; ‣ 3.3 General Layout Schemata ‣ 3 Presentation Markup ">15</a>.</p>
 </div>
 <figure id="F15"><svg id="F15.pic1" style="width:331.6pt;height:175.6pt;" height="243.03" overflow="visible" version="1.1" viewBox="-3.04 -81.78 458.84 243.03" width="458.84"><g transform="matrix(1 0 0 -1 0 79.47)"><g stroke="#000000"><g fill="#000000"><g stroke-width="0.4pt" color="#000000"><g stroke="#E6E6FF" color="#E6E6FF"><g fill="#E6E6FF"><path d="M 0 137.8 L 452.76 137.8 L 452.76 -78.74 L 0 -78.74 Z" style="stroke:none"></path></g></g><g stroke="#FF0000"><g fill="#FF0000"><g stroke="#FFE6E6" color="#FF0000"><g fill="#FFE6E6"><path d="M 78.74 59.06 L 374.02 59.06 L 374.02 -59.06 L 78.74 -59.06 Z" style="stroke:none"></path></g></g><path d="M 78.74 78.74 L 374.02 78.74 L 374.02 -78.74 L 78.74 -78.74 Z" style="fill:none"></path><path d="M 78.74 0 L 374.02 0" style="fill:none"></path></g></g><g stroke="#CCCCCC" color="#CCCCCC"><g fill="#CCCCCC"><path d="M 0 137.8 L 452.76 137.8 L 452.76 118.11 L 0 118.11 Z" style="stroke:none"></path></g></g><g stroke-dasharray="3.0pt,3.0pt" stroke-dashoffset="0.0pt"><g stroke="#0000FF" color="#0000FF"><g fill="#0000FF"><path d="M 0 157.48 L 452.76 157.48 L 452.76 -78.74 L 0 -78.74 Z M 0 0 L 452.76 0" style="fill:none"></path></g></g></g><path d="M 78.74 117.47 L 78.74 98.43 L 78.74 59.69" style="fill:none"></path><g transform="matrix(0 1 -1 0 78.74 117.47)"><path d="M -1.66 2.21 C -1.52 1.38 0 0.14 0.42 0 C 0 -0.14 -1.52 -1.38 -1.66 -2.21" style="fill:none"></path></g><g transform="matrix(0 -1 1 0 78.74 59.69)"><path d="M -1.66 2.21 C -1.52 1.38 0 0.14 0.42 0 C 0 -0.14 -1.52 -1.38 -1.66 -2.21" style="fill:none"></path></g><g transform="matrix(1 0 0 1 83.63 94.97)"><g transform="matrix(1 0 0 -1 0 12.45)"><switch><foreignObject color="#000000" height="100%" overflow="visible" width="207.55">
@@ -857,9 +857,9 @@ notation of the <code>menclose</code> element</figcaption>
 <div id="I7.i4.p1">
 <p>The <code>bottom</code> notation is drawn the same as the <code>top</code> notation,
 but with the vertical bar placed below the content and using parameters
-<code>UnderbarRuleThickness</code>,
-<code>UnderbarVerticalGap</code>.
-and <code>UnderExtraDescender</code>.</p>
+<code class="MATH">UnderbarRuleThickness</code>,
+<code class="MATH">UnderbarVerticalGap</code>.
+and <code class="MATH">UnderExtraDescender</code>.</p>
 </div>
 </li>
 <li id="I7.i5"> 
@@ -1040,27 +1040,27 @@ following conditions:</p>
 <ol id="I8">
 <li id="I8.i1"> 
 <div id="I8.i1.p1">
-<p><code>SubShift</code> is at least <code>SubscriptShiftDown</code>.</p>
+<p><code>SubShift</code> is at least <code class="MATH">SubscriptShiftDown</code>.</p>
 </div>
 </li>
 <li id="I8.i2"> 
 <div id="I8.i2.p1">
 <p>The top of the subscript <code>SubTop</code> with respect to the baseline
-is not above <code>SubscriptTopMax</code>.</p>
+is not above <code class="MATH">SubscriptTopMax</code>.</p>
 </div>
 </li>
 <li id="I8.i3"> 
 <div id="I8.i3.p1">
 <p>The drop <code>SubscriptBaselineDrop</code> from the bottom of the base to
 the baseline of the script is at least
-<code>SubscriptBaselineDropMin</code>.</p>
+<code class="MATH">SubscriptBaselineDropMin</code>.</p>
 </div>
 </li>
 </ol>
 </div>
 <div id="msubmsup.p4">
 <p>When determining
-the logical box, a space of width <code>SpaceAfterScript</code>
+the logical box, a space of width <code class="MATH">SpaceAfterScript</code>
 is added after
 the subscript. By default, the leading edge of the subscript is aligned with
 the trailing edge of the base. However, if the base is an operator with
@@ -1085,28 +1085,28 @@ following conditions:</p>
 <li id="I9.i1"> 
 <div id="I9.i1.p1">
 <p><code>SuperShift</code> is at least
-<code>SuperscriptShiftUpCramped</code> if the <code>msup</code> element is
+<code class="MATH">SuperscriptShiftUpCramped</code> if the <code>msup</code> element is
 cramped (section <a href="A1.html" title="Appendix A MathML "><code>A</code></a>) or at least
-<code>SuperscriptShiftUp</code> otherwise.</p>
+<code class="MATH">SuperscriptShiftUp</code> otherwise.</p>
 </div>
 </li>
 <li id="I9.i2"> 
 <div id="I9.i2.p1">
 <p>The bottom of the superscript <code>SuperBottom</code> with respect to the
-baseline is not below <code>SuperscriptBottomMin</code>.</p>
+baseline is not below <code class="MATH">SuperscriptBottomMin</code>.</p>
 </div>
 </li>
 <li id="I9.i3"> 
 <div id="I9.i3.p1">
-<p>The drop <code>SuperscriptBaselineDrop</code> from the top of the base to
-the baseline of the script is at most <code>SuperscriptBaselineDropMax</code>.</p>
+<p>The drop <code class="MATH">SuperscriptBaselineDrop</code> from the top of the base to
+the baseline of the script is at most <code class="MATH">SuperscriptBaselineDropMax</code>.</p>
 </div>
 </li>
 </ol>
 </div>
 <div id="msubmsup.p6">
 <p>When determining
-the logical box, a space of width <code>SpaceAfterScript</code>
+the logical box, a space of width <code class="MATH">SpaceAfterScript</code>
 is added after
 the superscript. By default, the leading edge of the superscript is aligned with
 the trailing edge of the base and shifted forward by the italic correction
@@ -1133,42 +1133,42 @@ following conditions:</p>
 <li id="I10.i1"> 
 <div id="I10.i1.p1">
 <p><code>SubShift</code> is at least
-<code>SuperscriptShiftUpCramped</code> if the <code>msup</code> element is
+<code class="MATH">SuperscriptShiftUpCramped</code> if the <code>msup</code> element is
 cramped (section <a href="A1.html" title="Appendix A MathML "><code>A</code></a>) or at least
-<code>SuperscriptShiftUp</code> otherwise.</p>
+<code class="MATH">SuperscriptShiftUp</code> otherwise.</p>
 </div>
 </li>
 <li id="I10.i2"> 
 <div id="I10.i2.p1">
 <p>The top of the subscript <code>SubTop</code> with respect to the baseline
-is not above <code>SubscriptTopMax</code>.</p>
+is not above <code class="MATH">SubscriptTopMax</code>.</p>
 </div>
 </li>
 <li id="I10.i3"> 
 <div id="I10.i3.p1">
-<p>The drop <code>SuperscriptBaselineDrop</code> from the top of the base to
-the baseline of the superscript is at most <code>SuperscriptBaselineDropMax</code>.</p>
+<p>The drop <code class="MATH">SuperscriptBaselineDrop</code> from the top of the base to
+the baseline of the superscript is at most <code class="MATH">SuperscriptBaselineDropMax</code>.</p>
 </div>
 </li>
 <li id="I10.i4"> 
 <div id="I10.i4.p1">
 <p><code>SubShift</code> is at least
-<code>SuperscriptShiftUpCramped</code> if the <code>msup</code> element is
+<code class="MATH">SuperscriptShiftUpCramped</code> if the <code>msup</code> element is
 cramped (section <a href="A1.html" title="Appendix A MathML "><code>A</code></a>) or at least
-<code>SuperscriptShiftUp</code> otherwise.</p>
+<code class="MATH">SuperscriptShiftUp</code> otherwise.</p>
 </div>
 </li>
 <li id="I10.i5"> 
 <div id="I10.i5.p1">
 <p>The bottom of the superscript <code>SuperBottom</code> with respect to the
-baseline is not below <code>SuperscriptBottomMin</code>.</p>
+baseline is not below <code class="MATH">SuperscriptBottomMin</code>.</p>
 </div>
 </li>
 <li id="I10.i6"> 
 <div id="I10.i6.p1">
-<p>The drop <code>SubscriptBaselineDrop</code> from
+<p>The drop <code class="MATH">SubscriptBaselineDrop</code> from
 the bottom of the base to the the baseline of the subscript is at least
-<code>SubscriptBaselineDropMin</code>.
+<code class="MATH">SubscriptBaselineDropMin</code>.
 </p>
 </div>
 </li>
@@ -1177,15 +1177,15 @@ the bottom of the base to the the baseline of the subscript is at least
 <div id="msubmsup.p8">
 <p>We then increase the gap <code>SubSuperGap</code> between the bottom of the superscript
 and the top of the subscript to ensure it is at least
-<code>SubSuperscriptGapMin</code>:
+<code class="MATH">SubSuperscriptGapMin</code>:
 This is first done by continuing to shift the superscript up as long as the
 <code>SuperBottom</code> does not exceed
-<code>SuperscriptBottomMaxWithSubscript</code>
+<code class="MATH">SuperscriptBottomMaxWithSubscript</code>
 and next by continuing to shift the subscript down.</p>
 </div>
 <div id="msubmsup.p9">
 <p>When determining
-the logical box, a space of width <code>SpaceAfterScript</code>
+the logical box, a space of width <code class="MATH">SpaceAfterScript</code>
 is added after
 each script. By default the leading edges of the scripts are aligned with
 the trailing edge and either the superscript is shifted forward by the italic
@@ -1273,15 +1273,15 @@ always performed.</p>
 <a href="#F23" title="Figure 23 ‣ 3.4.2 Underscripts and Overscripts &lt;munder&gt;, &lt;mover&gt;, &lt;munderover&gt; ‣ 3.4 Script and Limit Schemata ‣ 3 Presentation Markup ">23</a>.
 The overscript is placed above the base, the underscript below the base
 and by default are aligned with respect to their geometrical center.
-If the overscript is an accent and has a <code>TopAccentAttachment</code>
+If the overscript is an accent and has a <code class="MATH">TopAccentAttachment</code>
 value, then this value may be used to horizontally align the accent instead
 of its geometrical center.
 <code>OverShift</code> is the distance between the top ink
 of the base and the baseline of the overscript, <code>OverGap</code> is the distance
 between the top ink of the base and the bottom ink of the overscript,
-<code>OverExtraAscender</code> is extra space to add above the overscript when
+<code class="MATH">OverExtraAscender</code> is extra space to add above the overscript when
 determining the logical box. <code>UnderShift</code>, <code>UnderGap</code> and
-<code>UnderExtraDescender</code> are defined similarly for the underscripts.
+<code class="MATH">UnderExtraDescender</code> are defined similarly for the underscripts.
 We distinguish three cases:</p>
 </div>
 <div id="mundermover.p5">
@@ -1291,13 +1291,13 @@ We distinguish three cases:</p>
 <p>If the base is an operator with <span>largeop="true"</span>
 (or an embellished operator whose <code>mo</code> element core has
 <span>largeop="true"</span>) then ensure that <code>OverGap</code> is at least
-<code>UpperLimitGapMin</code>, that <code>OverShift</code> is at least
-<code>UpperLimitBaselineRiseMin</code> that <code>UnderGap</code> is at
+<code class="MATH">UpperLimitGapMin</code>, that <code>OverShift</code> is at least
+<code class="MATH">UpperLimitBaselineRiseMin</code> that <code>UnderGap</code> is at
 least
-<code>LowerLimitGapMin</code>, that <code>UnderShift</code> is at least
-<code>LowerLimitBaselineDropMin</code>.
-<code>OverExtraAscender</code> and
-<code>UnderExtraDescender</code> are zero. The
+<code class="MATH">LowerLimitGapMin</code>, that <code>UnderShift</code> is at least
+<code class="MATH">LowerLimitBaselineDropMin</code>.
+<code class="MATH">OverExtraAscender</code> and
+<code class="MATH">UnderExtraDescender</code> are zero. The
 underscript is shifted backward by half the italic correction of the base.
 The overscript is shifted forward by half the italic correction of the base.</p>
 </div>
@@ -1307,14 +1307,14 @@ The overscript is shifted forward by half the italic correction of the base.</p>
 <p>If the base is a horizontal operator with <span>stretchy="true"</span>
 (or a horizontal embellished operator whose <code>mo</code> element core has
 <span>stretchy="true"</span>). Then ensure that <code>OverGap</code> is at least
-<code>StretchStackGapBelowMin</code>, that <code>OverShift</code> is at
+<code class="MATH">StretchStackGapBelowMin</code>, that <code>OverShift</code> is at
 least
-<code>StretchStackTopShiftUp</code> that <code>UnderGap</code> is at least
-<code>StretchStackGapAboveMin</code>,
+<code class="MATH">StretchStackTopShiftUp</code> that <code>UnderGap</code> is at least
+<code class="MATH">StretchStackGapAboveMin</code>,
 that <code>UnderShift</code> is at least
-<code>StretchStackBottomShiftDown</code>.
-<code>OverExtraAscender</code> and
-<code>UnderExtraDescender</code> are zero.</p>
+<code class="MATH">StretchStackBottomShiftDown</code>.
+<code class="MATH">OverExtraAscender</code> and
+<code class="MATH">UnderExtraDescender</code> are zero.</p>
 </div>
 </li>
 <li id="I11.i3"> 
@@ -1324,14 +1324,14 @@ There are not any specific conditions to satisfy on <code>OverShift</code> or
 <code>UnderShift</code>.
 <code>OverExtraAscender</code> and
 <code>OverExtraAscender</code> are respectively set to
-<code>OverbarExtraAscender</code>
-and <code>UnderExtraDescender</code>.
-We set <code>UnderGap</code> to <code>UnderbarVerticalGap</code>
+<code class="MATH">OverbarExtraAscender</code>
+and <code class="MATH">UnderExtraDescender</code>.
+We set <code>UnderGap</code> to <code class="MATH">UnderbarVerticalGap</code>
 if the underscript is not an accent and to zero otherwise.
-We set <code>OverGap</code> to <code>OverbarVerticalGap</code>
+We set <code>OverGap</code> to <code class="MATH">OverbarVerticalGap</code>
 if the overscript is not an accent and generally to zero otherwise.
 However, if overscript is an accent and if the base ascent is at most
-<code>AccentBaseHeight</code> then we actually set <code>OverGap</code> to
+<code class="MATH">AccentBaseHeight</code> then we actually set <code>OverGap</code> to
 their nonnegative difference.</p>
 </div>
 </li>
@@ -1339,16 +1339,16 @@ their nonnegative difference.</p>
 </div>
 <div id="mundermover.p6">
 <p>Remark: For accent overscripts and bases with ascents that are at most
-<code>AccentBaseHeight</code>, the rule from
+<code class="MATH">AccentBaseHeight</code>, the rule from
 <cite>[<a href="bib.html#bibx13" title="">OpenFontFormat3</a>]</cite> <cite>[<a href="bib.html#bibx16" title="">TeXBook</a>]</cite> is actually to align the baselines of the
 overscripts and of the bases. This assumes that accent glyphs are designed in
 such a way that their ink bottoms are more or less
-<code>AccentBaseHeight</code> above their baselines. Hence, the
+<code class="MATH">AccentBaseHeight</code> above their baselines. Hence, the
 previous rule will guarantee that all the overscript bottoms are aligned while
 still avoiding collision with the bases. However, MathML can have arbitrary
 accent overscripts so we provide a more general and simpler rule above: Ensure
 that the bottom of overscript is at least
-<code>AccentBaseHeight</code> above the baseline of the base.</p>
+<code class="MATH">AccentBaseHeight</code> above the baseline of the base.</p>
 </div>
 <figure id="F23"><svg id="F23.pic1" style="width:287.7pt;height:275.7pt;" height="381.54" overflow="visible" version="1.1" viewBox="-90.26 -190.77 398.13 381.54" width="398.13"><g transform="matrix(1 0 0 -1 0 0)"><g stroke="#000000"><g fill="#000000"><g stroke-width="0.4pt" color="#000000"><g stroke="#E6E6FF" color="#E6E6FF"><g fill="#E6E6FF"><path d="M 0 167.32 M 0 167.32 L 0 -167.32 L 196.85 -167.32 L 196.85 167.32 Z M 196.85 -167.32" style="stroke:none"></path></g></g><g stroke="#00FF00"><g fill="#00FF00"><g stroke="#E6FFE6" color="#00FF00"><g fill="#E6FFE6"><path d="M 29.53 -108.27 L 127.95 -108.27 L 127.95 -167.32 L 29.53 -167.32 Z" style="stroke:none"></path></g></g><path d="M 29.53 -98.43 L 127.95 -98.43 L 127.95 -177.17 L 29.53 -177.17 Z" style="fill:none"></path><path d="M 29.53 -137.8 L 127.95 -137.8" style="fill:none"></path></g></g><g stroke="#00FF00" color="#00FF00"><g fill="#00FF00"><g stroke-dasharray="3.0pt,3.0pt" stroke-dashoffset="0.0pt"><path d="M 78.74 -177.17 L 78.74 -98.43" style="fill:none"></path></g></g></g><g stroke="#00FF00"><g fill="#00FF00"><g stroke="#E6FFE6" color="#00FF00"><g fill="#E6FFE6"><path d="M 68.9 167.32 L 167.32 167.32 L 167.32 108.27 L 68.9 108.27 Z" style="stroke:none"></path></g></g><path d="M 68.9 177.17 L 167.32 177.17 L 167.32 98.43 L 68.9 98.43 Z" style="fill:none"></path><path d="M 68.9 137.8 L 167.32 137.8" style="fill:none"></path></g></g><g stroke="#00FF00" color="#00FF00"><g fill="#00FF00"><g stroke-dasharray="3.0pt,3.0pt" stroke-dashoffset="0.0pt"><path d="M 118.11 177.17 L 118.11 98.43" style="fill:none"></path></g></g></g><g stroke="#FF0000"><g fill="#FF0000"><g stroke="#FFE6E6" color="#FF0000"><g fill="#FFE6E6"><path d="M 0 59.06 L 196.85 59.06 L 196.85 -59.06 L 0 -59.06 Z" style="stroke:none"></path></g></g><path d="M 0 78.74 L 196.85 78.74 L 196.85 -78.74 L 0 -78.74 Z" style="fill:none"></path><path d="M 0 0 L 196.85 0" style="fill:none"></path></g></g><g stroke="#FF0000" color="#FF0000"><g fill="#FF0000"><g stroke-dasharray="3.0pt,3.0pt" stroke-dashoffset="0.0pt"><path d="M 98.43 177.17 L 98.43 78.74 M 98.43 -78.74 L 98.43 -177.17" style="fill:none"></path></g></g></g><path d="M 157.48 59.69 L 157.48 98.43 L 157.48 107.63" style="fill:none"></path><g transform="matrix(0 -1 1 0 157.48 59.69)"><path d="M -1.66 2.21 C -1.52 1.38 0 0.14 0.42 0 C 0 -0.14 -1.52 -1.38 -1.66 -2.21" style="fill:none"></path></g><g transform="matrix(0 1 -1 0 157.48 107.63)"><path d="M -1.66 2.21 C -1.52 1.38 0 0.14 0.42 0 C 0 -0.14 -1.52 -1.38 -1.66 -2.21" style="fill:none"></path></g><g transform="matrix(1 0 0 1 162.37 94.97)"><g transform="matrix(1 0 0 -1 0 12.45)"><switch><foreignObject color="#000000" height="100%" overflow="visible" width="72.64">
 <p>OverGap</p></foreignObject></switch></g></g><path d="M 78.74 59.69 L 78.74 118.11 L 78.74 137.16" style="fill:none"></path><g transform="matrix(0 -1 1 0 78.74 59.69)"><path d="M -1.66 2.21 C -1.52 1.38 0 0.14 0.42 0 C 0 -0.14 -1.52 -1.38 -1.66 -2.21" style="fill:none"></path></g><g transform="matrix(0 1 -1 0 78.74 137.16)"><path d="M -1.66 2.21 C -1.52 1.38 0 0.14 0.42 0 C 0 -0.14 -1.52 -1.38 -1.66 -2.21" style="fill:none"></path></g><g transform="matrix(1 0 0 1 -19.55 114.65)"><g transform="matrix(1 0 0 -1 0 12.45)"><switch><foreignObject color="#000000" height="100%" overflow="visible" width="93.4">
@@ -1486,7 +1486,7 @@ mtable[frame="dashed"] {
 </div>
 <div id="tables.p4">
 <p>By default, user agents must align the vertical center of the table on the
-math axis, which is provided by the <code>AxisHeight</code> value.
+math axis, which is provided by the <code class="MATH">AxisHeight</code> value.
 User agents may also support non-default <code>align</code> attribute values.</p>
 </div>
 <div id="tables.p5">

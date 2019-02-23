@@ -15,7 +15,7 @@
 <p><span>This section is non-normative.</span></p>
 </div>
 <div id="p2">
-<p>It is not clear how the <code>DisplayOperatorMinHeight</code> is
+<p>It is not clear how the <code class="MATH">DisplayOperatorMinHeight</code> is
 supposed to be used or whether it is really reliable. More specifically,
 integral symbols (e.g. INTEGRAL U+222B) are typically taller than N-ary
 operators (e.g. N-ARY SUMMATION U+2211) so a unique minimal height may not
@@ -24,14 +24,14 @@ sum has three size variants: the base size of height 1em, the display size
 of height 2em and a bigger variant of height 3em.
 Suppose that the integral has three sizes: a base size of
 height 1em, a larger size variant of height 2em and a display size of height
-3em. If <code>DisplayOperatorMinHeight</code> is less than
+3em. If <code class="MATH">DisplayOperatorMinHeight</code> is less than
 3em then it does not force the display size of the integral to be selected.
 If it is more than 3em then none of the available sizes satisfies the
 condition. How to interpret that? Should we pick the largest as a fallback?
 If it is 3em, the desired size will be selected for the integral in display
 size but the one selected for the sum in display size will be too large.
 A heuristic is proposed in section <a href="S3.html#tokenmo" title="3.2.4 Operator, Fence, Separator or Accent &lt;mo&gt; ‣ 3.2 Token Elements ‣ 3 Presentation Markup "><span>3.2.4</span></a> to workaround limitations
-of <code>DisplayOperatorMinHeight</code>.</p>
+of <code class="MATH">DisplayOperatorMinHeight</code>.</p>
 </div>
 <div id="p3">
 <p>The OpenType MATH specification does not seem to take into account
@@ -48,8 +48,8 @@ OpenType MATH specification?</p>
 <p>In section <a href="S3.html#menclose" title="3.3.9 Enclose Expression Inside Notation &lt;menclose&gt; ‣ 3.3 General Layout Schemata ‣ 3 Presentation Markup "><span>3.3.9</span></a> we describe the MathML <code>menclose</code> element. This
 one contains many notations that are not mentioned in the OpenType MATH
 specification. Some rendering suggestions are given based on the value of
-<code>OverbarRuleThickness</code> but perhaps new values should be
-introduced in the <code>MathConstants</code> subtable to cover these
+<code class="MATH">OverbarRuleThickness</code> but perhaps new values should be
+introduced in the <code class="MATH">MathConstants</code> subtable to cover these
 notations.</p>
 </div>
 </section>

@@ -205,21 +205,21 @@
                               σ<sub>8</sub>, σ<sub>9</sub>, ξ<sub>8</sub>, 3ξ<sub>8</sub>, 7ξ<sub>8</sub>,
                               σ<sub>11</sub> and σ<sub>12</sub> while the MATH table of the Open Font Format
                               <cite>[<a href="#bibx13" title="">OpenFontFormat3</a>]</cite> extends these to parameters
-                              <code>FractionNumeratorDisplayStyleShiftUp</code>,
-                              <code>FractionNumeratorShiftUp</code>,
-                              <code>FractionNumeratorDisplayStyleGapMin</code>,
-                              <code>FractionNumeratorGapMin</code>,
-                              <code>FractionRuleThickness</code>,
-                              <code>FractionDenominatorDisplayStyleGapMin</code>,
-                              <code>FractionDenominatorGapMin</code>,
-                              <code>FractionDenominatorDisplayStyleShiftDown</code>,
-                              <code>FractionDenominatorShiftDown</code>,
-                              <code>StackTopDisplayStyleShiftUp</code>,
-                              <code>StackTopShiftUp</code>,
-                              <code>StackDisplayStyleGapMin</code>,
-                              <code>StackGapMin</code>,
-                              <code>StackBottomDisplayStyleShiftDown</code> and
-                              <code>StackBottomShiftDown</code>.
+                              <code class="MATH">FractionNumeratorDisplayStyleShiftUp</code>,
+                              <code class="MATH">FractionNumeratorShiftUp</code>,
+                              <code class="MATH">FractionNumeratorDisplayStyleGapMin</code>,
+                              <code class="MATH">FractionNumeratorGapMin</code>,
+                              <code class="MATH">FractionRuleThickness</code>,
+                              <code class="MATH">FractionDenominatorDisplayStyleGapMin</code>,
+                              <code class="MATH">FractionDenominatorGapMin</code>,
+                              <code class="MATH">FractionDenominatorDisplayStyleShiftDown</code>,
+                              <code class="MATH">FractionDenominatorShiftDown</code>,
+                              <code class="MATH">StackTopDisplayStyleShiftUp</code>,
+                              <code class="MATH">StackTopShiftUp</code>,
+                              <code class="MATH">StackDisplayStyleGapMin</code>,
+                              <code class="MATH">StackGapMin</code>,
+                              <code class="MATH">StackBottomDisplayStyleShiftDown</code> and
+                              <code class="MATH">StackBottomShiftDown</code>.
                            </p>
                            
                         </div>
@@ -315,7 +315,7 @@
                   <p>This document relies on many definitions taken from the MATH specification
                      of the Open Font Format <cite>[<a href="#bibx13" title="">OpenFontFormat3</a>]</cite>. These values are written with
                      the following style:
-                     <span>This is a definition from the MATH specification</span>.
+                     <span class="MATH">This is a definition from the MATH specification</span>.
                   </p>
                   
                </div>
@@ -567,13 +567,13 @@
                   <div id="openfontformat.p4">
                      
                      <p>Good mathematical rendering requires use of non-Unicode glyphs. Mathematical
-                        fonts may only provide these glyphs when the <code>math</code>
+                        fonts may only provide these glyphs when the <code class="MATH">math</code>
                         script tag is enabled and so user agents must ensure that the text within
                         MathML token elements is rendered with that script tag. Some characters like
                         primes already have script size by default and hence would be too small when
                         used in a script position.
                         Hence user agents must support glyph selections via the OpenType font feature
-                        <code>ssty</code> (Script Style) in order to display such
+                        <code class="MATH">ssty</code> (Script Style) in order to display such
                         “prescripted” characters with the appropriate size.
                         For bidirectional layout, Unicode defines character-level mirroring
                         to transform a character into its mirrored form,
@@ -584,7 +584,7 @@
                         <cite>[<a href="#bibx13" title="">OpenFontFormat3</a>]</cite>.
                         At the time of writing, Unicode does not distinguish between Chancery and
                         Spencerian style for the Unicode MATHEMATICAL SCRIPT characters. Some
-                        mathematical fonts rely on <code>salt</code> or <code>ssXY</code> properties to provide
+                        mathematical fonts rely on <code class="MATH">salt</code> or <code>ssXY</code> properties to provide
                         both styles. User agents may support the CSS <span>font-variant-alternates</span>
                         property and corresponding OpenType font features to enable page authors
                         to get access to these styles <cite>[<a href="#bibx2" title="">CSS3Font</a>]</cite> <cite>[<a href="#bibx13" title="">OpenFontFormat3</a>]</cite>.
@@ -597,8 +597,8 @@
                      <p>User agents must be able to read information from the
                         OpenType MATH table <cite>[<a href="#bibx13" title="">OpenFontFormat3</a>]</cite>.
                         In particular they must be able to read the values from the
-                        <code>MathConstants</code> subtable.
-                        They must also be able to use the <code>MathVariants</code> subtable
+                        <code class="MATH">MathConstants</code> subtable.
+                        They must also be able to use the <code class="MATH">MathVariants</code> subtable
                         to solve the following problem: given a particular default glyph shape and a
                         certain width or height, find a variant shape glyph (or a construct created by
                         putting several glyphs together) that has the required measurement.
@@ -1975,10 +1975,10 @@ text.f2 {font-family:cmr7;font-size:6.973848px}
                   
                   <div id="boxmodel.p6">
                      
-                     <p>The <code>MathItalicsCorrectionInfo</code> table contains the italic
+                     <p>The <code class="MATH">MathItalicsCorrectionInfo</code> table contains the italic
                         correction of some glyphs, which provides a measure of how slanted the
                         glyphs are (see figure <a href="#F2" title="Figure 2 ‣ 3.1.1 Box Model ‣ 3.1 Introduction ‣ 3 Presentation Markup ">2</a>). The
-                        <code>MathTopAccentAttachment</code> table also contains a reference
+                        <code class="MATH">MathTopAccentAttachment</code> table also contains a reference
                         points that is used for the horizontal positioning of glyphs as an accent
                         (see figure <a href="#F3" title="Figure 3 ‣ 3.1.1 Box Model ‣ 3.1 Introduction ‣ 3 Presentation Markup "><span>3</span></a>). In later sections, we
                         generalize this by claiming that all MathML boxes have italic correction
@@ -2367,9 +2367,9 @@ text.f2 {font-family:cmr7;font-size:6.973848px}
                      
                      <p>In most cases, the <code>mo</code> element is treated as an <code>mtext</code> element.
                         However, when an <code>mo</code> element with a single character must be displayed as
-                        a large operator then instead we use the <code>MathVariants</code>
+                        a large operator then instead we use the <code class="MATH">MathVariants</code>
                         table to try and find a glyph of height at least
-                        <code>DisplayOperatorMinHeight</code>
+                        <code class="MATH">DisplayOperatorMinHeight</code>
                         (figure <a href="#F4" title="Figure 4 ‣ 3.2.4 Operator, Fence, Separator or Accent <mo&gt; ‣ 3.2 Token Elements ‣ 3 Presentation Markup ">4</a>). If none is found, we fallback to the
                         largest one. Because this parameter does not always give
                         the best size, user agents may also use the following heuristic: ensure
@@ -2478,14 +2478,14 @@ text.f2 {font-family:cmr7;font-size:6.973848px}
                      <p>When an <code>mo</code> element with a single character must be displayed as a
                         horizontal or vertical
                         operator then instead of displaying the normal character we use
-                        the <code>MathVariants</code> table to try and find a glyph
+                        the <code class="MATH">MathVariants</code> table to try and find a glyph
                         that has at least the desired size or an assembly from several glyphs
                         to cover at least the desired size
                         (figure <a href="#F5" title="Figure 5 ‣ 3.2.4 Operator, Fence, Separator or Accent <mo&gt; ‣ 3.2 Token Elements ‣ 3 Presentation Markup "><span>5</span></a>). The rules for vertical stretching
                         are a bit more complicated and are described in section
                         “Vertical Stretching Rules” of <cite>[<a href="#bibx11" title="">MathML3</a>]</cite>. If the operator has property
                         <span>symmetric="true"</span>, it must be stretched symmetrically with respect to
-                        the math axis, which is given by the <code>AxisHeight</code> value.
+                        the math axis, which is given by the <code class="MATH">AxisHeight</code> value.
                         Figure <a href="#F6" title="Figure 6 ‣ 3.2.4 Operator, Fence, Separator or Accent <mo&gt; ‣ 3.2 Token Elements ‣ 3 Presentation Markup "><span>6</span></a> compares the symmetric
                         and non-symmetric stretching.
                      </p>
@@ -2902,12 +2902,12 @@ text.f2 {font-family:cmr7;font-size:6.973848px}
                   <div id="tokenmtext.p3">
                      
                      <p>If the trailing glyph of the text content has an entry in the
-                        <code>MathItalicsCorrectionInfo</code> table then the specified
+                        <code class="MATH">MathItalicsCorrectionInfo</code> table then the specified
                         value is used as the italic correction.
                         User agents may subtract the advance width from the abscissa of the trailing
                         ink edge as a heuristic value for the italic correction of the <span>&lt;mtext&gt;</span>
                         element when it is not specified in the
-                        <code>MathItalicsCorrectionInfo</code> table.
+                        <code class="MATH">MathItalicsCorrectionInfo</code> table.
                      </p>
                      
                   </div>
@@ -2915,7 +2915,7 @@ text.f2 {font-family:cmr7;font-size:6.973848px}
                   <div id="tokenmtext.p4">
                      
                      <p>If the text content is made of a single glyph and this glyph
-                        has an entry in the <code>MathTopAccentAttachment</code> table
+                        has an entry in the <code class="MATH">MathTopAccentAttachment</code> table
                         then the specified value is used as the top accent attachment of the
                         <span>&lt;mtext&gt;</span> element.
                      </p>
@@ -2935,7 +2935,7 @@ text.f2 {font-family:cmr7;font-size:6.973848px}
                   <div id="tokenmtext.p6">
                      
                      <p>If <span>&lt;mtext&gt;</span> is used at a non-zero scriptlevel then user agents must
-                        enable the <code>ssty</code> OpenType feature on text nodes unless it contradicts
+                        enable the <code class="MATH">ssty</code> OpenType feature on text nodes unless it contradicts
                         what the page author has specified with the <span>font-feature-settings</span>
                         CSS property.
                      </p>
@@ -2944,7 +2944,7 @@ text.f2 {font-family:cmr7;font-size:6.973848px}
                   
                   <div id="tokenmtext.p7">
                      
-                     <p><a href="https://gitlab.com/mathml/MathMLinHTML5/issues/2" title="">Add detailed rules for <code>ssty</code></a></p>
+                     <p><a href="https://gitlab.com/mathml/MathMLinHTML5/issues/2" title="">Add detailed rules for <code class="MATH">ssty</code></a></p>
                      
                   </div>
                   
@@ -3159,7 +3159,7 @@ ms[rquote]:after {
                         and of child box models, graphical elements such as fraction bars
                         or symmetric stretchy operators will also be
                         aligned along the math axis when the
-                        <code>AxisHeight</code> is unchanged (e.g. in the typical case
+                        <code class="MATH">AxisHeight</code> is unchanged (e.g. in the typical case
                         where the math font is unchanged).
                      </p>
                      
@@ -3548,7 +3548,7 @@ ms[rquote]:after {
                   <div id="mfrac.p3">
                      
                      <p>The axis of the <code>mfrac</code> element is always given by
-                        <code>AxisHeight</code>.
+                        <code class="MATH">AxisHeight</code>.
                      </p>
                      
                   </div>
@@ -3556,7 +3556,7 @@ ms[rquote]:after {
                   <div id="mfrac.p4">
                      
                      <p>The default line thickness is given by
-                        <code>FractionRuleThickness</code>
+                        <code class="MATH">FractionRuleThickness</code>
                         Use the <code>linethickness</code> attribute <cite>[<a href="#bibx11" title="">MathML3</a>]</cite> to determine the
                         actual thickness of the fraction bar. A percent or unitless length is
                         interpreted as a multiple of the default rule thickness and
@@ -3576,17 +3576,17 @@ ms[rquote]:after {
                         numerator and denominator and the numerator and denominator are horizontally
                         centered. A fraction bar with the actual thickness is drawn centered on the
                         axis height. The numerator and denominator are shifted
-                        up and down using the values <code>FractionNumeratorShiftUp</code>,
-                        <code>FractionDenominatorShiftDown</code> in inline style and
-                        <code>FractionNumeratorDisplayStyleShiftUp</code>,
-                        <code>FractionDenominatorDisplayStyleShiftDown</code>
+                        up and down using the values <code class="MATH">FractionNumeratorShiftUp</code>,
+                        <code class="MATH">FractionDenominatorShiftDown</code> in inline style and
+                        <code class="MATH">FractionNumeratorDisplayStyleShiftUp</code>,
+                        <code class="MATH">FractionDenominatorDisplayStyleShiftDown</code>
                         in display style.
                         If necessary, these shift values are increased to ensure that the gaps between
                         the numerator/denominator and fraction bar satisfy the minimal values provided
-                        by <code>FractionDenominatorGapMin</code> and
-                        <code>FractionNumeratorGapMin</code> in inline style and
-                        <code>FractionDenominatorDisplayStyleGapMin</code> and
-                        <code>FractionNumeratorDisplayStyleGapMin</code>
+                        by <code class="MATH">FractionDenominatorGapMin</code> and
+                        <code class="MATH">FractionNumeratorGapMin</code> in inline style and
+                        <code class="MATH">FractionDenominatorDisplayStyleGapMin</code> and
+                        <code class="MATH">FractionNumeratorDisplayStyleGapMin</code>
                         in display style.
                      </p>
                      
@@ -3771,14 +3771,14 @@ ms[rquote]:after {
                         shown on figure <a href="#F10" title="Figure 10 ‣ 3.3.2 Fractions <mfrac&gt; ‣ 3.3 General Layout Schemata ‣ 3 Presentation Markup ">10</a>.
                         The gap between the top and bottom boxes
                         is equally split around the axis height. The relevant shift values are now
-                        <code>StackTopShiftUp</code>,
-                        <code>StackBottomShiftDown</code> in inline style and
-                        <code>StackTopDisplayStyleShiftUp</code>,
-                        <code>StackBottomDisplayStyleShiftDown</code> in display style.
+                        <code class="MATH">StackTopShiftUp</code>,
+                        <code class="MATH">StackBottomShiftDown</code> in inline style and
+                        <code class="MATH">StackTopDisplayStyleShiftUp</code>,
+                        <code class="MATH">StackBottomDisplayStyleShiftDown</code> in display style.
                         If necessary, the two shift values are increased by a same value to ensure
                         the gap between the top and bottom boxes satisfy the values provided by
-                        by <code>StackGapMin</code> in inline style and
-                        <code>StackDisplayStyleGapMin</code> in display style.
+                        by <code class="MATH">StackGapMin</code> in inline style and
+                        <code class="MATH">StackDisplayStyleGapMin</code> in display style.
                      </p>
                      
                   </div>
@@ -3981,12 +3981,12 @@ ms[rquote]:after {
                   <div id="msqrt.p3">
                      
                      <p>The line thickness of the overbar is given by
-                        <code>RadicalRuleThickness</code>.
+                        <code class="MATH">RadicalRuleThickness</code>.
                         The gap between the overbar and base is given by
-                        <code>RadicalVerticalGap</code>
-                        in inline style and <code>RadicalDisplayStyleVerticalGap</code>
+                        <code class="MATH">RadicalVerticalGap</code>
+                        in inline style and <code class="MATH">RadicalDisplayStyleVerticalGap</code>
                         in display style.
-                        The ascent above the overbase is given by <code>RadicalExtraAscender</code>.
+                        The ascent above the overbase is given by <code class="MATH">RadicalExtraAscender</code>.
                         The surd is drawn by trying to vertically stretch the character
                         U+221A SQUARE ROOT
                         to at least the sum of the ink height of the base, the radical gap and the
@@ -4135,9 +4135,9 @@ ms[rquote]:after {
                         We start by ignoring the root index and we layout the base and surd as
                         shown on figure <a href="#F11" title="Figure 11 ‣ 3.3.3 Radicals <msqrt&gt;, <mroot&gt; ‣ 3.3 General Layout Schemata ‣ 3 Presentation Markup ">11</a> to obtain a box B.
                         The horizontal metrics of the <code>mroot</code> element are obtained by putting
-                        <code>RadicalKernBeforeDegree</code>
+                        <code class="MATH">RadicalKernBeforeDegree</code>
                         before the root index, then placing the root index, then a kerning
-                        of <code>RadicalKernAfterDegree</code>
+                        of <code class="MATH">RadicalKernAfterDegree</code>
                         after the root index and finally placing B. In general
                         the kerning before the root index is positive while the kerning after it is
                         negative,
@@ -4148,7 +4148,7 @@ ms[rquote]:after {
                         scale going from the bottom at coordinate 0 to the top at coordinate 1.
                         Then the ink bottom of the root index will
                         be vertically positioned at coordinate
-                        <code>RadicalDegreeBottomRaisePercent</code>.
+                        <code class="MATH">RadicalDegreeBottomRaisePercent</code>.
                         Finally, we take into consideration the box of the root index and B to deduce
                         the metrics for the whole box of the <code>mroot</code> element.
                      </p>
@@ -4635,7 +4635,7 @@ ms[rquote]:after {
                      <p>Based on <cite>[<a href="#bibx13" title="">OpenFontFormat3</a>]</cite> <cite>[<a href="#bibx16" title="">TeXBook</a>]</cite>, we use the notation ξ<sub>8</sub>
                         from the TeXBook to denote the default rule thickness and use
                         3ξ<sub>8</sub> for gaps.
-                        We actually let ξ<sub>8</sub> be <code>OverbarRuleThickness</code>.
+                        We actually let ξ<sub>8</sub> be <code class="MATH">OverbarRuleThickness</code>.
                         Note that contrary to what is done in general and unless specified otherwise,
                         the x-axis direction of notations is assumed to be independent of the CSS
                         <code>direction</code>.
@@ -4656,10 +4656,10 @@ ms[rquote]:after {
                               <p>The <code>left</code> notation is drawn by putting a vertical bar of thickness
                                  ξ<sub>8</sub> on the left of the content of the <code>menclose</code> element.
                                  The length of the bar is obtained by extending the height of the content
-                                 with <code>OverbarVerticalGap</code> plus
-                                 <code>OverbarRuleThickness</code> above
-                                 and <code>UnderbarVerticalGap</code> plus
-                                 <code>UnderbarRuleThickness</code> below.
+                                 with <code class="MATH">OverbarVerticalGap</code> plus
+                                 <code class="MATH">OverbarRuleThickness</code> above
+                                 and <code class="MATH">UnderbarVerticalGap</code> plus
+                                 <code class="MATH">UnderbarRuleThickness</code> below.
                                  The gap between the bar and the content is 3ξ<sub>8</sub>.
                                  The logical box is obtained by adding some space of width
                                  ξ<sub>8</sub> on the left of the bar. See figure <a href="#F14" title="Figure 14 ‣ 1. ‣ 3.3.9 Enclose Expression Inside Notation <menclose&gt; ‣ 3.3 General Layout Schemata ‣ 3 Presentation Markup ">14</a>.
@@ -4886,14 +4886,14 @@ ms[rquote]:after {
                            <div id="I7.i3.p1">
                               
                               <p>The <code>top</code> notation is drawn by putting an overbar of thickness
-                                 <code>OverbarRuleThickness</code>
+                                 <code class="MATH">OverbarRuleThickness</code>
                                  over the content of the <code>menclose</code> element.
                                  The length of the bar is obtained by extending the width of the content
                                  with 4ξ<sub>8</sub> on each side.
                                  The gap between the overbar and the content is
-                                 <code>OverbarVerticalGap</code>.
+                                 <code class="MATH">OverbarVerticalGap</code>.
                                  The logical box is obtained by adding some space of height
-                                 <code>OverbarExtraAscender</code> above the bar.
+                                 <code class="MATH">OverbarExtraAscender</code> above the bar.
                                  See figure <a href="#F15" title="Figure 15 ‣ 3. ‣ 3.3.9 Enclose Expression Inside Notation <menclose&gt; ‣ 3.3 General Layout Schemata ‣ 3 Presentation Markup ">15</a>.
                               </p>
                               
@@ -5066,9 +5066,9 @@ ms[rquote]:after {
                               
                               <p>The <code>bottom</code> notation is drawn the same as the <code>top</code> notation,
                                  but with the vertical bar placed below the content and using parameters
-                                 <code>UnderbarRuleThickness</code>,
-                                 <code>UnderbarVerticalGap</code>.
-                                 and <code>UnderExtraDescender</code>.
+                                 <code class="MATH">UnderbarRuleThickness</code>,
+                                 <code class="MATH">UnderbarVerticalGap</code>.
+                                 and <code class="MATH">UnderExtraDescender</code>.
                               </p>
                               
                            </div>
@@ -5922,7 +5922,7 @@ msubsup &gt; :not(:first-child) {
                            
                            <div id="I8.i1.p1">
                               
-                              <p><code>SubShift</code> is at least <code>SubscriptShiftDown</code>.
+                              <p><code>SubShift</code> is at least <code class="MATH">SubscriptShiftDown</code>.
                               </p>
                               
                            </div>
@@ -5934,7 +5934,7 @@ msubsup &gt; :not(:first-child) {
                            <div id="I8.i2.p1">
                               
                               <p>The top of the subscript <code>SubTop</code> with respect to the baseline
-                                 is not above <code>SubscriptTopMax</code>.
+                                 is not above <code class="MATH">SubscriptTopMax</code>.
                               </p>
                               
                            </div>
@@ -5947,7 +5947,7 @@ msubsup &gt; :not(:first-child) {
                               
                               <p>The drop <code>SubscriptBaselineDrop</code> from the bottom of the base to
                                  the baseline of the script is at least
-                                 <code>SubscriptBaselineDropMin</code>.
+                                 <code class="MATH">SubscriptBaselineDropMin</code>.
                               </p>
                               
                            </div>
@@ -5961,7 +5961,7 @@ msubsup &gt; :not(:first-child) {
                   <div id="msubmsup.p4">
                      
                      <p>When determining
-                        the logical box, a space of width <code>SpaceAfterScript</code>
+                        the logical box, a space of width <code class="MATH">SpaceAfterScript</code>
                         is added after
                         the subscript. By default, the leading edge of the subscript is aligned with
                         the trailing edge of the base. However, if the base is an operator with
@@ -6130,9 +6130,9 @@ msubsup &gt; :not(:first-child) {
                            <div id="I9.i1.p1">
                               
                               <p><code>SuperShift</code> is at least
-                                 <code>SuperscriptShiftUpCramped</code> if the <code>msup</code> element is
+                                 <code class="MATH">SuperscriptShiftUpCramped</code> if the <code>msup</code> element is
                                  cramped (section <a href="A1.html" title="Appendix A MathML "><code>A</code></a>) or at least
-                                 <code>SuperscriptShiftUp</code> otherwise.
+                                 <code class="MATH">SuperscriptShiftUp</code> otherwise.
                               </p>
                               
                            </div>
@@ -6144,7 +6144,7 @@ msubsup &gt; :not(:first-child) {
                            <div id="I9.i2.p1">
                               
                               <p>The bottom of the superscript <code>SuperBottom</code> with respect to the
-                                 baseline is not below <code>SuperscriptBottomMin</code>.
+                                 baseline is not below <code class="MATH">SuperscriptBottomMin</code>.
                               </p>
                               
                            </div>
@@ -6155,8 +6155,8 @@ msubsup &gt; :not(:first-child) {
                            
                            <div id="I9.i3.p1">
                               
-                              <p>The drop <code>SuperscriptBaselineDrop</code> from the top of the base to
-                                 the baseline of the script is at most <code>SuperscriptBaselineDropMax</code>.
+                              <p>The drop <code class="MATH">SuperscriptBaselineDrop</code> from the top of the base to
+                                 the baseline of the script is at most <code class="MATH">SuperscriptBaselineDropMax</code>.
                               </p>
                               
                            </div>
@@ -6170,7 +6170,7 @@ msubsup &gt; :not(:first-child) {
                   <div id="msubmsup.p6">
                      
                      <p>When determining
-                        the logical box, a space of width <code>SpaceAfterScript</code>
+                        the logical box, a space of width <code class="MATH">SpaceAfterScript</code>
                         is added after
                         the superscript. By default, the leading edge of the superscript is aligned with
                         the trailing edge of the base and shifted forward by the italic correction
@@ -6336,9 +6336,9 @@ msubsup &gt; :not(:first-child) {
                            <div id="I10.i1.p1">
                               
                               <p><code>SubShift</code> is at least
-                                 <code>SuperscriptShiftUpCramped</code> if the <code>msup</code> element is
+                                 <code class="MATH">SuperscriptShiftUpCramped</code> if the <code>msup</code> element is
                                  cramped (section <a href="A1.html" title="Appendix A MathML "><code>A</code></a>) or at least
-                                 <code>SuperscriptShiftUp</code> otherwise.
+                                 <code class="MATH">SuperscriptShiftUp</code> otherwise.
                               </p>
                               
                            </div>
@@ -6350,7 +6350,7 @@ msubsup &gt; :not(:first-child) {
                            <div id="I10.i2.p1">
                               
                               <p>The top of the subscript <code>SubTop</code> with respect to the baseline
-                                 is not above <code>SubscriptTopMax</code>.
+                                 is not above <code class="MATH">SubscriptTopMax</code>.
                               </p>
                               
                            </div>
@@ -6361,8 +6361,8 @@ msubsup &gt; :not(:first-child) {
                            
                            <div id="I10.i3.p1">
                               
-                              <p>The drop <code>SuperscriptBaselineDrop</code> from the top of the base to
-                                 the baseline of the superscript is at most <code>SuperscriptBaselineDropMax</code>.
+                              <p>The drop <code class="MATH">SuperscriptBaselineDrop</code> from the top of the base to
+                                 the baseline of the superscript is at most <code class="MATH">SuperscriptBaselineDropMax</code>.
                               </p>
                               
                            </div>
@@ -6374,9 +6374,9 @@ msubsup &gt; :not(:first-child) {
                            <div id="I10.i4.p1">
                               
                               <p><code>SubShift</code> is at least
-                                 <code>SuperscriptShiftUpCramped</code> if the <code>msup</code> element is
+                                 <code class="MATH">SuperscriptShiftUpCramped</code> if the <code>msup</code> element is
                                  cramped (section <a href="A1.html" title="Appendix A MathML "><code>A</code></a>) or at least
-                                 <code>SuperscriptShiftUp</code> otherwise.
+                                 <code class="MATH">SuperscriptShiftUp</code> otherwise.
                               </p>
                               
                            </div>
@@ -6388,7 +6388,7 @@ msubsup &gt; :not(:first-child) {
                            <div id="I10.i5.p1">
                               
                               <p>The bottom of the superscript <code>SuperBottom</code> with respect to the
-                                 baseline is not below <code>SuperscriptBottomMin</code>.
+                                 baseline is not below <code class="MATH">SuperscriptBottomMin</code>.
                               </p>
                               
                            </div>
@@ -6399,9 +6399,9 @@ msubsup &gt; :not(:first-child) {
                            
                            <div id="I10.i6.p1">
                               
-                              <p>The drop <code>SubscriptBaselineDrop</code> from
+                              <p>The drop <code class="MATH">SubscriptBaselineDrop</code> from
                                  the bottom of the base to the the baseline of the subscript is at least
-                                 <code>SubscriptBaselineDropMin</code>.
+                                 <code class="MATH">SubscriptBaselineDropMin</code>.
                                  
                               </p>
                               
@@ -6417,10 +6417,10 @@ msubsup &gt; :not(:first-child) {
                      
                      <p>We then increase the gap <code>SubSuperGap</code> between the bottom of the superscript
                         and the top of the subscript to ensure it is at least
-                        <code>SubSuperscriptGapMin</code>:
+                        <code class="MATH">SubSuperscriptGapMin</code>:
                         This is first done by continuing to shift the superscript up as long as the
                         <code>SuperBottom</code> does not exceed
-                        <code>SuperscriptBottomMaxWithSubscript</code>
+                        <code class="MATH">SuperscriptBottomMaxWithSubscript</code>
                         and next by continuing to shift the subscript down.
                      </p>
                      
@@ -6429,7 +6429,7 @@ msubsup &gt; :not(:first-child) {
                   <div id="msubmsup.p9">
                      
                      <p>When determining
-                        the logical box, a space of width <code>SpaceAfterScript</code>
+                        the logical box, a space of width <code class="MATH">SpaceAfterScript</code>
                         is added after
                         each script. By default the leading edges of the scripts are aligned with
                         the trailing edge and either the superscript is shifted forward by the italic
@@ -6733,15 +6733,15 @@ munderover &gt; :not(:first-child) {
                         <a href="#F23" title="Figure 23 ‣ 3.4.2 Underscripts and Overscripts <munder&gt;, <mover&gt;, <munderover&gt; ‣ 3.4 Script and Limit Schemata ‣ 3 Presentation Markup ">23</a>.
                         The overscript is placed above the base, the underscript below the base
                         and by default are aligned with respect to their geometrical center.
-                        If the overscript is an accent and has a <code>TopAccentAttachment</code>
+                        If the overscript is an accent and has a <code class="MATH">TopAccentAttachment</code>
                         value, then this value may be used to horizontally align the accent instead
                         of its geometrical center.
                         <code>OverShift</code> is the distance between the top ink
                         of the base and the baseline of the overscript, <code>OverGap</code> is the distance
                         between the top ink of the base and the bottom ink of the overscript,
-                        <code>OverExtraAscender</code> is extra space to add above the overscript when
+                        <code class="MATH">OverExtraAscender</code> is extra space to add above the overscript when
                         determining the logical box. <code>UnderShift</code>, <code>UnderGap</code> and
-                        <code>UnderExtraDescender</code> are defined similarly for the underscripts.
+                        <code class="MATH">UnderExtraDescender</code> are defined similarly for the underscripts.
                         We distinguish three cases:
                      </p>
                      
@@ -6758,13 +6758,13 @@ munderover &gt; :not(:first-child) {
                               <p>If the base is an operator with <span>largeop="true"</span>
                                  (or an embellished operator whose <code>mo</code> element core has
                                  <span>largeop="true"</span>) then ensure that <code>OverGap</code> is at least
-                                 <code>UpperLimitGapMin</code>, that <code>OverShift</code> is at least
-                                 <code>UpperLimitBaselineRiseMin</code> that <code>UnderGap</code> is at
+                                 <code class="MATH">UpperLimitGapMin</code>, that <code>OverShift</code> is at least
+                                 <code class="MATH">UpperLimitBaselineRiseMin</code> that <code>UnderGap</code> is at
                                  least
-                                 <code>LowerLimitGapMin</code>, that <code>UnderShift</code> is at least
-                                 <code>LowerLimitBaselineDropMin</code>.
-                                 <code>OverExtraAscender</code> and
-                                 <code>UnderExtraDescender</code> are zero. The
+                                 <code class="MATH">LowerLimitGapMin</code>, that <code>UnderShift</code> is at least
+                                 <code class="MATH">LowerLimitBaselineDropMin</code>.
+                                 <code class="MATH">OverExtraAscender</code> and
+                                 <code class="MATH">UnderExtraDescender</code> are zero. The
                                  underscript is shifted backward by half the italic correction of the base.
                                  The overscript is shifted forward by half the italic correction of the base.
                               </p>
@@ -6780,14 +6780,14 @@ munderover &gt; :not(:first-child) {
                               <p>If the base is a horizontal operator with <span>stretchy="true"</span>
                                  (or a horizontal embellished operator whose <code>mo</code> element core has
                                  <span>stretchy="true"</span>). Then ensure that <code>OverGap</code> is at least
-                                 <code>StretchStackGapBelowMin</code>, that <code>OverShift</code> is at
+                                 <code class="MATH">StretchStackGapBelowMin</code>, that <code>OverShift</code> is at
                                  least
-                                 <code>StretchStackTopShiftUp</code> that <code>UnderGap</code> is at least
-                                 <code>StretchStackGapAboveMin</code>,
+                                 <code class="MATH">StretchStackTopShiftUp</code> that <code>UnderGap</code> is at least
+                                 <code class="MATH">StretchStackGapAboveMin</code>,
                                  that <code>UnderShift</code> is at least
-                                 <code>StretchStackBottomShiftDown</code>.
-                                 <code>OverExtraAscender</code> and
-                                 <code>UnderExtraDescender</code> are zero.
+                                 <code class="MATH">StretchStackBottomShiftDown</code>.
+                                 <code class="MATH">OverExtraAscender</code> and
+                                 <code class="MATH">UnderExtraDescender</code> are zero.
                               </p>
                               
                            </div>
@@ -6803,14 +6803,14 @@ munderover &gt; :not(:first-child) {
                                  <code>UnderShift</code>.
                                  <code>OverExtraAscender</code> and
                                  <code>OverExtraAscender</code> are respectively set to
-                                 <code>OverbarExtraAscender</code>
-                                 and <code>UnderExtraDescender</code>.
-                                 We set <code>UnderGap</code> to <code>UnderbarVerticalGap</code>
+                                 <code class="MATH">OverbarExtraAscender</code>
+                                 and <code class="MATH">UnderExtraDescender</code>.
+                                 We set <code>UnderGap</code> to <code class="MATH">UnderbarVerticalGap</code>
                                  if the underscript is not an accent and to zero otherwise.
-                                 We set <code>OverGap</code> to <code>OverbarVerticalGap</code>
+                                 We set <code>OverGap</code> to <code class="MATH">OverbarVerticalGap</code>
                                  if the overscript is not an accent and generally to zero otherwise.
                                  However, if overscript is an accent and if the base ascent is at most
-                                 <code>AccentBaseHeight</code> then we actually set <code>OverGap</code> to
+                                 <code class="MATH">AccentBaseHeight</code> then we actually set <code>OverGap</code> to
                                  their nonnegative difference.
                               </p>
                               
@@ -6825,16 +6825,16 @@ munderover &gt; :not(:first-child) {
                   <div id="mundermover.p6">
                      
                      <p>Remark: For accent overscripts and bases with ascents that are at most
-                        <code>AccentBaseHeight</code>, the rule from
+                        <code class="MATH">AccentBaseHeight</code>, the rule from
                         <cite>[<a href="#bibx13" title="">OpenFontFormat3</a>]</cite> <cite>[<a href="#bibx16" title="">TeXBook</a>]</cite> is actually to align the baselines of the
                         overscripts and of the bases. This assumes that accent glyphs are designed in
                         such a way that their ink bottoms are more or less
-                        <code>AccentBaseHeight</code> above their baselines. Hence, the
+                        <code class="MATH">AccentBaseHeight</code> above their baselines. Hence, the
                         previous rule will guarantee that all the overscript bottoms are aligned while
                         still avoiding collision with the bases. However, MathML can have arbitrary
                         accent overscripts so we provide a more general and simpler rule above: Ensure
                         that the bottom of overscript is at least
-                        <code>AccentBaseHeight</code> above the baseline of the base.
+                        <code class="MATH">AccentBaseHeight</code> above the baseline of the base.
                      </p>
                      
                   </div>
@@ -7422,7 +7422,7 @@ mtable[frame="dashed"] {
                <div id="tables.p4">
                   
                   <p>By default, user agents must align the vertical center of the table on the
-                     math axis, which is provided by the <code>AxisHeight</code> value.
+                     math axis, which is provided by the <code class="MATH">AxisHeight</code> value.
                      User agents may also support non-default <code>align</code> attribute values.
                   </p>
                   
@@ -7742,7 +7742,7 @@ mlabeledtr &gt; mtd:first-child {
             
             <div id="p2">
                
-               <p>It is not clear how the <code>DisplayOperatorMinHeight</code> is
+               <p>It is not clear how the <code class="MATH">DisplayOperatorMinHeight</code> is
                   supposed to be used or whether it is really reliable. More specifically,
                   integral symbols (e.g. INTEGRAL U+222B) are typically taller than N-ary
                   operators (e.g. N-ARY SUMMATION U+2211) so a unique minimal height may not
@@ -7751,14 +7751,14 @@ mlabeledtr &gt; mtd:first-child {
                   of height 2em and a bigger variant of height 3em.
                   Suppose that the integral has three sizes: a base size of
                   height 1em, a larger size variant of height 2em and a display size of height
-                  3em. If <code>DisplayOperatorMinHeight</code> is less than
+                  3em. If <code class="MATH">DisplayOperatorMinHeight</code> is less than
                   3em then it does not force the display size of the integral to be selected.
                   If it is more than 3em then none of the available sizes satisfies the
                   condition. How to interpret that? Should we pick the largest as a fallback?
                   If it is 3em, the desired size will be selected for the integral in display
                   size but the one selected for the sum in display size will be too large.
                   A heuristic is proposed in section <a href="#tokenmo" title="3.2.4 Operator, Fence, Separator or Accent <mo&gt; ‣ 3.2 Token Elements ‣ 3 Presentation Markup "><span>3.2.4</span></a> to workaround limitations
-                  of <code>DisplayOperatorMinHeight</code>.
+                  of <code class="MATH">DisplayOperatorMinHeight</code>.
                </p>
                
             </div>
@@ -7783,8 +7783,8 @@ mlabeledtr &gt; mtd:first-child {
                <p>In section <a href="#menclose" title="3.3.9 Enclose Expression Inside Notation <menclose&gt; ‣ 3.3 General Layout Schemata ‣ 3 Presentation Markup "><span>3.3.9</span></a> we describe the MathML <code>menclose</code> element. This
                   one contains many notations that are not mentioned in the OpenType MATH
                   specification. Some rendering suggestions are given based on the value of
-                  <code>OverbarRuleThickness</code> but perhaps new values should be
-                  introduced in the <code>MathConstants</code> subtable to cover these
+                  <code class="MATH">OverbarRuleThickness</code> but perhaps new values should be
+                  introduced in the <code class="MATH">MathConstants</code> subtable to cover these
                   notations.
                </p>
                

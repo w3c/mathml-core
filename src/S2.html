@@ -150,13 +150,13 @@ also support similar CSS properties for text such as <span>text-shadow</span> or
 </div>
 <div id="openfontformat.p4">
 <p>Good mathematical rendering requires use of non-Unicode glyphs. Mathematical
-fonts may only provide these glyphs when the <code>math</code>
+fonts may only provide these glyphs when the <code class="MATH">math</code>
 script tag is enabled and so user agents must ensure that the text within
 MathML token elements is rendered with that script tag. Some characters like
 primes already have script size by default and hence would be too small when
 used in a script position.
 Hence user agents must support glyph selections via the OpenType font feature
-<code>ssty</code> (Script Style) in order to display such
+<code class="MATH">ssty</code> (Script Style) in order to display such
 “prescripted” characters with the appropriate size.
 For bidirectional layout, Unicode defines character-level mirroring
 to transform a character into its mirrored form,
@@ -167,7 +167,7 @@ to allow glyph-level mirroring in cases where character-level is not enough
 <cite>[<a href="bib.html#bibx13" title="">OpenFontFormat3</a>]</cite>.
 At the time of writing, Unicode does not distinguish between Chancery and
 Spencerian style for the Unicode MATHEMATICAL SCRIPT characters. Some
-mathematical fonts rely on <code>salt</code> or <code>ssXY</code> properties to provide
+mathematical fonts rely on <code class="MATH">salt</code> or <code>ssXY</code> properties to provide
 both styles. User agents may support the CSS <span>font-variant-alternates</span>
 property and corresponding OpenType font features to enable page authors
 to get access to these styles <cite>[<a href="bib.html#bibx2" title="">CSS3Font</a>]</cite> <cite>[<a href="bib.html#bibx13" title="">OpenFontFormat3</a>]</cite>.</p>
@@ -176,8 +176,8 @@ to get access to these styles <cite>[<a href="bib.html#bibx2" title="">CSS3Font<
 <p>User agents must be able to read information from the
 OpenType MATH table <cite>[<a href="bib.html#bibx13" title="">OpenFontFormat3</a>]</cite>.
 In particular they must be able to read the values from the
-<code>MathConstants</code> subtable.
-They must also be able to use the <code>MathVariants</code> subtable
+<code class="MATH">MathConstants</code> subtable.
+They must also be able to use the <code class="MATH">MathVariants</code> subtable
 to solve the following problem: given a particular default glyph shape and a
 certain width or height, find a variant shape glyph (or a construct created by
 putting several glyphs together) that has the required measurement.
