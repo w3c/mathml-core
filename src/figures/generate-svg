@@ -5,7 +5,7 @@ echo "<!DOCTYPE html><html><body>" > svgtest.html
 for i in *.tex
 do
 echo "<h2>${i/.tex/}</h2><img src=\"${i/.tex/}.svg\">" >> svgtest.html
-# latex $i
-# dvisvgm --font-format=woff ${i/.tex/}
+latex $i
+dvisvgm --font-format=woff ${i/.tex/}
 done
 rm *.{aux,dvi,log}
