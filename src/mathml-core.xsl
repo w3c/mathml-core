@@ -32,6 +32,7 @@
  <xsl:template match="img[matches(@src,'^figures.*svg')]" >
   <xsl:apply-templates mode="svg" select="doc(@src)/node()">
    <xsl:with-param name="file" select="substring-after(@src,'figures/')" tunnel="yes"/>
+   <xsl:with-param name="gid" select="generate-id()" tunnel="yes"/>
   </xsl:apply-templates>
  </xsl:template>
 
@@ -48,12 +49,21 @@
   </xsl:element>
  </xsl:template>
 
-<!-- would need to make use of the ids match as well if theer were any-->
+<!-- would need to make use of the ids match as well if there were any-->
  <xsl:template match="@id" mode="svg">
   <xsl:param name="file" tunnel="yes"/>
   <xsl:attribute name="id" select="concat($file,'.',.)"/>
  </xsl:template>
- 
+
+<!-- ensure font class selectors stay local -->
+ <xsl:template match="*:style/text()" mode="svg">
+  <xsl:param name="file" tunnel="yes"/>
+  <xsl:variable name="qf" select="replace($file,'\.','\\\\.')"/>
+  <xsl:value-of select="replace(.,'text\.f[0-9]+',
+			concat('#',$qf,'\\.page1 $0'))"/>
+ </xsl:template>
+
+  
 <xsl:template  match="spec">
  <html lang="en">
   <head>
