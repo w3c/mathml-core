@@ -18,13 +18,13 @@
 <h3>DOM, HTML, SVG and Javascript</h3>
 
 <div id="dom.p1">
-<p>User agents must use a HTML5 <cite>[<a href="bib.html#bibx9" title="">HTML5</a>]</cite> parser to build a DOM tree
-<cite>[<a href="bib.html#bibx6" title="">DOM1</a>]</cite> from the source code of web pages. In particular, they must follow
+<p>User agents must use a HTML5 <cite>[<a href="bib.html#bibx9">auto</a>]</cite> parser to build a DOM tree
+<cite>[<a href="bib.html#bibx6">auto</a>]</cite> from the source code of web pages. In particular, they must follow
 the rules describing when elements must be in the MathML namespace
 <span>http://www.w3.org/1998/Math/MathML</span> and must
 recognize the entity definitions from the HTML MathML entity set of
-<cite>[<a href="bib.html#bibx18" title="">XMLEntities</a>]</cite>. They must also take into account the following integration
-points between SVG, MathML and HTML as allowed by <cite>[<a href="bib.html#bibx17" title="">ValidatorSchemas</a>]</cite>:</p>
+<cite>[<a href="bib.html#bibx18">auto</a>]</cite>. They must also take into account the following integration
+points between SVG, MathML and HTML as allowed by <cite>[<a href="bib.html#bibx17">auto</a>]</cite>:</p>
 </div>
 <div id="dom.p2">
 <ol id="I2">
@@ -57,15 +57,15 @@ or <span>text/html</span>.</p>
 <div id="dom.p3">
 <p>From this DOM tree, user agents must provide a visual representation of the
 document. The DOM tree may be dynamically modified using Javascript
-<cite>[<a href="bib.html#bibx7" title="">ECMA262</a>]</cite> and the user agents must keep the visual representation in
+<cite>[<a href="bib.html#bibx7">auto</a>]</cite> and the user agents must keep the visual representation in
 synchronization with the DOM tree.</p>
 </div>
 <div id="dom.p4">
-<p>When evaluating the SVG <code>requiredExtensions</code> attribute <cite>[<a href="bib.html#bibx15" title="">SVG11</a>]</cite>,
+<p>When evaluating the SVG <code>requiredExtensions</code> attribute <cite>[<a href="bib.html#bibx15">auto</a>]</cite>,
 user agents must claim support for the extension of name
 <span>http://www.w3.org/1998/Math/MathML</span>.
 An algorithm to decide the visible child of the <span>&lt;semantics&gt;</span> element is
-proposed in section <a href="S3.html#semantics" title="3.8 Semantics and Presentation ‣ 3 Presentation Markup "><span>3.8</span></a>.</p>
+proposed in section <a href="S3.html#sematicsandpresentation">auto</a>.</p>
 </div>
 </section>
 <section id="mathmltree">
@@ -73,19 +73,19 @@ proposed in section <a href="S3.html#semantics" title="3.8 Semantics and Present
 
 <div id="mathmltree.p1">
 <p>All MathML elements accept the <code>id</code>, <code>class</code> and <code>style</code> attributes
-<cite>[<a href="bib.html#bibx11" title="">MathML3</a>]</cite>. They must be interpreted as described in section 3.2.5 of the
-HTML5 specification <cite>[<a href="bib.html#bibx9" title="">HTML5</a>]</cite> and in particular they specify a unique
+<cite>[<a href="bib.html#bibx11">auto</a>]</cite>. They must be interpreted as described in section 3.2.5 of the
+HTML5 specification <cite>[<a href="bib.html#bibx9">auto</a>]</cite> and in particular they specify a unique
 identifier (to identify elements in links and scripting), affect
 CSS selectors, affect <span>getElementsByClassName()</span> and enable authors to do
 inline styling.</p>
 </div>
 <div id="mathmltree.p2">
 <p>MathML 3 allows to use the <code>href</code> attribute on any MathML element
-<cite>[<a href="bib.html#bibx11" title="">MathML3</a>]</cite>. In the present document, it is only required to implement
+<cite>[<a href="bib.html#bibx11">auto</a>]</cite>. In the present document, it is only required to implement
 <code>href</code> on the <code>mrow</code> element with the behavior described in 4.8
-of the HTML5 specification for the <code>a</code> element <cite>[<a href="bib.html#bibx9" title="">HTML5</a>]</cite>. It is
+of the HTML5 specification for the <code>a</code> element <cite>[<a href="bib.html#bibx9">auto</a>]</cite>. It is
 recommended to make links visually distinguisable by default, for example by
-adding a rule in the user agent stylesheet (section <a href="#cssuseragent" title="2.3.2 User Agent Stylesheet for MathML ‣ 2.3 CSS Styling ‣ 2 Relation with other technologies "><span>2.3.2</span></a>) such as</p>
+adding a rule in the user agent stylesheet (section <a href="#cssuseragent">auto</a>) such as</p>
 <div>
 <pre>mrow[href] {
   color: blue;
@@ -98,26 +98,26 @@ adding a rule in the user agent stylesheet (section <a href="#cssuseragent" titl
 These attributes allow to specify fallback content and must be ignored by
 user agents for rendering purpose. User agents that do not follow the current
 implementation note, may follow implementation suggestions from Appendix
-<a href="A4.html" title="Appendix D Image Fallback "><span>D</span></a> in order to use that fallback image.</p>
+<a href="A4.html">auto</a> in order to use that fallback image.</p>
 </div>
 <div id="mathmltree.p4">
 <p>The toplevel <code>math</code> element also accepts the <code>display</code> attribute,
 <code>mathcolor</code>, <code>mathbackground</code> attributes as well as other attributes
 from the <code>mstyle</code> element. These attributes must be supported and this
 may be achieved using specific rules in the user agent stylesheet
-as described in section <a href="#cssuseragent" title="2.3.2 User Agent Stylesheet for MathML ‣ 2.3 CSS Styling ‣ 2 Relation with other technologies "><span>2.3.2</span></a>.</p>
+as described in section <a href="#cssuseragent">auto</a>.</p>
 </div>
 <div id="mathmltree.p5">
 <p>In general MathML elements or attributes that are not mentioned in this
 document may just be ignored. This includes deprecated attributes or
 Content Markup described in chapter 4 of the MathML 3 specification
-<cite>[<a href="bib.html#bibx11" title="">MathML3</a>]</cite>.
+<cite>[<a href="bib.html#bibx11">auto</a>]</cite>.
 </p>
 </div>
 <div id="mathmltree.p6">
 <p>User agents must contain an operator dictionary describing the default
 properties of operators. For interoperability, it is recommended to use the one
-proposed in the non-normative Appendix C of <cite>[<a href="bib.html#bibx11" title="">MathML3</a>]</cite>.</p>
+proposed in the non-normative Appendix C of <cite>[<a href="bib.html#bibx11">auto</a>]</cite>.</p>
 </div>
 </section>
 </section>
@@ -131,13 +131,13 @@ proposed in the non-normative Appendix C of <cite>[<a href="bib.html#bibx11" tit
 <p>Because math fonts generally contain very tall glyphs such as big integrals,
 using typographic metrics is important to avoid excessive line spacing of text.
 This behavior is specified in math fonts using the USE_TYPO_METRICS flag from
-the OS/2 table <cite>[<a href="bib.html#bibx13" title="">OpenFontFormat3</a>]</cite> and user agents must honor that flag.</p>
+the OS/2 table <cite>[<a href="bib.html#bibx13">auto</a>]</cite> and user agents must honor that flag.</p>
 </div>
 <div id="openfontformat.p2">
 <p>Mathematical formulas can be viewed as an extension of standard text layout
 and thus user agents must be able to perfom
-complex text layout <cite>[<a href="bib.html#bibx4" title="">CTL</a>]</cite> using fonts under the Open Font Format
-<cite>[<a href="bib.html#bibx13" title="">OpenFontFormat3</a>]</cite>. In particular, they must implement bidirectional
+complex text layout <cite>[<a href="bib.html#bibx4">auto</a>]</cite> using fonts under the Open Font Format
+<cite>[<a href="bib.html#bibx13">auto</a>]</cite>. In particular, they must implement bidirectional
 rendering and shaping of Arabic scripts.</p>
 </div>
 <div id="openfontformat.p3">
@@ -164,24 +164,24 @@ for example U+0028 LEFT PARENTHESIS into U+0029 RIGHT PARENTHESIS.
 User agents must also support the OpenType font feature
 <code>rtlm</code> (Right-to-left mirrored forms)
 to allow glyph-level mirroring in cases where character-level is not enough
-<cite>[<a href="bib.html#bibx13" title="">OpenFontFormat3</a>]</cite>.
+<cite>[<a href="bib.html#bibx13">auto</a>]</cite>.
 At the time of writing, Unicode does not distinguish between Chancery and
 Spencerian style for the Unicode MATHEMATICAL SCRIPT characters. Some
 mathematical fonts rely on <code class="MATH">salt</code> or <code>ssXY</code> properties to provide
 both styles. User agents may support the CSS <span>font-variant-alternates</span>
 property and corresponding OpenType font features to enable page authors
-to get access to these styles <cite>[<a href="bib.html#bibx2" title="">CSS3Font</a>]</cite> <cite>[<a href="bib.html#bibx13" title="">OpenFontFormat3</a>]</cite>.</p>
+to get access to these styles <cite>[<a href="bib.html#bibx2">auto</a>]</cite> <cite>[<a href="bib.html#bibx13">auto</a>]</cite>.</p>
 </div>
 <div id="openfontformat.p5">
 <p>User agents must be able to read information from the
-OpenType MATH table <cite>[<a href="bib.html#bibx13" title="">OpenFontFormat3</a>]</cite>.
+OpenType MATH table <cite>[<a href="bib.html#bibx13">auto</a>]</cite>.
 In particular they must be able to read the values from the
 <code class="MATH">MathConstants</code> subtable.
 They must also be able to use the <code class="MATH">MathVariants</code> subtable
 to solve the following problem: given a particular default glyph shape and a
 certain width or height, find a variant shape glyph (or a construct created by
 putting several glyphs together) that has the required measurement.
-More information are provided in see section <a href="S3.html#tokenmo" title="3.2.4 Operator, Fence, Separator or Accent &lt;mo&gt; ‣ 3.2 Token Elements ‣ 3 Presentation Markup "><span>3.2.4</span></a>.</p>
+More information are provided in see section <a href="S3.html#tokenmo">auto</a>.</p>
 </div>
 </section>
 <section id="latex">
@@ -190,7 +190,7 @@ More information are provided in see section <a href="S3.html#tokenmo" title="3.
 <div id="latex.p1">
 <p>Mathematical rendering rules in this document are implicitly based on
 MathML, OpenType MATH table and the TeXBook
-<cite>[<a href="bib.html#bibx11" title="">MathML3</a>]</cite> <cite>[<a href="bib.html#bibx13" title="">OpenFontFormat3</a>]</cite> <cite>[<a href="bib.html#bibx16" title="">TeXBook</a>]</cite>. In this section, we
+<cite>[<a href="bib.html#bibx11">auto</a>]</cite> <cite>[<a href="bib.html#bibx13">auto</a>]</cite> <cite>[<a href="bib.html#bibx16">auto</a>]</cite>. In this section, we
 describe more precisely some rules from the TeXBook.</p>
 </div>
 <div id="latex.p2">
@@ -205,21 +205,21 @@ However, it is set to true in the following children:</p>
 <ol id="I3">
 <li id="I3.i1">
 <div id="I3.i1.p1">
-<p>The denominator of an <code>mfrac</code> element. See section <a href="S3.html#mfrac" title="3.3.2 Fractions &lt;mfrac&gt; ‣ 3.3 General Layout Schemata ‣ 3 Presentation Markup "><span>3.3.2</span></a>.</p>
+<p>The denominator of an <code>mfrac</code> element. See section <a href="S3.html#mfrac">auto</a>.</p>
 </div>
 </li>
 <li id="I3.i2">
 <div id="I3.i2.p1">
 <p>The subscripts of the <code>msub</code>, <code>msubsup</code>,
 <code>munder</code> and <code>munderover</code> elements.
-See section <a href="S3.html#SS4" title="3.4 Script and Limit Schemata ‣ 3 Presentation Markup "><span>3.4</span></a>.</p>
+See section <a href="S3.html#scriptsandlimits">auto</a>.</p>
 </div>
 </li>
 <li id="I3.i3">
 <div id="I3.i3.p1">
 <p>The overscript of the
 <code>mover</code> and <code>munderover</code> elements when it is an <code>accent</code> per
-the MathML specification. See section <a href="S3.html#SS4" title="3.4 Script and Limit Schemata ‣ 3 Presentation Markup "><span>3.4</span></a>.</p>
+the MathML specification. See section <a href="S3.html#scriptsandlimits">auto</a>.</p>
 </div>
 </li>
 <li id="I3.i4">
@@ -252,12 +252,12 @@ space around embellished operators.</p>
 <h3>Properties</h3>
 
 <div id="cssproperties.p1">
-<p>User agents must support the CSS language <cite>[<a href="bib.html#bibx1" title="">CSS2</a>]</cite> and must take special
+<p>User agents must support the CSS language <cite>[<a href="bib.html#bibx1">auto</a>]</cite> and must take special
 styling into account when building the visual representation of the document.
 Many of the MathML elements accept attributes with length value whose
 general syntax is described in section 2.1.5.2 of the MathML specification
-<cite>[<a href="bib.html#bibx11" title="">MathML3</a>]</cite>. In general,
-the syntax is compatible with <cite>[<a href="bib.html#bibx1" title="">CSS2</a>]</cite> but user agents must handle
+<cite>[<a href="bib.html#bibx11">auto</a>]</cite>. In general,
+the syntax is compatible with <cite>[<a href="bib.html#bibx1">auto</a>]</cite> but user agents must handle
 specificities of the MathML specification. In particular, the keywords
 <code>veryverythinmathspace</code>,
 <code>verythinmathspace</code>,
@@ -276,7 +276,7 @@ specificities of the MathML specification. In particular, the keywords
 equivalent <code>em</code> value. Also, percent and unitless values must be interpreted
 with respect to the appropriate reference value. Note that the <code>mpadded</code>
 element also accepts more general length values as discussed in section
-<a href="S3.html#mpadded" title="3.3.6 Adjust Space Around Content &lt;mpadded&gt; ‣ 3.3 General Layout Schemata ‣ 3 Presentation Markup "><span>3.3.6</span></a>.</p>
+<a href="S3.html#mpadded">auto</a>.</p>
 </div>
 <div id="cssproperties.p2">
 <p>User agents must support at least the following properties:</p>
@@ -286,7 +286,7 @@ element also accepts more general length values as discussed in section
 <p><code>display</code>: at least inline, block, inline-table, table-row,
 table-cell and none. It is used for the <code>math</code> and tabular
 elements. Appropriate values may be specified in the user agent stylesheet
-as described in section <a href="#cssuseragent" title="2.3.2 User Agent Stylesheet for MathML ‣ 2.3 CSS Styling ‣ 2 Relation with other technologies "><span>2.3.2</span></a>.</p>
+as described in section <a href="#cssuseragent">auto</a>.</p>
 </div>
 </li>
 <li id="I4.i2"> 
@@ -312,7 +312,7 @@ mapped to these properties.</p>
 <div id="I4.i5.p1">
 <p><code>visibility</code>. It is is used for the <code>mphantom</code> element and may be
 specified in the user agent stylesheet as described in section
-<a href="#cssuseragent" title="2.3.2 User Agent Stylesheet for MathML ‣ 2.3 CSS Styling ‣ 2 Relation with other technologies "><span>2.3.2</span></a>.</p>
+<a href="#cssuseragent">auto</a>.</p>
 </div>
 </li>
 </ol>
@@ -320,19 +320,19 @@ specified in the user agent stylesheet as described in section
 <div id="cssproperties.p3">
 <p>User agents must support the <code>displaystyle</code> attribute. This may be
 implemented using a new <span>mathml-math-style</span> property described in
-table <a href="#cssproperties" title="2.3.1 Properties ‣ 2.3 CSS Styling ‣ 2 Relation with other technologies "><span>2.3.1</span></a>. The expected behavior may be completely
+table <a href="#cssproperties">auto</a>. The expected behavior may be completely
 specified in the user agent stylesheet as described in section
-<a href="#cssuseragent" title="2.3.2 User Agent Stylesheet for MathML ‣ 2.3 CSS Styling ‣ 2 Relation with other technologies "><span>2.3.2</span></a>.</p>
+<a href="#cssuseragent">auto</a>.</p>
 </div>
 <div id="cssproperties.p4">
 <p>User agents must support the <code>mathvariant</code> attribute. This may be
 implemented using a new <span>mathml-math-variant</span> property described in
-table <a href="#cssproperties.tab1" title="2.3.1 Properties ‣ 2.3 CSS Styling ‣ 2 Relation with other technologies "><span>2.3.1</span></a>. The expected behavior may be implemented by
+table <a href="#cssproperties.tab1">auto</a>. The expected behavior may be implemented by
 mapping <code>mathvariant</code> attributes on the <code>math</code>, <code>mstyle</code> and token
 elements to <span>mathml-math-variant</span>. Then during the rendering of text nodes,
 the <span>mathml-math-variant</span> value must be taken into account to remap
 some characters to their equivalent code points, as specified by the MathML
-specification. However, as indicated in section <a href="S3.html#latex" title="3.2.2 Identifier &lt;mi&gt; ‣ 3.2 Token Elements ‣ 3 Presentation Markup "><span>3.2.2</span></a>, when
+specification. However, as indicated in section <a href="S3.html#latex">auto</a>, when
 <span>mathml-math-variant</span> is <code>none</code> on an <code>mi</code> element with a single
 character, it must actually be treated as if the mathvariant was <code>italic</code>.</p>
 </div>

@@ -19,14 +19,14 @@
 
 <div id="boxmodel.p1">
 <p>User agents must also follow the rules described in section 4.7.14
-Embedded content, MathML of <cite>[<a href="bib.html#bibx9" title="">HTML5</a>]</cite>, in particular the equivalence with
+Embedded content, MathML of <cite>[<a href="bib.html#bibx9">auto</a>]</cite>, in particular the equivalence with
 implicit <code>mtext</code> and <code>merror</code> to handle non-conforming MathML markup.</p>
 </div>
 <div id="boxmodel.p2">
 <p>MathML elements have the following box model. The <span>&lt;math&gt;</span> root may have
-inline or block display, as suggested in section <a href="S2.html#cssuseragent" title="2.3.2 User Agent Stylesheet for MathML ‣ 2.3 CSS Styling ‣ 2 Relation with other technologies "><span>2.3.2</span></a>.
+inline or block display, as suggested in section <a href="S2.html#cssuseragent">auto</a>.
 Tabular MathML elements have table, table-row and
-table-cell display as discussed in section <a href="#tables" title="3.5 Tabular Math ‣ 3 Presentation Markup "><span>3.5</span></a>.
+table-cell display as discussed in section <a href="#tables">auto</a>.
 The <span>&lt;math&gt;</span> and <span>&lt;mtd&gt;</span> elements
 generate an anonymous <span>&lt;mrow&gt;</span> MathML box child that contains the boxes of
 their children and use the box parameters below to layout this anonymous
@@ -85,7 +85,7 @@ by taking the union of child boxes, that is:</p>
 <p>Note that the schemas in this document are drawn assuming left-to-right
 directionality. If the CSS <code>direction</code> is set to right-to-left, then the
 elements should be layout by making the x-axis pointing from right-to-left.
-In this document, we use the terminology of <cite>[<a href="bib.html#bibx11" title="">MathML3</a>]</cite>: “leading”
+In this document, we use the terminology of <cite>[<a href="bib.html#bibx11">auto</a>]</cite>: “leading”
 means “left” in right-to-left and “right” in right-to-left mode, while
 “trailing” means “right” in right-to-left and “left” in right-to-left
 mode.</p>
@@ -93,10 +93,10 @@ mode.</p>
 <div id="boxmodel.p6">
 <p>The <code class="MATH">MathItalicsCorrectionInfo</code> table contains the italic
 correction of some glyphs, which provides a measure of how slanted the
-glyphs are (see figure <a href="#F2" title="Figure 2 ‣ 3.1.1 Box Model ‣ 3.1 Introduction ‣ 3 Presentation Markup ">2</a>). The
+glyphs are (see figure <a href="#F2">auto</a>). The
 <code class="MATH">MathTopAccentAttachment</code> table also contains a reference
 points that is used for the horizontal positioning of glyphs as an accent
-(see figure <a href="#F3" title="Figure 3 ‣ 3.1.1 Box Model ‣ 3.1 Introduction ‣ 3 Presentation Markup "><span>3</span></a>). In later sections, we
+(see figure <a href="#F3">auto</a>). In later sections, we
 generalize this by claiming that all MathML boxes have italic correction
 and top accent attachment values. The values for glyphs are used to try and
 extend to token elements or to special boxes that do not change child metrics.
@@ -150,8 +150,8 @@ vertical positions y.</p>
 <div id="layoutsteps.p3">
 <p>In order to perform the first step independently of the second one, the
 horizontal metrics must not depend on the vertical metrics. As described in
-section <a href="#mpadded" title="3.3.6 Adjust Space Around Content &lt;mpadded&gt; ‣ 3.3 General Layout Schemata ‣ 3 Presentation Markup "><span>3.3.6</span></a>, this adds some restrictions on the possible pseudo-units
-of the <code>mpadded</code> element. As indicated in section <a href="#tokenmo" title="3.2.4 Operator, Fence, Separator or Accent &lt;mo&gt; ‣ 3.2 Token Elements ‣ 3 Presentation Markup "><span>3.2.4</span></a>,
+section <a href="#mpadded">auto</a>, this adds some restrictions on the possible pseudo-units
+of the <code>mpadded</code> element. As indicated in section <a href="#tokenmo">auto</a>,
 the width of size variants or of the glyph assembly used for vertical stretchy
 operators may depend on the target size to cover. Taking the maximum widths
 for all these size variants or for the glyph assembly during the first step
@@ -161,9 +161,9 @@ small over-estimation.</p>
 <div id="layoutsteps.p4">
 <p>Each of this step is done recursively: the metrics of a given MathML box
 are determined from those of the child boxes. User agents must implement
-the “Exception for embellished operators” described in <cite>[<a href="bib.html#bibx11" title="">MathML3</a>]</cite>.
+the “Exception for embellished operators” described in <cite>[<a href="bib.html#bibx11">auto</a>]</cite>.
 This means that the actual stretching of operators described in section
-<a href="#tokenmo" title="3.2.4 Operator, Fence, Separator or Accent &lt;mo&gt; ‣ 3.2 Token Elements ‣ 3 Presentation Markup "><span>3.2.4</span></a> may be “delayed” until we reach the top of its embellished
+<a href="#tokenmo">auto</a> may be “delayed” until we reach the top of its embellished
 operator subtree. We then have to apply the current operation again
 to this embellished operator (intrinsic width determination or layout).
 Fortunately, such embellished operator subtrees are not deep in practice.</p>
@@ -221,9 +221,9 @@ element must behave as if <code>mathvariant</code> was actually set to <code>ita
 <p>Many properties of an <code>mo</code> element can be specified via attribute on
 that element. The default value of the <code>form</code> of an <code>mo</code> element is
 obtained as described in section “Default value of the form attribute” of
-<cite>[<a href="bib.html#bibx11" title="">MathML3</a>]</cite>. From the <code>form</code> and the text content, we can deduce other
+<cite>[<a href="bib.html#bibx11">auto</a>]</cite>. From the <code>form</code> and the text content, we can deduce other
 default values from the operator dictionary or use the fallback values given
-in “Dictionary-based attributes” of <cite>[<a href="bib.html#bibx11" title="">MathML3</a>]</cite>.</p>
+in “Dictionary-based attributes” of <cite>[<a href="bib.html#bibx11">auto</a>]</cite>.</p>
 </div>
 <div id="tokenmo.p3">
 <p>The leading space <code>lspace</code> and trailing space <code>rspace</code> must be added on
@@ -235,7 +235,7 @@ However, when an <code>mo</code> element with a single character must be display
 a large operator then instead we use the <code class="MATH">MathVariants</code>
 table to try and find a glyph of height at least
 <code class="MATH">DisplayOperatorMinHeight</code>
-(figure <a href="#F4" title="Figure 4 ‣ 3.2.4 Operator, Fence, Separator or Accent &lt;mo&gt; ‣ 3.2 Token Elements ‣ 3 Presentation Markup ">4</a>). If none is found, we fallback to the
+(figure <a href="#F4">auto</a>). If none is found, we fallback to the
 largest one. Because this parameter does not always give
 the best size, user agents may also use the following heuristic: ensure
 that the large variant height is at least 2 times as large as the base height
@@ -253,12 +253,12 @@ operator then instead of displaying the normal character we use
 the <code class="MATH">MathVariants</code> table to try and find a glyph
 that has at least the desired size or an assembly from several glyphs
 to cover at least the desired size
-(figure <a href="#F5" title="Figure 5 ‣ 3.2.4 Operator, Fence, Separator or Accent &lt;mo&gt; ‣ 3.2 Token Elements ‣ 3 Presentation Markup "><span>5</span></a>). The rules for vertical stretching
+(figure <a href="#F5">auto</a>). The rules for vertical stretching
 are a bit more complicated and are described in section
-“Vertical Stretching Rules” of <cite>[<a href="bib.html#bibx11" title="">MathML3</a>]</cite>. If the operator has property
+“Vertical Stretching Rules” of <cite>[<a href="bib.html#bibx11">auto</a>]</cite>. If the operator has property
 <span>symmetric="true"</span>, it must be stretched symmetrically with respect to
 the math axis, which is given by the <code class="MATH">AxisHeight</code> value.
-Figure <a href="#F6" title="Figure 6 ‣ 3.2.4 Operator, Fence, Separator or Accent &lt;mo&gt; ‣ 3.2 Token Elements ‣ 3 Presentation Markup "><span>6</span></a> compares the symmetric
+Figure <a href="#F6">auto</a> compares the symmetric
 and non-symmetric stretching.</p>
 </div>
 <div id="tokenmo.p6">
@@ -279,7 +279,7 @@ practice for most math fonts and operators.</p>
  <figcaption><span>Figure 6: </span>Symmetric and non-symmetric stretching of vertical operators</figcaption>
 </figure>
 <div id="tokenmo.p7">
-<p>See section <a href="#mrow" title="3.3.1 Horizontally Group Sub-Expressions &lt;mrow&gt; ‣ 3.3 General Layout Schemata ‣ 3 Presentation Markup "><span>3.3.1</span></a> for details about how to treat “embellished ancestor”,
+<p>See section <a href="#mrow">auto</a> for details about how to treat “embellished ancestor”,
 and how decide when to display operators larger or when to stretch them
 vertically &amp; horizontally.</p>
 </div>
@@ -294,7 +294,7 @@ vertically &amp; horizontally.</p>
 <div id="tokenmtext.p2">
 <p>In most cases the <span>&lt;mtext&gt;</span> element contains some text that is laid out
 without line
-breaks using complex text layout <cite>[<a href="bib.html#bibx4" title="">CTL</a>]</cite>. It is assumed that we can measure
+breaks using complex text layout <cite>[<a href="bib.html#bibx4">auto</a>]</cite>. It is assumed that we can measure
 the ink ascent &amp; descent, logical ascent &amp; descent and advance width of
 the text frame and use these values for the MathML box of the <span>&lt;mtext&gt;</span>
 element.</p>
@@ -327,7 +327,7 @@ what the page author has specified with the <span>font-feature-settings</span>
 CSS property.</p>
 </div>
 <div id="tokenmtext.p7">
-<p><a href="https://gitlab.com/mathml/MathMLinHTML5/issues/2" title="">Add detailed rules for <code class="MATH">ssty</code></a></p>
+<p><a href="https://gitlab.com/mathml/MathMLinHTML5/issues/2">auto</a></p>
 </div>
 <div id="tokenmtext.p8">
 <p>In the most general case, the <span>&lt;mtext&gt;</span> element may contain text with line
@@ -336,7 +336,7 @@ determine logical dimensions
 and max-content width of the text content and use it for both the logical and
 ink values of the <span>&lt;mtext&gt;</span> element. The italic correction and
 top accent attachment are assigned the fallback values indicated in section
-<a href="#boxmodel" title="3.1.1 Box Model ‣ 3.1 Introduction ‣ 3 Presentation Markup "><span>3.1.1</span></a></p>
+<a href="#boxmodel">auto</a></p>
 </div>
 </section>
 <section id="mspace">
@@ -348,9 +348,9 @@ top accent attachment are assigned the fallback values indicated in section
 </div>
 <div id="mspace.p2">
 <p>The <code>mspace</code> element is laid out as shown on figure
-<a href="#F7" title="Figure 7 ‣ 3.2.6 Space &lt;mspace/&gt; ‣ 3.2 Token Elements ‣ 3 Presentation Markup ">7</a>.
+<a href="#F7">auto</a>.
 The logical box is determined by the <code>height</code>, <code>depth</code> and <code>width</code>
-attributes defined in <cite>[<a href="bib.html#bibx11" title="">MathML3</a>]</cite>. The ink box matches the logical box.
+attributes defined in <cite>[<a href="bib.html#bibx11">auto</a>]</cite>. The ink box matches the logical box.
 The <code>linebreak</code> attribute on the <span>&lt;mspace/&gt;</span> element must be ignored.</p>
 </div>
 <figure id="F7">
@@ -371,7 +371,7 @@ The <code>linebreak</code> attribute on the <span>&lt;mspace/&gt;</span> element
 element except that quotes are automatically added around its content.
 The user agents may implement the <code>lquote</code> or <code>rquote</code> attributes
 with the following style in the user agent stylesheet as suggested in section
-<a href="S2.html#cssuseragent" title="2.3.2 User Agent Stylesheet for MathML ‣ 2.3 CSS Styling ‣ 2 Relation with other technologies "><span>2.3.2</span></a>:</p>
+<a href="S2.html#cssuseragent">auto</a>:</p>
 </div>
 <div id="tokenms.p3">
 <pre>ms {
@@ -407,14 +407,14 @@ for the <code>mrow</code> element, user agents may just ignore linebreaking rule
 </div>
 <div id="mrow.p3">
 <p>User agents must follow the rules for inferred <code>mrow</code>s described in
-<cite>[<a href="bib.html#bibx11" title="">MathML3</a>]</cite>. For example, to layout
+<cite>[<a href="bib.html#bibx11">auto</a>]</cite>. For example, to layout
 <span>&lt;msqrt&gt;child_1 child_2 child_3 ...&lt;/msqrt&gt;</span>, one must follow the layout
-rules described for <code>msqrt</code> in section <a href="#msqrt" title="3.3.3 Radicals &lt;msqrt&gt;, &lt;mroot&gt; ‣ 3.3 General Layout Schemata ‣ 3 Presentation Markup "><span>3.3.3</span></a> using
+rules described for <code>msqrt</code> in section <a href="#msqrt">auto</a> using
 the box of <span>&lt;mrow&gt;child_1 child_2 child_3 ... child_N&lt;/mrow&gt;</span> as the base.</p>
 </div>
 <div id="mrow.p4">
 <p>The <span>&lt;mrow&gt;child_1 child_2 child_3 ... child_N&lt;/mrow&gt;</span> element is laid
-out as show on figure <a href="#F8" title="Figure 8 ‣ 3.3.1 Horizontally Group Sub-Expressions &lt;mrow&gt; ‣ 3.3 General Layout Schemata ‣ 3 Presentation Markup "><span>8</span></a>. The boxes of child<sub>1</sub>, child<sub>2</sub>, … child<sub>N</sub> are put in a horizontal row
+out as show on figure <a href="#F8">auto</a>. The boxes of child<sub>1</sub>, child<sub>2</sub>, … child<sub>N</sub> are put in a horizontal row
 one after the other with all their baselines aligned. As a consequence of this
 and of child box models, graphical elements such as fraction bars
 or symmetric stretchy operators will also be
@@ -423,13 +423,13 @@ aligned along the math axis when the
 where the math font is unchanged).</p>
 </div>
 <div id="mrow.p5">
-<p>As indicated in section <a href="A1.html" title="Appendix A MathML "><span>A</span></a>, we generally do not add special spacing
+<p>As indicated in section <a href="A1.html">auto</a>, we generally do not add special spacing
 around the children. For example, the leading and trailing spacing is already
 included in the box metrics of embellished operators. The only exception is
 for the italic correction: when a “slanted” child is
 followed by a “straight” child, then an horizontal
 space corresponding to the italic correction of the “slanted” child is added
-between the two children <cite>[<a href="bib.html#bibx13" title="">OpenFontFormat3</a>]</cite>. The italic correction of the
+between the two children <cite>[<a href="bib.html#bibx13">auto</a>]</cite>. The italic correction of the
 last child is also added after that child when it is “slanted” and when
 the <code>mrow</code> has more than one child. In this document, we interpret
 “slanted” as a child that is not an operator with
@@ -440,7 +440,7 @@ as “non-slanted”.</p>
 <div id="mrow.p6">
 <p>When the <code>mrow</code> element contains only one child then the previous
 description implies that the box metrics of the <code>mrow</code> is the same as
-the one of its unique child. As indicated in section <a href="#boxmodel" title="3.1.1 Box Model ‣ 3.1 Introduction ‣ 3 Presentation Markup "><span>3.1.1</span></a>, we thus
+the one of its unique child. As indicated in section <a href="#boxmodel">auto</a>, we thus
 use the italic correction and top accent attachment of the child as the
 corresponding values of the <code>mrow</code> box.</p>
 </div>
@@ -463,7 +463,7 @@ corresponding values of the <code>mrow</code> box.</p>
 <div id="mfrac.p2">
 <p>The <code>displaystyle</code> and <code>scriptlevel</code> changes be achieved with the
 following style in the user agent stylesheet as suggested in section
-<a href="S2.html#cssuseragent" title="2.3.2 User Agent Stylesheet for MathML ‣ 2.3 CSS Styling ‣ 2 Relation with other technologies "><span>2.3.2</span></a>:</p>
+<a href="S2.html#cssuseragent">auto</a>:</p>
 <div>
   <pre>mfrac > * {
   mathml-script-level: auto;
@@ -478,7 +478,7 @@ following style in the user agent stylesheet as suggested in section
 <div id="mfrac.p4">
 <p>The default line thickness is given by
 <code class="MATH">FractionRuleThickness</code>
-Use the <code>linethickness</code> attribute <cite>[<a href="bib.html#bibx11" title="">MathML3</a>]</cite> to determine the
+Use the <code>linethickness</code> attribute <cite>[<a href="bib.html#bibx11">auto</a>]</cite> to determine the
 actual thickness of the fraction bar. A percent or unitless length is
 interpreted as a multiple of the default rule thickness and
 the named values ”thin”, ”medium” and ”thick” are interpreted as
@@ -488,7 +488,7 @@ The color and visibility of the fraction bar must honor the values given by the
 </div>
 <div id="mfrac.p5">
 <p>If the actual line thickness is nonzero, the <code>mfrac</code> element is laid out as
-shown on figure <a href="#F9" title="Figure 9 ‣ 3.3.2 Fractions &lt;mfrac&gt; ‣ 3.3 General Layout Schemata ‣ 3 Presentation Markup "><span>9</span></a>.
+shown on figure <a href="#F9">auto</a>.
 The width is given by the maximum width of the
 numerator and denominator and the numerator and denominator are horizontally
 centered. A fraction bar with the actual thickness is drawn centered on the
@@ -513,7 +513,7 @@ in display style.</p>
 <div id="mfrac.p6">
 <p>If the actual line thickness is zero,
 the <code>mfrac</code> element is instead laid out as
-shown on figure <a href="#F10" title="Figure 10 ‣ 3.3.2 Fractions &lt;mfrac&gt; ‣ 3.3 General Layout Schemata ‣ 3 Presentation Markup ">10</a>.
+shown on figure <a href="#F10">auto</a>.
 The gap between the top and bottom boxes
 is equally split around the axis height. The relevant shift values are now
 <code class="MATH">StackTopShiftUp</code>,
@@ -546,7 +546,7 @@ leading and trailing spaces must be added around the fraction.</p>
 
 
 <div id="msqrt.p1">
-<p>The MathML specification describes radicals as follows <cite>[<a href="bib.html#bibx11" title="">MathML3</a>]</cite>:</p>
+<p>The MathML specification describes radicals as follows <cite>[<a href="bib.html#bibx11">auto</a>]</cite>:</p>
 
 <p>These elements construct radicals. The <code>msqrt</code> element is used for square
 roots, while the <code>mroot</code> element is used to draw radicals with indices,
@@ -560,7 +560,7 @@ e.g. a cube root. The syntax for these elements is:
 <div id="msqrt.p2">
 <p>The <code>displaystyle</code> and <code>scriptlevel</code> changes be achieved with the
 following style in the user agent stylesheet as suggested in section
-<a href="S2.html#cssuseragent" title="2.3.2 User Agent Stylesheet for MathML ‣ 2.3 CSS Styling ‣ 2 Relation with other technologies "><span>2.3.2</span></a>:</p>
+<a href="S2.html#cssuseragent">auto</a>:</p>
 <div>
 <pre>mroot > :not(:first-child) {
   mathml-script-level: increment 2;
@@ -587,7 +587,7 @@ the <code>color</code> and <code>visibility</code> CSS properties on the <code>m
 </div>
 <div id="msqrt.p4">
 <p>The <code>msqrt</code> element is laid out as shown on figure
-<a href="#F11" title="Figure 11 ‣ 3.3.3 Radicals &lt;msqrt&gt;, &lt;mroot&gt; ‣ 3.3 General Layout Schemata ‣ 3 Presentation Markup ">11</a>.
+<a href="#F11">auto</a>.
 The width is given by the sum of the width of the surd and of the base.
 The baseline of the square root matches the baseline of the base.
 The ink box is determined from the ink boxes of the surd and base while the
@@ -598,9 +598,9 @@ logical box takes into account the extra ascender</p>
 <figcaption><span>Figure 11: </span>Box model for the <code>msqrt</code> element</figcaption>
 </figure>
 <div id="msqrt.p5">
-<p>The <code>mroot</code> element is laid out as shown on figure <a href="#F12" title="Figure 12 ‣ 3.3.3 Radicals &lt;msqrt&gt;, &lt;mroot&gt; ‣ 3.3 General Layout Schemata ‣ 3 Presentation Markup ">12</a>.
+<p>The <code>mroot</code> element is laid out as shown on figure <a href="#F12">auto</a>.
 We start by ignoring the root index and we layout the base and surd as
-shown on figure <a href="#F11" title="Figure 11 ‣ 3.3.3 Radicals &lt;msqrt&gt;, &lt;mroot&gt; ‣ 3.3 General Layout Schemata ‣ 3 Presentation Markup ">11</a> to obtain a box B.
+shown on figure <a href="#F11">auto</a> to obtain a box B.
 The horizontal metrics of the <code>mroot</code> element are obtained by putting
 <code class="MATH">RadicalKernBeforeDegree</code>
 before the root index, then placing the root index, then a kerning
@@ -638,7 +638,7 @@ rendering of its contents.</p>
 <p>For the layout algorithm described in this document, the
 <code>mstyle</code> element must be treated the same as the <code>mrow</code> element.
 However, some attributes on the <code>mstyle</code> element must be mapped to CSS
-properties as indicated in section <a href="S2.html#cssproperties" title="2.3.1 Properties ‣ 2.3 CSS Styling ‣ 2 Relation with other technologies "><span>2.3.1</span></a>.
+properties as indicated in section <a href="S2.html#cssproperties">auto</a>.
 All the other <code>mstyle</code>
 attributes not defined in this document must be ignored.</p>
 </div>
@@ -656,7 +656,7 @@ contents, or changing the background color.</p>
 <code>merror</code> element must be treated the same as the <code>mrow</code> element.
 The user agent stylesheet must set some CSS properties on the <code>merror</code>
 element in order to highlight the error.
-As suggested in section <a href="S2.html#cssuseragent" title="2.3.2 User Agent Stylesheet for MathML ‣ 2.3 CSS Styling ‣ 2 Relation with other technologies "><span>2.3.2</span></a>, this can for example be achieved
+As suggested in section <a href="S2.html#cssuseragent">auto</a>, this can for example be achieved
 with the rule:</p>
 <div>
 <pre>merror {
@@ -676,7 +676,7 @@ size of the child’s bounding box and the relative positioning point of its
 content modified according to <code>mpadded</code>’s attributes.</p>
 </div>
 <div id="mpadded.p2">
-<p>See <cite>[<a href="bib.html#bibx11" title="">MathML3</a>]</cite> for how the metrics of <code>mpadded</code> element are determined.
+<p>See <cite>[<a href="bib.html#bibx11">auto</a>]</cite> for how the metrics of <code>mpadded</code> element are determined.
 Note that pseudo-units allows horizontal metrics to depend on vertical metrics,
 for example <span>width="2height"</span> which can be problematic to determine
 intrinsic widths. Hence in the present document, if
@@ -685,15 +685,15 @@ the value of the <code>width</code> and <code>lspace</code> attributes contains
 </div>
 <div id="mpadded.p3">
 <p>The <code>mpadded</code> element is laid out as shown on figure
-<a href="#F13" title="Figure 13 ‣ 3.3.6 Adjust Space Around Content &lt;mpadded&gt; ‣ 3.3 General Layout Schemata ‣ 3 Presentation Markup ">13</a>.
-The height, depth and width of the content in <cite>[<a href="bib.html#bibx11" title="">MathML3</a>]</cite> corresponds to
+<a href="#F13">auto</a>.
+The height, depth and width of the content in <cite>[<a href="bib.html#bibx11">auto</a>]</cite> corresponds to
 the logical box of the content. The content of the <code>mpadded</code> element is
 positioned from the origin of the <code>mpadded</code> element as follows: We shift
 the content
 forward by a distance of <code>lspace</code> and shift it upward by a distance of
 <code>voffset</code>. The logical metrics of the <code>mpadded</code> element are given by the
 height, depth and width of the <code>mpadded</code> element described in
-<cite>[<a href="bib.html#bibx11" title="">MathML3</a>]</cite>. The ink metrics of the <code>mpadded</code> element match their logical
+<cite>[<a href="bib.html#bibx11">auto</a>]</cite>. The ink metrics of the <code>mpadded</code> element match their logical
 metrics.
 </p>
 </div>
@@ -715,7 +715,7 @@ metrics.
 <code>mphantom</code> element must be treated the same as the <code>mrow</code> element.
 The user agent stylesheet must set some CSS properties on the <code>mphantom</code>
 element in order to hide its content.
-As suggested in section <a href="S2.html#cssuseragent" title="2.3.2 User Agent Stylesheet for MathML ‣ 2.3 CSS Styling ‣ 2 Relation with other technologies "><span>2.3.2</span></a>, this can for example be achieved
+As suggested in section <a href="S2.html#cssuseragent">auto</a>, this can for example be achieved
 with the rule:</p>
 <div>
 <pre>mphantom {
@@ -739,7 +739,7 @@ given by the <code>color</code> and <code>visibility</code> CSS properties on th
 <code>menclose</code> element.</p>
 </div>
 <div id="menclose.p3">
-  <p>Based on <cite>[<a href="bib.html#bibx13" title="">OpenFontFormat3</a>]</cite> <cite>[<a href="bib.html#bibx16" title="">TeXBook</a>]</cite>, we use the notation ξ<sub>8</sub>
+  <p>Based on <cite>[<a href="bib.html#bibx13">auto</a>]</cite> <cite>[<a href="bib.html#bibx16">auto</a>]</cite>, we use the notation ξ<sub>8</sub>
     from the TeXBook to denote the default rule thickness and use
 3ξ<sub>8</sub> for gaps.
 We actually let ξ<sub>8</sub> be <code class="MATH">OverbarRuleThickness</code>.
@@ -762,7 +762,7 @@ and <code class="MATH">UnderbarVerticalGap</code> plus
 <code class="MATH">UnderbarRuleThickness</code> below.
 The gap between the bar and the content is 3ξ<sub>8</sub>.
 The logical box is obtained by adding some space of width
-ξ<sub>8</sub> on the left of the bar. See figure <a href="#F14" title="Figure 14 ‣ 1. ‣ 3.3.9 Enclose Expression Inside Notation &lt;menclose&gt; ‣ 3.3 General Layout Schemata ‣ 3 Presentation Markup ">14</a>.</p>
+ξ<sub>8</sub> on the left of the bar. See figure <a href="#F14">auto</a>.</p>
 </div>
 <figure id="F14">
 <img src="figures/mpaddedbox.svg"/>
@@ -788,7 +788,7 @@ The gap between the overbar and the content is
 <code class="MATH">OverbarVerticalGap</code>.
 The logical box is obtained by adding some space of height
 <code class="MATH">OverbarExtraAscender</code> above the bar.
-See figure <a href="#F15" title="Figure 15 ‣ 3. ‣ 3.3.9 Enclose Expression Inside Notation &lt;menclose&gt; ‣ 3.3 General Layout Schemata ‣ 3 Presentation Markup ">15</a>.</p>
+See figure <a href="#F15">auto</a>.</p>
 </div>
 <figure id="F15">
 <img src="figures/topbox.svg"/>
@@ -817,8 +817,8 @@ and <code class="MATH">UnderExtraDescender</code>.</p>
   obtained by expanding the ink box by 7ξ<sub>8</sub> / 2 on each side.
 Using SVG terminology, we draw a rounded rectangle on this expanded box
 with parameters <code>rx</code>, <code>ry</code> and <span>stroke-width</span> set to 3ξ<sub>8</sub>
-<cite>[<a href="bib.html#bibx15" title="">SVG11</a>]</cite>. To obtain the logical box we again add a space of ξ<sub>8</sub> on
-each side of the ink box. See figure <a href="#F16" title="Figure 16 ‣ 6. ‣ 3.3.9 Enclose Expression Inside Notation &lt;menclose&gt; ‣ 3.3 General Layout Schemata ‣ 3 Presentation Markup ">16</a>.</p>
+<cite>[<a href="bib.html#bibx15">auto</a>]</cite>. To obtain the logical box we again add a space of ξ<sub>8</sub> on
+each side of the ink box. See figure <a href="#F16">auto</a>.</p>
 </div>
 <figure id="F16">
 <img src="figures/roundedbox.svg"/>
@@ -843,7 +843,7 @@ notation of the <code>menclose</code> element</figcaption>
 of thickness ξ<sub>8</sub> and
 vertically centered inside the <code>menclose</code> content.
 This does not change the box metrics.
-See figure <a href="#F17" title="Figure 17 ‣ 9. ‣ 3.3.9 Enclose Expression Inside Notation &lt;menclose&gt; ‣ 3.3 General Layout Schemata ‣ 3 Presentation Markup ">17</a>.</p>
+See figure <a href="#F17">auto</a>.</p>
 </div>
 <figure id="F17">
 <img src="figures/horizstrikebox.svg"/>
@@ -864,11 +864,11 @@ content.</p>
 <p>The <code>updiagonalstrike</code> notation is drawn with a line
 of thickness ξ<sub>8</sub> going from the bottom left corner of the <code>menclose</code>
 content to its top right corner. Using SVG terminology, the
-<span>stroke-linecap</span> of the line is <code>butt</code> <cite>[<a href="bib.html#bibx15" title="">SVG11</a>]</cite>.
+<span>stroke-linecap</span> of the line is <code>butt</code> <cite>[<a href="bib.html#bibx15">auto</a>]</cite>.
 As an approximation, the ink box
 is set equal to the logical box and obtained by increasing the original box
 from each side by ξ<sub>8</sub> / 2.
-See figure <a href="#F18" title="Figure 18 ‣ 11. ‣ 3.3.9 Enclose Expression Inside Notation &lt;menclose&gt; ‣ 3.3 General Layout Schemata ‣ 3 Presentation Markup ">18</a>.</p>
+See figure <a href="#F18">auto</a>.</p>
 </div>
 <figure id="F18">
 <img src="figures/updiagstrikebox.svg"/>
@@ -882,13 +882,13 @@ notation of the <code>menclose</code> element</figcaption>
 <code>updiagonalstrike</code>
 but the line strike goes from the top left corner to the bottom right corner.
 Using SVG terminology, the
-<span>stroke-linecap</span> of the line is <code>butt</code> <cite>[<a href="bib.html#bibx15" title="">SVG11</a>]</cite>.</p>
+<span>stroke-linecap</span> of the line is <code>butt</code> <cite>[<a href="bib.html#bibx15">auto</a>]</cite>.</p>
 </div>
 </li>
 <li id="I7.i13"> 
 <div id="I7.i13.p1">
 <p>The <code>longdiv</code> notation is drawn similarly to the <code>msqrt</code> element
-(figure <a href="#F11" title="Figure 11 ‣ 3.3.3 Radicals &lt;msqrt&gt;, &lt;mroot&gt; ‣ 3.3 General Layout Schemata ‣ 3 Presentation Markup ">11</a>). It is independent of CSS
+(figure <a href="#F11">auto</a>). It is independent of CSS
 <code>direction</code> and U+221A SQUARE ROOT is replaced with
 U+0029 RIGHT PARENTHESIS. The rule thickness is ξ<sub>8</sub>,
 the gap between content and overbar is 3ξ<sub>8</sub> and the extra ascender
@@ -952,7 +952,7 @@ a base expression.
 </p>
 </div>
 <div id="msubmsup.p2">
-<p>As suggested in section section <a href="S2.html#cssuseragent" title="2.3.2 User Agent Stylesheet for MathML ‣ 2.3 CSS Styling ‣ 2 Relation with other technologies "><span>2.3.2</span></a>, the <code>displaystyle</code> and
+<p>As suggested in section section <a href="S2.html#cssuseragent">auto</a>, the <code>displaystyle</code> and
 <code>scriptlevel</code> changes be achieved with the
 following style in the user agent stylesheet:</p>
 <div>
@@ -965,7 +965,7 @@ msubsup > :not(:first-child) {
 </div>
 </div>
 <div id="msubmsup.p3">
-<p>The <code>msub</code> element is laid out as shown on figure <a href="#F20" title="Figure 20 ‣ 3.4.1 Subscripts and Superscripts &lt;msub&gt;, &lt;msup&gt;, &lt;msubsup&gt; ‣ 3.4 Script and Limit Schemata ‣ 3 Presentation Markup ">20</a>.
+<p>The <code>msub</code> element is laid out as shown on figure <a href="#F20">auto</a>.
 The baseline is the baseline of the base while the baseline of the script is
 shifted down by <code>SubShift</code>, which is the minimal value honoring the
 following conditions:</p>
@@ -1005,7 +1005,7 @@ by the italic correction of the base.</p>
 <figcaption><span>Figure 20: </span>Box model for the <code>msub</code> element</figcaption>
 </figure>
 <div id="msubmsup.p5">
-<p>The <code>msup</code> element is laid out as shown on figure <a href="#F21" title="Figure 21 ‣ 3.4.1 Subscripts and Superscripts &lt;msub&gt;, &lt;msup&gt;, &lt;msubsup&gt; ‣ 3.4 Script and Limit Schemata ‣ 3 Presentation Markup ">21</a>.
+<p>The <code>msup</code> element is laid out as shown on figure <a href="#F21">auto</a>.
 The baseline is the baseline of the base while the baseline of the script is
 shifted up by <code>SuperShift</code>, which is the minimal value honoring the
 following conditions:</p>
@@ -1014,7 +1014,7 @@ following conditions:</p>
 <div id="I9.i1.p1">
 <p><code>SuperShift</code> is at least
 <code class="MATH">SuperscriptShiftUpCramped</code> if the <code>msup</code> element is
-cramped (section <a href="A1.html" title="Appendix A MathML "><code>A</code></a>) or at least
+cramped (section <a href="A1.html">auto</a>) or at least
 <code class="MATH">SuperscriptShiftUp</code> otherwise.</p>
 </div>
 </li>
@@ -1048,7 +1048,7 @@ has <span>largeop="true"</span>).</p>
 </figure>
 <div id="msubmsup.p7">
 <p>The <code>msubsup</code> element is laid out as shown on figure
-<a href="#F22" title="Figure 22 ‣ 3.4.1 Subscripts and Superscripts &lt;msub&gt;, &lt;msup&gt;, &lt;msubsup&gt; ‣ 3.4 Script and Limit Schemata ‣ 3 Presentation Markup ">22</a>.
+<a href="#F22">auto</a>.
 The baseline is the baseline of the base while the baseline of the script is
 shifted down by <code>SubShift</code> and the superscript is shifted up by
 <code>SuperShift</code> which is initially set to the minimal values honoring the
@@ -1058,7 +1058,7 @@ following conditions:</p>
 <div id="I10.i1.p1">
 <p><code>SubShift</code> is at least
 <code class="MATH">SuperscriptShiftUpCramped</code> if the <code>msup</code> element is
-cramped (section <a href="A1.html" title="Appendix A MathML "><code>A</code></a>) or at least
+cramped (section <a href="A1.html">auto</a>) or at least
 <code class="MATH">SuperscriptShiftUp</code> otherwise.</p>
 </div>
 </li>
@@ -1078,7 +1078,7 @@ the baseline of the superscript is at most <code class="MATH">SuperscriptBaselin
 <div id="I10.i4.p1">
 <p><code>SubShift</code> is at least
 <code class="MATH">SuperscriptShiftUpCramped</code> if the <code>msup</code> element is
-cramped (section <a href="A1.html" title="Appendix A MathML "><code>A</code></a>) or at least
+cramped (section <a href="A1.html">auto</a>) or at least
 <code class="MATH">SuperscriptShiftUp</code> otherwise.</p>
 </div>
 </li>
@@ -1167,7 +1167,7 @@ subscript and superscript position, respectively. In this case, the
 the appropriate <code>accent</code> or <code>accentunder</code> value, which can not be done
 using only CSS. However, <code>displaystyle</code> changes can be achieved with the
 following style in the user agent stylesheet, as suggested in section
-<a href="S2.html#cssuseragent" title="2.3.2 User Agent Stylesheet for MathML ‣ 2.3 CSS Styling ‣ 2 Relation with other technologies "><span>2.3.2</span></a>:</p>
+<a href="S2.html#cssuseragent">auto</a>:</p>
 <div>
 <pre>munder > :not(:first-child),
 mover > :not(:first-child),
@@ -1180,13 +1180,13 @@ munderover > :not(:first-child) {
 <div id="mundermover.p3">
 <p>In cases where underscript and overscript are drawn as subscript and
 superscript position then the layout algorithm is the same as section
-<a href="#msubmsup" title="3.4.1 Subscripts and Superscripts &lt;msub&gt;, &lt;msup&gt;, &lt;msubsup&gt; ‣ 3.4 Script and Limit Schemata ‣ 3 Presentation Markup "><span>3.4.1</span></a>. Note that in that case,
+<a href="#msubmsup">auto</a>. Note that in that case,
 <code>accent</code> or <code>accentunder</code> are ignored so the scriptlevel increment is
 always performed.</p>
 </div>
 <div id="mundermover.p4">
 <p>The general layout of <code>munderover</code> is shown on figure
-<a href="#F23" title="Figure 23 ‣ 3.4.2 Underscripts and Overscripts &lt;munder&gt;, &lt;mover&gt;, &lt;munderover&gt; ‣ 3.4 Script and Limit Schemata ‣ 3 Presentation Markup ">23</a>.
+<a href="#F23">auto</a>.
 The overscript is placed above the base, the underscript below the base
 and by default are aligned with respect to their geometrical center.
 If the overscript is an accent and has a <code class="MATH">TopAccentAttachment</code>
@@ -1256,7 +1256,7 @@ their nonnegative difference.</p>
 <div id="mundermover.p6">
 <p>Remark: For accent overscripts and bases with ascents that are at most
 <code class="MATH">AccentBaseHeight</code>, the rule from
-<cite>[<a href="bib.html#bibx13" title="">OpenFontFormat3</a>]</cite> <cite>[<a href="bib.html#bibx16" title="">TeXBook</a>]</cite> is actually to align the baselines of the
+<cite>[<a href="bib.html#bibx13">auto</a>]</cite> <cite>[<a href="bib.html#bibx16">auto</a>]</cite> is actually to align the baselines of the
 overscripts and of the bases. This assumes that accent glyphs are designed in
 such a way that their ink bottoms are more or less
 <code class="MATH">AccentBaseHeight</code> above their baselines. Hence, the
@@ -1303,7 +1303,7 @@ by the empty element <code>none</code>.
 <div id="mmultiscripts.p2">
 <p>The <code>displaystyle</code> and <code>scriptlevel</code> changes be achieved with the
 following style in the user agent stylesheet as suggested in section
-<a href="S2.html#cssuseragent" title="2.3.2 User Agent Stylesheet for MathML ‣ 2.3 CSS Styling ‣ 2 Relation with other technologies "><span>2.3.2</span></a>:</p>
+<a href="S2.html#cssuseragent">auto</a>:</p>
 <div>
 <pre>mmultiscripts > :not(:first-child) {
   mathml-script-level: increment 1;
@@ -1313,10 +1313,10 @@ following style in the user agent stylesheet as suggested in section
 </div>
 <div id="mmultiscripts.p3">
 <p>Any layout for <code>mmultiscripts</code> is acceptable as long as it follows
-the condition of the MathML 3 specification <cite>[<a href="bib.html#bibx11" title="">MathML3</a>]</cite> and is consistent
-with section <a href="#msubmsup" title="3.4.1 Subscripts and Superscripts &lt;msub&gt;, &lt;msup&gt;, &lt;msubsup&gt; ‣ 3.4 Script and Limit Schemata ‣ 3 Presentation Markup "><span>3.4.1</span></a> for <code>mmultiscripts</code>
+the condition of the MathML 3 specification <cite>[<a href="bib.html#bibx11">auto</a>]</cite> and is consistent
+with section <a href="#msubmsup">auto</a> for <code>mmultiscripts</code>
 contructions that are equivalent to <code>msubsup</code>. Here is a possible algorithm
-that is represented on figure <a href="#F24" title="Figure 24 ‣ 3.4.3 Prescripts and Tensor Indices &lt;mmultiscripts&gt; ‣ 3.4 Script and Limit Schemata ‣ 3 Presentation Markup ">24</a>.</p>
+that is represented on figure <a href="#F24">auto</a>.</p>
 <ol id="I12">
 <li id="I12.i1"> 
 <div id="I12.i1.p1">
@@ -1334,7 +1334,7 @@ the maximum of the superscript shift for all superscripts.</p>
 <p>For the horizontal layout of postscripts, use the trailing edge of the
 base or of the previous pair as the leading edge of the current pair.
 For each pair, apply the same italic correction described for
-<code>msubsup</code> in section <a href="#msubmsup" title="3.4.1 Subscripts and Superscripts &lt;msub&gt;, &lt;msup&gt;, &lt;msubsup&gt; ‣ 3.4 Script and Limit Schemata ‣ 3 Presentation Markup "><span>3.4.1</span></a>.
+<code>msubsup</code> in section <a href="#msubmsup">auto</a>.
 Apply the same italic corrections for all these postscripts.</p>
 </div>
 </li>
@@ -1366,10 +1366,10 @@ commutative diagrams, block matrices and so on.</p>
 <div id="tables.p2">
 <p>In the present document, we restrict ourselves to a minimal implementation
 compatible with HTML tables. First the <code>mtable</code> element must be treated as
-a HTML table and by <cite>[<a href="bib.html#bibx11" title="">MathML3</a>]</cite>, <code>mtable</code> must accept a
+a HTML table and by <cite>[<a href="bib.html#bibx11">auto</a>]</cite>, <code>mtable</code> must accept a
 <code>displaystyle</code> attribute with default value <code>false</code>. To implement that,
 one may rely on the following rules for the user agent stylesheet as
-suggested in section <a href="S2.html#cssuseragent" title="2.3.2 User Agent Stylesheet for MathML ‣ 2.3 CSS Styling ‣ 2 Relation with other technologies "><span>2.3.2</span></a>:</p>
+suggested in section <a href="S2.html#cssuseragent">auto</a>:</p>
 <div>
 <pre>mtable {
   display: inline-table;
@@ -1405,7 +1405,7 @@ User agents may also support non-default <code>align</code> attribute values.</p
 and the label of <code>mlabeledtr</code> element must be hidden by default.
 The default value of <code>rowalign</code> must be <code>baseline</code>.
 One may rely on the following rules for the user agent stylesheet
-as suggested in section <a href="S2.html#cssuseragent" title="2.3.2 User Agent Stylesheet for MathML ‣ 2.3 CSS Styling ‣ 2 Relation with other technologies "><span>2.3.2</span></a>:</p>
+as suggested in section <a href="S2.html#cssuseragent">auto</a>:</p>
 </div>
 <div id="tables.p6">
 <div>
@@ -1493,7 +1493,7 @@ or how to change the default behavior.</p>
 </div>
 <div id="enlivening.p4">
 <p>Given the similarity with the <code>semantics</code> element
-described in section <a href="#sematicsandpresentation" title="3.8 Semantics and Presentation ‣ 3 Presentation Markup "><span>3.8</span></a>, it is
+described in section <a href="#sematicsandpresentation">auto</a>, it is
 suggested to share the implementation of <code>semantics</code> and <code>maction</code>.</p>
 </div>
 </section>
@@ -1574,7 +1574,7 @@ indicating invalid markup.</p>
 </div>
 <div id="semantics.p4">
 <p>Given the similarity with the <code>maction</code> element
-described in section <a href="#enlivening" title="3.7 Enlivening Expressions ‣ 3 Presentation Markup "><span>3.7</span></a>, it is
+described in section <a href="#enlivening">auto</a>, it is
 suggested to share the implementation of <code>semantics</code> and <code>maction</code>.</p>
 </div>
 </section>

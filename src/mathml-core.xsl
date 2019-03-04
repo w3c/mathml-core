@@ -173,10 +173,46 @@
 <xsl:template match="a">
  <xsl:copy>
   <xsl:copy-of select="@*"/>
-  <xsl:attribute name="href" select="replace(@href,'^[a-zA-Z0-9.]+#','#')"/>
-  <xsl:apply-templates/>
- </xsl:copy>
-</xsl:template>
+  <xsl:choose>
+   <xsl:when  test="matches(@href,'^[a-zA-Z0-9.]*#')">
+    <xsl:variable name="id" select="replace(@href,'^[a-zA-Z0-9.]*#','')"/>
+    <xsl:attribute name="href" select="concat('#',$id)"/>
+    <xsl:choose>
+     <xsl:when test=".='auto'">
+      <xsl:for-each select="key('id',$id)">
+       <xsl:choose>
+	<xsl:when test="self::section">
+	<xsl:number level="multiple" select="."/>
+	</xsl:when>
+	<xsl:when test="self::figure">
+	<xsl:number level="any" select="."/>
+	</xsl:when>
+	<xsl:when test="self::li/ancestor::section/@id='references'">
+	 <xsl:apply-templates select="span[1]/node()"/>
+	</xsl:when>
+	<xsl:otherwise>
+	 <xsl:message select="'href to #:',name(),  $id"/>
+	 <xsl:text>Unknown Reference</xsl:text>
+	</xsl:otherwise>
+       </xsl:choose>
+      </xsl:for-each>
+      <xsl:if test="not(key('id',$id))">
+	 <xsl:message select="'href to id #:', $id"/>
+	 <xsl:text>Unknown Reference</xsl:text>
+      </xsl:if>
+     </xsl:when>
+     <xsl:otherwise>
+      <xsl:apply-templates/>
+     </xsl:otherwise>
+    </xsl:choose>
+     </xsl:when>
+     <xsl:otherwise>
+      <xsl:copy-of select="@href"/>
+      <xsl:apply-templates/>
+     </xsl:otherwise>
+    </xsl:choose>
+   </xsl:copy>
+  </xsl:template>
 
 
 

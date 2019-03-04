@@ -18,7 +18,7 @@
 <p><span>This section is non-normative.</span></p>
 </div>
 <div id="mathml3diff.p2">
-  <p>The <cite>[<a href="bib.html#bibx11" title="">MathML3</a>]</cite>
+  <p>The <cite>[<a href="bib.html#bibx11">auto</a>]</cite>
     specification has
 two serious shortcomings that make it hard to implement presentation MathML in
 web rendering engines:</p>
@@ -33,13 +33,13 @@ compliant with the MathML 3 specification does not necessarily mean that they
 will have the rendering quality expected by most readers.
 For example, the specification essentially just says that
 “mfrac element is used for fractions” and that the default medium
-linethickness “is left up to the rendering agent” <cite>[<a href="bib.html#bibx11" title="">MathML3</a>]</cite>.
+linethickness “is left up to the rendering agent” <cite>[<a href="bib.html#bibx11">auto</a>]</cite>.
 As a comparison, to determine the exact spacing and thickness of
 fractions and stacks the
-TeXBook’s Appendix G <cite>[<a href="bib.html#bibx16" title="">TeXBook</a>]</cite> relies on parameters
+TeXBook’s Appendix G <cite>[<a href="bib.html#bibx16">auto</a>]</cite> relies on parameters
 σ<sub>8</sub>, σ<sub>9</sub>, ξ<sub>8</sub>, 3ξ<sub>8</sub>, 7ξ<sub>8</sub>,
 σ<sub>11</sub> and σ<sub>12</sub> while the MATH table of the Open Font Format
-<cite>[<a href="bib.html#bibx13" title="">OpenFontFormat3</a>]</cite> extends these to parameters
+<cite>[<a href="bib.html#bibx13">auto</a>]</cite> extends these to parameters
 <code class="MATH">FractionNumeratorDisplayStyleShiftUp</code>,
 <code class="MATH">FractionNumeratorShiftUp</code>,
 <code class="MATH">FractionNumeratorDisplayStyleGapMin</code>,
@@ -62,7 +62,7 @@ TeXBook’s Appendix G <cite>[<a href="bib.html#bibx16" title="">TeXBook</a>]</c
 <p><span>The MathML 3 specification is designed as an independent
 XML language and browser vendors have almost not been involved in the
 standardization process</span>. The Math WG and WHATWG worked together to
-integrate MathML in <cite>[<a href="bib.html#bibx9" title="">HTML5</a>]</cite>
+integrate MathML in <cite>[<a href="bib.html#bibx9">auto</a>]</cite>
 but MathML3 has inconsistencies and lacks of details when it comes to
 interaction with CSS / HTML5 features: vertical writing mode,
 user stylesheet, <code>mstyle</code> inheritance, out-of-flow elements,
@@ -78,7 +78,7 @@ but is strictly equivalent to an expanded form with <span>&lt;mrow&gt;</span> an
 to create many “anonymous”
 rendering frames and keep them up-to-date, to duplicate the logic
 for drawing and exposing the content of fenced expressions etc.
-<cite>[<a href="bib.html#bibx11" title="">MathML3</a>]</cite>.</p>
+<cite>[<a href="bib.html#bibx11">auto</a>]</cite>.</p>
 </div>
 </li>
 </ol>
@@ -87,23 +87,23 @@ for drawing and exposing the content of fenced expressions etc.
 <p>This "MathML Core" specification intends to address these issues by
 being as accurate as
 possible on the visual rendering of mathematical formulas using additional
-rules from the TeXBook’s Appendix G <cite>[<a href="bib.html#bibx16" title="">TeXBook</a>]</cite> and from
-the Open Font Format <cite>[<a href="bib.html#bibx13" title="">OpenFontFormat3</a>]</cite>.
+rules from the TeXBook’s Appendix G <cite>[<a href="bib.html#bibx16">auto</a>]</cite> and from
+the Open Font Format <cite>[<a href="bib.html#bibx13">auto</a>]</cite>.
 Focus has been put on keeping compatible with existing technologies of web
-rendering engines <cite>[<a href="bib.html#bibx9" title="">HTML5</a>]</cite> by relying as much as possible on CSS, text &amp;
+rendering engines <cite>[<a href="bib.html#bibx9">auto</a>]</cite> by relying as much as possible on CSS, text &amp;
 table layout and box models. As a consequence, parts of MathML 3
 that do not fit well in this framework or are rarely used in practice
 have been ommited and moved into a larger specification
-<cite>[<a href="bib.html#bibx11bis" title="">MathML4</a>]</cite>.</p>
+<cite>[<a href="bib.html#bibx11bis">auto</a>]</cite>.</p>
 </div>
 
 <div id="mathml3diff.p5">
 <p>By increasing the level of implementation details and by focusing more on
   browser-driven design, this specification is expected to greatly improve
   MathML interoperability. A
-  <a href="http://www.w3c-test.org/mathml/" title="">set of tests</a>
+  <a href="http://www.w3c-test.org/mathml/">auto</a>
   is available in a separate
-  <a href="https://github.com/w3c/web-platform-tests/tree/master/mathml" title="">git repository</a>. Browser vendors are encouraged to use these tests during
+  <a href="https://github.com/w3c/web-platform-tests/tree/master/mathml">auto</a>. Browser vendors are encouraged to use these tests during
   implementation &amp; automated testing. Contribution of new tests and error
   reports are welcome.</p>
 </div>
@@ -114,12 +114,12 @@ have been ommited and moved into a larger specification
 <div id="keywords">
 <p>The key words MUST, MUST NOT, REQUIRED, SHALL, SHALL NOT, SHOULD, SHOULD NOT,
 RECOMMENDED, MAY, and OPTIONAL, are to be interpreted as described in
-<cite>[<a href="bib.html#bibx10" title="">IETFRFC2119</a>]</cite>.</p>
+<cite>[<a href="bib.html#bibx10">auto</a>]</cite>.</p>
 </div>
 
 <div id="openfontformat">
 <p>This document relies on many definitions taken from the MATH specification
-of the Open Font Format <cite>[<a href="bib.html#bibx13" title="">OpenFontFormat3</a>]</cite>. These values are written with
+of the Open Font Format <cite>[<a href="bib.html#bibx13">auto</a>]</cite>. These values are written with
 the following style:
 <span class="MATH">This is a definition from the MATH specification</span>.</p>
 </div>
