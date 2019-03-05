@@ -26,24 +26,20 @@
 </abstract>
 
 <div id="main">
-<include file="intro"/>
-<include file="othertech"/>
-
-<include file="attribute-syntax"/>
-
-<include file="presentation"/>
+ <include file="intro"/>
+ <include file="othertech"/>
+ <include file="attribute-syntax"/>
+ <include file="presentation"/>
 </div>
+
 <div id="appendix">
-<include file="A1"/>
-<include file="A2"/>
-
-<include file="relaxng"/>
-
-<include file="OpDict"/>
-<include file="Comb"/>
-
-<include file="bib"/>
-
-<include file="issues"/>
+ <include file="opentype"/>
+ <include file="imagefallback"/>
+ <include file="relaxng"/>
+ <include file="OpDict"/>
+ <include file="Comb"/>
+ <include file="bib"/>
+ <include file="issues"/>
 </div>
+
 </spec>
