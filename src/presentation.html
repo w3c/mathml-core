@@ -24,7 +24,7 @@ implicit <code>mtext</code> and <code>merror</code> to handle non-conforming Mat
 </div>
 <div id="boxmodel.p2">
 <p>MathML elements have the following box model. The <span>&lt;math&gt;</span> root may have
-inline or block display, as suggested in section <a href="S2.html#cssuseragent">auto</a>.
+inline or block display, as suggested in section <a href="othertech.html#cssuseragent">auto</a>.
 Tabular MathML elements have table, table-row and
 table-cell display as discussed in section <a href="#tables">auto</a>.
 The <span>&lt;math&gt;</span> and <span>&lt;mtd&gt;</span> elements
@@ -371,7 +371,7 @@ The <code>linebreak</code> attribute on the <span>&lt;mspace/&gt;</span> element
 element except that quotes are automatically added around its content.
 The user agents may implement the <code>lquote</code> or <code>rquote</code> attributes
 with the following style in the user agent stylesheet as suggested in section
-<a href="S2.html#cssuseragent">auto</a>:</p>
+<a href="othertech.html#cssuseragent">auto</a>:</p>
 </div>
 <div id="tokenms.p3">
 <pre>ms {
@@ -463,7 +463,7 @@ corresponding values of the <code>mrow</code> box.</p>
 <div id="mfrac.p2">
 <p>The <code>displaystyle</code> and <code>scriptlevel</code> changes be achieved with the
 following style in the user agent stylesheet as suggested in section
-<a href="S2.html#cssuseragent">auto</a>:</p>
+<a href="othertech.html#cssuseragent">auto</a>:</p>
 <div>
   <pre>mfrac > * {
   mathml-script-level: auto;
@@ -560,7 +560,7 @@ e.g. a cube root. The syntax for these elements is:
 <div id="msqrt.p2">
 <p>The <code>displaystyle</code> and <code>scriptlevel</code> changes be achieved with the
 following style in the user agent stylesheet as suggested in section
-<a href="S2.html#cssuseragent">auto</a>:</p>
+<a href="othertech.html#cssuseragent">auto</a>:</p>
 <div>
 <pre>mroot > :not(:first-child) {
   mathml-script-level: increment 2;
@@ -638,7 +638,7 @@ rendering of its contents.</p>
 <p>For the layout algorithm described in this document, the
 <code>mstyle</code> element must be treated the same as the <code>mrow</code> element.
 However, some attributes on the <code>mstyle</code> element must be mapped to CSS
-properties as indicated in section <a href="S2.html#cssproperties">auto</a>.
+properties as indicated in section <a href="othertech.html#cssproperties">auto</a>.
 All the other <code>mstyle</code>
 attributes not defined in this document must be ignored.</p>
 </div>
@@ -656,7 +656,7 @@ contents, or changing the background color.</p>
 <code>merror</code> element must be treated the same as the <code>mrow</code> element.
 The user agent stylesheet must set some CSS properties on the <code>merror</code>
 element in order to highlight the error.
-As suggested in section <a href="S2.html#cssuseragent">auto</a>, this can for example be achieved
+As suggested in section <a href="othertech.html#cssuseragent">auto</a>, this can for example be achieved
 with the rule:</p>
 <div>
 <pre>merror {
@@ -715,7 +715,7 @@ metrics.
 <code>mphantom</code> element must be treated the same as the <code>mrow</code> element.
 The user agent stylesheet must set some CSS properties on the <code>mphantom</code>
 element in order to hide its content.
-As suggested in section <a href="S2.html#cssuseragent">auto</a>, this can for example be achieved
+As suggested in section <a href="othertech.html#cssuseragent">auto</a>, this can for example be achieved
 with the rule:</p>
 <div>
 <pre>mphantom {
@@ -952,7 +952,7 @@ a base expression.
 </p>
 </div>
 <div id="msubmsup.p2">
-<p>As suggested in section section <a href="S2.html#cssuseragent">auto</a>, the <code>displaystyle</code> and
+<p>As suggested in section section <a href="othertech.html#cssuseragent">auto</a>, the <code>displaystyle</code> and
 <code>scriptlevel</code> changes be achieved with the
 following style in the user agent stylesheet:</p>
 <div>
@@ -1167,7 +1167,7 @@ subscript and superscript position, respectively. In this case, the
 the appropriate <code>accent</code> or <code>accentunder</code> value, which can not be done
 using only CSS. However, <code>displaystyle</code> changes can be achieved with the
 following style in the user agent stylesheet, as suggested in section
-<a href="S2.html#cssuseragent">auto</a>:</p>
+<a href="othertech.html#cssuseragent">auto</a>:</p>
 <div>
 <pre>munder > :not(:first-child),
 mover > :not(:first-child),
@@ -1303,7 +1303,7 @@ by the empty element <code>none</code>.
 <div id="mmultiscripts.p2">
 <p>The <code>displaystyle</code> and <code>scriptlevel</code> changes be achieved with the
 following style in the user agent stylesheet as suggested in section
-<a href="S2.html#cssuseragent">auto</a>:</p>
+<a href="othertech.html#cssuseragent">auto</a>:</p>
 <div>
 <pre>mmultiscripts > :not(:first-child) {
   mathml-script-level: increment 1;
@@ -1369,7 +1369,7 @@ compatible with HTML tables. First the <code>mtable</code> element must be treat
 a HTML table and by <cite>[<a href="bib.html#bibx11">auto</a>]</cite>, <code>mtable</code> must accept a
 <code>displaystyle</code> attribute with default value <code>false</code>. To implement that,
 one may rely on the following rules for the user agent stylesheet as
-suggested in section <a href="S2.html#cssuseragent">auto</a>:</p>
+suggested in section <a href="othertech.html#cssuseragent">auto</a>:</p>
 <div>
 <pre>mtable {
   display: inline-table;
@@ -1405,7 +1405,7 @@ User agents may also support non-default <code>align</code> attribute values.</p
 and the label of <code>mlabeledtr</code> element must be hidden by default.
 The default value of <code>rowalign</code> must be <code>baseline</code>.
 One may rely on the following rules for the user agent stylesheet
-as suggested in section <a href="S2.html#cssuseragent">auto</a>:</p>
+as suggested in section <a href="othertech.html#cssuseragent">auto</a>:</p>
 </div>
 <div id="tables.p6">
 <div>

@@ -26,9 +26,9 @@
 </abstract>
 
 <div id="main">
-<include file="S1"/>
-<include file="S2"/>
-<include file="S3"/>
+<include file="intro"/>
+<include file="othertech"/>
+<include file="presentation"/>
 </div>
 <div id="appendix">
 <include file="A1"/>
