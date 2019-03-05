@@ -28,6 +28,9 @@
 <div id="main">
 <include file="intro"/>
 <include file="othertech"/>
+
+<include file="attribute-syntax"/>
+
 <include file="presentation"/>
 </div>
 <div id="appendix">

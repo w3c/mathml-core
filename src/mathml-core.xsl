@@ -461,4 +461,16 @@ select="substring-before(.,':')"/>:</a>
   </table>
  </xsl:template>
 
+<!-- individual issue asides, only appears if still in open list -->
+<xsl:template match="aside[@data-gh]">
+  <xsl:for-each select="$issues/*/*:map[*:number[@key='number']=current()/@data-gh]">
+   <aside class="issue" id="gh-issue-{@data-gh}">
+    GitHub Issue <xsl:value-of select="*:number[@key='number']"/>:
+   <a href="{*:string[@key='html_url']}">
+      <xsl:value-of select="*:string[@key='title']"/>
+   </a>
+ </aside>
+  </xsl:for-each>
+</xsl:template>
+
 </xsl:stylesheet>
