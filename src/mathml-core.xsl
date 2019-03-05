@@ -441,4 +441,24 @@ select="substring-before(.,':')"/>:</a>
  </section>
 </xsl:template>
 
+
+
+<!-- issue handling -->
+ <xsl:variable name="issues" select="json-to-xml(unparsed-text('https://api.github.com/repos/mathml-refresh/mathml/issues?labels=core'))"/>
+ 
+ <xsl:template match="ul[@id='openissues']">
+  <table>
+   <tbody>
+    <xsl:for-each select="$issues/*/*:map">
+     <xsl:sort select="number(*:number[@key='number'])"/>
+     <tr>
+      <td><xsl:value-of select="*:number[@key='number']"/></td>
+      <td><a href="{*:string[@key='html_url']}">
+      <xsl:value-of select="*:string[@key='title']"/></a></td>
+     </tr>
+    </xsl:for-each>
+   </tbody>
+  </table>
+ </xsl:template>
+
 </xsl:stylesheet>
