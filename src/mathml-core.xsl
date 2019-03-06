@@ -36,6 +36,13 @@
   </xsl:apply-templates>
  </xsl:template>
 
+ <!-- make pre default to class="example"-->
+ <xsl:template match="pre">
+  <pre class="example">
+   <xsl:apply-templates select="@*,node()"/>
+  </pre>
+ </xsl:template>
+ 
 <!-- svg mode unnamespaces elements and makes ids unique-->
  <xsl:template match="@*|node()" mode="svg">
   <xsl:copy>
