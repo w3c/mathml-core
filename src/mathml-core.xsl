@@ -18,7 +18,7 @@
  
  
  <xsl:template mode="include" match="include">
-  <xsl:copy-of select="doc(concat(@file,'.html'))/html/body/section"/>
+  <xsl:copy-of select="doc(concat(@file,'.html'))/html/body/(abstract|section)"/>
  </xsl:template>
 
  <xsl:template mode="include" match="*">
