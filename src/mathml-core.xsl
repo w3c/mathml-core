@@ -451,9 +451,17 @@ select="substring-before(.,':')"/>:</a>
 
 
 <!-- issue handling -->
- <xsl:variable name="issues" select="json-to-xml(unparsed-text('https://api.github.com/repos/mathml-refresh/mathml/issues?labels=core'))"/>
+ <xsl:variable name="issues" select="if(
+unparsed-text-available('https://api.github.com/repos/mathml-refresh/mathml/issues?labels=core')
+)
+then json-to-xml(unparsed-text('https://api.github.com/repos/mathml-refresh/mathml/issues?labels=core'))
+else ()
+"/>
  
- <xsl:template match="ul[@id='openissues']">
+<xsl:template match="ul[@id='openissues']">
+ <xsl:if test="empty($issues)">
+  <p class="issue">GitHub issue list not loaded</p>
+ </xsl:if>
   <table>
    <tbody>
     <xsl:for-each select="$issues/*/*:map">
