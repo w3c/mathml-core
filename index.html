@@ -756,8 +756,9 @@
                         <code>negativethickmathspace</code>,
                         <code>negativeverythickmathspace</code> and
                         <code>negativeveryverythickmathspace</code> must be interpreted as their
-                        equivalent <code>em</code> value. Also, percent and unitless values must be interpreted
-                        with respect to the appropriate reference value. Note that the <code>mpadded</code>
+                        equivalent <code>em</code> value. Also, percent values must be interpreted
+                        with respect to the appropriate reference value.
+                        Note that the <code>mpadded</code>
                         element also accepts more general length values as discussed in section
                         <a href="#mpadded">4.3.6</a>.
                      </p>
@@ -12307,7 +12308,7 @@ math &gt; * {
                               (<a href="#rncrncannotation">annotation</a>|<a href="#rncrncannotation-xml">annotation-xml</a>)*}
 
 <a name="rncrnclength" style="color:blue;">length</a> = <span style="font-weight:bold;">xsd:string</span> {
-  <span style="font-weight:bold;">pattern</span> = '\<a href="#rncrncs">s</a>*((-?[0-9]*([0-9]\.?|\.[0-9])[0-9]*(<a href="#rncrnce">e</a>[<a href="#rncrncmx">mx</a>]|<a href="#rncrncin">in</a>|<a href="#rncrnccm">cm</a>|<a href="#rncrncmm">mm</a>|<a href="#rncrncp">p</a>[<a href="#rncrncxtc">xtc</a>]|%)?)|(<a href="#rncrncnegative">negative</a>)?((<a href="#rncrncvery">very</a>){0,2}<a href="#rncrncthi">thi</a>(<a href="#rncrncn">n</a>|<a href="#rncrncck">ck</a>)|<a href="#rncrncmedium">medium</a>)<a href="#rncrncmathspace">mathspace</a>)\<a href="#rncrncs">s</a>*' 
+  <span style="font-weight:bold;">pattern</span> = '\<a href="#rncrncs">s</a>*((-?[0-9]*([0-9]\.?|\.[0-9])[0-9]*(<a href="#rncrnce">e</a>[<a href="#rncrncmx">mx</a>]|<a href="#rncrncin">in</a>|<a href="#rncrnccm">cm</a>|<a href="#rncrncmm">mm</a>|<a href="#rncrncp">p</a>[<a href="#rncrncxtc">xtc</a>]|%))|0|(<a href="#rncrncnegative">negative</a>)?((<a href="#rncrncvery">very</a>){0,2}<a href="#rncrncthi">thi</a>(<a href="#rncrncn">n</a>|<a href="#rncrncck">ck</a>)|<a href="#rncrncmedium">medium</a>)<a href="#rncrncmathspace">mathspace</a>)\<a href="#rncrncs">s</a>*'
 }
 
 
