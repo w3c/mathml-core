@@ -182,7 +182,7 @@ mrow.attributes =
 mfrac = element mfrac {mfrac.attributes, MathExpression, MathExpression}
 mfrac.attributes = 
   CommonAtt, CommonPresAtt,
-  attribute linethickness {length | "thin" | "medium" | "thick"}?,
+  attribute linethickness {length}?,
   attribute numalign {"left" | "center" | "right"}?,
   attribute denomalign {"left" | "center" | "right"}?,
   attribute bevelled {"true" | "false"}?

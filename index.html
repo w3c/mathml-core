@@ -4606,9 +4606,7 @@ ms[rquote]:after {
                         <code class="MATH">FractionRuleThickness</code>
                         Use the <code>linethickness</code> attribute <cite>[<a href="#bibx11">MathML3</a>]</cite> to determine the
                         actual thickness of the fraction bar. A percent or unitless length is
-                        interpreted as a multiple of the default rule thickness and
-                        the named values ”thin”, ”medium” and ”thick” are interpreted as
-                        50%, 100%, 200%.
+                        interpreted as a multiple of the default rule thickness.
                         The color and visibility of the fraction bar must honor the values given by the
                         <code>color</code> and <code>visibility</code> CSS properties on the <code>mfrac</code> element.
                      </p>
@@ -12454,7 +12452,7 @@ math &gt; * {
 <a name="rncrncmfrac" style="color:blue;">mfrac</a> = <span style="font-weight:bold;">element</span> mfrac {<a href="#rncrncmfrac.attributes">mfrac.attributes</a>, <a href="#rncrncMathExpression">MathExpression</a>, <a href="#rncrncMathExpression">MathExpression</a>}
 <a name="rncrncmfrac.attributes" style="color:blue;">mfrac.attributes</a> = 
   <a href="#rncrncCommonAtt">CommonAtt</a>, <a href="#rncrncCommonPresAtt">CommonPresAtt</a>,
-  <span style="font-weight:bold;">attribute</span> linethickness {<a href="#rncrnclength">length</a> | "thin" | "medium" | "thick"}?,
+  <span style="font-weight:bold;">attribute</span> linethickness {<a href="#rncrnclength">length</a>}?,
   <span style="font-weight:bold;">attribute</span> numalign {"left" | "center" | "right"}?,
   <span style="font-weight:bold;">attribute</span> denomalign {"left" | "center" | "right"}?,
   <span style="font-weight:bold;">attribute</span> bevelled {"true" | "false"}?
