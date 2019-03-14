@@ -171,7 +171,7 @@ CommonPresAtt =
 
 TokenAtt = 
   attribute mathvariant {"normal" | "bold" | "italic" | "bold-italic" | "double-struck" | "bold-fraktur" | "script" | "bold-script" | "fraktur" | "sans-serif" | "bold-sans-serif" | "sans-serif-italic" | "sans-serif-bold-italic" | "monospace" | "initial" | "tailed" | "looped" | "stretched"}?,
-  attribute mathsize {"small" | "normal" | "big" | length}?,
+  attribute mathsize {length}?,
   attribute dir {"ltr" | "rtl"}?
 
 mrow = element mrow {mrow.attributes, MathExpression*}
