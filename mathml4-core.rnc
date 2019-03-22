@@ -146,15 +146,6 @@ ms.attributes =
   attribute lquote {text}?,
   attribute rquote {text}?
 
-msline = element msline {msline.attributes,empty}
-msline.attributes = 
-  CommonAtt,  CommonPresAtt,
-  attribute position {xsd:integer}?,
-  attribute length {xsd:positiveInteger}?,
-  attribute leftoverhang {length}?,
-  attribute rightoverhang {length}?,
-  attribute mslinethickness {length | "thin" | "medium" | "thick"}?
-
 none = element none {none.attributes,empty}
 none.attributes = 
   CommonAtt,
