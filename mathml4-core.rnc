@@ -71,7 +71,6 @@ columnalignstyle = "left" | "center" | "right"
 notationstyle =
      "longdiv" |
      "actuarial" |
-     "radical" |
      "box" |
      "roundedbox" |
      "circle" |
