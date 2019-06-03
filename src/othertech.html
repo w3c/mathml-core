@@ -283,9 +283,10 @@ element also accepts more general length values as discussed in section
 <li id="I4.i1"> 
 <div id="I4.i1.p1">
 <p><code>display</code>: at least inline, block, inline-table, table-row,
-table-cell and none. It is used for the <code>math</code> and tabular
-elements. Appropriate values may be specified in the user agent stylesheet
-as described in section <a href="#cssuseragent">auto</a>.</p>
+  table-cell, none and contents.
+  It is used for the <code>math</code> and tabular elements.
+  Appropriate values may be specified in the user agent stylesheet
+  as described in section <a href="#cssuseragent">auto</a>.</p>
 </div>
 </li>
 <li id="I4.i2"> 
@@ -339,6 +340,9 @@ character, it must actually be treated as if the mathvariant was <code>italic</c
 <p>User agents must implement the <code>scriptlevel</code> attributes and support
 automatic incrementation of the <code>scriptlevel</code> described in the MathML
 specification.</p>
+</div>
+<div id="cssproperties.p6">
+  <p>For all MathML elements, <code>display: contents</code> computes to <code>display: none</code> <cite>[<a href="bib.html#bib-css-display">auto</a>]</cite>.</p>
 </div>
 
 TODO: Rewrite this using https://github.com/mathml-refresh/mathml-css-proposals#mathml-css-proposals
