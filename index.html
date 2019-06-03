@@ -37,17 +37,6 @@
             mathematics to be served, received, and processed on the World Wide Web, just
             as HTML has enabled this functionality for text.
          </p>
-         <p>Compared with prior versions of MathML, this specification tries to be as
-            accurate as possible on the visual rendering of mathematical formulas using
-            additional rules from the TeXBook’s Appendix G
-            <cite>[<a href="#bibx16" title="">TeXBook</a>]</cite> and from the Open Font
-            Format version 3
-            <cite>[<a href="#bibx13" title="">OpenFontFormat3</a>]</cite>.
-            It also focuses on compatibility with existing technologies of web
-            rendering engines <cite>[<a href="#bibx9" title="">HTML5</a>]</cite>
-            by relying as much as possible on CSS, text &amp; table layout and
-            box models.
-         </p>
       </div>
       <div>
          <h2><a id="status"></a>Status of this Document
@@ -176,108 +165,45 @@
                
                <div id="mathml3diff.p1">
                   
-                  <p><span>This section is non-normative.</span></p>
+                  <p><em>This section is non-normative.</em></p>
                   
                </div>
+               
                
                <div id="mathml3diff.p2">
                   
                   <p>The <cite>[<a href="#bibx11">MathML3</a>]</cite>
-                     specification has
-                     two serious shortcomings that make it hard to implement presentation MathML in
-                     web rendering engines:
+                     specification has several shortcomings that make it hard to implement
+                     consistently accross web rendering engines:
                   </p>
                   
-               </div>
-               
-               <div id="mathml3diff.p3">
-                  
-                  <ol id="I1">
+                  <ol>
                      
-                     <li id="I1.i1">
-                        
-                        <div id="I1.i1.p1">
-                           
-                           <p><span>The MathML 3 specification intentionally does not contain any detailed
-                                 rendering rules</span>. As a consequence, the fact that web rendering engines are
-                              compliant with the MathML 3 specification does not necessarily mean that they
-                              will have the rendering quality expected by most readers.
-                              For example, the specification essentially just says that
-                              “mfrac element is used for fractions” and that the default medium
-                              linethickness “is left up to the rendering agent” <cite>[<a href="#bibx11">MathML3</a>]</cite>.
-                              As a comparison, to determine the exact spacing and thickness of
-                              fractions and stacks the
-                              TeXBook’s Appendix G <cite>[<a href="#bibx16">TeXBook</a>]</cite> relies on parameters
-                              σ<sub>8</sub>, σ<sub>9</sub>, ξ<sub>8</sub>, 3ξ<sub>8</sub>, 7ξ<sub>8</sub>,
-                              σ<sub>11</sub> and σ<sub>12</sub> while the MATH table of the Open Font Format
-                              <cite>[<a href="#bibx13">OpenFontFormat3</a>]</cite> extends these to parameters
-                              <code class="MATH">FractionNumeratorDisplayStyleShiftUp</code>,
-                              <code class="MATH">FractionNumeratorShiftUp</code>,
-                              <code class="MATH">FractionNumeratorDisplayStyleGapMin</code>,
-                              <code class="MATH">FractionNumeratorGapMin</code>,
-                              <code class="MATH">FractionRuleThickness</code>,
-                              <code class="MATH">FractionDenominatorDisplayStyleGapMin</code>,
-                              <code class="MATH">FractionDenominatorGapMin</code>,
-                              <code class="MATH">FractionDenominatorDisplayStyleShiftDown</code>,
-                              <code class="MATH">FractionDenominatorShiftDown</code>,
-                              <code class="MATH">StackTopDisplayStyleShiftUp</code>,
-                              <code class="MATH">StackTopShiftUp</code>,
-                              <code class="MATH">StackDisplayStyleGapMin</code>,
-                              <code class="MATH">StackGapMin</code>,
-                              <code class="MATH">StackBottomDisplayStyleShiftDown</code> and
-                              <code class="MATH">StackBottomShiftDown</code>.
-                           </p>
-                           
-                        </div>
-                        
-                     </li>
+                     <li>It is a huge and standalone specification.</li>
                      
-                     <li id="I1.i2">
-                        
-                        <div id="I1.i2.p1">
-                           
-                           <p><span>The MathML 3 specification is designed as an independent
-                                 XML language and browser vendors have almost not been involved in the
-                                 standardization process</span>. The Math WG and WHATWG worked together to
-                              integrate MathML in <cite>[<a href="#bibx9">HTML5</a>]</cite>
-                              but MathML3 has inconsistencies and lacks of details when it comes to
-                              interaction with CSS / HTML5 features: vertical writing mode,
-                              user stylesheet, <code>mstyle</code> inheritance, out-of-flow elements,
-                              attributes sensitiveness, definition of space characters...
-                              The MathML 3 specification is sometimes biased by MathML rendering and
-                              authoring tools behaving quite differently from web rendering engines.
-                              Hence it is not always obvious whether all features are fundamental or
-                              whether they fit well into the web rendering engine codebase.
-                              For example, the <span>&lt;mfenced&gt;</span> element is just a
-                              “convenient form in which to express common constructs involving fences”
-                              but is strictly equivalent to an expanded form with <span>&lt;mrow&gt;</span> and
-                              <span>&lt;mo&gt;</span> elements. It requires web rendering engines
-                              to create many “anonymous”
-                              rendering frames and keep them up-to-date, to duplicate the logic
-                              for drawing and exposing the content of fenced expressions etc.
-                              <cite>[<a href="#bibx11">MathML3</a>]</cite>.
-                           </p>
-                           
-                        </div>
-                        
-                     </li>
+                     <li>It does not contain any detailed rendering rules.</li>
+                     
+                     <li>It is not driven by browser-implementation.</li>
+                     
+                     <li>It lacks automated testing.</li>
                      
                   </ol>
                   
                </div>
                
+               
                <div id="mathml3diff.p4">
                   
-                  <p>This "MathML Core" specification intends to address these issues by
-                     being as accurate as
-                     possible on the visual rendering of mathematical formulas using additional
-                     rules from the TeXBook’s Appendix G <cite>[<a href="#bibx16">TeXBook</a>]</cite> and from
+                  <p>This <em>MathML Core</em> specification intends to address these issues by
+                     being as accurate as possible on the visual rendering of mathematical
+                     formulas using additional rules from the TeXBook’s Appendix G
+                     <cite>[<a href="#bibx16">TeXBook</a>]</cite> and from
                      the Open Font Format <cite>[<a href="#bibx13">OpenFontFormat3</a>]</cite>.
-                     Focus has been put on keeping compatible with existing technologies of web
-                     rendering engines <cite>[<a href="#bibx9">HTML5</a>]</cite> by relying as much as possible on CSS, text &amp;
-                     table layout and box models. As a consequence, parts of MathML 3
-                     that do not fit well in this framework or are rarely used in practice
-                     have been ommited and moved into a larger specification
+                     It also relies on modern browser implementations and web technologies
+                     <cite>[<a href="#bibx9">HTML5</a>]</cite>, extending them or
+                     clarifying interactions when needed.
+                     Parts of MathML 3 that do not fit well in this framework or are rarely used
+                     in practice have been ommited and moved into a larger specification
                      <cite>[<a href="#bibx11bis">MathML4</a>]</cite>.
                   </p>
                   
@@ -288,17 +214,15 @@
                   
                   <p>By increasing the level of implementation details and by focusing more on
                      browser-driven design, this specification is expected to greatly improve
-                     MathML interoperability. A
-                     <a href="http://www.w3c-test.org/mathml/">auto</a>
-                     is available in a separate
-                     <a href="https://github.com/w3c/web-platform-tests/tree/master/mathml">auto</a>. Browser vendors are encouraged to use these tests during
-                     implementation &amp; automated testing. Contribution of new tests and error
-                     reports are welcome.
+                     MathML interoperability. A test suite is available in the
+                     <a href="#bibwpt">WPT</a> repository.
+                     
                   </p>
                   
                </div>
                
             </section>
+            
             
             <section id="terminology">
                
@@ -29196,6 +29120,16 @@ math &gt; * {
                   
                </li>
                
+               
+               <li id="bibwpt">
+                  <span>WPT</span>
+                  <span>
+                     Test suites for Web platform specs — including WHATWG, W3C, and others<br>
+                     <a href="https://github.com/web-platform-tests/wpt">The web-platform-tests Projec</a>
+                     </span>
+                  
+               </li>
+               
             </ul>
             
          </section>
@@ -29211,7 +29145,6 @@ math &gt; * {
             </p>
             
             
-            <p class="issue">GitHub issue list not loaded</p>
             <table>
                <tbody></tbody>
             </table>
