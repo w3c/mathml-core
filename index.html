@@ -131,20 +131,19 @@
                   <li><a href="#sematicsandpresentation"><span>3.7</span> Semantics and Presentation</a></li>
                </ol>
             </li>
-            <li><a href="#opentype"><span>Appendix A</span> OpenType</a></li>
-            <li><a href="#rnc"><span>Appendix B</span> Relax NG</a></li>
-            <li><a href="#user-agent-stylesheet"><span>Appendix C</span> User Agent Stylesheet</a></li>
-            <li><a href="#op-dict"><span>Appendix D</span> Operator Dictionary</a><ol class="toc">
-                  <li><a href="#oper-dict_index"><span>D.1</span> Indexing of the operator dictionary</a></li>
-                  <li><a href="#oper-dict_format"><span>D.2</span> Format of operator dictionary entries</a></li>
-                  <li><a href="#oper-dict_space"><span>D.3</span> Notes on <code>lspace</code> and 
+            <li><a href="#rnc"><span>Appendix A</span> Relax NG</a></li>
+            <li><a href="#user-agent-stylesheet"><span>Appendix B</span> User Agent Stylesheet</a></li>
+            <li><a href="#op-dict"><span>Appendix C</span> Operator Dictionary</a><ol class="toc">
+                  <li><a href="#oper-dict_index"><span>C.1</span> Indexing of the operator dictionary</a></li>
+                  <li><a href="#oper-dict_format"><span>C.2</span> Format of operator dictionary entries</a></li>
+                  <li><a href="#oper-dict_space"><span>C.3</span> Notes on <code>lspace</code> and 
                         <code>rspace</code> attributes</a></li>
-                  <li><a href="#oper-dict_entries-table"><span>D.4</span> Operator dictionary entries</a></li>
+                  <li><a href="#oper-dict_entries-table"><span>C.4</span> Operator dictionary entries</a></li>
                </ol>
             </li>
-            <li><a href="#comb-equiv"><span>Appendix E</span> MathML Combining Character Equivalences</a></li>
-            <li><a href="#references"><span>Appendix F</span> References</a></li>
-            <li><a href="#issues"><span>Appendix G</span> Open MathML Core Issues</a></li>
+            <li><a href="#comb-equiv"><span>Appendix D</span> MathML Combining Character Equivalences</a></li>
+            <li><a href="#references"><span>Appendix E</span> References</a></li>
+            <li><a href="#issues"><span>Appendix F</span> Open MathML Core Issues</a></li>
          </ol>
       </nav>
       <div class="body">
@@ -11826,74 +11825,9 @@ mlabeledtr &gt; mtd:first-child {
             </section>
             
          </section>
-         <section id="opentype">
-            
-            <h1><span class="secnum">Appendix A</span> OpenType
-            </h1>
-            
-            <div></div>
-            
-            
-            <div id="p1">
-               
-               <p><span>This section is non-normative.</span></p>
-               
-            </div>
-            
-            <div id="p2">
-               
-               <p>It is not clear how the <code class="MATH">DisplayOperatorMinHeight</code> is
-                  supposed to be used or whether it is really reliable. More specifically,
-                  integral symbols (e.g. INTEGRAL U+222B) are typically taller than N-ary
-                  operators (e.g. N-ARY SUMMATION U+2211) so a unique minimal height may not
-                  always be enough to determine the display size. Suppose for example that the
-                  sum has three size variants: the base size of height 1em, the display size
-                  of height 2em and a bigger variant of height 3em.
-                  Suppose that the integral has three sizes: a base size of
-                  height 1em, a larger size variant of height 2em and a display size of height
-                  3em. If <code class="MATH">DisplayOperatorMinHeight</code> is less than
-                  3em then it does not force the display size of the integral to be selected.
-                  If it is more than 3em then none of the available sizes satisfies the
-                  condition. How to interpret that? Should we pick the largest as a fallback?
-                  If it is 3em, the desired size will be selected for the integral in display
-                  size but the one selected for the sum in display size will be too large.
-                  A heuristic is proposed in section <a href="#tokenmo">3.2.3</a> to workaround limitations
-                  of <code class="MATH">DisplayOperatorMinHeight</code>.
-               </p>
-               
-            </div>
-            
-            <div id="p3">
-               
-               <p>The OpenType MATH specification does not seem to take into account
-                  linebreaking. As explained in section <a href="#layoutsteps">3.1.2</a> it is important in a
-                  HTML5 context to be able to determine the min-content width and the max-content
-                  width. However when an operator is stretched vertically to cover a target size,
-                  it is not possible to know the selected size variant or glyph assembly without
-                  knowing the target size and so the min-content and max-content widths can only
-                  be approximated. In practice, the width of the vertical operators is almost
-                  independent on its stretch size. Should that be a requirement of the
-                  OpenType MATH specification?
-               </p>
-               
-            </div>
-            
-            <div id="p4">
-               
-               <p>In section <a href="#menclose">3.3.8</a> we describe the MathML <code>menclose</code> element. This
-                  one contains many notations that are not mentioned in the OpenType MATH
-                  specification. Some rendering suggestions are given based on the value of
-                  <code class="MATH">OverbarRuleThickness</code> but perhaps new values should be
-                  introduced in the <code class="MATH">MathConstants</code> subtable to cover these
-                  notations.
-               </p>
-               
-            </div>
-            
-         </section>
          <section id="rnc">
             
-            <h1><span class="secnum">Appendix B</span> Relax NG
+            <h1><span class="secnum">Appendix A</span> Relax NG
             </h1>
             
             <p>This section displays a non-normative Relax NG Schema which
@@ -12191,7 +12125,7 @@ mlabeledtr &gt; mtd:first-child {
             </section>
          <section id="user-agent-stylesheet">
             
-            <h1><span class="secnum">Appendix C</span> User Agent Stylesheet
+            <h1><span class="secnum">Appendix B</span> User Agent Stylesheet
             </h1>
             
             <div></div>
@@ -12344,7 +12278,7 @@ munderover &gt; :not(:first-child) {
          </section>
          <section id="op-dict">
             
-            <h1><span class="secnum">Appendix D</span> Operator Dictionary
+            <h1><span class="secnum">Appendix C</span> Operator Dictionary
             </h1>
             
             
@@ -12358,7 +12292,7 @@ munderover &gt; :not(:first-child) {
             
             
             <section id="oper-dict_index">
-               <h2><span class="secnum">D.1</span> Indexing of the operator dictionary
+               <h2><span class="secnum">C.1</span> Indexing of the operator dictionary
                </h2>
                
                
@@ -12394,7 +12328,7 @@ munderover &gt; :not(:first-child) {
             
             
             <section id="oper-dict_format">
-               <h2><span class="secnum">D.2</span> Format of operator dictionary entries
+               <h2><span class="secnum">C.2</span> Format of operator dictionary entries
                </h2>
                
                
@@ -12491,7 +12425,7 @@ munderover &gt; :not(:first-child) {
             
             
             <section id="oper-dict_space">
-               <h2><span class="secnum">D.3</span> Notes on <code>lspace</code> and 
+               <h2><span class="secnum">C.3</span> Notes on <code>lspace</code> and 
                   <code>rspace</code> attributes
                </h2>
                
@@ -12618,7 +12552,7 @@ munderover &gt; :not(:first-child) {
             
             
             <section id="oper-dict_entries-table">
-               <h2><span class="secnum">D.4</span> Operator dictionary entries
+               <h2><span class="secnum">C.4</span> Operator dictionary entries
                </h2>
                
                
@@ -28150,7 +28084,7 @@ munderover &gt; :not(:first-child) {
          </section>
          <section id="comb-equiv">
             
-            <h1><span class="secnum">Appendix E</span> MathML Combining Character Equivalences
+            <h1><span class="secnum">Appendix D</span> MathML Combining Character Equivalences
             </h1>
             
             
@@ -28753,7 +28687,7 @@ munderover &gt; :not(:first-child) {
          </section>
          <section id="references">
             
-            <h1><span class="secnum">Appendix F</span> References
+            <h1><span class="secnum">Appendix E</span> References
             </h1>
             
             <div></div>
@@ -29000,17 +28934,16 @@ munderover &gt; :not(:first-child) {
          </section>
          <section id="issues">
             
-            <h1><span class="secnum">Appendix G</span> Open MathML Core Issues
+            <h1><span class="secnum">Appendix F</span> Open MathML Core Issues
             </h1>
             
             
-            <p>The following lists the Open isses in the
+            <p>The following lists the Open issues in the
                <a href="https://github.com/mathml-refresh/mathml/">MathML GitHub repository</a>
-               tagged with the label <b>core</b>.
+               tagged with the label <strong>core</strong>.
             </p>
             
             
-            <p class="issue">GitHub issue list not loaded</p>
             <table>
                <tbody></tbody>
             </table>
