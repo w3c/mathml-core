@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>2 Relation with other technologies</title>
+<title>2 MathML Fundamentals</title>
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 
 </head>
 <body>
-<section id="othertechnologies">
-<h1>Relation with other technologies</h1>
+<section id="fundamentals">
+<h1>MathML Fundamentals</h1>
 <div></div>
 
 <section id="html5tree">
@@ -471,6 +471,36 @@ munderover > :not(:first-child) {
 </div>
 </section>
 </section>
+
+<section id="att-syntax">
+ <h1>MathML Core Attribute Syntax</h1>
+ <p>Several MathML elements have attributes sharing common syntax for constructs such as <a href="#length">auto</a> or
+ <a href="#length">color</a>. the syntax for these attributes is defined below.</p>
+
+ <section id="length">
+  <h2>Length</h2>
+  <p>MathML Core attributes of type <i>length</i> must have value
+  consisting of an optional U+002D HYPHEN-MINUS (-) followed by a
+  string of characters representing a length or percentage as specifed
+  by
+  <a
+      href="https://www.w3.org/TR/html5/infrastructure.html#percentages-and-dimensions">HTML5
+  percentages and lengths</a>.</p>
+  <aside data-gh="63"/>
+ </section>
+ <section id="color">
+  <h2>Color</h2>
+  <p>MathML Core attributes of type <i>color</i> must have value
+  consisting of a string of characters representing a color as specified
+  by
+  <a
+      href="https://www.w3.org/TR/html5/infrastructure.html#colors">HTML5
+  color</a>.</p>
+  
+   <aside data-gh="62"/>
+ </section>
+</section>
+
 </section>
 </body>
 </html>
