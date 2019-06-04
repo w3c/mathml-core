@@ -240,106 +240,99 @@ space around embellished operators.</p>
 <h2>CSS Styling</h2>
 
 <section id="cssproperties">
-<h3>Properties</h3>
-
-<div id="cssproperties.p1">
-<p>User agents must support the CSS language <cite>[<a href="bib.html#bibx1">auto</a>]</cite> and must take special
-styling into account when building the visual representation of the document.
-Many of the MathML elements accept attributes with length value whose
-general syntax is described in section 2.1.5.2 of the MathML specification
-<cite>[<a href="bib.html#bibx11">auto</a>]</cite>. In general,
-the syntax is compatible with <cite>[<a href="bib.html#bibx1">auto</a>]</cite> but user agents must handle
-specificities of the MathML specification. In particular, the keywords
-<code>veryverythinmathspace</code>,
-<code>verythinmathspace</code>,
-<code>thinmathspace</code>,
-<code>mediummathspace</code>,
-<code>thickmathspace</code>,
-<code>verythickmathspace</code>,
-<code>veryverythickmathspace</code>,
-<code>negativeveryverythinmathspace</code>,
-<code>negativeverythinmathspace</code>,
-<code>negativethinmathspace</code>,
-<code>negativemediummathspace</code>,
-<code>negativethickmathspace</code>,
-<code>negativeverythickmathspace</code> and
-<code>negativeveryverythickmathspace</code> must be interpreted as their
-equivalent <code>em</code> value. Also, percent values must be interpreted
-with respect to the appropriate reference value.
-Note that the <code>mpadded</code>
-element also accepts more general length values as discussed in section
-<a href="presentation.html#mpadded">auto</a>.</p>
-</div>
-<div id="cssproperties.p2">
-<p>User agents must support at least the following properties:</p>
-<ol id="I4">
-<li id="I4.i1"> 
-<div id="I4.i1.p1">
-<p><code>display</code>: at least inline, block, inline-table, table-row,
-  table-cell, none and contents.
-  It is used for the <code>math</code> and tabular elements.
-  Appropriate values may be specified in the user agent stylesheet
-  as described in section <a href="#cssuseragent">auto</a>.</p>
-</div>
-</li>
-<li id="I4.i2"> 
-<div id="I4.i2.p1">
-<p><code>direction</code>. The <code>dir</code> attribute on the <code>math</code>, <code>mstyle</code>,
-<code>mrow</code> and <code>token</code> elements must be mapped to that property.</p>
-</div>
-</li>
-<li id="I4.i3"> 
-<div id="I4.i3.p1">
-<p><code>font</code> property and its shorthands. The <code>mathsize</code> attribute on
-the <code>math</code>, <code>mstyle</code> and token elements must mapped to that property.</p>
-</div>
-</li>
-<li id="I4.i4"> 
-<div id="I4.i4.p1">
-<p><code>background</code> and <code>color</code>. The <code>mathcolor</code> and
-<code>mathbackground</code> attributes on presentation MathML elements must be
-mapped to these properties.</p>
-</div>
-</li>
-<li id="I4.i5"> 
-<div id="I4.i5.p1">
-<p><code>visibility</code>. It is is used for the <code>mphantom</code> element and may be
-specified in the user agent stylesheet as described in section
-<a href="#cssuseragent">auto</a>.</p>
-</div>
-</li>
-</ol>
-</div>
-<div id="cssproperties.p3">
-<p>User agents must support the <code>displaystyle</code> attribute. This may be
-implemented using a new <code>mathml-math-style</code> property described in
-table <a href="#cssproperties">auto</a>. The expected behavior may be completely
-specified in the user agent stylesheet as described in section
-<a href="#cssuseragent">auto</a>.</p>
-</div>
-<div id="cssproperties.p4">
-<p>User agents must support the <code>mathvariant</code> attribute. This may be
-implemented using a new <code>mathml-math-variant</code> property described in
-table <a href="#cssproperties.tab1">auto</a>. The expected behavior may be implemented by
-mapping <code>mathvariant</code> attributes on the <code>math</code>, <code>mstyle</code> and token
-elements to <code>mathml-math-variant</code>. Then during the rendering of text nodes,
-the <code>mathml-math-variant</code> value must be taken into account to remap
-some characters to their equivalent code points, as specified by the MathML
-specification. However, as indicated in section <a href="presentation.html#latex">auto</a>, when
-<code>mathml-math-variant</code> is <code>none</code> on an <code>mi</code> element with a single
-character, it must actually be treated as if the mathvariant was <code>italic</code>.</p>
-</div>
-<div id="cssproperties.p5">
-<p>User agents must implement the <code>scriptlevel</code> attributes and support
-automatic incrementation of the <code>scriptlevel</code> described in the MathML
-specification.</p>
-</div>
-<div id="cssproperties.p6">
-  <p>For all MathML elements, <code>display: contents</code> computes to <code>display: none</code> <cite>[<a href="bib.html#bib-css-display">auto</a>]</cite>.</p>
-</div>
-
-TODO: Rewrite this using https://github.com/mathml-refresh/mathml-css-proposals#mathml-css-proposals
-
+  <h3>Properties</h3>
+  <div id="cssproperties.p1">
+    <p>
+      User agents must support the CSS language
+      <cite>[<a href="bib.html#bibx1">auto</a>]</cite> and must take special
+      styling into account when building the visual representation of the
+      document.
+    </p>
+  </div>
+  <div id="cssproperties.p2">
+    <p>User agents must support at least the following properties:</p>
+    <ol>
+      <li><code>display</code>: at least <code>inline</code>,
+        <code>block</code>, <code>inline-table</code>,
+        <code>table-row</code>, <code>table-cell</code>, <code>none</code> and
+        <code>contents</code>.
+        It is used for the <code>math</code> and tabular elements.
+        Appropriate values must be specified in the user agent stylesheet
+        as described in section <a href="#cssuseragent">auto</a>.
+        For all MathML elements, <code>display: contents</code> computes to
+        <code>display: none</code>
+        <cite>[<a href="bib.html#bib-css-display">auto</a>]</cite>.
+      </li>
+      <li><code>direction</code>. The <code>dir</code> attribute on any
+        MathML element must be mapped to that property.</li>
+      <li>The <code>font</code> property and its shorthands. The
+        <code>mathsize</code> attribute on any MathML element must mapped to
+        that property.</li>
+      <li><code>background</code> and <code>color</code>. The
+        <code>mathbackground</code> and <code>mathcolor</code> attributes on
+        any MathML elements must be mapped to these properties.</li>
+      <li><code>visibility</code>. It is is used for the <code>mphantom</code>
+        element and must be specified in the user agent stylesheet as described
+        in section <a href="#cssuseragent">auto</a>.</li>
+      <li><code>text-transform</code>. It is used to implement the
+        <code>mathvariant</code> attribute on any MathML element.
+        Values <code>normal</code>
+        <code>bold</code>,
+        <code>italic</code>,
+        <code>bold-italic</code>,
+        <code>double-struck</code>,
+        <code>bold-fraktur</code>,
+        <code>script</code>,
+        <code>bold-script</code>,
+        <code>fraktur</code>,
+        <code>sans-serif</code>,
+        <code>bold-sans-serif</code>,
+        <code>sans-serif-italic</code>,
+        <code>sans-serif-bold-italic</code>,
+        <code>monospace</code>,
+        <code>initial</code>,
+        <code>tailed</code>,
+        <code>looped</code>,
+        <code>stretched</code> are respectively mapped to
+        <code>text-transform: none</code>,
+        <code>text-transform: math-bold</code>
+        <code>text-transform: math-italic</code>
+        <code>text-transform: math-bold-italic</code>
+        <code>text-transform: math-double-struck</code>
+        <code>text-transform: math-bold-fraktur</code>
+        <code>text-transform: math-script</code>
+        <code>text-transform: math-bold-script</code>
+        <code>text-transform: math-fraktur</code>
+        <code>text-transform: math-sans-serif</code>
+        <code>text-transform: math-bold-sans-serif</code>
+        <code>text-transform: math-sans-serif-italic</code>
+        <code>text-transform: math-sans-serif-bold-italic</code>
+        <code>text-transform: math-monospace</code>
+        <code>text-transform: math-initial</code>
+        <code>text-transform: math-tailed</code>
+        <code>text-transform: math-looped</code>
+        <code>text-transform: math-stretched</code>.
+        Additional value for <code>mi</code> in the user agent stylesheet
+        is described in section <a href="#cssuseragent">auto</a>.
+      </li>
+      <li><code>math-style</code>.
+        It is used for the <code>displaystyle</code> attribute on any
+        MathML element.
+        Appropriate values must be specified in the user agent stylesheet
+        as described in section <a href="#cssuseragent">auto</a>.
+      </li>
+      <li><code>math-script-level</code>.
+        It is used for the <code>scriptlevel</code> attribute on any
+        MathML element. For any unsigned integer U,
+        <code>+U</code>, <code>-U</code> and <code>U</code>
+        is respectively mapped to <code>math-script-level: add(U)</code>
+         <code>math-script-level: add(-U)</code>
+        and <code>math-script-level: U</code>.
+        Additional values must be specified in the user agent stylesheet
+        as described in section <a href="#cssuseragent">auto</a>.
+      </li>
+    </ol>
+  </div>
 </section>
 <section id="cssuseragent">
 <h3>User Agent Stylesheet for MathML</h3>
