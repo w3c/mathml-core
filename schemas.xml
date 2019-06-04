@@ -1,6 +1,0 @@
-<?xml version="1.0"?>
-<locatingRules xmlns="http://thaiopensource.com/ns/locating-rules/1.0">
- <uri resource="x.xml" uri="schema/openmath2.rnc"/>
- <uri resource="cmml1.xml" uri="mml.rnc"/>
- <documentElement localName="math" uri="mathml4-web.rnc"/>
-</locatingRules>
