@@ -135,19 +135,18 @@
                </ol>
             </li>
             <li><a href="#opentype"><span>Appendix A</span> OpenType</a></li>
-            <li><a href="#imagefallback"><span>Appendix B</span> Image Fallback</a></li>
-            <li><a href="#rnc"><span>Appendix C</span> Relax NG</a></li>
-            <li><a href="#op-dict"><span>Appendix D</span> Operator Dictionary</a><ol class="toc">
-                  <li><a href="#oper-dict_index"><span>D.1</span> Indexing of the operator dictionary</a></li>
-                  <li><a href="#oper-dict_format"><span>D.2</span> Format of operator dictionary entries</a></li>
-                  <li><a href="#oper-dict_space"><span>D.3</span> Notes on <code>lspace</code> and 
+            <li><a href="#rnc"><span>Appendix B</span> Relax NG</a></li>
+            <li><a href="#op-dict"><span>Appendix C</span> Operator Dictionary</a><ol class="toc">
+                  <li><a href="#oper-dict_index"><span>C.1</span> Indexing of the operator dictionary</a></li>
+                  <li><a href="#oper-dict_format"><span>C.2</span> Format of operator dictionary entries</a></li>
+                  <li><a href="#oper-dict_space"><span>C.3</span> Notes on <code>lspace</code> and 
                         <code>rspace</code> attributes</a></li>
-                  <li><a href="#oper-dict_entries-table"><span>D.4</span> Operator dictionary entries</a></li>
+                  <li><a href="#oper-dict_entries-table"><span>C.4</span> Operator dictionary entries</a></li>
                </ol>
             </li>
-            <li><a href="#comb-equiv"><span>Appendix E</span> MathML Combining Character Equivalences</a></li>
-            <li><a href="#references"><span>Appendix F</span> References</a></li>
-            <li><a href="#issues"><span>Appendix G</span> Open MathML Core Issues</a></li>
+            <li><a href="#comb-equiv"><span>Appendix D</span> MathML Combining Character Equivalences</a></li>
+            <li><a href="#references"><span>Appendix E</span> References</a></li>
+            <li><a href="#issues"><span>Appendix F</span> Open MathML Core Issues</a></li>
          </ol>
       </nav>
       <div class="body">
@@ -409,18 +408,6 @@
   text-decoration: none;
 }</pre>
                      </div>
-                  
-                  <div id="mathmltree.p3">
-                     
-                     <p>The toplevel <code>math</code> element accepts the <code>altimg</code>, <code>altimg-width</code>,
-                        <code>altimg-height</code>, <code>altimg-valign</code> and <code>alttext</code> attributes.
-                        These attributes allow to specify fallback content and must be ignored by
-                        user agents for rendering purpose. User agents that do not follow the current
-                        implementation note, may follow implementation suggestions from Appendix
-                        <a href="A4.html">auto</a> in order to use that fallback image.
-                     </p>
-                     
-                  </div>
                   
                   <div id="mathmltree.p4">
                      
@@ -12118,60 +12105,9 @@ mlabeledtr &gt; mtd:first-child {
             </div>
             
          </section>
-         <section id="imagefallback">
-            
-            <h1><span class="secnum">Appendix B</span> Image Fallback
-            </h1>
-            
-            <div></div>
-            
-            
-            <div id="p1">
-               
-               <p><span>This section is non-normative.</span></p>
-               
-            </div>
-            
-            <div id="p2">
-               
-               <p>User agents that do not support MathML may decide to
-                  render the fallback content provided by the <span>altimg*</span> attributes in some
-                  situations e.g. when they are specified or
-                  under a preference option. In that case, an approximate implementation is to
-                  render the <code>math</code> element as a HTML <code>img</code> element with the
-                  value of <code>altimg</code> as an <code>src</code> attribute, the value of
-                  <code>alttext</code> as an <code>alt</code> attribute, the value of <span>altimg-width</span> as
-                  the CSS <code>width</code> property, the value of <span>altimg-height</span> as
-                  the CSS <code>height</code> property and the value of <span>altimg-valign</span> as
-                  the CSS <span>vertical-align</span> property <cite>[<a href="#bibx9">HTML5</a>]</cite> <cite>[<a href="#bibx1">CSS2</a>]</cite>. Here is a
-                  partial implementation using the <span>attr()</span> function of <cite>[<a href="#bibx3">CSS3Values</a>]</cite>:
-               </p>
-               
-               <div>
-                  <pre class="example">math {
-  display: inline;
-}
-math[display="block"] {
-  display: block;
-  text-align: center;
-}
-math {
-  background-image: attr(altimg url);
-  width: attr(altimg-width length);
-  height: attr(altimg-height length);
-  vertical-align: attr(altimg-valign length);
-}
-math &gt; * {
-  display: none;
-}</pre>
-                  </div>
-               
-            </div>
-            
-         </section>
          <section id="rnc">
             
-            <h1><span class="secnum">Appendix C</span> Relax NG
+            <h1><span class="secnum">Appendix B</span> Relax NG
             </h1>
             
             <p>This section displays a non-normative Relax NG Schema which
@@ -12196,14 +12132,7 @@ math &gt; * {
             <span style="font-weight:bold;">attribute</span> href {<span style="font-weight:bold;">xsd:anyURI</span>}?
 
 <a name="rncrncmath.attributes" style="color:blue;">math.attributes</a> = <a href="#rncrncCommonAtt">CommonAtt</a>,
-               <span style="font-weight:bold;">attribute</span> display {"block" | "inline"}?,
-               <span style="color:brown;"># attribute maxwidth {length}?,</span>
-               <span style="color:brown;"># attribute overflow {"linebreak" | "scroll" | "elide" | "truncate" | "scale"}?,</span>
-               <span style="font-weight:bold;">attribute</span> altimg {<span style="font-weight:bold;">xsd:anyURI</span>}?,
-               <span style="font-weight:bold;">attribute</span> altimg-width {<a href="#rncrnclength">length</a>}?,
-               <span style="font-weight:bold;">attribute</span> altimg-height {<a href="#rncrnclength">length</a>}?,
-               <span style="font-weight:bold;">attribute</span> altimg-valign {<a href="#rncrnclength">length</a> | "top" | "middle" | "bottom"}?,
-               <span style="font-weight:bold;">attribute</span> alttext {<span style="font-weight:bold;">text</span>}?
+               <span style="font-weight:bold;">attribute</span> display {"block" | "inline"}?
 
 <a name="rncrncannotation" style="color:blue;">annotation</a> = <span style="font-weight:bold;">element</span> annotation {<a href="#rncrncCommonAtt">CommonAtt</a>,(<a href="#rncrncsrc">src</a>|<span style="font-weight:bold;">text</span>)}
 
@@ -12476,7 +12405,7 @@ math &gt; * {
             </section>
          <section id="op-dict">
             
-            <h1><span class="secnum">Appendix D</span> Operator Dictionary
+            <h1><span class="secnum">Appendix C</span> Operator Dictionary
             </h1>
             
             
@@ -12490,7 +12419,7 @@ math &gt; * {
             
             
             <section id="oper-dict_index">
-               <h2><span class="secnum">D.1</span> Indexing of the operator dictionary
+               <h2><span class="secnum">C.1</span> Indexing of the operator dictionary
                </h2>
                
                
@@ -12526,7 +12455,7 @@ math &gt; * {
             
             
             <section id="oper-dict_format">
-               <h2><span class="secnum">D.2</span> Format of operator dictionary entries
+               <h2><span class="secnum">C.2</span> Format of operator dictionary entries
                </h2>
                
                
@@ -12623,7 +12552,7 @@ math &gt; * {
             
             
             <section id="oper-dict_space">
-               <h2><span class="secnum">D.3</span> Notes on <code>lspace</code> and 
+               <h2><span class="secnum">C.3</span> Notes on <code>lspace</code> and 
                   <code>rspace</code> attributes
                </h2>
                
@@ -12750,7 +12679,7 @@ math &gt; * {
             
             
             <section id="oper-dict_entries-table">
-               <h2><span class="secnum">D.4</span> Operator dictionary entries
+               <h2><span class="secnum">C.4</span> Operator dictionary entries
                </h2>
                
                
@@ -28282,7 +28211,7 @@ math &gt; * {
          </section>
          <section id="comb-equiv">
             
-            <h1><span class="secnum">Appendix E</span> MathML Combining Character Equivalences
+            <h1><span class="secnum">Appendix D</span> MathML Combining Character Equivalences
             </h1>
             
             
@@ -28885,7 +28814,7 @@ math &gt; * {
          </section>
          <section id="references">
             
-            <h1><span class="secnum">Appendix F</span> References
+            <h1><span class="secnum">Appendix E</span> References
             </h1>
             
             <div></div>
@@ -29132,7 +29061,7 @@ math &gt; * {
          </section>
          <section id="issues">
             
-            <h1><span class="secnum">Appendix G</span> Open MathML Core Issues
+            <h1><span class="secnum">Appendix F</span> Open MathML Core Issues
             </h1>
             
             
@@ -29142,7 +29071,6 @@ math &gt; * {
             </p>
             
             
-            <p class="issue">GitHub issue list not loaded</p>
             <table>
                <tbody></tbody>
             </table>
