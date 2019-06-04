@@ -375,41 +375,40 @@
                   
                </section>
                
+               
                <section id="mathmltree">
                   
                   <h3><span class="secnum">2.1.2</span> MathML
                   </h3>
                   
-                  
                   <div id="mathmltree.p1">
                      
-                     <p>All MathML elements accept the <code>id</code>, <code>class</code> and <code>style</code> attributes
-                        <cite>[<a href="#bibx11">MathML3</a>]</cite>. They must be interpreted as described in section 3.2.5 of the
-                        HTML5 specification <cite>[<a href="#bibx9">HTML5</a>]</cite> and in particular they specify a unique
-                        identifier (to identify elements in links and scripting), affect
-                        CSS selectors, affect <code>getElementsByClassName()</code> and enable authors to do
-                        inline styling.
+                     <p>
+                        All MathML elements accept the <code>id</code>, <code>class</code> and
+                        <code>style</code> attributes with the semantic described in section 3.2.5
+                        of <cite>[<a href="#bibx9">HTML5</a>]</cite>. In particular,
+                        they specify a unique identifier for links and scripting, affect CSS
+                        selectors, affect <code>getElementsByClassName()</code> and enable
+                        authors to do inline styling.
                      </p>
                      
                   </div>
                   
                   <div id="mathmltree.p2">
                      
-                     <p>MathML 3 allows to use the <code>href</code> attribute on any MathML element
-                        <cite>[<a href="#bibx11">MathML3</a>]</cite>. In the present document, it is only required to implement
-                        <code>href</code> on the <code>mrow</code> element with the behavior described in 4.8
-                        of the HTML5 specification for the <code>a</code> element <cite>[<a href="#bibx9">HTML5</a>]</cite>. It is
-                        recommended to make links visually distinguisable by default, for example by
-                        adding a rule in the user agent stylesheet (section <a href="#cssuseragent">2.3.2</a>) such as
+                     <p>
+                        All MathML elements accept the <code>href</code> attribute, with the
+                        semantic described in section 4.8 of
+                        <cite>[<a href="#bibx9">HTML5</a>]</cite> for the
+                        <code>a</code> element. The default User Agent stylesheet must contain
+                        the following CSS selector:
+                        
                      </p>
-                     
-                     <div>
-                        <pre class="example">mrow[href] {
+                     <pre class="example">:any-link {
   color: blue;
+  text-decoration: none;
 }</pre>
-                        </div>
-                     
-                  </div>
+                     </div>
                   
                   <div id="mathmltree.p3">
                      
@@ -881,8 +880,9 @@ math[displaystyle="true"] {
   mathml-math-style: display;
 }
 /* Links */
-mrow[href] {
-  color: blue;
+:any-link {
+    color: blue;
+    text-decoration: none;
 }
 /* Tabular elements */
 mtable {
