@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>C User Agent Stylesheet</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+</head>
+<body>
+<section id="user-agent-stylesheet">
+<h1>User Agent Stylesheet</h1>
+<div></div>
+
+
+<div id="cssuseragent.p1">
+<p>Because mathematical formulas are generally written with special fonts, the
+default user agent stylesheet must reset the CSS <code>font-family</code> on the
+<code>math</code> element to <code>serif</code>. User agents should then use their own
+mechanism to try and interpret this <code>serif</code> value on the <code>math</code> element
+as a font with an OpenType MATH table.</p>
+</div>
+<div id="cssuseragent.p2">
+<p>Below is an example on a stylesheet to style MathML elements on which the
+User Agents may rely. Unfortunately, some rendering engines do not allow
+universal selectors in their user agent stylesheets and so rules must be
+expanded to list all possible MathML elements described in the present
+document. For example <code>mfrac &gt; *</code> can be converted into
+<code>mfrac &gt; mi, mfrac &gt; mn, mfrac &gt; mo, mfrac &gt; mtext, mfrac &gt; mspace,
+mfrac &gt; ms, mfrac &gt; mrow, mfrac &gt; mfrac, mfrac &gt; msqrt, mfrac &gt; mroot,
+mfrac &gt; mstyle, mfrac &gt; merror, mfrac &gt; mpadded, mfrac &gt; mphantom,
+mfrac &gt; menclose, mfrac &gt; msub, mfrac &gt; msubsup, mfrac &gt; munder, mfrac &gt; mover,
+mfrac &gt; munderover, mfrac &gt; mmultiscripts, mfrac &gt; mtable, mfrac &gt; maction</code>.</p>
+</div>
+<div id="cssuseragent.p3">
+<div>
+  <pre>@namespace url(http://www.w3.org/1998/Math/MathML);
+/* The &lt;math&gt; element */
+math {
+  direction: ltr;
+  display: inline;
+  font-size: inherit;
+  font-style: normal;
+  font-family: serif;
+  mathml-math-style: inline;
+}
+math[display="block"] {
+  display: block;
+  text-align: center;
+  mathml-math-style: display;
+}
+math[display="inline"] {
+  display: inline;
+  mathml-math-style: inline;
+}
+math[displaystyle="false"] {
+  mathml-math-style: inline;
+}
+math[displaystyle="true"] {
+  mathml-math-style: display;
+}
+/* Links */
+:any-link {
+    color: blue;
+    text-decoration: none;
+}
+/* Tabular elements */
+mtable {
+  display: inline-table;
+  mathml-math-style: inline;
+}
+mtable[displaystyle="true"] {
+  mathml-math-style: display;
+}
+mtable[frame="none"] {
+  border: none;
+}
+mtable[frame="solid"] {
+  border: solid thin;
+}
+mtable[frame="dashed"] {
+  border: dashed thin;
+}
+mtr, mlabeledtr {
+  display: table-row;
+  vertical-align: baseline;
+}
+mlabeledtr > mtd:first-child {
+  display: none;
+}
+mtd {
+  display: table-cell;
+  vertical-align: inherit;
+  text-align: center;
+  padding: 0.5ex 0.4em;
+}
+/* The &lt;ms&gt; element */
+ms {
+  display: inline;
+}
+ms:before, ms:after {
+  content: "\0022"
+}
+ms[lquote]:before {
+  content: attr(lquote)
+}
+ms[rquote]:after {
+  content: attr(rquote)
+}
+/*  The &lt;merror&gt; element */
+merror {
+ outline: solid thin red;
+ background-color: lightYellow;
+}
+/* The &lt;mphantom&gt; element */
+mphantom {
+  visibility: hidden;
+}
+/* Scriptlevel and displaystyle for other elements */
+mstyle[displaystyle="false"] {
+  mathml-math-style: inline;
+}
+mstyle[displaystyle="true"] {
+  mathml-math-style: display;
+}
+mfrac > * {
+  mathml-script-level: auto;
+  mathml-math-style: inline;
+}
+mroot > :not(:first-child) {
+  mathml-script-level: increment-by 2;
+  mathml-math-style: inline;
+}
+msub > :not(:first-child),
+msup > :not(:first-child),
+msubsup > :not(:first-child),
+mmultiscripts > :not(:first-child) {
+  mathml-script-level: increment-by 1;
+  mathml-math-style: inline;
+}
+munder > :not(:first-child),
+mover > :not(:first-child),
+munderover > :not(:first-child) {
+  mathml-math-style: inline;
+}</pre>
+</div>
+</div>
+</section>
+
+</body>
+</html>

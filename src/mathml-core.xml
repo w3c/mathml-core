@@ -19,6 +19,7 @@
 <div id="appendix">
  <include file="opentype"/>
  <include file="relaxng"/>
+ <include file="user-agent-stylesheet"/>
  <include file="OpDict"/>
  <include file="Comb"/>
  <include file="bib"/>
