@@ -537,36 +537,53 @@
                   <h3><span class="secnum">2.1.3</span> Attributes Shared by all MathML Elements
                   </h3>
                   
-                  <div id="mathmltree.p1">
+                  <p id="global-attributes.p1">
+                     The following attributes may be specified on any MathML element:
                      
-                     <p>
-                        All MathML elements accept the <code>id</code>, <code>class</code> and
-                        <code>style</code> attributes with the semantic described in section 3.2.5
-                        of <cite>[<a href="#bibx9">HTML5</a>]</cite>. In particular,
-                        they specify a unique identifier for links and scripting, affect CSS
-                        selectors, affect <code>getElementsByClassName()</code> and enable
-                        authors to do inline styling.
-                     </p>
-                     
-                  </div>
+                  </p>
                   
-                  <div id="mathmltree.p2">
+                  <ul>
                      
-                     <p>
-                        All MathML elements accept the <code>href</code> attribute, with the
-                        semantic described in section 4.8 of
+                     <li><code>id</code> with the semantic described in <cite>[<a href="#bibx9">HTML5</a>]</cite>.
+                     </li>
+                     
+                     <li><code>class</code> with the semantic described in <cite>[<a href="#bibx9">HTML5</a>]</cite>.
+                     </li>
+                     
+                     <li><code>style</code> with the semantic described in <cite>[<a href="#bibx9">HTML5</a>]</cite>.
+                     </li>
+                     
+                     <li><code>href</code> with the semantic described in
                         <cite>[<a href="#bibx9">HTML5</a>]</cite> for the
-                        <code>a</code> element. The default User Agent stylesheet must contain
-                        the following CSS selector:
+                        <code>a</code> element.
                         
-                     </p>
-                     <pre class="example">:any-link {
+                     </li>
+                     
+                     <li><code>dir</code></li>
+                     
+                     <li><code>displaystyle</code></li>
+                     
+                     <li><code>mathbackground</code></li>
+                     
+                     <li><code>mathcolor</code></li>
+                     
+                     <li><code>mathsize</code></li>
+                     
+                     <li><code>mathvariant</code></li>
+                     
+                     <li><code>scriptlevel</code></li>
+                     
+                  </ul>
+                  
+                  <p>
+                     The default User Agent stylesheet must contain the following CSS selector:
+                     
+                  </p>
+                  <pre class="example">:any-link {
   color: blue;
   text-decoration: none;
 }</pre>
-                     </div>
-                  
-               </section>
+                  </section>
                
                
             </section>
@@ -579,9 +596,10 @@
                
                <div id="mathmltree.p4">
                   
-                  <p>The toplevel <code>math</code> element also accepts the <code>display</code> attribute,
-                     <code>mathcolor</code>, <code>mathbackground</code> attributes as well as other attributes
-                     from the <code>mstyle</code> element. These attributes must be supported and this
+                  <p>The <code>&lt;math&gt;</code> element accepts the attributes described
+                     in section <a href="#global-attributes">2.1.3</a> as well as the
+                     <code>display</code> attribute.
+                     These attributes must be supported and this
                      may be achieved using specific rules in the user agent stylesheet
                      as described in <a href="#user-agent-stylesheet">Appendix B</a>.
                   </p>
