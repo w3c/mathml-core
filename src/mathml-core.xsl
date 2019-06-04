@@ -194,8 +194,8 @@
 	<xsl:when test="self::figure">
 	<xsl:number level="any" select="."/>
 	</xsl:when>
-	<xsl:when test="self::li/ancestor::section/@id='references'">
-	 <xsl:apply-templates select="span[1]/node()"/>
+	<xsl:when test="self::dt/ancestor::section/@id='references'">
+	 <xsl:apply-templates select="node()"/>
 	</xsl:when>
 	<xsl:otherwise>
 	 <xsl:message select="'href to #:',name(),  $id"/>

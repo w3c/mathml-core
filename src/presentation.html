@@ -17,7 +17,7 @@
 
 <div id="boxmodel.p1">
 <p>User agents must also follow the rules described in section 4.7.14
-Embedded content, MathML of <cite>[<a href="references.html#bibx9">auto</a>]</cite>, in particular the equivalence with
+Embedded content, MathML of <cite><a href="references.html#bibx9">auto</a></cite>, in particular the equivalence with
 implicit <code>mtext</code> and <code>merror</code> to handle non-conforming MathML markup.</p>
 </div>
 <div id="boxmodel.p2">
@@ -84,7 +84,7 @@ by taking the union of child boxes, that is:</p>
 <p>Note that the schemas in this document are drawn assuming left-to-right
 directionality. If the CSS <code>direction</code> is set to right-to-left, then the
 elements should be layout by making the x-axis pointing from right-to-left.
-In this document, we use the terminology of <cite>[<a href="references.html#bibx11">auto</a>]</cite>: “leading”
+In this document, we use the terminology of <cite><a href="references.html#bibx11">auto</a></cite>: “leading”
 means “left” in right-to-left and “right” in right-to-left mode, while
 “trailing” means “right” in right-to-left and “left” in right-to-left
 mode.</p>
@@ -160,7 +160,7 @@ small over-estimation.</p>
 <div id="layoutsteps.p4">
 <p>Each of this step is done recursively: the metrics of a given MathML box
 are determined from those of the child boxes. User agents must implement
-the “Exception for embellished operators” described in <cite>[<a href="references.html#bibx11">auto</a>]</cite>.
+the “Exception for embellished operators” described in <cite><a href="references.html#bibx11">auto</a></cite>.
 This means that the actual stretching of operators described in section
 <a href="#tokenmo">auto</a> may be “delayed” until we reach the top of its embellished
 operator subtree. We then have to apply the current operation again
@@ -220,9 +220,9 @@ element must behave as if <code>mathvariant</code> was actually set to <code>ita
 <p>Many properties of an <code>mo</code> element can be specified via attribute on
 that element. The default value of the <code>form</code> of an <code>mo</code> element is
 obtained as described in section “Default value of the form attribute” of
-<cite>[<a href="references.html#bibx11">auto</a>]</cite>. From the <code>form</code> and the text content, we can deduce other
+<cite><a href="references.html#bibx11">auto</a></cite>. From the <code>form</code> and the text content, we can deduce other
 default values from the operator dictionary or use the fallback values given
-in “Dictionary-based attributes” of <cite>[<a href="references.html#bibx11">auto</a>]</cite>.</p>
+in “Dictionary-based attributes” of <cite><a href="references.html#bibx11">auto</a></cite>.</p>
 </div>
 <div id="tokenmo.p3">
 <p>The leading space <code>lspace</code> and trailing space <code>rspace</code> must be added on
@@ -254,7 +254,7 @@ that has at least the desired size or an assembly from several glyphs
 to cover at least the desired size
 (figure <a href="#F5">auto</a>). The rules for vertical stretching
 are a bit more complicated and are described in section
-“Vertical Stretching Rules” of <cite>[<a href="references.html#bibx11">auto</a>]</cite>. If the operator has property
+“Vertical Stretching Rules” of <cite><a href="references.html#bibx11">auto</a></cite>. If the operator has property
 <code>symmetric="true"</code>, it must be stretched symmetrically with respect to
 the math axis, which is given by the <code class="MATH">AxisHeight</code> value.
 Figure <a href="#F6">auto</a> compares the symmetric
@@ -293,7 +293,7 @@ vertically &amp; horizontally.</p>
 <div id="tokenmtext.p2">
 <p>In most cases the <code>&lt;mtext&gt;</code> element contains some text that is laid out
 without line
-breaks using complex text layout <cite>[<a href="references.html#bibx4">auto</a>]</cite>. It is assumed that we can measure
+breaks using complex text layout <cite><a href="references.html#bibx4">auto</a></cite>. It is assumed that we can measure
 the ink ascent &amp; descent, logical ascent &amp; descent and advance width of
 the text frame and use these values for the MathML box of the <code>&lt;mtext&gt;</code>
 element.</p>
@@ -349,7 +349,7 @@ top accent attachment are assigned the fallback values indicated in section
 <p>The <code>mspace</code> element is laid out as shown on figure
 <a href="#F7">auto</a>.
 The logical box is determined by the <code>height</code>, <code>depth</code> and <code>width</code>
-attributes defined in <cite>[<a href="references.html#bibx11">auto</a>]</cite>. The ink box matches the logical box.
+attributes defined in <cite><a href="references.html#bibx11">auto</a></cite>. The ink box matches the logical box.
 The <code>linebreak</code> attribute on the <code>&lt;mspace/&gt;</code> element must be ignored.</p>
 </div>
 <figure id="F7">
@@ -406,7 +406,7 @@ for the <code>mrow</code> element, user agents may just ignore linebreaking rule
 </div>
 <div id="mrow.p3">
 <p>User agents must follow the rules for inferred <code>mrow</code>s described in
-<cite>[<a href="references.html#bibx11">auto</a>]</cite>. For example, to layout
+<cite><a href="references.html#bibx11">auto</a></cite>. For example, to layout
 <code>&lt;msqrt&gt;child_1 child_2 child_3 ...&lt;/msqrt&gt;</code>, one must follow the layout
 rules described for <code>msqrt</code> in section <a href="#msqrt">auto</a> using
 the box of <code>&lt;mrow&gt;child_1 child_2 child_3 ... child_N&lt;/mrow&gt;</code> as the base.</p>
@@ -428,7 +428,7 @@ included in the box metrics of embellished operators. The only exception is
 for the italic correction: when a “slanted” child is
 followed by a “straight” child, then an horizontal
 space corresponding to the italic correction of the “slanted” child is added
-between the two children <cite>[<a href="references.html#bibx13">auto</a>]</cite>. The italic correction of the
+between the two children <cite><a href="references.html#bibx13">auto</a></cite>. The italic correction of the
 last child is also added after that child when it is “slanted” and when
 the <code>mrow</code> has more than one child. In this document, we interpret
 “slanted” as a child that is not an operator with
@@ -477,7 +477,7 @@ following style in the user agent stylesheet as suggested in
 <div id="mfrac.p4">
 <p>The default line thickness is given by
 <code class="MATH">FractionRuleThickness</code>
-Use the <code>linethickness</code> attribute <cite>[<a href="references.html#bibx11">auto</a>]</cite> to determine the
+Use the <code>linethickness</code> attribute <cite><a href="references.html#bibx11">auto</a></cite> to determine the
 actual thickness of the fraction bar. A percent or unitless length is
 interpreted as a multiple of the default rule thickness.
 The color and visibility of the fraction bar must honor the values given by the
@@ -543,7 +543,7 @@ leading and trailing spaces must be added around the fraction.</p>
 
 
 <div id="msqrt.p1">
-<p>The MathML specification describes radicals as follows <cite>[<a href="references.html#bibx11">auto</a>]</cite>:</p>
+<p>The MathML specification describes radicals as follows <cite><a href="references.html#bibx11">auto</a></cite>:</p>
 
 <p>These elements construct radicals. The <code>msqrt</code> element is used for square
 roots, while the <code>mroot</code> element is used to draw radicals with indices,
@@ -670,7 +670,7 @@ size of the child’s bounding box and the relative positioning point of its
 content modified according to <code>mpadded</code>’s attributes.</p>
 </div>
 <div id="mpadded.p2">
-<p>See <cite>[<a href="references.html#bibx11">auto</a>]</cite> for how the metrics of <code>mpadded</code> element are determined.
+<p>See <cite><a href="references.html#bibx11">auto</a></cite> for how the metrics of <code>mpadded</code> element are determined.
 Note that pseudo-units allows horizontal metrics to depend on vertical metrics,
 for example <code>width="2height"</code> which can be problematic to determine
 intrinsic widths. Hence in the present document, if
@@ -680,14 +680,14 @@ the value of the <code>width</code> and <code>lspace</code> attributes contains
 <div id="mpadded.p3">
 <p>The <code>mpadded</code> element is laid out as shown on figure
 <a href="#F13">auto</a>.
-The height, depth and width of the content in <cite>[<a href="references.html#bibx11">auto</a>]</cite> corresponds to
+The height, depth and width of the content in <cite><a href="references.html#bibx11">auto</a></cite> corresponds to
 the logical box of the content. The content of the <code>mpadded</code> element is
 positioned from the origin of the <code>mpadded</code> element as follows: We shift
 the content
 forward by a distance of <code>lspace</code> and shift it upward by a distance of
 <code>voffset</code>. The logical metrics of the <code>mpadded</code> element are given by the
 height, depth and width of the <code>mpadded</code> element described in
-<cite>[<a href="references.html#bibx11">auto</a>]</cite>. The ink metrics of the <code>mpadded</code> element match their logical
+<cite><a href="references.html#bibx11">auto</a></cite>. The ink metrics of the <code>mpadded</code> element match their logical
 metrics.
 </p>
 </div>
@@ -735,7 +735,7 @@ given by the <code>color</code> and <code>visibility</code> CSS properties on th
 <code>menclose</code> element.</p>
 </div>
 <div id="menclose.p3">
-  <p>Based on <cite>[<a href="references.html#bibx13">auto</a>]</cite> <cite>[<a href="references.html#bibx16">auto</a>]</cite>, we use the notation ξ<sub>8</sub>
+  <p>Based on <cite><a href="references.html#bibx13">auto</a></cite> <cite><a href="references.html#bibx16">auto</a></cite>, we use the notation ξ<sub>8</sub>
     from the TeXBook to denote the default rule thickness and use
 3ξ<sub>8</sub> for gaps.
 We actually let ξ<sub>8</sub> be <code class="MATH">OverbarRuleThickness</code>.
@@ -813,7 +813,7 @@ and <code class="MATH">UnderExtraDescender</code>.</p>
   obtained by expanding the ink box by 7ξ<sub>8</sub> / 2 on each side.
 Using SVG terminology, we draw a rounded rectangle on this expanded box
 with parameters <code>rx</code>, <code>ry</code> and <code>stroke-width</code> set to 3ξ<sub>8</sub>
-<cite>[<a href="references.html#bibx15">auto</a>]</cite>. To obtain the logical box we again add a space of ξ<sub>8</sub> on
+<cite><a href="references.html#bibx15">auto</a></cite>. To obtain the logical box we again add a space of ξ<sub>8</sub> on
 each side of the ink box. See figure <a href="#F16">auto</a>.</p>
 </div>
 <figure id="F16">
@@ -860,7 +860,7 @@ content.</p>
 <p>The <code>updiagonalstrike</code> notation is drawn with a line
 of thickness ξ<sub>8</sub> going from the bottom left corner of the <code>menclose</code>
 content to its top right corner. Using SVG terminology, the
-<code>stroke-linecap</code> of the line is <code>butt</code> <cite>[<a href="references.html#bibx15">auto</a>]</cite>.
+<code>stroke-linecap</code> of the line is <code>butt</code> <cite><a href="references.html#bibx15">auto</a></cite>.
 As an approximation, the ink box
 is set equal to the logical box and obtained by increasing the original box
 from each side by ξ<sub>8</sub> / 2.
@@ -878,7 +878,7 @@ notation of the <code>menclose</code> element</figcaption>
 <code>updiagonalstrike</code>
 but the line strike goes from the top left corner to the bottom right corner.
 Using SVG terminology, the
-<code>stroke-linecap</code> of the line is <code>butt</code> <cite>[<a href="references.html#bibx15">auto</a>]</cite>.</p>
+<code>stroke-linecap</code> of the line is <code>butt</code> <cite><a href="references.html#bibx15">auto</a></cite>.</p>
 </div>
 </li>
 <li id="I7.i13"> 
@@ -1250,7 +1250,7 @@ their nonnegative difference.</p>
 <div id="mundermover.p6">
 <p>Remark: For accent overscripts and bases with ascents that are at most
 <code class="MATH">AccentBaseHeight</code>, the rule from
-<cite>[<a href="references.html#bibx13">auto</a>]</cite> <cite>[<a href="references.html#bibx16">auto</a>]</cite> is actually to align the baselines of the
+<cite><a href="references.html#bibx13">auto</a></cite> <cite><a href="references.html#bibx16">auto</a></cite> is actually to align the baselines of the
 overscripts and of the bases. This assumes that accent glyphs are designed in
 such a way that their ink bottoms are more or less
 <code class="MATH">AccentBaseHeight</code> above their baselines. Hence, the
@@ -1303,7 +1303,7 @@ following style in the user agent stylesheet as suggested in
 </div>
 <div id="mmultiscripts.p3">
 <p>Any layout for <code>mmultiscripts</code> is acceptable as long as it follows
-the condition of the MathML 3 specification <cite>[<a href="references.html#bibx11">auto</a>]</cite> and is consistent
+the condition of the MathML 3 specification <cite><a href="references.html#bibx11">auto</a></cite> and is consistent
 with section <a href="#msubmsup">auto</a> for <code>mmultiscripts</code>
 contructions that are equivalent to <code>msubsup</code>. Here is a possible algorithm
 that is represented on figure <a href="#F24">auto</a>.</p>
@@ -1356,7 +1356,7 @@ commutative diagrams, block matrices and so on.</p>
 <div id="tables.p2">
 <p>In the present document, we restrict ourselves to a minimal implementation
 compatible with HTML tables. First the <code>mtable</code> element must be treated as
-a HTML table and by <cite>[<a href="references.html#bibx11">auto</a>]</cite>, <code>mtable</code> must accept a
+a HTML table and by <cite><a href="references.html#bibx11">auto</a></cite>, <code>mtable</code> must accept a
 <code>displaystyle</code> attribute with default value <code>false</code>. To implement that,
 one may rely on the following rules for the user agent stylesheet as
 suggested in
