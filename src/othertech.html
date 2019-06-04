@@ -21,7 +21,7 @@
 <p>User agents must use a HTML5 <cite>[<a href="bib.html#bibx9">auto</a>]</cite> parser to build a DOM tree
 <cite>[<a href="bib.html#bibx6">auto</a>]</cite> from the source code of web pages. In particular, they must follow
 the rules describing when elements must be in the MathML namespace
-<span>http://www.w3.org/1998/Math/MathML</span> and must
+<code>http://www.w3.org/1998/Math/MathML</code> and must
 recognize the entity definitions from the HTML MathML entity set of
 <cite>[<a href="bib.html#bibx18">auto</a>]</cite>. They must also take into account the following integration
 points between SVG, MathML and HTML as allowed by <cite>[<a href="bib.html#bibx17">auto</a>]</cite>:</p>
@@ -30,26 +30,26 @@ points between SVG, MathML and HTML as allowed by <cite>[<a href="bib.html#bibx1
 <ol id="I2">
 <li id="I2.i1">
 <div id="I2.i1.p1">
-<p>The <span>&lt;math&gt;</span> element can be used at any position permitted for
-phrasing content or inside SVG <span>&lt;foreignObject&gt;</span> elements.</p>
+<p>The <code>&lt;math&gt;</code> element can be used at any position permitted for
+phrasing content or inside SVG <code>&lt;foreignObject&gt;</code> elements.</p>
 </div>
 </li>
 <li id="I2.i2">
 <div id="I2.i2.p1">
-<p>The <span>&lt;svg&gt;</span> element can be used inside <span>&lt;annotation-xml&gt;</span>
-elements with encoding <span>SVG1.1</span> or <span>image/svg+xml</span>.</p>
+<p>The <code>&lt;svg&gt;</code> element can be used inside <code>&lt;annotation-xml&gt;</code>
+elements with encoding <code>SVG1.1</code> or <code>image/svg+xml</code>.</p>
 </div>
 </li>
 <li id="I2.i3">
 <div id="I2.i3.p1">
-<p>The <span>&lt;html&gt;</span> element and flow content can be used inside
-<span>&lt;annotation-xml&gt;</span> elements with encoding <span>application/xhtml+xml</span>
-or <span>text/html</span>.</p>
+<p>The <code>&lt;html&gt;</code> element and flow content can be used inside
+<code>&lt;annotation-xml&gt;</code> elements with encoding <code>application/xhtml+xml</code>
+or <code>text/html</code>.</p>
 </div>
 </li>
 <li id="I2.i4">
 <div id="I2.i4.p1">
-<p>Any phrasing element can be used inside <span>&lt;mtext&gt;</span> elements.</p>
+<p>Any phrasing element can be used inside <code>&lt;mtext&gt;</code> elements.</p>
 </div>
 </li>
 </ol>
@@ -63,8 +63,8 @@ synchronization with the DOM tree.</p>
 <div id="dom.p4">
 <p>When evaluating the SVG <code>requiredExtensions</code> attribute <cite>[<a href="bib.html#bibx15">auto</a>]</cite>,
 user agents must claim support for the extension of name
-<span>http://www.w3.org/1998/Math/MathML</span>.
-An algorithm to decide the visible child of the <span>&lt;semantics&gt;</span> element is
+<code>http://www.w3.org/1998/Math/MathML</code>.
+An algorithm to decide the visible child of the <code>&lt;semantics&gt;</code> element is
 proposed in section <a href="presentation.html#sematicsandpresentation">auto</a>.</p>
 </div>
 </section>
@@ -76,7 +76,7 @@ proposed in section <a href="presentation.html#sematicsandpresentation">auto</a>
 <cite>[<a href="bib.html#bibx11">auto</a>]</cite>. They must be interpreted as described in section 3.2.5 of the
 HTML5 specification <cite>[<a href="bib.html#bibx9">auto</a>]</cite> and in particular they specify a unique
 identifier (to identify elements in links and scripting), affect
-CSS selectors, affect <span>getElementsByClassName()</span> and enable authors to do
+CSS selectors, affect <code>getElementsByClassName()</code> and enable authors to do
 inline styling.</p>
 </div>
 <div id="mathmltree.p2">
@@ -93,8 +93,8 @@ adding a rule in the user agent stylesheet (section <a href="#cssuseragent">auto
 </div>
 </div>
 <div id="mathmltree.p3">
-<p>The toplevel <code>math</code> element accepts the <code>altimg</code>, <span>altimg-width</span>,
-<span>altimg-height</span>, <span>altimg-valign</span> and <code>alttext</code> attributes.
+<p>The toplevel <code>math</code> element accepts the <code>altimg</code>, <code>altimg-width</code>,
+<code>altimg-height</code>, <code>altimg-valign</code> and <code>alttext</code> attributes.
 These attributes allow to specify fallback content and must be ignored by
 user agents for rendering purpose. User agents that do not follow the current
 implementation note, may follow implementation suggestions from Appendix
@@ -145,7 +145,7 @@ rendering and shaping of Arabic scripts.</p>
 (e.g. fraction or top radical bars). For consistency, these outlines should
 be rendered the same way as normal text. In particular, user agents must be
 able to apply <code>visibility</code> and <code>color</code> CSS properties to them. They may
-also support similar CSS properties for text such as <span>text-shadow</span> or
+also support similar CSS properties for text such as <code>text-shadow</code> or
 <code>opacity</code>.</p>
 </div>
 <div id="openfontformat.p4">
@@ -168,7 +168,7 @@ to allow glyph-level mirroring in cases where character-level is not enough
 At the time of writing, Unicode does not distinguish between Chancery and
 Spencerian style for the Unicode MATHEMATICAL SCRIPT characters. Some
 mathematical fonts rely on <code class="MATH">salt</code> or <code>ssXY</code> properties to provide
-both styles. User agents may support the CSS <span>font-variant-alternates</span>
+both styles. User agents may support the CSS <code>font-variant-alternates</code>
 property and corresponding OpenType font features to enable page authors
 to get access to these styles <cite>[<a href="bib.html#bibx2">auto</a>]</cite> <cite>[<a href="bib.html#bibx13">auto</a>]</cite>.</p>
 </div>
@@ -319,21 +319,21 @@ specified in the user agent stylesheet as described in section
 </div>
 <div id="cssproperties.p3">
 <p>User agents must support the <code>displaystyle</code> attribute. This may be
-implemented using a new <span>mathml-math-style</span> property described in
+implemented using a new <code>mathml-math-style</code> property described in
 table <a href="#cssproperties">auto</a>. The expected behavior may be completely
 specified in the user agent stylesheet as described in section
 <a href="#cssuseragent">auto</a>.</p>
 </div>
 <div id="cssproperties.p4">
 <p>User agents must support the <code>mathvariant</code> attribute. This may be
-implemented using a new <span>mathml-math-variant</span> property described in
+implemented using a new <code>mathml-math-variant</code> property described in
 table <a href="#cssproperties.tab1">auto</a>. The expected behavior may be implemented by
 mapping <code>mathvariant</code> attributes on the <code>math</code>, <code>mstyle</code> and token
-elements to <span>mathml-math-variant</span>. Then during the rendering of text nodes,
-the <span>mathml-math-variant</span> value must be taken into account to remap
+elements to <code>mathml-math-variant</code>. Then during the rendering of text nodes,
+the <code>mathml-math-variant</code> value must be taken into account to remap
 some characters to their equivalent code points, as specified by the MathML
 specification. However, as indicated in section <a href="presentation.html#latex">auto</a>, when
-<span>mathml-math-variant</span> is <code>none</code> on an <code>mi</code> element with a single
+<code>mathml-math-variant</code> is <code>none</code> on an <code>mi</code> element with a single
 character, it must actually be treated as if the mathvariant was <code>italic</code>.</p>
 </div>
 <div id="cssproperties.p5">
@@ -353,7 +353,7 @@ TODO: Rewrite this using https://github.com/mathml-refresh/mathml-css-proposals#
 
 <div id="cssuseragent.p1">
 <p>Because mathematical formulas are generally written with special fonts, the
-default user agent stylesheet must reset the CSS <span>font-family</span> on the
+default user agent stylesheet must reset the CSS <code>font-family</code> on the
 <code>math</code> element to <code>serif</code>. User agents should then use their own
 mechanism to try and interpret this <code>serif</code> value on the <code>math</code> element
 as a font with an OpenType MATH table.</p>
@@ -363,12 +363,12 @@ as a font with an OpenType MATH table.</p>
 User Agents may rely. Unfortunately, some rendering engines do not allow
 universal selectors in their user agent stylesheets and so rules must be
 expanded to list all possible MathML elements described in the present
-document. For example <span>mfrac &gt; *</span> can be converted into
-<span>mfrac &gt; mi, mfrac &gt; mn, mfrac &gt; mo, mfrac &gt; mtext, mfrac &gt; mspace,
+document. For example <code>mfrac &gt; *</code> can be converted into
+<code>mfrac &gt; mi, mfrac &gt; mn, mfrac &gt; mo, mfrac &gt; mtext, mfrac &gt; mspace,
 mfrac &gt; ms, mfrac &gt; mrow, mfrac &gt; mfrac, mfrac &gt; msqrt, mfrac &gt; mroot,
 mfrac &gt; mstyle, mfrac &gt; merror, mfrac &gt; mpadded, mfrac &gt; mphantom,
 mfrac &gt; menclose, mfrac &gt; msub, mfrac &gt; msubsup, mfrac &gt; munder, mfrac &gt; mover,
-mfrac &gt; munderover, mfrac &gt; mmultiscripts, mfrac &gt; mtable, mfrac &gt; maction</span>.</p>
+mfrac &gt; munderover, mfrac &gt; mmultiscripts, mfrac &gt; mtable, mfrac &gt; maction</code>.</p>
 </div>
 <div id="cssuseragent.p3">
 <div>
