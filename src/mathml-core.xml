@@ -19,7 +19,6 @@
 
 <div id="appendix">
  <include file="opentype"/>
- <include file="imagefallback"/>
  <include file="relaxng"/>
  <include file="OpDict"/>
  <include file="Comb"/>

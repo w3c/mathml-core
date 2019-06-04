@@ -12,14 +12,7 @@ CommonAtt = attribute id {xsd:ID}?,
             attribute href {xsd:anyURI}?
 
 math.attributes = CommonAtt,
-               attribute display {"block" | "inline"}?,
-               # attribute maxwidth {length}?,
-               # attribute overflow {"linebreak" | "scroll" | "elide" | "truncate" | "scale"}?,
-               attribute altimg {xsd:anyURI}?,
-               attribute altimg-width {length}?,
-               attribute altimg-height {length}?,
-               attribute altimg-valign {length | "top" | "middle" | "bottom"}?,
-               attribute alttext {text}?
+               attribute display {"block" | "inline"}?
 
 annotation = element annotation {CommonAtt,(src|text)}
 
