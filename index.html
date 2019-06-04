@@ -56,24 +56,21 @@
                </ol>
             </li>
             <li><a href="#fundamentals"><span>2</span> MathML Fundamentals</a><ol class="toc">
-                  <li><a href="#html5tree"><span>2.1</span> HTML5 Tree</a><ol class="toc">
-                        <li><a href="#dom"><span>2.1.1</span> DOM, HTML, SVG and Javascript</a></li>
-                        <li><a href="#mathmltree"><span>2.1.2</span> MathML</a></li>
+                  <li><a href="#html5tree"><span>2.1</span> MathML Syntax and Grammar</a><ol class="toc">
+                        <li><a href="#othertech"><span>2.1.1</span> DOM, HTML, SVG, CSS and Javascript</a></li>
+                        <li><a href="#att-syntax"><span>2.1.2</span> MathML Attribute Values </a><ol class="toc">
+                              <li><a href="#length"><span>2.1.2.1</span> </a></li>
+                              <li><a href="#color"><span>2.1.2.2</span> </a></li>
+                              <li><a href="#color"><span>2.1.2.3</span> </a></li>
+                           </ol>
+                        </li>
+                        <li><a href="#fund.globatt"><span>2.1.3</span> Attributes Shared by all MathML Elements</a></li>
                      </ol>
                   </li>
-                  <li><a href="#textandmath"><span>2.2</span> Text and Math layout</a><ol class="toc">
-                        <li><a href="#openfontformat"><span>2.2.1</span> Open Font Format</a></li>
-                        <li><a href="#latex"><span>2.2.2</span> LaTeX</a></li>
-                     </ol>
-                  </li>
-                  <li><a href="#cssstyling"><span>2.3</span> CSS Styling</a><ol class="toc">
-                        <li><a href="#cssproperties"><span>2.3.1</span> Properties</a></li>
-                        <li><a href="#cssuseragent"><span>2.3.2</span> User Agent Stylesheet for MathML</a></li>
-                     </ol>
-                  </li>
-                  <li><a href="#att-syntax"><span>2.4</span> MathML Core Attribute Syntax</a><ol class="toc">
-                        <li><a href="#length"><span>2.4.1</span> Length</a></li>
-                        <li><a href="#color"><span>2.4.2</span> Color</a></li>
+                  <li><a href="#fund.toplevel"><span>2.2</span> The Top-Level <code>&lt;math&gt;</code> Element</a></li>
+                  <li><a href="#textandmath"><span>2.3</span> Text and Math layout</a><ol class="toc">
+                        <li><a href="#openfontformat"><span>2.3.1</span> Open Font Format</a></li>
+                        <li><a href="#latex"><span>2.3.2</span> LaTeX</a></li>
                      </ol>
                   </li>
                </ol>
@@ -136,17 +133,18 @@
             </li>
             <li><a href="#opentype"><span>Appendix A</span> OpenType</a></li>
             <li><a href="#rnc"><span>Appendix B</span> Relax NG</a></li>
-            <li><a href="#op-dict"><span>Appendix C</span> Operator Dictionary</a><ol class="toc">
-                  <li><a href="#oper-dict_index"><span>C.1</span> Indexing of the operator dictionary</a></li>
-                  <li><a href="#oper-dict_format"><span>C.2</span> Format of operator dictionary entries</a></li>
-                  <li><a href="#oper-dict_space"><span>C.3</span> Notes on <code>lspace</code> and 
+            <li><a href="#user-agent-stylesheet"><span>Appendix C</span> User Agent Stylesheet</a></li>
+            <li><a href="#op-dict"><span>Appendix D</span> Operator Dictionary</a><ol class="toc">
+                  <li><a href="#oper-dict_index"><span>D.1</span> Indexing of the operator dictionary</a></li>
+                  <li><a href="#oper-dict_format"><span>D.2</span> Format of operator dictionary entries</a></li>
+                  <li><a href="#oper-dict_space"><span>D.3</span> Notes on <code>lspace</code> and 
                         <code>rspace</code> attributes</a></li>
-                  <li><a href="#oper-dict_entries-table"><span>C.4</span> Operator dictionary entries</a></li>
+                  <li><a href="#oper-dict_entries-table"><span>D.4</span> Operator dictionary entries</a></li>
                </ol>
             </li>
-            <li><a href="#comb-equiv"><span>Appendix D</span> MathML Combining Character Equivalences</a></li>
-            <li><a href="#references"><span>Appendix E</span> References</a></li>
-            <li><a href="#issues"><span>Appendix F</span> Open MathML Core Issues</a></li>
+            <li><a href="#comb-equiv"><span>Appendix E</span> MathML Combining Character Equivalences</a></li>
+            <li><a href="#references"><span>Appendix F</span> References</a></li>
+            <li><a href="#issues"><span>Appendix G</span> Open MathML Core Issues</a></li>
          </ol>
       </nav>
       <div class="body">
@@ -272,78 +270,60 @@
             
             <section id="html5tree">
                
-               <h2><span class="secnum">2.1</span> HTML5 Tree
+               <h2><span class="secnum">2.1</span> MathML Syntax and Grammar
                </h2>
                
                
-               <section id="dom">
+               <section id="othertech">
                   
-                  <h3><span class="secnum">2.1.1</span> DOM, HTML, SVG and Javascript
+                  <h3><span class="secnum">2.1.1</span> DOM, HTML, SVG, CSS and Javascript
                   </h3>
                   
                   
                   <div id="dom.p1">
                      
-                     <p>User agents must use a HTML5 <cite>[<a href="#bibx9">HTML5</a>]</cite> parser to build a DOM tree
-                        <cite>[<a href="#bibx6">DOM1</a>]</cite> from the source code of web pages. In particular, they must follow
-                        the rules describing when elements must be in the MathML namespace
+                     <p>User agents must use a HTML5
+                        <cite>[<a href="#bibx9">HTML5</a>]</cite> parser to build a DOM tree
+                        <cite>[<a href="#bibx6">DOM1</a>]</cite> from the source code of
+                        web pages. In particular, they must follow the rules describing when
+                        elements must be in the MathML namespace
                         <code>http://www.w3.org/1998/Math/MathML</code> and must
                         recognize the entity definitions from the HTML MathML entity set of
-                        <cite>[<a href="#bibx18">XMLEntities</a>]</cite>. They must also take into account the following integration
-                        points between SVG, MathML and HTML as allowed by <cite>[<a href="#bibx17">ValidatorSchemas</a>]</cite>:
+                        <cite>[<a href="#bibx18">XMLEntities</a>]</cite>. They must also take into
+                        account the following integration points between SVG, MathML and HTML as
+                        allowed by <cite>[<a href="#bibx17">ValidatorSchemas</a>]</cite>:
                      </p>
                      
                   </div>
                   
                   <div id="dom.p2">
                      
-                     <ol id="I2">
+                     <ol>
                         
-                        <li id="I2.i1">
-                           
-                           <div id="I2.i1.p1">
-                              
-                              <p>The <code>&lt;math&gt;</code> element can be used at any position permitted for
-                                 phrasing content or inside SVG <code>&lt;foreignObject&gt;</code> elements.
-                              </p>
-                              
-                           </div>
+                        <li>
+                           The <code>&lt;math&gt;</code> element can be used at any position
+                           permitted for phrasing content or inside SVG
+                           <code>&lt;foreignObject&gt;</code> elements.
                            
                         </li>
                         
-                        <li id="I2.i2">
-                           
-                           <div id="I2.i2.p1">
-                              
-                              <p>The <code>&lt;svg&gt;</code> element can be used inside <code>&lt;annotation-xml&gt;</code>
-                                 elements with encoding <code>SVG1.1</code> or <code>image/svg+xml</code>.
-                              </p>
-                              
-                           </div>
+                        <li>
+                           The <code>&lt;svg&gt;</code> element can be used inside
+                           <code>&lt;annotation-xml&gt;</code> elements with encoding
+                           <code>SVG1.1</code> or <code>image/svg+xml</code>.
                            
                         </li>
                         
-                        <li id="I2.i3">
-                           
-                           <div id="I2.i3.p1">
-                              
-                              <p>The <code>&lt;html&gt;</code> element and flow content can be used inside
-                                 <code>&lt;annotation-xml&gt;</code> elements with encoding <code>application/xhtml+xml</code>
-                                 or <code>text/html</code>.
-                              </p>
-                              
-                           </div>
+                        <li>
+                           The <code>&lt;html&gt;</code> element and flow content can be used inside
+                           <code>&lt;annotation-xml&gt;</code> elements with encoding
+                           <code>application/xhtml+xml</code> or <code>text/html</code>.
                            
                         </li>
                         
-                        <li id="I2.i4">
-                           
-                           <div id="I2.i4.p1">
-                              
-                              <p>Any phrasing element can be used inside <code>&lt;mtext&gt;</code> elements.
-                              </p>
-                              
-                           </div>
+                        <li>
+                           Any phrasing element can be used inside <code>&lt;mtext&gt;</code>
+                           elements.
                            
                         </li>
                         
@@ -355,29 +335,210 @@
                      
                      <p>From this DOM tree, user agents must provide a visual representation of the
                         document. The DOM tree may be dynamically modified using Javascript
-                        <cite>[<a href="#bibx7">ECMA262</a>]</cite> and the user agents must keep the visual representation in
-                        synchronization with the DOM tree.
+                        <cite>[<a href="#bibx7">ECMA262</a>]</cite> and the user agents must
+                        keep the visual representation in synchronization with the DOM tree.
                      </p>
                      
                   </div>
                   
                   <div id="dom.p4">
                      
-                     <p>When evaluating the SVG <code>requiredExtensions</code> attribute <cite>[<a href="#bibx15">SVG11</a>]</cite>,
-                        user agents must claim support for the extension of name
+                     <p>When evaluating the SVG <code>requiredExtensions</code> attribute
+                        <cite>[<a href="#bibx15">SVG11</a>]</cite>, user agents must claim
+                        support for the extension of name
                         <code>http://www.w3.org/1998/Math/MathML</code>.
-                        An algorithm to decide the visible child of the <code>&lt;semantics&gt;</code> element is
-                        proposed in section <a href="#sematicsandpresentation">3.7</a>.
+                        An algorithm to decide the visible child of the
+                        <code>&lt;semantics&gt;</code> element is proposed in section
+                        <a href="#sematicsandpresentation">3.7</a>.
                      </p>
                      
                   </div>
                   
+                  
+                  <div id="cssproperties.p1">
+                     
+                     <p>
+                        User agents must support the CSS language
+                        <cite>[<a href="#bibx1">CSS2</a>]</cite> and must take special
+                        styling into account when building the visual representation of the
+                        document.
+                        
+                     </p>
+                     
+                  </div>
+                  
+                  <div id="cssproperties.p2">
+                     
+                     <p>User agents must support at least the following properties:</p>
+                     
+                     <ol>
+                        
+                        <li><code>display</code>: at least <code>inline</code>,
+                           <code>block</code>, <code>inline-table</code>,
+                           <code>table-row</code>, <code>table-cell</code>, <code>none</code> and
+                           <code>contents</code>.
+                           It is used for the <code>math</code> and tabular elements.
+                           Appropriate values must be specified in the user agent stylesheet
+                           as described in section <a href="#cssuseragent">Unknown Reference</a>.
+                           For all MathML elements, <code>display: contents</code> computes to
+                           <code>display: none</code>
+                           <cite>[<a href="#bib-css-display">CSS Display Module Level 3</a>]</cite>.
+                           
+                        </li>
+                        
+                        <li><code>direction</code>. The <code>dir</code> attribute on any
+                           MathML element must be mapped to that property.
+                        </li>
+                        
+                        <li>The <code>font</code> property and its shorthands. The
+                           <code>mathsize</code> attribute on any MathML element must mapped to
+                           that property.
+                        </li>
+                        
+                        <li><code>background</code> and <code>color</code>. The
+                           <code>mathbackground</code> and <code>mathcolor</code> attributes on
+                           any MathML elements must be mapped to these properties.
+                        </li>
+                        
+                        <li><code>visibility</code>. It is is used for the <code>mphantom</code>
+                           element and must be specified in the user agent stylesheet as described
+                           in section <a href="#cssuseragent">Unknown Reference</a>.
+                        </li>
+                        
+                        <li><code>text-transform</code>. It is used to implement the
+                           <code>mathvariant</code> attribute on any MathML element.
+                           Values <code>normal</code>
+                           <code>bold</code>,
+                           <code>italic</code>,
+                           <code>bold-italic</code>,
+                           <code>double-struck</code>,
+                           <code>bold-fraktur</code>,
+                           <code>script</code>,
+                           <code>bold-script</code>,
+                           <code>fraktur</code>,
+                           <code>sans-serif</code>,
+                           <code>bold-sans-serif</code>,
+                           <code>sans-serif-italic</code>,
+                           <code>sans-serif-bold-italic</code>,
+                           <code>monospace</code>,
+                           <code>initial</code>,
+                           <code>tailed</code>,
+                           <code>looped</code>,
+                           <code>stretched</code> are respectively mapped to
+                           <code>text-transform: none</code>,
+                           <code>text-transform: math-bold</code>
+                           <code>text-transform: math-italic</code>
+                           <code>text-transform: math-bold-italic</code>
+                           <code>text-transform: math-double-struck</code>
+                           <code>text-transform: math-bold-fraktur</code>
+                           <code>text-transform: math-script</code>
+                           <code>text-transform: math-bold-script</code>
+                           <code>text-transform: math-fraktur</code>
+                           <code>text-transform: math-sans-serif</code>
+                           <code>text-transform: math-bold-sans-serif</code>
+                           <code>text-transform: math-sans-serif-italic</code>
+                           <code>text-transform: math-sans-serif-bold-italic</code>
+                           <code>text-transform: math-monospace</code>
+                           <code>text-transform: math-initial</code>
+                           <code>text-transform: math-tailed</code>
+                           <code>text-transform: math-looped</code>
+                           <code>text-transform: math-stretched</code>.
+                           Additional value for <code>mi</code> in the user agent stylesheet
+                           is described in section <a href="#cssuseragent">Unknown Reference</a>.
+                           
+                        </li>
+                        
+                        <li><code>math-style</code>.
+                           It is used for the <code>displaystyle</code> attribute on any
+                           MathML element.
+                           Appropriate values must be specified in the user agent stylesheet
+                           as described in section <a href="#cssuseragent">Unknown Reference</a>.
+                           
+                        </li>
+                        
+                        <li><code>math-script-level</code>.
+                           It is used for the <code>scriptlevel</code> attribute on any
+                           MathML element. For any unsigned integer U,
+                           <code>+U</code>, <code>-U</code> and <code>U</code>
+                           is respectively mapped to <code>math-script-level: add(U)</code>
+                           <code>math-script-level: add(-U)</code>
+                           and <code>math-script-level: U</code>.
+                           Additional values must be specified in the user agent stylesheet
+                           as described in section <a href="#cssuseragent">Unknown Reference</a>.
+                           
+                        </li>
+                        
+                     </ol>
+                     
+                  </div>
+                  
+                  
                </section>
                
                
-               <section id="mathmltree">
+               <section id="att-syntax">
                   
-                  <h3><span class="secnum">2.1.2</span> MathML
+                  <h3><span class="secnum">2.1.2</span> MathML Attribute Values 
+                  </h3>
+                  
+                  <p>Several MathML elements have attributes sharing common syntax for constructs such
+                     as <a href="#length">2.1.2.1</a> or
+                     <a href="#length">color</a>. the syntax for these attributes is defined below.
+                  </p>
+                  
+                  
+                  <section id="length">
+                     
+                     <h4>Length</h4>
+                     
+                     <p>MathML Core attributes of type <i>length</i> must have value
+                        consisting of an optional U+002D HYPHEN-MINUS (-) followed by a
+                        string of characters representing a length or percentage as specifed
+                        by
+                        <a href="https://www.w3.org/TR/html5/infrastructure.html#percentages-and-dimensions">HTML5
+                           percentages and lengths</a>.
+                     </p>
+                     
+                     
+                  </section>
+                  
+                  <section id="color">
+                     
+                     <h4>Color</h4>
+                     
+                     <p>MathML Core attributes of type <i>color</i> must have value
+                        consisting of a string of characters representing a color as specified
+                        by
+                        <a href="https://www.w3.org/TR/html5/infrastructure.html#colors">HTML5
+                           color</a>.
+                     </p>
+                     
+                     
+                     
+                  </section>
+                  
+                  
+                  <section id="color">
+                     
+                     <h4>Default values of attributes </h4>
+                     
+                     <div id="defaultvalue">
+                        
+                        <p>User agents must contain an operator dictionary describing the default
+                           properties of operators. See appendix C
+                        </p>
+                        
+                     </div>
+                     
+                  </section>
+                  
+                  
+               </section>
+               
+               
+               <section id="fund.globatt">
+                  
+                  <h3><span class="secnum">2.1.3</span> Attributes Shared by all MathML Elements
                   </h3>
                   
                   <div id="mathmltree.p1">
@@ -409,50 +570,40 @@
 }</pre>
                      </div>
                   
-                  <div id="mathmltree.p4">
-                     
-                     <p>The toplevel <code>math</code> element also accepts the <code>display</code> attribute,
-                        <code>mathcolor</code>, <code>mathbackground</code> attributes as well as other attributes
-                        from the <code>mstyle</code> element. These attributes must be supported and this
-                        may be achieved using specific rules in the user agent stylesheet
-                        as described in section <a href="#cssuseragent">2.3.2</a>.
-                     </p>
-                     
-                  </div>
-                  
-                  <div id="mathmltree.p5">
-                     
-                     <p>In general MathML elements or attributes that are not mentioned in this
-                        document may just be ignored. This includes deprecated attributes or
-                        Content Markup described in chapter 4 of the MathML 3 specification
-                        <cite>[<a href="#bibx11">MathML3</a>]</cite>.
-                        
-                     </p>
-                     
-                  </div>
-                  
-                  <div id="mathmltree.p6">
-                     
-                     <p>User agents must contain an operator dictionary describing the default
-                        properties of operators. For interoperability, it is recommended to use the one
-                        proposed in the non-normative Appendix C of <cite>[<a href="#bibx11">MathML3</a>]</cite>.
-                     </p>
-                     
-                  </div>
-                  
                </section>
+               
                
             </section>
             
+            
+            <section id="fund.toplevel">
+               
+               <h2><span class="secnum">2.2</span> The Top-Level <code>&lt;math&gt;</code> Element
+               </h2>
+               
+               <div id="mathmltree.p4">
+                  
+                  <p>The toplevel <code>math</code> element also accepts the <code>display</code> attribute,
+                     <code>mathcolor</code>, <code>mathbackground</code> attributes as well as other attributes
+                     from the <code>mstyle</code> element. These attributes must be supported and this
+                     may be achieved using specific rules in the user agent stylesheet
+                     as described in section <a href="#cssuseragent">Unknown Reference</a>.
+                  </p>
+                  
+               </div>
+               
+            </section>
+            
+            
             <section id="textandmath">
                
-               <h2><span class="secnum">2.2</span> Text and Math layout
+               <h2><span class="secnum">2.3</span> Text and Math layout
                </h2>
                
                
                <section id="openfontformat">
                   
-                  <h3><span class="secnum">2.2.1</span> Open Font Format
+                  <h3><span class="secnum">2.3.1</span> Open Font Format
                   </h3>
                   
                   
@@ -536,7 +687,7 @@
                
                <section id="latex">
                   
-                  <h3><span class="secnum">2.2.2</span> LaTeX
+                  <h3><span class="secnum">2.3.2</span> LaTeX
                   </h3>
                   
                   
@@ -636,337 +787,8 @@
                   
                </section>
                
-            </section>
-            
-            <section id="cssstyling">
-               
-               <h2><span class="secnum">2.3</span> CSS Styling
-               </h2>
-               
-               
-               <section id="cssproperties">
-                  
-                  <h3><span class="secnum">2.3.1</span> Properties
-                  </h3>
-                  
-                  <div id="cssproperties.p1">
-                     
-                     <p>
-                        User agents must support the CSS language
-                        <cite>[<a href="#bibx1">CSS2</a>]</cite> and must take special
-                        styling into account when building the visual representation of the
-                        document.
-                        
-                     </p>
-                     
-                  </div>
-                  
-                  <div id="cssproperties.p2">
-                     
-                     <p>User agents must support at least the following properties:</p>
-                     
-                     <ol>
-                        
-                        <li><code>display</code>: at least <code>inline</code>,
-                           <code>block</code>, <code>inline-table</code>,
-                           <code>table-row</code>, <code>table-cell</code>, <code>none</code> and
-                           <code>contents</code>.
-                           It is used for the <code>math</code> and tabular elements.
-                           Appropriate values must be specified in the user agent stylesheet
-                           as described in section <a href="#cssuseragent">2.3.2</a>.
-                           For all MathML elements, <code>display: contents</code> computes to
-                           <code>display: none</code>
-                           <cite>[<a href="#bib-css-display">CSS Display Module Level 3</a>]</cite>.
-                           
-                        </li>
-                        
-                        <li><code>direction</code>. The <code>dir</code> attribute on any
-                           MathML element must be mapped to that property.
-                        </li>
-                        
-                        <li>The <code>font</code> property and its shorthands. The
-                           <code>mathsize</code> attribute on any MathML element must mapped to
-                           that property.
-                        </li>
-                        
-                        <li><code>background</code> and <code>color</code>. The
-                           <code>mathbackground</code> and <code>mathcolor</code> attributes on
-                           any MathML elements must be mapped to these properties.
-                        </li>
-                        
-                        <li><code>visibility</code>. It is is used for the <code>mphantom</code>
-                           element and must be specified in the user agent stylesheet as described
-                           in section <a href="#cssuseragent">2.3.2</a>.
-                        </li>
-                        
-                        <li><code>text-transform</code>. It is used to implement the
-                           <code>mathvariant</code> attribute on any MathML element.
-                           Values <code>normal</code>
-                           <code>bold</code>,
-                           <code>italic</code>,
-                           <code>bold-italic</code>,
-                           <code>double-struck</code>,
-                           <code>bold-fraktur</code>,
-                           <code>script</code>,
-                           <code>bold-script</code>,
-                           <code>fraktur</code>,
-                           <code>sans-serif</code>,
-                           <code>bold-sans-serif</code>,
-                           <code>sans-serif-italic</code>,
-                           <code>sans-serif-bold-italic</code>,
-                           <code>monospace</code>,
-                           <code>initial</code>,
-                           <code>tailed</code>,
-                           <code>looped</code>,
-                           <code>stretched</code> are respectively mapped to
-                           <code>text-transform: none</code>,
-                           <code>text-transform: math-bold</code>
-                           <code>text-transform: math-italic</code>
-                           <code>text-transform: math-bold-italic</code>
-                           <code>text-transform: math-double-struck</code>
-                           <code>text-transform: math-bold-fraktur</code>
-                           <code>text-transform: math-script</code>
-                           <code>text-transform: math-bold-script</code>
-                           <code>text-transform: math-fraktur</code>
-                           <code>text-transform: math-sans-serif</code>
-                           <code>text-transform: math-bold-sans-serif</code>
-                           <code>text-transform: math-sans-serif-italic</code>
-                           <code>text-transform: math-sans-serif-bold-italic</code>
-                           <code>text-transform: math-monospace</code>
-                           <code>text-transform: math-initial</code>
-                           <code>text-transform: math-tailed</code>
-                           <code>text-transform: math-looped</code>
-                           <code>text-transform: math-stretched</code>.
-                           Additional value for <code>mi</code> in the user agent stylesheet
-                           is described in section <a href="#cssuseragent">2.3.2</a>.
-                           
-                        </li>
-                        
-                        <li><code>math-style</code>.
-                           It is used for the <code>displaystyle</code> attribute on any
-                           MathML element.
-                           Appropriate values must be specified in the user agent stylesheet
-                           as described in section <a href="#cssuseragent">2.3.2</a>.
-                           
-                        </li>
-                        
-                        <li><code>math-script-level</code>.
-                           It is used for the <code>scriptlevel</code> attribute on any
-                           MathML element. For any unsigned integer U,
-                           <code>+U</code>, <code>-U</code> and <code>U</code>
-                           is respectively mapped to <code>math-script-level: add(U)</code>
-                           <code>math-script-level: add(-U)</code>
-                           and <code>math-script-level: U</code>.
-                           Additional values must be specified in the user agent stylesheet
-                           as described in section <a href="#cssuseragent">2.3.2</a>.
-                           
-                        </li>
-                        
-                     </ol>
-                     
-                  </div>
-                  
-               </section>
-               
-               <section id="cssuseragent">
-                  
-                  <h3><span class="secnum">2.3.2</span> User Agent Stylesheet for MathML
-                  </h3>
-                  
-                  
-                  <div id="cssuseragent.p1">
-                     
-                     <p>Because mathematical formulas are generally written with special fonts, the
-                        default user agent stylesheet must reset the CSS <code>font-family</code> on the
-                        <code>math</code> element to <code>serif</code>. User agents should then use their own
-                        mechanism to try and interpret this <code>serif</code> value on the <code>math</code> element
-                        as a font with an OpenType MATH table.
-                     </p>
-                     
-                  </div>
-                  
-                  <div id="cssuseragent.p2">
-                     
-                     <p>Below is an example on a stylesheet to style MathML elements on which the
-                        User Agents may rely. Unfortunately, some rendering engines do not allow
-                        universal selectors in their user agent stylesheets and so rules must be
-                        expanded to list all possible MathML elements described in the present
-                        document. For example <code>mfrac &gt; *</code> can be converted into
-                        <code>mfrac &gt; mi, mfrac &gt; mn, mfrac &gt; mo, mfrac &gt; mtext, mfrac &gt; mspace,
-                           mfrac &gt; ms, mfrac &gt; mrow, mfrac &gt; mfrac, mfrac &gt; msqrt, mfrac &gt; mroot,
-                           mfrac &gt; mstyle, mfrac &gt; merror, mfrac &gt; mpadded, mfrac &gt; mphantom,
-                           mfrac &gt; menclose, mfrac &gt; msub, mfrac &gt; msubsup, mfrac &gt; munder, mfrac &gt; mover,
-                           mfrac &gt; munderover, mfrac &gt; mmultiscripts, mfrac &gt; mtable, mfrac &gt; maction</code>.
-                     </p>
-                     
-                  </div>
-                  
-                  <div id="cssuseragent.p3">
-                     
-                     <div>
-                        <pre class="example">@namespace url(http://www.w3.org/1998/Math/MathML);
-/* The &lt;math&gt; element */
-math {
-  direction: ltr;
-  display: inline;
-  font-size: inherit;
-  font-style: normal;
-  font-family: serif;
-  mathml-math-style: inline;
-}
-math[display="block"] {
-  display: block;
-  text-align: center;
-  mathml-math-style: display;
-}
-math[display="inline"] {
-  display: inline;
-  mathml-math-style: inline;
-}
-math[displaystyle="false"] {
-  mathml-math-style: inline;
-}
-math[displaystyle="true"] {
-  mathml-math-style: display;
-}
-/* Links */
-:any-link {
-    color: blue;
-    text-decoration: none;
-}
-/* Tabular elements */
-mtable {
-  display: inline-table;
-  mathml-math-style: inline;
-}
-mtable[displaystyle="true"] {
-  mathml-math-style: display;
-}
-mtable[frame="none"] {
-  border: none;
-}
-mtable[frame="solid"] {
-  border: solid thin;
-}
-mtable[frame="dashed"] {
-  border: dashed thin;
-}
-mtr, mlabeledtr {
-  display: table-row;
-  vertical-align: baseline;
-}
-mlabeledtr &gt; mtd:first-child {
-  display: none;
-}
-mtd {
-  display: table-cell;
-  vertical-align: inherit;
-  text-align: center;
-  padding: 0.5ex 0.4em;
-}
-/* The &lt;ms&gt; element */
-ms {
-  display: inline;
-}
-ms:before, ms:after {
-  content: "\0022"
-}
-ms[lquote]:before {
-  content: attr(lquote)
-}
-ms[rquote]:after {
-  content: attr(rquote)
-}
-/*  The &lt;merror&gt; element */
-merror {
- outline: solid thin red;
- background-color: lightYellow;
-}
-/* The &lt;mphantom&gt; element */
-mphantom {
-  visibility: hidden;
-}
-/* Scriptlevel and displaystyle for other elements */
-mstyle[displaystyle="false"] {
-  mathml-math-style: inline;
-}
-mstyle[displaystyle="true"] {
-  mathml-math-style: display;
-}
-mfrac &gt; * {
-  mathml-script-level: auto;
-  mathml-math-style: inline;
-}
-mroot &gt; :not(:first-child) {
-  mathml-script-level: increment-by 2;
-  mathml-math-style: inline;
-}
-msub &gt; :not(:first-child),
-msup &gt; :not(:first-child),
-msubsup &gt; :not(:first-child),
-mmultiscripts &gt; :not(:first-child) {
-  mathml-script-level: increment-by 1;
-  mathml-math-style: inline;
-}
-munder &gt; :not(:first-child),
-mover &gt; :not(:first-child),
-munderover &gt; :not(:first-child) {
-  mathml-math-style: inline;
-}</pre>
-                        </div>
-                     
-                  </div>
-                  
-               </section>
                
             </section>
-            
-            
-            <section id="att-syntax">
-               
-               <h1><span class="secnum">2.4</span> MathML Core Attribute Syntax
-               </h1>
-               
-               <p>Several MathML elements have attributes sharing common syntax for constructs such
-                  as <a href="#length">2.4.1</a> or
-                  <a href="#length">color</a>. the syntax for these attributes is defined below.
-               </p>
-               
-               
-               <section id="length">
-                  
-                  <h2><span class="secnum">2.4.1</span> Length
-                  </h2>
-                  
-                  <p>MathML Core attributes of type <i>length</i> must have value
-                     consisting of an optional U+002D HYPHEN-MINUS (-) followed by a
-                     string of characters representing a length or percentage as specifed
-                     by
-                     <a href="https://www.w3.org/TR/html5/infrastructure.html#percentages-and-dimensions">HTML5
-                        percentages and lengths</a>.
-                  </p>
-                  
-                  
-               </section>
-               
-               <section id="color">
-                  
-                  <h2><span class="secnum">2.4.2</span> Color
-                  </h2>
-                  
-                  <p>MathML Core attributes of type <i>color</i> must have value
-                     consisting of a string of characters representing a color as specified
-                     by
-                     <a href="https://www.w3.org/TR/html5/infrastructure.html#colors">HTML5
-                        color</a>.
-                  </p>
-                  
-                  
-                  
-               </section>
-               
-            </section>
-            
             
          </section>
          <section id="presentationmarkup">
@@ -1001,7 +823,7 @@ munderover &gt; :not(:first-child) {
                   <div id="boxmodel.p2">
                      
                      <p>MathML elements have the following box model. The <code>&lt;math&gt;</code> root may have
-                        inline or block display, as suggested in section <a href="#cssuseragent">2.3.2</a>.
+                        inline or block display, as suggested in section <a href="#cssuseragent">Unknown Reference</a>.
                         Tabular MathML elements have table, table-row and
                         table-cell display as discussed in section <a href="#tables">3.5</a>.
                         The <code>&lt;math&gt;</code> and <code>&lt;mtd&gt;</code> elements
@@ -3845,7 +3667,7 @@ munderover &gt; :not(:first-child) {
                         element except that quotes are automatically added around its content.
                         The user agents may implement the <code>lquote</code> or <code>rquote</code> attributes
                         with the following style in the user agent stylesheet as suggested in section
-                        <a href="#cssuseragent">2.3.2</a>:
+                        <a href="#cssuseragent">Unknown Reference</a>:
                      </p>
                      
                   </div>
@@ -4459,7 +4281,7 @@ ms[rquote]:after {
                      
                      <p>The <code>displaystyle</code> and <code>scriptlevel</code> changes be achieved with the
                         following style in the user agent stylesheet as suggested in section
-                        <a href="#cssuseragent">2.3.2</a>:
+                        <a href="#cssuseragent">Unknown Reference</a>:
                      </p>
                      
                      <div>
@@ -5282,7 +5104,7 @@ ms[rquote]:after {
                      
                      <p>The <code>displaystyle</code> and <code>scriptlevel</code> changes be achieved with the
                         following style in the user agent stylesheet as suggested in section
-                        <a href="#cssuseragent">2.3.2</a>:
+                        <a href="#cssuseragent">Unknown Reference</a>:
                      </p>
                      
                      <div>
@@ -5932,7 +5754,7 @@ ms[rquote]:after {
                      <p>For the layout algorithm described in this document, the
                         <code>mstyle</code> element must be treated the same as the <code>mrow</code> element.
                         However, some attributes on the <code>mstyle</code> element must be mapped to CSS
-                        properties as indicated in section <a href="#cssproperties">2.3.1</a>.
+                        properties as indicated in section <a href="#cssproperties">Unknown Reference</a>.
                         All the other <code>mstyle</code>
                         attributes not defined in this document must be ignored.
                      </p>
@@ -5963,7 +5785,7 @@ ms[rquote]:after {
                         <code>merror</code> element must be treated the same as the <code>mrow</code> element.
                         The user agent stylesheet must set some CSS properties on the <code>merror</code>
                         element in order to highlight the error.
-                        As suggested in section <a href="#cssuseragent">2.3.2</a>, this can for example be achieved
+                        As suggested in section <a href="#cssuseragent">Unknown Reference</a>, this can for example be achieved
                         with the rule:
                      </p>
                      
@@ -6477,7 +6299,7 @@ ms[rquote]:after {
                         <code>mphantom</code> element must be treated the same as the <code>mrow</code> element.
                         The user agent stylesheet must set some CSS properties on the <code>mphantom</code>
                         element in order to hide its content.
-                        As suggested in section <a href="#cssuseragent">2.3.2</a>, this can for example be achieved
+                        As suggested in section <a href="#cssuseragent">Unknown Reference</a>, this can for example be achieved
                         with the rule:
                      </p>
                      
@@ -8838,7 +8660,7 @@ ms[rquote]:after {
                   
                   <div id="msubmsup.p2">
                      
-                     <p>As suggested in section section <a href="#cssuseragent">2.3.2</a>, the <code>displaystyle</code> and
+                     <p>As suggested in section section <a href="#cssuseragent">Unknown Reference</a>, the <code>displaystyle</code> and
                         <code>scriptlevel</code> changes be achieved with the
                         following style in the user agent stylesheet:
                      </p>
@@ -10306,7 +10128,7 @@ msubsup &gt; :not(:first-child) {
                         the appropriate <code>accent</code> or <code>accentunder</code> value, which can not be done
                         using only CSS. However, <code>displaystyle</code> changes can be achieved with the
                         following style in the user agent stylesheet, as suggested in section
-                        <a href="#cssuseragent">2.3.2</a>:
+                        <a href="#cssuseragent">Unknown Reference</a>:
                      </p>
                      
                      <div>
@@ -11027,7 +10849,7 @@ base
                      
                      <p>The <code>displaystyle</code> and <code>scriptlevel</code> changes be achieved with the
                         following style in the user agent stylesheet as suggested in section
-                        <a href="#cssuseragent">2.3.2</a>:
+                        <a href="#cssuseragent">Unknown Reference</a>:
                      </p>
                      
                      <div>
@@ -11662,7 +11484,7 @@ base
                      a HTML table and by <cite>[<a href="#bibx11">MathML3</a>]</cite>, <code>mtable</code> must accept a
                      <code>displaystyle</code> attribute with default value <code>false</code>. To implement that,
                      one may rely on the following rules for the user agent stylesheet as
-                     suggested in section <a href="#cssuseragent">2.3.2</a>:
+                     suggested in section <a href="#cssuseragent">Unknown Reference</a>:
                   </p>
                   
                   <div>
@@ -11712,7 +11534,7 @@ mtable[frame="dashed"] {
                      and the label of <code>mlabeledtr</code> element must be hidden by default.
                      The default value of <code>rowalign</code> must be <code>baseline</code>.
                      One may rely on the following rules for the user agent stylesheet
-                     as suggested in section <a href="#cssuseragent">2.3.2</a>:
+                     as suggested in section <a href="#cssuseragent">Unknown Reference</a>:
                   </p>
                   
                </div>
@@ -12367,9 +12189,162 @@ mlabeledtr &gt; mtd:first-child {
 </pre>
             
             </section>
+         <section id="user-agent-stylesheet">
+            
+            <h1><span class="secnum">Appendix C</span> User Agent Stylesheet
+            </h1>
+            
+            <div></div>
+            
+            
+            
+            <div id="cssuseragent.p1">
+               
+               <p>Because mathematical formulas are generally written with special fonts, the
+                  default user agent stylesheet must reset the CSS <code>font-family</code> on the
+                  <code>math</code> element to <code>serif</code>. User agents should then use their own
+                  mechanism to try and interpret this <code>serif</code> value on the <code>math</code> element
+                  as a font with an OpenType MATH table.
+               </p>
+               
+            </div>
+            
+            <div id="cssuseragent.p2">
+               
+               <p>Below is an example on a stylesheet to style MathML elements on which the
+                  User Agents may rely. Unfortunately, some rendering engines do not allow
+                  universal selectors in their user agent stylesheets and so rules must be
+                  expanded to list all possible MathML elements described in the present
+                  document. For example <code>mfrac &gt; *</code> can be converted into
+                  <code>mfrac &gt; mi, mfrac &gt; mn, mfrac &gt; mo, mfrac &gt; mtext, mfrac &gt; mspace,
+                     mfrac &gt; ms, mfrac &gt; mrow, mfrac &gt; mfrac, mfrac &gt; msqrt, mfrac &gt; mroot,
+                     mfrac &gt; mstyle, mfrac &gt; merror, mfrac &gt; mpadded, mfrac &gt; mphantom,
+                     mfrac &gt; menclose, mfrac &gt; msub, mfrac &gt; msubsup, mfrac &gt; munder, mfrac &gt; mover,
+                     mfrac &gt; munderover, mfrac &gt; mmultiscripts, mfrac &gt; mtable, mfrac &gt; maction</code>.
+               </p>
+               
+            </div>
+            
+            <div id="cssuseragent.p3">
+               
+               <div>
+                  <pre class="example">@namespace url(http://www.w3.org/1998/Math/MathML);
+/* The &lt;math&gt; element */
+math {
+  direction: ltr;
+  display: inline;
+  font-size: inherit;
+  font-style: normal;
+  font-family: serif;
+  mathml-math-style: inline;
+}
+math[display="block"] {
+  display: block;
+  text-align: center;
+  mathml-math-style: display;
+}
+math[display="inline"] {
+  display: inline;
+  mathml-math-style: inline;
+}
+math[displaystyle="false"] {
+  mathml-math-style: inline;
+}
+math[displaystyle="true"] {
+  mathml-math-style: display;
+}
+/* Links */
+:any-link {
+    color: blue;
+    text-decoration: none;
+}
+/* Tabular elements */
+mtable {
+  display: inline-table;
+  mathml-math-style: inline;
+}
+mtable[displaystyle="true"] {
+  mathml-math-style: display;
+}
+mtable[frame="none"] {
+  border: none;
+}
+mtable[frame="solid"] {
+  border: solid thin;
+}
+mtable[frame="dashed"] {
+  border: dashed thin;
+}
+mtr, mlabeledtr {
+  display: table-row;
+  vertical-align: baseline;
+}
+mlabeledtr &gt; mtd:first-child {
+  display: none;
+}
+mtd {
+  display: table-cell;
+  vertical-align: inherit;
+  text-align: center;
+  padding: 0.5ex 0.4em;
+}
+/* The &lt;ms&gt; element */
+ms {
+  display: inline;
+}
+ms:before, ms:after {
+  content: "\0022"
+}
+ms[lquote]:before {
+  content: attr(lquote)
+}
+ms[rquote]:after {
+  content: attr(rquote)
+}
+/*  The &lt;merror&gt; element */
+merror {
+ outline: solid thin red;
+ background-color: lightYellow;
+}
+/* The &lt;mphantom&gt; element */
+mphantom {
+  visibility: hidden;
+}
+/* Scriptlevel and displaystyle for other elements */
+mstyle[displaystyle="false"] {
+  mathml-math-style: inline;
+}
+mstyle[displaystyle="true"] {
+  mathml-math-style: display;
+}
+mfrac &gt; * {
+  mathml-script-level: auto;
+  mathml-math-style: inline;
+}
+mroot &gt; :not(:first-child) {
+  mathml-script-level: increment-by 2;
+  mathml-math-style: inline;
+}
+msub &gt; :not(:first-child),
+msup &gt; :not(:first-child),
+msubsup &gt; :not(:first-child),
+mmultiscripts &gt; :not(:first-child) {
+  mathml-script-level: increment-by 1;
+  mathml-math-style: inline;
+}
+munder &gt; :not(:first-child),
+mover &gt; :not(:first-child),
+munderover &gt; :not(:first-child) {
+  mathml-math-style: inline;
+}</pre>
+                  </div>
+               
+            </div>
+            
+         </section>
          <section id="op-dict">
             
-            <h1><span class="secnum">Appendix C</span> Operator Dictionary
+            <h1><span class="secnum">Appendix D</span> Operator Dictionary
             </h1>
             
             
@@ -12383,7 +12358,7 @@ mlabeledtr &gt; mtd:first-child {
             
             
             <section id="oper-dict_index">
-               <h2><span class="secnum">C.1</span> Indexing of the operator dictionary
+               <h2><span class="secnum">D.1</span> Indexing of the operator dictionary
                </h2>
                
                
@@ -12419,7 +12394,7 @@ mlabeledtr &gt; mtd:first-child {
             
             
             <section id="oper-dict_format">
-               <h2><span class="secnum">C.2</span> Format of operator dictionary entries
+               <h2><span class="secnum">D.2</span> Format of operator dictionary entries
                </h2>
                
                
@@ -12516,7 +12491,7 @@ mlabeledtr &gt; mtd:first-child {
             
             
             <section id="oper-dict_space">
-               <h2><span class="secnum">C.3</span> Notes on <code>lspace</code> and 
+               <h2><span class="secnum">D.3</span> Notes on <code>lspace</code> and 
                   <code>rspace</code> attributes
                </h2>
                
@@ -12643,7 +12618,7 @@ mlabeledtr &gt; mtd:first-child {
             
             
             <section id="oper-dict_entries-table">
-               <h2><span class="secnum">C.4</span> Operator dictionary entries
+               <h2><span class="secnum">D.4</span> Operator dictionary entries
                </h2>
                
                
@@ -28175,7 +28150,7 @@ mlabeledtr &gt; mtd:first-child {
          </section>
          <section id="comb-equiv">
             
-            <h1><span class="secnum">Appendix D</span> MathML Combining Character Equivalences
+            <h1><span class="secnum">Appendix E</span> MathML Combining Character Equivalences
             </h1>
             
             
@@ -28778,7 +28753,7 @@ mlabeledtr &gt; mtd:first-child {
          </section>
          <section id="references">
             
-            <h1><span class="secnum">Appendix E</span> References
+            <h1><span class="secnum">Appendix F</span> References
             </h1>
             
             <div></div>
@@ -29025,7 +29000,7 @@ mlabeledtr &gt; mtd:first-child {
          </section>
          <section id="issues">
             
-            <h1><span class="secnum">Appendix F</span> Open MathML Core Issues
+            <h1><span class="secnum">Appendix G</span> Open MathML Core Issues
             </h1>
             
             
