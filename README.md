@@ -1,3 +1,4 @@
+# MathML Core (Editor's Draft)
 
-# MathML Core
-Core MathML features
+This specification defines a core subset of Mathematical Markup Language, or
+MathML, that is suitable for browser implementation.
