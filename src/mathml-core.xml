@@ -3,15 +3,13 @@
 <front>
   <title>MathML Core</title>
   <editors>David Carlisle and Frédéric Wang</editors>
-  <status>
-   <p>Just experimenting...</p>
-  </status>
+  <status></status>
 </front>
 
 <include file="abstract"/>
 
 <div id="main">
- <include file="intro"/>
+ <include file="introduction"/>
  <include file="fundamentals"/>
  <include file="presentation"/>
 </div>
@@ -21,7 +19,7 @@
  <include file="user-agent-stylesheet"/>
  <include file="operator-dictionary"/>
  <include file="combining-characters"/>
- <include file="bibliography"/>
+ <include file="references"/>
  <include file="issues"/>
 </div>
 
