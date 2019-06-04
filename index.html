@@ -64,7 +64,7 @@
                               <li><a href="#color"><span>2.1.2.3</span> </a></li>
                            </ol>
                         </li>
-                        <li><a href="#fund.globatt"><span>2.1.3</span> Attributes Shared by all MathML Elements</a></li>
+                        <li><a href="#global-attributes"><span>2.1.3</span> Attributes Shared by all MathML Elements</a></li>
                      </ol>
                   </li>
                   <li><a href="#fund.toplevel"><span>2.2</span> The Top-Level <code>&lt;math&gt;</code> Element</a></li>
@@ -103,14 +103,11 @@
                               </a></li>
                         <li><a href="#msqrt"><span>3.3.3</span> Radicals <code>&lt;msqrt&gt;</code>, <code>&lt;mroot&gt;</code>
                               </a></li>
-                        <li><a href="#mstyle"><span>3.3.4</span> Style Change <code>&lt;mstyle&gt;</code>
-                              </a></li>
-                        <li><a href="#merror"><span>3.3.5</span> Error Message <code>&lt;merror&gt;</code>
-                              </a></li>
+                        <li><a href="#mstyle"><span>3.3.4</span> Style Change <code>&lt;mstyle&gt;</code></a></li>
+                        <li><a href="#merror"><span>3.3.5</span> Error Message <code>&lt;merror&gt;</code></a></li>
                         <li><a href="#mpadded"><span>3.3.6</span> Adjust Space Around Content <code>&lt;mpadded&gt;</code>
                               </a></li>
-                        <li><a href="#mphantom"><span>3.3.7</span> Making Sub-Expressions Invisible <code>&lt;mphantom&gt;</code>
-                              </a></li>
+                        <li><a href="#mphantom"><span>3.3.7</span> Making Sub-Expressions Invisible <code>&lt;mphantom&gt;</code></a></li>
                         <li><a href="#menclose"><span>3.3.8</span> Enclose Expression Inside Notation <code>&lt;menclose&gt;</code>
                               </a></li>
                      </ol>
@@ -535,7 +532,7 @@
                </section>
                
                
-               <section id="fund.globatt">
+               <section id="global-attributes">
                   
                   <h3><span class="secnum">2.1.3</span> Attributes Shared by all MathML Elements
                   </h3>
@@ -5732,75 +5729,60 @@ ms[rquote]:after {
                   
                </section>
                
+               
                <section id="mstyle">
                   
-                  <h3><span class="secnum">3.3.4</span> Style Change <code>&lt;mstyle&gt;</code>
-                     
-                  </h3>
+                  <h3><span class="secnum">3.3.4</span> Style Change <code>&lt;mstyle&gt;</code></h3>
                   
+                  <p id="mstyle.p1">
+                     Historically, the <code>&lt;mstyle&gt;</code> element was introduced to make
+                     style changes that affect the rendering of its contents. Although it is not
+                     really useful in modern web environments, it is preserved for backward
+                     compatibility reasons.
+                     
+                  </p>
                   
-                  
-                  <div id="mstyle.p1">
+                  <p id="mstyle.p2">
+                     The <code>&lt;mstyle&gt;</code> element accepts the attributes described in
+                     section <a href="#global-attributes">2.1.3</a>. Its layout algorithm is the
+                     same as the <code>&lt;mrow&gt;</code> element.
                      
-                     
-                     <p>The <code>mstyle</code> element is used to make style changes that affect the
-                        rendering of its contents.
-                     </p>
-                     
-                  </div>
-                  
-                  <div id="mstyle.p2">
-                     
-                     <p>For the layout algorithm described in this document, the
-                        <code>mstyle</code> element must be treated the same as the <code>mrow</code> element.
-                        However, some attributes on the <code>mstyle</code> element must be mapped to CSS
-                        properties as indicated in section <a href="#cssproperties">Unknown Reference</a>.
-                        All the other <code>mstyle</code>
-                        attributes not defined in this document must be ignored.
-                     </p>
-                     
-                  </div>
+                  </p>
                   
                </section>
                
+               
                <section id="merror">
                   
-                  <h3><span class="secnum">3.3.5</span> Error Message <code>&lt;merror&gt;</code>
-                     
-                  </h3>
+                  <h3><span class="secnum">3.3.5</span> Error Message <code>&lt;merror&gt;</code></h3>
                   
+                  <p id="merror.p1">
+                     The <code>&lt;merror&gt;</code> element displays its contents as an
+                     ”error message”. The intent of this element is to provide a standard way
+                     for programs that generate MathML from other input to report syntax errors
+                     in their input.
+                     
+                  </p>
                   
-                  <div id="merror.p1">
+                  <p id="merror.p2">
+                     The <code>&lt;merror&gt;</code> element accepts the attributes described in
+                     section <a href="#global-attributes">2.1.3</a>. Its layout algorithm is the
+                     same as the <code>&lt;mrow&gt;</code> element.
+                     The User Agent stylesheet must contain the following properties from
+                     <a href="#user-agent-stylesheet">Appendix B</a> in order to visually
+                     highlight the error message:
                      
-                     <p>The <code>merror</code> element displays its contents as an ”error message”. This might be done, for example,
-                        by displaying the contents in red, flashing the
-                        contents, or changing the background color.
-                     </p>
-                     
-                  </div>
+                  </p>
                   
-                  <div id="merror.p2">
-                     
-                     <p>For the layout algorithm described in this document, the
-                        <code>merror</code> element must be treated the same as the <code>mrow</code> element.
-                        The user agent stylesheet must set some CSS properties on the <code>merror</code>
-                        element in order to highlight the error.
-                        As suggested in
-                        <a href="#user-agent-stylesheet">Appendix B</a>,
-                        this can for example be achieved
-                        with the rule:
-                     </p>
-                     
-                     <div>
-                        <pre class="example">merror {
+                  <div id="merror.p3">
+                     <pre class="example">merror {
   outline: solid thin red;
   background-color: lightYellow;
 }</pre>
-                        </div>
-                     
-                  </div>
+                     </div>
                   
                </section>
+               
                
                <section id="mpadded">
                   
@@ -6279,41 +6261,35 @@ ms[rquote]:after {
                   
                </section>
                
+               
                <section id="mphantom">
                   
-                  <h3><span class="secnum">3.3.7</span> Making Sub-Expressions Invisible <code>&lt;mphantom&gt;</code>
-                     
-                  </h3>
+                  <h3><span class="secnum">3.3.7</span> Making Sub-Expressions Invisible <code>&lt;mphantom&gt;</code></h3>
                   
+                  <p id="mphantom.p1">
+                     Historically, the <code>mphantom</code> element was introduced to render
+                     its content invisibly, but with the same size and other dimensions,
+                     including baseline position, that its contents would have if they were
+                     rendered normally. Although it is not really useful in modern web
+                     environments, it is preserved for backward compatibility reasons.
+                     
+                  </p>
                   
+                  <p id="mphantom.p2">
+                     The <code>&lt;mphantom&gt;</code> element accepts the attributes described
+                     in section <a href="#global-attributes">2.1.3</a>. Its layout algorithm is
+                     the same as the <code>&lt;mrow&gt;</code> element.
+                     The User Agent stylesheet must contain the following properties from
+                     <a href="#user-agent-stylesheet">Appendix B</a> in order to hide its
+                     content:
+                     
+                  </p>
                   
-                  <div id="mphantom.p1">
-                     
-                     <p>The <code>mphantom</code> element renders invisibly, but with the same size and other dimensions, including
-                        baseline position, that its contents would have if they were rendered normally.
-                     </p>
-                     
-                  </div>
-                  
-                  <div id="mphantom.p2">
-                     
-                     <p>For the layout algorithm described in this document, the
-                        <code>mphantom</code> element must be treated the same as the <code>mrow</code> element.
-                        The user agent stylesheet must set some CSS properties on the <code>mphantom</code>
-                        element in order to hide its content.
-                        As suggested in
-                        <a href="#user-agent-stylesheet">Appendix B</a>,
-                        this can for example be achieved
-                        with the rule:
-                     </p>
-                     
-                     <div>
-                        <pre class="example">mphantom {
+                  <div id="mphantom.p3">
+                     <pre class="example">mphantom {
   visibility: hidden;
 }</pre>
-                        </div>
-                     
-                  </div>
+                     </div>
                   
                </section>
                
@@ -11596,102 +11572,45 @@ mlabeledtr &gt; mtd:first-child {
                
             </section>
             
+            
             <section id="enlivening">
                
                <h2><span class="secnum">3.6</span> Enlivening Expressions
                </h2>
                
+               <p id="enlivening.p1">
+                  Historically, the <code>&lt;maction&gt;</code> element provides a mechanism
+                  for binding actions to expressions. Although it is not really useful in
+                  modern web environments, it is preserved for backward compatibility reasons.
+                  
+               </p>
                
-               <div id="enlivening.p1">
+               <p id="enlivening.p2">
+                  The <code>&lt;maction&gt;</code> element accepts the attributes described
+                  in section <a href="#global-attributes">2.1.3</a>.
+                  The <code>actiontype</code> and <code>selection</code> attributes are
+                  also accepted but they do not have any effect.
                   
-                  <p>To provide a mechanism for binding actions to expressions, MathML provides the
-                     maction element. This element accepts any number of sub-expressions as
-                     arguments and the type of action that should happen is controlled by the
-                     actiontype attribute. Only three actions are predefined by MathML, but the list
-                     of possible actions is open.
-                     
-                  </p>
-                  
-                  <p>User agents must display at most one of the child of a <code>maction</code> element.
-                     User agents must determine the visible child as follows:
-                  </p>
-                  
-                  <ol id="I13">
-                     
-                     <li id="I13.i1"> 
-                        
-                        <div id="I13.i1.p1">
-                           
-                           <p>If <code>actiontype</code> is <code>toggle</code> and the <code>selection</code> attribute
-                              (with default value 1) points to a valid child index
-                              between 1 and the number of children, then use the specified child.
-                           </p>
-                           
-                        </div>
-                        
-                     </li>
-                     
-                     <li id="I13.i2"> 
-                        
-                        <div id="I13.i2.p1">
-                           
-                           <p>If the <code>actiontype</code> is <code>statusline</code> or <code>tooltip</code> then
-                              use the first child (if any).
-                           </p>
-                           
-                        </div>
-                        
-                     </li>
-                     
-                     <li id="I13.i3"> 
-                        
-                        <div id="I13.i3.p1">
-                           
-                           <p>Otherwise, the visible child is undetermined.</p>
-                           
-                        </div>
-                        
-                     </li>
-                     
-                  </ol>
-                  
-               </div>
+               </p>
                
-               <div id="enlivening.p2">
+               <p id="enlivening.p3">
+                  The layout algorithm of the <code>&lt;maction&gt;</code> element
+                  the same as the <code>&lt;mrow&gt;</code> element.
+                  The User Agent stylesheet must contain the following properties from
+                  <a href="#user-agent-stylesheet">Appendix B</a> in order to hide all but
+                  its first child, which is the default behavior for the legacy actiontype
+                  values:
                   
-                  <p>For the layout algorithm described in this document, the
-                     <code>maction</code> element must be treated the same as the <code>mrow</code> element
-                     containing its visible child. If it is undetermined,
-                     the user agent may treat the <code>maction</code> element as an
-                     empty <code>mrow</code> element or as an <code>merror</code> element with some relevant error
-                     message indicating invalid or unsupported markup.
-                  </p>
-                  
-               </div>
-               
-               <div id="enlivening.p3">
-                  
-                  <p>User agents may additionally provide a complete implementation of the
-                     <code>toggle</code> actiontype updating the value of the <code>selection</code> attribute
-                     after the <code>maction</code> element receives a <code>click</code> event.
-                     For <code>statusline</code> and <code>tooltip</code> attributes, they may also display the
-                     second child in some way when the <code>maction</code> element receives a <code>hover</code>
-                     event. This document does not define how these DOM events are propagated
-                     or how to change the default behavior.
-                  </p>
-                  
-               </div>
+               </p>
                
                <div id="enlivening.p4">
-                  
-                  <p>Given the similarity with the <code>semantics</code> element
-                     described in section <a href="#sematicsandpresentation">3.7</a>, it is
-                     suggested to share the implementation of <code>semantics</code> and <code>maction</code>.
-                  </p>
-                  
-               </div>
+                  <pre class="example">maction &gt; :not(:first-child) {
+  display: none;
+}</pre>
+                  </div>
                
             </section>
+            
             
             <section id="sematicsandpresentation">
                
@@ -11818,15 +11737,6 @@ mlabeledtr &gt; mtd:first-child {
                      the user agent may treat the <code>semantics</code> element as an
                      empty <code>mrow</code> element or as an <code>merror</code> element with some error message
                      indicating invalid markup.
-                  </p>
-                  
-               </div>
-               
-               <div id="semantics.p4">
-                  
-                  <p>Given the similarity with the <code>maction</code> element
-                     described in section <a href="#enlivening">3.6</a>, it is
-                     suggested to share the implementation of <code>semantics</code> and <code>maction</code>.
                   </p>
                   
                </div>
@@ -12279,7 +12189,12 @@ munder &gt; :not(:first-child),
 mover &gt; :not(:first-child),
 munderover &gt; :not(:first-child) {
   mathml-math-style: inline;
-}</pre>
+}
+/* maction */
+maction &gt; :not(:first-child) {
+  display: none;
+}
+</pre>
                   </div>
                
             </div>
