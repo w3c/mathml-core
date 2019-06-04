@@ -21,13 +21,14 @@
 <div id="mathml3diff.p2">
   <p>The <cite>[<a href="bib.html#bibx11">auto</a>]</cite>
     specification has several shortcomings that make it hard to implement
-    consistently accross web rendering engines:</p>
-  <ol>
+    consistently accross web rendering engines or to extend with user-defined
+    constructions e.g.</p>
+  <ul>
     <li>It is a huge and standalone specification.</li>
     <li>It does not contain any detailed rendering rules.</li>
     <li>It is not driven by browser-implementation.</li>
     <li>It lacks automated testing.</li>
-  </ol>
+  </ul>
 </div>
 
 <div id="mathml3diff.p4">
@@ -37,19 +38,25 @@
     <cite>[<a href="bib.html#bibx16">auto</a>]</cite> and from
     the Open Font Format <cite>[<a href="bib.html#bibx13">auto</a>]</cite>.
     It also relies on modern browser implementations and web technologies
-    <cite>[<a href="bib.html#bibx9">auto</a>]</cite>, extending them or
-    clarifying interactions when needed.
+    <cite>[<a href="bib.html#bibx9">auto</a>]</cite> clarifying interactions
+    with them when needed or introducing new low-level primitives to improve
+    the web platform layering.
     Parts of MathML 3 that do not fit well in this framework or are rarely used
-    in practice have been ommited and moved into a larger specification
-    <cite>[<a href="bib.html#bibx11bis">auto</a>]</cite>.</p>
+    in practice have been omitted. Instead, they are described in a separate
+    and larger
+    <cite>[<a href="bib.html#bibx11bis">auto</a>]</cite> specification.</p>
 </div>
 
 <div id="mathml3diff.p5">
-<p>By increasing the level of implementation details and by focusing more on
-  browser-driven design, this specification is expected to greatly improve
-  MathML interoperability. A test suite is available in the
-   <a href="bib.html#bibwpt">auto</a> repository.
-</p>
+  <p>
+    By increasing the level of implementation details, focusing on a
+    workable subset, following a browser-driven design and relying on
+    automated <a href="bib.html#bibwpt">auto</a> tests, this specification is
+    expected to greatly improve MathML interoperability.
+    Moreover, effort on MathML layering will enable users to implement the
+    rest of the MathML 4 specification, or more generally to extend MathML Core,
+    using polyfills or converters.
+  </p>
 </div>
 </section>
 
