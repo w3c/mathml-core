@@ -179,23 +179,26 @@ for the layout of <code>mtable</code> elements and of the containers of the
 </div>
 </section>
 </section>
+
+
 <section id="tokenelements">
-<h2>Token Elements</h2>
+  <h2>Token Elements</h2>
+  <section id="tokenmi">
+    <h3>Identifier <code>&lt;mi&gt;</code></h3>
+    <p>
+      An <code>mi</code> element represents a symbolic name or arbitrary text
+      that should be rendered as an identifier. Identifiers can include
+      variables, function names, and symbolic constants.
+    </p>
+    <p>
+      In general, the <code>mi</code> element must be treated the same as the
+      <code>mtext</code> element. However, in order to implement the
+      automatic italic of mathematical variables, the User Agent stylesheet
+      must set <code>text-transform: math-auto</code> on the <code>mi</code>
+      element as described in <a href="#user-agent-stylesheet">Appendix B</a>.
+    </p>
+  </section>
 
-<section id="tokenmi">
-<h3>Identifier <code>&lt;mi&gt;</code>
-</h3>
-
-<div id="tokenmi.p1">
-<p>An <code>mi</code> element represents a symbolic name or arbitrary text that should be rendered as an identifier. Identifiers can include variables, function names, and symbolic constants.</p>
-</div>
-<div id="tokenmi.p2">
-<p>In general, the <code>mi</code> element must be treated the same as the <code>mtext</code>
-element. However, when the <code>mathvariant</code> on an <code>mi</code> element is
-<code>none</code> and the <code>mi</code> content is made of a single character then the
-element must behave as if <code>mathvariant</code> was actually set to <code>italic</code>.</p>
-</div>
-</section>
 <section id="tokenmn">
 <h3>Number <code>&lt;mn&gt;</code>
 </h3>
@@ -625,15 +628,17 @@ the metrics for the whole box of the <code>mroot</code> element.</p>
   <h3>Style Change <code>&lt;mstyle&gt;</code></h3>
   <p id="mstyle.p1">
     Historically, the <code>&lt;mstyle&gt;</code> element was introduced to make
-    style changes that affect the rendering of its contents. Although it is not
-    really useful in modern web environments, it is preserved for backward
-    compatibility reasons.
+    style changes that affect the rendering of its contents.
   </p>
   <p id="mstyle.p2">
     The <code>&lt;mstyle&gt;</code> element accepts the attributes described in
     section <a href="#global-attributes">auto</a>. Its layout algorithm is the
     same as the <code>&lt;mrow&gt;</code> element.
   </p>
+  <div class="note">
+    Although <code>mstyle</code> is not really useful in modern web
+    environments, it is preserved for backward compatibility reasons.
+  </div>
 </section>
 
 <section id="merror">
@@ -703,8 +708,7 @@ metrics.
     Historically, the <code>mphantom</code> element was introduced to render
     its content invisibly, but with the same size and other dimensions,
     including baseline position, that its contents would have if they were
-    rendered normally. Although it is not really useful in modern web
-    environments, it is preserved for backward compatibility reasons.
+    rendered normally.
   </p>
   <p id="mphantom.p2">
     The <code>&lt;mphantom&gt;</code> element accepts the attributes described
@@ -718,6 +722,10 @@ metrics.
 <pre>mphantom {
   visibility: hidden;
 }</pre>
+  </div>
+  <div class="note">
+    Although <code>mphantom</code> is not really useful in modern web
+    environments, it is preserved for backward compatibility reasons.
   </div>
 </section>
 
@@ -1438,8 +1446,7 @@ the HTML <code>colspan</code> and <code>rowspan</code> attributes.</p>
   <h2>Enlivening Expressions</h2>
   <p id="enlivening.p1">
     Historically, the <code>&lt;maction&gt;</code> element provides a mechanism
-    for binding actions to expressions. Although it is not really useful in
-    modern web environments, it is preserved for backward compatibility reasons.
+    for binding actions to expressions.
   </p>
   <p id="enlivening.p2">
     The <code>&lt;maction&gt;</code> element accepts the attributes described
@@ -1459,6 +1466,10 @@ the HTML <code>colspan</code> and <code>rowspan</code> attributes.</p>
 <pre>maction > :not(:first-child) {
   display: none;
 }</pre>
+  </div>
+  <div class="note">
+    Although <code>maction</code> is not really useful in modern web
+    environments, it is preserved for backward compatibility reasons.
   </div>
 </section>
 

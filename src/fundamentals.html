@@ -110,18 +110,21 @@
     <li><a href="#id-class-style-attributes"><code>style</code></a></li>
     <li><a href="#href-class-style-attributes"><code>href</code></a></li>
     <li><a href="#dir-attribute"><code>dir</code></a></li>
-    <li><a href="#displaystyle-attribute"><code>displaystyle</code></a></li>
     <li><a href="#mathcolor-and-mathbackground-attributes"><code>mathbackground</code></a></li>
     <li><a href="#mathcolor-and-mathbackground-attributes"><code>mathcolor</code></a></li>
     <li><a href="#mathsize-attribute"><code>mathsize</code></a></li>
     <li><a href="#mathvariant-attribute"><code>mathvariant</code></a></li>
-    <li><a href="#scriptlevel-attribute"><code>scriptlevel</code></a></li>
+    <li><a href="#displaystyle-script-level-attributes"><code>displaystyle</code></a></li>
+    <li><a href="#displaystyle-script-level-attributes"><code>scriptlevel</code></a></li>
   </ul>
 
   <p id="id-class-style-attributes">
     The <code>id</code>, <code>class</code>,
     <code>style</code> attributes have the syntax and semantic described
-    in <cite><a href="references.html#bibx9">auto</a></cite>.
+    in <cite><a href="references.html#bibx9">auto</a></cite>. In particular,
+    they are used to identify elements in links and scripting, affect
+    CSS selectors, affect <span>getElementsByClassName()</span> and enable
+    authors to do inline styling.
   </p>
 
   <div id="href-attribute">
@@ -129,6 +132,7 @@
       The <code>href</code> has the syntax and semantic described
       in <cite><a href="references.html#bibx9">auto</a></cite>
       for the <code>&lt;a&gt;</code> element.
+      This attribute represents a hyperlink labeled by its contents.
       To fully implement this attribute, additional CSS properties for links
       must be specified in the user agent stylesheet
       as described in <a href="#user-agent-stylesheet">Appendix B</a>.
@@ -140,36 +144,36 @@
     empty, must have value <code>ltr</code> or <code>ltr</code>.
     It is mapped to the CSS property <code>direction</code> defined in
     <cite><a href="references.html#css-writing-mode">auto</a></cite>.
-  </p>
-
-  <p id="displaystyle-attribute">
-    The <code>displaystyle</code> attribute, if specified and not
-    empty, must have value <code>true</code> or <code>false</code>.
-    It is mapped to the CSS property <code>math-style</code>
-    defined in <a href="references.html#math-style-and-script-level">auto</a>.
-    More precisely,  <code>true</code> is mapped to <code>display</code> and
-    <code>false</code> to  <code>inline</code>.
-    To fully implement this attribute, additional CSS properties must be
-    specified in the user agent stylesheet
-    as described in <a href="#user-agent-stylesheet">Appendix B</a>.
+    This attribute is used to set the directionality of math formulas, which is
+    often <code>rtl</code> in Arabic speaking world.
   </p>
 
   <p id="mathcolor-and-mathbackground-attributes">The <code>mathcolor</code> and
     <code>mathbackground</code> attributes, if specified and not empty, must
     have a value that is a <a href="#color">&lt;color&gt;</a>.
-    They are respectively mapped to the CSS properties
-    <code>color</code> and
+    The <code>mathcolor</code> property describes the foreground fill color of
+    an MathML text, bars etc and the background color of an element.
+    They are mapped to the CSS properties <code>color</code> and
     <code>background-color</code> defined in
-    <cite><a href="references.html#css-color">auto</a></cite>.
+    <cite><a href="references.html#css-color">auto</a></cite>
+    and <cite><a href="references.html#css-backgrounds">auto</a></cite>.
   </p>
 
   <p id="mathsize-attribute">The <code>mathsize</code>
     attribute, if specified and not empty, must
     have a value that is a valid
     <a href="#length-percentage">&lt;length-percentage&gt;</a>.
-    It is mapped to the CSS property <code>font-size</code>
+    The <code>mathsize</code> property indicates indicates the desired height
+    of glyphs in math formulas but also scale other parts (spacing, shifts,
+    line thickness of bars etc) accordingly.
+    Is is mapped to the CSS property <code>font-size</code>
     from <a href="references.html#css-font">auto</a>.
   </p>
+
+  <div class="note">
+    Many of the above attributes are not useful in CSS-aware
+    environments, but are preserved for backward compatibility reasons.
+  </div>
 
   <div id="mathvariant-attribute">
     <p>
@@ -197,38 +201,81 @@
       <li><code>stretched</code></li>
     </ul>
     <p>
-      The <code>mathvariant</code> attribute
+      The <code>mathvariant</code> attribute defines logical classes of token
+      elements. Each class provides a collection of typographically-related
+      symbolic tokens with specific meaning within a given mathematical
+      expression.
+      For <code>mathvariant</code> values other than <code>normal</code>,
+      this is done by using glyphs of
+      Unicode's Mathematical Alphanumeric Symbols. 
+    </p>
+    <p>
+      Hence, the <code>mathvariant</code> attribute
       is mapped to new values of the CSS property <code>text-transform</code>
       defined in <a href="references.html#math-variant">auto</a>.
       More precisely, <code>normal</code> is mapped to <code>none</code>
       while all the other values the corresponding CSS value with the extra
       <code>math-</code> prefix.
-      To fully implement this attribute, additional CSS properties
-      for the <code>&lt;mi&gt;</code> element must be
-      specified in the user agent stylesheet
-      as described in <a href="#user-agent-stylesheet">Appendix B</a>.
     </p>
   </div>
 
-  <p id="scriptlevel-attribute">
-    The <code>scriptlevel</code> attribute, if specified and not
-    empty, must have value
-    <code>+&lt;U&gt;</code>, <code>-&lt;U&gt;</code> or <code>&lt;U&gt;</code>
-    where <code>&lt;U&gt;</code> is a
-    <a href="#non-negative-integer">&lt;non-negative-integer&gt;</a>.
-    It is mapped to the <code>math-script-level</code> property
-    defined in <a href="references.html#math-style-and-script-level">auto</a>.
-    More precisely,
-    <code>+&lt;U&gt;</code>, <code>-&lt;U&gt;</code> and <code>&lt;U&gt;</code>
-    are respectively mapped to
-    <code>add(&lt;U&gt;)</code>
-    <code>add(&lt;-U&gt;)</code>
-    and <code>&lt;U&gt;</code>.
-    To fully implement this attribute, additional CSS properties must be
-    specified in the user agent stylesheet
-    as described in <a href="#user-agent-stylesheet">Appendix B</a>.
-  </p>
+  <div class="note">
+    For <code>mathvariant</code> values other than <code>normal</code>,
+    one can just directly use the corresponding Unicode
+    characters. However, they are preserved for backward compatibility reasons.
+    The <code>normal</code> value is still important to cancel automatic
+    italic of the <a href="presentation.html#tokenmi"><code>&lt;mi&gt;</code></a> element.
+  </div>
 
+  <div id="displaystyle-script-level-attributes">
+    <p>
+      The <code>displaystyle</code> attribute, if specified and not
+      empty, must have value <code>true</code> or <code>false</code>.
+      It is mapped to the CSS property <code>math-style</code>
+      defined in <a href="references.html#math-style-and-script-level">auto</a>.
+      More precisely,  <code>true</code> is mapped to <code>display</code> and
+      <code>false</code> to  <code>inline</code>.
+      This attribute indicate whether formulas should try to minimize
+      the logical height (value is <code>false</code>) or not
+      (value is <code>true</code>) e.g. by changing the size of content or
+      the layout of scripts.
+    </p>
+    <p>
+      The <code>scriptlevel</code> attribute, if specified and not
+      empty, must have value
+      <code>+&lt;U&gt;</code>, <code>-&lt;U&gt;</code> or <code>&lt;U&gt;</code>
+      where <code>&lt;U&gt;</code> is a
+      <a href="#non-negative-integer">&lt;non-negative-integer&gt;</a>.
+      It is mapped to the <code>math-script-level</code> property
+      defined in <a href="references.html#math-style-and-script-level">auto</a>.
+      More precisely,
+      <code>+&lt;U&gt;</code>, <code>-&lt;U&gt;</code> and
+      <code>&lt;U&gt;</code>
+      are respectively mapped to
+      <code>add(&lt;U&gt;)</code>
+      <code>add(&lt;-U&gt;)</code>
+      and <code>&lt;U&gt;</code>.
+    </p>
+
+    <p>
+      <code>displaystyle</code> and <code>scriptlevel</code> values
+      are automatically adjusted within MathML elements.
+      To fully implement these attributes, additional CSS properties must be
+      specified in the user agent stylesheet
+      as described in <a href="#user-agent-stylesheet">Appendix B</a>.
+    </p>
+    
+    <div class="note">
+      T<sub>E</sub>X's <code>\displaystyle</code>, <code>\textstyle</code>,
+      <code>\scriptstyle</code>, and <code>\scriptscriptstyle</code> correspond
+      to <code>displaystyle</code> and <code>scriptlevel</code> as
+      <code>true</code> and <code>0</code>,
+      <code>false</code> and <code>0</code>,
+      <code>false</code> and <code>1</code>,
+      and <code>false</code> and 2, respectively.
+    </div>
+  </div>
+  
 </section>
 
 </section>
@@ -247,6 +294,14 @@
     specified in the user agent stylesheet
     as described in <a href="#user-agent-stylesheet">Appendix B</a>.
   </p>
+
+  <div class="note">
+    T<sub>E</sub>X's display mode <code>$...$</code>
+    and inline mode <code>$...$</code> correspond to
+    <code>display="block"</code> and <code>display="inline"</code>
+    respectively.
+  </div>
+
 </section>
 
 <section id="textandmath">
