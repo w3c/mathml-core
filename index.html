@@ -60,12 +60,7 @@
             <li><a href="#fundamentals"><span>2</span> MathML Fundamentals</a><ol class="toc">
                   <li><a href="#html5tree"><span>2.1</span> MathML Syntax and Grammar</a><ol class="toc">
                         <li><a href="#othertech"><span>2.1.1</span> DOM, HTML, SVG, CSS and Javascript</a></li>
-                        <li><a href="#att-syntax"><span>2.1.2</span> MathML Attribute Values </a><ol class="toc">
-                              <li><a href="#length"><span>2.1.2.1</span> </a></li>
-                              <li><a href="#color"><span>2.1.2.2</span> </a></li>
-                              <li><a href="#color"><span>2.1.2.3</span> </a></li>
-                           </ol>
-                        </li>
+                        <li><a href="#att-syntax"><span>2.1.2</span> MathML Attribute Values</a></li>
                         <li><a href="#global-attributes"><span>2.1.3</span> Attributes Shared by all MathML Elements</a></li>
                      </ol>
                   </li>
@@ -360,117 +355,11 @@
                   <div id="cssproperties.p1">
                      
                      <p>
-                        User agents must support the CSS language
-                        <cite><a href="#bibx1">[CSS2]</a></cite> and must take special
-                        styling into account when building the visual representation of the
-                        document.
+                        User agents must support several CSS modules and use the user agent
+                        stylesheet described in <a href="#user-agent-stylesheet">Appendix B</a>.
+                        Details are given in the respective sections.
                         
                      </p>
-                     
-                  </div>
-                  
-                  <div id="cssproperties.p2">
-                     
-                     <p>User agents must support at least the following properties:</p>
-                     
-                     <ol>
-                        
-                        <li><code>display</code>: at least <code>inline</code>,
-                           <code>block</code>, <code>inline-table</code>,
-                           <code>table-row</code>, <code>table-cell</code>, <code>none</code> and
-                           <code>contents</code>.
-                           It is used for the <code>math</code> and tabular elements.
-                           Appropriate values must be specified in the user agent stylesheet
-                           as described in <a href="#user-agent-stylesheet">Appendix B</a>.
-                           For all MathML elements, <code>display: contents</code> computes to
-                           <code>display: none</code>
-                           <cite><a href="#bib-css-display">[CSS-DISPLAY-3]</a></cite>.
-                           
-                        </li>
-                        
-                        <li><code>direction</code>. The <code>dir</code> attribute on any
-                           MathML element must be mapped to that property.
-                        </li>
-                        
-                        <li>The <code>font</code> property and its shorthands. The
-                           <code>mathsize</code> attribute on any MathML element must mapped to
-                           that property.
-                        </li>
-                        
-                        <li><code>background</code> and <code>color</code>. The
-                           <code>mathbackground</code> and <code>mathcolor</code> attributes on
-                           any MathML elements must be mapped to these properties.
-                        </li>
-                        
-                        <li><code>visibility</code>. It is is used for the <code>mphantom</code>
-                           element and must be specified in the user agent stylesheet as described
-                           in <a href="#user-agent-stylesheet">Appendix B</a>.
-                        </li>
-                        
-                        <li><code>text-transform</code>. It is used to implement the
-                           <code>mathvariant</code> attribute on any MathML element.
-                           Values <code>normal</code>
-                           <code>bold</code>,
-                           <code>italic</code>,
-                           <code>bold-italic</code>,
-                           <code>double-struck</code>,
-                           <code>bold-fraktur</code>,
-                           <code>script</code>,
-                           <code>bold-script</code>,
-                           <code>fraktur</code>,
-                           <code>sans-serif</code>,
-                           <code>bold-sans-serif</code>,
-                           <code>sans-serif-italic</code>,
-                           <code>sans-serif-bold-italic</code>,
-                           <code>monospace</code>,
-                           <code>initial</code>,
-                           <code>tailed</code>,
-                           <code>looped</code>,
-                           <code>stretched</code> are respectively mapped to
-                           <code>text-transform: none</code>,
-                           <code>text-transform: math-bold</code>
-                           <code>text-transform: math-italic</code>
-                           <code>text-transform: math-bold-italic</code>
-                           <code>text-transform: math-double-struck</code>
-                           <code>text-transform: math-bold-fraktur</code>
-                           <code>text-transform: math-script</code>
-                           <code>text-transform: math-bold-script</code>
-                           <code>text-transform: math-fraktur</code>
-                           <code>text-transform: math-sans-serif</code>
-                           <code>text-transform: math-bold-sans-serif</code>
-                           <code>text-transform: math-sans-serif-italic</code>
-                           <code>text-transform: math-sans-serif-bold-italic</code>
-                           <code>text-transform: math-monospace</code>
-                           <code>text-transform: math-initial</code>
-                           <code>text-transform: math-tailed</code>
-                           <code>text-transform: math-looped</code>
-                           <code>text-transform: math-stretched</code>.
-                           Additional value for <code>mi</code> in the user agent stylesheet
-                           is described in <a href="#user-agent-stylesheet">Appendix B</a>.
-                           
-                        </li>
-                        
-                        <li><code>math-style</code>.
-                           It is used for the <code>displaystyle</code> attribute on any
-                           MathML element.
-                           Appropriate values must be specified in the user agent stylesheet
-                           as described in <a href="#user-agent-stylesheet">Appendix B</a>.
-                           
-                        </li>
-                        
-                        <li><code>math-script-level</code>.
-                           It is used for the <code>scriptlevel</code> attribute on any
-                           MathML element. For any unsigned integer U,
-                           <code>+U</code>, <code>-U</code> and <code>U</code>
-                           is respectively mapped to <code>math-script-level: add(U)</code>
-                           <code>math-script-level: add(-U)</code>
-                           and <code>math-script-level: U</code>.
-                           Additional values must be specified in the user agent stylesheet
-                           as described in <a href="#user-agent-stylesheet">Appendix B</a>.
-                           
-                        </li>
-                        
-                     </ol>
                      
                   </div>
                   
@@ -480,60 +369,41 @@
                
                <section id="att-syntax">
                   
-                  <h3><span class="secnum">2.1.2</span> MathML Attribute Values 
+                  <h3><span class="secnum">2.1.2</span> MathML Attribute Values
                   </h3>
                   
-                  <p>Several MathML elements have attributes sharing common syntax for constructs such
-                     as <a href="#length">2.1.2.1</a> or
-                     <a href="#length">color</a>. the syntax for these attributes is defined below.
-                  </p>
-                  
-                  
-                  <section id="length">
+                  <dl>
                      
-                     <h4>Length</h4>
+                     <dt id="unsigned-integer">&lt;non-negative-integer&gt;</dt>
                      
-                     <p>MathML Core attributes of type <i>length</i> must have value
-                        consisting of an optional U+002D HYPHEN-MINUS (-) followed by a
-                        string of characters representing a length or percentage as specifed
-                        by
-                        <a href="https://www.w3.org/TR/html5/infrastructure.html#percentages-and-dimensions">HTML5
-                           percentages and lengths</a>.
-                     </p>
-                     
-                     
-                  </section>
-                  
-                  <section id="color">
-                     
-                     <h4>Color</h4>
-                     
-                     <p>MathML Core attributes of type <i>color</i> must have value
-                        consisting of a string of characters representing a color as specified
-                        by
-                        <a href="https://www.w3.org/TR/html5/infrastructure.html#colors">HTML5
-                           color</a>.
-                     </p>
-                     
-                     
-                     
-                  </section>
-                  
-                  
-                  <section id="color">
-                     
-                     <h4>Default values of attributes </h4>
-                     
-                     <div id="defaultvalue">
+                     <dd>A <code>&lt;non-negative-integer&gt;</code> value as defined in
+                        <cite><a href="#bibx9">[HTML5]</a></cite>
                         
-                        <p>User agents must contain an operator dictionary describing the default
-                           properties of operators. See appendix C
-                        </p>
-                        
-                     </div>
+                     </dd>
                      
-                  </section>
+                  </dl>
                   
+                  <dl>
+                     
+                     <dt id="length-percentage">&lt;length-percentage&gt;</dt>
+                     
+                     <dd>A <code>&lt;length-percentage&gt;</code> value as defined in
+                        <cite><a href="#css-values">[CSS-VALUES-4]</a></cite>
+                        
+                     </dd>
+                     
+                  </dl>
+                  
+                  <dl>
+                     
+                     <dt id="color">&lt;color&gt;</dt>
+                     
+                     <dd>A <code>&lt;color&gt;</code> value as defined in
+                        <cite><a href="#css-color">[CSS-COLOR-4]</a></cite>
+                        
+                     </dd>
+                     
+                  </dl>
                   
                </section>
                
@@ -544,52 +414,192 @@
                   </h3>
                   
                   <p id="global-attributes.p1">
-                     The following attributes may be specified on any MathML element:
+                     The following attributes are common to and may be specified on all MathML
+                     elements:
                      
                   </p>
                   
                   <ul>
                      
-                     <li><code>id</code> with the semantic described in <cite><a href="#bibx9">[HTML5]</a></cite>.
-                     </li>
+                     <li><a href="#id-class-style-attributes"><code>id</code></a></li>
                      
-                     <li><code>class</code> with the semantic described in <cite><a href="#bibx9">[HTML5]</a></cite>.
-                     </li>
+                     <li><a href="#id-class-style-attributes"><code>class</code></a></li>
                      
-                     <li><code>style</code> with the semantic described in <cite><a href="#bibx9">[HTML5]</a></cite>.
-                     </li>
+                     <li><a href="#id-class-style-attributes"><code>style</code></a></li>
                      
-                     <li><code>href</code> with the semantic described in
-                        <cite><a href="#bibx9">[HTML5]</a></cite> for the
-                        <code>a</code> element.
-                        
-                     </li>
+                     <li><a href="#href-class-style-attributes"><code>href</code></a></li>
                      
-                     <li><code>dir</code></li>
+                     <li><a href="#dir-attribute"><code>dir</code></a></li>
                      
-                     <li><code>displaystyle</code></li>
+                     <li><a href="#displaystyle-attribute"><code>displaystyle</code></a></li>
                      
-                     <li><code>mathbackground</code></li>
+                     <li><a href="#mathcolor-and-mathbackground-attributes"><code>mathbackground</code></a></li>
                      
-                     <li><code>mathcolor</code></li>
+                     <li><a href="#mathcolor-and-mathbackground-attributes"><code>mathcolor</code></a></li>
                      
-                     <li><code>mathsize</code></li>
+                     <li><a href="#mathsize-attribute"><code>mathsize</code></a></li>
                      
-                     <li><code>mathvariant</code></li>
+                     <li><a href="#mathvariant-attribute"><code>mathvariant</code></a></li>
                      
-                     <li><code>scriptlevel</code></li>
+                     <li><a href="#scriptlevel-attribute"><code>scriptlevel</code></a></li>
                      
                   </ul>
                   
-                  <p>
-                     The default User Agent stylesheet must contain the following CSS selector:
+                  
+                  <p id="id-class-style-attributes">
+                     The <code>id</code>, <code>class</code>,
+                     <code>style</code> attributes have the syntax and semantic described
+                     in <cite><a href="#bibx9">[HTML5]</a></cite>.
                      
                   </p>
-                  <pre class="example">:any-link {
-  color: blue;
-  text-decoration: none;
-}</pre>
-                  </section>
+                  
+                  
+                  <div id="href-attribute">
+                     
+                     <p>
+                        The <code>href</code> has the syntax and semantic described
+                        in <cite><a href="#bibx9">[HTML5]</a></cite>
+                        for the <code>&lt;a&gt;</code> element.
+                        To fully implement this attribute, additional CSS properties for links
+                        must be specified in the user agent stylesheet
+                        as described in <a href="#user-agent-stylesheet">Appendix B</a>.
+                        
+                     </p>
+                     
+                  </div>
+                  
+                  
+                  <p id="dir-attribute">
+                     The <code>dir</code> attribute, if specified and not
+                     empty, must have value <code>ltr</code> or <code>ltr</code>.
+                     It is mapped to the CSS property <code>direction</code> defined in
+                     <cite><a href="#css-writing-mode">[CSS-WRITING-MODE-3]</a></cite>.
+                     
+                  </p>
+                  
+                  
+                  <p id="displaystyle-attribute">
+                     The <code>displaystyle</code> attribute, if specified and not
+                     empty, must have value <code>true</code> or <code>false</code>.
+                     It is mapped to the CSS property <code>math-style</code>
+                     defined in <a href="#math-style-and-script-level">[MATH-STYLE-AND-SCRIPT-LEVEL]</a>.
+                     More precisely,  <code>true</code> is mapped to <code>display</code> and
+                     <code>false</code> to  <code>inline</code>.
+                     To fully implement this attribute, additional CSS properties must be
+                     specified in the user agent stylesheet
+                     as described in <a href="#user-agent-stylesheet">Appendix B</a>.
+                     
+                  </p>
+                  
+                  
+                  <p id="mathcolor-and-mathbackground-attributes">The <code>mathcolor</code> and
+                     <code>mathbackground</code> attributes, if specified and not empty, must
+                     have a value that is a <a href="#color">&lt;color&gt;</a>.
+                     They are respectively mapped to the CSS properties
+                     <code>color</code> and
+                     <code>background-color</code> defined in
+                     <cite><a href="#css-color">[CSS-COLOR-4]</a></cite>.
+                     
+                  </p>
+                  
+                  
+                  <p id="mathsize-attribute">The <code>mathsize</code>
+                     attribute, if specified and not empty, must
+                     have a value that is a valid
+                     <a href="#length-percentage">&lt;length-percentage&gt;</a>.
+                     It is mapped to the CSS property <code>font-size</code>
+                     from <a href="#css-font">[CSS-FONT-4]</a>.
+                     
+                  </p>
+                  
+                  
+                  <div id="mathvariant-attribute">
+                     
+                     <p>
+                        The <code>mathvariant</code> attribute,
+                        if specified and not empty, must have a value that is one of:
+                        
+                     </p>
+                     
+                     <ul>
+                        
+                        <li><code>normal</code></li>
+                        
+                        <li><code>bold</code></li>
+                        
+                        <li><code>italic</code></li>
+                        
+                        <li><code>bold-italic</code></li>
+                        
+                        <li><code>double-struck</code></li>
+                        
+                        <li><code>bold-fraktur</code></li>
+                        
+                        <li><code>script</code></li>
+                        
+                        <li><code>bold-script</code></li>
+                        
+                        <li><code>fraktur</code></li>
+                        
+                        <li><code>sans-serif</code></li>
+                        
+                        <li><code>bold-sans-serif</code></li>
+                        
+                        <li><code>sans-serif-italic</code></li>
+                        
+                        <li><code>sans-serif-bold-italic</code></li>
+                        
+                        <li><code>monospace</code></li>
+                        
+                        <li><code>initial</code></li>
+                        
+                        <li><code>tailed</code></li>
+                        
+                        <li><code>looped</code></li>
+                        
+                        <li><code>stretched</code></li>
+                        
+                     </ul>
+                     
+                     <p>
+                        The <code>mathvariant</code> attribute
+                        is mapped to new values of the CSS property <code>text-transform</code>
+                        defined in <a href="#math-variant">[MATH-VARIANT]</a>.
+                        More precisely, <code>normal</code> is mapped to <code>none</code>
+                        while all the other values the corresponding CSS value with the extra
+                        <code>math-</code> prefix.
+                        To fully implement this attribute, additional CSS properties
+                        for the <code>&lt;mi&gt;</code> element must be
+                        specified in the user agent stylesheet
+                        as described in <a href="#user-agent-stylesheet">Appendix B</a>.
+                        
+                     </p>
+                     
+                  </div>
+                  
+                  
+                  <p id="scriptlevel-attribute">
+                     The <code>scriptlevel</code> attribute, if specified and not
+                     empty, must have value
+                     <code>+&lt;U&gt;</code>, <code>-&lt;U&gt;</code> or <code>&lt;U&gt;</code>
+                     where <code>&lt;U&gt;</code> is a
+                     <a href="#non-negative-integer">&lt;non-negative-integer&gt;</a>.
+                     It is mapped to the <code>math-script-level</code> property
+                     defined in <a href="#math-style-and-script-level">[MATH-STYLE-AND-SCRIPT-LEVEL]</a>.
+                     More precisely,
+                     <code>+&lt;U&gt;</code>, <code>-&lt;U&gt;</code> and <code>&lt;U&gt;</code>
+                     are respectively mapped to
+                     <code>add(&lt;U&gt;)</code>
+                     <code>add(&lt;-U&gt;)</code>
+                     and <code>&lt;U&gt;</code>.
+                     To fully implement this attribute, additional CSS properties must be
+                     specified in the user agent stylesheet
+                     as described in <a href="#user-agent-stylesheet">Appendix B</a>.
+                     
+                  </p>
+                  
+                  
+               </section>
                
                
             </section>
@@ -600,17 +610,21 @@
                <h2><span class="secnum">2.2</span> The Top-Level <code>&lt;math&gt;</code> Element
                </h2>
                
-               <div id="mathmltree.p4">
+               <p id="fund.toplevel.p1">
+                  The <code>&lt;math&gt;</code> element accepts the attributes described
+                  in section <a href="#global-attributes">2.1.3</a> as well as the
+                  <code>display</code> attribute.
                   
-                  <p>The <code>&lt;math&gt;</code> element accepts the attributes described
-                     in section <a href="#global-attributes">2.1.3</a> as well as the
-                     <code>display</code> attribute.
-                     These attributes must be supported and this
-                     may be achieved using specific rules in the user agent stylesheet
-                     as described in <a href="#user-agent-stylesheet">Appendix B</a>.
-                  </p>
+               </p>
+               
+               <p id="display-attribute">
+                  The <code>display</code> attribute, if specified and not
+                  empty, must have value <code>block</code> or <code>inline</code>.
+                  To fully implement this attribute, additional CSS properties must be
+                  specified in the user agent stylesheet
+                  as described in <a href="#user-agent-stylesheet">Appendix B</a>.
                   
-               </div>
+               </p>
                
             </section>
             
@@ -683,7 +697,7 @@
                         mathematical fonts rely on <code class="MATH">salt</code> or <code>ssXY</code> properties to provide
                         both styles. User agents may support the CSS <code>font-variant-alternates</code>
                         property and corresponding OpenType font features to enable page authors
-                        to get access to these styles <cite><a href="#bibx2">[CSS3-FONT]</a></cite> <cite><a href="#bibx13">[OPENFONTFORMAT3]</a></cite>.
+                        to get access to these styles <cite><a href="#css-font">[CSS-FONT-4]</a></cite> <cite><a href="#bibx13">[OPENFONTFORMAT3]</a></cite>.
                      </p>
                      
                   </div>
@@ -28647,30 +28661,55 @@ maction &gt; :not(:first-child) {
                <dl>
                   
                   
-                  <dt id="bibx1">[CSS2]</dt>
+                  <dt id="css-color">[CSS-COLOR-4]</dt>
                   
                   <dd>
-                     Bert Bos et al. <a href="http://www.w3.org/TR/CSS2/">Cascading Style Sheets Level 2 Revision 1 (CSS 2.1) Specification</a>. W3C Recommendation 07 June 2011, edited in place 17 December 2014 to point to new
-                     work.
-                     URL: <a href="http://www.w3.org/TR/CSS2/">http://www.w3.org/TR/CSS2/</a>.
+                     Tab Atkins Jr.; Chris Lilley.
+                     <a href="https://www.w3.org/TR/css-color-4/">CSS Color Module Level 4</a>.
+                     5 March 2019. WD.
+                     URL: <a href="https://www.w3.org/TR/css-color-4/">https://www.w3.org/TR/css-color-4/</a>.
                      
                   </dd>
                   
                   
-                  <dt id="bibx2">[CSS3-FONT]</dt>
+                  <dt id="css-writing-mode">[CSS-WRITING-MODE-3]</dt>
                   
                   <dd>
-                     John Daggett <a href="https://drafts.csswg.org/css-fonts-3/">CSS Fonts Module</a> Editor’s Draft, 20 October 2014.
-                     URL: <a href="https://drafts.csswg.org/css-fonts-3/">https://drafts.csswg.org/css-fonts-3/</a>
+                     Elika J. Etemad / fantasai ; Koji Ishii.
+                     <a href="https://www.w3.org/TR/css-writing-modes-3/">CSS Writing Modes Level 3</a>.
+                     24 May 2018. CR.
+                     URL: <a href="https://www.w3.org/TR/css-writing-modes-3/">https://www.w3.org/TR/css-writing-modes-3/</a>.
                      
                   </dd>
                   
                   
-                  <dt id="bib-css-display">[CSS-DISPLAY-3]</dt>
+                  <dt id="css-font">[CSS-FONT-4]</dt>
+                  
+                  <dd>
+                     John Daggett ; Myles C. Maxfield ; Chris Lilley.
+                     <a href="https://www.w3.org/TR/css-fonts-4/">CSS Fonts Module Level 4</a>.
+                     20 September 2018. WD.
+                     URL: <a href="https://www.w3.org/TR/css-fonts-4/">https://www.w3.org/TR/css-fonts-4/</a>
+                     
+                  </dd>
+                  
+                  
+                  <dt id="css-display">[CSS-DISPLAY-3]</dt>
                   
                   <dd>
                      Tab Atkins and Elika J. Etemad / fantasai. <a href="https://drafts.csswg.org/css-display">CSS Display Module Level 3</a>. Editor's Draft, 23 May.
                      URL: <a href="https://drafts.csswg.org/css-display/">https://drafts.csswg.org/css-display/</a>
+                     
+                  </dd>
+                  
+                  
+                  <dt id="css-values">[CSS-VALUES-4]</dt>
+                  
+                  <dd>
+                     Tab Atkins ; Elika J. Etemad / fantasai.
+                     <a href="https://drafts.csswg.org/css-display">CSS Values and Units Module Level 4</a>.
+                     31 January 2019. WD.
+                     URL: <a href="https://www.w3.org/TR/css-values-4/">https://www.w3.org/TR/css-values-4/</a>
                      
                   </dd>
                   
@@ -28706,8 +28745,8 @@ maction &gt; :not(:first-child) {
                   <dt id="bibx10">[IETFRFC2119]</dt>
                   
                   <dd>
-                     S. Bradner 
-                     <a href="http://www.ietf.org/rfc/rfc2119.txt">Key words for use in RFCs to Indicate Requirement Levels</a>. 
+                     S. Bradner
+                     <a href="http://www.ietf.org/rfc/rfc2119.txt">Key words for use in RFCs to Indicate Requirement Levels</a>.
                      URL: <a href="http://www.ietf.org/rfc/rfc2119.txt">http://www.ietf.org/rfc/rfc2119.txt</a>
                      
                   </dd>
@@ -28716,7 +28755,7 @@ maction &gt; :not(:first-child) {
                   <dt id="bibx11">[MATHML3]</dt>
                   
                   <dd>
-                     David Carlisle et al. 
+                     David Carlisle et al.
                      <a href="http://www.w3.org/TR/MathML3/">Mathematical Markup Language (MathML) Version 3.0 2nd Edition</a>
                      W3C Recommendation 10 April 2014.
                      URL: <a href="http://www.w3.org/TR/MathML3/">http://www.w3.org/TR/MathML3/</a>
@@ -28737,7 +28776,7 @@ maction &gt; :not(:first-child) {
                   
                   <dt id="bibx13">[OPENFONTFORMAT3]</dt>
                   
-                  <dd>ISO and IEC 
+                  <dd>ISO and IEC
                      <a href="http://www.iso.org/iso/home/store/catalogue%5C_ics/catalogue%5C_detail%5C_ics.htm?csnumber=66391">Information technology – Coding of audio-visual objects – Part 22: Open Font Format
                         Edition 3</a>,
                      International Published Standard, 9th October 2015.
@@ -28749,8 +28788,8 @@ maction &gt; :not(:first-child) {
                   <dt id="bibx15">[SVG11]</dt>
                   
                   <dd>
-                     Doug Schepers et al. 
-                     <a href="http://www.w3.org/TR/SVG11/">Scalable Vector Graphics (SVG) 1.1 (Second Edition)</a> 
+                     Doug Schepers et al.
+                     <a href="http://www.w3.org/TR/SVG11/">Scalable Vector Graphics (SVG) 1.1 (Second Edition)</a>
                      W3C Recommendation 16 August 2011.
                      URL: <a href="http://www.w3.org/TR/SVG11/">http://www.w3.org/TR/SVG11/</a>
                      
@@ -28760,8 +28799,8 @@ maction &gt; :not(:first-child) {
                   <dt id="bibx18">[XMLENTITIES]</dt>
                   
                   <dd>
-                     David Carlisle, Patrick Ion 
-                     <a href="http://www.w3.org/TR/xml-entity-names/">XML Entity Definitions for Characters (2nd Edition)</a> 
+                     David Carlisle, Patrick Ion
+                     <a href="http://www.w3.org/TR/xml-entity-names/">XML Entity Definitions for Characters (2nd Edition)</a>
                      W3C Recommendation 10 April 2014.
                      URL: <a href="http://www.w3.org/TR/xml-entity-names/">http://www.w3.org/TR/xml-entity-names/</a>
                      
@@ -28784,7 +28823,7 @@ maction &gt; :not(:first-child) {
                   <dt id="bibx4">[CTL]</dt>
                   
                   <dd>
-                     Sharon Correll 
+                     Sharon Correll
                      <a href="http://scripts.sil.org/cms/scripts/page.php?site%5C_id=nrsi%5C&amp;item%5C_id=CmplxRndExamples">Examples of Complex Rendering</a>.
                      URL: <a href="http://scripts.sil.org/cms/scripts/page.php?site%5C_id=nrsi%5C&amp;item%5C_id=CmplxRndExamples">http://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&amp;item_id=CmplxRndExamples</a>
                      
@@ -28794,8 +28833,8 @@ maction &gt; :not(:first-child) {
                   <dt id="bibx14">[OpenTypeMathIlluminated]</dt>
                   
                   <dd>
-                     Ulrik Vieth 
-                     <a href="http://www.tug.org/TUGboat/tb30-1/tb94vieth.pdf">OpenType Math Illuminated</a> 
+                     Ulrik Vieth
+                     <a href="http://www.tug.org/TUGboat/tb30-1/tb94vieth.pdf">OpenType Math Illuminated</a>
                      Biuletyn GUST 25 (2009), pp. 7–16, proceedings of the BachoTEX XVII conference.
                      URL: <a href="http://www.tug.org/TUGboat/tb30-1/tb94vieth.pdf">http://www.tug.org/TUGboat/tb30-1/tb94vieth.pdf</a>
                      
@@ -28805,9 +28844,9 @@ maction &gt; :not(:first-child) {
                   <dt id="bibx16">[TEXBOOK]</dt>
                   
                   <dd>
-                     Knuth, Donald E. 
-                     Published by Addison-Wesley Professional (1984) 
-                     ISBN 10: 0201134489 ISBN 13: 9780201134483 
+                     Knuth, Donald E.
+                     Published by Addison-Wesley Professional (1984)
+                     ISBN 10: 0201134489 ISBN 13: 9780201134483
                      
                   </dd>
                   
@@ -28828,6 +28867,25 @@ maction &gt; :not(:first-child) {
                      
                   </dd>
                   
+                  
+                  <dt id="math-style-and-script-level">[MATH-STYLE-AND-SCRIPT-LEVEL]</dt>
+                  
+                  <dd>
+                     Frédéric Wang. math-script-level and math-style explainer
+                     URL: <a href="https://github.com/mathml-refresh/mathml-css-proposals/blob/master/math-script-level-and-math-style-explainer.md">https://github.com/mathml-refresh/mathml-css-proposals/blob/master/math-script-level-and-math-style-explainer.md</a>
+                     
+                  </dd>
+                  
+                  
+                  <dt id="math-variant">[MATH-VARIANT]</dt>
+                  
+                  <dd>
+                     Frédéric Wang. math-variant explainer
+                     URL: <a href="https://github.com/mathml-refresh/mathml-css-proposals/blob/master/mathml-css-proposals/math-variant-explainer.md">https://github.com/mathml-refresh/mathml-css-proposals/blob/master/math-variant-explainer.md</a>
+                     
+                  </dd>
+                  
+                  
                </dl>
                
             </section>
@@ -28844,7 +28902,6 @@ maction &gt; :not(:first-child) {
                   repository</a> tagged with the label <strong>core</strong>.
             </p>
             
-            <p class="issue">GitHub issue list not loaded</p>
             <table>
                <tbody></tbody>
             </table>
