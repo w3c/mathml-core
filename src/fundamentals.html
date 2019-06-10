@@ -17,16 +17,16 @@
 
 <div id="dom.p1">
   <p>User agents must use a HTML5
-    <cite><a href="references.html#bibx9">auto</a></cite> parser to build a DOM tree
-    <cite><a href="references.html#bibx6">auto</a></cite> from the source code of
+    <cite><a href="references.html#html5">auto</a></cite> parser to build a DOM tree
+    <cite><a href="references.html#dom1">auto</a></cite> from the source code of
     web pages. In particular, they must follow the rules describing when
     elements must be in the MathML namespace
     <code>http://www.w3.org/1998/Math/MathML</code> and must
     recognize the Named character references from
-    <cite><a href="references.html#bibx9">auto</a></cite>.
+    <cite><a href="references.html#html5">auto</a></cite>.
     They must also take into
     account the following integration points between SVG, MathML and HTML as
-    allowed by <cite><a href="references.html#bibx17">auto</a></cite>:</p>
+    allowed by <cite><a href="references.html#validator-schemas">auto</a></cite>:</p>
 </div>
 <div id="dom.p2">
   <ol>
@@ -54,12 +54,12 @@
 <div id="dom.p3">
   <p>From this DOM tree, user agents must provide a visual representation of the
     document. The DOM tree may be dynamically modified using Javascript
-    <cite><a href="references.html#bibx7">auto</a></cite> and the user agents must
+    <cite><a href="references.html#ecma262">auto</a></cite> and the user agents must
     keep the visual representation in synchronization with the DOM tree.</p>
 </div>
 <div id="dom.p4">
   <p>When evaluating the SVG <code>requiredExtensions</code> attribute
-    <cite><a href="references.html#bibx15">auto</a></cite>, user agents must claim
+    <cite><a href="references.html#svg">auto</a></cite>, user agents must claim
     support for the extension of name
     <code>http://www.w3.org/1998/Math/MathML</code>.
     An algorithm to decide the visible child of the
@@ -82,7 +82,7 @@
   <dl>
     <dt id="unsigned-integer">&lt;non-negative-integer&gt;</dt>
     <dd>A <code>&lt;non-negative-integer&gt;</code> value as defined in
-      <cite><a href="references.html#bibx9">auto</a></cite>
+      <cite><a href="references.html#html5">auto</a></cite>
     </dd>
   </dl>
   <dl>
@@ -122,7 +122,7 @@
   <p id="id-class-style-attributes">
     The <code>id</code>, <code>class</code>,
     <code>style</code> attributes have the syntax and semantic described
-    in <cite><a href="references.html#bibx9">auto</a></cite>. In particular,
+    in <cite><a href="references.html#html5">auto</a></cite>. In particular,
     they are used to identify elements in links and scripting, affect
     CSS selectors, affect <span>getElementsByClassName()</span> and enable
     authors to do inline styling.
@@ -131,7 +131,7 @@
   <div id="href-attribute">
     <p>
       The <code>href</code> has the syntax and semantic described
-      in <cite><a href="references.html#bibx9">auto</a></cite>
+      in <cite><a href="references.html#html5">auto</a></cite>
       for the <code>&lt;a&gt;</code> element.
       This attribute represents a hyperlink labeled by its contents.
       To fully implement this attribute, additional CSS properties for links
@@ -315,13 +315,13 @@
 <p>Because math fonts generally contain very tall glyphs such as big integrals,
 using typographic metrics is important to avoid excessive line spacing of text.
 This behavior is specified in math fonts using the USE_TYPO_METRICS flag from
-the OS/2 table <cite><a href="references.html#bibx13">auto</a></cite> and user agents must honor that flag.</p>
+the OS/2 table <cite><a href="references.html#open-font-format">auto</a></cite> and user agents must honor that flag.</p>
 </div>
 <div id="openfontformat.p2">
 <p>Mathematical formulas can be viewed as an extension of standard text layout
 and thus user agents must be able to perfom
-complex text layout <cite><a href="references.html#bibx4">auto</a></cite> using fonts under the Open Font Format
-<cite><a href="references.html#bibx13">auto</a></cite>. In particular, they must implement bidirectional
+complex text layout <cite><a href="references.html#ctl">auto</a></cite> using fonts under the Open Font Format
+<cite><a href="references.html#open-font-format">auto</a></cite>. In particular, they must implement bidirectional
 rendering and shaping of Arabic scripts.</p>
 </div>
 <div id="openfontformat.p3">
@@ -348,17 +348,17 @@ for example U+0028 LEFT PARENTHESIS into U+0029 RIGHT PARENTHESIS.
 User agents must also support the OpenType font feature
 <code>rtlm</code> (Right-to-left mirrored forms)
 to allow glyph-level mirroring in cases where character-level is not enough
-<cite><a href="references.html#bibx13">auto</a></cite>.
+<cite><a href="references.html#open-font-format">auto</a></cite>.
 At the time of writing, Unicode does not distinguish between Chancery and
 Spencerian style for the Unicode MATHEMATICAL SCRIPT characters. Some
 mathematical fonts rely on <code class="MATH">salt</code> or <code>ssXY</code> properties to provide
 both styles. User agents may support the CSS <code>font-variant-alternates</code>
 property and corresponding OpenType font features to enable page authors
-to get access to these styles <cite><a href="references.html#css-font">auto</a></cite> <cite><a href="references.html#bibx13">auto</a></cite>.</p>
+to get access to these styles <cite><a href="references.html#css-font">auto</a></cite> <cite><a href="references.html#open-font-format">auto</a></cite>.</p>
 </div>
 <div id="openfontformat.p5">
 <p>User agents must be able to read information from the
-OpenType MATH table <cite><a href="references.html#bibx13">auto</a></cite>.
+OpenType MATH table <cite><a href="references.html#open-font-format">auto</a></cite>.
 In particular they must be able to read the values from the
 <code class="MATH">MathConstants</code> subtable.
 They must also be able to use the <code class="MATH">MathVariants</code> subtable
@@ -374,7 +374,7 @@ More information are provided in see section <a href="presentation.html#tokenmo"
 <div id="latex.p1">
 <p>Mathematical rendering rules in this document are implicitly based on
 MathML, OpenType MATH table and the TeXBook
-<cite><a href="references.html#bibx11">auto</a></cite> <cite><a href="references.html#bibx13">auto</a></cite> <cite><a href="references.html#bibx16">auto</a></cite>. In this section, we
+<cite><a href="references.html#mathml3">auto</a></cite> <cite><a href="references.html#open-font-format">auto</a></cite> <cite><a href="references.html#texbook">auto</a></cite>. In this section, we
 describe more precisely some rules from the TeXBook.</p>
 </div>
 <div id="latex.p2">
