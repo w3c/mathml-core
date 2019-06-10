@@ -167,7 +167,7 @@
                
                <div id="mathml3diff.p2">
                   
-                  <p>The <cite><a href="#bibx11">[MATHML3]</a></cite>
+                  <p>The <cite><a href="#mathml3">[MATHML3]</a></cite>
                      specification has several shortcomings that make it hard to implement
                      consistently accross web rendering engines or to extend with user-defined
                      constructions e.g.
@@ -193,16 +193,17 @@
                   <p>This <em>MathML Core</em> specification intends to address these issues by
                      being as accurate as possible on the visual rendering of mathematical
                      formulas using additional rules from the TeXBook’s Appendix G
-                     <cite><a href="#bibx16">[TEXBOOK]</a></cite> and from
-                     the Open Font Format <cite><a href="#bibx13">[OPENFONTFORMAT3]</a></cite>.
+                     <cite><a href="#texbook">[TEXBOOK]</a></cite> and from
+                     the Open Font Format <cite><a href="#open-font-format">[OPENFONTFORMAT3]</a></cite>
+                     <cite><a href="#open-type-math-illuminated">[OPEN-TYPE-MATH-ILLUMINATED]</a></cite>.
                      It also relies on modern browser implementations and web technologies
-                     <cite><a href="#bibx9">[HTML5]</a></cite> clarifying interactions
+                     <cite><a href="#html5">[HTML5]</a></cite> clarifying interactions
                      with them when needed or introducing new low-level primitives to improve
                      the web platform layering.
                      Parts of MathML 3 that do not fit well in this framework or are rarely used
                      in practice have been omitted. Instead, they are described in a separate
                      and larger
-                     <cite><a href="#bibx11bis">[MATHML4]</a></cite> specification.
+                     <cite><a href="#mathml4">[MATHML4]</a></cite> specification.
                   </p>
                   
                </div>
@@ -236,7 +237,7 @@
                   
                   <p>The key words MUST, MUST NOT, REQUIRED, SHALL, SHALL NOT, SHOULD, SHOULD NOT,
                      RECOMMENDED, MAY, and OPTIONAL, are to be interpreted as described in
-                     <cite><a href="#bibx10">[IETFRFC2119]</a></cite>.
+                     <cite><a href="#rfc2119">[IETFRFC2119]</a></cite>.
                   </p>
                   
                </div>
@@ -245,7 +246,7 @@
                <div id="openfontformat">
                   
                   <p>This document relies on many definitions taken from the MATH specification
-                     of the Open Font Format <cite><a href="#bibx13">[OPENFONTFORMAT3]</a></cite>. These values are written with
+                     of the Open Font Format <cite><a href="#open-font-format">[OPENFONTFORMAT3]</a></cite>. These values are written with
                      the following style:
                      <span class="MATH">This is a definition from the MATH specification</span>.
                   </p>
@@ -279,15 +280,16 @@
                   <div id="dom.p1">
                      
                      <p>User agents must use a HTML5
-                        <cite><a href="#bibx9">[HTML5]</a></cite> parser to build a DOM tree
-                        <cite><a href="#bibx6">[DOM1]</a></cite> from the source code of
+                        <cite><a href="#html5">[HTML5]</a></cite> parser to build a DOM tree
+                        <cite><a href="#dom1">[DOM1]</a></cite> from the source code of
                         web pages. In particular, they must follow the rules describing when
                         elements must be in the MathML namespace
                         <code>http://www.w3.org/1998/Math/MathML</code> and must
-                        recognize the entity definitions from the HTML MathML entity set of
-                        <cite><a href="#bibx18">[XMLENTITIES]</a></cite>. They must also take into
+                        recognize the Named character references from
+                        <cite><a href="#html5">[HTML5]</a></cite>.
+                        They must also take into
                         account the following integration points between SVG, MathML and HTML as
-                        allowed by <cite><a href="#bibx17">[ValidatorSchemas]</a></cite>:
+                        allowed by <cite><a href="#validator-schemas">[VALIDATOR-SCHEMAS]</a></cite>:
                      </p>
                      
                   </div>
@@ -331,7 +333,7 @@
                      
                      <p>From this DOM tree, user agents must provide a visual representation of the
                         document. The DOM tree may be dynamically modified using Javascript
-                        <cite><a href="#bibx7">[ECMA262]</a></cite> and the user agents must
+                        <cite><a href="#ecma262">[ECMA262]</a></cite> and the user agents must
                         keep the visual representation in synchronization with the DOM tree.
                      </p>
                      
@@ -340,7 +342,7 @@
                   <div id="dom.p4">
                      
                      <p>When evaluating the SVG <code>requiredExtensions</code> attribute
-                        <cite><a href="#bibx15">[SVG11]</a></cite>, user agents must claim
+                        <cite><a href="#svg">[SVG2]</a></cite>, user agents must claim
                         support for the extension of name
                         <code>http://www.w3.org/1998/Math/MathML</code>.
                         An algorithm to decide the visible child of the
@@ -376,7 +378,7 @@
                      <dt id="unsigned-integer">&lt;non-negative-integer&gt;</dt>
                      
                      <dd>A <code>&lt;non-negative-integer&gt;</code> value as defined in
-                        <cite><a href="#bibx9">[HTML5]</a></cite>
+                        <cite><a href="#html5">[HTML5]</a></cite>
                         
                      </dd>
                      
@@ -448,7 +450,7 @@
                   <p id="id-class-style-attributes">
                      The <code>id</code>, <code>class</code>,
                      <code>style</code> attributes have the syntax and semantic described
-                     in <cite><a href="#bibx9">[HTML5]</a></cite>. In particular,
+                     in <cite><a href="#html5">[HTML5]</a></cite>. In particular,
                      they are used to identify elements in links and scripting, affect
                      CSS selectors, affect <span>getElementsByClassName()</span> and enable
                      authors to do inline styling.
@@ -460,7 +462,7 @@
                      
                      <p>
                         The <code>href</code> has the syntax and semantic described
-                        in <cite><a href="#bibx9">[HTML5]</a></cite>
+                        in <cite><a href="#html5">[HTML5]</a></cite>
                         for the <code>&lt;a&gt;</code> element.
                         This attribute represents a hyperlink labeled by its contents.
                         To fully implement this attribute, additional CSS properties for links
@@ -714,7 +716,7 @@
                      <p>Because math fonts generally contain very tall glyphs such as big integrals,
                         using typographic metrics is important to avoid excessive line spacing of text.
                         This behavior is specified in math fonts using the USE_TYPO_METRICS flag from
-                        the OS/2 table <cite><a href="#bibx13">[OPENFONTFORMAT3]</a></cite> and user agents must honor that flag.
+                        the OS/2 table <cite><a href="#open-font-format">[OPENFONTFORMAT3]</a></cite> and user agents must honor that flag.
                      </p>
                      
                   </div>
@@ -723,8 +725,8 @@
                      
                      <p>Mathematical formulas can be viewed as an extension of standard text layout
                         and thus user agents must be able to perfom
-                        complex text layout <cite><a href="#bibx4">[CTL]</a></cite> using fonts under the Open Font Format
-                        <cite><a href="#bibx13">[OPENFONTFORMAT3]</a></cite>. In particular, they must implement bidirectional
+                        complex text layout <cite><a href="#ctl">[CTL]</a></cite> using fonts under the Open Font Format
+                        <cite><a href="#open-font-format">[OPENFONTFORMAT3]</a></cite>. In particular, they must implement bidirectional
                         rendering and shaping of Arabic scripts.
                      </p>
                      
@@ -759,13 +761,13 @@
                         User agents must also support the OpenType font feature
                         <code>rtlm</code> (Right-to-left mirrored forms)
                         to allow glyph-level mirroring in cases where character-level is not enough
-                        <cite><a href="#bibx13">[OPENFONTFORMAT3]</a></cite>.
+                        <cite><a href="#open-font-format">[OPENFONTFORMAT3]</a></cite>.
                         At the time of writing, Unicode does not distinguish between Chancery and
                         Spencerian style for the Unicode MATHEMATICAL SCRIPT characters. Some
                         mathematical fonts rely on <code class="MATH">salt</code> or <code>ssXY</code> properties to provide
                         both styles. User agents may support the CSS <code>font-variant-alternates</code>
                         property and corresponding OpenType font features to enable page authors
-                        to get access to these styles <cite><a href="#css-font">[CSS-FONT-4]</a></cite> <cite><a href="#bibx13">[OPENFONTFORMAT3]</a></cite>.
+                        to get access to these styles <cite><a href="#css-font">[CSS-FONT-4]</a></cite> <cite><a href="#open-font-format">[OPENFONTFORMAT3]</a></cite>.
                      </p>
                      
                   </div>
@@ -773,7 +775,7 @@
                   <div id="openfontformat.p5">
                      
                      <p>User agents must be able to read information from the
-                        OpenType MATH table <cite><a href="#bibx13">[OPENFONTFORMAT3]</a></cite>.
+                        OpenType MATH table <cite><a href="#open-font-format">[OPENFONTFORMAT3]</a></cite>.
                         In particular they must be able to read the values from the
                         <code class="MATH">MathConstants</code> subtable.
                         They must also be able to use the <code class="MATH">MathVariants</code> subtable
@@ -797,7 +799,7 @@
                      
                      <p>Mathematical rendering rules in this document are implicitly based on
                         MathML, OpenType MATH table and the TeXBook
-                        <cite><a href="#bibx11">[MATHML3]</a></cite> <cite><a href="#bibx13">[OPENFONTFORMAT3]</a></cite> <cite><a href="#bibx16">[TEXBOOK]</a></cite>. In this section, we
+                        <cite><a href="#mathml3">[MATHML3]</a></cite> <cite><a href="#open-font-format">[OPENFONTFORMAT3]</a></cite> <cite><a href="#texbook">[TEXBOOK]</a></cite>. In this section, we
                         describe more precisely some rules from the TeXBook.
                      </p>
                      
@@ -916,7 +918,7 @@
                   <div id="boxmodel.p1">
                      
                      <p>User agents must also follow the rules described in section 4.7.14
-                        Embedded content, MathML of <cite><a href="#bibx9">[HTML5]</a></cite>, in particular the equivalence with
+                        Embedded content, MathML of <cite><a href="#html5">[HTML5]</a></cite>, in particular the equivalence with
                         implicit <code>mtext</code> and <code>merror</code> to handle non-conforming MathML markup.
                      </p>
                      
@@ -1832,7 +1834,7 @@
                      <p>Note that the schemas in this document are drawn assuming left-to-right
                         directionality. If the CSS <code>direction</code> is set to right-to-left, then the
                         elements should be layout by making the x-axis pointing from right-to-left.
-                        In this document, we use the terminology of <cite><a href="#bibx11">[MATHML3]</a></cite>: “leading”
+                        In this document, we use the terminology of <cite><a href="#mathml3">[MATHML3]</a></cite>: “leading”
                         means “left” in right-to-left and “right” in right-to-left mode, while
                         “trailing” means “right” in right-to-left and “left” in right-to-left
                         mode.
@@ -2259,7 +2261,7 @@
                      
                      <p>Each of this step is done recursively: the metrics of a given MathML box
                         are determined from those of the child boxes. User agents must implement
-                        the “Exception for embellished operators” described in <cite><a href="#bibx11">[MATHML3]</a></cite>.
+                        the “Exception for embellished operators” described in <cite><a href="#mathml3">[MATHML3]</a></cite>.
                         This means that the actual stretching of operators described in section
                         <a href="#tokenmo">3.2.3</a> may be “delayed” until we reach the top of its embellished
                         operator subtree. We then have to apply the current operation again
@@ -2372,9 +2374,9 @@
                      <p>Many properties of an <code>mo</code> element can be specified via attribute on
                         that element. The default value of the <code>form</code> of an <code>mo</code> element is
                         obtained as described in section “Default value of the form attribute” of
-                        <cite><a href="#bibx11">[MATHML3]</a></cite>. From the <code>form</code> and the text content, we can deduce other
+                        <cite><a href="#mathml3">[MATHML3]</a></cite>. From the <code>form</code> and the text content, we can deduce other
                         default values from the operator dictionary or use the fallback values given
-                        in “Dictionary-based attributes” of <cite><a href="#bibx11">[MATHML3]</a></cite>.
+                        in “Dictionary-based attributes” of <cite><a href="#mathml3">[MATHML3]</a></cite>.
                      </p>
                      
                   </div>
@@ -2687,7 +2689,7 @@
                         to cover at least the desired size
                         (figure <a href="#F5">5</a>). The rules for vertical stretching
                         are a bit more complicated and are described in section
-                        “Vertical Stretching Rules” of <cite><a href="#bibx11">[MATHML3]</a></cite>. If the operator has property
+                        “Vertical Stretching Rules” of <cite><a href="#mathml3">[MATHML3]</a></cite>. If the operator has property
                         <code>symmetric="true"</code>, it must be stretched symmetrically with respect to
                         the math axis, which is given by the <code class="MATH">AxisHeight</code> value.
                         Figure <a href="#F6">6</a> compares the symmetric
@@ -3465,7 +3467,7 @@
                      
                      <p>In most cases the <code>&lt;mtext&gt;</code> element contains some text that is laid out
                         without line
-                        breaks using complex text layout <cite><a href="#bibx4">[CTL]</a></cite>. It is assumed that we can measure
+                        breaks using complex text layout <cite><a href="#ctl">[CTL]</a></cite>. It is assumed that we can measure
                         the ink ascent &amp; descent, logical ascent &amp; descent and advance width of
                         the text frame and use these values for the MathML box of the <code>&lt;mtext&gt;</code>
                         element.
@@ -3555,7 +3557,7 @@
                      <p>The <code>mspace</code> element is laid out as shown on figure
                         <a href="#F7">7</a>.
                         The logical box is determined by the <code>height</code>, <code>depth</code> and <code>width</code>
-                        attributes defined in <cite><a href="#bibx11">[MATHML3]</a></cite>. The ink box matches the logical box.
+                        attributes defined in <cite><a href="#mathml3">[MATHML3]</a></cite>. The ink box matches the logical box.
                         The <code>linebreak</code> attribute on the <code>&lt;mspace/&gt;</code> element must be ignored.
                      </p>
                      
@@ -3825,7 +3827,7 @@ ms[rquote]:after {
                   <div id="mrow.p3">
                      
                      <p>User agents must follow the rules for inferred <code>mrow</code>s described in
-                        <cite><a href="#bibx11">[MATHML3]</a></cite>. For example, to layout
+                        <cite><a href="#mathml3">[MATHML3]</a></cite>. For example, to layout
                         <code>&lt;msqrt&gt;child_1 child_2 child_3 ...&lt;/msqrt&gt;</code>, one must follow the layout
                         rules described for <code>msqrt</code> in section <a href="#msqrt">3.3.3</a> using
                         the box of <code>&lt;mrow&gt;child_1 child_2 child_3 ... child_N&lt;/mrow&gt;</code> as the base.
@@ -3855,7 +3857,7 @@ ms[rquote]:after {
                         for the italic correction: when a “slanted” child is
                         followed by a “straight” child, then an horizontal
                         space corresponding to the italic correction of the “slanted” child is added
-                        between the two children <cite><a href="#bibx13">[OPENFONTFORMAT3]</a></cite>. The italic correction of the
+                        between the two children <cite><a href="#open-font-format">[OPENFONTFORMAT3]</a></cite>. The italic correction of the
                         last child is also added after that child when it is “slanted” and when
                         the <code>mrow</code> has more than one child. In this document, we interpret
                         “slanted” as a child that is not an operator with
@@ -4405,7 +4407,7 @@ ms[rquote]:after {
                      
                      <p>The default line thickness is given by
                         <code class="MATH">FractionRuleThickness</code>
-                        Use the <code>linethickness</code> attribute <cite><a href="#bibx11">[MATHML3]</a></cite> to determine the
+                        Use the <code>linethickness</code> attribute <cite><a href="#mathml3">[MATHML3]</a></cite> to determine the
                         actual thickness of the fraction bar. A percent or unitless length is
                         interpreted as a multiple of the default rule thickness.
                         The color and visibility of the fraction bar must honor the values given by the
@@ -5186,7 +5188,7 @@ ms[rquote]:after {
                   
                   <div id="msqrt.p1">
                      
-                     <p>The MathML specification describes radicals as follows <cite><a href="#bibx11">[MATHML3]</a></cite>:
+                     <p>The MathML specification describes radicals as follows <cite><a href="#mathml3">[MATHML3]</a></cite>:
                      </p>
                      
                      
@@ -5909,7 +5911,7 @@ ms[rquote]:after {
                   
                   <div id="mpadded.p2">
                      
-                     <p>See <cite><a href="#bibx11">[MATHML3]</a></cite> for how the metrics of <code>mpadded</code> element are determined.
+                     <p>See <cite><a href="#mathml3">[MATHML3]</a></cite> for how the metrics of <code>mpadded</code> element are determined.
                         Note that pseudo-units allows horizontal metrics to depend on vertical metrics,
                         for example <code>width="2height"</code> which can be problematic to determine
                         intrinsic widths. Hence in the present document, if
@@ -5923,14 +5925,14 @@ ms[rquote]:after {
                      
                      <p>The <code>mpadded</code> element is laid out as shown on figure
                         <a href="#F13">13</a>.
-                        The height, depth and width of the content in <cite><a href="#bibx11">[MATHML3]</a></cite> corresponds to
+                        The height, depth and width of the content in <cite><a href="#mathml3">[MATHML3]</a></cite> corresponds to
                         the logical box of the content. The content of the <code>mpadded</code> element is
                         positioned from the origin of the <code>mpadded</code> element as follows: We shift
                         the content
                         forward by a distance of <code>lspace</code> and shift it upward by a distance of
                         <code>voffset</code>. The logical metrics of the <code>mpadded</code> element are given by the
                         height, depth and width of the <code>mpadded</code> element described in
-                        <cite><a href="#bibx11">[MATHML3]</a></cite>. The ink metrics of the <code>mpadded</code> element match their logical
+                        <cite><a href="#mathml3">[MATHML3]</a></cite>. The ink metrics of the <code>mpadded</code> element match their logical
                         metrics.
                         
                      </p>
@@ -6433,7 +6435,7 @@ ms[rquote]:after {
                   
                   <div id="menclose.p3">
                      
-                     <p>Based on <cite><a href="#bibx13">[OPENFONTFORMAT3]</a></cite> <cite><a href="#bibx16">[TEXBOOK]</a></cite>, we use the notation ξ<sub>8</sub>
+                     <p>Based on <cite><a href="#open-font-format">[OPENFONTFORMAT3]</a></cite> <cite><a href="#texbook">[TEXBOOK]</a></cite>, we use the notation ξ<sub>8</sub>
                         from the TeXBook to denote the default rule thickness and use
                         3ξ<sub>8</sub> for gaps.
                         We actually let ξ<sub>8</sub> be <code class="MATH">OverbarRuleThickness</code>.
@@ -7367,7 +7369,7 @@ ms[rquote]:after {
                                  obtained by expanding the ink box by 7ξ<sub>8</sub> / 2 on each side.
                                  Using SVG terminology, we draw a rounded rectangle on this expanded box
                                  with parameters <code>rx</code>, <code>ry</code> and <code>stroke-width</code> set to 3ξ<sub>8</sub>
-                                 <cite><a href="#bibx15">[SVG11]</a></cite>. To obtain the logical box we again add a space of ξ<sub>8</sub> on
+                                 <cite><a href="#svg">[SVG2]</a></cite>. To obtain the logical box we again add a space of ξ<sub>8</sub> on
                                  each side of the ink box. See figure <a href="#F16">16</a>.
                               </p>
                               
@@ -8032,7 +8034,7 @@ ms[rquote]:after {
                               <p>The <code>updiagonalstrike</code> notation is drawn with a line
                                  of thickness ξ<sub>8</sub> going from the bottom left corner of the <code>menclose</code>
                                  content to its top right corner. Using SVG terminology, the
-                                 <code>stroke-linecap</code> of the line is <code>butt</code> <cite><a href="#bibx15">[SVG11]</a></cite>.
+                                 <code>stroke-linecap</code> of the line is <code>butt</code> <cite><a href="#svg">[SVG2]</a></cite>.
                                  As an approximation, the ink box
                                  is set equal to the logical box and obtained by increasing the original box
                                  from each side by ξ<sub>8</sub> / 2.
@@ -8315,7 +8317,7 @@ ms[rquote]:after {
                                  <code>updiagonalstrike</code>
                                  but the line strike goes from the top left corner to the bottom right corner.
                                  Using SVG terminology, the
-                                 <code>stroke-linecap</code> of the line is <code>butt</code> <cite><a href="#bibx15">[SVG11]</a></cite>.
+                                 <code>stroke-linecap</code> of the line is <code>butt</code> <cite><a href="#svg">[SVG2]</a></cite>.
                               </p>
                               
                            </div>
@@ -10346,7 +10348,7 @@ munderover &gt; :not(:first-child) {
                      
                      <p>Remark: For accent overscripts and bases with ascents that are at most
                         <code class="MATH">AccentBaseHeight</code>, the rule from
-                        <cite><a href="#bibx13">[OPENFONTFORMAT3]</a></cite> <cite><a href="#bibx16">[TEXBOOK]</a></cite> is actually to align the baselines of the
+                        <cite><a href="#open-font-format">[OPENFONTFORMAT3]</a></cite> <cite><a href="#texbook">[TEXBOOK]</a></cite> is actually to align the baselines of the
                         overscripts and of the bases. This assumes that accent glyphs are designed in
                         such a way that their ink bottoms are more or less
                         <code class="MATH">AccentBaseHeight</code> above their baselines. Hence, the
@@ -10958,7 +10960,7 @@ base
                   <div id="mmultiscripts.p3">
                      
                      <p>Any layout for <code>mmultiscripts</code> is acceptable as long as it follows
-                        the condition of the MathML 3 specification <cite><a href="#bibx11">[MATHML3]</a></cite> and is consistent
+                        the condition of the MathML 3 specification <cite><a href="#mathml3">[MATHML3]</a></cite> and is consistent
                         with section <a href="#msubmsup">3.4.1</a> for <code>mmultiscripts</code>
                         contructions that are equivalent to <code>msubsup</code>. Here is a possible algorithm
                         that is represented on figure <a href="#F24">24</a>.
@@ -11575,7 +11577,7 @@ base
                   
                   <p>In the present document, we restrict ourselves to a minimal implementation
                      compatible with HTML tables. First the <code>mtable</code> element must be treated as
-                     a HTML table and by <cite><a href="#bibx11">[MATHML3]</a></cite>, <code>mtable</code> must accept a
+                     a HTML table and by <cite><a href="#mathml3">[MATHML3]</a></cite>, <code>mtable</code> must accept a
                      <code>displaystyle</code> attribute with default value <code>false</code>. To implement that,
                      one may rely on the following rules for the user agent stylesheet as
                      suggested in
@@ -28744,6 +28746,17 @@ mi {
                <dl>
                   
                   
+                  <dt id="css-backgrounds">[CSS-BACKGROUNDS-3]</dt>
+                  
+                  <dd>
+                     Bert Bos; Elika J. Etemad / fantasai; Brad Kemper.
+                     <a href="https://www.w3.org/TR/css-backgrounds-3/">CSS Backgrounds and Borders Module Level 3</a>.
+                     17 October 2017. CR.
+                     URL: <a href="https://www.w3.org/TR/css-backgrounds-3/">https://www.w3.org/TR/css-backgrounds-3/</a>.
+                     
+                  </dd>
+                  
+                  
                   <dt id="css-color">[CSS-COLOR-4]</dt>
                   
                   <dd>
@@ -28755,24 +28768,13 @@ mi {
                   </dd>
                   
                   
-                  <dt id="css-backgrounds">[CSS-BACKGROUNDS-3]</dt>
+                  <dt id="css-display">[CSS-DISPLAY-3]</dt>
                   
                   <dd>
-                     Bert Bos; Elika J. Etemad / fantasai; Brad Kemper. 
-                     <a href="https://www.w3.org/TR/css-backgrounds-3/">CSS Backgrounds and Borders Module Level 3</a>.
-                     17 October 2017. CR.
-                     URL: <a href="https://www.w3.org/TR/css-backgrounds-3/">https://www.w3.org/TR/css-backgrounds-3/</a>.
-                     
-                  </dd>
-                  
-                  
-                  <dt id="css-writing-mode">[CSS-WRITING-MODE-3]</dt>
-                  
-                  <dd>
-                     Elika J. Etemad / fantasai ; Koji Ishii.
-                     <a href="https://www.w3.org/TR/css-writing-modes-3/">CSS Writing Modes Level 3</a>.
-                     24 May 2018. CR.
-                     URL: <a href="https://www.w3.org/TR/css-writing-modes-3/">https://www.w3.org/TR/css-writing-modes-3/</a>.
+                     Tab Atkins ; Elika J. Etemad / fantasai.
+                     <a href="https://www.w3.org/TR/css-display-3">CSS Display Module Level 3</a>.
+                     28 August 2018. CR.
+                     URL: <a href="https://www.w3.org/TR/css-display-3">https://www.w3.org/TR/css-display-3</a>
                      
                   </dd>
                   
@@ -28788,15 +28790,6 @@ mi {
                   </dd>
                   
                   
-                  <dt id="css-display">[CSS-DISPLAY-3]</dt>
-                  
-                  <dd>
-                     Tab Atkins and Elika J. Etemad / fantasai. <a href="https://drafts.csswg.org/css-display">CSS Display Module Level 3</a>. Editor's Draft, 23 May.
-                     URL: <a href="https://drafts.csswg.org/css-display/">https://drafts.csswg.org/css-display/</a>
-                     
-                  </dd>
-                  
-                  
                   <dt id="css-values">[CSS-VALUES-4]</dt>
                   
                   <dd>
@@ -28808,7 +28801,18 @@ mi {
                   </dd>
                   
                   
-                  <dt id="bibx6">[DOM1]</dt>
+                  <dt id="css-writing-mode">[CSS-WRITING-MODE-3]</dt>
+                  
+                  <dd>
+                     Elika J. Etemad / fantasai ; Koji Ishii.
+                     <a href="https://www.w3.org/TR/css-writing-modes-3/">CSS Writing Modes Level 3</a>.
+                     24 May 2018. CR.
+                     URL: <a href="https://www.w3.org/TR/css-writing-modes-3/">https://www.w3.org/TR/css-writing-modes-3/</a>.
+                     
+                  </dd>
+                  
+                  
+                  <dt id="dom1">[DOM1]</dt>
                   
                   <dd>
                      Lauren Wood et al. <a href="http://www.w3.org/TR/REC-DOM-Level-1/">Document Object Model (DOM) Level 1 Specification Version 1.0</a> W3C Recommendation 1 October, 1998.
@@ -28817,36 +28821,26 @@ mi {
                   </dd>
                   
                   
-                  <dt id="bibx7">[ECMA262]</dt>
+                  <dt id="ecma262">[ECMA262]</dt>
                   
                   <dd>
-                     Ecma International <a href="http://people.mozilla.org/~jorendorff/es5.1-final.html">ECMAScript Language Specification</a>
-                     ECMA-262, 5.1 Edition / June 2011.
-                     URL: <a href="http://people.mozilla.org/%5C~jorendorff/es5.1-final.html">http://people.mozilla.org/j̃orendorff/es5.1-final.html</a>
+                     Ecma International <a href="https://www.ecma-international.org/publications/standards/Ecma-262.htm">ECMAScript Language Specification</a>
+                     ECMA-262, 9th Edition / June 2018.
+                     URL: <a href="https://www.ecma-international.org/publications/standards/Ecma-262.htm">https://www.ecma-international.org/publications/standards/Ecma-262.htm</a>
                      
                   </dd>
                   
                   
-                  <dt id="bibx9">[HTML5]</dt>
+                  <dt id="html5">[HTML5]</dt>
                   
                   <dd>
-                     Ian Hickson et al. <a href="http://www.w3.org/TR/html5/">A vocabulary and associated APIs for HTML and XHTML</a>. W3C Recommendation 28 October 2014.
-                     URL: <a href="http://www.w3.org/TR/html5/">http://www.w3.org/TR/html5/</a>
+                     Ian Hickson et al. <a href="https://html.spec.whatwg.org/">HTML, Living Standard</a>. 7 June 2019.
+                     URL: <a href="https://html.spec.whatwg.org/">https://html.spec.whatwg.org/</a>
                      
                   </dd>
                   
                   
-                  <dt id="bibx10">[IETFRFC2119]</dt>
-                  
-                  <dd>
-                     S. Bradner
-                     <a href="http://www.ietf.org/rfc/rfc2119.txt">Key words for use in RFCs to Indicate Requirement Levels</a>.
-                     URL: <a href="http://www.ietf.org/rfc/rfc2119.txt">http://www.ietf.org/rfc/rfc2119.txt</a>
-                     
-                  </dd>
-                  
-                  
-                  <dt id="bibx11">[MATHML3]</dt>
+                  <dt id="mathml3">[MATHML3]</dt>
                   
                   <dd>
                      David Carlisle et al.
@@ -28857,7 +28851,7 @@ mi {
                   </dd>
                   
                   
-                  <dt id="bibx11bis">[MATHML4]</dt>
+                  <dt id="mathml4">[MATHML4]</dt>
                   
                   <dd>
                      David Carlisle et al.
@@ -28868,38 +28862,35 @@ mi {
                   </dd>
                   
                   
-                  <dt id="bibx13">[OPENFONTFORMAT3]</dt>
+                  <dt id="open-font-format">[OPENFONTFORMAT3]</dt>
                   
-                  <dd>ISO and IEC
-                     <a href="http://www.iso.org/iso/home/store/catalogue%5C_ics/catalogue%5C_detail%5C_ics.htm?csnumber=66391">Information technology – Coding of audio-visual objects – Part 22: Open Font Format
-                        Edition 3</a>,
-                     International Published Standard, 9th October 2015.
-                     URL: <a href="http://www.iso.org/iso/home/store/catalogue%5C_ics/catalogue%5C_detail%5C_ics.htm?csnumber=66391">http://www.iso.org/iso/home/store/catalogue_ics/catalogue_detail_ics.htm?csnumber=66391</a>
+                  <dd>ISO/IEC 14496-22.
+                     <a href="https://www.iso.org/standard/74461.html">Information technology – Coding of audio-visual objects – Part 22: Open Font Format</a>.
+                     Fourth edition, 2019-01.
+                     URL: <a href="https://www.iso.org/standard/74461.html">https://www.iso.org/standard/74461.html</a>
                      
                   </dd>
                   
                   
-                  <dt id="bibx15">[SVG11]</dt>
+                  <dt id="rfc2119">[IETFRFC2119]</dt>
+                  
+                  <dd>
+                     S. Bradner
+                     <a href="http://www.ietf.org/rfc/rfc2119.txt">Key words for use in RFCs to Indicate Requirement Levels</a>.
+                     URL: <a href="http://www.ietf.org/rfc/rfc2119.txt">http://www.ietf.org/rfc/rfc2119.txt</a>
+                     
+                  </dd>
+                  
+                  
+                  <dt id="svg">[SVG2]</dt>
                   
                   <dd>
                      Doug Schepers et al.
-                     <a href="http://www.w3.org/TR/SVG11/">Scalable Vector Graphics (SVG) 1.1 (Second Edition)</a>
-                     W3C Recommendation 16 August 2011.
-                     URL: <a href="http://www.w3.org/TR/SVG11/">http://www.w3.org/TR/SVG11/</a>
+                     <a href="https://www.w3.org/TR/SVG/">Scalable Vector Graphics (SVG) 2</a>.
+                     4 October 2018. CR.
+                     URL: <a href="https://www.w3.org/TR/SVG/">https://www.w3.org/TR/SVG/</a>
                      
                   </dd>
-                  
-                  
-                  <dt id="bibx18">[XMLENTITIES]</dt>
-                  
-                  <dd>
-                     David Carlisle, Patrick Ion
-                     <a href="http://www.w3.org/TR/xml-entity-names/">XML Entity Definitions for Characters (2nd Edition)</a>
-                     W3C Recommendation 10 April 2014.
-                     URL: <a href="http://www.w3.org/TR/xml-entity-names/">http://www.w3.org/TR/xml-entity-names/</a>
-                     
-                  </dd>
-                  
                   
                </dl>
                
@@ -28914,50 +28905,12 @@ mi {
                <dl>
                   
                   
-                  <dt id="bibx4">[CTL]</dt>
+                  <dt id="ctl">[CTL]</dt>
                   
                   <dd>
                      Sharon Correll
                      <a href="http://scripts.sil.org/cms/scripts/page.php?site%5C_id=nrsi%5C&amp;item%5C_id=CmplxRndExamples">Examples of Complex Rendering</a>.
                      URL: <a href="http://scripts.sil.org/cms/scripts/page.php?site%5C_id=nrsi%5C&amp;item%5C_id=CmplxRndExamples">http://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&amp;item_id=CmplxRndExamples</a>
-                     
-                  </dd>
-                  
-                  
-                  <dt id="bibx14">[OpenTypeMathIlluminated]</dt>
-                  
-                  <dd>
-                     Ulrik Vieth
-                     <a href="http://www.tug.org/TUGboat/tb30-1/tb94vieth.pdf">OpenType Math Illuminated</a>
-                     Biuletyn GUST 25 (2009), pp. 7–16, proceedings of the BachoTEX XVII conference.
-                     URL: <a href="http://www.tug.org/TUGboat/tb30-1/tb94vieth.pdf">http://www.tug.org/TUGboat/tb30-1/tb94vieth.pdf</a>
-                     
-                  </dd>
-                  
-                  
-                  <dt id="bibx16">[TEXBOOK]</dt>
-                  
-                  <dd>
-                     Knuth, Donald E.
-                     Published by Addison-Wesley Professional (1984)
-                     ISBN 10: 0201134489 ISBN 13: 9780201134483
-                     
-                  </dd>
-                  
-                  
-                  <dt id="bibx17">[ValidatorSchemas]</dt>
-                  
-                  <dd>
-                     Henri Sivonen et al. HTML5-SVG-MathML schema for Nu Html Checker
-                     URL: <a href="https://github.com/validator/validator/blob/master/schema/.drivers/html5-svg-mathml.rnc">https://github.com/validator/validator/blob/master/schema/.drivers/html5-svg-mathml.rnc</a>
-                     
-                  </dd>
-                  
-                  
-                  <dt id="WPT">[WPT]</dt>
-                  
-                  <dd>Test suites for Web platform specs — including WHATWG, W3C, and others.
-                     URL: <a href="https://github.com/web-platform-tests/wpt">https://github.com/web-platform-tests/wpt</a>
                      
                   </dd>
                   
@@ -28976,6 +28929,44 @@ mi {
                   <dd>
                      Frédéric Wang. math-variant explainer
                      URL: <a href="https://github.com/mathml-refresh/mathml-css-proposals/blob/master/mathml-css-proposals/math-variant-explainer.md">https://github.com/mathml-refresh/mathml-css-proposals/blob/master/math-variant-explainer.md</a>
+                     
+                  </dd>
+                  
+                  
+                  <dt id="open-type-math-illuminated">[OPEN-TYPE-MATH-ILLUMINATED]</dt>
+                  
+                  <dd>
+                     Ulrik Vieth
+                     <a href="http://www.tug.org/TUGboat/tb30-1/tb94vieth.pdf">OpenType Math Illuminated</a>
+                     Biuletyn GUST 25 (2009), pp. 7–16, proceedings of the BachoTEX XVII conference.
+                     URL: <a href="http://www.tug.org/TUGboat/tb30-1/tb94vieth.pdf">http://www.tug.org/TUGboat/tb30-1/tb94vieth.pdf</a>
+                     
+                  </dd>
+                  
+                  
+                  <dt id="texbook">[TEXBOOK]</dt>
+                  
+                  <dd>
+                     Knuth, Donald E.
+                     Published by Addison-Wesley Professional (1984)
+                     ISBN 10: 0201134489 ISBN 13: 9780201134483
+                     
+                  </dd>
+                  
+                  
+                  <dt id="validator-schemas">[VALIDATOR-SCHEMAS]</dt>
+                  
+                  <dd>
+                     Henri Sivonen et al. HTML5-SVG-MathML schema for Nu Html Checker
+                     URL: <a href="https://github.com/validator/validator/blob/master/schema/.drivers/html5-svg-mathml.rnc">https://github.com/validator/validator/blob/master/schema/.drivers/html5-svg-mathml.rnc</a>
+                     
+                  </dd>
+                  
+                  
+                  <dt id="WPT">[WPT]</dt>
+                  
+                  <dd>Test suites for Web platform specs — including WHATWG, W3C, and others.
+                     URL: <a href="https://github.com/web-platform-tests/wpt">https://github.com/web-platform-tests/wpt</a>
                      
                   </dd>
                   
