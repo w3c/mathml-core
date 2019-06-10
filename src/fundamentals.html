@@ -97,6 +97,12 @@
       <cite><a href="references.html#css-color">auto</a></cite>
     </dd>
   </dl>
+  <dl>
+    <dt id="boolean">&lt;boolean&gt;</dt>
+    <dd>A <code>&lt;boolean&gt;</code> value is case-insensitively
+      equal to <code>true</code> or <code>false</code>.
+    </dd>
+  </dl>
 </section>
 
 <section id="global-attributes">
@@ -142,7 +148,8 @@
 
   <p id="dir-attribute">
     The <code>dir</code> attribute, if specified and not
-    empty, must have value <code>ltr</code> or <code>ltr</code>.
+    empty, must be case-insensitively equal to the
+    value <code>ltr</code> or <code>ltr</code>.
     It is mapped to the CSS property <code>direction</code> defined in
     <cite><a href="references.html#css-writing-mode">auto</a></cite>.
     This attribute is used to set the directionality of math formulas, which is
@@ -225,13 +232,14 @@
     one can just directly use the corresponding Unicode
     characters. However, they are preserved for backward compatibility reasons.
     The <code>normal</code> value is still important to cancel automatic
-    italic of the <a href="presentation.html#tokenmi"><code>&lt;mi&gt;</code></a> element.
+    italic of the
+    <a href="presentation.html#tokenmi"><code>&lt;mi&gt;</code></a> element.
   </div>
 
   <div id="displaystyle-script-level-attributes">
     <p>
       The <code>displaystyle</code> attribute, if specified and not
-      empty, must have value <code>true</code> or <code>false</code>.
+      empty, must be a boolean <a href="#boolean">&lt;boolean&gt;</a>.
       It is mapped to the CSS property <code>math-style</code>
       defined in <a href="references.html#math-style-and-script-level">auto</a>.
       More precisely,  <code>true</code> is mapped to <code>display</code> and
@@ -286,8 +294,11 @@
   <p id="fund.toplevel.p1">
     The <code>&lt;math&gt;</code> element accepts the attributes described
     in section <a href="#global-attributes">auto</a> as well as the
-    <code>display</code> attribute.
+    following attribute:
   </p>
+  <ul id="math-attributes">
+    <li><a href="#display-attribute"><code>display</code></a></li>
+  </ul>
   <p id="display-attribute">
     The <code>display</code> attribute, if specified and not
     empty, must have value <code>block</code> or <code>inline</code>.
@@ -295,7 +306,12 @@
     specified in the user agent stylesheet
     as described in <a href="#user-agent-stylesheet">Appendix B</a>.
   </p>
-
+  <p>
+    The layout algorithm of the <code>&lt;math&gt;</code> element
+    is the same as the <code>&lt;mrow&gt;</code> element. User agents must
+    ensure correct baseline alignment, centering, sizing etc of the
+    <code>&lt;math&gt;</code> element.
+  </p>
   <div class="note">
     T<sub>E</sub>X's display mode <code>$...$</code>
     and inline mode <code>$...$</code> correspond to

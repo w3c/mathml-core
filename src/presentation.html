@@ -180,202 +180,266 @@ for the layout of <code>mtable</code> elements and of the containers of the
 </section>
 </section>
 
-
 <section id="tokenelements">
   <h2>Token Elements</h2>
+
   <section id="tokenmi">
     <h3>Identifier <code>&lt;mi&gt;</code></h3>
     <p>
-      An <code>mi</code> element represents a symbolic name or arbitrary text
+      The <code>&lt;mi&gt;</code> element represents a symbolic name or
+      arbitrary text
       that should be rendered as an identifier. Identifiers can include
       variables, function names, and symbolic constants.
     </p>
     <p>
-      In general, the <code>mi</code> element must be treated the same as the
-      <code>mtext</code> element. However, in order to implement the
-      automatic italic of mathematical variables, the User Agent stylesheet
-      must set <code>text-transform: math-auto</code> on the <code>mi</code>
-      element as described in <a href="#user-agent-stylesheet">Appendix B</a>.
+      The <code>&lt;mi&gt;</code> element accepts the attributes described
+      in section <a href="#global-attributes">auto</a>. Its layout algorithm is
+      the same as the
+      <a href="#tokenmtext"><code>&lt;mtext&gt;</code> element</a>.
+    </p>
+    <p>
+      The User Agent stylesheet must set <code>text-transform: math-auto</code>
+      on the <code>&lt;mi&gt;</code> element as described in
+      <a href="#user-agent-stylesheet">Appendix B</a>.
     </p>
   </section>
 
-<section id="tokenmn">
-<h3>Number <code>&lt;mn&gt;</code>
-</h3>
+  <section id="tokenmn">
+    <h3>Number <code>&lt;mn&gt;</code></h3>
+    <p>
+      The <code>&lt;mn&gt;</code> element represents a "numeric literal" or
+      other data that should be rendered as a numeric literal. Generally
+      speaking, a numeric literal is a sequence of digits, perhaps including a
+      decimal point, representing an unsigned integer or real number.
+    </p>
+    <p>
+      The <code>&lt;mn&gt;</code> element accepts the attributes described
+      in section <a href="#global-attributes">auto</a>. Its layout algorithm is
+      the same as the
+      <a href="#tokenmtext"><code>&lt;mtext&gt;</code> element</a>.
+    </p>
+  </section>
 
-<div id="tokenmn.p1">
-<p>An <code>mn</code> element represents a "numeric literal" or other data that should be rendered as a numeric literal. Generally speaking, a numeric literal is a sequence of digits, perhaps including a decimal point, representing an unsigned integer or real number.</p>
-</div>
-<div id="tokenmn.p2">
-<p>For the layout algorithm described in this document, the
-<code>mn</code> element must be treated the same as the <code>mtext</code> element.</p>
-</div>
-</section>
-<section id="tokenmo">
-<h3>Operator, Fence, Separator or Accent <code>&lt;mo&gt;</code>
-</h3>
+  <section id="tokenmo">
+    <h3>Operator, Fence, Separator or Accent <code>&lt;mo&gt;</code></h3>
+    <p id="tokenmo.p1">The <code>&lt;mo&gt;</code> element represents an
+      operator or anything that should be rendered as an operator. In general,
+      the notational conventions for mathematical operators are quite
+      complicated, and therefore MathML provides a relatively sophisticated
+      mechanism for specifying the rendering behavior of an
+      <code>&lt;mo&gt;</code> element. As a consequence, in MathML the list of
+      things that should "render as an operator" includes a number of notations
+      that are not mathematical operators in the ordinary sense. Besides
+      ordinary operators with infix, prefix, or postfix forms, these include
+      fence characters such as braces, parentheses, and "absolute value" bars;
+      separators such as comma and semicolon; and mathematical accents such as
+      a bar or tilde over a symbol. We will use the term "operator" in this
+      chapter to refer to operators in this broad sense.
+    </p>
+    <p>
+      The <code>&lt;mo&gt;</code> element accepts the attributes described
+      in section <a href="#global-attributes">auto</a> as well as the following
+      attributes:
+    </p>
+    <ul id="mo-attributes">
+      <li><a href="#form-attribute"><code>form</code></a></li>
+      <li><a href="#fence-attribute"><code>fence</code></a></li>
+      <li><a href="#separator-attribute"><code>separator</code></a></li>
+      <li><a href="#lspace-attribute"><code>lspace</code></a></li>
+      <li><a href="#rspace-attribute"><code>rspace</code></a></li>
+      <li><a href="#stretchy-attribute"><code>stretchy</code></a></li>
+      <li><a href="#symmetric-attribute"><code>symmetric</code></a></li>
+      <li><a href="#maxsize-attribute"><code>maxsize</code></a></li>
+      <li><a href="#minsize-attribute"><code>minsize</code></a></li>
+      <li><a href="#largeop-attribute"><code>largeop</code></a></li>
+      <li><a href="#movablelimits-attribute"><code>movablelimits</code></a></li>
+      <li><a href="#accent-attribute"><code>accent</code></a></li>
+    </ul>
+    <p>
+      Many properties of an <code>&lt;mo&gt;</code> element can be specified
+      via attribute on that element. The default value of the <code>form</code>
+      of an <code>mo</code> element is obtained as described in section
+      “Default value of the form attribute” of
+      <cite><a href="references.html#mathml3">auto</a></cite>. From the
+      <code>form</code> and the text content, we can deduce other
+      default values from the operator dictionary or use the fallback values
+      given in “Dictionary-based attributes” of
+      <cite><a href="references.html#mathml3">auto</a></cite>.
+    </p>
+    <p>
+      The leading space <code>lspace</code> and trailing space
+      <code>rspace</code> must be added on each side of the
+      <code>&lt;mo&gt;</code> element (or its outermost embellished ancestor).
+    </p>
+    <p>
+      In most cases, the <code>&lt;mo&gt;</code> element is treated as an
+      <code>&lt;mtext&gt;</code> element.
+      However, when an <code>mo</code> element with a single character must be
+      displayed as a large operator then instead we use the
+      <code class="MATH">MathVariants</code>
+      table to try and find a glyph of height at least
+      <code class="MATH">DisplayOperatorMinHeight</code>
+      (figure <a href="#F4">auto</a>). If none is found, we fallback to the
+      largest one. Because this parameter does not always give
+      the best size, user agents may also use the following heuristic: ensure
+      that the large variant height is at least 2 times as large as the base
+      height for integrals and √2 times as large as the base height for other
+      operators.
+    </p>
+    <figure id="F4">
+      <img src="figures/sumsize.svg"/>
+      <figcaption>Figure 4: Base and displaystyle sizes of the summation symbol</figcaption>
+    </figure>
+    <p>
+      When an <code>&lt;mo&gt;</code> element with a single character must be
+      displayed as a horizontal or vertical operator then instead of displaying
+      the normal character we use the <code class="MATH">MathVariants</code>
+      table to try and find a glyph that has at least the desired size or an
+      assembly from several glyphs to cover at least the desired size
+      (figure <a href="#F5">auto</a>). The rules for vertical stretching
+      are a bit more complicated and are described in section
+      “Vertical Stretching Rules” of
+      <cite><a href="references.html#mathml3">auto</a></cite>.
+      If the operator has property <code>symmetric="true"</code>, it must be
+      stretched symmetrically with respect to the math axis, which is given by
+      the <code class="MATH">AxisHeight</code> value.
+      Figure <a href="#F6">auto</a> compares the symmetric
+      and non-symmetric stretching.
+    </p>
+    <p>
+      The size variant or construction used for vertical stretchy operators
+      will depend on the target size to cover. To determine the intrinsic
+      width W of the operator, we consider the maximum of all possible widths
+      for the base size, size variants and construction available for the given
+      operator. It is assumed that the width of the
+      operator is almost independent of the stretch size, which is the case in
+      practice for most math fonts and operators.
+    </p>
+    <figure id="F5">
+      <img src="figures/bracesize.svg"/>
+      <figcaption>Figure 5: Base size, size variants and glyph assembly for the
+        left brace</figcaption>
+    </figure>
+    <figure id="F6">
+      <img src="figures/vstretch.svg"/>
+      <figcaption>Figure 6: Symmetric and non-symmetric stretching of vertical
+        operators</figcaption>
+    </figure>
+    <p>
+      See section <a href="#mrow">auto</a> for details about how to treat
+      “embellished ancestor”, and how decide when to display operators larger
+      or when to stretch them vertically &amp; horizontally.
+    </p>
+  </section>
 
+  <section id="tokenmtext">
+  <h3>Text <code>&lt;mtext&gt;</code></h3>
 
-<div id="tokenmo.p1">
-<p>An <code>mo</code> element represents an operator or anything that should be rendered as an operator. In general, the notational conventions for mathematical operators are quite complicated, and therefore MathML provides a relatively sophisticated mechanism for specifying the rendering behavior of an <code>mo</code> element. As a consequence, in MathML the list of things that should "render as an operator" includes a number of notations that are not mathematical operators in the ordinary sense. Besides ordinary operators with infix, prefix, or postfix forms, these include fence characters such as braces, parentheses, and "absolute value" bars; separators such as comma and semicolon; and mathematical accents such as a bar or tilde over a symbol. We will use the term "operator" in this chapter to refer to operators in this broad sense.</p>
-</div>
-<div id="tokenmo.p2">
-<p>Many properties of an <code>mo</code> element can be specified via attribute on
-that element. The default value of the <code>form</code> of an <code>mo</code> element is
-obtained as described in section “Default value of the form attribute” of
-<cite><a href="references.html#mathml3">auto</a></cite>. From the <code>form</code> and the text content, we can deduce other
-default values from the operator dictionary or use the fallback values given
-in “Dictionary-based attributes” of <cite><a href="references.html#mathml3">auto</a></cite>.</p>
-</div>
-<div id="tokenmo.p3">
-<p>The leading space <code>lspace</code> and trailing space <code>rspace</code> must be added on
-each side of the <code>mo</code> element (or its outermost embellished ancestor).</p>
-</div>
-<div id="tokenmo.p4">
-<p>In most cases, the <code>mo</code> element is treated as an <code>mtext</code> element.
-However, when an <code>mo</code> element with a single character must be displayed as
-a large operator then instead we use the <code class="MATH">MathVariants</code>
-table to try and find a glyph of height at least
-<code class="MATH">DisplayOperatorMinHeight</code>
-(figure <a href="#F4">auto</a>). If none is found, we fallback to the
-largest one. Because this parameter does not always give
-the best size, user agents may also use the following heuristic: ensure
-that the large variant height is at least 2 times as large as the base height
-for integrals and √2 times as large as the base height for other
-operators.</p>
-</div>
-<figure id="F4">
-  <img src="figures/sumsize.svg"/>
-<figcaption>Figure 4: Base and displaystyle sizes of the summation symbol</figcaption>
-</figure>
-<div id="tokenmo.p5">
-<p>When an <code>mo</code> element with a single character must be displayed as a
-horizontal or vertical
-operator then instead of displaying the normal character we use
-the <code class="MATH">MathVariants</code> table to try and find a glyph
-that has at least the desired size or an assembly from several glyphs
-to cover at least the desired size
-(figure <a href="#F5">auto</a>). The rules for vertical stretching
-are a bit more complicated and are described in section
-“Vertical Stretching Rules” of <cite><a href="references.html#mathml3">auto</a></cite>. If the operator has property
-<code>symmetric="true"</code>, it must be stretched symmetrically with respect to
-the math axis, which is given by the <code class="MATH">AxisHeight</code> value.
-Figure <a href="#F6">auto</a> compares the symmetric
-and non-symmetric stretching.</p>
-</div>
-<div id="tokenmo.p6">
-<p>The size variant or construction used for vertical stretchy operators will
-depend on the target size to cover. To determine the intrinsic
-width W of the operator, we consider the maximum of all possible widths
-for the base size, size variants and construction available for the given
-operator. It is assumed that the width of the
-operator is almost independent of the stretch size, which is the case in
-practice for most math fonts and operators.</p>
-</div>
-<figure id="F5">
- <img src="figures/bracesize.svg"/>
- <figcaption>Figure 5: Base size, size variants and glyph assembly for the left brace</figcaption>
-</figure>
-<figure id="F6">
- <img src="figures/vstretch.svg"/>
- <figcaption>Figure 6: Symmetric and non-symmetric stretching of vertical operators</figcaption>
-</figure>
-<div id="tokenmo.p7">
-<p>See section <a href="#mrow">auto</a> for details about how to treat “embellished ancestor”,
-and how decide when to display operators larger or when to stretch them
-vertically &amp; horizontally.</p>
-</div>
-</section>
-<section id="tokenmtext">
-<h3>Text <code>&lt;mtext&gt;</code>
-</h3>
+  <p>
+    The <code>&lt;mtext&gt;</code> element is used to represent arbitrary text
+    that should be rendered as itself. In general, the
+    <code>&lt;mtext&gt;</code> element is intended to denote commentary text.
+  </p>
+  <p>The <code>&lt;mn&gt;</code> element accepts the attributes described
+    in section <a href="#global-attributes">auto</a>.</p>
+  <p>
+    In most cases the <code>&lt;mtext&gt;</code> element contains some text
+    that is laid out without line breaks using complex text layout
+    <cite><a href="references.html#ctl">auto</a></cite>. It is assumed that we
+    can measure the ink ascent &amp; descent, logical ascent &amp; descent and
+    advance width of the text frame and use these values for the MathML box of
+    the <code>&lt;mtext&gt;</code> element.
+  </p>
+  <p>
+    If the trailing glyph of the text content has an entry in the
+    <code class="MATH">MathItalicsCorrectionInfo</code> table then the specified
+    value is used as the italic correction.
+    User agents may subtract the advance width from the abscissa of the trailing
+    ink edge as a heuristic value for the italic correction of the
+    <code>&lt;mtext&gt;</code> element when it is not specified in the
+    <code class="MATH">MathItalicsCorrectionInfo</code> table.
+  </p>
+  <p>
+    If the text content is made of a single glyph and this glyph
+    has an entry in the <code class="MATH">MathTopAccentAttachment</code> table
+    then the specified value is used as the top accent attachment of the
+    <code>&lt;mtext&gt;</code> element.
+  </p>
+  <p>
+    If the CSS <code>direction</code> on the <code>&lt;mtext&gt;</code> element
+    is set to right-to-left then user agents must enable the <code>rtlm</code>
+    OpenType feature on text nodes unless it contradicts what the page author
+    has specified with the <code>font-feature-settings</code> CSS property.
+  </p>
+  <p>
+    If <code>&lt;mtext&gt;</code> is used at a non-zero scriptlevel then user
+    agents must enable the <code class="MATH">ssty</code> OpenType feature on
+    text nodes unless it contradicts what the page author has specified with
+    the <code>font-feature-settings</code> CSS property.
+    <a href="https://github.com/mathml-refresh/mathml/issues/19">https://github.com/mathml-refresh/mathml/issues/19</a>
+  </p>
+  <p>
+    In the most general case, the <code>&lt;mtext&gt;</code> element may contain
+    text with line breaks or arbitrary HTML5 phrasing elements. We assume that
+    we can still determine logical dimensions and max-content width of the text
+    content and use it for both the logical and ink values of the
+    <code>&lt;mtext&gt;</code> element. The italic correction and
+    top accent attachment are assigned the fallback values indicated in section
+    <a href="#boxmodel">auto</a>.
+  </p>
+  </section>
 
-<div id="tokenmtext.p1">
-<p>An <code>mtext</code> element is used to represent arbitrary text that should be rendered as itself. In general, the <code>mtext</code> element is intended to denote commentary text.</p>
-</div>
-<div id="tokenmtext.p2">
-<p>In most cases the <code>&lt;mtext&gt;</code> element contains some text that is laid out
-without line
-breaks using complex text layout <cite><a href="references.html#ctl">auto</a></cite>. It is assumed that we can measure
-the ink ascent &amp; descent, logical ascent &amp; descent and advance width of
-the text frame and use these values for the MathML box of the <code>&lt;mtext&gt;</code>
-element.</p>
-</div>
-<div id="tokenmtext.p3">
-<p>If the trailing glyph of the text content has an entry in the
-<code class="MATH">MathItalicsCorrectionInfo</code> table then the specified
-value is used as the italic correction.
-User agents may subtract the advance width from the abscissa of the trailing
-ink edge as a heuristic value for the italic correction of the <code>&lt;mtext&gt;</code>
-element when it is not specified in the
-<code class="MATH">MathItalicsCorrectionInfo</code> table.</p>
-</div>
-<div id="tokenmtext.p4">
-<p>If the text content is made of a single glyph and this glyph
-has an entry in the <code class="MATH">MathTopAccentAttachment</code> table
-then the specified value is used as the top accent attachment of the
-<code>&lt;mtext&gt;</code> element.</p>
-</div>
-<div id="tokenmtext.p5">
-<p>If the CSS <code>direction</code> on the <code>&lt;mtext&gt;</code> element is set to right-to-left
-then user agents must enable the <code>rtlm</code> OpenType feature on text nodes
-unless it contradicts what the page author has specified with the
-<code>font-feature-settings</code> CSS property.</p>
-</div>
-<div id="tokenmtext.p6">
-<p>If <code>&lt;mtext&gt;</code> is used at a non-zero scriptlevel then user agents must
-enable the <code class="MATH">ssty</code> OpenType feature on text nodes unless it contradicts
-what the page author has specified with the <code>font-feature-settings</code>
-CSS property.</p>
-</div>
-<div id="tokenmtext.p7">
-<p><a href="https://gitlab.com/mathml/MathMLinHTML5/issues/2">auto</a></p>
-</div>
-<div id="tokenmtext.p8">
-<p>In the most general case, the <code>&lt;mtext&gt;</code> element may contain text with line
-breaks or arbitrary HTML5 phrasing elements. We assume that we can still
-determine logical dimensions
-and max-content width of the text content and use it for both the logical and
-ink values of the <code>&lt;mtext&gt;</code> element. The italic correction and
-top accent attachment are assigned the fallback values indicated in section
-<a href="#boxmodel">auto</a></p>
-</div>
-</section>
-<section id="mspace">
-<h3>Space <code>&lt;mspace/&gt;</code>
-</h3>
+  <section id="mspace">
+    <h3>Space <code>&lt;mspace/&gt;</code></h3>
+    <p>
+      The <code>mspace</code> empty element represents a blank space of any
+      desired size, as set by its attributes.
+    </p>
+    <p>
+      The <code>&lt;mspace&gt;</code> element accepts the attributes described
+      in section <a href="#global-attributes">auto</a> as well as the following
+      attributes:
+    </p>
+    <ul id="mspace-attributes">
+      <li><a href="#mspace-width-attribute"><code>width</code></a></li>
+      <li><a href="#mspace-height-attribute"><code>height</code></a></li>
+      <li><a href="#mspace-depth-attribute"><code>depth</code></a></li>
+    </ul>
+    <p>
+      The <code>mspace</code> element is laid out as shown on figure
+      <a href="#F7">auto</a>. The logical box is determined by the
+      <code>height</code>, <code>depth</code> and <code>width</code> attributes
+      defined in <cite><a href="references.html#mathml3">auto</a></cite>. The
+      ink box matches the logical box.
+    </p>
+    <figure id="F7">
+      <img src="figures/mspacebox.svg"/>
+      <figcaption>Figure 7: Box model for the <code>mspace</code> element</figcaption>
+    </figure>
+  </section>
 
-<div id="mspace.p1">
-<p>An <code>mspace</code> empty element represents a blank space of any desired size, as set by its attributes.</p>
-</div>
-<div id="mspace.p2">
-<p>The <code>mspace</code> element is laid out as shown on figure
-<a href="#F7">auto</a>.
-The logical box is determined by the <code>height</code>, <code>depth</code> and <code>width</code>
-attributes defined in <cite><a href="references.html#mathml3">auto</a></cite>. The ink box matches the logical box.
-The <code>linebreak</code> attribute on the <code>&lt;mspace/&gt;</code> element must be ignored.</p>
-</div>
-<figure id="F7">
- <img src="figures/mspacebox.svg"/>
- <figcaption>Figure 7: Box model for the <code>mspace</code> element</figcaption>
-</figure>
-</section>
-<section id="tokenms">
-<h3>String Literal <code>&lt;ms&gt;</code>
-</h3>
-
-
-<div id="tokenms.p1">
-<p>The <code>ms</code> element is used to represent "string literals" in expressions meant to be interpreted by computer algebra systems or other systems containing "programming languages".</p>
-</div>
-<div id="tokenms.p2">
-<p>In general, <code>ms</code> must be treated the same as the <code>mtext</code>
-element except that quotes are automatically added around its content.
-The user agents may implement the <code>lquote</code> or <code>rquote</code> attributes
-with the following style in the user agent stylesheet as suggested in
-<a href="#user-agent-stylesheet">Appendix B</a>:</p>
-</div>
-<div id="tokenms.p3">
+  <section id="tokenms">
+    <h3>String Literal <code>&lt;ms&gt;</code></h3>
+    <p>
+      The <code>&lt;ms&gt;</code> element is used to represent
+      "string literals" in expressions meant to be interpreted by computer
+      algebra systems or other systems containing "programming languages".
+    </p>
+    <p>
+      The <code>&lt;mn&gt;</code> element accepts the attributes described
+      in section <a href="#global-attributes">auto</a> as well as the following
+      attributes:
+    </p>
+    <ul id="ms-attributes">
+      <li><a href="#lquote-attribute"><code>lquote</code></a></li>
+      <li><a href="#rquote-attribute"><code>rquote</code></a></li>
+    </ul>
+    <p>The layout algorithm is the same as the
+      <a href="#tokenmtext"><code>&lt;mtext&gt;</code> element</a>. User Agents
+      must CSS rules described in
+      <a href="#user-agent-stylesheet">Appendix B</a>:
+    </p>
+    <div>
 <pre>ms {
   display: inline;
 }
@@ -388,16 +452,15 @@ ms[lquote]:before {
 ms[rquote]:after {
   content: attr(rquote)
 }</pre>
-</div>
+    </div>
+  </section>
 </section>
-</section>
+
 <section id="generallayout">
-<h2>General Layout Schemata</h2>
+  <h2>General Layout Schemata</h2>
 
-<section id="mrow">
-<h3>Horizontally Group Sub-Expressions <code>&lt;mrow&gt;</code>
-</h3>
-
+  <section id="mrow">
+    <h3>Horizontally Group Sub-Expressions <code>&lt;mrow&gt;</code></h3>
 
 <div id="mrow.p1">
 <p>An <code>mrow</code> element is used to group together any number of sub-expressions, usually consisting of one or more <code>mo</code> elements acting as "operators" on one or more other expressions that are their "operands".</p>
