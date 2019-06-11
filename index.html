@@ -148,7 +148,7 @@
     <section id="fundamentals" class="normative">
       <h2>MathML Fundamentals</h2>
       <section>
-        <h3>DOM, HTML, SVG, CSS and Javascript</h3>
+        <h3>Web Platform Integration</h3>
         <p>
           User agents must use a [[HTML]] parser to build a [[DOM]] tree from
           the source code of web pages. In particular, they must follow the
@@ -203,29 +203,32 @@
           <a href="#user-agent-stylesheet">Appendix B</a>.
           Details are given in the respective sections.
         </p>
+        <div class="issue" data-number="83">Properly define DOM/IDL relationships.</div>
       </section>
       <section>
         <h3>MathML Attribute Values</h3>
         <dl>
-          <dt id="unsigned-integer">&lt;non-negative-integer&gt;</dt>
+          <dt><dfn data-dfn-type="dfn"
+                   id="non-negative-integer">non-negative-integer</dfn></dt>
           <dd>A <code>&lt;non-negative-integer&gt;</code> value as defined in
             [[HTML]]
           </dd>
         </dl>
         <dl>
-          <dt id="length-percentage">&lt;length-percentage&gt;</dt>
+          <dt><dfn data-dfn-type="dfn"
+                   id="length-percentage">length-percentage</dfn></dt>
           <dd>A <code>&lt;length-percentage&gt;</code> value as defined in
             [[CSS-VALUES]]
           </dd>
         </dl>
         <dl>
-          <dt id="color">&lt;color&gt;</dt>
+          <dt><dfn data-dfn-type="dfn" id="color">color</dfn></dt>
           <dd>A <code>&lt;color&gt;</code> value as defined in
             [[CSS-COLOR-3]]
           </dd>
         </dl>
         <dl>
-          <dt id="boolean">&lt;boolean&gt;</dt>
+          <dt><dfn data-dfn-type="boolean" id="boolean">boolean</dfn></dt>
           <dd>A <code>&lt;boolean&gt;</code> value is case-insensitively
             equal to <code>true</code> or <code>false</code>.
           </dd>
@@ -233,7 +236,7 @@
       </section>
 
       <section id="global-attributes">
-        <h3>Attributes Shared by all MathML Elements</h3>
+        <h3>Global Attributes</h3>
         <p>
           The following attributes are common to and may be specified on all MathML
           elements:
@@ -285,7 +288,7 @@
 
         <p id="mathcolor-and-mathbackground-attributes">The <code>mathcolor</code> and
           <code>mathbackground</code> attributes, if specified and not empty, must
-          have a value that is a <a href="#color">&lt;color&gt;</a>.
+          have a value that is a <a>color</a>.
           The <code>mathcolor</code> property describes the foreground fill color of
           an MathML text, bars etc and the background color of an element.
           They are mapped to the CSS properties <code>color</code> and
@@ -296,8 +299,7 @@
 
         <p id="mathsize-attribute">The <code>mathsize</code>
           attribute, if specified and not empty, must
-          have a value that is a valid
-          <a href="#length-percentage">&lt;length-percentage&gt;</a>.
+          have a value that is a valid <a>length-percentage</a>.
           The <code>mathsize</code> property indicates indicates the desired height
           of glyphs in math formulas but also scale other parts (spacing, shifts,
           line thickness of bars etc) accordingly.
@@ -366,7 +368,7 @@
         <div id="displaystyle-script-level-attributes">
           <p>
             The <code>displaystyle</code> attribute, if specified and not
-            empty, must be a boolean <a href="#boolean">&lt;boolean&gt;</a>.
+            empty, must be a <a>boolean</a>.
             It is mapped to the CSS property <code>math-style</code>
             defined in [[MATH-STYLE-AND-SCRIPT-LEVEL]].
             More precisely,  <code>true</code> is mapped to <code>display</code> and
@@ -381,7 +383,7 @@
             empty, must have value
             <code>+&lt;U&gt;</code>, <code>-&lt;U&gt;</code> or <code>&lt;U&gt;</code>
             where <code>&lt;U&gt;</code> is a
-            <a href="#non-negative-integer">&lt;non-negative-integer&gt;</a>.
+            <a>non-negative-integer</a>.
             It is mapped to the <code>math-script-level</code> property
             defined in [[MATH-STYLE-AND-SCRIPT-LEVEL]]
             More precisely,
@@ -609,7 +611,7 @@
             </div>
             <figure id="F1">
               <img src="figures/boxmodel.svg"/>
-              <figcaption>Figure 1: Generic Box Model for MathML elements</figcaption>
+              <figcaption>Generic Box Model for MathML elements</figcaption>
             </figure>
             <div id="boxmodel.p4">
               <p>For MathML element containing only text nodes or foreign elements, we assume
@@ -656,11 +658,11 @@
             </div>
             <figure id="F2">
               <img src="figures/italcorr.svg"/>
-              <figcaption>Figure 2: Examples of italic correction for italic f and large integral</figcaption>
+              <figcaption>Examples of italic correction for italic f and large integral</figcaption>
             </figure>
             <figure id="F3">
               <img src="figures/topaccent.svg"/>
-              <figcaption>Figure 3: Example of top accent attachment for a circumflex accent</figcaption>
+              <figcaption>Example of top accent attachment for a circumflex accent</figcaption>
             </figure>
             <div id="boxmodel.p7">
               <p>The present document assumes that W, w, a, b, A, B, italic correction
@@ -840,7 +842,7 @@
             </p>
             <figure id="F4">
               <img src="figures/sumsize.svg"/>
-              <figcaption>Figure 4: Base and displaystyle sizes of the summation symbol</figcaption>
+              <figcaption>Base and displaystyle sizes of the summation symbol</figcaption>
             </figure>
             <p>
               When an <code>&lt;mo&gt;</code> element with a single character must be
@@ -869,12 +871,12 @@
             </p>
             <figure id="F5">
               <img src="figures/bracesize.svg"/>
-              <figcaption>Figure 5: Base size, size variants and glyph assembly for the
+              <figcaption>Base size, size variants and glyph assembly for the
                 left brace</figcaption>
             </figure>
             <figure id="F6">
               <img src="figures/vstretch.svg"/>
-              <figcaption>Figure 6: Symmetric and non-symmetric stretching of vertical
+              <figcaption>Symmetric and non-symmetric stretching of vertical
                 operators</figcaption>
             </figure>
             <p>
@@ -965,7 +967,7 @@
             </p>
             <figure id="F7">
               <img src="figures/mspacebox.svg"/>
-              <figcaption>Figure 7: Box model for the <code>mspace</code> element</figcaption>
+              <figcaption>Box model for the <code>mspace</code> element</figcaption>
             </figure>
           </section>
 
@@ -1063,7 +1065,7 @@
             </div>
             <figure id="F8">
               <img src="figures/mrowbox.svg"/>
-              <figcaption>Figure 8: Box model for the <code>mrow</code> element</figcaption>
+              <figcaption>Box model for the <code>mrow</code> element</figcaption>
             </figure>
           </section>
           <section id="mfrac">
@@ -1123,7 +1125,7 @@
             </div>
             <figure id="F9">
               <img src="figures/mfracbox.svg"/>
-              <figcaption>Figure 9: Box model for the <code>mfrac</code> element</figcaption>
+              <figcaption>Box model for the <code>mfrac</code> element</figcaption>
             </figure>
             <div id="mfrac.p6">
               <p>If the actual line thickness is zero,
@@ -1142,7 +1144,7 @@
             </div>
             <figure id="F10">
               <img src="figures/mfracnobarbox.svg"/>
-              <figcaption>Figure 10: Box model for the <code>mfrac</code> element without bar</figcaption>
+              <figcaption>Box model for the <code>mfrac</code> element without bar</figcaption>
             </figure>
             <div id="mfrac.p7">
               <p>In order to prevent the fraction bar to be confused with other items around
@@ -1209,7 +1211,7 @@
             </div>
             <figure id="F11">
               <img src="figures/msqrtbox.svg"/>
-              <figcaption>Figure 11: Box model for the <code>msqrt</code> element</figcaption>
+              <figcaption>Box model for the <code>msqrt</code> element</figcaption>
             </figure>
             <div id="msqrt.p5">
               <p>The <code>mroot</code> element is laid out as shown on figure <a href="#F12">auto</a>.
@@ -1235,7 +1237,7 @@
             </div>
             <figure id="F12">
               <img src="figures/mrootbox.svg"/>
-              <figcaption>Figure 12: Box model for the <code>mroot</code> element</figcaption>
+              <figcaption>Box model for the <code>mroot</code> element</figcaption>
             </figure>
           </section>
 
@@ -1313,7 +1315,7 @@
             </div>
             <figure id="F13">
               <img src="figures/mpaddedbox.svg"/>
-              <figcaption>Figure 13: Box model for the <code>mpadded</code> element</figcaption>
+              <figcaption>Box model for the <code>mpadded</code> element</figcaption>
             </figure>
           </section>
 
@@ -1385,7 +1387,7 @@
                   </div>
                   <figure id="F14">
                     <img src="figures/mpaddedbox.svg"/>
-                    <figcaption>Figure 14: Box model for the <code>left</code>
+                    <figcaption>Box model for the <code>left</code>
                       notation of the <code>menclose</code> element</figcaption>
                   </figure>
                 </li>
@@ -1411,7 +1413,7 @@
                   </div>
                   <figure id="F15">
                     <img src="figures/topbox.svg"/>
-                    <figcaption>Figure 15: Box model for the <code>top</code>
+                    <figcaption>Box model for the <code>top</code>
                       notation of the <code>menclose</code> element</figcaption>
                   </figure>
                 </li>
@@ -1441,7 +1443,7 @@
                   </div>
                   <figure id="F16">
                     <img src="figures/roundedbox.svg"/>
-                    <figcaption>Figure 16: Box model for the <code>roundedbox</code>
+                    <figcaption>Box model for the <code>roundedbox</code>
                       notation of the <code>menclose</code> element</figcaption>
                   </figure>
                 </li>
@@ -1466,7 +1468,7 @@
                   </div>
                   <figure id="F17">
                     <img src="figures/horizstrikebox.svg"/>
-                    <figcaption>Figure 17: Box model for the <code>horizontalstrike</code>
+                    <figcaption>Box model for the <code>horizontalstrike</code>
                       notation of the <code>menclose</code> element</figcaption>
                   </figure>
                 </li>
@@ -1491,7 +1493,7 @@
                   </div>
                   <figure id="F18">
                     <img src="figures/updiagstrikebox.svg"/>
-                    <figcaption>Figure 18: Box model for the <code>updiagonalstrike</code>
+                    <figcaption>Box model for the <code>updiagonalstrike</code>
                       notation of the <code>menclose</code> element</figcaption>
                   </figure>
                 </li>
@@ -1528,7 +1530,7 @@
                   </div>
                   <figure id="F19">
                     <img src="figures/circlebox.svg"/>
-                    <figcaption>Figure 19: Box model for the <code>circle</code>
+                    <figcaption>Box model for the <code>circle</code>
                       notation of the <code>menclose</code> element</figcaption>
                   </figure>
                 </li>
@@ -1619,7 +1621,7 @@
             </div>
             <figure id="F20">
               <img src="figures/msubbox.svg"/>
-              <figcaption>Figure 20: Box model for the <code>msub</code> element</figcaption>
+              <figcaption>Box model for the <code>msub</code> element</figcaption>
             </figure>
             <div id="msubmsup.p5">
               <p>The <code>msup</code> element is laid out as shown on figure <a href="#F21">auto</a>.
@@ -1661,7 +1663,7 @@
             </div>
             <figure id="F21">
               <img src="figures/msupbox.svg"/>
-              <figcaption>Figure 21: Box model for the <code>msup</code> element</figcaption>
+              <figcaption>Box model for the <code>msup</code> element</figcaption>
             </figure>
             <div id="msubmsup.p7">
               <p>The <code>msubsup</code> element is laid out as shown on figure
@@ -1737,7 +1739,7 @@
             </div>
             <figure id="F22">
               <img src="figures/msubsupbox.svg"/>
-              <figcaption>Figure 22: Box model for the <code>msubsup</code> element</figcaption>
+              <figcaption>Box model for the <code>msubsup</code> element</figcaption>
             </figure>
           </section>
           <section id="mundermover">
@@ -1885,7 +1887,7 @@
             </div>
             <figure id="F23">
               <img src="figures/munderoverbox.svg"/>
-              <figcaption>Figure 23: Box model for the <code>munderover</code> element</figcaption>
+              <figcaption>Box model for the <code>munderover</code> element</figcaption>
             </figure>
             <div id="mundermover.p7">
               <p>The layout of <code>munder</code> and <code>mover</code> is the same as the one of
@@ -1962,7 +1964,7 @@
             </div>
             <figure id="F24">
               <img src="figures/mmultiscriptsbox.svg"/>
-              <figcaption>Figure 24: Box model for the <code>mmultiscripts</code> element</figcaption>
+              <figcaption>Box model for the <code>mmultiscripts</code> element</figcaption>
             </figure>
           </section>
         </section>
