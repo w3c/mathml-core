@@ -420,7 +420,7 @@
         <h3>The Top-Level <code>&lt;math&gt;</code> Element</h3>
         <p>
           The <code>&lt;math&gt;</code> element accepts the attributes described
-          in section <a href="#global-attributes">auto</a> as well as the
+          in section <a href="#global-attributes"></a> as well as the
           following attribute:
         </p>
         <ul id="math-attributes">
@@ -509,7 +509,7 @@
             to solve the following problem: given a particular default glyph shape and a
             certain width or height, find a variant shape glyph (or a construct created by
             putting several glyphs together) that has the required measurement.
-            More information are provided in see section <a href="presentation.html#tokenmo">auto</a>.
+            More information are provided in see section <a href="presentation.html#tokenmo"></a>.
           </p>
         </section>
         <section id="latex">
@@ -529,14 +529,14 @@
             However, it is set to true in the following children:
           </p>
           <ol>
-            <li>The denominator of an <code>mfrac</code> element. See section <a href="presentation.html#mfrac">auto</a>.</li>
+            <li>The denominator of an <code>mfrac</code> element. See section <a href="presentation.html#mfrac"></a>.</li>
             <li>The subscripts of the <code>msub</code>, <code>msubsup</code>,
               <code>munder</code> and <code>munderover</code> elements.
-              See section <a href="presentation.html#scriptsandlimits">auto</a>.
+              See section <a href="presentation.html#scriptsandlimits"></a>.
             </li>
             <li>The overscript of the
               <code>mover</code> and <code>munderover</code> elements when it is an <code>accent</code> per
-              the MathML specification. See section <a href="presentation.html#scriptsandlimits">auto</a>.
+              the MathML specification. See section <a href="presentation.html#scriptsandlimits"></a>.
             </li>
             <li>
               The children of the <code>msqrt</code> and <code>mroot</code>
@@ -578,7 +578,7 @@
                 inline or block display, as suggested in
                 <a href="#user-agent-stylesheet">Appendix B</a>.
                 Tabular MathML elements have table, table-row and
-                table-cell display as discussed in section <a href="#tables">auto</a>.
+                table-cell display as discussed in section <a href="#tables"></a>.
                 The <code>&lt;math&gt;</code> and <code>&lt;mtd&gt;</code> elements
                 generate an anonymous <code>&lt;mrow&gt;</code> MathML box child that contains the boxes of
                 their children and use the box parameters below to layout this anonymous
@@ -646,10 +646,10 @@
             <div id="boxmodel.p6">
               <p>The <code class="MATH">MathItalicsCorrectionInfo</code> table contains the italic
                 correction of some glyphs, which provides a measure of how slanted the
-                glyphs are (see figure <a href="#F2">auto</a>). The
+                glyphs are (see figure <a href="#F2"></a>). The
                 <code class="MATH">MathTopAccentAttachment</code> table also contains a reference
                 points that is used for the horizontal positioning of glyphs as an accent
-                (see figure <a href="#F3">auto</a>). In later sections, we
+                (see figure <a href="#F3"></a>). In later sections, we
                 generalize this by claiming that all MathML boxes have italic correction
                 and top accent attachment values. The values for glyphs are used to try and
                 extend to token elements or to special boxes that do not change child metrics.
@@ -703,8 +703,8 @@
             <div id="layoutsteps.p3">
               <p>In order to perform the first step independently of the second one, the
                 horizontal metrics must not depend on the vertical metrics. As described in
-                section <a href="#mpadded">auto</a>, this adds some restrictions on the possible pseudo-units
-                of the <code>mpadded</code> element. As indicated in section <a href="#tokenmo">auto</a>,
+                section <a href="#mpadded"></a>, this adds some restrictions on the possible pseudo-units
+                of the <code>mpadded</code> element. As indicated in section <a href="#tokenmo"></a>,
                 the width of size variants or of the glyph assembly used for vertical stretchy
                 operators may depend on the target size to cover. Taking the maximum widths
                 for all these size variants or for the glyph assembly during the first step
@@ -716,7 +716,7 @@
                 are determined from those of the child boxes. User agents must implement
                 the “Exception for embellished operators” described in [[MATHML3]].
                 This means that the actual stretching of operators described in section
-                <a href="#tokenmo">auto</a> may be “delayed” until we reach the top of its embellished
+                <a href="#tokenmo"></a> may be “delayed” until we reach the top of its embellished
                 operator subtree. We then have to apply the current operation again
                 to this embellished operator (intrinsic width determination or layout).
                 Fortunately, such embellished operator subtrees are not deep in practice.</p>
@@ -747,12 +747,12 @@
             </p>
             <p>
               The <code>&lt;mi&gt;</code> element accepts the attributes described
-              in section <a href="#global-attributes">auto</a>. Its layout algorithm is
+              in section <a href="#global-attributes"></a>. Its layout algorithm is
               the same as the
               <a href="#tokenmtext"><code>&lt;mtext&gt;</code> element</a>.
             </p>
             <p>
-              The User Agent stylesheet must set <code>text-transform: math-auto</code>
+              The User Agent stylesheet must set <code>text-transform: math-</code>
               on the <code>&lt;mi&gt;</code> element as described in
               <a href="#user-agent-stylesheet">Appendix B</a>.
             </p>
@@ -768,7 +768,7 @@
             </p>
             <p>
               The <code>&lt;mn&gt;</code> element accepts the attributes described
-              in section <a href="#global-attributes">auto</a>. Its layout algorithm is
+              in section <a href="#global-attributes"></a>. Its layout algorithm is
               the same as the
               <a href="#tokenmtext"><code>&lt;mtext&gt;</code> element</a>.
             </p>
@@ -792,7 +792,7 @@
             </p>
             <p>
               The <code>&lt;mo&gt;</code> element accepts the attributes described
-              in section <a href="#global-attributes">auto</a> as well as the following
+              in section <a href="#global-attributes"></a> as well as the following
               attributes:
             </p>
             <ul id="mo-attributes">
@@ -833,7 +833,7 @@
               <code class="MATH">MathVariants</code>
               table to try and find a glyph of height at least
               <code class="MATH">DisplayOperatorMinHeight</code>
-              (figure <a href="#F4">auto</a>). If none is found, we fallback to the
+              (figure <a href="#F4"></a>). If none is found, we fallback to the
               largest one. Because this parameter does not always give
               the best size, user agents may also use the following heuristic: ensure
               that the large variant height is at least 2 times as large as the base
@@ -850,14 +850,14 @@
               the normal character we use the <code class="MATH">MathVariants</code>
               table to try and find a glyph that has at least the desired size or an
               assembly from several glyphs to cover at least the desired size
-              (figure <a href="#F5">auto</a>). The rules for vertical stretching
+              (figure <a href="#F5"></a>). The rules for vertical stretching
               are a bit more complicated and are described in section
               “Vertical Stretching Rules” of
               [[MATHML3]].
               If the operator has property <code>symmetric="true"</code>, it must be
               stretched symmetrically with respect to the math axis, which is given by
               the <code class="MATH">AxisHeight</code> value.
-              Figure <a href="#F6">auto</a> compares the symmetric
+              Figure <a href="#F6"></a> compares the symmetric
               and non-symmetric stretching.
             </p>
             <p>
@@ -880,7 +880,7 @@
                 operators</figcaption>
             </figure>
             <p>
-              See section <a href="#mrow">auto</a> for details about how to treat
+              See section <a href="#mrow"></a> for details about how to treat
               “embellished ancestor”, and how decide when to display operators larger
               or when to stretch them vertically &amp; horizontally.
             </p>
@@ -895,7 +895,7 @@
               <code>&lt;mtext&gt;</code> element is intended to denote commentary text.
             </p>
             <p>The <code>&lt;mn&gt;</code> element accepts the attributes described
-              in section <a href="#global-attributes">auto</a>.</p>
+              in section <a href="#global-attributes"></a>.</p>
             <p>
               In most cases the <code>&lt;mtext&gt;</code> element contains some text
               that is laid out without line breaks using complex text layout. It is assumed that we
@@ -938,7 +938,7 @@
               content and use it for both the logical and ink values of the
               <code>&lt;mtext&gt;</code> element. The italic correction and
               top accent attachment are assigned the fallback values indicated in section
-              <a href="#boxmodel">auto</a>.
+              <a href="#boxmodel"></a>.
             </p>
           </section>
 
@@ -950,7 +950,7 @@
             </p>
             <p>
               The <code>&lt;mspace&gt;</code> element accepts the attributes described
-              in section <a href="#global-attributes">auto</a> as well as the following
+              in section <a href="#global-attributes"></a> as well as the following
               attributes:
             </p>
             <ul id="mspace-attributes">
@@ -960,7 +960,7 @@
             </ul>
             <p>
               The <code>mspace</code> element is laid out as shown on figure
-              <a href="#F7">auto</a>. The logical box is determined by the
+              <a href="#F7"></a>. The logical box is determined by the
               <code>height</code>, <code>depth</code> and <code>width</code> attributes
               defined in [[MATHML3]]. The
               ink box matches the logical box.
@@ -980,7 +980,7 @@
             </p>
             <p>
               The <code>&lt;mn&gt;</code> element accepts the attributes described
-              in section <a href="#global-attributes">auto</a> as well as the following
+              in section <a href="#global-attributes"></a> as well as the following
               attributes:
             </p>
             <ul id="ms-attributes">
@@ -1028,12 +1028,12 @@
               <p>User agents must follow the rules for inferred <code>mrow</code>s described in
                 [[MATHML3]]. For example, to layout
                 <code>&lt;msqrt&gt;child_1 child_2 child_3 ...&lt;/msqrt&gt;</code>, one must follow the layout
-                rules described for <code>msqrt</code> in section <a href="#msqrt">auto</a> using
+                rules described for <code>msqrt</code> in section <a href="#msqrt"></a> using
                 the box of <code>&lt;mrow&gt;child_1 child_2 child_3 ... child_N&lt;/mrow&gt;</code> as the base.</p>
             </div>
             <div id="mrow.p4">
               <p>The <code>&lt;mrow&gt;child_1 child_2 child_3 ... child_N&lt;/mrow&gt;</code> element is laid
-                out as show on figure <a href="#F8">auto</a>. The boxes of child<sub>1</sub>, child<sub>2</sub>, … child<sub>N</sub> are put in a horizontal row
+                out as show on figure <a href="#F8"></a>. The boxes of child<sub>1</sub>, child<sub>2</sub>, … child<sub>N</sub> are put in a horizontal row
                 one after the other with all their baselines aligned. As a consequence of this
                 and of child box models, graphical elements such as fraction bars
                 or symmetric stretchy operators will also be
@@ -1042,7 +1042,7 @@
                 where the math font is unchanged).</p>
             </div>
             <div id="mrow.p5">
-              <p>As indicated in section <a href="A1.html">auto</a>, we generally do not add special spacing
+              <p>As indicated in section <a href="A1.html"></a>, we generally do not add special spacing
                 around the children. For example, the leading and trailing spacing is already
                 included in the box metrics of embellished operators. The only exception is
                 for the italic correction: when a “slanted” child is
@@ -1059,7 +1059,7 @@
             <div id="mrow.p6">
               <p>When the <code>mrow</code> element contains only one child then the previous
                 description implies that the box metrics of the <code>mrow</code> is the same as
-                the one of its unique child. As indicated in section <a href="#boxmodel">auto</a>, we thus
+                the one of its unique child. As indicated in section <a href="#boxmodel"></a>, we thus
                 use the italic correction and top accent attachment of the child as the
                 corresponding values of the <code>mrow</code> box.</p>
             </div>
@@ -1105,7 +1105,7 @@
             </div>
             <div id="mfrac.p5">
               <p>If the actual line thickness is nonzero, the <code>mfrac</code> element is laid out as
-                shown on figure <a href="#F9">auto</a>.
+                shown on figure <a href="#F9"></a>.
                 The width is given by the maximum width of the
                 numerator and denominator and the numerator and denominator are horizontally
                 centered. A fraction bar with the actual thickness is drawn centered on the
@@ -1130,7 +1130,7 @@
             <div id="mfrac.p6">
               <p>If the actual line thickness is zero,
                 the <code>mfrac</code> element is instead laid out as
-                shown on figure <a href="#F10">auto</a>.
+                shown on figure <a href="#F10"></a>.
                 The gap between the top and bottom boxes
                 is equally split around the axis height. The relevant shift values are now
                 <code class="MATH">StackTopShiftUp</code>,
@@ -1203,7 +1203,7 @@
             </div>
             <div id="msqrt.p4">
               <p>The <code>msqrt</code> element is laid out as shown on figure
-                <a href="#F11">auto</a>.
+                <a href="#F11"></a>.
                 The width is given by the sum of the width of the surd and of the base.
                 The baseline of the square root matches the baseline of the base.
                 The ink box is determined from the ink boxes of the surd and base while the
@@ -1214,9 +1214,9 @@
               <figcaption>Box model for the <code>msqrt</code> element</figcaption>
             </figure>
             <div id="msqrt.p5">
-              <p>The <code>mroot</code> element is laid out as shown on figure <a href="#F12">auto</a>.
+              <p>The <code>mroot</code> element is laid out as shown on figure <a href="#F12"></a>.
                 We start by ignoring the root index and we layout the base and surd as
-                shown on figure <a href="#F11">auto</a> to obtain a box B.
+                shown on figure <a href="#F11"></a> to obtain a box B.
                 The horizontal metrics of the <code>mroot</code> element are obtained by putting
                 <code class="MATH">RadicalKernBeforeDegree</code>
                 before the root index, then placing the root index, then a kerning
@@ -1249,7 +1249,7 @@
             </p>
             <p id="mstyle.p2">
               The <code>&lt;mstyle&gt;</code> element accepts the attributes described in
-              section <a href="#global-attributes">auto</a>. Its layout algorithm is the
+              section <a href="#global-attributes"></a>. Its layout algorithm is the
               same as the <code>&lt;mrow&gt;</code> element.
             </p>
             <div class="note">
@@ -1268,7 +1268,7 @@
             </p>
             <p id="merror.p2">
               The <code>&lt;merror&gt;</code> element accepts the attributes described in
-              section <a href="#global-attributes">auto</a>. Its layout algorithm is the
+              section <a href="#global-attributes"></a>. Its layout algorithm is the
               same as the <code>&lt;mrow&gt;</code> element.
               The User Agent stylesheet must contain the following properties from
               <a href="#user-agent-stylesheet">Appendix B</a> in order to visually
@@ -1301,7 +1301,7 @@
             </div>
             <div id="mpadded.p3">
               <p>The <code>mpadded</code> element is laid out as shown on figure
-                <a href="#F13">auto</a>.
+                <a href="#F13"></a>.
                 The height, depth and width of the content in [[MATHML3]] corresponds to
                 the logical box of the content. The content of the <code>mpadded</code> element is
                 positioned from the origin of the <code>mpadded</code> element as follows: We shift
@@ -1329,7 +1329,7 @@
             </p>
             <p id="mphantom.p2">
               The <code>&lt;mphantom&gt;</code> element accepts the attributes described
-              in section <a href="#global-attributes">auto</a>. Its layout algorithm is
+              in section <a href="#global-attributes"></a>. Its layout algorithm is
               the same as the <code>&lt;mrow&gt;</code> element.
               The User Agent stylesheet must contain the following properties from
               <a href="#user-agent-stylesheet">Appendix B</a> in order to hide its
@@ -1383,7 +1383,7 @@
                       <code class="MATH">UnderbarRuleThickness</code> below.
                       The gap between the bar and the content is 3ξ<sub>8</sub>.
                       The logical box is obtained by adding some space of width
-                      ξ<sub>8</sub> on the left of the bar. See figure <a href="#F14">auto</a>.</p>
+                      ξ<sub>8</sub> on the left of the bar. See figure <a href="#F14"></a>.</p>
                   </div>
                   <figure id="F14">
                     <img src="figures/mpaddedbox.svg"/>
@@ -1409,7 +1409,7 @@
                       <code class="MATH">OverbarVerticalGap</code>.
                       The logical box is obtained by adding some space of height
                       <code class="MATH">OverbarExtraAscender</code> above the bar.
-                      See figure <a href="#F15">auto</a>.</p>
+                      See figure <a href="#F15"></a>.</p>
                   </div>
                   <figure id="F15">
                     <img src="figures/topbox.svg"/>
@@ -1438,8 +1438,8 @@
                       obtained by expanding the ink box by 7ξ<sub>8</sub> / 2 on each side.
                       Using SVG terminology, we draw a rounded rectangle on this expanded box
                       with parameters <code>rx</code>, <code>ry</code> and <code>stroke-width</code> set to 3ξ<sub>8</sub>
-                      <cite><a href="references.html#svg">auto</a></cite>. To obtain the logical box we again add a space of ξ<sub>8</sub> on
-                      each side of the ink box. See figure <a href="#F16">auto</a>.</p>
+                      <cite><a href="references.html#svg"></a></cite>. To obtain the logical box we again add a space of ξ<sub>8</sub> on
+                      each side of the ink box. See figure <a href="#F16"></a>.</p>
                   </div>
                   <figure id="F16">
                     <img src="figures/roundedbox.svg"/>
@@ -1464,7 +1464,7 @@
                       of thickness ξ<sub>8</sub> and
                       vertically centered inside the <code>menclose</code> content.
                       This does not change the box metrics.
-                      See figure <a href="#F17">auto</a>.</p>
+                      See figure <a href="#F17"></a>.</p>
                   </div>
                   <figure id="F17">
                     <img src="figures/horizstrikebox.svg"/>
@@ -1485,11 +1485,11 @@
                     <p>The <code>updiagonalstrike</code> notation is drawn with a line
                       of thickness ξ<sub>8</sub> going from the bottom left corner of the <code>menclose</code>
                       content to its top right corner. Using SVG terminology, the
-                      <code>stroke-linecap</code> of the line is <code>butt</code> <cite><a href="references.html#svg">auto</a></cite>.
+                      <code>stroke-linecap</code> of the line is <code>butt</code> <cite><a href="references.html#svg"></a></cite>.
                       As an approximation, the ink box
                       is set equal to the logical box and obtained by increasing the original box
                       from each side by ξ<sub>8</sub> / 2.
-                      See figure <a href="#F18">auto</a>.</p>
+                      See figure <a href="#F18"></a>.</p>
                   </div>
                   <figure id="F18">
                     <img src="figures/updiagstrikebox.svg"/>
@@ -1503,13 +1503,13 @@
                       <code>updiagonalstrike</code>
                       but the line strike goes from the top left corner to the bottom right corner.
                       Using SVG terminology, the
-                      <code>stroke-linecap</code> of the line is <code>butt</code> <cite><a href="references.html#svg">auto</a></cite>.</p>
+                      <code>stroke-linecap</code> of the line is <code>butt</code> <cite><a href="references.html#svg"></a></cite>.</p>
                   </div>
                 </li>
                 <li id="I7.i13">
                   <div id="I7.i13.p1">
                     <p>The <code>longdiv</code> notation is drawn similarly to the <code>msqrt</code> element
-                      (figure <a href="#F11">auto</a>). It is independent of CSS
+                      (figure <a href="#F11"></a>). It is independent of CSS
                       <code>direction</code> and U+221A SQUARE ROOT is replaced with
                       U+0029 RIGHT PARENTHESIS. The rule thickness is ξ<sub>8</sub>,
                       the gap between content and overbar is 3ξ<sub>8</sub> and the extra ascender
@@ -1584,7 +1584,7 @@
               </div>
             </div>
             <div id="msubmsup.p3">
-              <p>The <code>msub</code> element is laid out as shown on figure <a href="#F20">auto</a>.
+              <p>The <code>msub</code> element is laid out as shown on figure <a href="#F20"></a>.
                 The baseline is the baseline of the base while the baseline of the script is
                 shifted down by <code>SubShift</code>, which is the minimal value honoring the
                 following conditions:</p>
@@ -1624,7 +1624,7 @@
               <figcaption>Box model for the <code>msub</code> element</figcaption>
             </figure>
             <div id="msubmsup.p5">
-              <p>The <code>msup</code> element is laid out as shown on figure <a href="#F21">auto</a>.
+              <p>The <code>msup</code> element is laid out as shown on figure <a href="#F21"></a>.
                 The baseline is the baseline of the base while the baseline of the script is
                 shifted up by <code>SuperShift</code>, which is the minimal value honoring the
                 following conditions:</p>
@@ -1633,7 +1633,7 @@
                   <div id="I9.i1.p1">
                     <p><code>SuperShift</code> is at least
                       <code class="MATH">SuperscriptShiftUpCramped</code> if the <code>msup</code> element is
-                      cramped (section <a href="A1.html">auto</a>) or at least
+                      cramped (section <a href="A1.html"></a>) or at least
                       <code class="MATH">SuperscriptShiftUp</code> otherwise.</p>
                   </div>
                 </li>
@@ -1667,7 +1667,7 @@
             </figure>
             <div id="msubmsup.p7">
               <p>The <code>msubsup</code> element is laid out as shown on figure
-                <a href="#F22">auto</a>.
+                <a href="#F22"></a>.
                 The baseline is the baseline of the base while the baseline of the script is
                 shifted down by <code>SubShift</code> and the superscript is shifted up by
                 <code>SuperShift</code> which is initially set to the minimal values honoring the
@@ -1677,7 +1677,7 @@
                   <div id="I10.i1.p1">
                     <p><code>SubShift</code> is at least
                       <code class="MATH">SuperscriptShiftUpCramped</code> if the <code>msup</code> element is
-                      cramped (section <a href="A1.html">auto</a>) or at least
+                      cramped (section <a href="A1.html"></a>) or at least
                       <code class="MATH">SuperscriptShiftUp</code> otherwise.</p>
                   </div>
                 </li>
@@ -1697,7 +1697,7 @@
                   <div id="I10.i4.p1">
                     <p><code>SubShift</code> is at least
                       <code class="MATH">SuperscriptShiftUpCramped</code> if the <code>msup</code> element is
-                      cramped (section <a href="A1.html">auto</a>) or at least
+                      cramped (section <a href="A1.html"></a>) or at least
                       <code class="MATH">SuperscriptShiftUp</code> otherwise.</p>
                   </div>
                 </li>
@@ -1799,13 +1799,13 @@
             <div id="mundermover.p3">
               <p>In cases where underscript and overscript are drawn as subscript and
                 superscript position then the layout algorithm is the same as section
-                <a href="#msubmsup">auto</a>. Note that in that case,
+                <a href="#msubmsup"></a>. Note that in that case,
                 <code>accent</code> or <code>accentunder</code> are ignored so the scriptlevel increment is
                 always performed.</p>
             </div>
             <div id="mundermover.p4">
               <p>The general layout of <code>munderover</code> is shown on figure
-                <a href="#F23">auto</a>.
+                <a href="#F23"></a>.
                 The overscript is placed above the base, the underscript below the base
                 and by default are aligned with respect to their geometrical center.
                 If the overscript is an accent and has a <code class="MATH">TopAccentAttachment</code>
@@ -1929,9 +1929,9 @@
             <div id="mmultiscripts.p3">
               <p>Any layout for <code>mmultiscripts</code> is acceptable as long as it follows
                 the condition of the MathML 3 specification [[MATHML3]] and is consistent
-                with section <a href="#msubmsup">auto</a> for <code>mmultiscripts</code>
+                with section <a href="#msubmsup"></a> for <code>mmultiscripts</code>
                 contructions that are equivalent to <code>msubsup</code>. Here is a possible algorithm
-                that is represented on figure <a href="#F24">auto</a>.</p>
+                that is represented on figure <a href="#F24"></a>.</p>
               <ol id="I12">
                 <li id="I12.i1">
                   <div id="I12.i1.p1">
@@ -1949,7 +1949,7 @@
                     <p>For the horizontal layout of postscripts, use the trailing edge of the
                       base or of the previous pair as the leading edge of the current pair.
                       For each pair, apply the same italic correction described for
-                      <code>msubsup</code> in section <a href="#msubmsup">auto</a>.
+                      <code>msubsup</code> in section <a href="#msubmsup"></a>.
                       Apply the same italic corrections for all these postscripts.</p>
                   </div>
                 </li>
@@ -2067,7 +2067,7 @@ mtable[frame="dashed"] {
           </p>
           <p id="enlivening.p2">
             The <code>&lt;maction&gt;</code> element accepts the attributes described
-            in section <a href="#global-attributes">auto</a>.
+            in section <a href="#global-attributes"></a>.
             The <code>actiontype</code> and <code>selection</code> attributes are
             also accepted but they do not have any effect.
           </p>
