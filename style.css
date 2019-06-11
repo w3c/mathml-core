@@ -1,21 +1,3 @@
-@import url("W3C-REC.css");
-
-/** OpenType MATH parameters **************************************************/
 .MATH {
     background: #eef;
-}
-
-/** Open issue ****************************************************************/
-.issue {
-    border: solid #E05252;
-    border-width: 0.5em;
-    border-style: none none none solid;
-    background: #FBE9E9;
-    overflow: auto;
-    padding: 0.5em;
-}
-.issue::before {
-    content: "ISSUE";
-    padding-right: 1em;
-    color: #AE1E1E;
 }

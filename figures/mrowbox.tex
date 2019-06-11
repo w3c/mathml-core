@@ -1,0 +1,42 @@
+\documentclass[dvisvgm,multi=true]{standalone}
+\usepackage{mathmlcoresvg}
+\begin{document}
+%<figcaption><span>Figure 8: </span>Box model for the <code>mrow</code> element</figcaption>
+  \begin{tikzpicture}[yscale=-1]
+    \MathMLBox{0}{0}{.5}{1.5}{cyan}
+    \draw(1,-1) node {$\text{child}_1$};
+
+    \MathMLBox{2.5}{0}{.5}{1.2}{blue}
+    \draw(3.5,-1) node {$\text{child}_2$};
+
+    \MathMLBox{5}{0}{.5}{1.2}{cyan}
+    \draw(6,-1) node {$\text{child}_3$};
+
+    \MathMLBox{7.5}{0}{1.5}{1}{red}
+    \fill[black] (9,-.5) rectangle (13.5,.5)
+    (11.25,-1) circle (.5) (11.25,1) circle (.5);
+    \draw[<->,red] (7.5,3) -- (8.5,3) node[below]{Leading Space} -- (9,3);
+    \draw[<->,red] (13.5,3) -- (14.5,3) node[below]{Trailing Space} -- (15,3);
+
+    \MathMLBox{15}{0}{.5}{1.4}{cyan}
+    \draw(16,-1) node {$\text{child}_5$};
+
+    \MathMLBox{17.5}{0}{.4}{1.35}{green}
+    \begin{scope}[shift=({17.5,-2.1})]
+    \begin{scope}[xscale=.1,yscale=.1]
+    \fill[black] (1,40) .. controls (0,38) and (3,36) .. (4,38) .. controls (4,38) and (4,42) .. (6,40) .. controls (8,38) and (8,34) .. (9,32) .. controls (11,26) and (12,20) .. (14,15) .. controls (13,13) and (9,14) .. (12,12) .. controls (13,11) and (15,10) .. (16,7) .. controls (17,4) and (21,0) .. (25,1) .. controls (27,1) and (28,3) .. (27,5) .. controls (25,7) and (25,2) .. (23,2) .. controls (21,3) and (20,5) .. (20,7) .. controls (19,8) and (18,11) .. (20,12) .. controls (22,12) and (22,14) .. (20,14) .. controls (18,14) and (17,16) .. (17,18) .. controls (15,25) and (13,32) .. (10,38) .. controls (8,41) and (5,42) .. (2,41) .. controls (1,41) and (1,40) .. (1,40) -- cycle;
+    \draw[black] (10,0) -- (30,0) -- (20,42) -- (0,42) -- cycle;
+    \draw[green,->] (20,42) node[below]{Italic Correction} -- (30,42);
+    \end{scope}
+    \end{scope}
+
+    \MathMLBox{20.5}{0}{.5}{1.1}{blue}
+    \draw(21.5,-1) node {$\text{child}_7$};
+
+    \MathMLBox{23}{0}{.5}{1.2}{cyan}
+    \draw(24,-1) node {$\text{child}_8$};
+
+    \draw[dashed,blue] (0,-4) rectangle (25.5,4) (0,0)--(25.5,0);
+  \end{tikzpicture}
+
+\end{document}
