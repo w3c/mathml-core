@@ -429,148 +429,150 @@
 
       </section>
 
-    </section>
-
-    <section id="top-level-math">
-      <h2>The Top-Level <code>&lt;math&gt;</code> Element</h2>
-      <p>
-        The <code>&lt;math&gt;</code> element accepts the attributes described
-        in section <a href="#global-attributes">auto</a> as well as the
-        following attribute:
-      </p>
-      <ul id="math-attributes">
-        <li><a href="#display-attribute"><code>display</code></a></li>
-      </ul>
-      <p id="display-attribute">
-        The <code>display</code> attribute, if specified and not
-        empty, must have value <code>block</code> or <code>inline</code>.
-        To fully implement this attribute, additional CSS properties must be
-        specified in the user agent stylesheet
-        as described in <a href="#user-agent-stylesheet">Appendix B</a>.
-      </p>
-      <p>
-        The layout algorithm of the <code>&lt;math&gt;</code> element
-        is the same as the <code>&lt;mrow&gt;</code> element. User agents must
-        ensure correct baseline alignment, centering, sizing etc of the
-        <code>&lt;math&gt;</code> element.
-      </p>
-      <div class="note">
-        T<sub>E</sub>X's display mode <code>$...$</code>
-        and inline mode <code>$...$</code> correspond to
-        <code>display="block"</code> and <code>display="inline"</code>
-        respectively.
-      </div>
-
-    </section>
-
-    <section id="text-and-math">
-      <h2>Text and Math layout</h2>
-
-      <section id="open-font-format">
-        <h3>Open Font Format</h3>
-
-        <p>Because math fonts generally contain very tall glyphs such as big integrals,
-          using typographic metrics is important to avoid excessive line spacing of text.
-          This behavior is specified in math fonts using the USE_TYPO_METRICS flag from
-          the OS/2 table
-          [[OPEN-FONT-FORMAT]] and user agents must honor that flag.
+      <section id="top-level-math">
+        <h3>The Top-Level <code>&lt;math&gt;</code> Element</h3>
+        <p>
+          The <code>&lt;math&gt;</code> element accepts the attributes described
+          in section <a href="#global-attributes">auto</a> as well as the
+          following attribute:
+        </p>
+        <ul id="math-attributes">
+          <li><a href="#display-attribute"><code>display</code></a></li>
+        </ul>
+        <p id="display-attribute">
+          The <code>display</code> attribute, if specified and not
+          empty, must have value <code>block</code> or <code>inline</code>.
+          To fully implement this attribute, additional CSS properties must be
+          specified in the user agent stylesheet
+          as described in <a href="#user-agent-stylesheet">Appendix B</a>.
         </p>
         <p>
-          Mathematical formulas can be viewed as an extension of standard text layout
-          and thus user agents must be able to perfom
-          complex text layout using fonts under the Open Font Format
-          [[OPEN-FONT-FORMAT]]. In particular, they must implement bidirectional
-          rendering and shaping of Arabic scripts.
+          The layout algorithm of the <code>&lt;math&gt;</code> element
+          is the same as the <code>&lt;mrow&gt;</code> element. User agents must
+          ensure correct baseline alignment, centering, sizing etc of the
+          <code>&lt;math&gt;</code> element.
         </p>
-        <p>
-          Mathematical formulas may mix standard text with other graphical outlines
-          (e.g. fraction or top radical bars). For consistency, these outlines should
-          be rendered the same way as normal text. In particular, user agents must be
-          able to apply <code>visibility</code> and <code>color</code> CSS properties to them. They may
-          also support similar CSS properties for text such as <code>text-shadow</code> or
-          <code>opacity</code>.
-        </p>
-        <div id="openfontformat.p4">
-          <p>Good mathematical rendering requires use of non-Unicode glyphs. Mathematical
-            fonts may only provide these glyphs when the <code class="MATH">math</code>
-            script tag is enabled and so user agents must ensure that the text within
-            MathML token elements is rendered with that script tag. Some characters like
-            primes already have script size by default and hence would be too small when
-            used in a script position.
-            Hence user agents must support glyph selections via the OpenType font feature
-            <code class="MATH">ssty</code> (Script Style) in order to display such
-            “prescripted” characters with the appropriate size.
-            For bidirectional layout, Unicode defines character-level mirroring
-            to transform a character into its mirrored form,
-            for example U+0028 LEFT PARENTHESIS into U+0029 RIGHT PARENTHESIS.
-            User agents must also support the OpenType font feature
-            <code>rtlm</code> (Right-to-left mirrored forms)
-            to allow glyph-level mirroring in cases where character-level is not enough
-            [[OPEN-FONT-FORMAT]].
-            At the time of writing, Unicode does not distinguish between Chancery and
-            Spencerian style for the Unicode MATHEMATICAL SCRIPT characters. Some
-            mathematical fonts rely on <code class="MATH">salt</code> or <code>ssXY</code> properties to provide
-            both styles. User agents may support the CSS <code>font-variant-alternates</code>
-            property and corresponding OpenType font features to enable page authors
-            to get access to these styles [[CSS-FONTS-3]]
-            [[OPEN-FONT-FORMAT]].</p>
+        <div class="note">
+          T<sub>E</sub>X's display mode <code>$...$</code>
+          and inline mode <code>$...$</code> correspond to
+          <code>display="block"</code> and <code>display="inline"</code>
+          respectively.
         </div>
-        <p>
-          User agents must be able to read information from the
-          OpenType MATH table [[OPEN-FONT-FORMAT]].
-          In particular they must be able to read the values from the
-          <code class="MATH">MathConstants</code> subtable.
-          They must also be able to use the <code class="MATH">MathVariants</code> subtable
-          to solve the following problem: given a particular default glyph shape and a
-          certain width or height, find a variant shape glyph (or a construct created by
-          putting several glyphs together) that has the required measurement.
-          More information are provided in see section <a href="presentation.html#tokenmo">auto</a>.
-        </p>
+
       </section>
-      <section id="latex">
-        <h3>LaTeX</h3>
-        <p>
-          Mathematical rendering rules in this document are implicitly based on
-          MathML, OpenType MATH table and the TeXBook
-          [[MATHML3] [[OPEN-FONT-FORMAT]] [[TEXBOOK]]. In this section, we
-          describe more precisely some rules from the TeXBook.
-        </p>
-        <p>
-          In addition to concepts similar to MathML’s <code>displaystyle</code> and
-          <code>scriptlevel</code>, LaTeX has
-          a “cramped” property, which is involved in the determination of script shifts.
-          It is initially unset on the <code>math</code> element and in general
-          all the children inherits the “cramped” property from their parent.
-          However, it is set to true in the following children:
-        </p>
-        <ol>
-          <li>The denominator of an <code>mfrac</code> element. See section <a href="presentation.html#mfrac">auto</a>.</li>
-          <li>The subscripts of the <code>msub</code>, <code>msubsup</code>,
-            <code>munder</code> and <code>munderover</code> elements.
-            See section <a href="presentation.html#scriptsandlimits">auto</a>.
-          </li>
-          <li>The overscript of the
-            <code>mover</code> and <code>munderover</code> elements when it is an <code>accent</code> per
-            the MathML specification. See section <a href="presentation.html#scriptsandlimits">auto</a>.
-          </li>
-          <li>
-            The children of the <code>msqrt</code> and <code>mroot</code>
-            elements.
-          </li>
-        </ol>
-        <p>
-          To implement math spacing, the TeXBook defines eight basic types
-          (<code>Ord</code> for ordinary atoms, <code>Op</code> for large operators,
-          <code>Bin</code> for binary operations, <code>Rel</code> for relations,
-          <code>Open</code> for opening fences, <code>Close</code> for closing fences,
-          <code>Punct</code> for punctuations and <code>Inner</code> for a delimited subformula) and
-          define an inter space for each pair of such types. In the present document,
-          we only follow the spacing algorithm of MathML 3: by default the inter space
-          is always zero and the spacing is produced by spacing elements like
-          <code>mspace</code>, <code>mphantom</code> or <code>mpadded</code> or by the leading and trailing
-          space around embellished operators.
-        </p>
+
+      <section id="text-and-math">
+        <h3>Text and Math layout</h3>
+
+        <section id="open-font-format">
+          <h3>Open Font Format</h3>
+
+          <p>Because math fonts generally contain very tall glyphs such as big integrals,
+            using typographic metrics is important to avoid excessive line spacing of text.
+            This behavior is specified in math fonts using the USE_TYPO_METRICS flag from
+            the OS/2 table
+            [[OPEN-FONT-FORMAT]] and user agents must honor that flag.
+          </p>
+          <p>
+            Mathematical formulas can be viewed as an extension of standard text layout
+            and thus user agents must be able to perfom
+            complex text layout using fonts under the Open Font Format
+            [[OPEN-FONT-FORMAT]]. In particular, they must implement bidirectional
+            rendering and shaping of Arabic scripts.
+          </p>
+          <p>
+            Mathematical formulas may mix standard text with other graphical outlines
+            (e.g. fraction or top radical bars). For consistency, these outlines should
+            be rendered the same way as normal text. In particular, user agents must be
+            able to apply <code>visibility</code> and <code>color</code> CSS properties to them. They may
+            also support similar CSS properties for text such as <code>text-shadow</code> or
+            <code>opacity</code>.
+          </p>
+          <div id="openfontformat.p4">
+            <p>Good mathematical rendering requires use of non-Unicode glyphs. Mathematical
+              fonts may only provide these glyphs when the <code class="MATH">math</code>
+              script tag is enabled and so user agents must ensure that the text within
+              MathML token elements is rendered with that script tag. Some characters like
+              primes already have script size by default and hence would be too small when
+              used in a script position.
+              Hence user agents must support glyph selections via the OpenType font feature
+              <code class="MATH">ssty</code> (Script Style) in order to display such
+              “prescripted” characters with the appropriate size.
+              For bidirectional layout, Unicode defines character-level mirroring
+              to transform a character into its mirrored form,
+              for example U+0028 LEFT PARENTHESIS into U+0029 RIGHT PARENTHESIS.
+              User agents must also support the OpenType font feature
+              <code>rtlm</code> (Right-to-left mirrored forms)
+              to allow glyph-level mirroring in cases where character-level is not enough
+              [[OPEN-FONT-FORMAT]].
+              At the time of writing, Unicode does not distinguish between Chancery and
+              Spencerian style for the Unicode MATHEMATICAL SCRIPT characters. Some
+              mathematical fonts rely on <code class="MATH">salt</code> or <code>ssXY</code> properties to provide
+              both styles. User agents may support the CSS <code>font-variant-alternates</code>
+              property and corresponding OpenType font features to enable page authors
+              to get access to these styles [[CSS-FONTS-3]]
+              [[OPEN-FONT-FORMAT]].</p>
+          </div>
+          <p>
+            User agents must be able to read information from the
+            OpenType MATH table [[OPEN-FONT-FORMAT]].
+            In particular they must be able to read the values from the
+            <code class="MATH">MathConstants</code> subtable.
+            They must also be able to use the <code class="MATH">MathVariants</code> subtable
+            to solve the following problem: given a particular default glyph shape and a
+            certain width or height, find a variant shape glyph (or a construct created by
+            putting several glyphs together) that has the required measurement.
+            More information are provided in see section <a href="presentation.html#tokenmo">auto</a>.
+          </p>
+        </section>
+        <section id="latex">
+          <h3>LaTeX</h3>
+          <p>
+            Mathematical rendering rules in this document are implicitly based on
+            MathML, OpenType MATH table and the TeXBook
+            [[MATHML3] [[OPEN-FONT-FORMAT]] [[TEXBOOK]]. In this section, we
+            describe more precisely some rules from the TeXBook.
+          </p>
+          <p>
+            In addition to concepts similar to MathML’s <code>displaystyle</code> and
+            <code>scriptlevel</code>, LaTeX has
+            a “cramped” property, which is involved in the determination of script shifts.
+            It is initially unset on the <code>math</code> element and in general
+            all the children inherits the “cramped” property from their parent.
+            However, it is set to true in the following children:
+          </p>
+          <ol>
+            <li>The denominator of an <code>mfrac</code> element. See section <a href="presentation.html#mfrac">auto</a>.</li>
+            <li>The subscripts of the <code>msub</code>, <code>msubsup</code>,
+              <code>munder</code> and <code>munderover</code> elements.
+              See section <a href="presentation.html#scriptsandlimits">auto</a>.
+            </li>
+            <li>The overscript of the
+              <code>mover</code> and <code>munderover</code> elements when it is an <code>accent</code> per
+              the MathML specification. See section <a href="presentation.html#scriptsandlimits">auto</a>.
+            </li>
+            <li>
+              The children of the <code>msqrt</code> and <code>mroot</code>
+              elements.
+            </li>
+          </ol>
+          <p>
+            To implement math spacing, the TeXBook defines eight basic types
+            (<code>Ord</code> for ordinary atoms, <code>Op</code> for large operators,
+            <code>Bin</code> for binary operations, <code>Rel</code> for relations,
+            <code>Open</code> for opening fences, <code>Close</code> for closing fences,
+            <code>Punct</code> for punctuations and <code>Inner</code> for a delimited subformula) and
+            define an inter space for each pair of such types. In the present document,
+            we only follow the spacing algorithm of MathML 3: by default the inter space
+            is always zero and the spacing is produced by spacing elements like
+            <code>mspace</code>, <code>mphantom</code> or <code>mpadded</code> or by the leading and trailing
+            space around embellished operators.
+          </p>
+        </section>
+
       </section>
+    </section>
+
       <section id="presentation-markup">
         <h2>Presentation Markup</h2>
         <section>
