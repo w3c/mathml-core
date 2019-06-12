@@ -159,12 +159,72 @@
       <section>
         <h3>Web Platform Integration</h3>
         <p>
-          User agents must use a [[HTML]] parser to build a [[DOM]] tree from
-          the source code of web pages. In particular, they must follow the
-          rules describing when elements must be in the MathML namespace
-          <code>http://www.w3.org/1998/Math/MathML</code> and must
-          recognize the Named character references from [[HTML]].
-          They must also take into account the following integration points
+          User agents support
+          <a data-cite="HTML#parsing">parsing of HTML document</a>
+          in order to
+          <a data-cite="HTML#tree-construction">build a DOM tree</a>,
+          as described in [[HTML]]. In particular:
+        </p>
+        <ul>
+          <li>When the user agent is in the
+            <a data-cite="HTML#named-character-reference-state">named character
+              reference state</a>, it must recognize
+            <a data-cite="HTML#named-character-references">named character
+              references</a>.
+          </li>
+          <li>When the user agent is to apply the rules for parsing tokens in
+            HTML content for the
+            <a data-cite="HTML#parsing-main-inbody">"in body"
+              insertion mode</a>, it must
+              handle the case when the tag name is "math".
+          </li>
+          <li>When the user agent is to apply the rules for parsing tokens
+            in foreign content, it must handle the case when the tag
+            is an element in the
+            <a data-cite="INFRA#mathml-namespace">MathML namespace</a>.
+          </li>
+        </ul>
+        <p>User agent must treat any of the following
+          <dfn data-dfn-type="dfn" id="element-mathml-core">MathML Core
+          elements</dfn> as belonging to the
+          <a data-cite="INFRA#mathml-namespace">MathML namespace</a>:
+        </p>
+        <ul>
+          <li><a>&lt;annotation&gt;</a></li>
+          <li><a>&lt;annotation-xml&gt;</a></li>
+          <li><a>&lt;maction&gt;</a></li>
+          <li><a>&lt;math&gt;</a></li>
+          <li><a>&lt;menclose&gt;</a></li>
+          <li><a>&lt;merror&gt;</a></li>
+          <li><a>&lt;mfrac&gt;</a></li>
+          <li><a>&lt;mi&gt;</a></li>
+          <li><a>&lt;mmultiscripts&gt;</a></li>
+          <li><a>&lt;mn&gt;</a></li>
+          <li><a>&lt;mo&gt;</a></li>
+          <li><a>&lt;mover&gt;</a></li>
+          <li><a>&lt;mpadded&gt;</a></li>
+          <li><a>&lt;mphantom&gt;</a></li>
+          <li><a>&lt;mprescripts&gt;</a></li>
+          <li><a>&lt;mroot&gt;</a></li>
+          <li><a>&lt;mrow&gt;</a></li>
+          <li><a>&lt;ms&gt;</a></li>
+          <li><a>&lt;mspace&gt;</a></li>
+          <li><a>&lt;msqrt&gt;</a></li>
+          <li><a>&lt;mstyle&gt;</a></li>
+          <li><a>&lt;msub&gt;</a></li>
+          <li><a>&lt;msubsup&gt;</a></li>
+          <li><a>&lt;msup&gt;</a></li>
+          <li><a>&lt;mtable&gt;</a></li>
+          <li><a>&lt;mtd&gt;</a></li>
+          <li><a>&lt;mtext&gt;</a></li>
+          <li><a>&lt;mtr&gt;</a></li>
+          <li><a>&lt;munder&gt;</a></li>
+          <li><a>&lt;munderover&gt;</a></li>
+          <li><a>&lt;none&gt;</a></li>
+          <li><a>&lt;semantics&gt;</a></li>
+        </ul>
+        <p>
+          User agents must also take into account the following integration points
           between SVG, MathML and HTML as allowed by [[VALIDATOR-SCHEMAS]]:
         </p>
         <div class="issue" data-number="101">Improve description of
@@ -274,8 +334,9 @@
           attributes have the syntax and semantic described
           in [[HTML]]. In particular,
           they are used to identify elements in links and scripting, affect
-          CSS selectors, affect <span>getElementsByClassName()</span> and enable
-          authors to do inline styling.
+          CSS selectors, affect
+          <a data-cite="HTML#dom-document-getelementsbyclassname">getElementsByClassName()</a>
+          and enable authors to do inline styling.
         </p>
         <p>
           The
@@ -949,7 +1010,7 @@
     </p>
   </section>
   <section>
-    <h3>Space <code>&lt;mspace/&gt;</code></h3>
+    <h3>Space <code>&lt;mspace&gt;</code></h3>
     <p>
       The
       <dfn data-dfn-type="mspace" id="element-mspace"><code>&lt;mspace&gt;</code></dfn>
@@ -1858,8 +1919,12 @@ munderover > :not(:first-child) {
     <p>
       This element allows the representation of any number of vertically-aligned
       pairs of subscripts and superscripts, attached to one base expression. It
-      supports both postscripts and prescripts. Missing scripts can be represented
-      by the empty element <code>none</code>.
+      supports both postscripts and prescripts
+      separated by
+      the empty element
+      <dfn data-dfn-type="mprescripts" id="element-mprescripts"><code>&lt;mprescripts&gt;</code></dfn>. Missing scripts can be represented
+      by the empty element
+      <dfn data-dfn-type="none" id="element-none"><code>&lt;none&gt;</code></dfn>.
     </p>
     <p>
       The <code>displaystyle</code> and <code>scriptlevel</code> changes be achieved with the
@@ -1912,7 +1977,10 @@ munderover > :not(:first-child) {
   <h2>Tabular Math</h2>
   <p>
     Matrices, arrays and other table-like mathematical notation are marked up using
-    <code>mtable</code>, <code>mtr</code>, <code>mlabeledtr</code> and <code>mtd</code> elements. These
+    <dfn data-dfn-type="mtable" id="element-mtable"><code>&lt;mtable&gt;</code></dfn>
+    <dfn data-dfn-type="mtr" id="element-mtr"><code>&lt;mtr&gt;</code></dfn>
+    <dfn data-dfn-type="mtd" id="element-mtd"><code>&lt;mtd&gt;</code></dfn>
+    elements. These
     elements are similar to the table, tr and td elements of HTML, except that they
     provide specialized attributes for the fine layout control necessary for
     commutative diagrams, block matrices and so on.
@@ -1988,7 +2056,9 @@ mlabeledtr > mtd:first-child {
 <section>
   <h2>Enlivening Expressions</h2>
   <p>
-    Historically, the <code>&lt;maction&gt;</code> element provides a mechanism
+    Historically, the
+    <dfn data-dfn-type="maction" id="element-maction"><code>&lt;maction&gt;</code></dfn>
+    element provides a mechanism
     for binding actions to expressions.
   </p>
   <p>
@@ -2016,13 +2086,19 @@ mlabeledtr > mtd:first-child {
 <section>
   <h2>Semantics and Presentation</h2>
   <p>
-    The <code>semantics</code> element is the container element that associates
+    The
+    <dfn data-dfn-type="semantics" id="element-semantics"><code>&lt;semantics&gt;</code></dfn>
+    element is the container element that associates
     annotations with a MathML expression. The semantics element has as its first
     child the expression to be annotated. Any MathML expression may appear as the
     first child of the semantics element. Subsequent annotation and annotation-xml
     children enclose the annotations. An annotation represented in XML is enclosed
-    in an <code>annotation-xml</code> element. An annotation represented in character data
-    is enclosed in an <code>annotation</code> element.
+    in an
+    <dfn data-dfn-type="annotation-xml" id="element-annotation-xml"><code>&lt;annotation-xml&gt;</code></dfn>
+    element. An annotation represented in character data
+    is enclosed in an
+    <dfn data-dfn-type="annotation" id="element-annotation"><code>&lt;annotation&gt;</code></dfn>
+    element.
   </p>
   <p>
     User agents must display at most one of the child of a <code>semantics</code> element.
