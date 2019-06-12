@@ -1,0 +1,23 @@
+math {
+  direction: ltr;
+  display: inline;
+  font-size: inherit;
+  font-style: normal;
+  font-family: serif;
+  mathml-math-style: inline;
+}
+math[display="block"] {
+  display: block;
+  text-align: center;
+  mathml-math-style: display;
+}
+math[display="inline"] {
+  display: inline;
+  mathml-math-style: inline;
+}
+math[displaystyle="false"] {
+  mathml-math-style: inline;
+}
+math[displaystyle="true"] {
+  mathml-math-style: display;
+}

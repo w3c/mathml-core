@@ -321,10 +321,11 @@
           attribute has the syntax and semantic as defined for
           the <a data-cite="HTML#attr-hyperlink-href">href</a> attribute on
           <code>&lt;a&gt;</code> element.
-          To fully implement this attribute, additional CSS properties for links
-          must be specified in the user agent stylesheet
-          as described in <a href="#user-agent-stylesheet"></a>.
+          To fully implement this attribute, the following CSS properties for
+          links must be specified in the
+          <a href="#user-agent-stylesheet">user agent stylesheet</a>:
         </p>
+        <pre data-include="user-agent-stylesheet/links.css"></pre>
         <p>
           The
           <dfn data-dfn-type="dir" id="attribute-dir"><code>dir</code></dfn>
@@ -414,7 +415,7 @@
           characters. However, they are preserved for backward compatibility reasons.
           The <code>normal</code> value is still important to cancel automatic
           italic of the
-          <a href="presentation.html#tokenmi"><code>&lt;mi&gt;</code></a> element.
+          <a><code>&lt;mi&gt;</code></a> element.
         </div>
         <p>
           The
@@ -773,10 +774,12 @@
       the same as the <a>&lt;mtext&gt;</a> element.
     </p>
     <p>
-      The User Agent stylesheet must set <code>text-transform: math-auto</code>
-      on the <code>&lt;mi&gt;</code> element as described in
-      <a href="#user-agent-stylesheet"></a>.
+      The
+      <a href="#user-agent-stylesheet">user agent stylesheet</a>
+      must contain the following property in order to implement automatic
+      italic:
     </p>
+    <pre data-include="user-agent-stylesheet/mi.css"></pre>
   </section>
   <section>
     <h3>Number <code>&lt;mn&gt;</code></h3>
@@ -1018,22 +1021,11 @@
     </ul>
     <p>
       The layout algorithm is the same as the
-      <a><code>&lt;mtext&gt;</code></a> element. User Agents
-      must CSS rules described in
-      <a href="#user-agent-stylesheet"></a>:
+      <a><code>&lt;mtext&gt;</code></a> element.
+      The <a href="#user-agent-stylesheet">user agent stylesheet</a>
+      must contain the following rules in order to attach quotes:
     </p>
-    <pre class="css">ms {
-  display: inline;
-}
-ms:before, ms:after {
-  content: "\0022"
-}
-ms[lquote]:before {
-  content: attr(lquote)
-}
-ms[rquote]:after {
-  content: attr(rquote)
-}</pre>
+    <pre data-include="user-agent-stylesheet/ms.css"></pre>
   </section>
 </section>
 <section>
@@ -1105,14 +1097,10 @@ ms[rquote]:after {
       <code>&lt;mfrac&gt; numerator denominator &lt;/mfrac&gt;</code>
     </p>
     <p>
-      The <code>displaystyle</code> and <code>scriptlevel</code> changes be achieved with the
-      following style in the user agent stylesheet as suggested in
-      <a href="#user-agent-stylesheet"></a>:
+      The <a><code>displaystyle</code></a> and <a><code>scriptlevel</code></a>
+      changes must be achieved with rules described in
+      <a href="#user-agent-stylesheet"></a>.
     </p>
-    <pre class="css">mfrac > * {
-  mathml-script-level: auto;
-  mathml-math-style: inline;
-}</pre>
 <p>
   The axis of the <code>mfrac</code> element is always given by
   <code class="MATH">AxisHeight</code>.
@@ -1192,16 +1180,12 @@ ms[rquote]:after {
     e.g. a cube root. The syntax for these elements is:
   </p>
   <pre>&lt;msqrt&gt; base &lt;/msqrt&gt;
-&lt;mroot&gt; base index &lt;/mroot&gt;</pre>
+    &lt;mroot&gt; base index &lt;/mroot&gt;</pre>
   <p>
-    The <code>displaystyle</code> and <code>scriptlevel</code> changes be achieved with the
-    following style in the user agent stylesheet as suggested in
-    <a href="#user-agent-stylesheet"></a>:
+    The <a><code>displaystyle</code></a> and
+    <a><code>scriptlevel</code></a> changes must be achieved by the rules
+    described in <a href="#user-agent-stylesheet"></a>.
   </p>
-    <pre class="css">mroot > :not(:first-child) {
-  mathml-script-level: increment 2;
-  mathml-math-style: inline;
-}</pre>
   <p>
     The line thickness of the overbar is given by
     <code class="MATH">RadicalRuleThickness</code>.
@@ -1290,14 +1274,11 @@ ms[rquote]:after {
     The <code>&lt;merror&gt;</code> element accepts the attributes described in
     <a href="#global-attributes"></a>. Its layout algorithm is the
     same as the <a><code>&lt;mrow&gt;</code></a> element.
-    The User Agent stylesheet must contain the following properties from
-    <a href="#user-agent-stylesheet"></a> in order to visually
-    highlight the error message:
+    The <a href="#user-agent-stylesheet">user agent stylesheet</a>
+    must contain the following rule in order to visually highlight the error
+    message:
   </p>
-    <pre class="css">merror {
-  outline: solid thin red;
-  background-color: lightYellow;
-}</pre>
+  <pre data-include="user-agent-stylesheet/merror.css"></pre>
 </section>
 <section>
   <h3>Adjust Space Around Content <code>&lt;mpadded&gt;</code></h3>
@@ -1348,17 +1329,14 @@ ms[rquote]:after {
     The <code>&lt;mphantom&gt;</code> element accepts the attributes described
     in <a href="#global-attributes"></a>. Its layout algorithm is
     the same as the <a><code>&lt;mrow&gt;</code></a> element.
-    The User Agent stylesheet must contain the following properties from
-    <a href="#user-agent-stylesheet"></a> in order to hide its
-    content:
+    The <a href="#user-agent-stylesheet">user agent stylesheet</a>
+    must contain the following rule in order to hide the content:
   </p>
-    <pre class="css">mphantom {
-  visibility: hidden;
-}</pre>
-    <div class="note">
-      Although <code>mphantom</code> is not really useful in modern web
-      environments, it is preserved for backward compatibility reasons.
-    </div>
+  <pre data-include="user-agent-stylesheet/mphantom.css"></pre>
+  <div class="note">
+    Although <code>mphantom</code> is not really useful in modern web
+    environments, it is preserved for backward compatibility reasons.
+  </div>
 </section>
 <section>
   <h3>Enclose Expression Inside Notation <code>&lt;menclose&gt;</code></h3>
@@ -1576,18 +1554,10 @@ ms[rquote]:after {
       <code>&lt;msubsup&gt;</code> base subscript superscript <code>&lt;/msubsup&gt;</code>
     </p>
     <p>
-      As suggested in
-      <a href="#user-agent-stylesheet"></a>,
-      the <code>displaystyle</code> and
-      <code>scriptlevel</code> changes be achieved with the
-      following style in the user agent stylesheet:
+      The <a><code>displaystyle</code></a> and <a><code>scriptlevel</code></a>
+      changes must be achieved with rules described in
+      <a href="#user-agent-stylesheet"></a>.
     </p>
-    <pre class="css">msub > :not(:first-child),
-msup > :not(:first-child),
-msubsup > :not(:first-child) {
-  mathml-script-level: increment 1;
-  mathml-math-style: inline;
-}</pre>
     <p>
       The <code>msub</code> element is laid out as shown on <a href="#figure-box-msub"></a>.
       The baseline is the baseline of the base while the baseline of the script is
@@ -1773,11 +1743,6 @@ msubsup > :not(:first-child) {
       following style in the user agent stylesheet, as suggested in
       <a href="#user-agent-stylesheet"></a>:
     </p>
-    <pre class="css">munder > :not(:first-child),
-mover > :not(:first-child),
-munderover > :not(:first-child) {
-  mathml-math-style: inline;
-}</pre>
     <p>
       In cases where underscript and overscript are drawn as subscript and
       superscript position then the layout algorithm is the same as
@@ -1887,14 +1852,10 @@ munderover > :not(:first-child) {
       <dfn data-dfn-type="none" id="element-none"><code>&lt;none&gt;</code></dfn>.
     </p>
     <p>
-      The <code>displaystyle</code> and <code>scriptlevel</code> changes be achieved with the
-      following style in the user agent stylesheet as suggested in
-      <a href="#user-agent-stylesheet"></a>:
+      The <a><code>displaystyle</code></a> and <a><code>scriptlevel</code></a>
+      changes must be achieved with rules described in
+      <a href="#user-agent-stylesheet"></a>.
     </p>
-  <pre class="css">mmultiscripts > :not(:first-child) {
-  mathml-script-level: increment 1;
-  mathml-math-style: inline;
-}</pre>
     <p>
       Any layout for <code>mmultiscripts</code> is acceptable as long as it follows
       the condition of the MathML 3 specification [[MATHML3]] and is consistent
@@ -1949,18 +1910,13 @@ munderover > :not(:first-child) {
     In the present document, we restrict ourselves to a minimal implementation
     compatible with HTML tables. First the <code>mtable</code> element must be treated as
     a HTML table and by [[MATHML3]], <code>mtable</code> must accept a
-    <code>displaystyle</code> attribute with default value <code>false</code>. To implement that,
-    one may rely on the following rules for the user agent stylesheet as
-    suggested in
-    <a href="#user-agent-stylesheet"></a>:
+    <code>displaystyle</code> attribute with default value <code>false</code>.
   </p>
-  <pre class="css">mtable {
-  display: inline-table;
-  mathml-math-style: inline;
-}
-mtable[displaystyle="true"] {
-  mathml-math-style: display;
-}</pre>
+  <p>
+    The <a><code>displaystyle</code></a> and
+    <a><code>scriptlevel</code></a> changes must be achieved by the rules
+    described in <a href="#user-agent-stylesheet"></a>.
+  </p>
   <p>
     In addition, user agents may use the following rules to emulate the <code>frame</code>
     attribute:
@@ -2030,14 +1986,12 @@ mlabeledtr > mtd:first-child {
   <p>
     The layout algorithm of the <code>&lt;maction&gt;</code> element
     the same as the <code>&lt;mrow&gt;</code> element.
-    The User Agent stylesheet must contain the following properties from
-    <a href="#user-agent-stylesheet"></a> in order to hide all but
+    The <a href="#user-agent-stylesheet">user agent stylesheet</a>
+    must contain the following rules in order to hide all but
     its first child, which is the default behavior for the legacy actiontype
     values:
   </p>
-  <pre class="css">maction > :not(:first-child) {
-  display: none;
-}</pre>
+  <pre data-include="user-agent-stylesheet/maction.css"></pre>
   <div class="note">
     Although <code>maction</code> is not really useful in modern web
     environments, it is preserved for backward compatibility reasons.
@@ -2129,9 +2083,21 @@ mlabeledtr > mtd:first-child {
   </p>
   <pre data-include="mathml-core.rnc"></pre>
 </section>
-<section class="appendix" id="user-agent-stylesheet">
+<section class="appendix">
   <h2>User Agent Stylesheet</h2>
-  <pre data-include="user-agent-stylesheet.css"></pre>
+<pre>@namespace url(http://www.w3.org/1998/Math/MathML);
+
+/* Links */
+<span data-include="user-agent-stylesheet/links.css"></span>
+/* The &lt;math&gt; element */
+<span data-include="user-agent-stylesheet/math.css"></span>
+/* &lt;mrow&gt;-like elements */
+<span data-include="user-agent-stylesheet/maction.css"></span><span data-include="user-agent-stylesheet/merror.css"></span><span data-include="user-agent-stylesheet/mphantom.css"></span>
+/* Tables */
+<span data-include="user-agent-stylesheet/tables.css"></span>
+/* Other rules for scriptlevel and displastyle */
+<span data-include="user-agent-stylesheet/other.css"></span>
+</pre>
 </section>
 <section>
   <h1>Operator Dictionary</h1>
