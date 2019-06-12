@@ -118,7 +118,7 @@
         other than as work in progress.
       </p>
     </section>
-    <section id="introduction" class="informative">
+    <section class="informative">
       <h2>Introduction</h2>
       <p>
         The [[MATHML3]] specification has several shortcomings that make it
@@ -135,7 +135,7 @@
         This MathML Core specification intends to address these issues by
         being as accurate as possible on the visual rendering of mathematical
         formulas using additional rules from the TeXBook’s Appendix G
-        [[TEXBOOK]] and from the Open Font Format [[OPEN-FONT-FORMAT]],
+        [[?TEXBOOK]] and from the Open Font Format [[OPEN-FONT-FORMAT]],
         [[OPEN-TYPE-MATH-ILLUMINATED]]. It also relies on modern browser
         implementations and web technologies [[HTML]] clarifying interactions
         with them when needed or introducing new low-level primitives to
@@ -218,21 +218,26 @@
         <h3>MathML Attribute Values</h3>
         <dl>
           <dt><dfn data-dfn-type="dfn" id="type-non-negative-integer">non-negative-integer</dfn></dt>
-          <dd>A <code>&lt;non-negative-integer&gt;</code> value as defined in
+          <dd>A
+            <a data-cite="HTML#non-negative-integers"><code>&lt;non-negative-integer&gt;</code></a>
+            value as defined in
             [[HTML]]
           </dd>
         </dl>
         <dl>
           <dt><dfn data-dfn-type="dfn"
                    id="type-length-percentage">length-percentage</dfn></dt>
-          <dd>A <code>&lt;length-percentage&gt;</code> value as defined in
-            [[CSS-VALUES]]
+          <dd>A
+            <a data-cite="CSS-VALUES-3#typedef-length-percentage"><code>&lt;length-percentage&gt;</code></a>
+            value as defined in
+            [[CSS-VALUES-3]]
           </dd>
         </dl>
         <dl>
           <dt><dfn data-dfn-type="dfn" id="type-color">color</dfn></dt>
-          <dd>A <code>&lt;color&gt;</code> value as defined in
-            [[CSS-COLOR-3]]
+          <dd>A
+            <a data-cite="CSS-COLOR-3#colorunits"><code>&lt;color&gt;</code></a>
+            value as defined in [[CSS-COLOR-3]]
           </dd>
         </dl>
         <dl>
@@ -461,7 +466,7 @@
         <h3>Text and Math layout</h3>
         <section>
           <h4>Open Font Format</h4>
-          <p>
+          <p data-tests="relations/text-and-math/use-typo-metrics-1.html">
             Because math fonts generally contain very tall glyphs such as big integrals,
             using typographic metrics is important to avoid excessive line spacing of text.
             This behavior is specified in math fonts using the USE_TYPO_METRICS flag from
@@ -526,7 +531,7 @@
           <p>
             Mathematical rendering rules in this document are implicitly based on
             MathML, OpenType MATH table and the TeXBook
-            [[MATHML3] [[OPEN-FONT-FORMAT]] [[TEXBOOK]]. In this section, we
+            [[MATHML3] [[OPEN-FONT-FORMAT]] [[?TEXBOOK]]. In this section, we
             describe more precisely some rules from the TeXBook.
           </p>
           <p>
@@ -1347,7 +1352,7 @@ ms[rquote]:after {
     <code>menclose</code> element.
   </p>
   <p>
-    Based on [[OPEN-FONT-FORMAT]] [[TEXBOOK]], we use the notation ξ<sub>8</sub>
+    Based on [[OPEN-FONT-FORMAT]] [[?TEXBOOK]], we use the notation ξ<sub>8</sub>
     from the TeXBook to denote the default rule thickness and use
     3ξ<sub>8</sub> for gaps.
     We actually let ξ<sub>8</sub> be <code class="MATH">OverbarRuleThickness</code>.
@@ -1820,7 +1825,7 @@ munderover > :not(:first-child) {
     <p>
       Remark: For accent overscripts and bases with ascents that are at most
       <code class="MATH">AccentBaseHeight</code>, the rule from
-      [[OPEN-FONT-FORMAT]] [[TEXBOOK]] is actually to align the baselines of the
+      [[OPEN-FONT-FORMAT]] [[?TEXBOOK]] is actually to align the baselines of the
       overscripts and of the bases. This assumes that accent glyphs are designed in
       such a way that their ink bottoms are more or less
       <code class="MATH">AccentBaseHeight</code> above their baselines. Hence, the
