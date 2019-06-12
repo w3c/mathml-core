@@ -1,9 +1,9 @@
 mtable {
   display: inline-table;
-  mathml-math-style: inline;
+  math-style: inline;
 }
 mtable[displaystyle="true"] {
-  mathml-math-style: display;
+  math-style: display;
 }
 mtable[frame="none"] {
   border: none;

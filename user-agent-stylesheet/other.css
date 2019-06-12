@@ -1,26 +1,26 @@
 mstyle[displaystyle="false"] {
-  mathml-math-style: inline;
+  math-style: inline;
 }
 mstyle[displaystyle="true"] {
-  mathml-math-style: display;
+  math-style: display;
 }
 mfrac > * {
-  mathml-script-level: auto;
-  mathml-math-style: inline;
+  math-script-level: auto;
+  math-style: inline;
 }
 mroot > :not(:first-child) {
-  mathml-script-level: increment-by 2;
-  mathml-math-style: inline;
+  math-script-level: increment-by 2;
+  math-style: inline;
 }
 msub > :not(:first-child),
 msup > :not(:first-child),
 msubsup > :not(:first-child),
 mmultiscripts > :not(:first-child) {
-  mathml-script-level: increment-by 1;
-  mathml-math-style: inline;
+  math-script-level: increment-by 1;
+  math-style: inline;
 }
 munder > :not(:first-child),
 mover > :not(:first-child),
 munderover > :not(:first-child) {
-  mathml-math-style: inline;
+  math-style: inline;
 }

@@ -80,21 +80,7 @@
                       "Henri Sivonen et al."
                   ],
                   href: "https://github.com/validator/validator/blob/master/schema/.drivers/html5-svg-mathml.rnc"
-              },
-              "MATH-VARIANT": {
-                  title: "math-variant explainer",
-                  authors: [
-                      "Frédéric Wang"
-                  ],
-                  href: "https://github.com/mathml-refresh/mathml-css-proposals/blob/master/mathml-css-proposals/math-variant-explainer.md"
-              },
-              "MATH-STYLE-AND-SCRIPT-LEVEL": {
-                  title: "math-script-level and math-style explainer",
-                  authors: [
-                      "Frédéric Wang"
-                  ],
-                  href: "https://github.com/mathml-refresh/mathml-css-proposals/blob/master/math-script-level-and-math-style-explainer.md"
-              },
+              }
           },
           postProcess: [sorttable.init]
       };
@@ -404,8 +390,8 @@
         </p>
         <p>
           Hence, the <code>mathvariant</code> attribute
-          is mapped to new values of the CSS property <code>text-transform</code>
-          defined in [[MATH-VARIANT]].
+          is mapped to new values of the CSS property
+          <a><code>text-transform</code></a>.
           More precisely, <code>normal</code> is mapped to <code>none</code>
           while all the other values the corresponding CSS value with the extra
           <code>math-</code> prefix.
@@ -423,8 +409,7 @@
           <dfn data-dfn-type="displaystyle" id="attribute-displaystyle"><code>displaystyle</code></dfn>
           attribute, if specified and not
           empty, must be a <a>boolean</a>.
-          It is mapped to the CSS property <code>math-style</code>
-          defined in [[MATH-STYLE-AND-SCRIPT-LEVEL]].
+          It is mapped to the CSS property <a><code>math-style</code></a>.
           More precisely,  <code>true</code> is mapped to <code>display</code> and
           <code>false</code> to  <code>inline</code>.
           This attribute indicate whether formulas should try to minimize
@@ -440,8 +425,7 @@
           <code>+&lt;U&gt;</code>, <code>-&lt;U&gt;</code> or <code>&lt;U&gt;</code>
           where <code>&lt;U&gt;</code> is a
           <a>non-negative-integer</a>.
-          It is mapped to the <code>math-script-level</code> property
-          defined in [[MATH-STYLE-AND-SCRIPT-LEVEL]]
+          It is mapped to the <a><code>math-script-level</code></a>.
           More precisely,
           <code>+&lt;U&gt;</code>, <code>-&lt;U&gt;</code> and
           <code>&lt;U&gt;</code>
@@ -2072,6 +2056,153 @@ mlabeledtr > mtd:first-child {
 </section>
 </section>
 </section>
+<section class="normative">
+  <h2>CSS Extensions for Math Layout</h2>
+  <section>
+    <h3>New <code>text-transform</code> values</h3>
+    <p>The <dfn data-dfn-type="text-transform" id="property-text-transform"><code>text-transform</code></dfn> property
+      from 
+        is extended with new values:
+    </p>
+    <code><a data-cite="CSS-TEXT-3#text-transform-property">&lttext-transform-old&gt;</a> <a data-cite="CSS-VALUES-3#comb-one">|</a> math-auto | math-bold | math-italic | math-bold-italic | math-double-struck | math-bold-fraktur | math-script | math-bold-script | math-fraktur | math-sans-serif | math-bold-sans-serif | math-sans-serif-italic | math-sans-serif-bold-italic | math-monospace | math-initial | math-tailed | math-looped | math-stretched</code>
+    </ul>
+    <p>
+      On text nodes containing a unique character, <code>math-auto</code> has
+      the same effect as <code>math-italic</code>, otherwise it has no effects.
+    </p>
+    <p>
+      For all the other <code>math-...</code> values, the transformed text is
+      obtained by performing conversion of each character that have
+      <a href="#mathvariant-mappings">a mapping for the specified
+        <code>math-variant</code> value</a>.
+    </p>
+    <p>
+      User agents may decide to rely on italic, bold and bold-italic
+      font-level properties when available fonts lack the proper glyphs to
+      perform <code>math-auto</code>, <code>math-italic</code>,
+      <code>math-bold</code>, <code>math-bold-italic</code> character-level
+      transforms.
+    </p>
+    </section>
+  <section>
+  <h3>The <code>math-style</code> property</h3>
+  <table>
+    <tbody>
+      <tr>
+        <th>Name:</th>
+        <td>
+          <dfn data-dfn-type="math-style" id="property-math-style"><code>math-style</code></dfn>
+        </td>
+      </tr>
+      <tr><th>Value:</th><td><code>display | inline</code></td></tr>
+      <tr><th>Initial:</th><td><code>inline</code></td></tr>
+      <tr><th>Applies to:</th><td>All elements</td></tr>
+      <tr><th>Inherited:</th><td>yes</td></tr>
+      <tr><th>Percentages:</th><td>n/a</td></tr>
+      <tr><th>Media:</th><td>visual</td></tr>
+      <tr><th>Computed value:</th><td>specified keyword</td></tr>
+      <tr><th>Canonical order:</th><td>n/a</td></tr>
+      <tr><th>Animation type:</th><td>not animatable</td></tr>
+    </tbody>
+  </table>
+  <p>
+    If the value of <code>math-style</code> is <code>inline</code>, the math
+    layout on descendants should try to minimize the
+    <a data-cite="CSS-WRITING-MODES-3#extent">logical height</a>.
+    This includes how
+    <a data-cite="CSS-FONTS-3#font-size-prop"><code>font-size</code></a>
+    is changed when <a><code>math-script-level</code></a> is
+    <code>auto</code> as well
+    miscelleanous layout rules described in details in
+    <a href="#presentation-markup"></a>.
+    If the value of <code>math-style</code> is <code>display</code>, the math
+    layout should not take such constraints into consideration.
+  </p>
+  </section>
+  <section>
+    <h3>The <code>math-script-level</code> property</h3>
+    <table>
+      <tbody>
+        <tr>
+          <th>Name:</th>
+          <td>
+            <dfn data-dfn-type="math-script-level" id="property-math-script-level"><code>math-script-level</code></dfn>
+          </td>
+        </tr>
+        <tr><th>Value:</th><td><code>auto | add(&lt;integer&gt;) | &lt;integer&gt;</code></td></tr>
+        <tr><th>Initial:</th><td><code>0</code></td></tr>
+        <tr><th>Applies to:</th><td>All elements</td></tr>
+        <tr><th>Inherited:</th><td>yes</td></tr>
+        <tr><th>Percentages:</th><td>n/a</td></tr>
+        <tr><th>Media:</th><td>visual</td></tr>
+        <tr><th>Computed value:</th><td>see individual properties</td></tr>
+        <tr><th>Canonical order:</th><td>n/a</td></tr>
+        <tr><th>Animation type:</th><td>not animatable</td></tr>
+      </tbody>
+    </table>
+    <p>
+      If the specified value of <code>math-script-level</code> is
+      <code>auto</code> and the inherited value of <code>math-style</code> is
+      <code>display</code> then the computed value of
+      <code>math-script-level</code> is the inherited value.
+    </p>
+    <p>If the specified value of <code>math-script-level</code> is
+      <code>auto</code> and the inherited value of <code>math-style</code> is
+      <code>inline</code> then the computed value of
+      <code>math-script-level</code> is the inherited value plus one.
+    </p>
+    <p>
+      If the specified value of <code>math-script-level</code> is of the form
+      <code>add(&lt;integer&gt;)</code> then the computed value of
+      <code>math-script-level</code> is the inherited value plus the specified
+      integer.
+    </p>
+    <p>
+      If the specified value of <code>math-script-level</code> is of the form
+      <code>&lt;integer&gt;</code> then the computed value of
+      <code>math-script-level</code> is set to the specified integer.
+    </p>
+    <p>
+      If
+      <a data-cite="CSS-FONTS-3#font-size-prop"><code>font-size</code></a>
+      is specified or if the specified value of
+      <code>math-script-level</code> is <code>initial</code> then
+      <code>math-script-level</code> does not affect the computed value of
+      <code>font-size</code>. Otherwise, the computed value of
+      <code>font-size</code> is obtained by multiplying the inherited value of
+      <code>font-size</code> by a nonzero scale factor calculated by the
+      following procedure:
+    </p>
+    <ol>
+      <li>Let A be the inherited <code>math-script-level</code>, B the computed
+        <code>math-script-level</code>, C be 0.71 and S be 1.0</li>
+      <li>
+        <ul>
+          <li>If A = B then return S.</li>
+          <li>If B &lt; A, swap A and B and set <code>InvertScaleFactor</code> to true.</li>
+          <li>Otherwise B &gt; A and set <code>InvertScaleFactor</code> to false.</li>
+        </ul>
+      </li>
+      <li>Let E be B - A &gt; 0.</li>
+      <li>If the inherited font has an OpenType MATH table:
+        <ul>
+          <li>Read <code class="MATH">scriptPercentScaleDown</code> and fallback to C if the MathVariants table is absent or provides a null value.</li>
+          <li>Read <code class="MATH">scriptScriptPercentScaleDown</code> and fallback to C<sup>2</sup> if the MathVariants table is absent or provides a null value.</li>
+          <li>If A ≤ 0 and B ≥ 2 then multiply S by <code class="MATH">scriptScriptPercentScaleDown</code> and
+            decrement E by 2.</li>
+          <li>Otherwise if A = 1 then multiply S by
+            <code class="MATH">scriptScriptPercentScaleDown</code> / <code class="MATH">scriptPercentScaleDown</code> and
+            decrement E by 1.</li>
+          <li>Otherwise if B = 1 then multiply S by <code class="MATH">scriptPercentScaleDown</code>
+            and decrement E by 1.</li>
+        </ul>
+      </li>
+      <li>Multiply S by C<sup>E</sup></li>
+      <li>Return S if <code>InvertScaleFactor</code> is false and 1/S otherwise.</li>
+    </ol>
+  </section>
+</section>
+</section>
 <section class="appendix informative">
   <h2>RelaxNG</h2>
   <p>
@@ -2273,6 +2404,10 @@ mlabeledtr > mtd:first-child {
     characters when used in MathML accent constructs.
   </p>
   <div data-include="tables/combining-operators.html"></div>
+</section>
+<section>
+  <h3>Mathvariant Mappings</h3>
+  <div data-include="tables/mathvariants.html"></div>
 </section>
 <section class="appendix">
   <h2>Conformance</h2>
