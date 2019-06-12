@@ -159,32 +159,9 @@
       <section>
         <h3>Web Platform Integration</h3>
         <p>
-          User agents support
-          <a data-cite="HTML#parsing">parsing of HTML document</a>
-          in order to
-          <a data-cite="HTML#tree-construction">build a DOM tree</a>,
-          as described in [[HTML]]. In particular:
-        </p>
-        <ul>
-          <li>When the user agent is in the
-            <a data-cite="HTML#named-character-reference-state">named character
-              reference state</a>, it must recognize
-            <a data-cite="HTML#named-character-references">named character
-              references</a>.
-          </li>
-          <li>When the user agent is to apply the rules for parsing tokens in
-            HTML content for the
-            <a data-cite="HTML#parsing-main-inbody">"in body"
-              insertion mode</a>, it must
-              handle the case when the tag name is "math".
-          </li>
-          <li>When the user agent is to apply the rules for parsing tokens
-            in foreign content, it must handle the case when the tag
-            is an element in the
-            <a data-cite="INFRA#mathml-namespace">MathML namespace</a>.
-          </li>
-        </ul>
-        <p>User agent must treat any of the following
+          When
+          <a data-cite="HTML#parsing">parsing HTML documents</a>
+          user agents must treat any of the following
           <dfn data-dfn-type="dfn" id="element-mathml-core">MathML Core
           elements</dfn> as belonging to the
           <a data-cite="INFRA#mathml-namespace">MathML namespace</a>:
@@ -223,13 +200,13 @@
           <li><a>&lt;none&gt;</a></li>
           <li><a>&lt;semantics&gt;</a></li>
         </ul>
+        <div class="issue" data-number="101">Improve description of
+          integration points and refer to [[HTML]] instead of the validator
+          schema.</div>
         <p>
           User agents must also take into account the following integration points
           between SVG, MathML and HTML as allowed by [[VALIDATOR-SCHEMAS]]:
         </p>
-        <div class="issue" data-number="101">Improve description of
-          integration points and refer to [[HTML]] instead of the validator
-          schema.</div>
         <ol>
           <li>
             The <code>&lt;math&gt;</code> element can be used at any position
@@ -252,25 +229,26 @@
           </li>
         </ol>
         <p>
-          From this DOM tree, user agents must provide a visual representation
-          of the document. The DOM tree may be dynamically modified using
-          [[JAVASCRIPT]] and the user agents must keep the visual representation
-          in synchronization with the DOM tree.
-        </p>
-        <div class="issue" data-number="100">Remove reference to semantics tag.</div>
-        <p>
-          When evaluating the SVG <code>requiredExtensions</code> attribute
-          [[SVG]], user agents must claim support for the extension of name
-          <code>http://www.w3.org/1998/Math/MathML</code>.
-          An algorithm to decide the visible child of the
-          <code>&lt;semantics&gt;</code> element is proposed in section
-          <a href="#semantics-and-presentation"></a>.
+          User agents supporting
+          <a data-cite="HTML#webappapis">Web application APIs</a>
+          must ensure that they keep the visual rendering of MathML
+          in synchronization with the [[DOM]] tree.
         </p>
         <p>
-          User agents must support several CSS modules and use the user agent
-          stylesheet described in
-          <a href="#user-agent-stylesheet"></a>.
-          Details are given in the respective sections.
+          When evaluating the SVG
+          <a data-cite="SVG#RequiredExtensionsAttribute"><code>requiredExtensions</code></a>
+          attribute, user agents must claim support for the language extension
+          identified by the
+          <a data-cite="INFRA#mathml-namespace">MathML namespace</a>.
+        </p>
+        <p>
+          All documents containing <a>MathML Core elements</a> must include
+          CSS rules described in <a href="#user-agent-stylesheet"></a>
+          as part of user-agent level style sheet defaults.
+          Rules relying on universal selectors such as
+          <code>mfrac > *</code> or <code>msub > :not(:first-child)</code> may
+          be replaced with equivalent expanded rules listing all possible
+          <a>MathML Core elements</a>.
         </p>
         <div class="issue" data-number="83">Properly define DOM/IDL relationships.</div>
       </section>
@@ -331,20 +309,18 @@
           <dfn data-dfn-type="id" id="attribute-id"><code>id</code></dfn>,
           <dfn data-dfn-type="class" id="attribute-class"><code>class</code></dfn>,
           <dfn data-dfn-type="style" id="attribute-style"><code>style</code></dfn>,
-          attributes have the syntax and semantic described
-          in [[HTML]]. In particular,
-          they are used to identify elements in links and scripting, affect
-          CSS selectors, affect
-          <a data-cite="HTML#dom-document-getelementsbyclassname">getElementsByClassName()</a>
-          and enable authors to do inline styling.
+          attributes have the same syntax and semantic as defined for
+          <a data-cite="HTML#the-id-attribute">id</a>,
+          <a data-cite="HTML#classes">class</a> and
+          <a data-cite="HTML#the-style-attribute">style</a> attributes on
+          HTML elements.
         </p>
         <p>
           The
           <dfn data-dfn-type="href" id="attribute-href"><code>href</code></dfn>
-          attribute has the syntax and semantic described
-          in [[HTML]]
-          for the <code>&lt;a&gt;</code> element.
-          This attribute represents a hyperlink labeled by its contents.
+          attribute has the syntax and semantic as defined for
+          the <a data-cite="HTML#attr-hyperlink-href">href</a> attribute on
+          <code>&lt;a&gt;</code> element.
           To fully implement this attribute, additional CSS properties for links
           must be specified in the user agent stylesheet
           as described in <a href="#user-agent-stylesheet"></a>.
@@ -355,8 +331,9 @@
           attribute, if specified and not
           empty, must be case-insensitively equal to the
           value <code>ltr</code> or <code>ltr</code>.
-          It is mapped to the CSS property <code>direction</code> defined in
-          [[CSS-WRITING-MODES-3]].
+          It is mapped to the
+          <a data-cite="CSS-WRITING-MODES-3#direction"><code>direction</code></a>
+          CSS property.
           This attribute is used to set the directionality of math formulas, which is
           often <code>rtl</code> in Arabic speaking world.
         </p>
@@ -369,10 +346,9 @@
           have a value that is a <a>color</a>.
           The <code>mathcolor</code> property describes the foreground fill color of
           an MathML text, bars etc and the background color of an element.
-          They are mapped to the CSS properties <code>color</code> and
-          <code>background-color</code> defined in
-          [[CSS-COLOR-3]]
-          and [[CSS-BACKGROUNDS-3]].
+          They are mapped to the
+          <a data-cite="CSS-COLOR-3#foreground"><code>color</code></a> and
+          <a data-cite="CSS-BACKGROUNDS-3#the-background-color"><code>background-color</code></a> CSS properties.
         </p>
         <p>
           The
@@ -382,8 +358,8 @@
           The <code>mathsize</code> property indicates indicates the desired height
           of glyphs in math formulas but also scale other parts (spacing, shifts,
           line thickness of bars etc) accordingly.
-          Is is mapped to the CSS property <code>font-size</code>
-          from [[CSS-FONTS-3]].
+          Is is mapped to the CSS property
+          <a data-cite="CSS-FONTS-3#font-size-prop"><code>font-size</code></a>.
         </p>
         <div class="note">
           Many of the above attributes are not useful in CSS-aware
@@ -2171,33 +2147,6 @@ mlabeledtr > mtd:first-child {
 </section>
 <section class="appendix" id="user-agent-stylesheet">
   <h2>User Agent Stylesheet</h2>
-  <p>
-    Because mathematical formulas are generally written with special fonts, the
-    default user agent stylesheet must reset the CSS <code>font-family</code> on the
-    <code>math</code> element to <code>serif</code>. User agents should then use their own
-    mechanism to try and interpret this <code>serif</code> value on the <code>math</code> element
-    as a font with an OpenType MATH table.
-  </p>
-  <p>
-    Below is an example on a stylesheet to style MathML elements on which the
-    User Agents may rely. Unfortunately, some rendering engines do not allow
-    universal selectors in their user agent stylesheets and so rules must be
-    expanded to list all possible MathML elements described in the present
-    document. For example <code>mfrac &gt; *</code> can be converted into
-    <code>mfrac &gt; mi, mfrac &gt; mn, mfrac &gt; mo, mfrac &gt; mtext, mfrac &gt; mspace,
-      mfrac &gt; ms, mfrac &gt; mrow, mfrac &gt; mfrac, mfrac &gt; msqrt, mfrac &gt; mroot,
-      mfrac &gt; mstyle, mfrac &gt; merror, mfrac &gt; mpadded, mfrac &gt; mphantom,
-      mfrac &gt; menclose, mfrac &gt; msub, mfrac &gt; msubsup, mfrac &gt; munder, mfrac &gt; mover,
-      mfrac &gt; munderover, mfrac &gt; mmultiscripts, mfrac &gt; mtable, mfrac &gt; maction</code>.
-  </p>
-  <p>
-    This section displays a non-normative Relax NG Schema which
-    details the elements and attributes defined by this specification.
-    Note that MathML does not need to be expressed in XML syntax, in
-    particular the syntax defined by HTML may be used. However this
-    schema may be taken as an informal specification of the structure,
-    whatever syntax is used.
-  </p>
   <pre data-include="user-agent-stylesheet.css"></pre>
 </section>
 <section>
