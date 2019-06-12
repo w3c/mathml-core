@@ -4,36 +4,39 @@ start = math
 
 math = element math {math.attributes,MathExpression*}
 
-CommonAtt = attribute id {xsd:ID}?,
-            attribute xref {text}?,
-            attribute class {xsd:NMTOKENS}?,
-            attribute style {xsd:string}?,
-            attribute href {xsd:anyURI}?
+GlobalAttributes = attribute id {xsd:ID}?,
+                   attribute class {xsd:NMTOKENS}?,
+                   attribute style {xsd:string}?,
+                   attribute href {xsd:anyURI}?,
+                   attribute dir {"ltr" | "rtl"}?,
+                   attribute mathbackground {color | "transparent"}?,
+                   attribute mathcolor {color}?,
+                   attribute mathsize {length}?,
+                   attribute mathvariant {"normal" | "bold" | "italic" | "bold-italic" | "double-struck" | "bold-fraktur" | "script" | "bold-script" | "fraktur" | "sans-serif" | "bold-sans-serif" | "sans-serif-italic" | "sans-serif-bold-italic" | "monospace" | "initial" | "tailed" | "looped" | "stretched"}?,
+                   attribute displaystyle {"true" | "false"}?,
+                   attribute scriptlevel {xsd:integer}?
 
-math.attributes = CommonAtt,
-               attribute display {"block" | "inline"}?
+math.attributes = GlobalAttributes,
+                  attribute display {"block" | "inline"}?
 
-annotation = element annotation {CommonAtt,(src|text)}
+annotation = element annotation {GlobalAttributes,(src|text)}
 
 anyElement =  element (* - m:*) {(attribute * {text}|text| anyElement)*}
 
-annotation-xml = element annotation-xml {CommonAtt,
+annotation-xml = element annotation-xml {GlobalAttributes,
 					 encoding?,
 				         (src|MathExpression*|anyElement*)}
 
 encoding=attribute encoding {xsd:string}
 src=attribute src {xsd:string}
 
-semantics = element semantics {CommonAtt,
+semantics = element semantics {GlobalAttributes,
                                MathExpression, 
                               (annotation|annotation-xml)*}
 
 length = xsd:string {
   pattern = '\s*((-?[0-9]*([0-9]\.?|\.[0-9])[0-9]*(e[mx]|in|cm|mm|p[xtc]|%))|0|(negative)?((very){0,2}thi(n|ck)|medium)mathspace)\s*'
 }
-
-
-## mathml3-presentation, simplified
 
 MathExpression = TokenExpression|
                      mrow|mfrac|msqrt|mroot|mstyle|merror|mpadded|mphantom|
@@ -76,8 +79,6 @@ notationstyle =
      "horizontalstrike" |
      "madruwb"
 
-idref = text
-
 color =  xsd:string {
   pattern = '\s*((#[0-9a-fA-F]{3}([0-9a-fA-F]{3})?)|[aA][qQ][uU][aA]|[bB][lL][aA][cC][kK]|[bB][lL][uU][eE]|[fF][uU][cC][hH][sS][iI][aA]|[gG][rR][aA][yY]|[gG][rR][eE][eE][nN]|[lL][iI][mM][eE]|[mM][aA][rR][oO][oO][nN]|[nN][aA][vV][yY]|[oO][lL][iI][vV][eE]|[pP][uU][rR][pP][lL][eE]|[rR][eE][dD]|[sS][iI][lL][vV][eE][rR]|[tT][eE][aA][lL]|[wW][hH][iI][tT][eE]|[yY][eE][lL][lL][oO][wW])\s*'}
 
@@ -85,21 +86,15 @@ TokenExpression = mi|mn|mo|mtext|mspace|ms
 
 mi = element mi {mi.attributes, text}
 mi.attributes = 
-  CommonAtt,
-  CommonPresAtt,
-  TokenAtt
+  GlobalAttributes
 
 mn = element mn {mn.attributes, text}
 mn.attributes = 
-  CommonAtt,
-  CommonPresAtt,
-  TokenAtt
+  GlobalAttributes
 
 mo = element mo {mo.attributes, text}
 mo.attributes = 
-  CommonAtt,
-  CommonPresAtt,
-  TokenAtt,
+  GlobalAttributes,
   attribute form {"prefix" | "infix" | "postfix"}?,
   attribute fence {"true" | "false"}?,
   attribute separator {"true" | "false"}?,
@@ -107,93 +102,66 @@ mo.attributes =
   attribute rspace {length}?,
   attribute stretchy {"true" | "false"}?,
   attribute symmetric {"true" | "false"}?,
-  # attribute maxsize {length | "infinity"}?,
-  # attribute minsize {length}?,
+  attribute maxsize {length | "infinity"}?,
+  attribute minsize {length}?,
   attribute largeop {"true" | "false"}?,
   attribute movablelimits {"true" | "false"}?,
   attribute accent {"true" | "false"}?
-  # attribute linebreak {"auto" | "newline" | "nobreak" | "goodbreak" | "badbreak"}?
 
 mtext = element mtext {mtext.attributes, text}
 mtext.attributes = 
-  CommonAtt,
-  CommonPresAtt,
-  TokenAtt
+  GlobalAttributes
 
 mspace = element mspace {mspace.attributes, empty}
 mspace.attributes = 
-  CommonAtt,
-  CommonPresAtt,
-  TokenAtt,
+  GlobalAttributes,
   attribute width {length}?,
   attribute height {length}?,
   attribute depth {length}?
 
 ms = element ms {ms.attributes, text}
 ms.attributes = 
-  CommonAtt,
-  CommonPresAtt,
-  TokenAtt,
+  GlobalAttributes,
   attribute lquote {text}?,
   attribute rquote {text}?
 
 none = element none {none.attributes,empty}
 none.attributes = 
-  CommonAtt,
-  CommonPresAtt
+  GlobalAttributes
 
 mprescripts = element mprescripts {mprescripts.attributes,empty}
 mprescripts.attributes = 
-  CommonAtt,
-  CommonPresAtt
-
-CommonPresAtt = 
-  attribute mathcolor {color}?,
-  attribute mathbackground {color | "transparent"}?
-
-TokenAtt = 
-  attribute mathvariant {"normal" | "bold" | "italic" | "bold-italic" | "double-struck" | "bold-fraktur" | "script" | "bold-script" | "fraktur" | "sans-serif" | "bold-sans-serif" | "sans-serif-italic" | "sans-serif-bold-italic" | "monospace" | "initial" | "tailed" | "looped" | "stretched"}?,
-  attribute mathsize {length}?,
-  attribute dir {"ltr" | "rtl"}?
+  GlobalAttributes
 
 mrow = element mrow {mrow.attributes, MathExpression*}
 mrow.attributes = 
-  CommonAtt, CommonPresAtt,
-  attribute dir {"ltr" | "rtl"}?
+  GlobalAttributes
 
 mfrac = element mfrac {mfrac.attributes, MathExpression, MathExpression}
 mfrac.attributes = 
-  CommonAtt, CommonPresAtt,
+  GlobalAttributes,
   attribute linethickness {length}?,
-  attribute numalign {"left" | "center" | "right"}?,
-  attribute denomalign {"left" | "center" | "right"}?,
   attribute bevelled {"true" | "false"}?
 
 msqrt = element msqrt {msqrt.attributes, ImpliedMrow}
 msqrt.attributes = 
-  CommonAtt, CommonPresAtt
+  GlobalAttributes
 
 mroot = element mroot {mroot.attributes, MathExpression, MathExpression}
 mroot.attributes = 
-  CommonAtt, CommonPresAtt
+  GlobalAttributes
 
 mstyle = element mstyle {mstyle.attributes, ImpliedMrow}
 mstyle.attributes = 
-  CommonAtt, CommonPresAtt,
-  attribute scriptlevel {xsd:integer}?,
-  attribute displaystyle {"true" | "false"}?,
-  attribute scriptsizemultiplier {xsd:decimal}?
-
-math.attributes &= CommonPresAtt
-math.attributes &= mstyle.attributes
+  GlobalAttributes
 
 merror = element merror {merror.attributes, ImpliedMrow}
 merror.attributes = 
-  CommonAtt, CommonPresAtt
+  GlobalAttributes
 
 mpadded = element mpadded {mpadded.attributes, ImpliedMrow}
 mpadded.attributes = 
-  CommonAtt, CommonPresAtt,
+  GlobalAttributes,
   attribute height {mpadded-length}?,
   attribute depth {mpadded-length}?,
   attribute width {mpadded-length}?,
@@ -202,47 +170,44 @@ mpadded.attributes =
 
 mphantom = element mphantom {mphantom.attributes, ImpliedMrow}
 mphantom.attributes = 
-  CommonAtt, CommonPresAtt
+  GlobalAttributes
 
 menclose = element menclose {menclose.attributes, ImpliedMrow}
 menclose.attributes = 
-  CommonAtt, CommonPresAtt,
+  GlobalAttributes,
   attribute notation {notationstyle}?
 
 msub = element msub {msub.attributes, MathExpression, MathExpression}
 msub.attributes = 
-  CommonAtt, CommonPresAtt,
+  GlobalAttributes,
   attribute subscriptshift {length}?
 
 msup = element msup {msup.attributes, MathExpression, MathExpression}
 msup.attributes = 
-  CommonAtt, CommonPresAtt,
+  GlobalAttributes,
   attribute superscriptshift {length}?
 
 msubsup = element msubsup {msubsup.attributes, MathExpression, MathExpression, MathExpression}
 msubsup.attributes = 
-  CommonAtt, CommonPresAtt,
+  GlobalAttributes,
   attribute subscriptshift {length}?,
   attribute superscriptshift {length}?
 
 munder = element munder {munder.attributes, MathExpression, MathExpression}
 munder.attributes = 
-  CommonAtt, CommonPresAtt,
-  attribute accentunder {"true" | "false"}?,
-  attribute align {"left" | "right" | "center"}?
+  GlobalAttributes,
+  attribute accentunder {"true" | "false"}?
 
 mover = element mover {mover.attributes, MathExpression, MathExpression}
 mover.attributes = 
-  CommonAtt, CommonPresAtt,
-  attribute accent {"true" | "false"}?,
-  attribute align {"left" | "right" | "center"}?
+  GlobalAttributes,
+  attribute accent {"true" | "false"}?
 
 munderover = element munderover {munderover.attributes, MathExpression, MathExpression, MathExpression}
 munderover.attributes = 
-  CommonAtt, CommonPresAtt,
+  GlobalAttributes,
   attribute accent {"true" | "false"}?,
-  attribute accentunder {"true" | "false"}?,
-  attribute align {"left" | "right" | "center"}?
+  attribute accentunder {"true" | "false"}?
 
 mmultiscripts = element mmultiscripts {mmultiscripts.attributes,
 				       MathExpression,
@@ -253,9 +218,8 @@ mmultiscripts.attributes =
 
 mtable = element mtable {mtable.attributes, TableRowExpression*}
 mtable.attributes = 
-  CommonAtt, CommonPresAtt,
-  attribute frame {linestyle}?,
-  attribute displaystyle {"true" | "false"}?
+  GlobalAttributes,
+  attribute frame {linestyle}?
 
 mlabeledtr = element mlabeledtr {mlabeledtr.attributes, mtd+}
 mlabeledtr.attributes = 
@@ -263,12 +227,12 @@ mlabeledtr.attributes =
 
 mtr = element mtr {mtr.attributes, mtd*}
 mtr.attributes = 
-  CommonAtt, CommonPresAtt,
+  GlobalAttributes,
   attribute rowalign {"top" | "bottom" | "center" | "baseline" | "axis"}?
 
 mtd = element mtd {mtd.attributes, ImpliedMrow}
 mtd.attributes = 
-  CommonAtt, CommonPresAtt,
+  GlobalAttributes,
   attribute rowspan {xsd:positiveInteger}?,
   attribute columnspan {xsd:positiveInteger}?,
   attribute rowalign {"top" | "bottom" | "center" | "baseline" | "axis"}?,
@@ -276,7 +240,6 @@ mtd.attributes =
 
 maction = element maction {maction.attributes, MathExpression+}
 maction.attributes = 
-  CommonAtt, CommonPresAtt,
+  GlobalAttributes,
   attribute actiontype {text},
   attribute selection {xsd:positiveInteger}?
-
