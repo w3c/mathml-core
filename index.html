@@ -501,113 +501,97 @@
       </section>
       <section>
         <h3>Text and Math layout</h3>
-        <section>
-          <h4>Open Font Format</h4>
-          <p data-tests="relations/text-and-math/use-typo-metrics-1.html">
-            Because math fonts generally contain very tall glyphs such as big integrals,
-            using typographic metrics is important to avoid excessive line spacing of text.
-            This behavior is specified in math fonts using the USE_TYPO_METRICS flag from
-            the OS/2 table
-            [[OPEN-FONT-FORMAT]] and user agents must honor that flag.
-          </p>
-          <p>
-            Mathematical formulas can be viewed as an extension of standard text layout
-            and thus user agents must be able to perfom
-            complex text layout using fonts under the Open Font Format
-            [[OPEN-FONT-FORMAT]]. In particular, they must implement bidirectional
-            rendering and shaping of Arabic scripts.
-          </p>
-          <p>
-            Mathematical formulas may mix standard text with other graphical outlines
-            (e.g. fraction or top radical bars). For consistency, these outlines should
-            be rendered the same way as normal text. In particular, user agents must be
-            able to apply <code>visibility</code> and <code>color</code> CSS properties to them. They may
-            also support similar CSS properties for text such as <code>text-shadow</code> or
-            <code>opacity</code>.
-          </p>
-          <p>
-            Good mathematical rendering requires use of non-Unicode glyphs. Mathematical
-            fonts may only provide these glyphs when the <code class="MATH">math</code>
-            script tag is enabled and so user agents must ensure that the text within
-            MathML token elements is rendered with that script tag. Some characters like
-            primes already have script size by default and hence would be too small when
-            used in a script position.
-            Hence user agents must support glyph selections via the OpenType font feature
-            <code class="MATH">ssty</code> (Script Style) in order to display such
-            “prescripted” characters with the appropriate size.
-            For bidirectional layout, Unicode defines character-level mirroring
-            to transform a character into its mirrored form,
-            for example U+0028 LEFT PARENTHESIS into U+0029 RIGHT PARENTHESIS.
-            User agents must also support the OpenType font feature
-            <code>rtlm</code> (Right-to-left mirrored forms)
-            to allow glyph-level mirroring in cases where character-level is not enough
-            [[OPEN-FONT-FORMAT]].
-            At the time of writing, Unicode does not distinguish between Chancery and
-            Spencerian style for the Unicode MATHEMATICAL SCRIPT characters. Some
-            mathematical fonts rely on <code class="MATH">salt</code> or <code>ssXY</code> properties to provide
-            both styles. User agents may support the CSS <code>font-variant-alternates</code>
-            property and corresponding OpenType font features to enable page authors
-            to get access to these styles [[CSS-FONTS-3]]
-            [[OPEN-FONT-FORMAT]].
-          </p>
-          <p>
-            User agents must be able to read information from the
-            OpenType MATH table [[OPEN-FONT-FORMAT]].
-            In particular they must be able to read the values from the
-            <code class="MATH">MathConstants</code> subtable.
-            They must also be able to use the <code class="MATH">MathVariants</code> subtable
-            to solve the following problem: given a particular default glyph shape and a
-            certain width or height, find a variant shape glyph (or a construct created by
-            putting several glyphs together) that has the required measurement.
-            More information are provided in
-            <a href="operator-fence-separator-or-accent-mo"></a>.
-          </p>
-        </section>
-        <section>
-          <h4>LaTeX</h4>
-          <p>
-            Mathematical rendering rules in this document are implicitly based on
-            MathML, OpenType MATH table and the TeXBook
-            [[MATHML3] [[OPEN-FONT-FORMAT]] [[?TEXBOOK]]. In this section, we
-            describe more precisely some rules from the TeXBook.
-          </p>
-          <p>
-            In addition to concepts similar to MathML’s <code>displaystyle</code> and
-            <code>scriptlevel</code>, LaTeX has
-            a “cramped” property, which is involved in the determination of script shifts.
-            It is initially unset on the <code>math</code> element and in general
-            all the children inherits the “cramped” property from their parent.
-            However, it is set to true in the following children:
-          </p>
-          <ol>
-            <li>The denominator of an <a><code>&lt;mfrac&gt;</code></a> element.
-            <li>The subscripts of the <code>msub</code>, <code>msubsup</code>,
-              <code>munder</code> and <code>munderover</code> elements.
-              See <a href="#script-and-limit-schemata"></a>.
-            </li>
-            <li>The overscript of the
-              <code>mover</code> and <code>munderover</code> elements when it is an <code>accent</code> per
-              the MathML specification.
-              See <a href="#script-and-limit-schemata"></a>.
-            </li>
-            <li>
-              The children of the <code>msqrt</code> and <code>mroot</code>
-              elements.
-            </li>
-          </ol>
-          <p>
-            To implement math spacing, the TeXBook defines eight basic types
-            (<code>Ord</code> for ordinary atoms, <code>Op</code> for large operators,
-            <code>Bin</code> for binary operations, <code>Rel</code> for relations,
-            <code>Open</code> for opening fences, <code>Close</code> for closing fences,
-            <code>Punct</code> for punctuations and <code>Inner</code> for a delimited subformula) and
-            define an inter space for each pair of such types. In the present document,
-            we only follow the spacing algorithm of MathML 3: by default the inter space
-            is always zero and the spacing is produced by spacing elements like
-            <code>mspace</code>, <code>mphantom</code> or <code>mpadded</code> or by the leading and trailing
-            space around embellished operators.
-          </p>
-        </section>
+        <p data-tests="relations/text-and-math/use-typo-metrics-1.html">
+          Because math fonts generally contain very tall glyphs such as big integrals,
+          using typographic metrics is important to avoid excessive line spacing of text.
+          This behavior is specified in math fonts using the USE_TYPO_METRICS flag from
+          the OS/2 table
+          [[OPEN-FONT-FORMAT]] and user agents must honor that flag.
+        </p>
+        <p>
+          Mathematical formulas can be viewed as an extension of standard text layout
+          and thus user agents must be able to perfom
+          complex text layout using fonts under the Open Font Format
+          [[OPEN-FONT-FORMAT]]. In particular, they must implement bidirectional
+          rendering and shaping of Arabic scripts.
+        </p>
+        <p>
+          Mathematical formulas may mix standard text with other graphical outlines
+          (e.g. fraction or top radical bars). For consistency, these outlines should
+          be rendered the same way as normal text. In particular, user agents must be
+          able to apply <code>visibility</code> and <code>color</code> CSS properties to them. They may
+          also support similar CSS properties for text such as <code>text-shadow</code> or
+          <code>opacity</code>.
+        </p>
+        <p>
+          Good mathematical rendering requires use of non-Unicode glyphs. Mathematical
+          fonts may only provide these glyphs when the <code class="MATH">math</code>
+          script tag is enabled and so user agents must ensure that the text within
+          MathML token elements is rendered with that script tag. Some characters like
+          primes already have script size by default and hence would be too small when
+          used in a script position.
+          Hence user agents must support glyph selections via the OpenType font feature
+          <code class="MATH">ssty</code> (Script Style) in order to display such
+          “prescripted” characters with the appropriate size.
+          For bidirectional layout, Unicode defines character-level mirroring
+          to transform a character into its mirrored form,
+          for example U+0028 LEFT PARENTHESIS into U+0029 RIGHT PARENTHESIS.
+          User agents must also support the OpenType font feature
+          <code>rtlm</code> (Right-to-left mirrored forms)
+          to allow glyph-level mirroring in cases where character-level is not enough
+          [[OPEN-FONT-FORMAT]].
+          At the time of writing, Unicode does not distinguish between Chancery and
+          Spencerian style for the Unicode MATHEMATICAL SCRIPT characters. Some
+          mathematical fonts rely on <code class="MATH">salt</code> or <code>ssXY</code> properties to provide
+          both styles. User agents may support the CSS <code>font-variant-alternates</code>
+          property and corresponding OpenType font features to enable page authors
+          to get access to these styles [[CSS-FONTS-3]]
+          [[OPEN-FONT-FORMAT]].
+        </p>
+        <p>
+          User agents must be able to read information from the
+          OpenType MATH table [[OPEN-FONT-FORMAT]].
+          In particular they must be able to read the values from the
+          <code class="MATH">MathConstants</code> subtable.
+          They must also be able to use the <code class="MATH">MathVariants</code> subtable
+          to solve the following problem: given a particular default glyph shape and a
+          certain width or height, find a variant shape glyph (or a construct created by
+          putting several glyphs together) that has the required measurement.
+          More information are provided in
+          <a href="operator-fence-separator-or-accent-mo"></a>.
+        </p>
+      </section>
+      <section>
+        <h3>Cramped Elements</h3>
+        <p>
+          A MathML element is
+          <dfn data-dfn-type="cramped" id="property-cramped">cramped</dfn> if
+          any of the following conditions is true:
+        </p>
+        <ol>
+          <li>Its parent is <a>cramped</a>.</li>
+          <li>Its parent is a <a><code>&lt;msqrt&gt;</code></a> or
+              <a><code>&lt;mroot&gt;</code></a> element.
+          </li>
+          <li>It is the denominator of a <a><code>&lt;mfrac&gt;</code></a>
+            element.</li>
+          <li>
+            It is the subscript of a
+            <a><code>&lt;msub&gt;</code></a> or
+            <a><code>&lt;msubsup&gt;</code></a> element.
+          </li>
+          <li>
+            It is the underscript of a
+            <a><code>&lt;munder&gt;</code></a> or
+            <a><code>&lt;munderover&gt;</code></a> element.
+          </li>
+          <li>It is the overscript of the
+            <code>&lt;mover&gt;</code> and <code>&lt;munderover&gt;</code>
+            elements and
+            is an <a>embellished operator</a> with
+            the <a>accent</a> property.
+          </li>
+        </ol>
       </section>
     </section>
     <section>
@@ -1653,7 +1637,7 @@ msubsup > :not(:first-child) {
     <ol>
       <li><code>SuperShift</code> is at least
         <code class="MATH">SuperscriptShiftUpCramped</code> if the <code>msup</code> element is
-        cramped (<a href="#latex"></a>) or at least
+        <a>cramped</a> or at least
         <code class="MATH">SuperscriptShiftUp</code> otherwise.
       </li>
       <li>
@@ -1692,7 +1676,7 @@ msubsup > :not(:first-child) {
     <ol>
       <li><code>SubShift</code> is at least
         <code class="MATH">SuperscriptShiftUpCramped</code> if the <code>msup</code> element is
-        cramped (<a href="#latex"></a>) or at least
+        <a>cramped</a> or at least
         <code class="MATH">SuperscriptShiftUp</code> otherwise.
       </li>
       <li>
@@ -1704,7 +1688,7 @@ msubsup > :not(:first-child) {
           the baseline of the superscript is at most <code class="MATH">SuperscriptBaselineDropMax</code>.</li>
       <li><code>SubShift</code> is at least
         <code class="MATH">SuperscriptShiftUpCramped</code> if the <code>msup</code> element is
-        cramped (<a href="#latex"></a>) or at least
+        <a>cramped</a> or at least
         <code class="MATH">SuperscriptShiftUp</code> otherwise.
       </li>
       <li>The bottom of the superscript <code>SuperBottom</code> with respect to the
