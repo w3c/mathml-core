@@ -17,7 +17,7 @@
 
 <xsl:template  match="/">
 
-<xsl:result-document href="op-dict.html">
+<xsl:result-document href="operator-dictionary.html">
 
  <xsl:variable  name="c" select="'priority','lspace','rspace'"/>
  <xsl:variable  name="p" select="'fence','stretchy','separator','accent','largeop','movablelimits', 'symmetric'"/>
@@ -96,7 +96,7 @@
 <!-- combining character mapping -->
 
 
-<xsl:result-document href="comb-table.html">
+<xsl:result-document href="combining-operators.html">
  <section id="comb-comb">
   <h3>Combining</h3>
   <table>

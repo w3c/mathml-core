@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="style.css" type="text/css"/>
     <script src="https://www.w3.org/Tools/respec/respec-w3c-common"
             class="remove"></script>
+    <script src="tables/sorttable.js"></script>
     <script class="remove">
       var respecConfig = {
           specStatus: "ED",
@@ -94,10 +95,10 @@
                   ],
                   href: "https://github.com/mathml-refresh/mathml-css-proposals/blob/master/math-script-level-and-math-style-explainer.md"
               },
-          }
+          },
+          postProcess: [sorttable.init]
       };
     </script>
-    <script src="sorttable.js"></script>
   </head>
   <body>
     <section id="abstract">
@@ -2262,7 +2263,7 @@ mlabeledtr > mtd:first-child {
   </section>
   <section>
     <h3>Operator dictionary entries</h3>
-    <div data-include="op-dict.html"></div>
+    <div data-include="tables/operator-dictionary.html"></div>
   </section>
 </section>
 <section>
@@ -2271,7 +2272,7 @@ mlabeledtr > mtd:first-child {
     The following table gives mappings between spacing and non spacing
     characters when used in MathML accent constructs.
   </p>
-  <div data-include="comb-table.html"></div>
+  <div data-include="tables/combining-operators.html"></div>
 </section>
 <section class="appendix">
   <h2>Conformance</h2>
