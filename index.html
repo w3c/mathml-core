@@ -357,7 +357,7 @@
           definition in [[CSS-FONTS-3]].
         </p>
         <div class="note">
-          Many of the above attributes are not useful in CSS-aware
+          The above attributes are not useful in CSS-aware
           environments, but are preserved for backward compatibility reasons.
         </div>
         </section>
@@ -1217,82 +1217,130 @@
   leading and trailing spaces must be added around the fraction.
 </p>
     </section>
-</section>
-<section>
-  <h3>Radicals <code>&lt;msqrt&gt;</code>, <code>&lt;mroot&gt;</code></h3>
-  <p>
-    The
-    <dfn data-dfn-type="msqrt" id="element-msqrt"><code>&lt;msqrt&gt;</code></dfn>
-    and
-    <dfn data-dfn-type="mroot" id="element-mroot"><code>&lt;mroot&gt;</code></dfn>
-    elements construct radicals. The <code>&lt;msqrt&gt;</code> element is used for square
-    roots, while the <code>&lt;mroot&gt;</code> element is used to draw radicals with indices,
-    e.g. a cube root. The syntax for these elements is:
-  </p>
-  <pre>&lt;msqrt&gt; base &lt;/msqrt&gt;
-    &lt;mroot&gt; base index &lt;/mroot&gt;</pre>
-  <p>
-    The <a><code>displaystyle</code></a> and
-    <a><code>scriptlevel</code></a> changes must be achieved by the rules
-    described in <a href="#user-agent-stylesheet"></a>.
-  </p>
-  <p>
-    The line thickness of the overbar is given by
-    <code class="MATH">RadicalRuleThickness</code>.
-    The gap between the overbar and base is given by
-    <code class="MATH">RadicalVerticalGap</code>
-    in inline style and <code class="MATH">RadicalDisplayStyleVerticalGap</code>
-    in display style.
-    The ascent above the overbase is given by <code class="MATH">RadicalExtraAscender</code>.
-    The surd is drawn by trying to vertically stretch the character
-    U+221A SQUARE ROOT
-    to at least the sum of the ink height of the base, the radical gap and the
-    radical rule thickness. If the CSS <code>direction</code> is set to right-to-left,
-    then the surd is actually drawn from the glyph obtained by mirroring
-    U+221A SQUARE ROOT via the <code>rtlm</code> OpenType feature.
-    The color and visibility of the surd and overbar must honor the values given by
-    the <code>color</code> and <code>visibility</code> CSS properties on the <code>&lt;msqrt&gt;</code> element.
-  </p>
-  <p>
-    The <code>&lt;msqrt&gt;</code> element is laid out as shown on
-    <a href="#figure-box-msqrt"></a>.
-    The width is given by the sum of the width of the surd and of the base.
-    The baseline of the square root matches the baseline of the base.
-    The ink box is determined from the ink boxes of the surd and base while the
-    logical box takes into account the extra ascender
-  </p>
-  <figure id="figure-box-msqrt">
-    <img src="figures/msqrtbox.svg"/>
-    <figcaption>Box model for the <code>&lt;msqrt&gt;</code> element</figcaption>
-  </figure>
-  <p>
-    The <code>&lt;mroot&gt;</code> element is laid out as shown on <a href="box-model-mroot"></a>.
-    We start by ignoring the root index and we layout the base and surd as
-    shown on figure <a href="#figure-box-msqrt"></a> to obtain a box B.
-    The horizontal metrics of the <code>&lt;mroot&gt;</code> element are obtained by putting
-    <code class="MATH">RadicalKernBeforeDegree</code>
-    before the root index, then placing the root index, then a kerning
-    of <code class="MATH">RadicalKernAfterDegree</code>
-    after the root index and finally placing B. In general
-    the kerning before the root index is positive while the kerning after it is
-    negative,
-    which means that the root element will have some space before it and that the
-    root index will overlap the surd.
-    For the vertical metrics of the <code>&lt;mroot&gt;</code> element, we first take the baseline
-    of B as the baseline. We graduate the ink height of B with a linear
-    scale going from the bottom at coordinate 0 to the top at coordinate 1.
-    Then the ink bottom of the root index will
-    be vertically positioned at coordinate
-    <code class="MATH">RadicalDegreeBottomRaisePercent</code>.
-    Finally, we take into consideration the box of the root index and B to deduce
-    the metrics for the whole box of the <code>&lt;mroot&gt;</code> element.
-  </p>
-  <figure id="figure-box-mroot">
-    <img src="figures/mrootbox.svg"/>
-    <figcaption>Box model for the <code>&lt;mroot&gt;</code> element</figcaption>
-  </figure>
-</section>
-<section>
+  </section>
+  <section>
+    <h3>Radicals <code>&lt;msqrt&gt;</code>, <code>&lt;mroot&gt;</code></h3>
+    <p>
+      The
+      <dfn data-dfn-type="msqrt" id="element-msqrt"><code>&lt;msqrt&gt;</code></dfn>
+      and
+      <dfn data-dfn-type="mroot" id="element-mroot"><code>&lt;mroot&gt;</code></dfn>
+      elements construct radicals. The <code>&lt;msqrt&gt;</code> element is
+      used for square roots, while the <code>&lt;mroot&gt;</code> element is
+      used to draw radicals with indices, e.g. a cube root.
+    </p>
+    <p>
+    </p>
+    <p>
+      The <code>&lt;msqrt&gt;</code> and <code>&lt;mroot&gt;</code>
+      elements accept the attributes described
+      in <a href="#global-attributes"></a>.
+    </p>
+    <p>
+      The <code>&lt;mroot&gt;</code> element sets
+      increments scriptlevel by 2, and sets displaystyle to "false" in all
+      but its first child.
+      The <a href="#user-agent-stylesheet">user agent stylesheet</a>
+      must contain the following rule in order to implement that behavior:
+    </p>
+    <pre data-include="user-agent-stylesheet/mroot.css"></pre>
+    <div class="issue" data-number="15">Decide how to handle invalid
+      mroot.</div>
+    <p>
+      If the <code>&lt;mroot&gt;</code> has less or more than two children,
+      its layout algorithm
+      is the same as the <a><code>&lt;mrow&gt;</code></a> element.
+      Otherwise, the first child is called
+      <dfn data-dfn-type="base" id="mroot-base">base</dfn> and
+      the second child is called
+      <dfn data-dfn-type="index" id="mroot-index">index</dfn>
+      and its layout algorithm is explained below.
+      The children of the <code>&lt;msqrt&gt;</code> element are laid out
+      using the algorithm of the <a><code>&lt;mrow&gt;</code></a> element
+      to produce a box that we will also call the base.
+    </p>
+    <section>
+      <h4>Radical symbol</h4>
+      <p>
+        The radical symbol must only be painted if the
+        <a data-cite="CSS2#visibility"><code>visibility</code></a> of
+        the <code>&lt;msqrt&gt;</code> or <code>&lt;mroot&gt;</code>
+        element is <code>visible</code>.
+        In that case, the radical symbol must be painted with the
+        <a data-cite="CSS-COLOR-3#foreground"><code>color</code></a>
+        of that element.
+      </p>
+      <p>
+        The line thickness of the overbar is given by
+        <code class="MATH">RadicalRuleThickness</code>.
+        The gap between the overbar and base is given by
+        <code class="MATH">RadicalVerticalGap</code>
+        in inline style and
+        <code class="MATH">RadicalDisplayStyleVerticalGap</code>
+        in display style.
+        The ascent above the overbase is given by
+        <code class="MATH">RadicalExtraAscender</code>.
+      </p>
+      <p>
+        The surd is drawn by trying to vertically stretch the character
+        U+221A SQUARE ROOT
+        to at least the sum of the ink height of the base, the radical gap and
+        the radical rule thickness. If the CSS <code>direction</code> is set to
+        right-to-left,
+        then the surd is actually drawn from the glyph obtained by mirroring
+        U+221A SQUARE ROOT via the <code>rtlm</code> OpenType feature.
+      </p>
+      <section>
+        <h4>Square root</h4>
+        <p>
+          The <code>&lt;msqrt&gt;</code> element is laid out as shown on
+          <a href="#figure-box-msqrt"></a>.
+          The width is given by the sum of the width of the surd and of the
+          base.
+          The baseline of the square root matches the baseline of the base.
+          The ink box is determined from the ink boxes of the surd and base
+          while the logical box takes into account the extra ascender.
+        </p>
+        <figure id="figure-box-msqrt">
+          <img src="figures/msqrtbox.svg"/>
+          <figcaption>Box model for the <code>&lt;msqrt&gt;</code> element</figcaption>
+        </figure>
+      </section>
+      <section>
+        <h4>Root with index</h4>
+        <p>
+          The <code>&lt;mroot&gt;</code> element is laid out as shown on
+          <a href="#figure-box-mroot"></a>.
+          We start by ignoring the root index and we layout the base and surd as
+          shown on figure <a href="#figure-box-msqrt"></a> to obtain a box B.
+          The horizontal metrics of the <code>&lt;mroot&gt;</code> element are
+          obtained by putting
+          <code class="MATH">RadicalKernBeforeDegree</code>
+          before the root index, then placing the root index, then a kerning
+          of <code class="MATH">RadicalKernAfterDegree</code>
+          after the root index and finally placing B. In general
+          the kerning before the root index is positive while the kerning after
+          it is negative,
+          which means that the root element will have some space before it and
+          that the root index will overlap the surd.
+          For the vertical metrics of the <code>&lt;mroot&gt;</code> element, we
+          first take the baseline
+          of B as the baseline. We graduate the ink height of B with a linear
+          scale going from the bottom at coordinate 0 to the top at coordinate
+          1. Then the ink bottom of the root index will
+          be vertically positioned at coordinate
+          <code class="MATH">RadicalDegreeBottomRaisePercent</code>.
+          Finally, we take into consideration the box of the root index and B to
+          deduce the metrics for the whole box of the <code>&lt;mroot&gt;</code>
+          element.
+        </p>
+        <figure id="figure-box-mroot">
+          <img src="figures/mrootbox.svg"/>
+          <figcaption>Box model for the <code>&lt;mroot&gt;</code> element</figcaption>
+        </figure>
+      </section>
+    </section>
+  <section>
   <h3>Style Change <code>&lt;mstyle&gt;</code></h3>
   <p>
     Historically, the
@@ -2294,6 +2342,7 @@ mlabeledtr > mtd:first-child {
 <span data-include="user-agent-stylesheet/tables.css"></span>
 /* Other rules for scriptlevel and displastyle */
 <span data-include="user-agent-stylesheet/mfrac.css"></span>
+<span data-include="user-agent-stylesheet/mroot.css"></span>
 <span data-include="user-agent-stylesheet/other.css"></span>
 </pre>
 </section>

@@ -1,0 +1,4 @@
+mroot > :not(:first-child) {
+  math-script-level: add(2);
+  math-style: inline;
+}
