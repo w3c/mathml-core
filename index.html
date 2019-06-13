@@ -1290,56 +1290,57 @@
         then the surd is actually drawn from the glyph obtained by mirroring
         U+221A SQUARE ROOT via the <code>rtlm</code> OpenType feature.
       </p>
-      <section>
-        <h4>Square root</h4>
-        <p>
-          The <code>&lt;msqrt&gt;</code> element is laid out as shown on
-          <a href="#figure-box-msqrt"></a>.
-          The width is given by the sum of the width of the surd and of the
-          base.
-          The baseline of the square root matches the baseline of the base.
-          The ink box is determined from the ink boxes of the surd and base
-          while the logical box takes into account the extra ascender.
-        </p>
-        <figure id="figure-box-msqrt">
-          <img src="figures/msqrtbox.svg"/>
-          <figcaption>Box model for the <code>&lt;msqrt&gt;</code> element</figcaption>
-        </figure>
-      </section>
-      <section>
-        <h4>Root with index</h4>
-        <p>
-          The <code>&lt;mroot&gt;</code> element is laid out as shown on
-          <a href="#figure-box-mroot"></a>.
-          We start by ignoring the root index and we layout the base and surd as
-          shown on figure <a href="#figure-box-msqrt"></a> to obtain a box B.
-          The horizontal metrics of the <code>&lt;mroot&gt;</code> element are
-          obtained by putting
-          <code class="MATH">RadicalKernBeforeDegree</code>
-          before the root index, then placing the root index, then a kerning
-          of <code class="MATH">RadicalKernAfterDegree</code>
-          after the root index and finally placing B. In general
-          the kerning before the root index is positive while the kerning after
-          it is negative,
-          which means that the root element will have some space before it and
-          that the root index will overlap the surd.
-          For the vertical metrics of the <code>&lt;mroot&gt;</code> element, we
-          first take the baseline
-          of B as the baseline. We graduate the ink height of B with a linear
-          scale going from the bottom at coordinate 0 to the top at coordinate
-          1. Then the ink bottom of the root index will
-          be vertically positioned at coordinate
-          <code class="MATH">RadicalDegreeBottomRaisePercent</code>.
-          Finally, we take into consideration the box of the root index and B to
-          deduce the metrics for the whole box of the <code>&lt;mroot&gt;</code>
-          element.
-        </p>
-        <figure id="figure-box-mroot">
-          <img src="figures/mrootbox.svg"/>
-          <figcaption>Box model for the <code>&lt;mroot&gt;</code> element</figcaption>
-        </figure>
-      </section>
     </section>
+    <section>
+      <h4>Square root</h4>
+      <p>
+        The <code>&lt;msqrt&gt;</code> element is laid out as shown on
+        <a href="#figure-box-msqrt"></a>.
+        The width is given by the sum of the width of the surd and of the
+        base.
+        The baseline of the square root matches the baseline of the base.
+        The ink box is determined from the ink boxes of the surd and base
+        while the logical box takes into account the extra ascender.
+      </p>
+      <figure id="figure-box-msqrt">
+        <img src="figures/msqrtbox.svg"/>
+        <figcaption>Box model for the <code>&lt;msqrt&gt;</code> element</figcaption>
+        </figure>
+    </section>
+    <section>
+      <h4>Root with index</h4>
+      <p>
+        The <code>&lt;mroot&gt;</code> element is laid out as shown on
+        <a href="#figure-box-mroot"></a>.
+        We start by ignoring the root index and we layout the base and surd as
+        shown on figure <a href="#figure-box-msqrt"></a> to obtain a box B.
+        The horizontal metrics of the <code>&lt;mroot&gt;</code> element are
+        obtained by putting
+        <code class="MATH">RadicalKernBeforeDegree</code>
+        before the root index, then placing the root index, then a kerning
+        of <code class="MATH">RadicalKernAfterDegree</code>
+        after the root index and finally placing B. In general
+        the kerning before the root index is positive while the kerning after
+        it is negative,
+        which means that the root element will have some space before it and
+        that the root index will overlap the surd.
+        For the vertical metrics of the <code>&lt;mroot&gt;</code> element, we
+        first take the baseline
+        of B as the baseline. We graduate the ink height of B with a linear
+        scale going from the bottom at coordinate 0 to the top at coordinate
+        1. Then the ink bottom of the root index will
+        be vertically positioned at coordinate
+        <code class="MATH">RadicalDegreeBottomRaisePercent</code>.
+        Finally, we take into consideration the box of the root index and B to
+        deduce the metrics for the whole box of the <code>&lt;mroot&gt;</code>
+        element.
+      </p>
+      <figure id="figure-box-mroot">
+        <img src="figures/mrootbox.svg"/>
+        <figcaption>Box model for the <code>&lt;mroot&gt;</code> element</figcaption>
+      </figure>
+    </section>
+  </section>
   <section>
   <h3>Style Change <code>&lt;mstyle&gt;</code></h3>
   <p>
