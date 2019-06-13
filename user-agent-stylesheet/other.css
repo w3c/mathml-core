@@ -9,18 +9,16 @@ mfrac > * {
   math-style: inline;
 }
 mroot > :not(:first-child) {
-  math-script-level: increment-by 2;
+  math-script-level: add(2);
   math-style: inline;
 }
 msub > :not(:first-child),
 msup > :not(:first-child),
 msubsup > :not(:first-child),
-mmultiscripts > :not(:first-child) {
-  math-script-level: increment-by 1;
-  math-style: inline;
-}
+mmultiscripts > :not(:first-child),
 munder > :not(:first-child),
 mover > :not(:first-child),
 munderover > :not(:first-child) {
+  math-script-level: add(1);
   math-style: inline;
 }
