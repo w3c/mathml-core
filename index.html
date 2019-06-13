@@ -586,10 +586,11 @@
         <h2>Introduction</h2>
         <section>
           <h3>Box Model</h3>
+          <div class="issue" data-number="15">Interoperable handling of invalid markup</div>
           <p>
             User agents must also follow the rules described in section 4.7.14
             Embedded content, MathML of [[HTML]], in particular the equivalence with
-            implicit <code>mtext</code> and <code>merror</code> to handle non-conforming MathML markup.
+            implicit <code>&lt;mtext&gt;</code> and <code>&lt;merror&gt;</code> to handle non-conforming MathML markup.
           </p>
           <p>
             MathML elements have the following box model. The <code>&lt;math&gt;</code> root may have
@@ -681,7 +682,7 @@
             The present document assumes that W, w, a, b, A, B, italic correction
             and top accent attachment are nonnegative values. If computations result
             in negative values, then they must be interpreted as being zero.
-            Note that some MathML elements such as <code>mspace</code> or <code>mpadded</code> may set box
+            Note that some MathML elements such as <code>&lt;mspace&gt;</code> or <code>&lt;mpadded&gt;</code> may set box
             dimensions to negative values.
           </p>
         </section>
@@ -710,7 +711,7 @@
   As described in
   <a href="#adjust-space-around-content-mpadded"></a>,
   this adds some restrictions on the possible pseudo-units
-  of the <code>mpadded</code> element. As indicated in
+  of the <code>&lt;mpadded&gt;</code> element. As indicated in
   <a href="#operator-fence-separator-or-accent-mo"></a>,
   the width of size variants or of the glyph assembly used for vertical stretchy
   operators may depend on the target size to cover. Taking the maximum widths
@@ -735,7 +736,7 @@
   arrive at the anonymous <code>&lt;mrow&gt;</code> child of <code>&lt;math&gt;</code> and <code>&lt;mtd&gt;</code>
   elements.
   That way, the intrinsic width of this anonymous <code>&lt;mrow&gt;</code> is well-defined
-  for the layout of <code>mtable</code> elements and of the containers of the
+  for the layout of <code>&lt;mtable&gt;</code> elements and of the containers of the
   <code>&lt;math&gt;</code> element. Similarly, the final layout of this anonymous
   <code>&lt;mrow&gt;</code> is already done when we want to perform the one of its ancestors.
 </p>
@@ -757,8 +758,6 @@
       The <code>&lt;mi&gt;</code> element accepts the attributes described
       in <a href="#global-attributes"></a>. Its layout algorithm is
       the same as the <a>&lt;mtext&gt;</a> element.
-    </p>
-    <p>
       The
       <a href="#user-agent-stylesheet">user agent stylesheet</a>
       must contain the following property in order to implement automatic
@@ -824,7 +823,7 @@
     <p>
       Many properties of an <code>&lt;mo&gt;</code> element can be specified
       via attribute on that element. The default value of the <code>form</code>
-      of an <code>mo</code> element is obtained as described in section
+      of an <code>&lt;mo&gt;</code> element is obtained as described in section
       “Default value of the form attribute” of
       [[MATHML3]]. From the
       <code>form</code> and the text content, we can deduce other
@@ -840,7 +839,7 @@
     <p>
       In most cases, the <code>&lt;mo&gt;</code> element is treated as an
       <a>&lt;mtext&gt;</a> element.
-      However, when an <code>mo</code> element with a single character must be
+      However, when an <code>&lt;mo&gt;</code> element with a single character must be
       displayed as a large operator then instead we use the
       <code class="MATH">MathVariants</code>
       table to try and find a glyph of height at least
@@ -909,7 +908,7 @@
       <code>&lt;mtext&gt;</code> element is intended to denote commentary text.
     </p>
     <p>
-      The <code>&lt;mn&gt;</code> element accepts the attributes described
+      The <code>&lt;mtext&gt;</code> element accepts the attributes described
       in <a href="#global-attributes"></a>.
     </p>
     <p>
@@ -940,12 +939,12 @@
       OpenType feature on text nodes unless it contradicts what the page author
       has specified with the <code>font-feature-settings</code> CSS property.
     </p>
+    <div class="issue"  data-number="19">Add detailed rules for the ssty OpenType feature</div>
     <p>
       If <code>&lt;mtext&gt;</code> is used at a non-zero scriptlevel then user
       agents must enable the <code class="MATH">ssty</code> OpenType feature on
       text nodes unless it contradicts what the page author has specified with
       the <code>font-feature-settings</code> CSS property.
-      <a href="https://github.com/mathml-refresh/mathml/issues/19">https://github.com/mathml-refresh/mathml/issues/19</a>
     </p>
     <p>
       In the most general case, the <code>&lt;mtext&gt;</code> element may contain
@@ -976,7 +975,7 @@
       <li><code>depth</code></li>
     </ul>
     <p>
-      The <code>mspace</code> element is laid out as shown on
+      The <code>&lt;mspace&gt;</code> element is laid out as shown on
       <a href="#figure-box-mspace"></a>. The logical box is determined by the
       <code>height</code>, <code>depth</code> and <code>width</code> attributes
       defined in [[MATHML3]]. The
@@ -984,7 +983,7 @@
     </p>
     <figure id="figure-box-mspace">
       <img src="figures/mspacebox.svg"/>
-      <figcaption>Box model for the <code>mspace</code> element</figcaption>
+      <figcaption>Box model for the <code>&lt;mspace&gt;</code> element</figcaption>
     </figure>
   </section>
   <section>
@@ -1020,15 +1019,15 @@
     <p>
       The
       <dfn data-dfn-type="mrow" id="element-mrow"><code>&lt;mrow&gt;</code></dfn>
-      element is used to group together any number of sub-expressions, usually consisting of one or more <code>mo</code> elements acting as "operators" on one or more other expressions that are their "operands".
+      element is used to group together any number of sub-expressions, usually consisting of one or more <code>&lt;mo&gt;</code> elements acting as "operators" on one or more other expressions that are their "operands".
     </p>
     <p>
       The <code>dir</code> attribute must be mapped to the <code>direction</code> CSS property.
       The current version of this document does not define any linebreaking algorithm
-      for the <code>mrow</code> element, user agents may just ignore linebreaking rules.
+      for the <code>&lt;mrow&gt;</code> element, user agents may just ignore linebreaking rules.
     </p>
     <p>
-      User agents must follow the rules for inferred <code>mrow</code>s described in
+      User agents must follow the rules for inferred <code>&lt;mrow&gt;</code>s described in
       [[MATHML3]]. For example, to layout
       <code>&lt;msqrt&gt;child_1 child_2 child_3 ...&lt;/msqrt&gt;</code>, one must follow the layout
       rules described for <a><code>&lt;msqrt&gt;</code></a> using
@@ -1053,23 +1052,23 @@
       space corresponding to the italic correction of the “slanted” child is added
       between the two children [[OPEN-FONT-FORMAT]]. The italic correction of the
       last child is also added after that child when it is “slanted” and when
-      the <code>mrow</code> has more than one child. In this document, we interpret
+      the <code>&lt;mrow&gt;</code> has more than one child. In this document, we interpret
       “slanted” as a child that is not an operator with
-      <code>largeop="true"</code> (or an embellished operator whose <code>mo</code> element core
+      <code>largeop="true"</code> (or an embellished operator whose <code>&lt;mo&gt;</code> element core
       has <code>largeop="true"</code>) and has nonzero italic correction and “straight”
       as “non-slanted”.
     </p>
     <p>
-      When the <code>mrow</code> element contains only one child then the previous
-      description implies that the box metrics of the <code>mrow</code> is the same as
+      When the <code>&lt;mrow&gt;</code> element contains only one child then the previous
+      description implies that the box metrics of the <code>&lt;mrow&gt;</code> is the same as
       the one of its unique child. As indicated in
       <a href="#operator-fence-separator-or-accent-mo"></a>, we thus
       use the italic correction and top accent attachment of the child as the
-      corresponding values of the <code>mrow</code> box.
+      corresponding values of the <code>&lt;mrow&gt;</code> box.
     </p>
     <figure id="figure-box-mrow">
       <img src="figures/mrowbox.svg"/>
-      <figcaption>Box model for the <code>mrow</code> element</figcaption>
+      <figcaption>Box model for the <code>&lt;mrow&gt;</code> element</figcaption>
     </figure>
   </section>
   <section>
@@ -1077,7 +1076,7 @@
     <p>
       The
       <dfn data-dfn-type="mfrac" id="element-mfrac"><code>&lt;mfrac&gt;</code></dfn>
-      element is used for fractions. It can also be used to mark up fraction-like objects such as binomial coefficients and Legendre symbols. The syntax for <code>mfrac</code> is
+      element is used for fractions. It can also be used to mark up fraction-like objects such as binomial coefficients and Legendre symbols. The syntax for <code>&lt;mfrac&gt;</code> is
       <br/>
       <code>&lt;mfrac&gt; numerator denominator &lt;/mfrac&gt;</code>
     </p>
@@ -1087,7 +1086,7 @@
       <a href="#user-agent-stylesheet"></a>.
     </p>
 <p>
-  The axis of the <code>mfrac</code> element is always given by
+  The axis of the <code>&lt;mfrac&gt;</code> element is always given by
   <code class="MATH">AxisHeight</code>.
 </p>
 <p>
@@ -1097,10 +1096,10 @@
   actual thickness of the fraction bar. A percent or unitless length is
   interpreted as a multiple of the default rule thickness.
   The color and visibility of the fraction bar must honor the values given by the
-  <code>color</code> and <code>visibility</code> CSS properties on the <code>mfrac</code> element.
+  <code>color</code> and <code>visibility</code> CSS properties on the <code>&lt;mfrac&gt;</code> element.
 </p>
 <p>
-  If the actual line thickness is nonzero, the <code>mfrac</code> element is laid out as
+  If the actual line thickness is nonzero, the <code>&lt;mfrac&gt;</code> element is laid out as
   shown on <a href="#figure-box-mfrac"></a>.
   The width is given by the maximum width of the
   numerator and denominator and the numerator and denominator are horizontally
@@ -1121,11 +1120,11 @@
 </p>
 <figure id="figure-box-mfrac">
   <img src="figures/mfracbox.svg"/>
-  <figcaption>Box model for the <code>mfrac</code> element</figcaption>
+  <figcaption>Box model for the <code>&lt;mfrac&gt;</code> element</figcaption>
 </figure>
 <p>
   If the actual line thickness is zero,
-  the <code>mfrac</code> element is instead laid out as
+  the <code>&lt;mfrac&gt;</code> element is instead laid out as
   shown on <a href="#figure-box-mfrac-without-bar"></a>.
   The gap between the top and bottom boxes
   is equally split around the axis height. The relevant shift values are now
@@ -1140,15 +1139,15 @@
 </p>
 <figure id="figure-box-mfrac-without-bar">
   <img src="figures/mfracnobarbox.svg"/>
-  <figcaption>Box model for the <code>mfrac</code> element without bar</figcaption>
+  <figcaption>Box model for the <code>&lt;mfrac&gt;</code> element without bar</figcaption>
 </figure>
 <p>
   In order to prevent the fraction bar to be confused with other items around
   the fraction (e.g. minus sign or the bar of another fraction), a 1 pixel space
-  must actually be added on each side of the <code>mfrac</code> element.
+  must actually be added on each side of the <code>&lt;mfrac&gt;</code> element.
 </p>
 <p>
-  If the numerator is an embellished operator and the <code>mfrac</code> element is the
+  If the numerator is an embellished operator and the <code>&lt;mfrac&gt;</code> element is the
   outermost element in this embellished operator hierarchy then the operator
   leading and trailing spaces must be added around the fraction.
 </p>
@@ -1160,8 +1159,8 @@
     <dfn data-dfn-type="msqrt" id="element-msqrt"><code>&lt;msqrt&gt;</code></dfn>
     and
     <dfn data-dfn-type="mroot" id="element-mroot"><code>&lt;mroot&gt;</code></dfn>
-    elements construct radicals. The <code>msqrt</code> element is used for square
-    roots, while the <code>mroot</code> element is used to draw radicals with indices,
+    elements construct radicals. The <code>&lt;msqrt&gt;</code> element is used for square
+    roots, while the <code>&lt;mroot&gt;</code> element is used to draw radicals with indices,
     e.g. a cube root. The syntax for these elements is:
   </p>
   <pre>&lt;msqrt&gt; base &lt;/msqrt&gt;
@@ -1186,10 +1185,10 @@
     then the surd is actually drawn from the glyph obtained by mirroring
     U+221A SQUARE ROOT via the <code>rtlm</code> OpenType feature.
     The color and visibility of the surd and overbar must honor the values given by
-    the <code>color</code> and <code>visibility</code> CSS properties on the <code>msqrt</code> element.
+    the <code>color</code> and <code>visibility</code> CSS properties on the <code>&lt;msqrt&gt;</code> element.
   </p>
   <p>
-    The <code>msqrt</code> element is laid out as shown on
+    The <code>&lt;msqrt&gt;</code> element is laid out as shown on
     <a href="#figure-box-msqrt"></a>.
     The width is given by the sum of the width of the surd and of the base.
     The baseline of the square root matches the baseline of the base.
@@ -1198,13 +1197,13 @@
   </p>
   <figure id="figure-box-msqrt">
     <img src="figures/msqrtbox.svg"/>
-    <figcaption>Box model for the <code>msqrt</code> element</figcaption>
+    <figcaption>Box model for the <code>&lt;msqrt&gt;</code> element</figcaption>
   </figure>
   <p>
-    The <code>mroot</code> element is laid out as shown on <a href="box-model-mroot"></a>.
+    The <code>&lt;mroot&gt;</code> element is laid out as shown on <a href="box-model-mroot"></a>.
     We start by ignoring the root index and we layout the base and surd as
     shown on figure <a href="#figure-box-msqrt"></a> to obtain a box B.
-    The horizontal metrics of the <code>mroot</code> element are obtained by putting
+    The horizontal metrics of the <code>&lt;mroot&gt;</code> element are obtained by putting
     <code class="MATH">RadicalKernBeforeDegree</code>
     before the root index, then placing the root index, then a kerning
     of <code class="MATH">RadicalKernAfterDegree</code>
@@ -1213,18 +1212,18 @@
     negative,
     which means that the root element will have some space before it and that the
     root index will overlap the surd.
-    For the vertical metrics of the <code>mroot</code> element, we first take the baseline
+    For the vertical metrics of the <code>&lt;mroot&gt;</code> element, we first take the baseline
     of B as the baseline. We graduate the ink height of B with a linear
     scale going from the bottom at coordinate 0 to the top at coordinate 1.
     Then the ink bottom of the root index will
     be vertically positioned at coordinate
     <code class="MATH">RadicalDegreeBottomRaisePercent</code>.
     Finally, we take into consideration the box of the root index and B to deduce
-    the metrics for the whole box of the <code>mroot</code> element.
+    the metrics for the whole box of the <code>&lt;mroot&gt;</code> element.
   </p>
   <figure id="figure-box-mroot">
     <img src="figures/mrootbox.svg"/>
-    <figcaption>Box model for the <code>mroot</code> element</figcaption>
+    <figcaption>Box model for the <code>&lt;mroot&gt;</code> element</figcaption>
   </figure>
 </section>
 <section>
@@ -1241,7 +1240,7 @@
     same as the <a><code>&lt;mrow&gt;</code></a> element.
   </p>
   <div class="note">
-    Although <code>mstyle</code> is not really useful in modern web
+    Although <code>&lt;mstyle&gt;</code> is not really useful in modern web
     environments, it is preserved for backward compatibility reasons.
   </div>
 </section>
@@ -1272,10 +1271,10 @@
     <dfn data-dfn-type="mpadded" id="element-mpadded"><code>&lt;mpadded&gt;</code></dfn>
     element renders the same as its child content, but with the
     size of the child’s bounding box and the relative positioning point of its
-    content modified according to <code>mpadded</code>’s attributes.
+    content modified according to <code>&lt;mpadded&gt;</code>’s attributes.
   </p>
   <p>
-    See [[MATHML3]] for how the metrics of <code>mpadded</code> element are determined.
+    See [[MATHML3]] for how the metrics of <code>&lt;mpadded&gt;</code> element are determined.
     Note that pseudo-units allows horizontal metrics to depend on vertical metrics,
     for example <code>width="2height"</code> which can be problematic to determine
     intrinsic widths. Hence in the present document, if
@@ -1283,21 +1282,21 @@
     ”height” or ”depth” pseudo-units, then they must be ignored.
   </p>
   <p>
-    The <code>mpadded</code> element is laid out as shown on
+    The <code>&lt;mpadded&gt;</code> element is laid out as shown on
     <a href="#figure-box-mpadded"></a>.
     The height, depth and width of the content in [[MATHML3]] corresponds to
-    the logical box of the content. The content of the <code>mpadded</code> element is
-    positioned from the origin of the <code>mpadded</code> element as follows: We shift
+    the logical box of the content. The content of the <code>&lt;mpadded&gt;</code> element is
+    positioned from the origin of the <code>&lt;mpadded&gt;</code> element as follows: We shift
     the content
     forward by a distance of <code>lspace</code> and shift it upward by a distance of
-    <code>voffset</code>. The logical metrics of the <code>mpadded</code> element are given by the
-    height, depth and width of the <code>mpadded</code> element described in
-    [[MATHML3]]. The ink metrics of the <code>mpadded</code> element match their logical
+    <code>voffset</code>. The logical metrics of the <code>&lt;mpadded&gt;</code> element are given by the
+    height, depth and width of the <code>&lt;mpadded&gt;</code> element described in
+    [[MATHML3]]. The ink metrics of the <code>&lt;mpadded&gt;</code> element match their logical
     metrics.
   </p>
   <figure id="figure-box-mpadded">
     <img src="figures/mpaddedbox.svg"/>
-    <figcaption>Box model for the <code>mpadded</code> element</figcaption>
+    <figcaption>Box model for the <code>&lt;mpadded&gt;</code> element</figcaption>
   </figure>
 </section>
 <section>
@@ -1319,7 +1318,7 @@
   </p>
   <pre data-include="user-agent-stylesheet/mphantom.css"></pre>
   <div class="note">
-    Although <code>mphantom</code> is not really useful in modern web
+    Although <code>&lt;mphantom&gt;</code> is not really useful in modern web
     environments, it is preserved for backward compatibility reasons.
   </div>
 </section>
@@ -1331,9 +1330,9 @@
     element renders its content inside the enclosing notation specified by its notation attribute.
   </p>
   <p>
-    The color and visibility of the <code>menclose</code> notations must honor the values
+    The color and visibility of the <code>&lt;menclose&gt;</code> notations must honor the values
     given by the <code>color</code> and <code>visibility</code> CSS properties on the
-    <code>menclose</code> element.
+    <code>&lt;menclose&gt;</code> element.
   </p>
   <p>
     Based on [[OPEN-FONT-FORMAT]] [[?TEXBOOK]], we use the notation ξ<sub>8</sub>
@@ -1343,14 +1342,14 @@
     Note that contrary to what is done in general and unless specified otherwise,
     the x-axis direction of notations is assumed to be independent of the CSS
     <code>direction</code>.
-    In order to determine the metrics of the <code>menclose</code> notation, we
+    In order to determine the metrics of the <code>&lt;menclose&gt;</code> notation, we
     compute each notation individually and take the union of the metrics:
   </p>
   <ol>
     <li>
       <p>
         The <code>left</code> notation is drawn by putting a vertical bar of thickness
-        ξ<sub>8</sub> on the left of the content of the <code>menclose</code> element.
+        ξ<sub>8</sub> on the left of the content of the <code>&lt;menclose&gt;</code> element.
         The length of the bar is obtained by extending the height of the content
         with <code class="MATH">OverbarVerticalGap</code> plus
         <code class="MATH">OverbarRuleThickness</code> above
@@ -1364,7 +1363,7 @@
       <figure id="figure-box-menclose-left">
         <img src="figures/leftbox.svg"/>
         <figcaption>Box model for the <code>left</code>
-          notation of the <code>menclose</code> element</figcaption>
+          notation of the <code>&lt;menclose&gt;</code> element</figcaption>
       </figure>
     </li>
     <li>
@@ -1377,7 +1376,7 @@
       <p>
         The <code>top</code> notation is drawn by putting an overbar of thickness
         <code class="MATH">OverbarRuleThickness</code>
-        over the content of the <code>menclose</code> element.
+        over the content of the <code>&lt;menclose&gt;</code> element.
         The length of the bar is obtained by extending the width of the content
         with 4ξ<sub>8</sub> on each side.
         The gap between the overbar and the content is
@@ -1389,7 +1388,7 @@
       <figure id="figure-box-menclose-top">
         <img src="figures/topbox.svg"/>
         <figcaption>Box model for the <code>top</code>
-          notation of the <code>menclose</code> element</figcaption>
+          notation of the <code>&lt;menclose&gt;</code> element</figcaption>
       </figure>
     </li>
     <li>
@@ -1418,7 +1417,7 @@
       <figure id="figure-box-menclose-roundedbox">
         <img src="figures/roundedbox.svg"/>
         <figcaption>Box model for the <code>roundedbox</code>
-          notation of the <code>menclose</code> element</figcaption>
+          notation of the <code>&lt;menclose&gt;</code> element</figcaption>
       </figure>
     </li>
     <li>The <code>actuarial</code> notation is treated as equivalent to <code>right top</code>.</li>
@@ -1431,28 +1430,28 @@
       <p>
         The <code>horizontalstrike</code> notation is drawn with an horizontal bar
         of thickness ξ<sub>8</sub> and
-        vertically centered inside the <code>menclose</code> content.
+        vertically centered inside the <code>&lt;menclose&gt;</code> content.
         This does not change the box metrics.
         See <a href="#figure-box-horizontal-strike"></a>.
       </p>
       <figure id="figure-box-horizontal-strike">
         <img src="figures/horizstrikebox.svg"/>
         <figcaption>Box model for the <code>horizontalstrike</code>
-          notation of the <code>menclose</code> element</figcaption>
+          notation of the <code>&lt;menclose&gt;</code> element</figcaption>
       </figure>
     </li>
     <li>
       <p>
         The <code>verticalstrike</code> notation is drawn the same as
         <code>horizontalstrike</code> but with a vertical bar
-        of thickness ξ<sub>8</sub> and horizontally centered inside the <code>menclose</code>
+        of thickness ξ<sub>8</sub> and horizontally centered inside the <code>&lt;menclose&gt;</code>
         content.
       </p>
     </li>
     <li>
       <p>
         The <code>updiagonalstrike</code> notation is drawn with a line
-        of thickness ξ<sub>8</sub> going from the bottom left corner of the <code>menclose</code>
+        of thickness ξ<sub>8</sub> going from the bottom left corner of the <code>&lt;menclose&gt;</code>
         content to its top right corner. Using terminology from [[SVG]], the
         <code>stroke-linecap</code> of the line is <code>butt</code>.
         As an approximation, the ink box
@@ -1463,7 +1462,7 @@
       <figure id="figure-box-menclose-up-diagonal-strike">
         <img src="figures/updiagstrikebox.svg"/>
         <figcaption>Box model for the <code>updiagonalstrike</code>
-          notation of the <code>menclose</code> element</figcaption>
+          notation of the <code>&lt;menclose&gt;</code> element</figcaption>
       </figure>
     </li>
     <li>
@@ -1477,7 +1476,7 @@
     </li>
     <li>
       <p>
-        The <code>longdiv</code> notation is drawn similarly to the <code>msqrt</code> element
+        The <code>longdiv</code> notation is drawn similarly to the <code>&lt;msqrt&gt;</code> element
         (<a href="#figure-box-msqrt"></a>). It is independent of CSS
         <code>direction</code> and U+221A SQUARE ROOT is replaced with
         U+0029 RIGHT PARENTHESIS. The rule thickness is ξ<sub>8</sub>,
@@ -1500,12 +1499,12 @@
       <figure id="figure-box-menclose-circle">
         <img src="figures/circlebox.svg"/>
         <figcaption>Box model for the <code>circle</code>
-          notation of the <code>menclose</code> element</figcaption>
+          notation of the <code>&lt;menclose&gt;</code> element</figcaption>
       </figure>
     </li>
     <li>
       <p>
-        This document does define any layout algorithm for other <code>menclose</code>
+        This document does define any layout algorithm for other <code>&lt;menclose&gt;</code>
         notations. User agents may ignore them.
       </p>
     </li>
@@ -1544,7 +1543,7 @@
       <a href="#user-agent-stylesheet"></a>.
     </p>
     <p>
-      The <code>msub</code> element is laid out as shown on <a href="#figure-box-msub"></a>.
+      The <code>&lt;msub&gt;</code> element is laid out as shown on <a href="#figure-box-msub"></a>.
       The baseline is the baseline of the base while the baseline of the script is
       shifted down by <code>SubShift</code>, which is the minimal value honoring the
       following conditions:
@@ -1575,23 +1574,23 @@
       is added after
       the subscript. By default, the leading edge of the subscript is aligned with
       the trailing edge of the base. However, if the base is an operator with
-      <code>largeop="true"</code> (or an embellished operator whose <code>mo</code> element core
+      <code>largeop="true"</code> (or an embellished operator whose <code>&lt;mo&gt;</code> element core
       has <code>largeop="true"</code>) the subscript is horizontally shifted backward
       by the italic correction of the base.
     </p>
     <figure id="figure-box-msub">
       <img src="figures/msubbox.svg"/>
-      <figcaption>Box model for the <code>msub</code> element</figcaption>
+      <figcaption>Box model for the <code>&lt;msub&gt;</code> element</figcaption>
     </figure>
     <p>
-      The <code>msup</code> element is laid out as shown on <a href="#figure-box-msup"></a>.
+      The <code>&lt;msup&gt;</code> element is laid out as shown on <a href="#figure-box-msup"></a>.
       The baseline is the baseline of the base while the baseline of the script is
       shifted up by <code>SuperShift</code>, which is the minimal value honoring the
       following conditions:
     </p>
     <ol>
       <li><code>SuperShift</code> is at least
-        <code class="MATH">SuperscriptShiftUpCramped</code> if the <code>msup</code> element is
+        <code class="MATH">SuperscriptShiftUpCramped</code> if the <code>&lt;msup&gt;</code> element is
         <a>cramped</a> or at least
         <code class="MATH">SuperscriptShiftUp</code> otherwise.
       </li>
@@ -1613,15 +1612,15 @@
       the superscript. By default, the leading edge of the superscript is aligned with
       the trailing edge of the base and shifted forward by the italic correction
       of the base, except if the base is an operator with
-      <code>largeop="true"</code> (or an embellished operator whose <code>mo</code> element core
+      <code>largeop="true"</code> (or an embellished operator whose <code>&lt;mo&gt;</code> element core
       has <code>largeop="true"</code>).
     </p>
     <figure id="figure-box-msup">
       <img src="figures/msupbox.svg"/>
-      <figcaption>Box model for the <code>msup</code> element</figcaption>
+      <figcaption>Box model for the <code>&lt;msup&gt;</code> element</figcaption>
     </figure>
     <p>
-      The <code>msubsup</code> element is laid out as shown on
+      The <code>&lt;msubsup&gt;</code> element is laid out as shown on
       <a href="#figure-box-msup"></a>.
       The baseline is the baseline of the base while the baseline of the script is
       shifted down by <code>SubShift</code> and the superscript is shifted up by
@@ -1630,7 +1629,7 @@
     </p>
     <ol>
       <li><code>SubShift</code> is at least
-        <code class="MATH">SuperscriptShiftUpCramped</code> if the <code>msup</code> element is
+        <code class="MATH">SuperscriptShiftUpCramped</code> if the <code>&lt;msup&gt;</code> element is
         <a>cramped</a> or at least
         <code class="MATH">SuperscriptShiftUp</code> otherwise.
       </li>
@@ -1642,7 +1641,7 @@
           The drop <code class="MATH">SuperscriptBaselineDrop</code> from the top of the base to
           the baseline of the superscript is at most <code class="MATH">SuperscriptBaselineDropMax</code>.</li>
       <li><code>SubShift</code> is at least
-        <code class="MATH">SuperscriptShiftUpCramped</code> if the <code>msup</code> element is
+        <code class="MATH">SuperscriptShiftUpCramped</code> if the <code>&lt;msup&gt;</code> element is
         <a>cramped</a> or at least
         <code class="MATH">SuperscriptShiftUp</code> otherwise.
       </li>
@@ -1670,13 +1669,13 @@
       each script. By default the leading edges of the scripts are aligned with
       the trailing edge and either the superscript is shifted forward by the italic
       correction of the base. However, if the base is an operator with
-      <code>largeop="true"</code> (or an embellished operator whose <code>mo</code> element core
+      <code>largeop="true"</code> (or an embellished operator whose <code>&lt;mo&gt;</code> element core
       has <code>largeop="true"</code>) then instead the subscript is shifted forward by the
       italic correction of the base.
     </p>
     <figure id="figure-box-msubsup">
       <img src="figures/msubsupbox.svg"/>
-      <figcaption>Box model for the <code>msubsup</code> element</figcaption>
+      <figcaption>Box model for the <code>&lt;msubsup&gt;</code> element</figcaption>
     </figure>
   </section>
   <section>
@@ -1690,7 +1689,7 @@
       <code>&lt;munder&gt;</code> base underscript <code>&lt;/munder&gt;</code>
       <br/>
       If base is an operator with <code>movablelimits="true"</code> (or an embellished
-      operator whose <code>mo</code> element core has <code>movablelimits="true"</code>), and
+      operator whose <code>&lt;mo&gt;</code> element core has <code>movablelimits="true"</code>), and
       <code>displaystyle="false"</code>, then underscript is drawn in a subscript position.
       In this case, the <code>accentunder</code> attribute is ignored. […]
     </p>
@@ -1703,7 +1702,7 @@
       <code>&lt;mover&gt; base overscript &lt;/mover&gt;</code>
       <br/>
       If base is an operator with <code>movablelimits="true"</code> (or an embellished
-      operator whose <code>mo</code> element core has <code>movablelimits="true"</code>), and
+      operator whose <code>&lt;mo&gt;</code> element core has <code>movablelimits="true"</code>), and
       <code>displaystyle="false"</code>, then overscript is drawn in a superscript position.
       In this case, the <code>accent</code> attribute is ignored.
     </p>
@@ -1716,7 +1715,7 @@
       <code>&lt;munderover&gt; base underscript overscript &lt;/munderover&gt;</code>
       <br/>
       If base is an operator with <code>movablelimits="true"</code> (or an embellished
-      operator whose <code>mo</code> element core has <code>movablelimits="true"</code>), and
+      operator whose <code>&lt;mo&gt;</code> element core has <code>movablelimits="true"</code>), and
       <code>displaystyle="false"</code>, then underscript and overscript are drawn in a
       subscript and superscript position, respectively. In this case, the
       <code>accentunder</code> and <code>accent</code> attributes are ignored.
@@ -1737,7 +1736,7 @@
       always performed.
     </p>
     <p>
-      The general layout of <code>munderover</code> is shown on
+      The general layout of <code>&lt;munderover&gt;</code> is shown on
       <a href="figure-box-munderover"></a>.
       The overscript is placed above the base, the underscript below the base
       and by default are aligned with respect to their geometrical center.
@@ -1754,7 +1753,7 @@
     </p>
     <ol>
       <li>If the base is an operator with <code>largeop="true"</code>
-        (or an embellished operator whose <code>mo</code> element core has
+        (or an embellished operator whose <code>&lt;mo&gt;</code> element core has
         <code>largeop="true"</code>) then ensure that <code>OverGap</code> is at least
         <code class="MATH">UpperLimitGapMin</code>, that <code>OverShift</code> is at least
         <code class="MATH">UpperLimitBaselineRiseMin</code> that <code>UnderGap</code> is at
@@ -1766,7 +1765,7 @@
         underscript is shifted backward by half the italic correction of the base.
         The overscript is shifted forward by half the italic correction of the base.</li>
       <li>If the base is a horizontal operator with <code>stretchy="true"</code>
-        (or a horizontal embellished operator whose <code>mo</code> element core has
+        (or a horizontal embellished operator whose <code>&lt;mo&gt;</code> element core has
         <code>stretchy="true"</code>). Then ensure that <code>OverGap</code> is at least
         <code class="MATH">StretchStackGapBelowMin</code>, that <code>OverShift</code> is at
         least
@@ -1808,11 +1807,11 @@
     </p>
     <figure id="figure-box-munderover">
       <img src="figures/munderoverbox.svg"/>
-      <figcaption>Box model for the <code>munderover</code> element</figcaption>
+      <figcaption>Box model for the <code>&lt;munderover&gt;</code> element</figcaption>
     </figure>
     <p>
-      The layout of <code>munder</code> and <code>mover</code> is the same as the one of
-      <code>munderover</code> except that one script and its corresponding extra space
+      The layout of <code>&lt;munder&gt;</code> and <code>&lt;mover&gt;</code> is the same as the one of
+      <code>&lt;munderover&gt;</code> except that one script and its corresponding extra space
       are ignored.
     </p>
   </section>
@@ -1842,21 +1841,21 @@
       <a href="#user-agent-stylesheet"></a>.
     </p>
     <p>
-      Any layout for <code>mmultiscripts</code> is acceptable as long as it follows
+      Any layout for <code>&lt;mmultiscripts&gt;</code> is acceptable as long as it follows
       the condition of the MathML 3 specification [[MATHML3]] and is consistent
       with
       <a href="#subscripts-and-superscripts-msub-msup-msubsup"></a>
-      for <code>mmultiscripts</code>
-      contructions that are equivalent to <code>msubsup</code>. Here is a possible algorithm
+      for <code>&lt;mmultiscripts&gt;</code>
+      contructions that are equivalent to <code>&lt;msubsup&gt;</code>. Here is a possible algorithm
       that is represented on <a href="#figure-box-mmultiscripts"></a>.
     </p>
     <ol>
       <li>
         Determine the vertical shifts for each subscript/superscript pair
-        using the algorithm for <code>msub</code> (if the superscript is <code>none</code>),
-        <code>msup</code> (if the subscript is <code>none</code>) or <code>msubsup</code>
-        (if none of the scripts are <code>none</code>) or otherwise use shifts of zero
-        (if both scripts of the pair are <code>none</code>). When placing the scripts,
+        using the algorithm for <code>&lt;msub&gt;</code> (if the superscript is <code>&lt;none&gt;</code>),
+        <code>&lt;msup&gt;</code> (if the subscript is <code>&lt;none&gt;</code>) or <code>&lt;msubsup&gt;</code>
+        (if none of the scripts are <code>&lt;none&gt;</code>) or otherwise use shifts of zero
+        (if both scripts of the pair are <code>&lt;none&gt;</code>). When placing the scripts,
         use the maximum of the subscript shift for all subscript and
         the maximum of the superscript shift for all superscripts.
       </li>
@@ -1864,7 +1863,7 @@
         For the horizontal layout of postscripts, use the trailing edge of the
         base or of the previous pair as the leading edge of the current pair.
         For each pair, apply the same italic correction described for
-        <code>msubsup</code> in
+        <code>&lt;msubsup&gt;</code> in
         <a href="#subscripts-and-superscripts-msub-msup-msubsup"></a>.
         Apply the same italic corrections for all these postscripts.
       </li>
@@ -1875,7 +1874,7 @@
     </ol>
     <figure id="figure-box-mmultiscripts">
       <img src="figures/mmultiscriptsbox.svg"/>
-      <figcaption>Box model for the <code>mmultiscripts</code> element</figcaption>
+      <figcaption>Box model for the <code>&lt;mmultiscripts&gt;</code> element</figcaption>
     </figure>
   </section>
 </section>
@@ -1893,8 +1892,8 @@
   </p>
   <p>
     In the present document, we restrict ourselves to a minimal implementation
-    compatible with HTML tables. First the <code>mtable</code> element must be treated as
-    a HTML table and by [[MATHML3]], <code>mtable</code> must accept a
+    compatible with HTML tables. First the <code>&lt;mtable&gt;</code> element must be treated as
+    a HTML table and by [[MATHML3]], <code>&lt;mtable&gt;</code> must accept a
     <code>displaystyle</code> attribute with default value <code>false</code>.
   </p>
   <p>
@@ -1921,8 +1920,8 @@ mtable[frame="dashed"] {
     User agents may also support non-default <code>align</code> attribute values.
   </p>
   <p>
-    The <code>mtr</code> and <code>mlabeledtr</code> elements must be treated as HTML table rows
-    and the label of <code>mlabeledtr</code> element must be hidden by default.
+    The <code>&lt;mtr&gt;</code> and <code>&lt;mlabeledtr&gt;</code> elements must be treated as HTML table rows
+    and the label of <code>&lt;mlabeledtr&gt;</code> element must be hidden by default.
     The default value of <code>rowalign</code> must be <code>baseline</code>.
     One may rely on the following rules for the user agent stylesheet
     as suggested in
@@ -1936,7 +1935,7 @@ mlabeledtr > mtd:first-child {
   display: none;
 }</pre>
   <p>
-    Finally, the <code>mtd</code> elements must be treated as a HTML table cell.
+    Finally, the <code>&lt;mtd&gt;</code> elements must be treated as a HTML table cell.
     The default value of <code>rowalign</code> must be <code>baseline</code> and
     the default value of <code>colulmnalign</code> must be <code>center</code>.
     User agents may also try to approximate the default <code>rowspacing</code> and
@@ -1949,7 +1948,7 @@ mlabeledtr > mtd:first-child {
   padding: 0.5ex 0.4em;
 }</pre>
   <p>
-    The <code>mtd</code> element must also support the <code>columnspan</code> (sic) and
+    The <code>&lt;mtd&gt;</code> element must also support the <code>columnspan</code> (sic) and
     <code>rowspan</code> attributes. This can be implemented the same way as
     the HTML <code>colspan</code> and <code>rowspan</code> attributes.
   </p>
@@ -1978,7 +1977,7 @@ mlabeledtr > mtd:first-child {
   </p>
   <pre data-include="user-agent-stylesheet/maction.css"></pre>
   <div class="note">
-    Although <code>maction</code> is not really useful in modern web
+    Although <code>&lt;maction&gt;</code> is not really useful in modern web
     environments, it is preserved for backward compatibility reasons.
   </div>
 </section>
@@ -2000,33 +1999,33 @@ mlabeledtr > mtd:first-child {
     element.
   </p>
   <p>
-    User agents must display at most one of the child of a <code>semantics</code> element.
+    User agents must display at most one of the child of a <code>&lt;semantics&gt;</code> element.
     For example, they may always display the first child (if any) or may use this
     more advanced algorithm to determine a visible child:
   </p>
   <ol>
     <li>
       <p>
-        If the <code>semantics</code> element has a first child that is any of the
-        MathML elements (other than <code>annotation</code> and <code>annotation-xml</code>)
+        If the <code>&lt;semantics&gt;</code> element has a first child that is any of the
+        MathML elements (other than <code>&lt;annotation&gt;</code> and <code>&lt;annotation-xml&gt;</code>)
         whose rendering is described in this document then use it as the visible
         child and stop.
       </p>
     </li>
     <li>
       <p>
-        Otherwise, check the children of the <code>semantics</code> element in the DOM
+        Otherwise, check the children of the <code>&lt;semantics&gt;</code> element in the DOM
         order to try and find the first child that is
       </p>
       <ol>
         <li>
           <p>
-            Either an <code>annotation</code> without any <code>src</code> attribute.
+            Either an <code>&lt;annotation&gt;</code> without any <code>src</code> attribute.
           </p>
         </li>
         <li>
           <p>
-            Or an <code>annotation-xml</code> without any <code>src</code> attribute and
+            Or an <code>&lt;annotation-xml&gt;</code> without any <code>src</code> attribute and
             with an <code>encoding</code> attribute that has value
             <code>"application/mathml-presentation+xml"</code>,
             <code>"MathML-Presentation"</code>,
@@ -2039,18 +2038,18 @@ mlabeledtr > mtd:first-child {
       </ol>
     </li>
     <li>Otherwise, fallback to the first child (if any).</li>
-    <li>Otherwise, the <code>semantics</code> element is empty and the visible child is
+    <li>Otherwise, the <code>&lt;semantics&gt;</code> element is empty and the visible child is
       undetermined.
     </li>
   </ol>
   <p>
     For the layout algorithm described in this document, the
-    <code>annotation-xml</code> element must be treated the same as the <code>mrow</code> element,
-    the <code>annotation</code> element must be treated the same as the <code>mtext</code>
-    element. The <code>semantics</code> element must be treated the same as an
-    <code>mrow</code> element containing only its visible child. If it is undetermined,
-    the user agent may treat the <code>semantics</code> element as an
-    empty <code>mrow</code> element or as an <code>merror</code> element with some error message
+    <code>&lt;annotation-xml&gt;</code> element must be treated the same as the <code>&lt;mrow&gt;</code> element,
+    the <code>&lt;annotation&gt;</code> element must be treated the same as the <code>&lt;mtext&gt;</code>
+    element. The <code>&lt;semantics&gt;</code> element must be treated the same as an
+    <code>&lt;mrow&gt;</code> element containing only its visible child. If it is undetermined,
+    the user agent may treat the <code>&lt;semantics&gt;</code> element as an
+    empty <code>&lt;mrow&gt;</code> element or as an <code>&lt;merror&gt;</code> element with some error message
     indicating invalid markup.
   </p>
 </section>
@@ -2236,7 +2235,7 @@ mlabeledtr > mtd:first-child {
   <p>
     The following table gives the suggested dictionary of rendering
     properties for operators, fences, separators, and accents in MathML, all of
-    which are represented by <code>mo</code> elements. For brevity,
+    which are represented by <code>&lt;mo&gt;</code> elements. For brevity,
     all such elements will be called simply <q>operators</q> in this
     Appendix.
   </p>
@@ -2269,7 +2268,7 @@ mlabeledtr > mtd:first-child {
       (given by code point and Unicode Name) and the value of the form attribute.
       The fourth column gives the <kw>priority</kw> which as described in
       ??),
-      is significant for the proper grouping of sub-expressions using <code>mrow</code>.
+      is significant for the proper grouping of sub-expressions using <code>&lt;mrow&gt;</code>.
       The rule described
       there is especially relevant to the automatic generation of MathML by
       conversion from other formats for displayed mathematics, such as T<sub>E</sub>X,
@@ -2303,7 +2302,7 @@ mlabeledtr > mtd:first-child {
       </tbody>
     </table>
     <p>
-      could be expressed as an <code>mo</code> element by:
+      could be expressed as an <code>&lt;mo&gt;</code> element by:
       <pre>&lt;mo form="prefix" fence="true" stretchy="true" lspace="0em" rspace="0em"&gt; ( &lt;/mo&gt;</pre>
       (note the whitespace added around the content for readability;
       Such whitespace will be ignored by a MathML system,
