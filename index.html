@@ -318,8 +318,8 @@
         <p>
           The
           <dfn data-dfn-type="dir" id="attribute-dir"><code>dir</code></dfn>
-          attribute, if specified and not
-          empty, must be case-insensitively equal to the
+          attribute, if present,
+          must be case-insensitively equal to the
           value <code>ltr</code> or <code>ltr</code>.
           It is mapped to the
           <a data-cite="CSS-WRITING-MODES-3#direction"><code>direction</code></a>
@@ -335,7 +335,7 @@
           <dfn data-dfn-type="mathcolor" id="attribute-mathcolor"><code>mathcolor</code></dfn>
           and
           <dfn data-dfn-type="mathbackground" id="attribute-mathbackground"><code>mathbackground</code></dfn>
-          attributes, if specified and not empty, must
+          attributes, if present, must
           have a value that is a <a>color</a>.
           The <code>mathcolor</code> property describes the foreground fill color of
           an MathML text, bars etc and the background color of an element.
@@ -346,13 +346,15 @@
         <p>
           The
           <dfn data-dfn-type="mathsize" id="attribute-mathsize"><code>mathsize</code></dfn>
-          attribute, if specified and not empty, must
+          attribute, if present, must
           have a value that is a valid <a>length-percentage</a>.
           The <code>mathsize</code> property indicates indicates the desired height
           of glyphs in math formulas but also scale other parts (spacing, shifts,
           line thickness of bars etc) accordingly.
           Is is mapped to the CSS property
-          <a data-cite="CSS-FONTS-3#font-size-prop"><code>font-size</code></a>.
+          <a data-cite="CSS-FONTS-3#font-size-prop"><code>font-size</code></a>
+          and the <code>mathsize</code> values are interpreted according to the
+          definition in [[CSS-FONTS-3]].
         </p>
         <div class="note">
           Many of the above attributes are not useful in CSS-aware
@@ -365,7 +367,7 @@
           The
           <dfn data-dfn-type="mathvariant" id="attribute-mathvariant"><code>mathvariant</code></dfn>
           attribute,
-          if specified and not empty, must have a value that is one of:
+          if present, must have a value that is one of:
         </p>
         <ul>
           <li><code>normal</code></li>
@@ -418,8 +420,7 @@
         <p>
           The
           <dfn data-dfn-type="displaystyle" id="attribute-displaystyle"><code>displaystyle</code></dfn>
-          attribute, if specified and not
-          empty, must be a <a>boolean</a>.
+          attribute, if present, must be a <a>boolean</a>.
           It is mapped to the CSS property <a><code>math-style</code></a>.
           More precisely,  <code>true</code> is mapped to <code>display</code> and
           <code>false</code> to  <code>inline</code>.
@@ -431,8 +432,7 @@
         <p>
           The
           <dfn data-dfn-type="scriptlevel" id="attribute-scriptlevel"><code>scriptlevel</code></dfn>
-          attribute, if specified and not
-          empty, must have value
+          attribute, if present, must have value
           <code>+&lt;U&gt;</code>, <code>-&lt;U&gt;</code> or <code>&lt;U&gt;</code>
           where <code>&lt;U&gt;</code> is a
           <a>non-negative-integer</a>.
@@ -478,8 +478,8 @@
         <p>
           The
           <dfn data-dfn-type="display" id="attribute-display"><code>display</code></dfn>
-          attribute, if specified and not
-          empty, must have value <code>block</code> or <code>inline</code>.
+          attribute, if present,
+          must have value <code>block</code> or <code>inline</code>.
           To fully implement this attribute, additional CSS properties must be
           specified in the user agent stylesheet
           as described in <a href="#user-agent-stylesheet"></a>.
@@ -982,21 +982,32 @@
       attributes:
     </p>
     <ul>
-      <li><code>width</code></li>
-      <li><code>height</code></li>
-      <li><code>depth</code></li>
+      <li><a data-lt="attribute-mspace-width">width</a></li>
+      <li><a data-lt="attribute-mspace-height">height</a></li>
+      <li><a data-lt="attribute-mspace-depth">depth</a></li>
     </ul>
+    <p>The
+      <dfn data-dfn-type="attribute-mspace-width" id="attribute-mspace-width"><code>width</code></dfn>,
+      <dfn data-dfn-type="attribute-mspace-height" id="attribute-mspace-height"><code>height</code></dfn>,
+      <dfn data-dfn-type="attribute-mspace-depth" id="attribute-mspace-depth"><code>depth</code></dfn>, if present, must
+      have a value that is a valid <a>length-percentage</a>.
+      They indicate the requested width, ascent and descent of the blank space.
+      An unspecified attribute, a percentage  value, or an invalid value is
+      interpreted as <code>0</code>.
+    </p>
     <p>
       The <code>&lt;mspace&gt;</code> element is laid out as shown on
       <a href="#figure-box-mspace"></a>. The logical box is determined by the
-      <code>height</code>, <code>depth</code> and <code>width</code> attributes
-      defined in [[MATHML3]]. The
-      ink box matches the logical box.
+      requested width, ascent and descent. The ink box matches the logical box.
     </p>
     <figure id="figure-box-mspace">
       <img src="figures/mspacebox.svg"/>
       <figcaption>Box model for the <code>&lt;mspace&gt;</code> element</figcaption>
     </figure>
+    <div class="note">
+      The terminology height/depth comes from [[MATHML3]], itself inspired
+      from [[TEXBOOK]].
+    </div>
   </section>
   <section>
     <h3>String Literal <code>&lt;ms&gt;</code></h3>
@@ -1012,14 +1023,21 @@
       attributes:
     </p>
     <ul>
-      <li><code>lquote</code></li>
-      <li><code>rquote</code></li>
+      <li><a><code>lquote</code></a></li>
+      <li><a><code>rquote</code></a></li>
     </ul>
+    <p>The
+      <dfn data-dfn-type="attribute-lquote" id="attribute-lquote"><code>lquote</code></dfn>,
+      <dfn data-dfn-type="attribute-rquote" id="attribute-rquote"><code>rquote</code></dfn> attributes respectively specify the strings to use as opening and
+      closing quotes. An unspecified attribute is
+      interpreted as the character U+0022 QUOTATION MARK.
+    </p>
     <p>
       The layout algorithm is the same as the
       <a><code>&lt;mtext&gt;</code></a> element.
       The <a href="#user-agent-stylesheet">user agent stylesheet</a>
-      must contain the following rules in order to attach quotes:
+      must contain the following rules in order to enclose the content with
+      quotes:
     </p>
     <pre data-include="user-agent-stylesheet/ms.css"></pre>
   </section>
@@ -1031,27 +1049,20 @@
     <p>
       The
       <dfn data-dfn-type="mrow" id="element-mrow"><code>&lt;mrow&gt;</code></dfn>
-      element is used to group together any number of sub-expressions, usually consisting of one or more <code>&lt;mo&gt;</code> elements acting as "operators" on one or more other expressions that are their "operands".
+      element is used to group together any number of sub-expressions, usually
+      consisting of one or more <code>&lt;mo&gt;</code> elements acting as
+      "operators" on one or more other expressions that are their "operands".
     </p>
     <p>
-      The <code>dir</code> attribute must be mapped to the <code>direction</code> CSS property.
-      The current version of this document does not define any linebreaking algorithm
-      for the <code>&lt;mrow&gt;</code> element, user agents may just ignore linebreaking rules.
-    </p>
-    <p>
-      User agents must follow the rules for inferred <code>&lt;mrow&gt;</code>s described in
-      [[MATHML3]]. For example, to layout
-      <code>&lt;msqrt&gt;child_1 child_2 child_3 ...&lt;/msqrt&gt;</code>, one must follow the layout
-      rules described for <a><code>&lt;msqrt&gt;</code></a> using
-      the box of <code>&lt;mrow&gt;child_1 child_2 child_3 ... child_N&lt;/mrow&gt;</code> as the base.
-    </p>
-    <p>
-      The <code>&lt;mrow&gt;child_1 child_2 child_3 ... child_N&lt;/mrow&gt;</code> element is laid
-      out as show on <a href="#figure-box-mrow"></a>. The boxes of child<sub>1</sub>, child<sub>2</sub>, … child<sub>N</sub> are put in a horizontal row
-      one after the other with all their baselines aligned. As a consequence of this
-      and of child box models, graphical elements such as fraction bars
-      or symmetric stretchy operators will also be
-      aligned along the math axis when the
+      The <code>&lt;mrow&gt;</code> element accepts the attributes described
+      in <a href="#global-attributes"></a>. An <code>&lt;mrow&gt;</code>
+      element with children
+      child<sub>1</sub>, child<sub>2</sub>, … child<sub>N</sub>
+      is laid out as show on <a href="#figure-box-mrow"></a>. The child boxes
+      are put in a horizontal row one after the other with all their baselines
+      aligned. As a consequence of this and of child box models, graphical
+      elements such as fraction bars or symmetric stretchy operators will also
+      be aligned along the math axis when the
       <code class="MATH">AxisHeight</code> is unchanged (e.g. in the typical case
       where the math font is unchanged).
     </p>
@@ -1088,61 +1099,100 @@
     <p>
       The
       <dfn data-dfn-type="mfrac" id="element-mfrac"><code>&lt;mfrac&gt;</code></dfn>
-      element is used for fractions. It can also be used to mark up fraction-like objects such as binomial coefficients and Legendre symbols. The syntax for <code>&lt;mfrac&gt;</code> is
-      <br/>
-      <code>&lt;mfrac&gt; numerator denominator &lt;/mfrac&gt;</code>
+      element is used for fractions. It can also be used to mark up
+      fraction-like objects such as binomial coefficients and Legendre symbols.
     </p>
     <p>
-      The <a><code>displaystyle</code></a> and <a><code>scriptlevel</code></a>
-      changes must be achieved with rules described in
-      <a href="#user-agent-stylesheet"></a>.
+      The <code>&lt;mfrac&gt;</code> element accepts the attributes described
+      in <a href="#global-attributes"></a> as well as the
+      following attribute:
     </p>
-<p>
-  The axis of the <code>&lt;mfrac&gt;</code> element is always given by
-  <code class="MATH">AxisHeight</code>.
-</p>
-<p>
-  The default line thickness is given by
-  <code class="MATH">FractionRuleThickness</code>
-  Use the <code>linethickness</code> attribute [[MATHML3]] to determine the
-  actual thickness of the fraction bar. A percent or unitless length is
-  interpreted as a multiple of the default rule thickness.
-  The color and visibility of the fraction bar must honor the values given by the
-  <code>color</code> and <code>visibility</code> CSS properties on the <code>&lt;mfrac&gt;</code> element.
-</p>
-<p>
-  If the actual line thickness is nonzero, the <code>&lt;mfrac&gt;</code> element is laid out as
-  shown on <a href="#figure-box-mfrac"></a>.
-  The width is given by the maximum width of the
-  numerator and denominator and the numerator and denominator are horizontally
-  centered. A fraction bar with the actual thickness is drawn centered on the
-  axis height. The numerator and denominator are shifted
-  up and down using the values <code class="MATH">FractionNumeratorShiftUp</code>,
-  <code class="MATH">FractionDenominatorShiftDown</code> in inline style and
-  <code class="MATH">FractionNumeratorDisplayStyleShiftUp</code>,
-  <code class="MATH">FractionDenominatorDisplayStyleShiftDown</code>
-  in display style.
-  If necessary, these shift values are increased to ensure that the gaps between
-  the numerator/denominator and fraction bar satisfy the minimal values provided
-  by <code class="MATH">FractionDenominatorGapMin</code> and
-  <code class="MATH">FractionNumeratorGapMin</code> in inline style and
-  <code class="MATH">FractionDenominatorDisplayStyleGapMin</code> and
-  <code class="MATH">FractionNumeratorDisplayStyleGapMin</code>
-  in display style.
-</p>
-<figure id="figure-box-mfrac">
-  <img src="figures/mfracbox.svg"/>
-  <figcaption>Box model for the <code>&lt;mfrac&gt;</code> element</figcaption>
-</figure>
-<p>
-  If the actual line thickness is zero,
-  the <code>&lt;mfrac&gt;</code> element is instead laid out as
-  shown on <a href="#figure-box-mfrac-without-bar"></a>.
-  The gap between the top and bottom boxes
-  is equally split around the axis height. The relevant shift values are now
-  <code class="MATH">StackTopShiftUp</code>,
-  <code class="MATH">StackBottomShiftDown</code> in inline style and
-  <code class="MATH">StackTopDisplayStyleShiftUp</code>,
+    <ul>
+      <li><a>linethickness</a></li>
+    </ul>
+    <p>
+      The
+      <dfn data-dfn-type="linethickness" id="attribute-linethickness"><code>linethickness</code></dfn>
+      attribute indicates the thickness to use for the fraction bar.
+      If present, it must
+      have a value that is a valid <a>length-percentage</a>.
+      If the attribute is absent or has an invalid value,
+      <code class="MATH">FractionRuleThickness</code> is used as the default
+      value. A percentage is interpreted relative to that default value.
+    </p>
+    <p>
+      The <code>mfrac</code> element sets
+      <code>displaystyle</code> to <code>false</code>,
+      or if it was already <code>false</code> increments
+      <code>scriptlevel</code> by 1, within its children.
+      The <a href="#user-agent-stylesheet">user agent stylesheet</a>
+      must contain the following rule in order to implement that behavior:
+    </p>
+    <pre data-include="user-agent-stylesheet/mfrac.css"></pre>
+    <div class="issue" data-number="15">Decide how to handle invalid
+      fraction.</div>
+    <p>
+      If the fraction has less or more than two children, its layout algorithm
+      is the same as the <a><code>&lt;mrow&gt;</code></a> element.
+      Otherwise, the first child is called
+      <dfn data-dfn-type="numerator" id="mfrac-numerator">numerator</dfn> and
+      the second child is called
+      <dfn data-dfn-type="denominator" id="mfrac-denominator">denominator</dfn>
+      and its layout algorithm is explained below.
+    </p>
+
+
+    <section>
+      <h4>Fraction with nonzero line thickeness</h4>
+    <p>
+      If the actual line thickness is nonzero, the <code>&lt;mfrac&gt;</code>
+      element is laid out as shown on <a href="#figure-box-mfrac"></a>.
+      The fraction bar must only be painted if the
+      <a data-cite="CSS2#visibility"><code>visibility</code></a> of
+      the <code>&lt;mfrac&gt;</code> element is <code>visible</code>.
+      In that case, the fraction bar must be painted with the
+      <a data-cite="CSS-COLOR-3#foreground"><code>color</code></a>
+      of the <code>&lt;mfrac&gt;</code> element.
+      The middle of the fraction bar is shifted by
+      <code class="MATH">AxisHeight</code> above the baseline.
+    </p>
+    <p>
+      The width is given by the maximum width of the
+      numerator and denominator. The numerator and denominator are
+      horizontally centered. A fraction bar with the actual thickness is drawn
+      centered on the
+      axis height. The numerator and denominator are shifted
+      up and down using the values <code class="MATH">FractionNumeratorShiftUp</code>,
+      <code class="MATH">FractionDenominatorShiftDown</code> in inline style and
+      <code class="MATH">FractionNumeratorDisplayStyleShiftUp</code>,
+      <code class="MATH">FractionDenominatorDisplayStyleShiftDown</code>
+      in display style.
+      If necessary, these shift values are increased to ensure that the gaps between
+      the numerator/denominator and fraction bar satisfy the minimal values provided
+      by <code class="MATH">FractionDenominatorGapMin</code> and
+      <code class="MATH">FractionNumeratorGapMin</code> in inline style and
+      <code class="MATH">FractionDenominatorDisplayStyleGapMin</code> and
+      <code class="MATH">FractionNumeratorDisplayStyleGapMin</code>
+      in display style.
+    </p>
+    <figure id="figure-box-mfrac">
+      <img src="figures/mfracbox.svg"/>
+      <figcaption>Box model for the <code>&lt;mfrac&gt;</code> element</figcaption>
+    </figure>
+    </section>
+    <section>
+      <h4>Fraction with zero line thickeness</h4>
+      <p>
+      If the actual line thickness is zero,
+      the <code>&lt;mfrac&gt;</code> element is instead laid out as
+      shown on <a href="#figure-box-mfrac-without-bar"></a>.
+      The gap between the top and bottom boxes
+      is equally split around the math axis, which is
+      <code class="MATH">AxisHeight</code> above the baseline.
+      The relevant shift values are now
+      <code class="MATH">StackTopShiftUp</code>,
+      <code class="MATH">StackBottomShiftDown</code> in inline style and
+      <code class="MATH">StackTopDisplayStyleShiftUp</code>,
   <code class="MATH">StackBottomDisplayStyleShiftDown</code> in display style.
   If necessary, the two shift values are increased by a same value to ensure
   the gap between the top and bottom boxes satisfy the values provided by
@@ -1153,7 +1203,10 @@
   <img src="figures/mfracnobarbox.svg"/>
   <figcaption>Box model for the <code>&lt;mfrac&gt;</code> element without bar</figcaption>
 </figure>
-<p>
+    </section>
+    <section>
+      <h4>Spacing around the fraction</h4>
+    <p>
   In order to prevent the fraction bar to be confused with other items around
   the fraction (e.g. minus sign or the bar of another fraction), a 1 pixel space
   must actually be added on each side of the <code>&lt;mfrac&gt;</code> element.
@@ -1163,6 +1216,7 @@
   outermost element in this embellished operator hierarchy then the operator
   leading and trailing spaces must be added around the fraction.
 </p>
+    </section>
 </section>
 <section>
   <h3>Radicals <code>&lt;msqrt&gt;</code>, <code>&lt;mroot&gt;</code></h3>
@@ -2072,7 +2126,7 @@ mlabeledtr > mtd:first-child {
   <section>
     <h3>New <code>text-transform</code> values</h3>
     <p>The <dfn data-dfn-type="text-transform" id="property-text-transform"><code>text-transform</code></dfn> property
-      from 
+      from
         is extended with new values:
     </p>
     <code><a data-cite="CSS-TEXT-3#text-transform-property">&lttext-transform-old&gt;</a> <a data-cite="CSS-VALUES-3#comb-one">|</a> math-auto | math-bold | math-italic | math-bold-italic | math-double-struck | math-bold-fraktur | math-script | math-bold-script | math-fraktur | math-sans-serif | math-bold-sans-serif | math-sans-serif-italic | math-sans-serif-bold-italic | math-monospace | math-initial | math-tailed | math-looped | math-stretched</code>
@@ -2239,6 +2293,7 @@ mlabeledtr > mtd:first-child {
 /* Tables */
 <span data-include="user-agent-stylesheet/tables.css"></span>
 /* Other rules for scriptlevel and displastyle */
+<span data-include="user-agent-stylesheet/mfrac.css"></span>
 <span data-include="user-agent-stylesheet/other.css"></span>
 </pre>
 </section>

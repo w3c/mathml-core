@@ -1,0 +1,4 @@
+mfrac > * {
+  math-script-level: auto;
+  math-style: inline;
+}
