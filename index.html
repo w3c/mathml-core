@@ -570,7 +570,7 @@
         <p>
           Good mathematical rendering requires use of non-Unicode glyphs. Mathematical
           fonts may only provide these glyphs when the <code class="MATH">math</code>
-          script tag is enabled and so user agents must ensure that the text within
+          script tag is enabled, so user agents must ensure that the text within
           MathML token elements is rendered with that script tag. Some characters like
           primes already have script size by default and hence would be too small when
           used in a script position.
@@ -677,8 +677,8 @@
           <p>
             For MathML element containing only text nodes or foreign elements, we assume
             that the content is simple enough to determine these values. For example,
-            in most case, this is just a single text node and w = W.
-            A MathML element containing only other MathML elements follow special rules to
+            in most cases, this is just a single text node and w = W.
+            A MathML element containing only other MathML elements follows special rules to
             layout their children at position
             (x<sub>i</sub>, y<sub>i</sub>) with parameters
             W<sub>i</sub>, w<sub>i</sub>, a<sub>i</sub>, b<sub>i</sub>, A<sub>i</sub>,
@@ -708,7 +708,7 @@
           <p>
             Note that the schemas in this document are drawn assuming left-to-right
             directionality. If the CSS <code>direction</code> is set to right-to-left, then the
-            elements should be layout by making the x-axis pointing from right-to-left.
+            elements should layout by making the x-axis pointing from right-to-left.
             In this document, we use the terminology of
             [[MATHML3]]: “leading”
             means “left” in right-to-left and “right” in right-to-left mode, while
@@ -720,7 +720,7 @@
             correction of some glyphs, which provides a measure of how slanted the
             glyphs are (see <a href="#figure-italic-correction"></a>). The
             <code class="MATH">MathTopAccentAttachment</code> table also contains a reference
-            points that is used for the horizontal positioning of glyphs as an accent
+            points that are used for the horizontal positioning of glyphs as an accent
             (see <a href="#figure-top-accent-attachment"></a>). In later sections, we
             generalize this by claiming that all MathML boxes have italic correction
             and top accent attachment values. The values for glyphs are used to try and
@@ -778,7 +778,7 @@
   small over-estimation.
 </p>
 <p>
-  Each of this step is done recursively: the metrics of a given MathML box
+  Each of these steps is done recursively: the metrics of a given MathML box
   are determined from those of the child boxes. User agents must implement
   the “Exception for embellished operators” described in [[MATHML3]].
   This means that the actual stretching of operators described in
@@ -923,7 +923,7 @@
       are a bit more complicated and are described in section
       “Vertical Stretching Rules” of
       [[MATHML3]].
-      If the operator has property <code>symmetric="true"</code>, it must be
+      If the operator has property <code>symmetric="true"</code>, then it must be
       stretched symmetrically with respect to the math axis, which is given by
       the <code class="MATH">AxisHeight</code> value.
       <a href="#symmetric-and-non-symmetric-vertical-stretching"></a>
@@ -1037,7 +1037,7 @@
       <dfn data-dfn-type="attribute-mspace-height" id="attribute-mspace-height">mspace <code>height</code></dfn>,
       <dfn data-dfn-type="attribute-mspace-depth" id="attribute-mspace-depth">mspace <code>depth</code></dfn>, if present, must
       have a value that is a valid <a>length-percentage</a>.
-      They indicate the requested width, ascent and descent of the blank space.
+      These indicate the requested width, ascent and descent of the blank space.
       An unspecified attribute, a percentage  value, or an invalid value is
       interpreted as <code>0</code>.
     </p>
@@ -1401,8 +1401,9 @@
     same as the <a><code>&lt;mrow&gt;</code></a> element.
   </p>
   <div class="note">
-    Although <code>&lt;mstyle&gt;</code> is not really useful in modern web
-    environments, it is preserved for backward compatibility reasons.
+    While the <code>&lt;mstyle&gt;</code> is preserved for backward compatibility reasons
+    with legacy documents and existing tools, modern authors and tools are strongly 
+    encouraged to use CSS for styling.
   </div>
 </section>
 <section>
@@ -1463,7 +1464,7 @@
   <section>
     <h4>Content box and requested parameters</h4>
     <p>
-      The children of the <code>&lt;mpadded&gt;</code> element are laid out
+      Children of the <code>&lt;mpadded&gt;</code> element are laid out
       using the algorithm of the <a><code>&lt;mrow&gt;</code></a> element
       to produce the
       <dfn data-dfn-type="mpadded-content-box"
@@ -1569,8 +1570,9 @@
   </p>
   <pre class="css" data-include="user-agent-stylesheet/mphantom.css"></pre>
   <div class="note">
-    Although <code>&lt;mphantom&gt;</code> is not really useful in modern web
-    environments, it is preserved for backward compatibility reasons.
+    While <code>&lt;mphantom&gt;</code> is preserved for backward compatibility reasons
+    with legacy documents and existing tools, modern authors and tools are strongly 
+    encouraged to use CSS for styling.
   </div>
 </section>
 <section>
