@@ -144,7 +144,9 @@
     <section class="normative">
       <h2>MathML Fundamentals</h2>
       <section>
-        <h3>Web Platform Integration</h3>
+        <h3>Integration in the Web Platform</h3>
+        <section>
+          <h4>HTML and SVG</h4>
         <p>
           When
           <a data-cite="HTML#parsing">parsing HTML documents</a>
@@ -216,28 +218,53 @@
           </li>
         </ol>
         <p>
-          User agents supporting
-          <a data-cite="HTML#webappapis">Web application APIs</a>
-          must ensure that they keep the visual rendering of MathML
-          in synchronization with the [[DOM]] tree.
-        </p>
-        <p>
           When evaluating the SVG
           <a data-cite="SVG#RequiredExtensionsAttribute"><code>requiredExtensions</code></a>
           attribute, user agents must claim support for the language extension
           identified by the
           <a data-cite="INFRA#mathml-namespace">MathML namespace</a>.
         </p>
-        <p>
-          All documents containing <a>MathML Core elements</a> must include
-          CSS rules described in <a href="#user-agent-stylesheet"></a>
-          as part of user-agent level style sheet defaults.
-          Rules relying on universal selectors such as
-          <code>mfrac > *</code> or <code>msub > :not(:first-child)</code> may
-          be replaced with equivalent expanded rules listing all possible
-          <a>MathML Core elements</a>.
-        </p>
-        <div class="issue" data-number="83">Properly define DOM/IDL relationships.</div>
+        </section>
+        <section>
+          <h4>CSS styling</h4>
+          <p>User agents must support various CSS features mentioned in this
+            specification, including new ones described in
+            <a href="#css-extensions-for-math-layout"></a>.</p>
+          <p>
+            All documents containing <a>MathML Core elements</a> must include
+            CSS rules described in <a href="#user-agent-stylesheet"></a>
+            as part of user-agent level style sheet defaults.
+            Rules relying on universal selectors such as
+            <code>mfrac > *</code> or <code>msub > :not(:first-child)</code> may
+            be replaced with equivalent expanded rules listing all possible
+            <a>MathML Core elements</a>.
+          </p>
+        </section>
+        <section>
+          <h4>DOM and Javascript</h4>
+          <p>
+          User agents supporting
+          <a data-cite="HTML#webappapis">Web application APIs</a>
+          must ensure that they keep the visual rendering of MathML
+          in synchronization with the [[DOM]] tree.
+          </p>
+          <div class="issue" data-number="83">Properly define DOM/IDL relationships.</div>
+          <p>
+            All the nodes representing <a>MathML Core elements</a> in the DOM
+            must and expose to scripts, the following
+            <dfn data-dfn-type="dfn" id="idl-MathMLElement"><code>MathMLElement</code></dfn> interface.
+          </p>
+          <pre class="idl" data-include="webidl/MathMLElement.idl"></pre>
+          <p>The
+            <dfn data-dfn-type="dfn" data-cite="HTML#GlobalEventHandlers" id="idl-GlobalEventHandlers"><code>GlobalEventHandlers</code></dfn>,
+            <dfn data-dfn-type="dfn" data-cite="HTML#DocumentAndElementEventHandlers" id="idl-DocumentAndElementEventHandlers"><code>DocumentAndElementEventHandlers</code></dfn> and
+            <dfn data-dfn-type="dfn" data-cite="HTML#HTMLOrSVGElement" id="idl-HTMLOrSVGElement"><code>HTMLOrSVGElement</code></dfn> interfaces are defined in
+            [[HTML]].</p>
+          <p>The
+            <dfn data-dfn-type="dfn" data-cite="CSSOM#elementcssinlinestyle" id="idl-ElementCSSInlineStyle"><code>ElementCSSInlineStyle</code></dfn>
+              interface is defined in [[CSSOM]].
+          </p>
+        </section>
       </section>
       <section>
         <h3>MathML Attribute Values</h3>
@@ -314,7 +341,7 @@
           links must be specified in the
           <a href="#user-agent-stylesheet">user agent stylesheet</a>:
         </p>
-        <pre data-include="user-agent-stylesheet/links.css"></pre>
+        <pre class="css" data-include="user-agent-stylesheet/links.css"></pre>
         <p>
           The
           <dfn data-dfn-type="dir" id="attribute-dir"><code>dir</code></dfn>
@@ -775,7 +802,7 @@
       must contain the following property in order to implement automatic
       italic:
     </p>
-    <pre data-include="user-agent-stylesheet/mi.css"></pre>
+    <pre class="css" data-include="user-agent-stylesheet/mi.css"></pre>
   </section>
   <section>
     <h3>Number <code>&lt;mn&gt;</code></h3>
@@ -1039,7 +1066,7 @@
       must contain the following rules in order to enclose the content with
       quotes:
     </p>
-    <pre data-include="user-agent-stylesheet/ms.css"></pre>
+    <pre class="css" data-include="user-agent-stylesheet/ms.css"></pre>
   </section>
 </section>
 <section>
@@ -1128,7 +1155,7 @@
       The <a href="#user-agent-stylesheet">user agent stylesheet</a>
       must contain the following rule in order to implement that behavior:
     </p>
-    <pre data-include="user-agent-stylesheet/mfrac.css"></pre>
+    <pre class="css" data-include="user-agent-stylesheet/mfrac.css"></pre>
     <div class="issue" data-number="15">Decide how to handle invalid
       fraction.</div>
     <p>
@@ -1243,7 +1270,7 @@
       The <a href="#user-agent-stylesheet">user agent stylesheet</a>
       must contain the following rule in order to implement that behavior:
     </p>
-    <pre data-include="user-agent-stylesheet/mroot.css"></pre>
+    <pre class="css" data-include="user-agent-stylesheet/mroot.css"></pre>
     <div class="issue" data-number="15">Decide how to handle invalid
       mroot.</div>
     <p>
@@ -1377,7 +1404,7 @@
     must contain the following rule in order to visually highlight the error
     message:
   </p>
-  <pre data-include="user-agent-stylesheet/merror.css"></pre>
+  <pre class="css" data-include="user-agent-stylesheet/merror.css"></pre>
 </section>
 <section>
   <h3>Adjust Space Around Content <code>&lt;mpadded&gt;</code></h3>
@@ -1431,7 +1458,7 @@
     The <a href="#user-agent-stylesheet">user agent stylesheet</a>
     must contain the following rule in order to hide the content:
   </p>
-  <pre data-include="user-agent-stylesheet/mphantom.css"></pre>
+  <pre class="css" data-include="user-agent-stylesheet/mphantom.css"></pre>
   <div class="note">
     Although <code>&lt;mphantom&gt;</code> is not really useful in modern web
     environments, it is preserved for backward compatibility reasons.
@@ -2090,7 +2117,7 @@ mlabeledtr > mtd:first-child {
     its first child, which is the default behavior for the legacy actiontype
     values:
   </p>
-  <pre data-include="user-agent-stylesheet/maction.css"></pre>
+  <pre class="css" data-include="user-agent-stylesheet/maction.css"></pre>
   <div class="note">
     Although <code>&lt;maction&gt;</code> is not really useful in modern web
     environments, it is preserved for backward compatibility reasons.
@@ -2331,7 +2358,7 @@ mlabeledtr > mtd:first-child {
 </section>
 <section class="appendix">
   <h2>User Agent Stylesheet</h2>
-<pre>@namespace url(http://www.w3.org/1998/Math/MathML);
+<pre class="css">@namespace url(http://www.w3.org/1998/Math/MathML);
 
 /* Links */
 <span data-include="user-agent-stylesheet/links.css"></span>

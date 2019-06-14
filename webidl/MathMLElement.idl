@@ -1,0 +1,6 @@
+[Exposed=Window]
+interface MathMLElement : Element { };
+MathMLElement includes GlobalEventHandlers;
+MathMLElement includes DocumentAndElementEventHandlers;
+MathMLElement includes HTMLOrSVGElement; // Rename to HTMLOrForeignElement?
+MathMLElement includes ElementCSSInlineStyle; // Move to CSSOM spec?
