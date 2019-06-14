@@ -1580,23 +1580,57 @@
   <p>
     The
     <dfn data-dfn-type="menclose" id="element-menclose"><code>&lt;menclose&gt;</code></dfn>
-    element renders its content inside the enclosing notation specified by its notation attribute.
+    element renders its content inside the enclosing notation.
+    It accepts the attributes described in
+    <a href="#global-attributes"></a> as well as the
+    following attribute:
+  </p>
+    <ul>
+      <li><a>notation</a></li>
+    </ul>
+  <p>
+    The
+    <dfn data-dfn-type="notation" id="attribute-notation"><code>notation</code></dfn>
+    attribute, if present, must have a value that is an
+    <a data-cite="HTML#unordered-set-of-unique-space-separated-tokens">unordered set
+    of unique space-separated tokens</a> that are ASCII case-insensitive. The
+    allowed values are
+    <code>left</code>,
+    <code>right</code>,
+    <code>top</code>,
+    <code>bottom</code>,
+    <code>box</code>,
+    <code>roundedbox</code>,
+    <code>actuarial</code>,
+    <code>madruwb</code>,
+    <code>horizontalstrike</code>,
+    <code>verticalstrike</code>
+    <code>updiagonalstrike</code>,
+    <code>downdiagonalstrike</code>,
+    <code>longdiv</code>,
+    <code>circle</code>.
   </p>
   <p>
-    The color and visibility of the <code>&lt;menclose&gt;</code> notations must honor the values
-    given by the <code>color</code> and <code>visibility</code> CSS properties on the
-    <code>&lt;menclose&gt;</code> element.
+    The notations must only be painted if the
+    <a data-cite="CSS2#visibility"><code>visibility</code></a> of
+    the <code>&lt;menclose&gt;</code> element is <code>visible</code>.
+    In that case, the notations must be painted with the
+    <a data-cite="CSS-COLOR-3#foreground"><code>color</code></a>
+    of the <code>&lt;menclose&gt;</code> element.
   </p>
   <p>
-    Based on [[OPEN-FONT-FORMAT]] [[?TEXBOOK]], we use the notation ξ<sub>8</sub>
-    from the TeXBook to denote the default rule thickness and use
-    3ξ<sub>8</sub> for gaps.
-    We actually let ξ<sub>8</sub> be <code class="MATH">OverbarRuleThickness</code>.
-    Note that contrary to what is done in general and unless specified otherwise,
+    Children of the <code>&lt;menclose&gt;</code> element are laid out
+    using the algorithm of the <a><code>&lt;mrow&gt;</code></a> element
+    to produce a content box.
+    Following [[OPEN-FONT-FORMAT]] [[?TEXBOOK]], the notation ξ<sub>8</sub>
+    is used to denote the default rule thickness and is equal to
+    <code class="MATH">OverbarRuleThickness</code>.
+    Gaps are set to 3ξ<sub>8</sub>.
+    Contrary to what is done in general and unless specified otherwise,
     the x-axis direction of notations is assumed to be independent of the CSS
     <code>direction</code>.
-    In order to determine the metrics of the <code>&lt;menclose&gt;</code> notation, we
-    compute each notation individually and take the union of the metrics:
+    Each notation is handled individually and the union of all output is taken
+    in order to determine the metrics of the <code>&lt;menclose&gt;</code>.
   </p>
   <ol>
     <li>
@@ -1659,13 +1693,15 @@
     </li>
     <li>
       <p>
-        To draw the <code>roundedbox</code> notation, we consider the box
-        obtained by expanding the ink box by 7ξ<sub>8</sub> / 2 on each side.
-        Using terminology from [[SVG]],
-        we draw a rounded rectangle on this expanded box
-        with parameters <code>rx</code>, <code>ry</code> and <code>stroke-width</code> set to 3ξ<sub>8</sub>.
-        To obtain the logical box we again add a space of ξ<sub>8</sub> on
-        each side of the ink box. See <a href="#figure-box-menclose-roundedbox"></a>.
+        The <code>roundedbox</code> notation is drawn as follows. An expanded
+        is calculated by extending the ink box by 7ξ<sub>8</sub> / 2 on each
+        side. Using terminology from [[SVG]],
+        a rounded rectangle is drawn on this expanded box
+        with parameters <code>rx</code>, <code>ry</code> and
+        <code>stroke-width</code> set to 3ξ<sub>8</sub>.
+        The logical box is obtained by adding a space of ξ<sub>8</sub> on
+        each side of the ink box.
+        See <a href="#figure-box-menclose-roundedbox"></a>.
       </p>
       <figure id="figure-box-menclose-roundedbox">
         <img src="figures/roundedbox.svg"/>
@@ -1739,27 +1775,18 @@
     </li>
     <li>
       <p>
-        To draw the <code>circle</code> notation, we first consider the ink box of
-        width w and height h. We draw the ellipse
-        of axes the axes of symmetry of this ink box, of radii
-        w * √2 / 2
-        and
-        h * √2 / 2
-        and of thickness ξ<sub>8</sub>.
-        We ensure that the logical box also has space ξ<sub>8</sub> around each side
-        of the ellipse ink box.
+        The <code>circle</code> notation is drawn as follows.
+        Given the ink box of width w and height h, an ellipse is drawn using
+        the axes of symmetry of this ink box, the radii
+        w * √2 / 2, h * √2 / 2 and thickness ξ<sub>8</sub>.
+        The logical box is obtained by adding space ξ<sub>8</sub> around each
+        side of the ellipse's ink box.
       </p>
       <figure id="figure-box-menclose-circle">
         <img src="figures/circlebox.svg"/>
         <figcaption>Box model for the <code>circle</code>
           notation of the <code>&lt;menclose&gt;</code> element</figcaption>
       </figure>
-    </li>
-    <li>
-      <p>
-        This document does define any layout algorithm for other <code>&lt;menclose&gt;</code>
-        notations. User agents may ignore them.
-      </p>
     </li>
   </ol>
 </section>
