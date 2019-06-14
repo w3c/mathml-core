@@ -267,13 +267,23 @@
         </section>
       </section>
       <section>
-        <h3>MathML Attribute Values</h3>
+        <h3>Types for MathML Attribute Values</h3>
         <dl>
-          <dt><dfn data-dfn-type="dfn" id="type-non-negative-integer">non-negative-integer</dfn></dt>
+          <dt><dfn data-dfn-type="dfn" id="type-unsigned-integer">unsigned-integer</dfn></dt>
+          <dd>An
+            <a data-cite="CSS-VALUES-3#integer-value"><code>&lt;integer-value&gt;</code></a> value as defined in
+            [[CSS-VALUES-3]], whose first character is neither
+            U+002D HYPHEN-MINUS character (-) nor
+            U+002B PLUS SIGN (+).
+          </dd>
+        </dl>
+        <dl>
+          <dt><dfn data-dfn-type="dfn" id="type-unsigned-number">unsigned-number</dfn></dt>
           <dd>A
-            <a data-cite="HTML#non-negative-integers"><code>&lt;non-negative-integer&gt;</code></a>
-            value as defined in
-            [[HTML]]
+            <a data-cite="CSS-VALUES-3#number-value"><code>&lt;number-value&gt;</code></a> value as defined in
+            [[CSS-VALUES-3]], whose first character is neither
+            U+002D HYPHEN-MINUS character (-) nor
+            U+002B PLUS SIGN (+).
           </dd>
         </dl>
         <dl>
@@ -283,6 +293,15 @@
             <a data-cite="CSS-VALUES-3#typedef-length-percentage"><code>&lt;length-percentage&gt;</code></a>
             value as defined in
             [[CSS-VALUES-3]]
+          </dd>
+        </dl>
+        <dl>
+          <dt><dfn data-dfn-type="dfn" id="type-unsigned-length-percentage">unsigned-length-percentage</dfn></dt>
+          <dd>A
+            <a><code>length-percentage</code></a>
+            whose first character is neither
+            U+002D HYPHEN-MINUS character (-) nor
+            U+002B PLUS SIGN (+).
           </dd>
         </dl>
         <dl>
@@ -462,7 +481,7 @@
           attribute, if present, must have value
           <code>+&lt;U&gt;</code>, <code>-&lt;U&gt;</code> or <code>&lt;U&gt;</code>
           where <code>&lt;U&gt;</code> is a
-          <a>non-negative-integer</a>.
+          <a><code>&lt;unsigned-integer&gt;</code></a>.
           It is mapped to the <a><code>math-script-level</code></a>.
           More precisely,
           <code>+&lt;U&gt;</code>, <code>-&lt;U&gt;</code> and
@@ -1416,17 +1435,35 @@
     content modified according to <code>&lt;mpadded&gt;</code>’s attributes.
   </p>
   <p>
-    See [[MATHML3]] for how the metrics of <code>&lt;mpadded&gt;</code> element are determined.
-    Note that pseudo-units allows horizontal metrics to depend on vertical metrics,
-    for example <code>width="2height"</code> which can be problematic to determine
-    intrinsic widths. Hence in the present document, if
-    the value of the <code>width</code> and <code>lspace</code> attributes contains
-    ”height” or ”depth” pseudo-units, then they must be ignored.
+    The <code>&lt;mspace&gt;</code> element accepts the attributes described
+    in <a href="#global-attributes"></a> as well as the following
+    attributes:
+  </p>
+  <ul>
+    <li><a data-lt="attribute-mpadded-width">width</a></li>
+    <li><a data-lt="attribute-mpadded-height">height</a></li>
+    <li><a data-lt="attribute-mpadded-depth">depth</a></li>
+    <li><a data-lt="attribute-mpadded-lspace">lspace</a></li>
+    <li><a data-lt="attribute-mpadded-voffset">voffset</a></li>
+  </ul>
+  <p>
+    The
+    <dfn data-dfn-type="attribute-mpadded-width" id="attribute-mpadded-width"><code>width</code></dfn> and
+    <dfn data-dfn-type="attribute-mpadded-lspace" id="attribute-mpadded-lspace"><code>lspace</code></dfn> attributes, if present, must match the syntax
+    <code>( "+" | "-" )? (<a><code>unsigned-length-percentage</code></a> | (<a><code>unsigned-number</code></a> "%"? "width"))</code>.
+  </p>
+  <p>
+    The
+    <dfn data-dfn-type="attribute-mpadded-height" id="attribute-mpadded-height"><code>height</code></dfn>,
+    <dfn data-dfn-type="attribute-mpadded-depth" id="attribute-mpadded-depth"><code>depth</code></dfn> and
+    <dfn data-dfn-type="attribute-mpadded-voffset" id="attribute-mpadded-voffset"><code>voffset</code></dfn>
+    attributes, if present, must match the syntax
+    <code>( "+" | "-" )? (<a><code>unsigned-length-percentage</code></a> | (<a><code>unsigned-number</code></a> "%"? ("height" | "depth"))</code>.
   </p>
   <p>
     The <code>&lt;mpadded&gt;</code> element is laid out as shown on
     <a href="#figure-box-mpadded"></a>.
-    The height, depth and width of the content in [[MATHML3]] corresponds to
+    The height, depth and width of the content in corresponds to
     the logical box of the content. The content of the <code>&lt;mpadded&gt;</code> element is
     positioned from the origin of the <code>&lt;mpadded&gt;</code> element as follows: We shift
     the content
