@@ -1460,23 +1460,95 @@
     attributes, if present, must match the syntax
     <code>( "+" | "-" )? (<a><code>unsigned-length-percentage</code></a> | (<a><code>unsigned-number</code></a> "%"? ("height" | "depth"))</code>.
   </p>
-  <p>
-    The <code>&lt;mpadded&gt;</code> element is laid out as shown on
-    <a href="#figure-box-mpadded"></a>.
-    The height, depth and width of the content in corresponds to
-    the logical box of the content. The content of the <code>&lt;mpadded&gt;</code> element is
-    positioned from the origin of the <code>&lt;mpadded&gt;</code> element as follows: We shift
-    the content
-    forward by a distance of <code>lspace</code> and shift it upward by a distance of
-    <code>voffset</code>. The logical metrics of the <code>&lt;mpadded&gt;</code> element are given by the
-    height, depth and width of the <code>&lt;mpadded&gt;</code> element described in
-    [[MATHML3]]. The ink metrics of the <code>&lt;mpadded&gt;</code> element match their logical
-    metrics.
-  </p>
-  <figure id="figure-box-mpadded">
-    <img src="figures/mpaddedbox.svg"/>
-    <figcaption>Box model for the <code>&lt;mpadded&gt;</code> element</figcaption>
-  </figure>
+  <section>
+    <h4>Content box and requested parameters</h4>
+    <p>
+      The children of the <code>&lt;mpadded&gt;</code> element are laid out
+      using the algorithm of the <a><code>&lt;mrow&gt;</code></a> element
+      to produce the
+      <dfn data-dfn-type="mpadded-content-box"
+           id="mpadded-content-box">mpadded content box</dfn>
+      with logical metrics called content width,
+      content height and content depth. The requested <code>&lt;mpadded&gt;</code>
+      parameters are determined as follows:
+    </p>
+    <ul>
+      <li>If the <code>width</code> (respectively <code>height</code>,
+        <code>depth</code>, <code>lspace</code>, <code>voffset</code>)
+        attributes are absent or invalid the requested width
+        (respectively depth, height) is the content width
+        (respectively content height, content depth, <code>0</code>,
+        <code>0</code>).
+      </li>
+      <li>If the <code>width</code> (respectively <code>height</code>,
+        <code>depth</code>, <code>lspace</code>, <code>voffset</code>)
+        attribute is an
+        <a><code>unsigned-length-percentage</code></a>
+        then use the resolved value as the requested width
+        (respectively height, depth, lspace, voffset)
+        with percentage interpreted relative to
+        the content width (respectively height, depth, <code>0</code>,
+        <code>0</code>).
+      </li>
+      <li>If the <code>width</code> (respectively <code>lspace</code>) attribute
+        matches <code>"<a><code>unsigned-number</code></a>width"</code>
+        then the requested width (respectively lspace) is the number multipled by
+        the content width. If instead it matches
+        <code>"<a><code>unsigned-number</code></a>%width"</code>
+        then it is the same value but divided by 100.
+      </li>
+      <li>If the <code>height</code> (respectively <code>depth</code>,
+        <code>voffset</code>) attribute
+        matches <code>"<a><code>unsigned-number</code></a>height"</code>
+        then the requested height (respectively depth, voffset) is the number
+        multipled by the content height. If instead it matches
+        <code>"<a><code>unsigned-number</code></a>%heigth"</code>
+        then it is the same value but divided by 100.
+      </li>
+      <li>If the <code>height</code> (respectively <code>depth</code>,
+        <code>voffset</code>) attribute
+        matches <code>"<a><code>unsigned-number</code></a>depth"</code>
+        then the requested height (respectively depth, voffset) is the number
+        multipled by the content depth. If instead it matches
+        <code>"<a><code>unsigned-number</code></a>%depth"</code>
+        then it is the same value but divided by 100.
+      </li>
+      <li>If the <code>width</code> (respectively <code>height</code>,
+        <code>depth</code>, <code>lspace</code>, <code>voffset</code>)
+        starts with a U+002B PLUS SIGN or U+002D HYPHEN-MINUS character,
+        then choose ε = ±1 to match the sign of that character
+        and let V be the requested width
+        (respectively height, depth, lspace, voffset)
+        obtained for the same attribute value with that character removed.
+        Then the requested width (respectively height, depth, lspace, voffset)
+        is the content width (respectively height, depth, <code>0</code>,
+        <code>0</code>) + εV.
+      </li>
+    </ul>
+    <div class="issue" data-number="40">Allow negative width, lspace to
+      produce negative spacing?</div>
+    <p>
+      If the requested width, depth, height, lspace values calculated above
+      result in negative values then replace them with <code>0</code>.
+    </p>
+  </section>
+  <section>
+    <h4>Layout of <code>&lt;mpadded&gt;</code></h4>
+    <p>
+      The <code>&lt;mpadded&gt;</code> element is laid out as shown on
+      <a href="#figure-box-mpadded"></a>.
+      The <a>mpadded content box</a> is positioned at the origin of the
+      <code>&lt;mpadded&gt;</code> element, shift horizontally by the requested
+      lspace and vertically by the requested voffset.
+      The logical metrics of the <code>&lt;mpadded&gt;</code> element are given
+      by the requested height, depth and width. The ink metrics of the
+      <code>&lt;mpadded&gt;</code> element match their logical metrics.
+    </p>
+    <figure id="figure-box-mpadded">
+      <img src="figures/mpaddedbox.svg"/>
+      <figcaption>Box model for the <code>&lt;mpadded&gt;</code> element</figcaption>
+    </figure>
+  </section>
 </section>
 <section>
   <h3>Making Sub-Expressions Invisible <code>&lt;mphantom&gt;</code></h3>
