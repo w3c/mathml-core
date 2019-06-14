@@ -403,8 +403,9 @@
           definition in [[CSS-FONTS-3]].
         </p>
         <div class="note">
-          The above attributes are not useful in CSS-aware
-          environments, but are preserved for backward compatibility reasons.
+          While the above attributes is preserved for backward compatibility reasons
+    with legacy documents and existing tools, modern authors and tools are strongly 
+    encouraged to use CSS for styling.
         </div>
         </section>
         <section>
@@ -675,14 +676,14 @@
             <figcaption>Generic Box Model for MathML elements</figcaption>
           </figure>
           <p>
-            For MathML element containing only text nodes or foreign elements, we assume
-            that the content is simple enough to determine these values. For example,
+            For a MathML element containing only text nodes or foreign elements,
+            the content is simple enough to determine these values. For example,
             in most cases, this is just a single text node and w = W.
             A MathML element containing only other MathML elements follows special rules to
             layout their children at position
             (x<sub>i</sub>, y<sub>i</sub>) with parameters
             W<sub>i</sub>, w<sub>i</sub>, a<sub>i</sub>, b<sub>i</sub>, A<sub>i</sub>,
-            B<sub>i</sub>. Then as a general rule, its box parameters are given
+            B<sub>i</sub>. Then, as a general rule, its box parameters are given
             by taking the union of child boxes, that is:
           </p>
           <p>
@@ -709,7 +710,7 @@
             Note that the schemas in this document are drawn assuming left-to-right
             directionality. If the CSS <code>direction</code> is set to right-to-left, then the
             elements should layout by making the x-axis pointing from right-to-left.
-            In this document, we use the terminology of
+            This document uses the terminology of
             [[MATHML3]]: “leading”
             means “left” in right-to-left and “right” in right-to-left mode, while
             “trailing” means “right” in right-to-left and “left” in right-to-left
@@ -721,8 +722,8 @@
             glyphs are (see <a href="#figure-italic-correction"></a>). The
             <code class="MATH">MathTopAccentAttachment</code> table also contains a reference
             points that are used for the horizontal positioning of glyphs as an accent
-            (see <a href="#figure-top-accent-attachment"></a>). In later sections, we
-            generalize this by claiming that all MathML boxes have italic correction
+            (see <a href="#figure-top-accent-attachment"></a>). In later sections, this is 
+            generalized by claiming that all MathML boxes have italic correction
             and top accent attachment values. The values for glyphs are used to try and
             extend to token elements or to special boxes that do not change child metrics.
             Otherwise fallback values are used: 0 for italic correction and half
@@ -751,14 +752,13 @@
             independent steps:
           </p>
           <ol
-            <li>In the first step, we determine the intrinsic width W of MathML boxes.
-              To do so we just follow the description given in this document for each
-              MathML box. We rely on vertical positions x as well as values for
-              italic correction and top accent attachment. However, we ignore any vertical
+            <li>First, determine the intrinsic width W of MathML boxes following the description 
+              given in this document for each MathML box. This relies on vertical positions x as
+              well as values for italic correction and top accent attachment, ignoring any vertical
               positioning or metrics.
             <li>
-              In the second step, we do the final layout of MathML boxes following
-              the description given in this document. We obtain all the box metrics,
+              Next, the final layout of MathML boxes is performed following
+              the description given in this document, obtaining all the box metrics,
               including the actual width w, vertical metrics a, b, A, B and
               vertical positions y.
             </li>
@@ -783,20 +783,20 @@
   the “Exception for embellished operators” described in [[MATHML3]].
   This means that the actual stretching of operators described in
   <a href="#operator-fence-separator-or-accent-mo"></a>
-  may be “delayed” until we reach the top of its embellished
-  operator subtree. We then have to apply the current operation again
+  may be “delayed” until processing reaches the top of its embellished
+  operator subtree. It then must apply the current operation again
   to this embellished operator (intrinsic width determination or layout).
   Fortunately, such embellished operator subtrees are not deep in practice.
 </p>
 <p>
   This document does not require support for operator stretching in table cells.
-  The “delayed” stretching of all operators must then be performed when we
-  arrive at the anonymous <code>&lt;mrow&gt;</code> child of <code>&lt;math&gt;</code> and <code>&lt;mtd&gt;</code>
+  The “delayed” stretching of all operators must then be performed when processing
+  arrives at the anonymous <code>&lt;mrow&gt;</code> child of <code>&lt;math&gt;</code> and <code>&lt;mtd&gt;</code>
   elements.
-  That way, the intrinsic width of this anonymous <code>&lt;mrow&gt;</code> is well-defined
+  In this manner, the intrinsic width of this anonymous <code>&lt;mrow&gt;</code> is well-defined
   for the layout of <code>&lt;mtable&gt;</code> elements and of the containers of the
   <code>&lt;math&gt;</code> element. Similarly, the final layout of this anonymous
-  <code>&lt;mrow&gt;</code> is already done when we want to perform the one of its ancestors.
+  <code>&lt;mrow&gt;</code> is already done when it is time to perform the one of its ancestors.
 </p>
 </section>
 </section>
@@ -856,8 +856,8 @@
       ordinary operators with infix, prefix, or postfix forms, these include
       fence characters such as braces, parentheses, and "absolute value" bars;
       separators such as comma and semicolon; and mathematical accents such as
-      a bar or tilde over a symbol. We will use the term "operator" in this
-      chapter to refer to operators in this broad sense.
+      a bar or tilde over a symbol. This chapter uses the term "operator" to refer to 
+      operators in this broad sense.
     </p>
     <p>
       The <code>&lt;mo&gt;</code> element accepts the attributes described
@@ -884,8 +884,8 @@
       of an <code>&lt;mo&gt;</code> element is obtained as described in section
       “Default value of the form attribute” of
       [[MATHML3]]. From the
-      <code>form</code> and the text content, we can deduce other
-      default values from the operator dictionary or use the fallback values
+      <code>form</code> and the text content, other
+      default values can be deduced from the operator dictionary or use the fallback values
       given in “Dictionary-based attributes” of
       [[MATHML3]].
     </p>
@@ -898,11 +898,11 @@
       In most cases, the <code>&lt;mo&gt;</code> element is treated as an
       <a>&lt;mtext&gt;</a> element.
       However, when an <code>&lt;mo&gt;</code> element with a single character must be
-      displayed as a large operator then instead we use the
+      displayed as a large operator then use the
       <code class="MATH">MathVariants</code>
       table to try and find a glyph of height at least
       <code class="MATH">DisplayOperatorMinHeight</code>
-      (<a href="#figure-sum-base-and-displastyle-sizes"></a>). If none is found, we fallback to the
+      (<a href="#figure-sum-base-and-displastyle-sizes"></a>). If none is found, fallback to the
       largest one. Because this parameter does not always give
       the best size, user agents may also use the following heuristic: ensure
       that the large variant height is at least 2 times as large as the base
@@ -916,7 +916,7 @@
     <p>
       When an <code>&lt;mo&gt;</code> element with a single character must be
       displayed as a horizontal or vertical operator then instead of displaying
-      the normal character we use the <code class="MATH">MathVariants</code>
+      the normal character, use the <code class="MATH">MathVariants</code>
       table to try and find a glyph that has at least the desired size or an
       assembly from several glyphs to cover at least the desired size
       (<a href="#figure-base-variants-and-assembly"></a>). The rules for vertical stretching
@@ -971,10 +971,10 @@
     </p>
     <p>
       In most cases the <code>&lt;mtext&gt;</code> element contains some text
-      that is laid out without line breaks using complex text layout. It is assumed that we
-      can measure the ink ascent &amp; descent, logical ascent &amp; descent and
-      advance width of the text frame and use these values for the MathML box of
-      the <code>&lt;mtext&gt;</code> element.
+      that is laid out without line breaks using complex text layout. The ink ascent 
+      &amp; descent, logical ascent &amp; descent and
+      advance width of the text frame are measured and these values used 
+      for the MathML box of the <code>&lt;mtext&gt;</code> element.
     </p>
     <p>
       If the trailing glyph of the text content has an entry in the
@@ -2230,8 +2230,9 @@ mlabeledtr > mtd:first-child {
   </p>
   <pre class="css" data-include="user-agent-stylesheet/maction.css"></pre>
   <div class="note">
-    Although <code>&lt;maction&gt;</code> is not really useful in modern web
-    environments, it is preserved for backward compatibility reasons.
+    While <code>&lt;maction&gt;</code> is preserved for backward compatibility reasons
+    with legacy documents and existing tools, modern authors and tools are strongly 
+    encouraged to use CSS for styling.
   </div>
 </section>
 <section>
