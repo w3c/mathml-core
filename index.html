@@ -1129,7 +1129,7 @@
       value. A percentage is interpreted relative to that default value.
     </p>
     <p>
-      The <code>mfrac</code> element sets
+      The <code>&lt;mfrac&gt;</code> element sets
       <code>displaystyle</code> to <code>false</code>,
       or if it was already <code>false</code> increments
       <code>scriptlevel</code> by 1, within its children.
@@ -2154,77 +2154,104 @@
 <section>
   <h2>Tabular Math</h2>
   <p>
-    Matrices, arrays and other table-like mathematical notation are marked up using
-    <dfn><code>&lt;mtable&gt;</code></dfn>
-    <dfn><code>&lt;mtr&gt;</code></dfn>
-    <dfn><code>&lt;mtd&gt;</code></dfn>
-    elements. These
-    elements are similar to the table, tr and td elements of HTML, except that they
-    provide specialized attributes for the fine layout control necessary for
-    commutative diagrams, block matrices and so on.
+    Matrices, arrays and other table-like mathematical notation are marked up
+    using
+    <a><code>&lt;mtable&gt;</code></a>
+    <a><code>&lt;mtr&gt;</code></a>
+    <a><code>&lt;mtd&gt;</code></a>
+    elements.  These  elements are similar to the
+    <a data-cite="HTML#the-table-element"><code>&lt;table&gt;</code></a>,
+    <a data-cite="HTML#the-tr-element"><code>&lt;tr&gt;</code></a>
+    and
+    <a data-cite="HTML#the-td-element"><code>&lt;td&gt;</code></a>
+    elements of [[HTML]].
   </p>
-  <p>
-    In the present document, we restrict ourselves to a minimal implementation
-    compatible with HTML tables. First the <code>&lt;mtable&gt;</code> element must be treated as
-    a HTML table and by [[MATHML3]], <code>&lt;mtable&gt;</code> must accept a
-    <code>displaystyle</code> attribute with default value <code>false</code>.
-  </p>
-  <p>
-    The <a><code>displaystyle</code></a> and
-    <a><code>scriptlevel</code></a> changes must be achieved by the rules
-    described in <a href="#user-agent-stylesheet"></a>.
-  </p>
-  <p>
-    In addition, user agents may use the following rules to emulate the <code>frame</code>
-    attribute:
-  </p>
-  <pre class="css">mtable[frame="none"] {
-  border: none;
-  }
-mtable[frame="solid"] {
-  border: solid thin;
-  }
-mtable[frame="dashed"] {
-  border: dashed thin;
-}</pre>
-  <p>
-    By default, user agents must align the vertical center of the table on the
-    math axis, which is provided by the <code class="MATH">AxisHeight</code> value.
-    User agents may also support non-default <code>align</code> attribute values.
-  </p>
-  <p>
-    The <code>&lt;mtr&gt;</code> and <code>&lt;mlabeledtr&gt;</code> elements must be treated as HTML table rows
-    and the label of <code>&lt;mlabeledtr&gt;</code> element must be hidden by default.
-    The default value of <code>rowalign</code> must be <code>baseline</code>.
-    One may rely on the following rules for the user agent stylesheet
-    as suggested in
-    <a href="#user-agent-stylesheet"></a>:
-  </p>
-  <pre class="css">mtr, mlabeledtr {
-  display: table-row;
-  vertical-align: baseline;
-}
-mlabeledtr > mtd:first-child {
-  display: none;
-}</pre>
-  <p>
-    Finally, the <code>&lt;mtd&gt;</code> elements must be treated as a HTML table cell.
-    The default value of <code>rowalign</code> must be <code>baseline</code> and
-    the default value of <code>colulmnalign</code> must be <code>center</code>.
-    User agents may also try to approximate the default <code>rowspacing</code> and
-    <code>columnspacing</code> between cells. This can be achieved with the following CSS:
-  </p>
-<pre class="css">mtd {
-  display: table-cell;
-  vertical-align: inherit;
-  text-align: center;
-  padding: 0.5ex 0.4em;
-}</pre>
-  <p>
-    The <code>&lt;mtd&gt;</code> element must also support the <code>columnspan</code> (sic) and
-    <code>rowspan</code> attributes. This can be implemented the same way as
-    the HTML <code>colspan</code> and <code>rowspan</code> attributes.
-  </p>
+  <div class="issue">
+    This describes a very partial support for [[MathML3]] tables.
+    Do we want more? Should CSS be extended to cover math table's use cases?
+  </div>
+  <section>
+    <h3>Table or Matrix <code>&lt;mtable&gt;</code></h3>
+    <p>The <dfn><code>&lt;mtable&gt;</code></dfn> is laid out as an
+      <code>inline-table</code> and sets
+      <code>displaystyle</code> to <code>false</code>. The
+      <a href="#user-agent-stylesheet">user agent stylesheet</a> must contain
+      the following rules in order to implement these properties:
+    </p>
+    <pre data-include="user-agent-stylesheet/mtable.css"></pre>
+    <p>
+      The <code>&lt;mtable&gt;</code> accepts the attributes described
+      in <a href="#global-attributes"></a> as well as the following
+      attribute:
+      <ul>
+        <li><a>frame</a></li>
+      </ul>
+    <p>
+      The <dfn>frame</dfn> attribute, if present, must be case-insensitively
+      equal to the value <code>none</code>, <code>solid</code> or
+      <code>dashed</code>. The <a href="#user-agent-stylesheet">user agent
+        stylesheet</a> must contain the following rules in order to implement
+      that attribute:
+    </p>
+    <pre data-include="user-agent-stylesheet/mtable-frame.css"></pre>
+    <div class="issue">TODO: Improve description here and handle the case
+      when height &lt; AxisHeight </div>
+    <p>
+      The size of the logical box of the <code>&lt;mtable&gt;</code>
+      are provided by CSS layout. The math axis is aligned with the center of
+      the table: Ascent is height plus
+      <code class="MATH">AxisHeight</code> and descent the height minus
+      <code class="MATH">AxisHeight</code>. The ink box is the same as the
+      logical box.
+    </p>
+  </section>
+  <section>
+    <h3>Row in Table or Matrix <code>&lt;mtr&gt;</code></h3>
+    <p>
+      The <dfn><code>&lt;mtr&gt;</code></dfn> is laid out as
+      <code>table-row</code>. The
+      <a href="#user-agent-stylesheet">user agent stylesheet</a> must contain
+      the following rules in order to implement that behavior:
+    </p>
+    <pre data-include="user-agent-stylesheet/mtr.css"></pre>
+    <p>
+      The <code>&lt;mtr&gt;</code> accepts the attributes described
+      in <a href="#global-attributes"></a>.
+    </p>
+  </section>
+  <section>
+    <h3>Entry in Table or Matrix <code>&lt;mtd&gt;</code></h3>
+    <p>
+      The <dfn><code>&lt;mtd&gt;</code></dfn> is laid out as
+      a <code>table-cell</code> with content centered in the cell and
+      a default padding. The
+      <a href="#user-agent-stylesheet">user agent stylesheet</a> must contain
+      the following rules:
+    </p>
+    <pre data-include="user-agent-stylesheet/mtd.css"></pre>
+    <p>
+      The <code>&lt;mtr&gt;</code> accepts the attributes described
+      in <a href="#global-attributes"></a> as well as the following attributes:
+    </p>
+    <ul>
+      <li><a>columnspan</a></li>
+      <li><a>rowspan</a></li>
+    </ul>
+    <p>
+      The <dfn><code>columnspan</code></dfn> (respectively
+      <dfn><code>rowspan</code></dfn>) attribute has the same
+      syntax and semantic as the
+      <a data-cite="HTML#attr-tdth-colspan"><code>&lt;colspan&gt;</code></a>
+      (respectively
+      <a data-cite="HTML#attr-tdth-rowspan"><code>&lt;rowspan&gt;</code></a>)
+      attribute on the <code>&lt;td&gt;</code> element from [[HTML]].
+    </p>
+    <div class="note">
+      The name for the column spanning attribute is
+      <code>columnspan</code> as in [[MathML3]] and not
+      <code>colspan</code> as in [[HTML]].
+    </div>
+  </section>
 </section>
 <section>
   <h2>Enlivening Expressions</h2>
@@ -2499,7 +2526,10 @@ mlabeledtr > mtd:first-child {
 /* &lt;mrow&gt;-like elements */
 <span data-include="user-agent-stylesheet/maction.css"></span><span data-include="user-agent-stylesheet/merror.css"></span><span data-include="user-agent-stylesheet/mphantom.css"></span>
 /* Tables */
-<span data-include="user-agent-stylesheet/tables.css"></span>
+<span data-include="user-agent-stylesheet/mtable.css"></span>
+<span data-include="user-agent-stylesheet/mtable-frame.css"></span>
+<span data-include="user-agent-stylesheet/mtr.css"></span>
+<span data-include="user-agent-stylesheet/mtd.css"></span>
 /* Other rules for scriptlevel and displastyle */
 <span data-include="user-agent-stylesheet/mfrac.css"></span>
 <span data-include="user-agent-stylesheet/mroot.css"></span>

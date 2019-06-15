@@ -7,18 +7,18 @@ math {
   math-style: inline;
   math-script-level: initial;
 }
-math[display="block"] {
+math[display="block" i] {
   display: block;
   text-align: center;
   math-style: display;
 }
-math[display="inline"] {
+math[display="inline" i] {
   display: inline;
   math-style: inline;
 }
-math[displaystyle="false"] {
+math[displaystyle="false" i] {
   math-style: inline;
 }
-math[displaystyle="true"] {
+math[displaystyle="true" i] {
   math-style: display;
 }

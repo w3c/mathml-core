@@ -1,7 +1,7 @@
-mstyle[displaystyle="false"] {
+*[displaystyle="false" i] {
   math-style: inline;
 }
-mstyle[displaystyle="true"] {
+*[displaystyle="true" i] {
   math-style: display;
 }
 msub > :not(:first-child),
