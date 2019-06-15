@@ -151,8 +151,7 @@
           When
           <a data-cite="HTML#parsing">parsing HTML documents</a>
           user agents must treat any of the following
-          <dfn data-dfn-type="dfn" id="element-mathml-core">MathML Core
-          elements</dfn> as belonging to the
+          <dfn>MathML Core elements</dfn> as belonging to the
           <a data-cite="INFRA#mathml-namespace">MathML namespace</a>:
         </p>
         <ul>
@@ -252,16 +251,16 @@
           <p>
             All the nodes representing <a>MathML Core elements</a> in the DOM
             must and expose to scripts, the following
-            <dfn data-dfn-type="dfn" id="idl-MathMLElement"><code>MathMLElement</code></dfn> interface.
+            <dfn><code>MathMLElement</code></dfn> interface.
           </p>
           <pre class="idl" data-include="webidl/MathMLElement.idl"></pre>
           <p>The
-            <dfn data-dfn-type="dfn" data-cite="HTML#globaleventhandlers" id="idl-GlobalEventHandlers"><code>GlobalEventHandlers</code></dfn>,
-            <dfn data-dfn-type="dfn" data-cite="HTML#documentandelementeventhandlers" id="idl-DocumentAndElementEventHandlers"><code>DocumentAndElementEventHandlers</code></dfn> and
-            <dfn data-dfn-type="dfn" data-cite="HTML#htmlorsvgelement" id="idl-HTMLOrSVGElement"><code>HTMLOrSVGElement</code></dfn> interfaces are defined in
+            <dfn data-cite="HTML#globaleventhandlers"><code>GlobalEventHandlers</code></dfn>,
+            <dfn data-cite="HTML#documentandelementeventhandlers"><code>DocumentAndElementEventHandlers</code></dfn> and
+            <dfn data-cite="HTML#htmlorsvgelement"><code>HTMLOrSVGElement</code></dfn> interfaces are defined in
             [[HTML]].</p>
           <p>The
-            <dfn data-dfn-type="dfn" data-cite="CSSOM#elementcssinlinestyle" id="idl-ElementCSSInlineStyle"><code>ElementCSSInlineStyle</code></dfn>
+            <dfn data-cite="CSSOM#elementcssinlinestyle"><code>ElementCSSInlineStyle</code></dfn>
               interface is defined in [[CSSOM]].
           </p>
         </section>
@@ -269,7 +268,7 @@
       <section>
         <h3>Types for MathML Attribute Values</h3>
         <dl>
-          <dt><dfn data-dfn-type="dfn" id="type-unsigned-integer">unsigned-integer</dfn></dt>
+          <dt><dfn>unsigned-integer</dfn></dt>
           <dd>An
             <a data-cite="CSS-VALUES-3#integer-value"><code>&lt;integer-value&gt;</code></a> value as defined in
             [[CSS-VALUES-3]], whose first character is neither
@@ -278,7 +277,7 @@
           </dd>
         </dl>
         <dl>
-          <dt><dfn data-dfn-type="dfn" id="type-unsigned-number">unsigned-number</dfn></dt>
+          <dt><dfn>unsigned-number</dfn></dt>
           <dd>A
             <a data-cite="CSS-VALUES-3#number-value"><code>&lt;number-value&gt;</code></a> value as defined in
             [[CSS-VALUES-3]], whose first character is neither
@@ -287,8 +286,7 @@
           </dd>
         </dl>
         <dl>
-          <dt><dfn data-dfn-type="dfn"
-                   id="type-length-percentage">length-percentage</dfn></dt>
+          <dt><dfn>length-percentage</dfn></dt>
           <dd>A
             <a data-cite="CSS-VALUES-3#typedef-length-percentage"><code>&lt;length-percentage&gt;</code></a>
             value as defined in
@@ -296,7 +294,7 @@
           </dd>
         </dl>
         <dl>
-          <dt><dfn data-dfn-type="dfn" id="type-unsigned-length-percentage">unsigned-length-percentage</dfn></dt>
+          <dt><dfn>unsigned-length-percentage</dfn></dt>
           <dd>A
             <a><code>length-percentage</code></a>
             whose first character is neither
@@ -305,14 +303,14 @@
           </dd>
         </dl>
         <dl>
-          <dt><dfn data-dfn-type="dfn" id="type-color">color</dfn></dt>
+          <dt><dfn>color</dfn></dt>
           <dd>A
             <a data-cite="CSS-COLOR-3#colorunits"><code>&lt;color&gt;</code></a>
             value as defined in [[CSS-COLOR-3]]
           </dd>
         </dl>
         <dl>
-          <dt><dfn data-dfn-type="boolean" id="type-boolean">boolean</dfn></dt>
+          <dt><dfn>boolean</dfn></dt>
           <dd>A string that is case-insensitively equal to <code>true</code> or
             <code>false</code>.
           </dd>
@@ -341,9 +339,9 @@
           <h4>Attributes common to HTML and MathML elements</h4>
         <p>
           The
-          <dfn data-dfn-type="id" id="attribute-id"><code>id</code></dfn>,
-          <dfn data-dfn-type="class" id="attribute-class"><code>class</code></dfn>,
-          <dfn data-dfn-type="style" id="attribute-style"><code>style</code></dfn>,
+          <dfn><code>id</code></dfn>,
+          <dfn><code>class</code></dfn>,
+          <dfn><code>style</code></dfn>,
           attributes have the same syntax and semantic as defined for
           <a data-cite="HTML#the-id-attribute">id</a>,
           <a data-cite="HTML#classes">class</a> and
@@ -352,7 +350,7 @@
         </p>
         <p>
           The
-          <dfn data-dfn-type="href" id="attribute-href"><code>href</code></dfn>
+          <dfn><code>href</code></dfn>
           attribute has the syntax and semantic as defined for
           the <a data-cite="HTML#attr-hyperlink-href">href</a> attribute on
           <code>&lt;a&gt;</code> element.
@@ -363,7 +361,7 @@
         <pre class="css" data-include="user-agent-stylesheet/links.css"></pre>
         <p>
           The
-          <dfn data-dfn-type="dir" id="attribute-dir"><code>dir</code></dfn>
+          <dfn><code>dir</code></dfn>
           attribute, if present,
           must be case-insensitively equal to the
           value <code>ltr</code> or <code>ltr</code>.
@@ -378,9 +376,9 @@
           <h4>Legacy MathML Style Attributes</h4>
         <p>
           The
-          <dfn data-dfn-type="mathcolor" id="attribute-mathcolor"><code>mathcolor</code></dfn>
+          <dfn><code>mathcolor</code></dfn>
           and
-          <dfn data-dfn-type="mathbackground" id="attribute-mathbackground"><code>mathbackground</code></dfn>
+          <dfn><code>mathbackground</code></dfn>
           attributes, if present, must
           have a value that is a <a>color</a>.
           The <code>mathcolor</code> property describes the foreground fill color of
@@ -391,7 +389,7 @@
         </p>
         <p>
           The
-          <dfn data-dfn-type="mathsize" id="attribute-mathsize"><code>mathsize</code></dfn>
+          <dfn><code>mathsize</code></dfn>
           attribute, if present, must
           have a value that is a valid <a>length-percentage</a>.
           The <code>mathsize</code> property indicates indicates the desired height
@@ -404,7 +402,7 @@
         </p>
         <div class="note">
           While the above attributes are preserved for backward compatibility reasons
-    with legacy documents and existing tools, modern authors and tools are strongly 
+    with legacy documents and existing tools, modern authors and tools are strongly
     encouraged to use CSS for styling.
         </div>
         </section>
@@ -412,7 +410,7 @@
           <h4>The <code>mathvariant</code> attribute</h4>
         <p>
           The
-          <dfn data-dfn-type="mathvariant" id="attribute-mathvariant"><code>mathvariant</code></dfn>
+          <dfn><code>mathvariant</code></dfn>
           attribute,
           if present, must have a value that is one of:
         </p>
@@ -466,7 +464,7 @@
           <h4>The <code>displaystyle</code> and <code>scriptlevel</code> attributes</h4>
         <p>
           The
-          <dfn data-dfn-type="displaystyle" id="attribute-displaystyle"><code>displaystyle</code></dfn>
+          <dfn><code>displaystyle</code></dfn>
           attribute, if present, must be a <a>boolean</a>.
           It is mapped to the CSS property <a><code>math-style</code></a>.
           More precisely,  <code>true</code> is mapped to <code>display</code> and
@@ -478,7 +476,7 @@
         </p>
         <p>
           The
-          <dfn data-dfn-type="scriptlevel" id="attribute-scriptlevel"><code>scriptlevel</code></dfn>
+          <dfn><code>scriptlevel</code></dfn>
           attribute, if present, must have value
           <code>+&lt;U&gt;</code>, <code>-&lt;U&gt;</code> or <code>&lt;U&gt;</code>
           where <code>&lt;U&gt;</code> is an
@@ -514,7 +512,7 @@
         <h3>The Top-Level <code>&lt;math&gt;</code> Element</h3>
         <p>
           The
-          <dfn data-dfn-type="math" id="element-math"><code>&lt;math&gt;</code></dfn>
+          <dfn><code>&lt;math&gt;</code></dfn>
           element accepts the attributes described
           in <a href="#global-attributes"></a> as well as the
           following attribute:
@@ -524,7 +522,7 @@
         </ul>
         <p>
           The
-          <dfn data-dfn-type="display" id="attribute-display"><code>display</code></dfn>
+          <dfn><code>display</code></dfn>
           attribute, if present,
           must have value <code>block</code> or <code>inline</code>.
           To fully implement this attribute, additional CSS properties must be
@@ -605,38 +603,6 @@
           More information are provided in
           <a href="operator-fence-separator-or-accent-mo"></a>.
         </p>
-      </section>
-      <section>
-        <h3>Cramped Elements</h3>
-        <p>
-          A MathML element is
-          <dfn data-dfn-type="cramped" id="property-cramped">cramped</dfn> if
-          any of the following conditions is true:
-        </p>
-        <ol>
-          <li>Its parent is <a>cramped</a>.</li>
-          <li>Its parent is a <a><code>&lt;msqrt&gt;</code></a> or
-              <a><code>&lt;mroot&gt;</code></a> element.
-          </li>
-          <li>It is the denominator of a <a><code>&lt;mfrac&gt;</code></a>
-            element.</li>
-          <li>
-            It is the subscript of a
-            <a><code>&lt;msub&gt;</code></a> or
-            <a><code>&lt;msubsup&gt;</code></a> element.
-          </li>
-          <li>
-            It is the underscript of a
-            <a><code>&lt;munder&gt;</code></a> or
-            <a><code>&lt;munderover&gt;</code></a> element.
-          </li>
-          <li>It is the overscript of the
-            <code>&lt;mover&gt;</code> and <code>&lt;munderover&gt;</code>
-            elements and
-            is an <a>embellished operator</a> with
-            the <a>accent</a> property.
-          </li>
-        </ol>
       </section>
     </section>
     <section>
@@ -722,9 +688,9 @@
             glyphs are (see <a href="#figure-italic-correction"></a>). The
             <code class="MATH">MathTopAccentAttachment</code> table also contains a reference
             points that are used for the horizontal positioning of glyphs as an accent
-            (see <a href="#figure-top-accent-attachment"></a>). In later sections, this is 
-            generalized by claiming that all MathML boxes have italic correction
-            and top accent attachment values. The values for glyphs are used to try and
+            (see <a href="#figure-top-accent-attachment"></a>). In later sections, this is
+            generalized by claiming that all MathML boxes have <dfn>italic correction</dfn>
+            and <dfn>top accent attachment</dfn> values. The values for glyphs are used to try and
             extend to token elements or to special boxes that do not change child metrics.
             Otherwise fallback values are used: 0 for italic correction and half
             the width of the box for top accent attachment.
@@ -752,7 +718,7 @@
             independent steps:
           </p>
           <ol
-            <li>First, determine the intrinsic width W of MathML boxes following the description 
+            <li>First, determine the intrinsic width W of MathML boxes following the description
               given in this document for each MathML box. This relies on vertical positions x as
               well as values for italic correction and top accent attachment, ignoring any vertical
               positioning or metrics.
@@ -806,7 +772,7 @@
     <h3>Identifier <code>&lt;mi&gt;</code></h3>
     <p>
       The
-      <dfn data-dfn-type="mi" id="element-mi"><code>&lt;mi&gt;</code></dfn>
+      <dfn><code>&lt;mi&gt;</code></dfn>
       element represents a symbolic name or
       arbitrary text
       that should be rendered as an identifier. Identifiers can include
@@ -827,7 +793,7 @@
     <h3>Number <code>&lt;mn&gt;</code></h3>
     <p>
       The
-      <dfn data-dfn-type="mn" id="element-mn"><code>&lt;mn&gt;</code></dfn>
+      <dfn><code>&lt;mn&gt;</code></dfn>
       element represents a "numeric literal" or
       other data that should be rendered as a numeric literal. Generally
       speaking, a numeric literal is a sequence of digits, perhaps including a
@@ -844,7 +810,7 @@
     <h3>Operator, Fence, Separator or Accent <code>&lt;mo&gt;</code></h3>
     <p>
       The
-      <dfn data-dfn-type="mo" id="element-mo"><code>&lt;mo&gt;</code></dfn>
+      <dfn><code>&lt;mo&gt;</code></dfn>
       element represents an
       operator or anything that should be rendered as an operator. In general,
       the notational conventions for mathematical operators are quite
@@ -856,7 +822,7 @@
       ordinary operators with infix, prefix, or postfix forms, these include
       fence characters such as braces, parentheses, and "absolute value" bars;
       separators such as comma and semicolon; and mathematical accents such as
-      a bar or tilde over a symbol. This chapter uses the term "operator" to refer to 
+      a bar or tilde over a symbol. This chapter uses the term "operator" to refer to
       operators in this broad sense.
     </p>
     <p>
@@ -931,12 +897,11 @@
     </p>
     <p>
       The size variant or construction used for vertical stretchy operators
-      will depend on the target size to cover. To determine the intrinsic
-      width W of the operator, we consider the maximum of all possible widths
+      will depend on the target size to cover. The intrinsic width W of the
+      operator is calculated from the maximum of all possible widths
       for the base size, size variants and construction available for the given
-      operator. It is assumed that the width of the
-      operator is almost independent of the stretch size, which is the case in
-      practice for most math fonts and operators.
+      operator. In practice, for most math fonts and operators, the width
+      of the operator is almost independent of the stretch size.
     </p>
     <figure id="figure-base-variants-and-assembly">
       <img src="figures/bracesize.svg"/>
@@ -960,7 +925,7 @@
     <h3>Text <code>&lt;mtext&gt;</code></h3>
     <p>
       The
-      <dfn data-dfn-type="mtext" id="element-mtext"><code>&lt;mtext&gt;</code></dfn>
+      <dfn><code>&lt;mtext&gt;</code></dfn>
       element is used to represent arbitrary text
       that should be rendered as itself. In general, the
       <code>&lt;mtext&gt;</code> element is intended to denote commentary text.
@@ -971,9 +936,9 @@
     </p>
     <p>
       In most cases the <code>&lt;mtext&gt;</code> element contains some text
-      that is laid out without line breaks using complex text layout. The ink ascent 
+      that is laid out without line breaks using complex text layout. The ink ascent
       &amp; descent, logical ascent &amp; descent and
-      advance width of the text frame are measured and these values used 
+      advance width of the text frame are measured and these values used
       for the MathML box of the <code>&lt;mtext&gt;</code> element.
     </p>
     <p>
@@ -1018,7 +983,7 @@
     <h3>Space <code>&lt;mspace&gt;</code></h3>
     <p>
       The
-      <dfn data-dfn-type="mspace" id="element-mspace"><code>&lt;mspace&gt;</code></dfn>
+      <dfn><code>&lt;mspace&gt;</code></dfn>
       empty element represents a blank space of any
       desired size, as set by its attributes.
     </p>
@@ -1028,14 +993,14 @@
       attributes:
     </p>
     <ul>
-      <li><a  href="#attribute-mspace-width" class="internalDFN" data-link-type="dfn"><code>width</code></a></li>
-      <li><a  href="#attribute-mspace-width" class="internalDFN" data-link-type="dfn"><code>height</code></a></li>
-      <li><a  href="#attribute-mspace-width" class="internalDFN" data-link-type="dfn"><code>depth</code></a></li>
+      <li><a href="#attribute-mspace-width" class="internalDFN" data-link-type="dfn"><code>width</code></a></li>
+      <li><a href="#attribute-mspace-width" class="internalDFN" data-link-type="dfn"><code>height</code></a></li>
+      <li><a href="#attribute-mspace-width" class="internalDFN" data-link-type="dfn"><code>depth</code></a></li>
     </ul>
     <p>The
-      <dfn data-dfn-type="attribute-mspace-width" id="attribute-mspace-width">mspace <code>width</code></dfn>,
-      <dfn data-dfn-type="attribute-mspace-height" id="attribute-mspace-height">mspace <code>height</code></dfn>,
-      <dfn data-dfn-type="attribute-mspace-depth" id="attribute-mspace-depth">mspace <code>depth</code></dfn>, if present, must
+      <dfn id="attribute-mspace-width">mspace <code>width</code></dfn>,
+      <dfn id="attribute-mspace-height">mspace <code>height</code></dfn>,
+      <dfn id="attribute-mspace-depth">mspace <code>depth</code></dfn>, if present, must
       have a value that is a valid <a>length-percentage</a>.
       These indicate the requested width, ascent and descent of the blank space.
       An unspecified attribute, a percentage  value, or an invalid value is
@@ -1058,7 +1023,7 @@
   <section>
     <h3>String Literal <code>&lt;ms&gt;</code></h3>
     <p>
-      <dfn data-dfn-type="ms" id="element-ms"><code>&lt;ms&gt;</code></dfn>
+      <dfn><code>&lt;ms&gt;</code></dfn>
       element is used to represent
       "string literals" in expressions meant to be interpreted by computer
       algebra systems or other systems containing "programming languages".
@@ -1073,8 +1038,8 @@
       <li><a><code>rquote</code></a></li>
     </ul>
     <p>The
-      <dfn data-dfn-type="attribute-lquote" id="attribute-lquote"><code>lquote</code></dfn>,
-      <dfn data-dfn-type="attribute-rquote" id="attribute-rquote"><code>rquote</code></dfn> attributes respectively specify the strings to use as opening and
+      <dfn><code>lquote</code></dfn>,
+      <dfn><code>rquote</code></dfn> attributes respectively specify the strings to use as opening and
       closing quotes. An unspecified attribute is
       interpreted as the character U+0022 QUOTATION MARK.
     </p>
@@ -1094,7 +1059,7 @@
     <h3>Horizontally Group Sub-Expressions <code>&lt;mrow&gt;</code></h3>
     <p>
       The
-      <dfn data-dfn-type="mrow" id="element-mrow"><code>&lt;mrow&gt;</code></dfn>
+      <dfn><code>&lt;mrow&gt;</code></dfn>
       element is used to group together any number of sub-expressions, usually
       consisting of one or more <code>&lt;mo&gt;</code> elements acting as
       "operators" on one or more other expressions that are their "operands".
@@ -1106,34 +1071,32 @@
       child<sub>1</sub>, child<sub>2</sub>, … child<sub>N</sub>
       is laid out as show on <a href="#figure-box-mrow"></a>. The child boxes
       are put in a horizontal row one after the other with all their baselines
-      aligned. As a consequence of this and of child box models, graphical
-      elements such as fraction bars or symmetric stretchy operators will also
-      be aligned along the math axis when the
-      <code class="MATH">AxisHeight</code> is unchanged (e.g. in the typical case
-      where the math font is unchanged).
+      aligned.
     </p>
+    <div class="note">
+      Because the box model ensure alignment of baselines,
+      fraction bars or symmetric stretchy operators
+      will also be aligned along the math axis in the typical case when
+      <code class="MATH">AxisHeight</code> is the same for all children.
+    </div>
     <p>
-      We generally do not add special spacing
-      around the children. For example, the leading and trailing spacing is already
-      included in the box metrics of embellished operators. The only exception is
-      for the italic correction: when a “slanted” child is
-      followed by a “straight” child, then an horizontal
-      space corresponding to the italic correction of the “slanted” child is added
-      between the two children [[OPEN-FONT-FORMAT]]. The italic correction of the
-      last child is also added after that child when it is “slanted” and when
-      the <code>&lt;mrow&gt;</code> has more than one child. In this document, we interpret
-      “slanted” as a child that is not an operator with
-      <code>largeop="true"</code> (or an embellished operator whose <code>&lt;mo&gt;</code> element core
-      has <code>largeop="true"</code>) and has nonzero italic correction and “straight”
-      as “non-slanted”.
+      A child is <dfn>slanted</dfn> if it is not an
+      <code>&lt;mo&gt;</code> operator with <code>largeop="true"</code>
+      (or an embellished operator whose <code>&lt;mo&gt;</code> element core
+      has <code>largeop="true"</code>) and has nonzero <a>italic correction</a>.
+      If a <a>slanted</a> child is followed by a non-<a>slanted</a> child,
+      a space of width the <a>italic correction</a> of the former is added
+      between the two children. If the last child is <a>slanted</a>, then
+      a space of width its <a>italic correction</a> is added after that child.
     </p>
+    <div class="note">
+      Spacing around (possibly embellished) operators is already included in
+      their box metrics.
+    </div>
     <p>
-      When the <code>&lt;mrow&gt;</code> element contains only one child then the previous
-      description implies that the box metrics of the <code>&lt;mrow&gt;</code> is the same as
-      the one of its unique child. As indicated in
-      <a href="#operator-fence-separator-or-accent-mo"></a>, we thus
-      use the italic correction and top accent attachment of the child as the
-      corresponding values of the <code>&lt;mrow&gt;</code> box.
+      If the <code>&lt;mrow&gt;</code> element contains only one child,
+      then its <a>italic correction</a> and <a>top accent attachment</a>
+      are set to the corresponding values of that single child.
     </p>
     <figure id="figure-box-mrow">
       <img src="figures/mrowbox.svg"/>
@@ -1144,7 +1107,7 @@
     <h3>Fractions <code>&lt;mfrac&gt;</code></h3>
     <p>
       The
-      <dfn data-dfn-type="mfrac" id="element-mfrac"><code>&lt;mfrac&gt;</code></dfn>
+      <dfn><code>&lt;mfrac&gt;</code></dfn>
       element is used for fractions. It can also be used to mark up
       fraction-like objects such as binomial coefficients and Legendre symbols.
     </p>
@@ -1158,7 +1121,7 @@
     </ul>
     <p>
       The
-      <dfn data-dfn-type="linethickness" id="attribute-linethickness"><code>linethickness</code></dfn>
+      <dfn><code>linethickness</code></dfn>
       attribute indicates the thickness to use for the fraction bar.
       If present, it must
       have a value that is a valid <a>length-percentage</a>.
@@ -1181,9 +1144,9 @@
       If the fraction has less or more than two children, its layout algorithm
       is the same as the <a><code>&lt;mrow&gt;</code></a> element.
       Otherwise, the first child is called
-      <dfn data-dfn-type="numerator" id="mfrac-numerator">numerator</dfn> and
+      <dfn>numerator</dfn> and
       the second child is called
-      <dfn data-dfn-type="denominator" id="mfrac-denominator">denominator</dfn>
+      <dfn>denominator</dfn>
       and its layout algorithm is explained below.
     </p>
 
@@ -1268,9 +1231,9 @@
     <h3>Radicals <code>&lt;msqrt&gt;</code>, <code>&lt;mroot&gt;</code></h3>
     <p>
       The
-      <dfn data-dfn-type="msqrt" id="element-msqrt"><code>&lt;msqrt&gt;</code></dfn>
+      <dfn><code>&lt;msqrt&gt;</code></dfn>
       and
-      <dfn data-dfn-type="mroot" id="element-mroot"><code>&lt;mroot&gt;</code></dfn>
+      <dfn><code>&lt;mroot&gt;</code></dfn>
       elements construct radicals. The <code>&lt;msqrt&gt;</code> element is
       used for square roots, while the <code>&lt;mroot&gt;</code> element is
       used to draw radicals with indices, e.g. a cube root.
@@ -1297,13 +1260,13 @@
       its layout algorithm
       is the same as the <a><code>&lt;mrow&gt;</code></a> element.
       Otherwise, the first child is called
-      <dfn data-dfn-type="base" id="mroot-base">base</dfn> and
+      <dfn>base</dfn> and
       the second child is called
-      <dfn data-dfn-type="index" id="mroot-index">index</dfn>
+      <dfn>index</dfn>
       and its layout algorithm is explained below.
       The children of the <code>&lt;msqrt&gt;</code> element are laid out
       using the algorithm of the <a><code>&lt;mrow&gt;</code></a> element
-      to produce a box that we will also call the base.
+      to produce a box that is also called the base.
     </p>
     <section>
       <h4>Radical symbol</h4>
@@ -1358,7 +1321,7 @@
       <p>
         The <code>&lt;mroot&gt;</code> element is laid out as shown on
         <a href="#figure-box-mroot"></a>.
-        We start by ignoring the root index and we layout the base and surd as
+        The root index is first ignored and the base and surd are laid out as
         shown on figure <a href="#figure-box-msqrt"></a> to obtain a box B.
         The horizontal metrics of the <code>&lt;mroot&gt;</code> element are
         obtained by putting
@@ -1370,14 +1333,14 @@
         it is negative,
         which means that the root element will have some space before it and
         that the root index will overlap the surd.
-        For the vertical metrics of the <code>&lt;mroot&gt;</code> element, we
-        first take the baseline
-        of B as the baseline. We graduate the ink height of B with a linear
+        For the vertical metrics of the <code>&lt;mroot&gt;</code> element, the
+        baseline of B is first taken as the baseline.
+        The ink height of B is graduated with a linear
         scale going from the bottom at coordinate 0 to the top at coordinate
         1. Then the ink bottom of the root index will
         be vertically positioned at coordinate
         <code class="MATH">RadicalDegreeBottomRaisePercent</code>.
-        Finally, we take into consideration the box of the root index and B to
+        Finally, the box of the root index and B is taken into account to
         deduce the metrics for the whole box of the <code>&lt;mroot&gt;</code>
         element.
       </p>
@@ -1391,7 +1354,7 @@
   <h3>Style Change <code>&lt;mstyle&gt;</code></h3>
   <p>
     Historically, the
-    <dfn data-dfn-type="mstyle" id="element-mstyle"><code>&lt;mstyle&gt;</code></dfn>
+    <dfn><code>&lt;mstyle&gt;</code></dfn>
     element was introduced to make
     style changes that affect the rendering of its contents.
   </p>
@@ -1402,7 +1365,7 @@
   </p>
   <div class="note">
     While the <code>&lt;mstyle&gt;</code> is preserved for backward compatibility reasons
-    with legacy documents and existing tools, modern authors and tools are strongly 
+    with legacy documents and existing tools, modern authors and tools are strongly
     encouraged to use CSS for styling.
   </div>
 </section>
@@ -1410,7 +1373,7 @@
   <h3>Error Message <code>&lt;merror&gt;</code></h3>
   <p>
     The
-    <dfn data-dfn-type="merror" id="element-merror"><code>&lt;merror&gt;</code></dfn>
+    <dfn><code>&lt;merror&gt;</code></dfn>
     element displays its contents as an
     ”error message”. The intent of this element is to provide a standard way
     for programs that generate MathML from other input to report syntax errors
@@ -1430,7 +1393,7 @@
   <h3>Adjust Space Around Content <code>&lt;mpadded&gt;</code></h3>
   <p>
     The
-    <dfn data-dfn-type="mpadded" id="element-mpadded"><code>&lt;mpadded&gt;</code></dfn>
+    <dfn><code>&lt;mpadded&gt;</code></dfn>
     element renders the same as its child content, but with the
     size of the child’s bounding box and the relative positioning point of its
     content modified according to <code>&lt;mpadded&gt;</code>’s attributes.
@@ -1449,15 +1412,15 @@
   </ul>
   <p>
     The
-    <dfn data-dfn-type="attribute-mpadded-width" id="attribute-mpadded-width">mpadded <code>width</code></dfn> and
-    <dfn data-dfn-type="attribute-mpadded-lspace" id="attribute-mpadded-lspace">mpadded <code>lspace</code></dfn> attributes, if present, must match the syntax
+    <dfn id="attribute-mpadded-width">mpadded <code>width</code></dfn> and
+    <dfn id="attribute-mpadded-lspace">mpadded <code>lspace</code></dfn> attributes, if present, must match the syntax
     <code>( "+" | "-" )? (<a><code>unsigned-length-percentage</code></a> | (<a><code>unsigned-number</code></a> "%"? "width"))</code>.
   </p>
   <p>
     The
-    <dfn data-dfn-type="attribute-mpadded-height" id="attribute-mpadded-height">mpadded <code>height</code></dfn>,
-    <dfn data-dfn-type="attribute-mpadded-depth" id="attribute-mpadded-depth">mpadded <code>depth</code></dfn> and
-    <dfn data-dfn-type="attribute-mpadded-voffset" id="attribute-mpadded-voffset">mpadded <code>voffset</code></dfn>
+    <dfn id="attribute-mpadded-height">mpadded <code>height</code></dfn>,
+    <dfn id="attribute-mpadded-depth">mpadded <code>depth</code></dfn> and
+    <dfn id="attribute-mpadded-voffset">mpadded <code>voffset</code></dfn>
     attributes, if present, must match the syntax
     <code>( "+" | "-" )? (<a><code>unsigned-length-percentage</code></a> | (<a><code>unsigned-number</code></a> "%"? ("height" | "depth"))</code>.
   </p>
@@ -1467,8 +1430,7 @@
       Children of the <code>&lt;mpadded&gt;</code> element are laid out
       using the algorithm of the <a><code>&lt;mrow&gt;</code></a> element
       to produce the
-      <dfn data-dfn-type="mpadded-content-box"
-           id="mpadded-content-box">mpadded content box</dfn>
+      <dfn>mpadded content box</dfn>
       with logical metrics called content width,
       content height and content depth. The requested <code>&lt;mpadded&gt;</code>
       parameters are determined as follows:
@@ -1485,8 +1447,9 @@
         <code>depth</code>, <code>lspace</code>, <code>voffset</code>)
         attribute is an
         <a><code>unsigned-length-percentage</code></a>
-        then use the resolved value as the requested width
+        then the requested width
         (respectively height, depth, lspace, voffset)
+        is the resolved value
         with percentage interpreted relative to
         the content width (respectively height, depth, <code>0</code>,
         <code>0</code>).
@@ -1529,8 +1492,8 @@
     <div class="issue" data-number="40">Allow negative width, lspace to
       produce negative spacing?</div>
     <p>
-      If the requested width, depth, height, lspace values calculated above
-      result in negative values then replace them with <code>0</code>.
+      If one of the requested width, depth, height or lspace values calculated
+      above is negative then it is treated as <code>0</code>.
     </p>
   </section>
   <section>
@@ -1555,7 +1518,7 @@
   <h3>Making Sub-Expressions Invisible <code>&lt;mphantom&gt;</code></h3>
   <p>
     Historically, the
-    <dfn data-dfn-type="mphantom" id="element-mphantom"><code>&lt;mphantom&gt;</code></dfn>
+    <dfn><code>&lt;mphantom&gt;</code></dfn>
     element was introduced to render
     its content invisibly, but with the same size and other dimensions,
     including baseline position, that its contents would have if they were
@@ -1571,7 +1534,7 @@
   <pre class="css" data-include="user-agent-stylesheet/mphantom.css"></pre>
   <div class="note">
     While <code>&lt;mphantom&gt;</code> is preserved for backward compatibility reasons
-    with legacy documents and existing tools, modern authors and tools are strongly 
+    with legacy documents and existing tools, modern authors and tools are strongly
     encouraged to use CSS for styling.
   </div>
 </section>
@@ -1579,7 +1542,7 @@
   <h3>Enclose Expression Inside Notation <code>&lt;menclose&gt;</code></h3>
   <p>
     The
-    <dfn data-dfn-type="menclose" id="element-menclose"><code>&lt;menclose&gt;</code></dfn>
+    <dfn><code>&lt;menclose&gt;</code></dfn>
     element renders its content inside the enclosing notation.
     It accepts the attributes described in
     <a href="#global-attributes"></a> as well as the
@@ -1590,7 +1553,7 @@
     </ul>
   <p>
     The
-    <dfn data-dfn-type="notation" id="attribute-notation"><code>notation</code></dfn>
+    <dfn><code>notation</code></dfn>
     attribute, if present, must have a value that is an
     <a data-cite="HTML#unordered-set-of-unique-space-separated-tokens">unordered set
     of unique space-separated tokens</a> that are ASCII case-insensitive. The
@@ -1794,24 +1757,55 @@
 <section>
   <h2>Script and Limit Schemata</h2>
   <section>
+    <h3>Cramped Elements</h3>
+    <p>
+      A <a>MathML Core element</a> is <dfn>cramped</dfn> if it satisfies
+       one of the following condition:
+    </p>
+    <ol>
+      <li>Its parent is <a>cramped</a>.</li>
+      <li>Its parent is a <a><code>&lt;msqrt&gt;</code></a> or
+        <a><code>&lt;mroot&gt;</code></a> element.
+      </li>
+      <li>It is the denominator of a <a><code>&lt;mfrac&gt;</code></a>
+            element.</li>
+      <li>
+        It is the subscript of a
+        <a><code>&lt;msub&gt;</code></a> or
+        <a><code>&lt;msubsup&gt;</code></a> element.
+      </li>
+      <li>
+        It is the underscript of a
+        <a><code>&lt;munder&gt;</code></a> or
+        <a><code>&lt;munderover&gt;</code></a> element.
+      </li>
+      <li>It is the overscript of the
+        <code>&lt;mover&gt;</code> and <code>&lt;munderover&gt;</code>
+        elements and
+        is an <a>embellished operator</a> with
+        the <a>accent</a> property.
+      </li>
+    </ol>
+  </section>
+  <section>
     <h3>Subscripts and Superscripts <code>&lt;msub&gt;</code>, <code>&lt;msup&gt;</code>, <code>&lt;msubsup&gt;</code></h3>
     <p>
       The
-      <dfn data-dfn-type="msub" id="element-msub"><code>&lt;msub&gt;</code></dfn>
+      <dfn><code>&lt;msub&gt;</code></dfn>
       element attaches a subscript to a base using the syntax
       <br/>
       <code>&lt;msub&gt;</code> base subscript <code>&lt;/msub&gt;</code>
     </p>
     <p>
       The
-      <dfn data-dfn-type="msup" id="element-msup"><code>&lt;msup&gt;</code></dfn>
+      <dfn><code>&lt;msup&gt;</code></dfn>
       element attaches a superscript to a base using the syntax
       <br/>
       <code>&lt;msup&gt;</code> base superscript <code>&lt;/msup&gt;</code>
     </p>
     <p>
       The
-      <dfn data-dfn-type="msubsup" id="element-msubsup"><code>&lt;msubsup&gt;</code></dfn>
+      <dfn><code>&lt;msubsup&gt;</code></dfn>
       element is used to attach both a subscript and superscript to
       a base expression.
       <br/>
@@ -1962,7 +1956,7 @@
     <h3>Underscripts and Overscripts <code>&lt;munder&gt;</code>, <code>&lt;mover&gt;</code>, <code>&lt;munderover&gt;</code></h3>
     <p>
       The
-      <dfn data-dfn-type="munder" id="element-munder"><code>&lt;munder&gt;</code></dfn>
+      <dfn><code>&lt;munder&gt;</code></dfn>
       element attaches an accent or limit placed under a base using
       the syntax
       <br/>
@@ -1975,7 +1969,7 @@
     </p>
     <p>
       The
-      <dfn data-dfn-type="mover" id="element-mover"><code>&lt;mover&gt;</code></dfn>
+      <dfn><code>&lt;mover&gt;</code></dfn>
       element attaches an accent or limit placed over a base using
       the syntax
       <br/>
@@ -1988,7 +1982,7 @@
     </p>
     <p>
       The
-      <dfn data-dfn-type="munderover" id="element-munderover"><code>&lt;munderover&gt;</code></dfn>
+      <dfn><code>&lt;munderover&gt;</code></dfn>
       element attaches accents or limits placed both over and
       under a base using the syntax
       <br/>
@@ -2099,7 +2093,7 @@
     <h3>Prescripts and Tensor Indices <code>&lt;mmultiscripts&gt;</code></h3>
     <p>
       Presubscripts and tensor notations are represented by a single element,
-      <dfn data-dfn-type="mmultiscripts" id="element-mmultiscripts"><code>&lt;mmultiscripts&gt;</code></dfn>, using the syntax:</p>
+      <dfn><code>&lt;mmultiscripts&gt;</code></dfn>, using the syntax:</p>
     <pre>&lt;mmultiscripts&gt;
   base
   (subscript superscript)*
@@ -2111,9 +2105,9 @@
       supports both postscripts and prescripts
       separated by
       the empty element
-      <dfn data-dfn-type="mprescripts" id="element-mprescripts"><code>&lt;mprescripts&gt;</code></dfn>. Missing scripts can be represented
+      <dfn><code>&lt;mprescripts&gt;</code></dfn>. Missing scripts can be represented
       by the empty element
-      <dfn data-dfn-type="none" id="element-none"><code>&lt;none&gt;</code></dfn>.
+      <dfn><code>&lt;none&gt;</code></dfn>.
     </p>
     <p>
       The <a><code>displaystyle</code></a> and <a><code>scriptlevel</code></a>
@@ -2162,9 +2156,9 @@
   <h2>Tabular Math</h2>
   <p>
     Matrices, arrays and other table-like mathematical notation are marked up using
-    <dfn data-dfn-type="mtable" id="element-mtable"><code>&lt;mtable&gt;</code></dfn>
-    <dfn data-dfn-type="mtr" id="element-mtr"><code>&lt;mtr&gt;</code></dfn>
-    <dfn data-dfn-type="mtd" id="element-mtd"><code>&lt;mtd&gt;</code></dfn>
+    <dfn><code>&lt;mtable&gt;</code></dfn>
+    <dfn><code>&lt;mtr&gt;</code></dfn>
+    <dfn><code>&lt;mtd&gt;</code></dfn>
     elements. These
     elements are similar to the table, tr and td elements of HTML, except that they
     provide specialized attributes for the fine layout control necessary for
@@ -2237,7 +2231,7 @@ mlabeledtr > mtd:first-child {
   <h2>Enlivening Expressions</h2>
   <p>
     Historically, the
-    <dfn data-dfn-type="maction" id="element-maction"><code>&lt;maction&gt;</code></dfn>
+    <dfn><code>&lt;maction&gt;</code></dfn>
     element provides a mechanism
     for binding actions to expressions.
   </p>
@@ -2258,7 +2252,7 @@ mlabeledtr > mtd:first-child {
   <pre class="css" data-include="user-agent-stylesheet/maction.css"></pre>
   <div class="note">
     While <code>&lt;maction&gt;</code> is preserved for backward compatibility reasons
-    with legacy documents and existing tools, modern authors and tools are strongly 
+    with legacy documents and existing tools, modern authors and tools are strongly
     encouraged to use CSS for styling.
   </div>
 </section>
@@ -2266,17 +2260,17 @@ mlabeledtr > mtd:first-child {
   <h2>Semantics and Presentation</h2>
   <p>
     The
-    <dfn data-dfn-type="semantics" id="element-semantics"><code>&lt;semantics&gt;</code></dfn>
+    <dfn><code>&lt;semantics&gt;</code></dfn>
     element is the container element that associates
     annotations with a MathML expression. The semantics element has as its first
     child the expression to be annotated. Any MathML expression may appear as the
     first child of the semantics element. Subsequent annotation and annotation-xml
     children enclose the annotations. An annotation represented in XML is enclosed
     in an
-    <dfn data-dfn-type="annotation-xml" id="element-annotation-xml"><code>&lt;annotation-xml&gt;</code></dfn>
+    <dfn><code>&lt;annotation-xml&gt;</code></dfn>
     element. An annotation represented in character data
     is enclosed in an
-    <dfn data-dfn-type="annotation" id="element-annotation"><code>&lt;annotation&gt;</code></dfn>
+    <dfn><code>&lt;annotation&gt;</code></dfn>
     element.
   </p>
   <p>
@@ -2340,7 +2334,7 @@ mlabeledtr > mtd:first-child {
   <h2>CSS Extensions for Math Layout</h2>
   <section>
     <h3>New <code>text-transform</code> values</h3>
-    <p>The <dfn data-dfn-type="text-transform" id="property-text-transform"><code>text-transform</code></dfn> property
+    <p>The <dfn><code>text-transform</code></dfn> property
       from
         is extended with new values:
     </p>
@@ -2371,7 +2365,7 @@ mlabeledtr > mtd:first-child {
       <tr>
         <th>Name:</th>
         <td>
-          <dfn data-dfn-type="math-style" id="property-math-style"><code>math-style</code></dfn>
+          <dfn><code>math-style</code></dfn>
         </td>
       </tr>
       <tr><th>Value:</th><td><code>display | inline</code></td></tr>
@@ -2406,7 +2400,7 @@ mlabeledtr > mtd:first-child {
         <tr>
           <th>Name:</th>
           <td>
-            <dfn data-dfn-type="math-script-level" id="property-math-script-level"><code>math-script-level</code></dfn>
+            <dfn><code>math-script-level</code></dfn>
           </td>
         </tr>
         <tr><th>Value:</th><td><code>auto | add(&lt;integer&gt;) | &lt;integer&gt;</code></td></tr>
