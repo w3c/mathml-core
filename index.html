@@ -468,12 +468,24 @@
             <code>math-</code> prefix.
           </p>
           <div class="note">
-            For <code>mathvariant</code> values other than <code>normal</code>,
-            one can just directly use the corresponding Unicode
-            characters. However, they are preserved for backward compatibility reasons.
+            While <code>mathvariant</code> values other than <code>normal</code>
+            are preserved for backward compatibility reasons with legacy
+            documents and existing tools, modern authors and tools are strongly
+            encouraged to just use the corresponding Unicode characters.
             The <code>normal</code> value is still important to cancel automatic
-            italic of the
-            <a><code>&lt;mi&gt;</code></a> element.
+            italic of the <a><code>&lt;mi&gt;</code></a> element.
+          </div>
+          <div class="issue" data-number="61">
+            Consider a new script style to distinguish Chancery and Spencerian?
+          </div>
+          <div class="note">
+            Unicode does not distinguish between Chancery and Spencerian style
+            for the Unicode MATHEMATICAL SCRIPT characters. However, some
+            mathematical fonts rely on <code class="MATH">salt</code> or
+            <code>ssXY</code> properties from [[OPEN-FONT-FORMAT]]
+            to provide both styles. Page authors may use the
+            <a data-cite="CSS-FONTS-4#font-variant-alternates-prop"><code>font-variant-alternates</code></a> property with corresponding OpenType font features
+            to access these glyphs.
           </div>
         </section>
         <section>
@@ -595,13 +607,6 @@
           User agents must also support the OpenType font feature
           <code>rtlm</code> (Right-to-left mirrored forms)
           to allow glyph-level mirroring in cases where character-level is not enough
-          [[OPEN-FONT-FORMAT]].
-          At the time of writing, Unicode does not distinguish between Chancery and
-          Spencerian style for the Unicode MATHEMATICAL SCRIPT characters. Some
-          mathematical fonts rely on <code class="MATH">salt</code> or <code>ssXY</code> properties to provide
-          both styles. User agents may support the CSS <code>font-variant-alternates</code>
-          property and corresponding OpenType font features to enable page authors
-          to get access to these styles [[CSS-FONTS-3]]
           [[OPEN-FONT-FORMAT]].
         </p>
         <p>
