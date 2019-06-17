@@ -505,6 +505,11 @@
             <code>false</code> and <code>1</code>,
             and <code>false</code> and 2, respectively.
           </div>
+          <div class="issue">
+            Do we actually need these rules?
+            What about <code>scriptlevel</code>?
+            <pre class="css" data-include="user-agent-stylesheet/displaystyle.css"></pre>
+          </div>
         </section>
       </section>
       <section>
@@ -1811,11 +1816,6 @@
             <code>&lt;msubsup&gt;</code> base subscript superscript <code>&lt;/msubsup&gt;</code>
           </p>
           <p>
-            The <a><code>displaystyle</code></a> and <a><code>scriptlevel</code></a>
-            changes must be achieved with rules described in
-            <a href="#user-agent-stylesheet"></a>.
-          </p>
-          <p>
             The <code>&lt;msub&gt;</code> element is laid out as shown on <a href="#figure-box-msub"></a>.
             The baseline is the baseline of the base while the baseline of the script is
             shifted down by <code>SubShift</code>, which is the minimal value honoring the
@@ -1994,13 +1994,6 @@
             <code>accentunder</code> and <code>accent</code> attributes are ignored.
           </p>
           <p>
-            User Agents must perform the <code>scriptlevel</code> increment by checking
-            the appropriate <code>accent</code> or <code>accentunder</code> value, which can not be done
-            using only CSS. However, <code>displaystyle</code> changes can be achieved with the
-            following style in the user agent stylesheet, as suggested in
-            <a href="#user-agent-stylesheet"></a>:
-          </p>
-          <p>
             In cases where underscript and overscript are drawn as subscript and
             superscript position then the layout algorithm is the same as
             <a href="#subscripts-and-superscripts-msub-msup-msubsup"></a>.
@@ -2111,11 +2104,6 @@
             <dfn><code>&lt;none&gt;</code></dfn>.
           </p>
           <p>
-            The <a><code>displaystyle</code></a> and <a><code>scriptlevel</code></a>
-            changes must be achieved with rules described in
-            <a href="#user-agent-stylesheet"></a>.
-          </p>
-          <p>
             Any layout for <code>&lt;mmultiscripts&gt;</code> is acceptable as long as it follows
             the condition of the MathML 3 specification [[MATHML3]] and is consistent
             with
@@ -2151,6 +2139,35 @@
             <img src="figures/mmultiscriptsbox.svg"/>
             <figcaption>Box model for the <code>&lt;mmultiscripts&gt;</code> element</figcaption>
           </figure>
+        </section>
+        <section>
+          <h3>Displaystyle and scriptlevel</h3>
+          <p>
+            For all MathML elements used for scripts and limits schemata,
+            the first child is the base while the other children
+            are scripts. In these scripts, the rule of thumb is to set
+            <a><code>displaystyle</code></a> to <code>false</code>
+            and to increment <a><code>scriptlevel</code></a>.
+            However, when an overscript (respectively underscript)
+            has <a><code>accent</code></a> (respectively
+            <a><code>accentunder</code></a>)
+            that is case-insensitively equal to
+            to <code>"true"</code> then
+            the <a><code>scriptlevel</code></a> is not incremented.
+          </p>
+          <p>
+            The
+            <a href="#user-agent-stylesheet"></a> must contain the following
+            style in order to implement this behavior:
+          </p>
+          <pre class="css" data-include="user-agent-stylesheet/scripts.css"></pre>
+          <div class="issue" number="76">
+            In [[MathML3]] specification, the scriptlevel shouldn't be
+            incremented either if the underscript/overscript is a
+            (possibly embellished) operator
+            whose <a><code>accent</code></a> property (read from an
+            attribute or from the disctionary) is <code>true</code>.
+          </div>
         </section>
       </section>
       <section>
@@ -2530,9 +2547,10 @@
         <span data-include="user-agent-stylesheet/mtr.css"></span>
         <span data-include="user-agent-stylesheet/mtd.css"></span>
         /* Other rules for scriptlevel and displastyle */
+        <span data-include="user-agent-stylesheet/displaystyle.css"></span>
         <span data-include="user-agent-stylesheet/mfrac.css"></span>
         <span data-include="user-agent-stylesheet/mroot.css"></span>
-        <span data-include="user-agent-stylesheet/other.css"></span>
+        <span data-include="user-agent-stylesheet/scripts.css"></span>
       </pre>
     </section>
     <section>
