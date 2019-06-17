@@ -575,48 +575,6 @@
           respectively.
         </div>
       </section>
-      <section>
-        <h3>Text and Math layout</h3>
-        <p data-tests="relations/text-and-math/use-typo-metrics-1.html">
-          Because math fonts generally contain very tall glyphs such as big integrals,
-          using typographic metrics is important to avoid excessive line spacing of text.
-          This behavior is specified in math fonts using the USE_TYPO_METRICS flag from
-          the OS/2 table
-          [[OPEN-FONT-FORMAT]] and user agents must honor that flag.
-        </p>
-        <p>
-          Mathematical formulas can be viewed as an extension of standard text layout
-          and thus user agents must be able to perfom
-          complex text layout using fonts under the Open Font Format
-          [[OPEN-FONT-FORMAT]]. In particular, they must implement bidirectional
-          rendering and shaping of Arabic scripts.
-        </p>
-        <p>
-          Good mathematical rendering requires use of non-Unicode glyphs. Mathematical
-          fonts may only provide these glyphs when the <code class="MATH">math</code>
-          script tag is enabled, so user agents must ensure that the text within
-          MathML token elements is rendered with that script tag.
-          For bidirectional layout, Unicode defines character-level mirroring
-          to transform a character into its mirrored form,
-          for example U+0028 LEFT PARENTHESIS into U+0029 RIGHT PARENTHESIS.
-          User agents must also support the OpenType font feature
-          <code>rtlm</code> (Right-to-left mirrored forms)
-          to allow glyph-level mirroring in cases where character-level is not enough
-          [[OPEN-FONT-FORMAT]].
-        </p>
-        <p>
-          User agents must be able to read information from the
-          OpenType MATH table [[OPEN-FONT-FORMAT]].
-          In particular they must be able to read the values from the
-          <code class="MATH">MathConstants</code> subtable.
-          They must also be able to use the <code class="MATH">MathVariants</code> subtable
-          to solve the following problem: given a particular default glyph shape and a
-          certain width or height, find a variant shape glyph (or a construct created by
-          putting several glyphs together) that has the required measurement.
-          More information are provided in
-          <a href="operator-fence-separator-or-accent-mo"></a>.
-        </p>
-      </section>
     </section>
     <section>
       <h2>Presentation Markup</h2>
@@ -781,6 +739,36 @@
       </section>
       <section>
         <h2>Token Elements</h2>
+        <section>
+          <h3>Text layout</h3>
+          <p data-tests="relations/text-and-math/use-typo-metrics-1.html">
+            Because math fonts generally contain very tall glyphs such as big integrals,
+            using typographic metrics is important to avoid excessive line spacing of text.
+            This behavior is specified in math fonts using the USE_TYPO_METRICS flag from
+            the OS/2 table
+            [[OPEN-FONT-FORMAT]] and user agents must honor that flag.
+          </p>
+          <p>
+            Mathematical formulas can be viewed as an extension of standard text layout
+            and thus user agents must be able to perfom
+            complex text layout using fonts under the Open Font Format
+            [[OPEN-FONT-FORMAT]]. In particular, they must implement bidirectional
+            rendering and shaping of Arabic scripts.
+          </p>
+          <p>
+            Good mathematical rendering requires use of non-Unicode glyphs. Mathematical
+            fonts may only provide these glyphs when the <code class="MATH">math</code>
+            script tag is enabled, so user agents must ensure that the text within
+            MathML token elements is rendered with that script tag.
+            For bidirectional layout, Unicode defines character-level mirroring
+            to transform a character into its mirrored form,
+            for example U+0028 LEFT PARENTHESIS into U+0029 RIGHT PARENTHESIS.
+            User agents must also support the OpenType font feature
+            <code>rtlm</code> (Right-to-left mirrored forms)
+            to allow glyph-level mirroring in cases where character-level is not enough
+            [[OPEN-FONT-FORMAT]].
+          </p>
+        </section>
         <section>
           <h3>Identifier <code>&lt;mi&gt;</code></h3>
           <p>
@@ -2533,6 +2521,25 @@
           <li>Return S if <code>InvertScaleFactor</code> is false and 1/S otherwise.</li>
         </ol>
       </section>
+    </section>
+    <section>
+      <h2>OpenType MATH</h2>
+      <div class="issue" gh-number="69">Define fallback values</div>
+      <p>
+        User agents must be able to read information from the
+        OpenType MATH table [[OPEN-FONT-FORMAT]].
+        In particular they must be able to read the values from the
+        <code class="MATH">MathConstants</code> subtable.
+        They must also be able to use the <code class="MATH">MathVariants</code> subtable
+        to solve the following problem: given a particular default glyph shape and a
+        certain width or height, find a variant shape glyph (or a construct created by
+        putting several glyphs together) that has the required measurement.
+        More information are provided in
+        <a href="operator-fence-separator-or-accent-mo"></a>.
+      </p>
+      <div class="issue">Describe stretchy algo
+        http://frederic-wang.fr/opentype-math-in-harfbuzz.html
+      </div>
     </section>
     <section class="appendix informative">
       <h2>RelaxNG</h2>
