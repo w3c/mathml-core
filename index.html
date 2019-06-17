@@ -595,12 +595,7 @@
           Good mathematical rendering requires use of non-Unicode glyphs. Mathematical
           fonts may only provide these glyphs when the <code class="MATH">math</code>
           script tag is enabled, so user agents must ensure that the text within
-          MathML token elements is rendered with that script tag. Some characters like
-          primes already have script size by default and hence would be too small when
-          used in a script position.
-          Hence user agents must support glyph selections via the OpenType font feature
-          <code class="MATH">ssty</code> (Script Style) in order to display such
-          “prescripted” characters with the appropriate size.
+          MathML token elements is rendered with that script tag.
           For bidirectional layout, Unicode defines character-level mirroring
           to transform a character into its mirrored form,
           for example U+0028 LEFT PARENTHESIS into U+0029 RIGHT PARENTHESIS.
@@ -982,10 +977,16 @@
           </p>
           <div class="issue"  data-number="19">Add detailed rules for the ssty OpenType feature</div>
           <p>
-            If <code>&lt;mtext&gt;</code> is used at a non-zero scriptlevel then user
-            agents must enable the <code class="MATH">ssty</code> OpenType feature on
-            text nodes unless it contradicts what the page author has specified with
-            the <code>font-feature-settings</code> CSS property.
+            Some characters like primes already have script size by default and
+            hence would be too small when used in a script position.
+            To render such “prescripted” characters with the appropriate size,
+            If a <code>&lt;mtext&gt;</code> has a positive
+            <a><code>scriptlevel</code></a> value then user agents must enable
+            the <code class="MATH">ssty</code> (Script Style) OpenType feature
+            on its text nodes unless it contradicts what the page author has
+            specified with the
+            <a data-cite="CSS-FONT-3#font-rend-desc"><code>font-feature-settings</code></a>
+            CSS property.
           </p>
           <p>
             In the most general case, the <code>&lt;mtext&gt;</code> element may contain
