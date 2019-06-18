@@ -580,7 +580,7 @@
         </div>
       </section>
     </section>
-    <section>
+    <section class="normative">
       <h2>Presentation Markup</h2>
       <section>
         <h3>Introduction</h3>
@@ -742,9 +742,9 @@
         </section>
       </section>
       <section>
-        <h2>Token Elements</h2>
+        <h3>Token Elements</h3>
         <section>
-          <h3>Text layout</h3>
+          <h4>Text layout</h4>
           <p data-tests="relations/text-and-math/use-typo-metrics-1.html">
             Because math fonts generally contain very tall glyphs such as big integrals,
             using typographic metrics is important to avoid excessive line spacing of text.
@@ -774,7 +774,7 @@
           </p>
         </section>
         <section>
-          <h3>Identifier <code>&lt;mi&gt;</code></h3>
+          <h4>Identifier <code>&lt;mi&gt;</code></h4>
           <p>
             The
             <dfn><code>&lt;mi&gt;</code></dfn>
@@ -795,7 +795,7 @@
           <pre class="css" data-include="user-agent-stylesheet/mi.css"></pre>
         </section>
         <section>
-          <h3>Number <code>&lt;mn&gt;</code></h3>
+          <h4>Number <code>&lt;mn&gt;</code></h4>
           <p>
             The
             <dfn><code>&lt;mn&gt;</code></dfn>
@@ -812,7 +812,7 @@
           </p>
         </section>
         <section>
-          <h3>Operator, Fence, Separator or Accent <code>&lt;mo&gt;</code></h3>
+          <h4>Operator, Fence, Separator or Accent <code>&lt;mo&gt;</code></h4>
           <p>
             The
             <dfn><code>&lt;mo&gt;</code></dfn>
@@ -927,7 +927,7 @@
           </p>
         </section>
         <section>
-          <h3>Text <code>&lt;mtext&gt;</code></h3>
+          <h4>Text <code>&lt;mtext&gt;</code></h4>
           <p>
             The
             <dfn><code>&lt;mtext&gt;</code></dfn>
@@ -977,7 +977,7 @@
             the <code class="MATH">ssty</code> (Script Style) OpenType feature
             on its text nodes unless it contradicts what the page author has
             specified with the
-            <a data-cite="CSS-FONT-3#font-rend-desc"><code>font-feature-settings</code></a>
+            <a data-cite="CSS-FONTS-3#font-rend-desc"><code>font-feature-settings</code></a>
             CSS property.
           </p>
           <p>
@@ -991,7 +991,7 @@
           </p>
         </section>
         <section>
-          <h3>Space <code>&lt;mspace&gt;</code></h3>
+          <h4>Space <code>&lt;mspace&gt;</code></h4>
           <p>
             The
             <dfn><code>&lt;mspace&gt;</code></dfn>
@@ -1032,7 +1032,7 @@
           </div>
         </section>
         <section>
-          <h3>String Literal <code>&lt;ms&gt;</code></h3>
+          <h4>String Literal <code>&lt;ms&gt;</code></h4>
           <p>
             <dfn><code>&lt;ms&gt;</code></dfn>
             element is used to represent
@@ -1065,9 +1065,9 @@
         </section>
       </section>
       <section>
-        <h2>General Layout Schemata</h2>
+        <h3>General Layout Schemata</h3>
         <section>
-          <h3>Horizontally Group Sub-Expressions <code>&lt;mrow&gt;</code></h3>
+          <h4>Horizontally Group Sub-Expressions <code>&lt;mrow&gt;</code></h4>
           <p>
             The
             <dfn><code>&lt;mrow&gt;</code></dfn>
@@ -1115,7 +1115,7 @@
           </figure>
         </section>
         <section>
-          <h3>Fractions <code>&lt;mfrac&gt;</code></h3>
+          <h4>Fractions <code>&lt;mfrac&gt;</code></h4>
           <p>
             The
             <dfn><code>&lt;mfrac&gt;</code></dfn>
@@ -1160,10 +1160,8 @@
             <dfn>denominator</dfn>
             and its layout algorithm is explained below.
           </p>
-
-
           <section>
-            <h4>Fraction with nonzero line thickeness</h4>
+            <h5>Fraction with nonzero line thickeness</h5>
             <p>
               If the actual line thickness is nonzero, the <code>&lt;mfrac&gt;</code>
               element is laid out as shown on <a href="#figure-box-mfrac"></a>.
@@ -1201,7 +1199,7 @@
             </figure>
           </section>
           <section>
-            <h4>Fraction with zero line thickeness</h4>
+            <h5>Fraction with zero line thickeness</h5>
             <p>
               If the actual line thickness is zero,
               the <code>&lt;mfrac&gt;</code> element is instead laid out as
@@ -1225,7 +1223,7 @@
             </figure>
           </section>
           <section>
-            <h4>Spacing around the fraction</h4>
+            <h5>Spacing around the fraction</h5>
             <p>
               In order to prevent the fraction bar to be confused with other items around
               the fraction (e.g. minus sign or the bar of another fraction), a 1 pixel space
@@ -1239,7 +1237,7 @@
           </section>
         </section>
         <section>
-          <h3>Radicals <code>&lt;msqrt&gt;</code>, <code>&lt;mroot&gt;</code></h3>
+          <h4>Radicals <code>&lt;msqrt&gt;</code>, <code>&lt;mroot&gt;</code></h4>
           <p>
             The
             <dfn><code>&lt;msqrt&gt;</code></dfn>
@@ -1280,7 +1278,7 @@
             to produce a box that is also called the base.
           </p>
           <section>
-            <h4>Radical symbol</h4>
+            <h5>Radical symbol</h5>
             <p>
               The radical symbol must only be painted if the
               <a data-cite="CSS2#visibility"><code>visibility</code></a> of
@@ -1312,7 +1310,7 @@
             </p>
           </section>
           <section>
-            <h4>Square root</h4>
+            <h5>Square root</h5>
             <p>
               The <code>&lt;msqrt&gt;</code> element is laid out as shown on
               <a href="#figure-box-msqrt"></a>.
@@ -1328,7 +1326,7 @@
             </figure>
           </section>
           <section>
-            <h4>Root with index</h4>
+            <h5>Root with index</h5>
             <p>
               The <code>&lt;mroot&gt;</code> element is laid out as shown on
               <a href="#figure-box-mroot"></a>.
@@ -1362,7 +1360,7 @@
           </section>
         </section>
         <section>
-          <h3>Style Change <code>&lt;mstyle&gt;</code></h3>
+          <h4>Style Change <code>&lt;mstyle&gt;</code></h4>
           <p>
             Historically, the
             <dfn><code>&lt;mstyle&gt;</code></dfn>
@@ -1381,7 +1379,7 @@
           </div>
         </section>
         <section>
-          <h3>Error Message <code>&lt;merror&gt;</code></h3>
+          <h4>Error Message <code>&lt;merror&gt;</code></h4>
           <p>
             The
             <dfn><code>&lt;merror&gt;</code></dfn>
@@ -1401,7 +1399,7 @@
           <pre class="css" data-include="user-agent-stylesheet/merror.css"></pre>
         </section>
         <section>
-          <h3>Adjust Space Around Content <code>&lt;mpadded&gt;</code></h3>
+          <h4>Adjust Space Around Content <code>&lt;mpadded&gt;</code></h4>
           <p>
             The
             <dfn><code>&lt;mpadded&gt;</code></dfn>
@@ -1436,7 +1434,7 @@
             <code>( "+" | "-" )? (<a><code>unsigned-length-percentage</code></a> | (<a><code>unsigned-number</code></a> "%"? ("height" | "depth"))</code>.
           </p>
           <section>
-            <h4>Content box and requested parameters</h4>
+            <h5>Content box and requested parameters</h5>
             <p>
               Children of the <code>&lt;mpadded&gt;</code> element are laid out
               using the algorithm of the <a><code>&lt;mrow&gt;</code></a> element
@@ -1508,7 +1506,7 @@
             </p>
           </section>
           <section>
-            <h4>Layout of <code>&lt;mpadded&gt;</code></h4>
+            <h5>Layout of <code>&lt;mpadded&gt;</code></h5>
             <p>
               The <code>&lt;mpadded&gt;</code> element is laid out as shown on
               <a href="#figure-box-mpadded"></a>.
@@ -1526,7 +1524,7 @@
           </section>
         </section>
         <section>
-          <h3>Making Sub-Expressions Invisible <code>&lt;mphantom&gt;</code></h3>
+          <h4>Making Sub-Expressions Invisible <code>&lt;mphantom&gt;</code></h4>
           <p>
             Historically, the
             <dfn><code>&lt;mphantom&gt;</code></dfn>
@@ -1550,7 +1548,7 @@
           </div>
         </section>
         <section>
-          <h3>Enclose Expression Inside Notation <code>&lt;menclose&gt;</code></h3>
+          <h4>Enclose Expression Inside Notation <code>&lt;menclose&gt;</code></h4>
           <p>
             The
             <dfn><code>&lt;menclose&gt;</code></dfn>
@@ -1766,9 +1764,9 @@
         </section>
       </section>
       <section>
-        <h2>Script and Limit Schemata</h2>
+        <h3>Script and Limit Schemata</h3>
         <section>
-          <h3>Cramped Elements</h3>
+          <h4>Cramped Elements</h4>
           <p>
             A <a>MathML Core element</a> is <dfn>cramped</dfn> if it satisfies
             one of the following condition:
@@ -1799,7 +1797,7 @@
           </ol>
         </section>
         <section>
-          <h3>Subscripts and Superscripts <code>&lt;msub&gt;</code>, <code>&lt;msup&gt;</code>, <code>&lt;msubsup&gt;</code></h3>
+          <h4>Subscripts and Superscripts <code>&lt;msub&gt;</code>, <code>&lt;msup&gt;</code>, <code>&lt;msubsup&gt;</code></h4>
           <p>
             The
             <dfn><code>&lt;msub&gt;</code></dfn>
@@ -1959,7 +1957,7 @@
           </figure>
         </section>
         <section>
-          <h3>Underscripts and Overscripts <code>&lt;munder&gt;</code>, <code>&lt;mover&gt;</code>, <code>&lt;munderover&gt;</code></h3>
+          <h4>Underscripts and Overscripts <code>&lt;munder&gt;</code>, <code>&lt;mover&gt;</code>, <code>&lt;munderover&gt;</code></h4>
           <p>
             The
             <dfn><code>&lt;munder&gt;</code></dfn>
@@ -2089,7 +2087,7 @@
           </p>
         </section>
         <section>
-          <h3>Prescripts and Tensor Indices <code>&lt;mmultiscripts&gt;</code></h3>
+          <h4>Prescripts and Tensor Indices <code>&lt;mmultiscripts&gt;</code></h4>
           <p>
             Presubscripts and tensor notations are represented by a single element,
             <dfn><code>&lt;mmultiscripts&gt;</code></dfn>, using the syntax:</p>
@@ -2148,7 +2146,7 @@
           </figure>
         </section>
         <section>
-          <h3>Displaystyle and scriptlevel</h3>
+          <h4>Displaystyle and scriptlevel</h4>
           <p>
             For all MathML elements used for scripts and limits schemata,
             the first child is the base while the other children
@@ -2178,7 +2176,7 @@
         </section>
       </section>
       <section>
-        <h2>Tabular Math</h2>
+        <h3>Tabular Math</h3>
         <p>
           Matrices, arrays and other table-like mathematical notation are marked up
           using
@@ -2197,7 +2195,7 @@
           Do we want more? Should CSS be extended to cover math table's use cases?
         </div>
         <section>
-          <h3>Table or Matrix <code>&lt;mtable&gt;</code></h3>
+          <h4>Table or Matrix <code>&lt;mtable&gt;</code></h4>
           <p>The <dfn><code>&lt;mtable&gt;</code></dfn> is laid out as an
             <code>inline-table</code> and sets
             <code>displaystyle</code> to <code>false</code>. The
@@ -2232,7 +2230,7 @@
           </p>
         </section>
         <section>
-          <h3>Row in Table or Matrix <code>&lt;mtr&gt;</code></h3>
+          <h4>Row in Table or Matrix <code>&lt;mtr&gt;</code></h4>
           <p>
             The <dfn><code>&lt;mtr&gt;</code></dfn> is laid out as
             <code>table-row</code>. The
@@ -2246,7 +2244,7 @@
           </p>
         </section>
         <section>
-          <h3>Entry in Table or Matrix <code>&lt;mtd&gt;</code></h3>
+          <h4>Entry in Table or Matrix <code>&lt;mtd&gt;</code></h4>
           <p>
             The <dfn><code>&lt;mtd&gt;</code></dfn> is laid out as
             a <code>table-cell</code> with content centered in the cell and
@@ -2280,7 +2278,7 @@
         </section>
       </section>
       <section>
-        <h2>Enlivening Expressions</h2>
+        <h3>Enlivening Expressions</h3>
         <p>
           Historically, the
           <dfn><code>&lt;maction&gt;</code></dfn>
@@ -2309,7 +2307,7 @@
         </div>
       </section>
       <section>
-        <h2>Semantics and Presentation</h2>
+        <h3>Semantics and Presentation</h3>
         <p>
           The
           <dfn><code>&lt;semantics&gt;</code></dfn>
@@ -2526,7 +2524,7 @@
         </ol>
       </section>
     </section>
-    <section>
+    <section class="normative">
       <h2>OpenType MATH</h2>
       <div class="issue" gh-number="69">Define fallback values</div>
       <p>
@@ -2557,7 +2555,7 @@
       </p>
       <pre data-include="mathml-core.rnc"></pre>
     </section>
-    <section class="appendix">
+    <section class="appendix normative">
       <h2>User Agent Stylesheet</h2>
       <pre class="css">@namespace url(http://www.w3.org/1998/Math/MathML);
 
@@ -2580,7 +2578,7 @@
       </pre>
     </section>
     <section>
-      <h1>Operator Dictionary</h1>
+      <h2>Operator Dictionary</h2>
       <p>
         The following table gives the suggested dictionary of rendering
         properties for operators, fences, separators, and accents in MathML, all of
@@ -2588,7 +2586,7 @@
         all such elements will be called simply <q>operators</q> in this
         Appendix.
       </p>
-      <section><h2>Indexing of the operator dictionary</h2>
+      <section><h3>Indexing of the operator dictionary</h3>
         <p>
           Note that the dictionary is indexed not just by the element
           content, but by the element content and <code>form</code> attribute
@@ -2612,7 +2610,7 @@
         </p>
       </section>
       <section>
-        <h2>Format of operator dictionary entries</h2>
+        <h3>Format of operator dictionary entries</h3>
         <p>
           Each row of the table is indexed as described above by the both the character
           (given by code point and Unicode Name) and the value of the form attribute.
@@ -2677,7 +2675,7 @@
         </p>
       </section>
       <section>
-        <h2>Notes on <code>lspace</code> and <code>rspace</code> attributes</h2>
+        <h3>Notes on <code>lspace</code> and <code>rspace</code> attributes</h3>
         <p>
           The values for <code>lspace</code> and <code>rspace</code> given here range from 0 to 7,
           they are given numerically in order to save space in the table,
@@ -2759,7 +2757,7 @@
       <h3>Mathvariant Mappings</h3>
       <div data-include="tables/mathvariants.html"></div>
     </section>
-    <section class="appendix">
+    <section class="appendix normative">
       <h2>Conformance</h2>
       <section>
         <h3>Document conventions</h3>
