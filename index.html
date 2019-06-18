@@ -1149,15 +1149,14 @@
           </p>
           <pre class="css" data-include="user-agent-stylesheet/mfrac.css"></pre>
           <div class="issue" data-number="15">Decide how to handle invalid
-            fraction.</div>
+            markup.</div>
           <p>
-            If the fraction has less or more than two children, its layout algorithm
+            If the <code>&lt;mfrac&gt;</code> element
+            has less or more than two children, its layout algorithm
             is the same as the <a><code>&lt;mrow&gt;</code></a> element.
             Otherwise, the first child is called
-            <dfn>numerator</dfn> and
-            the second child is called
-            <dfn>denominator</dfn>
-            and its layout algorithm is explained below.
+            <em>numerator</em>, the second child is called
+            <em>denominator</em> and the layout algorithm is explained below.
           </p>
           <section>
             <h5>Fraction with nonzero line thickeness</h5>
@@ -1268,13 +1267,13 @@
             its layout algorithm
             is the same as the <a><code>&lt;mrow&gt;</code></a> element.
             Otherwise, the first child is called
-            <dfn>base</dfn> and
+            <em>base</em> and
             the second child is called
-            <dfn>index</dfn>
+            <em>index</em>
             and its layout algorithm is explained below.
             The children of the <code>&lt;msqrt&gt;</code> element are laid out
             using the algorithm of the <a><code>&lt;mrow&gt;</code></a> element
-            to produce a box that is also called the base.
+            to produce a box that is also called the <em>base</em>.
           </p>
           <section>
             <h5>Radical symbol</h5>
@@ -1438,7 +1437,7 @@
               Children of the <code>&lt;mpadded&gt;</code> element are laid out
               using the algorithm of the <a><code>&lt;mrow&gt;</code></a> element
               to produce the
-              <dfn>mpadded content box</dfn>
+              <em>mpadded content box</em>
               with logical metrics called content width,
               content height and content depth. The requested <code>&lt;mpadded&gt;</code>
               parameters are determined as follows:
@@ -1509,7 +1508,7 @@
             <p>
               The <code>&lt;mpadded&gt;</code> element is laid out as shown on
               <a href="#figure-box-mpadded"></a>.
-              The <a>mpadded content box</a> is positioned at the origin of the
+              The mpadded content box is positioned at the origin of the
               <code>&lt;mpadded&gt;</code> element, shift horizontally by the requested
               lspace and vertically by the requested voffset.
               The logical metrics of the <code>&lt;mpadded&gt;</code> element are given
@@ -1796,164 +1795,200 @@
           </ol>
         </section>
         <section>
-          <h4>Subscripts and Superscripts <code>&lt;msub&gt;</code>, <code>&lt;msup&gt;</code>, <code>&lt;msubsup&gt;</code></h4>
+          <h4>Subscripts and Superscripts <code>&lt;msub&gt;</code>,
+            <code>&lt;msup&gt;</code>, <code>&lt;msubsup&gt;</code></h4>
           <p>
-            The
-            <dfn><code>&lt;msub&gt;</code></dfn>
-            element attaches a subscript to a base using the syntax
-            <br/>
-            <code>&lt;msub&gt;</code> base subscript <code>&lt;/msub&gt;</code>
+            The <dfn><code>&lt;msub&gt;</code></dfn>,
+            <dfn><code>&lt;msup&gt;</code></dfn> and
+            <dfn><code>&lt;msubsup&gt;</code></dfn> elements are used to attach
+            subscript and superscript to a MathML expression.
+            They accept the attributes described in
+            <a href="#global-attributes"></a>.
+          </p>
+          <div class="issue" data-number="15">Decide how to handle invalid
+            markup.</div>
+          <p>
+            If the <code>&lt;msub&gt;</code> element
+            has less or more than two children, its layout algorithm
+            is the same as the <a><code>&lt;mrow&gt;</code></a> element.
+            Otherwise, the first child is called the
+            <em>base</em>, the second child is called the
+            <em>subscript</em> and the layout algorithm is explained
+            in <a href="#base-with-subscript"></a>.
           </p>
           <p>
-            The
-            <dfn><code>&lt;msup&gt;</code></dfn>
-            element attaches a superscript to a base using the syntax
-            <br/>
-            <code>&lt;msup&gt;</code> base superscript <code>&lt;/msup&gt;</code>
+            If the <code>&lt;msub&gt;</code> element
+            has less or more than two children, its layout algorithm
+            is the same as the <a><code>&lt;mrow&gt;</code></a> element.
+            Otherwise, the first child is called the
+            <em>base</em>, the second child is called the
+            <em>superscript</em> and the layout algorithm is explained
+            in <a href="#base-with-superscript"></a>.
           </p>
           <p>
-            The
-            <dfn><code>&lt;msubsup&gt;</code></dfn>
-            element is used to attach both a subscript and superscript to
-            a base expression.
-            <br/>
-            <code>&lt;msubsup&gt;</code> base subscript superscript <code>&lt;/msubsup&gt;</code>
+            If the <code>&lt;msubsup&gt;</code> element
+            has less or more than three children, its layout algorithm
+            is the same as the <a><code>&lt;mrow&gt;</code></a> element.
+            Otherwise, the first child is called the
+            <em>base</em>, the second child is called the <em>subscript</em>,
+            its third child is called
+            the <em>superscript</em> and the layout algorithm is explained
+            in <a href="#base-with-subscript-and-superscript"></a>.
           </p>
-          <p>
-            The <code>&lt;msub&gt;</code> element is laid out as shown on <a href="#figure-box-msub"></a>.
-            The baseline is the baseline of the base while the baseline of the script is
-            shifted down by <code>SubShift</code>, which is the minimal value honoring the
-            following conditions:
-          </p>
-          <ol>
-            <li>
-              <p>
+          <section>
+            <h5>Base with subscript</h5>
+            <p>
+              The <code>&lt;msub&gt;</code> element is laid out as shown on
+              <a href="#figure-box-msub"></a>.
+              The baseline is the baseline of the base while the baseline of
+              the script is shifted down by <code>SubShift</code>, which is the
+              minimal value honoring the following conditions:
+            </p>
+            <ol>
+              <li>
                 <code>SubShift</code> is at least <a>SubscriptShiftDown</a>.
-              </p>
-            </li>
-            <li>
-              <p>
-                The top of the subscript <code>SubTop</code> with respect to the baseline
-                is not above <a>SubscriptTopMax</a>.
-              </p>
-            </li>
-            <li>
-              <p>
-                The drop <code>SubscriptBaselineDrop</code> from the bottom of the base to
-                the baseline of the script is at least
+              </li>
+              <li>
+                The top of the subscript <code>SubTop</code> with respect to
+                the baseline is not above <a>SubscriptTopMax</a>.
+              </li>
+              <li>
+                The drop <code>SubscriptBaselineDrop</code> from the bottom of
+                the base to the baseline of the script is at least
                 <a>SubscriptBaselineDropMin</a>.
-              </p>
-            </li>
-          </ol>
-          <p>
-            When determining
-            the logical box, a space of width <a>SpaceAfterScript</a>
-            is added after
-            the subscript. By default, the leading edge of the subscript is aligned with
-            the trailing edge of the base. However, if the base is an operator with
-            <code>largeop="true"</code> (or an embellished operator whose <code>&lt;mo&gt;</code> element core
-            has <code>largeop="true"</code>) the subscript is horizontally shifted backward
-            by the italic correction of the base.
-          </p>
-          <figure id="figure-box-msub">
-            <img src="figures/msubbox.svg"/>
-            <figcaption>Box model for the <code>&lt;msub&gt;</code> element</figcaption>
-          </figure>
-          <p>
-            The <code>&lt;msup&gt;</code> element is laid out as shown on <a href="#figure-box-msup"></a>.
-            The baseline is the baseline of the base while the baseline of the script is
-            shifted up by <code>SuperShift</code>, which is the minimal value honoring the
-            following conditions:
-          </p>
-          <ol>
-            <li><code>SuperShift</code> is at least
-              <a>SuperscriptShiftUpCramped</a> if the <code>&lt;msup&gt;</code> element is
-              <a>cramped</a> or at least
-              <a>SuperscriptShiftUp</a> otherwise.
-            </li>
-            <li>
-              <p>
-                The bottom of the superscript <code>SuperBottom</code> with respect to the
-                baseline is not below <a>SuperscriptBottomMin</a>.
-            </li>
-            <li>
-              <p>
-                The drop <code>SuperscriptBaselineDrop</code> from the top of the base to
-                the baseline of the script is at most <a>SuperscriptBaselineDropMax</a>.
-            </li>
-          </ol>
-          <p>
-            When determining
-            the logical box, a space of width <a>SpaceAfterScript</a>
-            is added after
-            the superscript. By default, the leading edge of the superscript is aligned with
-            the trailing edge of the base and shifted forward by the italic correction
-            of the base, except if the base is an operator with
-            <code>largeop="true"</code> (or an embellished operator whose <code>&lt;mo&gt;</code> element core
-            has <code>largeop="true"</code>).
-          </p>
-          <figure id="figure-box-msup">
-            <img src="figures/msupbox.svg"/>
-            <figcaption>Box model for the <code>&lt;msup&gt;</code> element</figcaption>
-          </figure>
-          <p>
-            The <code>&lt;msubsup&gt;</code> element is laid out as shown on
-            <a href="#figure-box-msup"></a>.
-            The baseline is the baseline of the base while the baseline of the script is
-            shifted down by <code>SubShift</code> and the superscript is shifted up by
-            <code>SuperShift</code> which is initially set to the minimal values honoring the
-            following conditions:
-          </p>
-          <ol>
-            <li><code>SubShift</code> is at least
-              <a>SuperscriptShiftUpCramped</a> if the <code>&lt;msup&gt;</code> element is
-              <a>cramped</a> or at least
-              <a>SuperscriptShiftUp</a> otherwise.
-            </li>
-            <li>
-              The top of the subscript <code>SubTop</code> with respect to the baseline
-              is not above <a>SubscriptTopMax</a>.
-            </li>
-            <li><p>
-                The drop <code>SuperscriptBaselineDrop</code> from the top of the base to
-                the baseline of the superscript is at most <a>SuperscriptBaselineDropMax</a>.</li>
-            <li><code>SubShift</code> is at least
-              <a>SuperscriptShiftUpCramped</a> if the <code>&lt;msup&gt;</code> element is
-              <a>cramped</a> or at least
-              <a>SuperscriptShiftUp</a> otherwise.
-            </li>
-            <li>The bottom of the superscript <code>SuperBottom</code> with respect to the
-              baseline is not below <a>SuperscriptBottomMin</a>.
-            </li>
-            <li>The drop <code>SubscriptBaselineDrop</code> from
-              the bottom of the base to the the baseline of the subscript is at least
-              <a>SubscriptBaselineDropMin</a>.
-            </li>
-          </ol>
-          <p>
-            We then increase the gap <code>SubSuperGap</code> between the bottom of the superscript
-            and the top of the subscript to ensure it is at least
-            <a>SubSuperscriptGapMin</a>:
-            This is first done by continuing to shift the superscript up as long as the
-            <code>SuperBottom</code> does not exceed
-            <a>SuperscriptBottomMaxWithSubscript</a>
-            and next by continuing to shift the subscript down.
-          </p>
-          <p>
-            When determining
-            the logical box, a space of width <a>SpaceAfterScript</a>
-            is added after
-            each script. By default the leading edges of the scripts are aligned with
-            the trailing edge and either the superscript is shifted forward by the italic
-            correction of the base. However, if the base is an operator with
-            <code>largeop="true"</code> (or an embellished operator whose <code>&lt;mo&gt;</code> element core
-            has <code>largeop="true"</code>) then instead the subscript is shifted forward by the
-            italic correction of the base.
-          </p>
-          <figure id="figure-box-msubsup">
-            <img src="figures/msubsupbox.svg"/>
-            <figcaption>Box model for the <code>&lt;msubsup&gt;</code> element</figcaption>
-          </figure>
+              </li>
+            </ol>
+            <p>
+              When determining
+              the logical box, a space of width <a>SpaceAfterScript</a>
+              is added after
+              the subscript. By default, the leading edge of the subscript is
+              aligned with the trailing edge of the base. However, if the base
+              is an operator with <code>largeop="true"</code> (or an
+              embellished operator whose <code>&lt;mo&gt;</code> element core
+              has <code>largeop="true"</code>) the subscript is horizontally
+              shifted backward by the italic correction of the base.
+            </p>
+            <figure id="figure-box-msub">
+              <img src="figures/msubbox.svg"/>
+              <figcaption>Box model for the <code>&lt;msub&gt;</code> element</figcaption>
+            </figure>
+          </section>
+          <section>
+            <h5>Base with superscript</h5>
+            <p>
+              The <code>&lt;msup&gt;</code> element is laid out as shown on
+              <a href="#figure-box-msup"></a>.
+              The baseline is the baseline of the base while the baseline of
+              the script is shifted up by <code>SuperShift</code>, which is the
+              minimal value honoring the following conditions:
+            </p>
+            <ol>
+              <li>
+                <code>SuperShift</code> is at least
+                <a>SuperscriptShiftUpCramped</a> if the
+                <code>&lt;msup&gt;</code> element is
+                <a>cramped</a> or at least
+                <a>SuperscriptShiftUp</a> otherwise.
+              </li>
+              <li>
+                The bottom of the superscript <code>SuperBottom</code> with
+                respect to the baseline is not below
+                <a>SuperscriptBottomMin</a>.
+              </li>
+              <li>
+                The drop <code>SuperscriptBaselineDrop</code> from the top of
+                the base to the baseline of the script is at most
+                <a>SuperscriptBaselineDropMax</a>.
+              </li>
+            </ol>
+            <p>
+              When determining the logical box, a space of width
+              <a>SpaceAfterScript</a> is added after
+              the superscript. By default, the leading edge of the superscript
+              is aligned with the trailing edge of the base and shifted forward
+              by the italic correction of the base, except if the base is an
+              operator with <code>largeop="true"</code>
+              (or an embellished operator whose <code>&lt;mo&gt;</code> element
+              core has <code>largeop="true"</code>).
+            </p>
+            <figure id="figure-box-msup">
+              <img src="figures/msupbox.svg"/>
+              <figcaption>Box model for the <code>&lt;msup&gt;</code> element</figcaption>
+            </figure>
+          </section>
+          <section>
+            <h5>Base with subscript and superscript</h5>
+            <p>
+              The <code>&lt;msubsup&gt;</code> element is laid out as shown on
+              <a href="#figure-box-msup"></a>.
+              The baseline is the baseline of the base while the baseline of
+              the script is shifted down by <code>SubShift</code> and the
+              superscript is shifted up by <code>SuperShift</code> which are
+              initially set to the minimal values honoring the following
+              conditions:
+            </p>
+            <ol>
+              <li>
+                <code>SubShift</code> is at least
+                <a>SuperscriptShiftUpCramped</a> if the
+                <code>&lt;msup&gt;</code> element is <a>cramped</a> or at least
+                <a>SuperscriptShiftUp</a> otherwise.
+              </li>
+              <li>
+                The top of the subscript <code>SubTop</code> with respect to
+                the baseline is not above <a>SubscriptTopMax</a>.
+              </li>
+              <li>
+                The drop <code>SuperscriptBaselineDrop</code> from the top of
+                the base to the baseline of the superscript is at most
+                <a>SuperscriptBaselineDropMax</a>.
+              </li>
+              <li>
+                <code>SubShift</code> is at least
+                <a>SuperscriptShiftUpCramped</a> if the
+                <code>&lt;msup&gt;</code> element is
+                <a>cramped</a> or at least
+                <a>SuperscriptShiftUp</a> otherwise.
+              </li>
+              <li>
+                The bottom of the superscript <code>SuperBottom</code> with
+                respect to the baseline is not below
+                <a>SuperscriptBottomMin</a>.
+              </li>
+              <li>
+                The drop <code>SubscriptBaselineDrop</code> from
+                the bottom of the base to the the baseline of the subscript is
+                at least <a>SubscriptBaselineDropMin</a>.
+              </li>
+            </ol>
+            <p>
+              After initializing
+              <code>SubShift</code> and <code>SuperShift</code>,
+              the gap <code>SubSuperGap</code> between the bottom
+              of the superscript and the top of the subscript is increased to
+              ensure it is at least <a>SubSuperscriptGapMin</a>.
+              This is first done by continuing to shift the superscript up as
+              long as the <code>SuperBottom</code> does not exceed
+              <a>SuperscriptBottomMaxWithSubscript</a>
+              and next by continuing to shift the subscript down.
+            </p>
+            <p>
+              When determining the logical box, a space of width
+              <a>SpaceAfterScript</a> is added after each script. By default
+              the leading edges of the scripts are aligned with the trailing
+              edge and either the superscript is shifted forward by the italic
+              correction of the base. However, if the base is an operator with
+              <code>largeop="true"</code> (or an embellished operator whose
+              <code>&lt;mo&gt;</code> element core has
+              <code>largeop="true"</code>) then instead the subscript is
+              shifted forward by the italic correction of the base.
+            </p>
+            <figure id="figure-box-msubsup">
+              <img src="figures/msubsupbox.svg"/>
+              <figcaption>Box model for the <code>&lt;msubsup&gt;</code> element</figcaption>
+            </figure>
+          </section>
         </section>
         <section>
           <h4>Underscripts and Overscripts <code>&lt;munder&gt;</code>, <code>&lt;mover&gt;</code>, <code>&lt;munderover&gt;</code></h4>
