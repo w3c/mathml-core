@@ -2325,7 +2325,7 @@
           <code>&lt;semantics&gt;</code> element has as its first child a
           MathML expression to be annotated while subsequent children represent
           text annotations within an <dfn><code>&lt;annotation&gt;</code></dfn>
-          element, or more complex markup annotations within 
+          element, or more complex markup annotations within
           an <dfn><code>&lt;annotation-xml&gt;</code></dfn> element.
         </p>
         <p>
@@ -2565,167 +2565,49 @@
 <span data-include-replace="true" data-include="user-agent-stylesheet/displaystyle.css"></span><span data-include-replace="true" data-include="user-agent-stylesheet/mfrac.css"></span><span data-include-replace="true" data-include="user-agent-stylesheet/mroot.css"></span><span data-include-replace="true" data-include="user-agent-stylesheet/scripts.css"></span>
       </pre>
     </section>
-    <section>
+    <section class="normative">
       <h2>Operator Dictionary</h2>
-      <p>
-        The following table gives the suggested dictionary of rendering
-        properties for operators, fences, separators, and accents in MathML, all of
-        which are represented by <code>&lt;mo&gt;</code> elements. For brevity,
-        all such elements will be called simply <q>operators</q> in this
-        Appendix.
-      </p>
-      <section><h3>Indexing of the operator dictionary</h3>
-        <p>
-          Note that the dictionary is indexed not just by the element
-          content, but by the element content and <code>form</code> attribute
-          value, together. Operators with more than one possible form have more
-          than one entry. The MathML specification describes how the renderer
-          chooses (<q>infers</q>) which form to use when no <code>form</code>
-          attribute is given; see ??.
-        </p>
-        <p>
-          Having made that choice, or with the <code>form</code> attribute
-          explicitly specified in the <code>&lt;mo&gt;</code> element's start
-          tag, the MathML renderer uses the remaining attributes from the
-          dictionary entry for the appropriate single form of that operator,
-          ignoring the entries for the other possible forms.
-        </p>
-        <p>
-          In the table below, all non-ASCII characters are represented by
-          XML-style hexadecimal numeric character references.
-          The choice of markup (character data, numeric character reference or named entity reference)
-          for a given character in MathML has no effect on its rendering.
-        </p>
-      </section>
       <section>
-        <h3>Format of operator dictionary entries</h3>
+        <h3>Description</h3>
         <p>
-          Each row of the table is indexed as described above by the both the character
-          (given by code point and Unicode Name) and the value of the form attribute.
-          The fourth column gives the priority which as described in
-          ??),
-          is significant for the proper grouping of sub-expressions using <code>&lt;mrow&gt;</code>.
-          The rule described
-          there is especially relevant to the automatic generation of MathML by
-          conversion from other formats for displayed mathematics, such as T<sub>E</sub>X,
+          Users agent must use a dictionary of rendering properties for MathML
+          operators. The dictionary must include at least the entries of the
+          table provided in <a href="#operator-dictionary-entries"></a>.
+        </p>
+        <p>
+          The dictionary is indexed by 'Content' and 'Form' columns together.
+          <a href="#operator-fence-separator-or-accent-mo"></a>
+          describes how to determine these values for a given operator.
+          The 'Rendering' and 'Unicode' columns are provided for convenience,
+          but they are just alternative to the 'Content' column.
+        </p>
+        <p>
+          The 'Priority' column is significant for the proper grouping of
+          sub-expressions using <code>&lt;mrow&gt;</code>. This is especially
+          relevant to the automatic generation of MathML by conversion from
+          other formats for displayed mathematics, such as T<sub>E</sub>X,
           which do not always specify how sub-expressions nest.
+          However, it does not affect the rendering described in this
+          specification and so is not needed for implementing it in user agents.
         </p>
         <p>
-          The length valued attributes such as <code>lspace</code> are given explicitly in the following columns.
-          Boolean valued attributes such as <code>stretchy</code> are specified together in the final Properties
-          column by listing the attribute name if its value should be set to
-          true by the dictionary.
-          Finally some rarely used non-boolean properties are shown in the Properties column together with a value,
-          for example <code>linebreakstyle</code>=after.
+          The length valued attributes <a><code>lspace</code></a> and
+          <a><code>rspace</code></a> are given here as numeric values ranging
+          from 0 to 7 in order to save space in the table. They must be
+          interpreted as multiples of 1/18em i.e.
+          <code>0</code>,
+          <code>0.05555555555555555em</code>,
+          <code>0.1111111111111111em</code>,
+          <code>0.16666666666666666em</code>,
+          <code>0.2222222222222222em</code>,
+          <code>0.2777777777777778em</code>,
+          <code>0.3333333333333333em</code>,
+          <code>0.3888888888888889em</code> respectively.
         </p>
         <p>
-          Any attribute not listed for some entry has its default value,
-          which is given in parentheses in the table of attributes in
-          ??.
-        </p>
-        <table>
-          <tbody>
-            <tr>
-              <th>(</th>
-              <th>(</th>
-              <th>left parenthesis</th>
-              <th>prefix</th>
-              <td>1</td>
-              <td>0</td>
-              <td>0</td>
-              <td></td>
-              <td>fence,stretchy</td>
-            </tr>
-          </tbody>
-        </table>
-        <p>
-          could be expressed as an <code>&lt;mo&gt;</code> element by:
-          <code>&lt;mo form="prefix" fence="true" stretchy="true" lspace="0em" rspace="0em"&gt; ( &lt;/mo&gt;</code>
-          (note the whitespace added around the content for readability;
-          Such whitespace will be ignored by a MathML system,
-          as described in ??.
-        </p>
-        <p>
-          This entry means that, for MathML renderers which use this
-          suggested operator dictionary, giving the element
-          <code>&lt;mo form="prefix"> ( &lt;/mo></code>
-          alone, or simply
-          <code>&lt;mo> ( &lt;/mo></code>
-          in a position for which
-          <code>form="prefix"</code>
-          would be inferred (see below), is equivalent to giving the element
-          with all attributes as shown above.
-        </p>
-        <p>
-          In some versions of this specification,
-          the rows of the table may be reordered by clicking on a h2ing in the top row,
-          to cause the table to be ordered by that column.
-        </p>
-      </section>
-      <section>
-        <h3>Notes on <code>lspace</code> and <code>rspace</code> attributes</h3>
-        <p>
-          The values for <code>lspace</code> and <code>rspace</code> given here range from 0 to 7,
-          they are given numerically in order to save space in the table,
-          the values should be taken as referring to the named mathematical spaces, as follows.
-        </p>
-        <table>
-          <thead>
-            <tr><td>Table Entry</td><td>Named Space</td><td>Default Length</td></tr>
-          </thead>
-          <tbody>
-            <tr><td>0</td><td></td><td>0 em</td></tr>
-            <tr>
-              <td>1</td>
-              <td>veryverythinmathspace</td>
-              <td>1/18 em</td>
-            </tr>
-            <tr>
-              <td>2</td>
-              <td>verythinmathspace</td>
-              <td>2/18 em</td>
-            </tr>
-            <tr>
-              <td>3</td>
-              <td>thinmathspace</td>
-              <td>3/18 em</td>
-            </tr>
-            <tr>
-              <td>4</td>
-              <td>mediummathspace</td>
-              <td>4/18 em</td>
-            </tr>
-            <tr>
-              <td>5</td>
-              <td>thickmathspace</td>
-              <td>5/18 em</td>
-            </tr>
-            <tr>
-              <td>6</td>
-              <td>verythickmathspace</td>
-              <td>6/18 em</td>
-            </tr>
-            <tr>
-              <td>7</td>
-              <td>veryverythickmathspace</td>
-              <td>7/18 em</td>
-            </tr>
-          </tbody>
-        </table>
-        <p>
-          For the invisible operators whose content is <code>&amp;InvisibleTimes;</code>
-          or <code>&amp;ApplyFunction;</code>,
-          it is suggested that MathML renderers choose spacing in a context-sensitive
-          way (which is an exception to the static values given in the following
-          table). For <code>&lt;mo>&amp;ApplyFunction;&lt;/mo></code>, the total
-          spacing (lspace+rspace) in
-          expressions such as <q>sin <i>x</i></q> (where the right operand
-          doesn't start with a fence) should be greater than zero; for
-          <code>&lt;mo>&amp;InvisibleTimes;&lt;/mo></code>, the total spacing
-          should be greater than zero when both operands (or the nearest tokens on
-          either side, if on the baseline) are identifiers displayed in a non-slanted
-          font (i.e.. under the suggested rules, when both operands are
-          multi-character identifiers).
+          Boolean valued attributes such as <a><code>stretchy</code></a> are
+          specified together in the final 'Properties' column by listing the
+          attribute name if its value should be set to true by the dictionary.
         </p>
       </section>
       <section>

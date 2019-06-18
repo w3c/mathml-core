@@ -29,7 +29,7 @@
    <xsl:text>&#10;</xsl:text>
    <tr>
     <xsl:text>&#10;</xsl:text>
-    <xsl:for-each select="'Character','Glyph','Name','form',$c,'Properties'">
+    <xsl:for-each select="'Content','Rendering','Unicode Name','Form',$c,'Properties'">
      <th><xsl:value-of select="."/></th>
     </xsl:for-each>
    </tr>
@@ -51,14 +51,7 @@
        <xsl:text>&#10;</xsl:text>
        <th>
 	<xsl:attribute name="abbr" select="$d[1]"/>
-	<xsl:choose>
-	 <xsl:when test="empty($d[. &gt;127])">
-	  <xsl:value-of select="replace(replace(codepoints-to-string($d),'&amp;','&amp;amp;'),'&lt;','&amp;lt;')"/>
-	 </xsl:when>
-	 <xsl:otherwise>
-	  <xsl:value-of select="replace(../@id,'[U-]0*([0-9A-F]*)','&amp;#x$1;')"/>
-	 </xsl:otherwise>
-	</xsl:choose>
+	<xsl:value-of select="replace(../@id,'[U-]0*([0-9A-F]*)','&amp;#x$1;')"/>
        </th>
        <th>
 	<xsl:value-of select="

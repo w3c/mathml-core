@@ -2,42 +2,10 @@
 
 from __future__ import print_function
 from lxml import etree
-import os
-import progressbar
-try:
-    from urllib.request import urlopen
-except ImportError:
-    from urllib2 import urlopen
-
-def downloadWithProgressBar(url, outputDirectory="./", forceDownload=False):
-
-    baseName = os.path.basename(url)
-    fileName = os.path.join(outputDirectory, baseName)
-
-    if not forceDownload and os.path.exists(fileName):
-        return fileName
-
-    request = urlopen(url)
-    totalSize = int(request.info().getheader('Content-Length').strip())
-    bar = progressbar.ProgressBar(maxval=totalSize).start()
-
-    chunkSize = 16 * 1024
-    downloaded = 0
-    print("Downloading %s" % url)
-    os.umask(0o002)
-    with open(fileName, 'wb') as fp:
-        while True:
-            chunk = request.read(chunkSize)
-            downloaded += len(chunk)
-            bar.update(downloaded)
-            if not chunk: break
-            fp.write(chunk)
-        bar.finish()
-
-    return fileName
+from download import downloadUnicodeXML
 
 # Retrieve the unicode.xml file if necessary.
-unicodeXML = downloadWithProgressBar("http://www.w3.org/2003/entities/2007xml/unicode.xml")
+unicodeXML = downloadUnicodeXML()
 
 # Extract the mathvariants transformation.
 xsltTransform = etree.XSLT(etree.XML('''\
