@@ -2287,9 +2287,18 @@
         </p>
         <p>
           The <code>&lt;maction&gt;</code> element accepts the attributes described
-          in <a href="#global-attributes"></a>.
-          The <code>actiontype</code> and <code>selection</code> attributes are
-          also accepted but they do not have any effect.
+          in <a href="#global-attributes"></a> as well as the following
+          attributes:
+        </p>
+        <ul>
+          <li><code>actiontype</code></li>
+          <li><code>selection</code></li>
+        </ul>
+        <p>
+          The <dfn>actiontype</dfn> and <dfn>selection</dfn> attributes are
+          not taken into account in the present specification but may be used
+          by authors to implement custom actions on the
+          <code>&lt;maction&gt;</code> element.
         </p>
         <p>
           The layout algorithm of the <code>&lt;maction&gt;</code> element
@@ -2312,71 +2321,56 @@
           The
           <dfn><code>&lt;semantics&gt;</code></dfn>
           element is the container element that associates
-          annotations with a MathML expression. The semantics element has as its first
-          child the expression to be annotated. Any MathML expression may appear as the
-          first child of the semantics element. Subsequent annotation and annotation-xml
-          children enclose the annotations. An annotation represented in XML is enclosed
-          in an
-          <dfn><code>&lt;annotation-xml&gt;</code></dfn>
-          element. An annotation represented in character data
-          is enclosed in an
-          <dfn><code>&lt;annotation&gt;</code></dfn>
-          element.
+          annotations with a MathML expression. Typically, the
+          <code>&lt;semantics&gt;</code> element has as its first child a
+          MathML expression to be annotated while subsequent children represent
+          text annotations within an <dfn><code>&lt;annotation&gt;</code></dfn>
+          element, or more complex markup annotations within 
+          an <dfn><code>&lt;annotation-xml&gt;</code></dfn> element.
         </p>
         <p>
-          User agents must display at most one of the child of a <code>&lt;semantics&gt;</code> element.
-          For example, they may always display the first child (if any) or may use this
-          more advanced algorithm to determine a visible child:
+          The <code>&lt;semantics&gt;</code> element accepts the attributes
+          described in <a href="#global-attributes"></a>. Its layout algorithm
+          is the same as the <a><code>&lt;mrow&gt;</code></a> element.
+          The <a href="#user-agent-stylesheet">user agent stylesheet</a>
+          must contain the following rule in order to only render the annotated
+          MathML expression:
         </p>
-        <ol>
-          <li>
-            <p>
-              If the <code>&lt;semantics&gt;</code> element has a first child that is any of the
-              MathML elements (other than <code>&lt;annotation&gt;</code> and <code>&lt;annotation-xml&gt;</code>)
-              whose rendering is described in this document then use it as the visible
-              child and stop.
-            </p>
-          </li>
-          <li>
-            <p>
-              Otherwise, check the children of the <code>&lt;semantics&gt;</code> element in the DOM
-              order to try and find the first child that is
-            </p>
-            <ol>
-              <li>
-                <p>
-                  Either an <code>&lt;annotation&gt;</code> without any <code>src</code> attribute.
-                </p>
-              </li>
-              <li>
-                <p>
-                  Or an <code>&lt;annotation-xml&gt;</code> without any <code>src</code> attribute and
-                  with an <code>encoding</code> attribute that has value
-                  <code>"application/mathml-presentation+xml"</code>,
-                  <code>"MathML-Presentation"</code>,
-                  <code>"image/svg+xml"</code>,
-                  <code>"SVG1.1"</code>,
-                  <code>"application/xhtml+xml"</code> or
-                  <code>"text/html"</code>.
-                </p>
-              </li>
-            </ol>
-          </li>
-          <li>Otherwise, fallback to the first child (if any).</li>
-          <li>Otherwise, the <code>&lt;semantics&gt;</code> element is empty and the visible child is
-            undetermined.
-          </li>
-        </ol>
+        <pre data-include="user-agent-stylesheet/semantics.css"></pre>
         <p>
-          For the layout algorithm described in this document, the
-          <code>&lt;annotation-xml&gt;</code> element must be treated the same as the <code>&lt;mrow&gt;</code> element,
-          the <code>&lt;annotation&gt;</code> element must be treated the same as the <code>&lt;mtext&gt;</code>
-          element. The <code>&lt;semantics&gt;</code> element must be treated the same as an
-          <code>&lt;mrow&gt;</code> element containing only its visible child. If it is undetermined,
-          the user agent may treat the <code>&lt;semantics&gt;</code> element as an
-          empty <code>&lt;mrow&gt;</code> element or as an <code>&lt;merror&gt;</code> element with some error message
-          indicating invalid markup.
+          The <code>&lt;annotation-xml&gt;</code> and
+          <code>&lt;annotation&gt;</code> element accepts the attributes
+          described in <a href="#global-attributes"></a> as well as the
+          following attribute:
         </p>
+        <ul>
+          <li><code>encoding</code></li>
+        </ul>
+        <p>
+          The <dfn>encoding</dfn> attribute is not taken into account in the
+          present specification but it is intended to distinguish annotations
+          for <a data-cite="HTML#html-integration-point">HTML integration point</a>, clipboard copy, alternative rendering etc
+        </p>
+        <p>
+          The layout algorithm of the <code>&lt;annotation-xml&gt;</code>
+          element is the same as the <a><code>&lt;mrow&gt;</code></a> element.
+          The layout algorithm of the <code>&lt;annotation&gt;</code>
+          element is the same as the <a><code>&lt;mtext&gt;</code></a> element.
+        </p>
+        <div class="note">
+          CSS can be used to render alternative annotations e.g.
+          <pre class="css">
+            /* Hide the annotated child. */
+            semantics > :first-child { display: none; }
+             /* Show all text annotations. */
+            semantics > annotation { display: block; }
+            /* Show all HTML annotations. */
+            semantics > annotation-xml[encoding="text/html" i],
+            semantics > annotation-xml[encoding="application/xhtml+xml" i] {
+              display: block;
+            }
+          </pre>
+        </div>
       </section>
     </section>
     <section class="normative">
@@ -2564,17 +2558,11 @@
         /* The &lt;math&gt; element */
         <span data-include="user-agent-stylesheet/math.css"></span>
         /* &lt;mrow&gt;-like elements */
-        <span data-include="user-agent-stylesheet/maction.css"></span><span data-include="user-agent-stylesheet/merror.css"></span><span data-include="user-agent-stylesheet/mphantom.css"></span>
+        <span data-include="user-agent-stylesheet/semantics.css"></span><span data-include="user-agent-stylesheet/maction.css"></span><span data-include="user-agent-stylesheet/merror.css"></span><span data-include="user-agent-stylesheet/mphantom.css"></span>
         /* Tables */
-        <span data-include="user-agent-stylesheet/mtable.css"></span>
-        <span data-include="user-agent-stylesheet/mtable-frame.css"></span>
-        <span data-include="user-agent-stylesheet/mtr.css"></span>
-        <span data-include="user-agent-stylesheet/mtd.css"></span>
+        <span data-include="user-agent-stylesheet/mtable.css"></span><span data-include="user-agent-stylesheet/mtable-frame.css"></span><span data-include="user-agent-stylesheet/mtr.css"></span><span data-include="user-agent-stylesheet/mtd.css"></span>
         /* Other rules for scriptlevel and displastyle */
-        <span data-include="user-agent-stylesheet/displaystyle.css"></span>
-        <span data-include="user-agent-stylesheet/mfrac.css"></span>
-        <span data-include="user-agent-stylesheet/mroot.css"></span>
-        <span data-include="user-agent-stylesheet/scripts.css"></span>
+        <span data-include="user-agent-stylesheet/displaystyle.css"></span><span data-include="user-agent-stylesheet/mfrac.css"></span><span data-include="user-agent-stylesheet/mroot.css"></span><span data-include="user-agent-stylesheet/scripts.css"></span>
       </pre>
     </section>
     <section>
