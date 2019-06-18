@@ -1004,8 +1004,8 @@
           </p>
           <ul>
             <li><a href="#attribute-mspace-width" class="internalDFN" data-link-type="dfn"><code>width</code></a></li>
-            <li><a href="#attribute-mspace-width" class="internalDFN" data-link-type="dfn"><code>height</code></a></li>
-            <li><a href="#attribute-mspace-width" class="internalDFN" data-link-type="dfn"><code>depth</code></a></li>
+            <li><a href="#attribute-mspace-height" class="internalDFN" data-link-type="dfn"><code>height</code></a></li>
+            <li><a href="#attribute-mspace-depth" class="internalDFN" data-link-type="dfn"><code>depth</code></a></li>
           </ul>
           <p>The
             <dfn id="attribute-mspace-width"><code>mspace@width</code></dfn>,
@@ -1992,6 +1992,23 @@
               <img src="figures/msubsupbox.svg"/>
               <figcaption>Box model for the <code>&lt;msubsup&gt;</code> element</figcaption>
             </figure>
+            <div class="note" id="msubsup-with-empty-scripts">
+              <p>
+                Even when the subscript (respectively superscript) is an empty
+                box, <code>&lt;subsup&lgt;</code>
+                does not generally render the same as
+                <a href="#base-with-superscript"></a>
+                (respectively <a href="#base-with-subscript"></a>)
+                because of the additional <code>SubSuperGap</code>.
+                Moreover, positioning the empty subscript
+                (respectively superscript)
+                may also change the total size.
+              </p>
+              <p>
+                In order to keep the algorithm simple, no attempt is made to
+                handle empty scripts in a special way.
+              </p>
+             </div>
           </section>
         </section>
         <section>
@@ -2219,66 +2236,159 @@
             that the bottom of overscript is at least
             <a>AccentBaseHeight</a> above the baseline of the base.
           </div>
+          <div class="note">
+            <p>
+              When the underscript (respectively overscript) is an empty
+              box, the base and overscript are laid out the same as for
+              <a href="#base-with-overscript"></a>
+              (respectively <a href="#base-with-underscript"></a>)
+              but the position of the empty underscript (respectively
+              overscript) will add some extra space below the base.
+            </p>
+            <p>
+              In order to keep the algorithm simple, no attempt is made to
+              handle empty scripts in a special way.
+            </p>
+          </div>
           </section>
         </section>
         <section>
           <h4>Prescripts and Tensor Indices <code>&lt;mmultiscripts&gt;</code></h4>
           <p>
-            Presubscripts and tensor notations are represented by a single element,
-            <dfn><code>&lt;mmultiscripts&gt;</code></dfn>, using the syntax:</p>
-          <p>
-            <code>&lt;mmultiscripts&gt;</code>
-            <code>base</code><br/>
-            <code>(subscript superscript)*</code><br/>
-            <code>[ &lt;mprescripts/&gt; (presubscript presuperscript)* ]</code><br/>
-            <code>&lt;/mmultiscripts&gt;</code>
+            Presubscripts and tensor notations are represented
+            the <dfn><code>&lt;mmultiscripts&gt;</code></dfn>
+            with hints given by the
+            <dfn><code>&lt;mprescripts&gt;</code></dfn>
+            (to distinguish postscripts and prescripts)
+            and
+            <dfn><code>&lt;none&gt;</code></dfn> elements
+            (to indicate empty scripts).
+            These element accept the attributes described in
+            <a href="#global-attributes"></a>.
           </p>
           <p>
-            This element allows the representation of any number of vertically-aligned
-            pairs of subscripts and superscripts, attached to one base expression. It
-            supports both postscripts and prescripts
-            separated by
-            the empty element
-            <dfn><code>&lt;mprescripts&gt;</code></dfn>. Missing scripts can be represented
-            by the empty element
-            <dfn><code>&lt;none&gt;</code></dfn>.
+            The empty
+            <code>&lt;mprescripts&gt;</code> and <code>&lt;none&gt;</code>
+            elements are laid out as an <a><code>&lt;mrow&gt;</code></a>
+            element.
           </p>
+          <div class="issue" data-number="15">Decide how to handle invalid
+            markup.</div>
           <p>
-            Any layout for <code>&lt;mmultiscripts&gt;</code> is acceptable as long as it follows
-            the condition of the MathML 3 specification [[MATHML3]] and is consistent
-            with
-            <a href="#subscripts-and-superscripts-msub-msup-msubsup"></a>
-            for <code>&lt;mmultiscripts&gt;</code>
-            contructions that are equivalent to <code>&lt;msubsup&gt;</code>. Here is a possible algorithm
-            that is represented on <a href="#figure-box-mmultiscripts"></a>.
+            A valid <code>&lt;mmultiscripts&gt;</code> element contains the
+            following children:
           </p>
-          <ol>
+          <ul>
             <li>
-              Determine the vertical shifts for each subscript/superscript pair
-              using the algorithm for <code>&lt;msub&gt;</code> (if the superscript is <code>&lt;none&gt;</code>),
-              <code>&lt;msup&gt;</code> (if the subscript is <code>&lt;none&gt;</code>) or <code>&lt;msubsup&gt;</code>
-              (if none of the scripts are <code>&lt;none&gt;</code>) or otherwise use shifts of zero
-              (if both scripts of the pair are <code>&lt;none&gt;</code>). When placing the scripts,
-              use the maximum of the subscript shift for all subscript and
-              the maximum of the superscript shift for all superscripts.
+              A first child, called the <em>base</em> that is not a
+              an <a><code>&lt;mprescripts&gt;</code></a> element.
             </li>
             <li>
-              For the horizontal layout of postscripts, use the trailing edge of the
-              base or of the previous pair as the leading edge of the current pair.
-              For each pair, apply the same italic correction described for
-              <code>&lt;msubsup&gt;</code> in
-              <a href="#subscripts-and-superscripts-msub-msup-msubsup"></a>.
-              Apply the same italic corrections for all these postscripts.
+              Followed by an even number of children called
+              <em>postscripts</em>, none of them being a
+              <a><code>&lt;mprescripts&gt;</code></a> element.
+              These scripts form a (possibly empty) list of
+              <em>subscript/superscript pairs</em>.
             </li>
-            <li>For the horizontal layout of prescripts, use the leading edge of the
-              base or of next pair as the trailing edge of the current pair. Do not apply
-              any italic correction for prescripts.
+            <li>Optionally followed by
+              an <a><code>&lt;mprescripts&gt;</code></a> element and
+              an even number of children called
+              <em>prescripts</em>, none of them being a
+              <a><code>&lt;mprescripts&gt;</code></a> element.
+              These scripts form a (possibly empty) list of
+              <em>subscript/superscript pairs</em>.
             </li>
-          </ol>
-          <figure id="figure-box-mmultiscripts">
-            <img src="figures/mmultiscriptsbox.svg"/>
-            <figcaption>Box model for the <code>&lt;mmultiscripts&gt;</code> element</figcaption>
-          </figure>
+          </ul>
+          <p>
+            If an <code>&lt;mmultiscripts&gt;</code> element is not valid then
+            it is laid out the same as the
+            <a><code>&lt;mrow&gt;</code></a> element.
+            Otherwise the layout algorithm is explained below.
+          </p>
+          <div class="note">
+            The <code>&lt;none&gt;</code> element is preserved for backward
+            compatibility reasons but is actually not taken into account
+            in the layout algorithm.
+          </div>
+          <section>
+            <h5>Base with prescripts and postscripts</h5>
+            <p>
+              The <code>&lt;mmultiscripts&gt;</code> element is laid out as
+              shown on <a href="#figure-box-mmultiscripts"></a>.
+            </p>
+            <ul>
+              <li>
+                The horizontal positions are determined in the following order:
+                leading edge of <code>&lt;mmultiscripts&gt;</code>,
+                <a>SpaceAfterScript</a>,
+                first prescript pair,
+                <a>SpaceAfterScript</a>,
+                second prescript pair,
+                ...,
+                <a>SpaceAfterScript</a>,
+                last prescript pair,
+                base,
+                first postscript pair,
+                <a>SpaceAfterScript</a>,
+                second postscript pair,
+                <a>SpaceAfterScript</a>,
+                ...,
+                last postscript pair,
+                width <a>SpaceAfterScript</a>,
+                trailing edge of <code>&lt;mmultiscripts&gt;</code>.
+              </li>
+              <li>
+                Each postscript pair is shift forward
+                by the italic correction of the base as described in
+                <a href="#base-with-subscript-and-superscript"></a>.
+              </li>
+              <li>
+                For prescript pairs, the trailing edges of the subscript
+                and superscript are aligned.
+                For postscript pairs, the leading edges of the subscript
+                and superscript are aligned.
+              </li>
+              <li>
+                <code>SubShift</code> (respectively <code>SuperShift</code>)
+                is calculated by taking the maximum of all subshifts
+                (respectively supershifts) of each
+                subscript/superscript pair determined using the algorithm for
+                <a href="#base-with-subscript-and-superscript"></a>.
+                Then the baseline of <code>&lt;mmultiscripts&gt;</code>
+                is the baseline of the base, the baselines of
+                the subscripts are shifted down by <code>SubShift</code>
+                and the baselines of superscripts are shifted up by
+                <code>SuperShift</code>.
+              </li>
+              <li>
+                The <code>&lt;mprescript&gt;</code> element, if any, is
+                positioned at the same coordinate as the base.
+              </li>
+            </ul>
+            <figure id="figure-box-mmultiscripts">
+              <img src="figures/mmultiscriptsbox.svg"/>
+              <figcaption>Box model for the <code>&lt;mmultiscripts&gt;</code> element</figcaption>
+            </figure>
+            <div class="note">
+              <p>
+                An <code>&lt;mmultiscripts&gt;</code> with only one
+                postscript pair is laid out the same as a
+                <code>&lt;msubsup&gt;</code> with the same children.
+                However, as
+                <a href="#msubsup-with-empty-scripts">noticed for
+                  <code>&lt;msubsup&gt;</code></a>,
+                if additionally the subscript (respectively superscript) is an
+                empty box then it is not necessarily laid out the same as an
+                <code>&lt;msub&gt;</code>
+                (respectively <code>&lt;msup&gt;</code>) element.
+              </p>
+              <p>
+                In order to keep the algorithm simple, no attempt is made to
+                handle empty or <code>&lt;none&gt;</code> scripts in a special
+                way.
+              </p>
+            </div>
+          </section>
         </section>
         <section>
           <h4>Displaystyle and scriptlevel in scripts</h4>
