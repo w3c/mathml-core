@@ -492,7 +492,7 @@
           <p>
             The
             <dfn><code>displaystyle</code></dfn>
-            attribute, if present, must be a <a>boolean</a>.
+            attribute, if present, must have a value that is a <a>boolean</a>.
             It is mapped to the CSS property <a><code>math-style</code></a>.
             More precisely,  <code>true</code> is mapped to <code>display</code> and
             <code>false</code> to  <code>inline</code>.
@@ -1008,9 +1008,9 @@
             <li><a href="#attribute-mspace-width" class="internalDFN" data-link-type="dfn"><code>depth</code></a></li>
           </ul>
           <p>The
-            <dfn id="attribute-mspace-width">mspace <code>width</code></dfn>,
-            <dfn id="attribute-mspace-height">mspace <code>height</code></dfn>,
-            <dfn id="attribute-mspace-depth">mspace <code>depth</code></dfn>, if present, must
+            <dfn id="attribute-mspace-width"><code>mspace@width</code></dfn>,
+            <dfn id="attribute-mspace-height"><code>mspace@height</code></dfn>,
+            <dfn id="attribute-mspace-depth"><code>mspace@depth</code></dfn>, if present, must
             have a value that is a valid <a>length-percentage</a>.
             These indicate the requested width, ascent and descent of the blank space.
             An unspecified attribute, a percentage  value, or an invalid value is
@@ -1419,15 +1419,15 @@
           </ul>
           <p>
             The
-            <dfn id="attribute-mpadded-width">mpadded <code>width</code></dfn> and
-            <dfn id="attribute-mpadded-lspace">mpadded <code>lspace</code></dfn> attributes, if present, must match the syntax
+            <dfn id="attribute-mpadded-width"><code>mpadded@width</code></dfn> and
+            <dfn id="attribute-mpadded-lspace"><code>mpadded@lspace</code></dfn> attributes, if present, must match the syntax
             <code>( "+" | "-" )? (<a><code>unsigned-length-percentage</code></a> | (<a><code>unsigned-number</code></a> "%"? "width"))</code>.
           </p>
           <p>
             The
-            <dfn id="attribute-mpadded-height">mpadded <code>height</code></dfn>,
-            <dfn id="attribute-mpadded-depth">mpadded <code>depth</code></dfn> and
-            <dfn id="attribute-mpadded-voffset">mpadded <code>voffset</code></dfn>
+            <dfn id="attribute-mpadded-height"><code>mpadded@height</code></dfn>,
+            <dfn id="attribute-mpadded-depth"><code>mpadded@depth</code></dfn> and
+            <dfn id="attribute-mpadded-voffset"><code>mpadded@voffset</code></dfn>
             attributes, if present, must match the syntax
             <code>( "+" | "-" )? (<a><code>unsigned-length-percentage</code></a> | (<a><code>unsigned-number</code></a> "%"? ("height" | "depth"))</code>.
           </p>
@@ -1805,36 +1805,40 @@
             They accept the attributes described in
             <a href="#global-attributes"></a>.
           </p>
-          <div class="issue" data-number="15">Decide how to handle invalid
-            markup.</div>
-          <p>
-            If the <code>&lt;msub&gt;</code> element
-            has less or more than two children, its layout algorithm
-            is the same as the <a><code>&lt;mrow&gt;</code></a> element.
-            Otherwise, the first child is called the
-            <em>base</em>, the second child is called the
-            <em>subscript</em> and the layout algorithm is explained
-            in <a href="#base-with-subscript"></a>.
-          </p>
-          <p>
-            If the <code>&lt;msub&gt;</code> element
-            has less or more than two children, its layout algorithm
-            is the same as the <a><code>&lt;mrow&gt;</code></a> element.
-            Otherwise, the first child is called the
-            <em>base</em>, the second child is called the
-            <em>superscript</em> and the layout algorithm is explained
-            in <a href="#base-with-superscript"></a>.
-          </p>
-          <p>
-            If the <code>&lt;msubsup&gt;</code> element
-            has less or more than three children, its layout algorithm
-            is the same as the <a><code>&lt;mrow&gt;</code></a> element.
-            Otherwise, the first child is called the
-            <em>base</em>, the second child is called the <em>subscript</em>,
-            its third child is called
-            the <em>superscript</em> and the layout algorithm is explained
-            in <a href="#base-with-subscript-and-superscript"></a>.
-          </p>
+          <section>
+            <h5>Children of <code>&lt;msub&gt;</code>,
+            <code>&lt;msup&gt;</code>, <code>&lt;msubsup&gt;</code></h5>
+            <div class="issue" data-number="15">Decide how to handle invalid
+              markup.</div>
+            <p>
+              If the <code>&lt;msub&gt;</code> element
+              has less or more than two children, its layout algorithm
+              is the same as the <a><code>&lt;mrow&gt;</code></a> element.
+              Otherwise, the first child is called the
+              <em>base</em>, the second child is called the
+              <em>subscript</em> and the layout algorithm is explained
+              in <a href="#base-with-subscript"></a>.
+            </p>
+            <p>
+              If the <code>&lt;msub&gt;</code> element
+              has less or more than two children, its layout algorithm
+              is the same as the <a><code>&lt;mrow&gt;</code></a> element.
+              Otherwise, the first child is called the
+              <em>base</em>, the second child is called the
+              <em>superscript</em> and the layout algorithm is explained
+              in <a href="#base-with-superscript"></a>.
+            </p>
+            <p>
+              If the <code>&lt;msubsup&gt;</code> element
+              has less or more than three children, its layout algorithm
+              is the same as the <a><code>&lt;mrow&gt;</code></a> element.
+              Otherwise, the first child is called the
+              <em>base</em>, the second child is called the <em>subscript</em>,
+              its third child is called
+              the <em>superscript</em> and the layout algorithm is explained
+              in <a href="#base-with-subscript-and-superscript"></a>.
+            </p>
+          </section>
           <section>
             <h5>Base with subscript</h5>
             <p>
@@ -1991,134 +1995,231 @@
           </section>
         </section>
         <section>
-          <h4>Underscripts and Overscripts <code>&lt;munder&gt;</code>, <code>&lt;mover&gt;</code>, <code>&lt;munderover&gt;</code></h4>
+          <h4>Underscripts and Overscripts <code>&lt;munder&gt;</code>,
+            <code>&lt;mover&gt;</code>, <code>&lt;munderover&gt;</code></h4>
           <p>
-            The
-            <dfn><code>&lt;munder&gt;</code></dfn>
-            element attaches an accent or limit placed under a base using
-            the syntax
-            <br/>
-            <code>&lt;munder&gt;</code> base underscript <code>&lt;/munder&gt;</code>
-            <br/>
-            If base is an operator with <code>movablelimits="true"</code> (or an embellished
-            operator whose <code>&lt;mo&gt;</code> element core has <code>movablelimits="true"</code>), and
-            <code>displaystyle="false"</code>, then underscript is drawn in a subscript position.
-            In this case, the <code>accentunder</code> attribute is ignored. […]
+            The <dfn><code>&lt;munder&gt;</code></dfn>,
+            <dfn><code>&lt;mover&gt;</code></dfn> and
+            <dfn><code>&lt;munderover&gt;</code></dfn> elements are used to
+            attach
+            accents or limits placed under or over a MathML expression.
           </p>
           <p>
-            The
-            <dfn><code>&lt;mover&gt;</code></dfn>
-            element attaches an accent or limit placed over a base using
-            the syntax
-            <br/>
-            <code>&lt;mover&gt; base overscript &lt;/mover&gt;</code>
-            <br/>
-            If base is an operator with <code>movablelimits="true"</code> (or an embellished
-            operator whose <code>&lt;mo&gt;</code> element core has <code>movablelimits="true"</code>), and
-            <code>displaystyle="false"</code>, then overscript is drawn in a superscript position.
-            In this case, the <code>accent</code> attribute is ignored.
+            The <code>&lt;munderover&gt;</code> element accepts the attribute
+            described in <a href="#global-attributes"></a> as well as the
+            following attributes:
+          </p>
+          <ul>
+            <li><a href="#attribute-munderover-accent" class="internalDFN" data-link-type="dfn"><code>accent</code></a></li>
+            <li><a href="#attribute-munderover-accentunder" class="internalDFN" data-link-type="dfn"><code>accentunder</code></a></li>
+          </ul>
+          <p>
+            Similarly, the <code>&lt;mover&gt;</code> element
+            (respectively <code>&lt;munder&gt;</code> element) accepts the
+            attribute described in <a href="#global-attributes"></a>
+            as well as the <a href="#attribute-munderover-accent"
+                              class="internalDFN"
+                              data-link-type="dfn"><code>accent</code></a>
+            attribute (respectively the
+            <a href="#attribute-munderover-accentunder"
+               class="internalDFN"
+               data-link-type="dfn"><code>accentunder</code></a> attribute).
           </p>
           <p>
-            The
-            <dfn><code>&lt;munderover&gt;</code></dfn>
-            element attaches accents or limits placed both over and
-            under a base using the syntax
-            <br/>
-            <code>&lt;munderover&gt; base underscript overscript &lt;/munderover&gt;</code>
-            <br/>
-            If base is an operator with <code>movablelimits="true"</code> (or an embellished
-            operator whose <code>&lt;mo&gt;</code> element core has <code>movablelimits="true"</code>), and
-            <code>displaystyle="false"</code>, then underscript and overscript are drawn in a
-            subscript and superscript position, respectively. In this case, the
-            <code>accentunder</code> and <code>accent</code> attributes are ignored.
+            <dfn id="attribute-munderover-accent"><code>munderover@accent</code></dfn>,
+            <dfn id="attribute-munderover-accentunder"><code>munderover@accentunder</code></dfn>,
+            attributes, if present, must have values that are <a>booleans</a>.
+            User agents must implement them as described in
+            <a href="#displaystyle-and-scriptlevel-in-scripts"></a>.
           </p>
-          <p>
-            In cases where underscript and overscript are drawn as subscript and
-            superscript position then the layout algorithm is the same as
-            <a href="#subscripts-and-superscripts-msub-msup-msubsup"></a>.
-            Note that in that case,
-            <code>accent</code> or <code>accentunder</code> are ignored so the scriptlevel increment is
-            always performed.
-          </p>
-          <p>
+          <section>
+            <h5>Children of <code>&lt;munder&gt;</code>,
+            <code>&lt;mover&gt;</code>, <code>&lt;munderover&gt;</code></h5>
+            <div class="issue" data-number="15">Decide how to handle invalid
+              markup.</div>
+            <p>
+              If the <code>&lt;munder&gt;</code> element
+              has less or more than two children, its layout algorithm
+              is the same as the <a><code>&lt;mrow&gt;</code></a> element.
+              Otherwise, the first child is called the
+              <em>base</em> and the second child is called the
+              <em>underscript</em>.
+            </p>
+            <p>
+              If the <code>&lt;mover&gt;</code> element
+              has less or more than two children, its layout algorithm
+              is the same as the <a><code>&lt;mrow&gt;</code></a> element.
+              Otherwise, the first child is called the
+              <em>base</em> and the second child is called the
+              <em>overscript</em>.
+            </p>
+            <p>
+              If the <code>&lt;munderover&gt;</code> element
+              has less or more than three children, its layout algorithm
+              is the same as the <a><code>&lt;mrow&gt;</code></a> element.
+              Otherwise, the first child is called the
+              <em>base</em>, the second child is called the <em>underscript</em>
+              and its third child is called
+              the <em>overscript</em>.
+            </p>
+            <p>
+              If the base is an  <code>&lt;mo&gt;</code> operator with
+              <code>movablelimits="true"</code>
+              (or an embellished operator whose <code>&lt;mo&gt;</code> element
+              core has <code>movablelimits="true"</code>)
+              then the underscript and overscript are actually
+              drawn as subscript and superscript positions.
+              Then <code>&lt;mover&gt;</code>, <code>&lt;mover&gt;</code> and
+              <code>&lt;munderover&gt;</code> layout algorithms are respectively
+              the same as the ones described for
+              <code>&lt;msub&gt;</code>, <code>&lt;msup&gt;</code> and
+              <code>&lt;msubsup&gt;</code> in
+              <a href="#base-with-subscript"></a>,
+              <a href="#base-with-superscript"></a> and
+              <a href="#base-with-subscript-and-superscript"></a>.
+            </p>
+            <p>
+              Otherwise, the
+              <code>&lt;mover&gt;</code>, <code>&lt;mover&gt;</code> and
+              <code>&lt;munderover&gt;</code> layout algorithms are respectively
+              described in
+              <a href="#base-with-underscript"></a>,
+              <a href="#base-with-overscript"></a> and
+              <a href="#base-with-underscript-and-overscript"></a>
+            </p>
+          </section>
+          <section>
+            <h4>Base with underscript</h4>
+            <p>
+              The algorithm is the same as the one described in
+              <a href="#base-with-underscript-and-overscript"></a>
+              except that we only set the <code>UnderShift</code> to position
+              the underscript and add <code>UnderExtraDescender</code> space
+              below it. There is no need to position an overscript nor to add
+              extra <code>OverExtraDescender</code> space above it.
+            </p>
+          </section>
+          <section>
+            <h4>Base with overscript</h4>
+            <p>
+              The algorithm is the same as the one described in
+              <a href="#base-with-underscript-and-overscript"></a>
+              except that we only set the <code>OverShift</code> to position
+              the overscript and add <code>OverExtraDescender</code> space
+              above it. There is no need to position an underscript nor to add
+              extra <code>UnderExtraDescender</code> space below it.
+            </p>
+          </section>
+          <section>
+            <h4>Base with underscript and overscript</h4>
+            <p>
             The general layout of <code>&lt;munderover&gt;</code> is shown on
-            <a href="figure-box-munderover"></a>.
-            The overscript is placed above the base, the underscript below the base
-            and by default are aligned with respect to their geometrical center.
-            If the overscript is an accent and has a <code>TopAccentAttachment</code>
-            value, then this value may be used to horizontally align the accent instead
-            of its geometrical center.
+            <a href="#figure-box-munderover"></a>.
+            The overscript is placed above the base, the underscript below the
+            base and by default are aligned with respect to their geometrical
+            center.
+            If the overscript is an accent and has a
+            <a>TopAccentAttachment</a> value, then this value may be used to
+            horizontally align the accent instead of its geometrical center.
             <code>OverShift</code> is the distance between the top ink
-            of the base and the baseline of the overscript, <code>OverGap</code> is the distance
-            between the top ink of the base and the bottom ink of the overscript,
-            <code>OverExtraAscender</code> is extra space to add above the overscript when
-            determining the logical box. <code>UnderShift</code>, <code>UnderGap</code> and
-            <code>UnderExtraDescender</code> are defined similarly for the underscripts.
-            We distinguish three cases:
+            of the base and the baseline of the overscript,
+            <code>OverGap</code> is the distance between the top ink of the
+            base and the bottom ink of the overscript,
+            <code>OverExtraAscender</code> is extra space to add above the
+            overscript when determining the logical box.
+            <code>UnderShift</code>, <code>UnderGap</code> and
+            <code>UnderExtraDescender</code> are defined similarly for the
+            underscript. Three cases are considered, in the following order:
           </p>
           <ol>
-            <li>If the base is an operator with <code>largeop="true"</code>
-              (or an embellished operator whose <code>&lt;mo&gt;</code> element core has
-              <code>largeop="true"</code>) then ensure that <code>OverGap</code> is at least
-              <a>UpperLimitGapMin</a>, that <code>OverShift</code> is at least
-              <a>UpperLimitBaselineRiseMin</a> that <code>UnderGap</code> is at
-              least
-              <a>LowerLimitGapMin</a>, that <code>UnderShift</code> is at least
-              <a>LowerLimitBaselineDropMin</a>.
-              <code>OverExtraAscender</code> and
-              <code>UnderExtraDescender</code> are zero. The
-              underscript is shifted backward by half the italic correction of the base.
-              The overscript is shifted forward by half the italic correction of the base.</li>
-            <li>If the base is a horizontal operator with <code>stretchy="true"</code>
-              (or a horizontal embellished operator whose <code>&lt;mo&gt;</code> element core has
-              <code>stretchy="true"</code>). Then ensure that <code>OverGap</code> is at least
-              <a>StretchStackGapBelowMin</a>, that <code>OverShift</code> is at
-              least
-              <a>StretchStackTopShiftUp</a> that <code>UnderGap</code> is at least
-              <a>StretchStackGapAboveMin</a>,
-              that <code>UnderShift</code> is at least
-              <a>StretchStackBottomShiftDown</a>.
-              <code>OverExtraAscender</code> and
-              <code>UnderExtraDescender</code> are zero.
+            <li>
+              <p>
+                The base is an operator with <code>largeop="true"</code>
+                (or an embellished operator whose <code>&lt;mo&gt;</code>
+                element core has <code>largeop="true"</code>).
+                <code>OverShift</code> is and <code>UnderShift</code> are set
+                to the minimal values satisfying the following conditions:
+              </p>
+              <ul>
+                <li><code>OverGap</code> is at least <a>UpperLimitGapMin</a></li>
+                <li><code>OverShift</code> is at least <a>UpperLimitBaselineRiseMin</a></li>
+                <li><code>UnderGap</code> is at least <a>LowerLimitGapMin</a></li>
+                <li><code>UnderShift</code> is at least <a>LowerLimitBaselineDropMin</a>.</li>
+              </ul>
+              <p>
+                <code>OverExtraAscender</code> and
+                <code>UnderExtraDescender</code> are set to zero. The
+                underscript is shifted backward by half the italic correction of
+                the base.
+                The overscript is shifted forward by half the italic correction
+                of the base.
+              </p>
             </li>
-            <li>In other cases we proceed as follows.
-              There are not any specific conditions to satisfy on <code>OverShift</code> or
-              <code>UnderShift</code>.
+            <li>
+              <p>
+                The base is a horizontal operator with
+                <code>stretchy="true"</code>
+                (or a horizontal embellished operator whose
+                <code>&lt;mo&gt;</code> element core has
+                <code>stretchy="true"</code>).
+                <code>OverShift</code> is and <code>UnderShift</code> are set
+                to the minimal values satisfying the following conditions:
+              </p>
+              <ul>
+                <li><code>OverGap</code> is at least
+                  <a>StretchStackGapBelowMin</a></li>
+                <li><code>OverShift</code> is at least
+                  <a>StretchStackTopShiftUp</a>
+                </li>
+                <li><code>UnderGap</code> is at least
+                  <a>StretchStackGapAboveMin</a></li>
+                <li><code>UnderShift</code> is at least
+                  <a>StretchStackBottomShiftDown</a></li>
+              </ul>
+              <code>OverExtraAscender</code> and
+              <code>UnderExtraDescender</code> are set to zero.
+            </li>
+            <li>Otherwise,
+              <code>OverShift</code> and <code>UnderShift</code> are set to
+              values such that
+              <ul>
+                <li>
+                  <code>UnderGap</code> is equal to <a>UnderbarVerticalGap</a>
+                  if the underscript is not an accent and to zero otherwise.
+                </li>
+                <li>
+                  <code>OverGap</code> is equal to
+                  <ol>
+                    <li><a>OverbarVerticalGap</a> if the overscript is not an accent.</li>
+                    <li>Or <a>AccentBaseHeight</a> minus the ascent of the base if this difference is nonnegative.</li>
+                    <li>Or 0 otherwise.</li>
+                  </ol>
+                </li>
+              </ul>
               <code>OverExtraAscender</code> and
               <code>OverExtraAscender</code> are respectively set to
-              <a>OverbarExtraAscender</a>
-              and <a>UnderbarExtraDescender</a>.
-              We set <code>UnderGap</code> to <a>UnderbarVerticalGap</a>
-              if the underscript is not an accent and to zero otherwise.
-              We set <code>OverGap</code> to <a>OverbarVerticalGap</a>
-              if the overscript is not an accent and generally to zero otherwise.
-              However, if overscript is an accent and if the base ascent is at most
-              <a>AccentBaseHeight</a> then we actually set <code>OverGap</code> to
-              their nonnegative difference.
+              <a>OverbarExtraAscender</a> and <a>UnderbarExtraDescender</a>.
             </li>
           </ol>
-          <p>
-            Remark: For accent overscripts and bases with ascents that are at most
-            <a>AccentBaseHeight</a>, the rule from
-            [[OPEN-FONT-FORMAT]] [[?TEXBOOK]] is actually to align the baselines of the
-            overscripts and of the bases. This assumes that accent glyphs are designed in
-            such a way that their ink bottoms are more or less
-            <a>AccentBaseHeight</a> above their baselines. Hence, the
-            previous rule will guarantee that all the overscript bottoms are aligned while
-            still avoiding collision with the bases. However, MathML can have arbitrary
-            accent overscripts so we provide a more general and simpler rule above: Ensure
-            that the bottom of overscript is at least
-            <a>AccentBaseHeight</a> above the baseline of the base.
-          </p>
           <figure id="figure-box-munderover">
             <img src="figures/munderoverbox.svg"/>
             <figcaption>Box model for the <code>&lt;munderover&gt;</code> element</figcaption>
           </figure>
-          <p>
-            The layout of <code>&lt;munder&gt;</code> and <code>&lt;mover&gt;</code> is the same as the one of
-            <code>&lt;munderover&gt;</code> except that one script and its corresponding extra space
-            are ignored.
-          </p>
+          <div class="note">
+            For accent overscripts and bases with ascents that are at most
+            <a>AccentBaseHeight</a>, the rule from
+            [[OPEN-FONT-FORMAT]] [[?TEXBOOK]] is actually to align the
+            baselines of the overscripts and of the bases. This assumes that
+            accent glyphs are designed in such a way that their ink bottoms are
+            more or less <a>AccentBaseHeight</a> above their baselines. Hence,
+            the previous rule will guarantee that all the overscript bottoms
+            are aligned while still avoiding collision with the bases.
+            However, MathML can have arbitrary accent overscripts
+            a more general and simpler rule is provided above: Ensure
+            that the bottom of overscript is at least
+            <a>AccentBaseHeight</a> above the baseline of the base.
+          </div>
+          </section>
         </section>
         <section>
           <h4>Prescripts and Tensor Indices <code>&lt;mmultiscripts&gt;</code></h4>
@@ -2180,7 +2281,7 @@
           </figure>
         </section>
         <section>
-          <h4>Displaystyle and scriptlevel</h4>
+          <h4>Displaystyle and scriptlevel in scripts</h4>
           <p>
             For all MathML elements used for scripts and limits schemata,
             the first child is the base while the other children
@@ -2200,7 +2301,7 @@
             style in order to implement this behavior:
           </p>
           <pre class="css" data-include="user-agent-stylesheet/scripts.css"></pre>
-          <div class="issue" number="76">
+          <div class="issue" data-number="76">
             In [[MathML3]] specification, the scriptlevel shouldn't be
             incremented either if the underscript/overscript is a
             (possibly embellished) operator
