@@ -2,3 +2,6 @@ TAGS
 *~
 unicode.xml
 *.pyc
+*.log
+*.aux
+*.dvi

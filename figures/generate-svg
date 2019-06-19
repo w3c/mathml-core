@@ -1,11 +1,21 @@
 #!/bin/bash
 
+if [ "$#" -lt 1 ]; then
+LIST=*.tex
+GENERATE_SVG=true
 echo "<!DOCTYPE html><html><body>" > svgtest.html
+else
+GENERATE_SVG=false
+LIST=$@
+fi
 
-for i in *.tex
+for i in $LIST
 do
+echo $i
+if [ "$GENERATE_SVG" = true ]; then
 echo "<h2>${i/.tex/}</h2><img src=\"${i/.tex/}.svg\">" >> svgtest.html
+fi
 latex $i
 dvisvgm --font-format=woff ${i/.tex/}
 done
-rm *.{aux,dvi,log}
+rm -f *.{aux,dvi,log}
