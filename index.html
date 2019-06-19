@@ -648,7 +648,11 @@
           </p>
           <p>
             Note that the schemas in this document are drawn assuming left-to-right
-            directionality. If the CSS <code>direction</code> is set to right-to-left, then the
+            directionality. If the
+            CSS property
+            <a data-cite="CSS-WRITING-MODES-3#direction"><code>direction</code></a>
+            is <code>rtl</code>,
+            then the
             elements should layout by making the x-axis pointing from right-to-left.
           </p>
           <p>
@@ -1059,8 +1063,11 @@
             <code>&lt;mtext&gt;</code> element.
           </p>
           <p>
-            If the CSS <code>direction</code> on the <code>&lt;mtext&gt;</code> element
-            is set to right-to-left then user agents must enable the <code>rtlm</code>
+            If on the <code>&lt;mtext&gt;</code> element
+            the CSS property
+            <a data-cite="CSS-WRITING-MODES-3#direction"><code>direction</code></a>
+            is <code>rtl</code>,
+            then user agents must enable the <code>rtlm</code>
             OpenType feature on text nodes unless it contradicts what the page author
             has specified with the <code>font-feature-settings</code> CSS property.
           </p>
@@ -1445,8 +1452,10 @@
               The surd is drawn by trying to vertically stretch the character
               U+221A SQUARE ROOT
               to at least the sum of the ink height of the base, the radical gap and
-              the radical rule thickness. If the CSS <code>direction</code> is set to
-              right-to-left,
+              the radical rule thickness.
+              If the CSS property
+              <a data-cite="CSS-WRITING-MODES-3#direction"><code>direction</code></a>
+              is <code>rtl</code>,
               then the surd is actually drawn from the glyph obtained by mirroring
               U+221A SQUARE ROOT via the <code>rtlm</code> OpenType feature.
             </p>
@@ -1741,8 +1750,9 @@
             <a>OverbarRuleThickness</a>.
             Gaps are set to 3ξ<sub>8</sub>.
             Contrary to what is done in general and unless specified otherwise,
-            the x-axis direction of notations is assumed to be independent of the CSS
-            <code>direction</code>.
+            the x-axis direction of notations is assumed to be independent of
+            the CSS
+              <a data-cite="CSS-WRITING-MODES-3#direction"><code>direction</code></a>.
             Each notation is handled individually and the union of all output is taken
             in order to determine the metrics of the <code>&lt;menclose&gt;</code>.
           </p>
@@ -1880,8 +1890,10 @@
             <li>
               <p>
                 The <code>longdiv</code> notation is drawn similarly to the <code>&lt;msqrt&gt;</code> element
-                (<a href="#figure-box-msqrt"></a>). It is independent of CSS
-                <code>direction</code> and U+221A SQUARE ROOT is replaced with
+                (<a href="#figure-box-msqrt"></a>).
+                It is independent of CSS property
+                <a data-cite="CSS-WRITING-MODES-3#direction"><code>direction</code></a>
+                and U+221A SQUARE ROOT is replaced with
                 U+0029 RIGHT PARENTHESIS. The rule thickness is ξ<sub>8</sub>,
                 the gap between content and overbar is 3ξ<sub>8</sub> and the extra ascender
                 is ξ<sub>8</sub>.
