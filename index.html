@@ -816,17 +816,20 @@
             The
             <dfn><code>&lt;mo&gt;</code></dfn>
             element represents an
-            operator or anything that should be rendered as an operator. In general,
-            the notational conventions for mathematical operators are quite
-            complicated, and therefore MathML provides a relatively sophisticated
-            mechanism for specifying the rendering behavior of an
-            <code>&lt;mo&gt;</code> element. As a consequence, in MathML the list of
-            things that should "render as an operator" includes a number of notations
-            that are not mathematical operators in the ordinary sense. Besides
-            ordinary operators with infix, prefix, or postfix forms, these include
-            fence characters such as braces, parentheses, and "absolute value" bars;
-            separators such as comma and semicolon; and mathematical accents such as
-            a bar or tilde over a symbol. This chapter uses the term "operator" to refer to
+            operator or anything that should be rendered as an operator.
+            In general, the notational conventions for mathematical operators
+            are quite complicated, and therefore MathML provides a relatively
+            sophisticated mechanism for specifying the rendering behavior of an
+            <code>&lt;mo&gt;</code> element.</p>
+          <p>
+            As a consequence, in MathML the
+            list of things that should "render as an operator" includes a
+            number of notations that are not mathematical operators in the
+            ordinary sense. Besides ordinary operators with infix, prefix, or
+            postfix forms, these include fence characters such as braces,
+            parentheses, and "absolute value" bars; separators such as comma
+            and semicolon; and mathematical accents such as a bar or tilde over
+            a symbol. This chapter uses the term "operator" to refer to
             operators in this broad sense.
           </p>
           <p>
@@ -835,96 +838,19 @@
             attributes:
           </p>
           <ul>
-            <li><code>form</code></li>
-            <li><code>fence</code></li>
-            <li><code>separator</code></li>
-            <li><code>lspace</code></li>
-            <li><code>rspace</code></li>
-            <li><code>stretchy</code></li>
-            <li><code>symmetric</code></li>
-            <li><code>maxsize</code></li>
-            <li><code>minsize</code></li>
-            <li><code>largeop</code></li>
-            <li><code>movablelimits</code></li>
-            <li><code>accent</code></li>
+            <li><a><code>form</code></a></li>
+            <li><a><code>fence</code></a></li>
+            <li><a><code>separator</code></a></li>
+            <li><a><code>lspace</code></a></li>
+            <li><a><code>rspace</code></a></li>
+            <li><a><code>stretchy</code></a></li>
+            <li><a><code>symmetric</code></a></li>
+            <li><a><code>maxsize</code></a></li>
+            <li><a><code>minsize</code></a></li>
+            <li><a><code>largeop</code></a></li>
+            <li><a><code>movablelimits</code></a></li>
+            <li><a><code>accent</code></a></li>
           </ul>
-          <p>
-            Many properties of an <code>&lt;mo&gt;</code> element can be specified
-            via attribute on that element. The default value of the <code>form</code>
-            of an <code>&lt;mo&gt;</code> element is obtained as described in section
-            “Default value of the form attribute” of
-            [[MATHML3]]. From the
-            <code>form</code> and the text content, other
-            default values can be deduced from the operator dictionary or use the fallback values
-            given in “Dictionary-based attributes” of
-            [[MATHML3]].
-          </p>
-          <p>
-            The inline-start <code>lspace</code> and
-            inline-end <code>rspace</code> must be added on each side of
-            <a>outermost embellished operators</a>.
-          </p>
-          <p>
-            In most cases, the <code>&lt;mo&gt;</code> element is treated as an
-            <a>&lt;mtext&gt;</a> element.
-            However, when an <code>&lt;mo&gt;</code> element with a single character must be
-            displayed as a large operator then use the
-            <code>MathVariants</code>
-            table to try and find a glyph of height at least
-            <a>DisplayOperatorMinHeight</a>
-            (<a href="#figure-sum-base-and-displastyle-sizes"></a>). If none is found, fallback to the
-            largest one. Because this parameter does not always give
-            the best size, user agents may also use the following heuristic: ensure
-            that the large variant height is at least 2 times as large as the base
-            height for integrals and √2 times as large as the base height for other
-            operators.
-          </p>
-          <figure id="figure-sum-base-and-displastyle-sizes">
-            <img src="figures/sumsize.svg"/>
-            <figcaption>Base and displaystyle sizes of the summation symbol</figcaption>
-          </figure>
-          <p>
-            When an <code>&lt;mo&gt;</code> element with a single character must be
-            displayed as a horizontal or vertical operator then instead of displaying
-            the normal character, use the <code>MathVariants</code>
-            table to try and find a glyph that has at least the desired size or an
-            assembly from several glyphs to cover at least the desired size
-            (<a href="#figure-base-variants-and-assembly"></a>). The rules for vertical stretching
-            are a bit more complicated and are described in section
-            “Vertical Stretching Rules” of
-            [[MATHML3]].
-            If the operator has property <code>symmetric="true"</code>, then it must be
-            stretched symmetrically with respect to the math axis, which is given by
-            the <a>AxisHeight</a> value.
-            <a href="#symmetric-and-non-symmetric-vertical-stretching"></a>
-            compares the symmetric and non-symmetric stretching.
-          </p>
-          <p>
-            The size variant or construction used for vertical stretchy operators
-            will depend on the target size to cover. The intrinsic width W of the
-            operator is calculated from the maximum of all possible widths
-            for the base size, size variants and construction available for the given
-            operator. In practice, for most math fonts and operators, the width
-            of the operator is almost independent of the stretch size.
-          </p>
-          <figure id="figure-base-variants-and-assembly">
-            <img src="figures/bracesize.svg"/>
-            <figcaption>Base size, size variants and glyph assembly for the
-              left brace</figcaption>
-          </figure>
-          <figure id="symmetric-and-non-symmetric-vertical-stretching">
-            <img src="figures/vstretch.svg"/>
-            <figcaption>Symmetric and non-symmetric stretching of vertical
-              operators</figcaption>
-          </figure>
-          <p>
-            See
-            <a href="#horizontally-group-sub-expressions-mrow"></a>
-            for details about how to treat
-            <a>outermost embellished operators</a>,
-            and how decide when to display operators larger
-            or when to stretch them vertically &amp; horizontally.
-          </p>
           <section>
             <h5>Embellished operators</h5>
             <p>
@@ -991,38 +917,236 @@
                 child.
               </li>
             </ol>
-            <p>The
-              <dfn>core property</dfn>
-              <code>form</code>,
-              <code>fence</code>,
-              <code>separator</code>,
-              <code>lspace</code>,
-              <code>rspace</code>,
-              <code>stretchy</code>,
-              <code>symmetric</code>,
-              <code>maxsize</code>,
-              <code>minsize</code>,
-              <code>largeop</code>,
-              <code>movablelimits</code>,
-              <code>accent</code>
-              of an <a>embellished operator</a> is
-              the corresponding property
-              of its <a>core operator</a>.
-              An <a>embellished operator</a> is said to have a core property
-              <code>fence</code>,
-              <code>separator</code>,
-              <code>stretchy</code>,
-              <code>symmetric</code>,
-              <code>maxsize</code>,
-              <code>minsize</code>,
-              <code>largeop</code>,
-              <code>movablelimits</code>,
-              <code>accent</code> if that boolean property is <code>true</code>.
-            </p>
             <p>
               An <dfn>outermost embellished operator</dfn> is an
               <a>embellished operator</a> whose parent is not
               an embellished operator.
+            </p>
+          </section>
+          <section>
+            <h4>Dictionary-based attributes</h4>
+            <p>
+              The <dfn><code>form</code></dfn>
+              property of an <a>embellished operator</a>
+              element is either <code>prefix</code>, <code>prefix</code> or
+              <code>postfix</code>.
+              The <code>form</code> attribute,
+              if present on an <a><code>&lt;mo&gt;</code></a> element
+              must be case-insensitively equal to one of the values.
+            </p>
+            <p>
+              If the <a>core operator</a> of an <a>embellished operator</a> has
+              a valid <code>form</code> attribute then the <code>form</code> of
+              that <a>embellished operator</a> is the value specified
+              by the <code>form</code> attribute on its <a>core operator</a>.
+              Otherwise, the <code>form</code> of the
+              <a>embellished operator</a> is determined as follows:
+            </p>
+            <ul>
+              <li>If the embellished operator is the first child of an
+                <a>&lt;math&gt;</a>
+                <a>&lt;menclose&gt;</a>
+                <a>&lt;merror&gt;</a>
+                <a>&lt;mpadded&gt;</a>
+                <a>&lt;mphantom&gt;</a>
+                <a>&lt;mrow&gt;</a>
+                <a>&lt;msqrt&gt;</a> or
+                <a>&lt;mstyle&gt;</a> element with more than one child
+                (ignoring all <a>space-like</a> children) then it has
+                form <code>prefix</code>;
+              </li>
+              <li>Or, if the embellished operator is the last child of an
+                <a><code>&lt;math&gt;</code></a>,
+                <a><code>&lt;menclose&gt;</code></a>,
+                <a><code>&lt;merror&gt;</code></a>,
+                <a><code>&lt;mpadded&gt;</code></a>,
+                <a><code>&lt;mphantom&gt;</code></a>,
+                <a><code>&lt;mrow&gt;</code></a>,
+                <a><code>&lt;msqrt&gt;</code></a> or
+                <a><code>&lt;mstyle&gt;</code></a> element
+                with more than one child
+                (ignoring all <a>space-like</a> children) then it has
+                form <code>postfix</code>;
+              <li>Or, if the embellished operator is a child of an
+                <a><code>&lt;msub&gt;</code></a>,
+                <a><code>&lt;msup&gt;</code></a>,
+                <a><code>&lt;msubsup&gt;</code></a>,
+                <a><code>&lt;munder&gt;</code></a>,
+                <a><code>&lt;mover&gt;</code></a>,
+                <a><code>&lt;munderover&gt;</code></a> or
+                <a><code>&lt;mmultiscripts&gt;</code></a>
+                element other than the first child, then it has form
+                <code>postfix</code>;
+              </li>
+              <li>Otherwise, the embellished operator has form
+                <code>infix</code>.</li>
+              </li>
+            </ul>
+            <p>
+              The
+              <dfn><code>fence</code></dfn>,
+              <dfn><code>separator</code></dfn>,
+              <dfn><code>stretchy</code></dfn>,
+              <dfn><code>symmetric</code></dfn>,
+              <dfn><code>largeop</code></dfn>,
+              <dfn><code>movablelimits</code></dfn>,
+              <dfn><code>accent</code></dfn>
+              properties of an <a>embellished operator</a> are is either
+              <code>true</code> or <code>false</code>. In the former case, it
+              is said that <a>embellished operator</a> <em>has</em> the
+              property.
+              The corresponding attributes,
+              if present on an <a><code>&lt;mo&gt;</code></a> element
+              must be <a>boolean</a>.
+            </p>
+            <p>
+              The
+              <dfn><code>lspace</code></dfn>,
+              <dfn><code>rspace</code></dfn>,
+              <dfn><code>minsize</code></dfn>
+              properties of an <a>embellished operator</a> are
+              <a>length-percentage</a>.
+              The <dfn><code>maxsize</code></dfn> property
+              of an <a>embellished operator</a> is either an
+              <a>length-percentage</a> or <code>infinity</code>.
+              The
+              <code>lspace</code>,
+              <code>rspace</code>,
+              <code>minsize</code> and
+              <code>maxsize</code> attributes,
+              if present on an <a><code>&lt;mo&gt;</code></a> element
+              must be <a>length-percentage</a>.
+            </p>
+            <p>
+              The
+              <code>fence</code>,
+              <code>separator</code>,
+              <code>stretchy</code>,
+              <code>symmetric</code>,
+              <code>largeop</code>,
+              <code>movablelimits</code>,
+              <code>accent</code>,
+              <code>lspace</code>,
+              <code>rspace</code>,
+              <code>maxsize</code>,
+              <code>minsize</code> properties of
+              an <a>embellished operator</a> are determined as follows:
+            </p>
+            <ol>
+              <li>If the corresponding attribute is present and valid
+                on the <a>core operator</a>, then this property is used;</li>
+              <li>
+                Otherwise, if the <a>core operator</a> contains only text
+                content T the corresponding property from the
+                <a href="#operator-dictionary">Operator Dictionary</a>
+                is retrieved by looking for <code>Content=T,Form=F</code>
+                where <code>F</code> is the <a><code>form</code></a> of the
+                <a>embellished operator</a>;
+              </li>
+              <li>
+                If no entry is found and the <a><code>form</code></a>
+                of <a>embellished operator</a> was actually
+                not explicitly specified
+                as an attribute on its <a>core operator</a> then
+                user agents must try other entries dictionary for different
+                values of <code>F</code> in the following order:
+                <code>infix</code>, <code>prefix</code>, <code>postfix</code>;
+              </li>
+              <li>
+                Otherwise, use the value  <code>false</code> for
+                <code>fence</code>,
+                <code>separator</code>,
+                <code>stretchy</code>,
+                <code>symmetric</code>,
+                <code>largeop</code>,
+                <code>movablelimits</code> and
+                <code>accent</code> properties ;
+                <code>0.2777777777777778em</code> for
+                <code>lspace</code> and
+                <code>rspace</code> properties ;
+                <code>100%</code> for the <code>minsize</code> property and
+                <code>infinity</code> for the <code>maxsize</code> property.
+              </li>
+            </ol>
+            <p>
+              Percentage values for <code>lspace</code>,
+              <code>rspace</code>,
+              <code>minsize</code>,
+              <code>maxsize</code> properties of an <a>embellished operator</a>
+              are interpreted relative to the (non-percentage) value
+              determined when the <a>core operator</a> does not have a valid
+              attribute for the corresponding property. A percentage
+              of <code>infinity</code> is interpreted as <code>infinity</code>.
+            </p>
+          </section>
+          <section>
+            <h4>Layout of operators</h4>
+            <div class="issue">TODO: Rewrite and reorganize this section...</div>
+            <p>
+              The inline-start <code>lspace</code> and
+              inline-end <code>rspace</code> must be added on each side of
+              <a>outermost embellished operators</a>.
+            </p>
+            <p>
+              In most cases, the <code>&lt;mo&gt;</code> element is treated as an
+              <a>&lt;mtext&gt;</a> element.
+              However, when an <code>&lt;mo&gt;</code> element with a single character must be
+              displayed as a large operator then use the
+              <code>MathVariants</code>
+              table to try and find a glyph of height at least
+              <a>DisplayOperatorMinHeight</a>
+              (<a href="#figure-sum-base-and-displastyle-sizes"></a>). If none is found, fallback to the
+              largest one. Because this parameter does not always give
+              the best size, user agents may also use the following heuristic: ensure
+              that the large variant height is at least 2 times as large as the base
+              height for integrals and √2 times as large as the base height for other
+              operators.
+            </p>
+            <figure id="figure-sum-base-and-displastyle-sizes">
+              <img src="figures/sumsize.svg"/>
+              <figcaption>Base and displaystyle sizes of the summation symbol</figcaption>
+            </figure>
+            <p>
+              When an <code>&lt;mo&gt;</code> element with a single character must be
+              displayed as a horizontal or vertical operator then instead of displaying
+              the normal character, use the <code>MathVariants</code>
+              table to try and find a glyph that has at least the desired size or an
+              assembly from several glyphs to cover at least the desired size
+              (<a href="#figure-base-variants-and-assembly"></a>). The rules for vertical stretching
+              are a bit more complicated and are described in section
+              “Vertical Stretching Rules” of
+              [[MATHML3]].
+              If the operator has property <code>symmetric="true"</code>, then it must be
+              stretched symmetrically with respect to the math axis, which is given by
+              the <a>AxisHeight</a> value.
+              <a href="#symmetric-and-non-symmetric-vertical-stretching"></a>
+              compares the symmetric and non-symmetric stretching.
+            </p>
+            <p>
+              The size variant or construction used for vertical stretchy operators
+              will depend on the target size to cover. The intrinsic width W of the
+              operator is calculated from the maximum of all possible widths
+              for the base size, size variants and construction available for the given
+              operator. In practice, for most math fonts and operators, the width
+              of the operator is almost independent of the stretch size.
+            </p>
+            <figure id="figure-base-variants-and-assembly">
+              <img src="figures/bracesize.svg"/>
+              <figcaption>Base size, size variants and glyph assembly for the
+                left brace</figcaption>
+            </figure>
+            <figure id="symmetric-and-non-symmetric-vertical-stretching">
+              <img src="figures/vstretch.svg"/>
+              <figcaption>Symmetric and non-symmetric stretching of vertical
+                operators</figcaption>
+            </figure>
+            <p>
+              See
+              <a href="#horizontally-group-sub-expressions-mrow"></a>
+              for details about how to treat
+              <a>outermost embellished operators</a>,
+              and how decide when to display operators larger
+              or when to stretch them vertically &amp; horizontally.
             </p>
           </section>
         </section>
@@ -1240,8 +1364,7 @@
           </div>
           <p>
             A child is <dfn>slanted</dfn> if it is not an
-            <a>embellished operator</a>
-            with <a>core property</a> <a>largeop</a>.
+            <a>embellished operator</a> with the <a>largeop</a> property.
             and has nonzero <a>italic correction</a>.
             If a <a>slanted</a> child is followed by a non-<a>slanted</a> child,
             a space of width the <a>italic correction</a> of the former is added
@@ -1378,10 +1501,10 @@
             </p>
             <p>
               If the <code>&lt;mfrac&gt;</code> element is an
-              <a>outermost embellished operator</a> then the
-              <a>core property</a>
+              <a>outermost embellished operator</a> then its
               <a><code>lspace</code></a> and
-              <a><code>rspace</code></a> must be added around the fraction.
+              <a><code>rspace</code></a> properties
+              must be added around the fraction.
             </p>
           </section>
         </section>
@@ -1946,7 +2069,7 @@
               <code>&lt;mover&gt;</code> and <code>&lt;munderover&gt;</code>
               elements and
               is an <a>embellished operator</a> with
-              <a>core property</a> <a><code>accent</code></a>.
+              the <a><code>accent</code></a> property.
             </li>
           </ol>
         </section>
@@ -2026,7 +2149,7 @@
               inline-start edge of the subscript is
               aligned with the inline-end edge of the base. However, if the base
               is an <a>embellished operator</a> with
-              <a>core property</a> <a><code>largeop</code></a> then
+              the <a><code>largeop</code></a> property then
               the subscript is horizontally
               shifted backward by the italic correction of the base.
             </p>
@@ -2072,7 +2195,7 @@
               shifted forward
               by the italic correction of the base, except if the base is an
               <a>embellished operator</a> with
-              <a>core property</a> <a><code>largeop</code></a>.
+              the <a><code>largeop</code></a> property.
             </p>
             <figure id="figure-box-msup">
               <img src="figures/msupbox.svg"/>
@@ -2143,8 +2266,8 @@
               and the superscript is shifted forward by the italic
               correction of the base. However, if the base is an
               <a>embellished operator</a> with
-              <a>core property</a>
-              <a><code>largeop</code></a> then instead the subscript is
+              the <a><code>largeop</code></a> property
+              then instead the subscript is
               shifted forward by the italic correction of the base.
             </p>
             <figure id="figure-box-msubsup">
@@ -2240,8 +2363,8 @@
             </p>
             <p>
               If the base is an
-              <a>embellished operator</a> with <a>core property</a>
-              <a><code>movablelimits</code></a>
+              <a>embellished operator</a> with the
+              <a><code>movablelimits</code></a> property
               then the underscript and overscript are actually
               drawn as subscript and superscript positions.
               Then <code>&lt;mover&gt;</code>, <code>&lt;mover&gt;</code> and
@@ -2302,7 +2425,7 @@
             base and by default are aligned with respect to their geometrical
             center.
             If the overscript is an accent and has a
-            <a>TopAccentAttachment</a> value, then this value may be used to
+            <a>top accent attachment</a> value, then this value may be used to
             horizontally align the accent instead of its geometrical center.
             <code>OverShift</code> is the distance between the top ink
             of the base and the baseline of the overscript,
@@ -2318,8 +2441,8 @@
             <li>
               <p>
                 The base is an
-                <a>embellished operator</a> with <a>core property</a>
-                <a><code>largeop</code></a>.
+                <a>embellished operator</a> with the
+                <a><code>largeop</code></a> property.
                 <code>OverShift</code> is and <code>UnderShift</code> are set
                 to the minimal values satisfying the following conditions:
               </p>
@@ -2341,8 +2464,8 @@
             <li>
               <p>
                 The base is a horizontal
-                <a>embellished operator</a> with <a>core property</a>
-                <a><code>stretchy</code></a>.
+                <a>embellished operator</a> with the
+                <a><code>stretchy</code></a> property.
                 <code>OverShift</code> is and <code>UnderShift</code> are set
                 to the minimal values satisfying the following conditions:
               </p>
@@ -2563,9 +2686,9 @@
             <a><code>displaystyle</code></a> to <code>false</code>
             and to increment <a><code>scriptlevel</code></a>.
             However, when an overscript (respectively underscript)
-            has <a><code>accent</code></a> (respectively
-            <a><code>accentunder</code></a>)
-            that is case-insensitively equal to
+            has an <a href="#attribute-munderover-accent" class="internalDFN" data-link-type="dfn"><code>accent</code></a>
+            (respecitvely <a href="#attribute-munderover-accentunder" class="internalDFN" data-link-type="dfn"><code>accentunder</code></a>)
+            attribute that is case-insensitively equal to
             to <code>"true"</code> then
             the <a><code>scriptlevel</code></a> is not incremented.
           </p>
@@ -2578,8 +2701,8 @@
           <div class="issue" data-number="76">
             In [[MathML3]] specification, the scriptlevel shouldn't be
             incremented either if the underscript/overscript is an
-            <a>embellished operator</a> with <a>core property</a>
-            <a><code>accent</code></a>.
+            <a>embellished operator</a> with the
+            <a><code>accent</code></a> property.
           </div>
         </section>
       </section>
