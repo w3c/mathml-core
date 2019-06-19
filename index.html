@@ -718,15 +718,16 @@
             small over-estimation.
           </p>
           <p>
-            Each of these steps is done recursively: the metrics of a given MathML box
-            are determined from those of the child boxes. User agents must implement
-            the “Exception for embellished operators” described in [[MATHML3]].
-            This means that the actual stretching of operators described in
-            <a href="#operator-fence-separator-or-accent-mo"></a>
-            may be “delayed” until processing reaches the top of its embellished
-            operator subtree. It then must apply the current operation again
-            to this embellished operator (intrinsic width determination or layout).
-            Fortunately, such embellished operator subtrees are not deep in practice.
+            Each of these steps is done recursively: the metrics of a given
+            MathML box are determined from those of the child boxes.
+            The stretching of the <a>core operator</a> of an
+            <a>embellished operator</a> may happen when processing reaches
+            the <a>outermost embellished operator</a>.
+            User agents must then apply the current operation again
+            to this embellished operator
+            (intrinsic width determination or layout).
+            Fortunately, such embellished operator subtrees are not deep in
+            practice.
           </p>
           <p>
             This document does not require support for operator stretching in table cells.
@@ -861,8 +862,8 @@
           </p>
           <p>
             The leading space <code>lspace</code> and trailing space
-            <code>rspace</code> must be added on each side of the
-            <code>&lt;mo&gt;</code> element (or its outermost embellished ancestor).
+            <code>rspace</code> must be added on each side of
+            <a>outermost embellished operators</a>.
           </p>
           <p>
             In most cases, the <code>&lt;mo&gt;</code> element is treated as an
@@ -921,9 +922,110 @@
             See
             <a href="#horizontally-group-sub-expressions-mrow"></a>
             for details about how to treat
-            “embellished ancestor”, and how decide when to display operators larger
+            <a>outermost embellished operators</a>,
+            and how decide when to display operators larger
             or when to stretch them vertically &amp; horizontally.
           </p>
+          <section>
+            <h5>Embellished operators</h5>
+            <p>
+              A <a>MathML Core element</a> is an
+              <dfn data-lt="embellished">embellished operator</dfn>
+              if is is:
+            </p>
+            <ol>
+              <li>An <a><code>&lt;mo&gt;</code></a> element;</li>
+              <li>
+                Or one of the elements <a><code>&lt;msub&gt;</code></a>,
+                <a><code>&lt;msup&gt;</code></a>,
+                <a><code>&lt;msubsup&gt;</code></a>,
+                <a><code>&lt;munder&gt;</code></a>,
+                <a><code>&lt;mover&gt;</code></a>,
+                <a><code>&lt;munderover&gt;</code></a>,
+                <a><code>&lt;mmultiscripts&gt;</code></a>,
+                <a><code>&lt;mfrac&gt;</code></a>,
+                <a><code>&lt;semantics&gt;</code></a> or
+                <a><code>&lt;maction&gt;</code></a>
+                whose first child exists and is an
+                <a>embellished operator</a>;
+              </li>
+              <li>
+                Or one of the elements
+                <a><code>&lt;mrow&gt;</code></a>,
+                <a><code>&lt;mstyle&gt;</code></a>,
+                <a><code>&lt;mphantom&gt;</code></a>,
+                <a><code>&lt;mpadded&gt;</code></a>
+                whose children consist (in any order) of one
+                <a>embellished operator</a> and zero or more
+                <a>space-like</a> elements.
+              </li>
+            </ol>
+            <p>
+              The <dfn>core operator</dfn> of an <a>embellished operator</a>
+              is the <code>&lt;mo&gt;</code> element defined recursively as
+              follows:
+            </p>
+            <ol>
+              <li>The core operator of an <a><code>&lt;mo&gt;</code></a>
+                element; is the element itself.</li>
+              <li>
+                The core operator of an embellished
+                <a><code>&lt;msub&gt;</code></a>,
+                <a><code>&lt;msup&gt;</code></a>,
+                <a><code>&lt;msubsup&gt;</code></a>,
+                <a><code>&lt;munder&gt;</code></a>,
+                <a><code>&lt;mover&gt;</code></a>,
+                <a><code>&lt;munderover&gt;</code></a>,
+                <a><code>&lt;mmultiscripts&gt;</code></a>,
+                <a><code>&lt;mfrac&gt;</code></a>,
+                <a><code>&lt;semantics&gt;</code></a> or
+                <a><code>&lt;maction&gt;</code></a>
+                element is the core operator of its first child.
+              </li>
+              <li>
+                The core operator of an embellished
+                <a><code>&lt;mrow&gt;</code></a>,
+                <a><code>&lt;mstyle&gt;</code></a>,
+                <a><code>&lt;mphantom&gt;</code></a>,
+                <a><code>&lt;mpadded&gt;</code></a>
+                is the core operator of its unique <a>embellished operator</a>
+                child.
+              </li>
+            </ol>
+            <p>The
+              <dfn>core property</dfn>
+              <code>form</code>,
+              <code>fence</code>,
+              <code>separator</code>,
+              <code>lspace</code>,
+              <code>rspace</code>,
+              <code>stretchy</code>,
+              <code>symmetric</code>,
+              <code>maxsize</code>,
+              <code>minsize</code>,
+              <code>largeop</code>,
+              <code>movablelimits</code>,
+              <code>accent</code>
+              of an <a>embellished operator</a> is
+              the corresponding property
+              of its <a>core operator</a>.
+              An <a>embellished operator</a> is said to have a core property
+              <code>fence</code>,
+              <code>separator</code>,
+              <code>stretchy</code>,
+              <code>symmetric</code>,
+              <code>maxsize</code>,
+              <code>minsize</code>,
+              <code>largeop</code>,
+              <code>movablelimits</code>,
+              <code>accent</code> if that boolean property is <code>true</code>.
+            </p>
+            <p>
+              An <dfn>outermost embellished operator</dfn> is an
+              <a>embellished operator</a> whose parent is not
+              an embellished operator.
+            </p>
+          </section>
         </section>
         <section>
           <h4>Text <code>&lt;mtext&gt;</code></h4>
@@ -1029,6 +1131,50 @@
             The terminology height/depth comes from [[MATHML3]], itself inspired
             from [[TEXBOOK]].
           </div>
+          <section>
+            <h3>Definition of space-like elements</h3>
+            <p>
+              A number of MathML presentation elements are "space-like" in the
+              sense that they typically render as whitespace, and do not affect
+              the mathematical meaning of the expressions in which they appear.
+              As a consequence, these elements often function in somewhat
+              exceptional ways in other MathML expressions.
+            </p>
+            <p>
+              A <a>MathML Core element</a> is a
+              <dfn data-lt="space-like">space-like element</dfn>
+              if is is:
+            </p>
+            <ul>
+              <li>An
+                <a><code>&lt;mtext&gt;</code></a> or
+                <a><code>&lt;mspace&gt;</code></a>.
+              </li>
+              <li>Or an
+                <a><code>&lt;mrow&gt;</code></a>,
+                <a><code>&lt;mstyle&gt;</code></a>,
+                <a><code>&lt;mphantom&gt;</code></a>,
+                <a><code>&lt;mpadded&gt;</code></a> element
+                all of whose children are <a>space-like</a>;
+              </li>
+              <li>
+                An <a><code>&lt;maction&gt;</code></a>
+                whose first child exists and is <a>space-like</a>.
+              </li>
+            </ul>
+            <div class="note">
+              Note that an <a><code>&lt;mphantom&gt;</code></a> is not
+              automatically defined to be space-like, unless its content is
+              space-like. This is because operator spacing is affected by
+              whether adjacent elements are space-like.
+              Since the <code>&lt;mphantom&gt;</code> element is
+              primarily intended as an aid in aligning expressions, operators
+              adjacent to an <code>&lt;mphantom&gt;</code> should behave
+              as if they were adjacent to the contents of the
+              <code>&lt;mphantom&gt;</code>, rather than to an equivalently
+              sized area of whitespace.
+            </div>
+          </section>
         </section>
         <section>
           <h4>String Literal <code>&lt;ms&gt;</code></h4>
@@ -1091,17 +1237,17 @@
           </div>
           <p>
             A child is <dfn>slanted</dfn> if it is not an
-            <code>&lt;mo&gt;</code> operator with <code>largeop="true"</code>
-            (or an embellished operator whose <code>&lt;mo&gt;</code> element core
-            has <code>largeop="true"</code>) and has nonzero <a>italic correction</a>.
+            <a>embellished operator</a>
+            with <a>core property</a> <a>largeop</a>.
+            and has nonzero <a>italic correction</a>.
             If a <a>slanted</a> child is followed by a non-<a>slanted</a> child,
             a space of width the <a>italic correction</a> of the former is added
             between the two children. If the last child is <a>slanted</a>, then
             a space of width its <a>italic correction</a> is added after that child.
           </p>
           <div class="note">
-            Spacing around (possibly embellished) operators is already included in
-            their box metrics.
+            Spacing around <a>outermost embellished operators</a> is already
+            included in their box metrics.
           </div>
           <p>
             If the <code>&lt;mrow&gt;</code> element contains only one child,
@@ -1228,9 +1374,11 @@
               must actually be added on each side of the <code>&lt;mfrac&gt;</code> element.
             </p>
             <p>
-              If the numerator is an embellished operator and the <code>&lt;mfrac&gt;</code> element is the
-              outermost element in this embellished operator hierarchy then the operator
-              leading and trailing spaces must be added around the fraction.
+              If the <code>&lt;mfrac&gt;</code> element is an
+              <a>outermost embellished operator</a> then the
+              <a>core property</a>
+              <a><code>lspace</code></a> and
+              <a><code>rspace</code></a> must be added around the fraction.
             </p>
           </section>
         </section>
@@ -1790,7 +1938,7 @@
               <code>&lt;mover&gt;</code> and <code>&lt;munderover&gt;</code>
               elements and
               is an <a>embellished operator</a> with
-              the <a>accent</a> property.
+              <a>core property</a> <a><code>accent</code></a>.
             </li>
           </ol>
         </section>
@@ -1868,9 +2016,9 @@
               is added after
               the subscript. By default, the leading edge of the subscript is
               aligned with the trailing edge of the base. However, if the base
-              is an operator with <code>largeop="true"</code> (or an
-              embellished operator whose <code>&lt;mo&gt;</code> element core
-              has <code>largeop="true"</code>) the subscript is horizontally
+              is an <a>embellished operator</a> with
+              <a>core property</a> <a><code>largeop</code></a> then
+              the subscript is horizontally
               shifted backward by the italic correction of the base.
             </p>
             <figure id="figure-box-msub">
@@ -1912,9 +2060,8 @@
               the superscript. By default, the leading edge of the superscript
               is aligned with the trailing edge of the base and shifted forward
               by the italic correction of the base, except if the base is an
-              operator with <code>largeop="true"</code>
-              (or an embellished operator whose <code>&lt;mo&gt;</code> element
-              core has <code>largeop="true"</code>).
+              <a>embellished operator</a> with
+              <a>core property</a> <a><code>largeop</code></a>.
             </p>
             <figure id="figure-box-msup">
               <img src="figures/msupbox.svg"/>
@@ -1982,10 +2129,10 @@
               <a>SpaceAfterScript</a> is added after each script. By default
               the leading edges of the scripts are aligned with the trailing
               edge and either the superscript is shifted forward by the italic
-              correction of the base. However, if the base is an operator with
-              <code>largeop="true"</code> (or an embellished operator whose
-              <code>&lt;mo&gt;</code> element core has
-              <code>largeop="true"</code>) then instead the subscript is
+              correction of the base. However, if the base is an
+              <a>embellished operator</a> with
+              <a>core property</a>
+              <a><code>largeop</code></a> then instead the subscript is
               shifted forward by the italic correction of the base.
             </p>
             <figure id="figure-box-msubsup">
@@ -2080,10 +2227,9 @@
               the <em>overscript</em>.
             </p>
             <p>
-              If the base is an  <code>&lt;mo&gt;</code> operator with
-              <code>movablelimits="true"</code>
-              (or an embellished operator whose <code>&lt;mo&gt;</code> element
-              core has <code>movablelimits="true"</code>)
+              If the base is an
+              <a>embellished operator</a> with <a>core property</a>
+              <a><code>movablelimits</code></a>
               then the underscript and overscript are actually
               drawn as subscript and superscript positions.
               Then <code>&lt;mover&gt;</code>, <code>&lt;mover&gt;</code> and
@@ -2151,9 +2297,9 @@
           <ol>
             <li>
               <p>
-                The base is an operator with <code>largeop="true"</code>
-                (or an embellished operator whose <code>&lt;mo&gt;</code>
-                element core has <code>largeop="true"</code>).
+                The base is an
+                <a>embellished operator</a> with <a>core property</a>
+                <a><code>largeop</code></a>.
                 <code>OverShift</code> is and <code>UnderShift</code> are set
                 to the minimal values satisfying the following conditions:
               </p>
@@ -2174,11 +2320,9 @@
             </li>
             <li>
               <p>
-                The base is a horizontal operator with
-                <code>stretchy="true"</code>
-                (or a horizontal embellished operator whose
-                <code>&lt;mo&gt;</code> element core has
-                <code>stretchy="true"</code>).
+                The base is a horizontal
+                <a>embellished operator</a> with <a>core property</a>
+                <a><code>stretchy</code></a>.
                 <code>OverShift</code> is and <code>UnderShift</code> are set
                 to the minimal values satisfying the following conditions:
               </p>
@@ -2413,10 +2557,9 @@
           <pre class="css" data-include="user-agent-stylesheet/scripts.css"></pre>
           <div class="issue" data-number="76">
             In [[MathML3]] specification, the scriptlevel shouldn't be
-            incremented either if the underscript/overscript is a
-            (possibly embellished) operator
-            whose <a><code>accent</code></a> property (read from an
-            attribute or from the disctionary) is <code>true</code>.
+            incremented either if the underscript/overscript is an
+            <a>embellished operator</a> with <a>core property</a>
+            <a><code>accent</code></a>.
           </div>
         </section>
       </section>
