@@ -280,6 +280,16 @@
             interface is defined in [[CSSOM]].
           </p>
         </section>
+        <section>
+          <h4>Text layout</h4>
+          <p data-tests="relations/text-and-math/use-typo-metrics-1.html">
+            Because math fonts generally contain very tall glyphs such as big
+            integrals, using typographic metrics is important to avoid
+            excessive line spacing of text. As a consequence,
+            user agents must take into account the USE_TYPO_METRICS flag from
+            the OS/2 table [[OPEN-FONT-FORMAT]] when performing text layout.
+          </p>
+        </section>
       </section>
       <section>
         <h3>Types for MathML Attribute Values</h3>
@@ -743,34 +753,109 @@
       <section>
         <h3>Token Elements</h3>
         <section>
-          <h4>Text layout</h4>
-          <p data-tests="relations/text-and-math/use-typo-metrics-1.html">
-            Because math fonts generally contain very tall glyphs such as big integrals,
-            using typographic metrics is important to avoid excessive line spacing of text.
-            This behavior is specified in math fonts using the USE_TYPO_METRICS flag from
-            the OS/2 table
-            [[OPEN-FONT-FORMAT]] and user agents must honor that flag.
+          <h4>Text <code>&lt;mtext&gt;</code></h4>
+          <div class="issue">Improve description of layout?</div>
+          <p>
+            The
+            <dfn><code>&lt;mtext&gt;</code></dfn>
+            element is used to represent arbitrary text
+            that should be rendered as itself. In general, the
+            <code>&lt;mtext&gt;</code> element is intended to denote commentary text.
           </p>
           <p>
-            Mathematical formulas can be viewed as an extension of standard text layout
-            and thus user agents must be able to perfom
-            complex text layout using fonts under the Open Font Format
-            [[OPEN-FONT-FORMAT]]. In particular, they must implement bidirectional
-            rendering and shaping of Arabic scripts.
+            The <code>&lt;mtext&gt;</code> element accepts the attributes described
+            in <a href="#global-attributes"></a>.
           </p>
           <p>
-            Good mathematical rendering requires use of non-Unicode glyphs. Mathematical
-            fonts may only provide these glyphs when the <code>math</code>
-            script tag is enabled, so user agents must ensure that the text within
-            MathML token elements is rendered with that script tag.
-            For bidirectional layout, Unicode defines character-level mirroring
-            to transform a character into its mirrored form,
-            for example U+0028 LEFT PARENTHESIS into U+0029 RIGHT PARENTHESIS.
-            User agents must also support the OpenType font feature
-            <code>rtlm</code> (Right-to-left mirrored forms)
-            to allow glyph-level mirroring in cases where character-level is not enough
-            [[OPEN-FONT-FORMAT]].
+            If the <code>&lt;mtext&gt;</code> element contains only text content
+            without <a data-cite="CSS-TEXT-3#forced-line-break">forced line break</a> or
+            <a data-cite="CSS-TEXT-3#soft-wrap-opportunity">soft wrap opportunity</a>
+            then a <a href="#simple-layout-of-mtext">simple layout</a> is
+            performed with the proper
+            <a href="#opentype-features">OpenType features</a> enabled.
+            Otherwise, a <a href="#general-mtext-layout">more generic layout</a>
+            is performed.
           </p>
+          <div class="note">
+            In practice, most MathML token elements just contain simple text
+            for variables, numbers, operators etc and don't need sophisticated
+            layout.
+          </div>
+          <section>
+            <h4>Simple layout of <code>&lt;mtext&gt;</code></h4>
+            <p>
+              The text is laid out, ink ascent,
+              ink descent, logical ascent, logical descent and
+              advance width of the text is measured and these values used
+              for the MathML box of the <code>&lt;mtext&gt;</code> element.
+            </p>
+            <p>
+              If the inline-end glyph of the text content has an entry in the
+              <code>MathItalicsCorrectionInfo</code> table then the specified
+              value is used as the italic correction.
+              User agents may subtract the advance width from the abscissa of
+              the inline-end
+              ink edge as a heuristic value for the italic correction of the
+              <code>&lt;mtext&gt;</code> element when it is not specified in the
+              <code>MathItalicsCorrectionInfo</code> table.
+            </p>
+            <p>
+              If the text content is made of a single glyph and this glyph
+              has an entry in the <code>MathTopAccentAttachment</code> table
+              then the specified value is used as the top accent attachment of
+              the <code>&lt;mtext&gt;</code> element.
+            </p>
+          </section>
+          <section>
+            <h5>OpenType features</h5>
+            <p>
+              Good mathematical rendering requires use of non-Unicode glyphs.
+              Mathematical fonts may only provide these glyphs when the
+              <code>math</code> script tag is enabled [[OPEN-FONT-FORMAT]],
+              so user agents must
+              ensure that it is the case when rendering text inside the
+              <code>&lt;mtext&gt</code> element.
+            </p>
+            <p>
+              If on the <code>&lt;mtext&gt;</code> element
+              the CSS property
+              <a data-cite="CSS-WRITING-MODES-3#direction"><code>direction</code></a>
+              is <code>rtl</code>,
+              then user agents must enable the <code>rtlm</code>
+              OpenType feature on text nodes [[OPEN-FONT-FORMAT]]
+              unless it contradicts what the
+              page author has specified with the
+              <code>font-feature-settings</code> CSS property.
+            </p>
+            <div class="issue"  data-number="19">Add detailed rules for the ssty OpenType feature</div>
+            <p>
+              Some characters like primes already have script size by default
+              and
+              hence would be too small when used in a script position.
+              To render such “prescripted” characters with the appropriate size,
+              If a <code>&lt;mtext&gt;</code> has a positive
+              <a><code>scriptlevel</code></a> value then user agents must enable
+              the <code>ssty</code> (Script Style) OpenType feature
+              on its text nodes [[OPEN-FONT-FORMAT]]
+              unless it contradicts what the page author has
+              specified with the
+              <a data-cite="CSS-FONTS-3#font-rend-desc"><code>font-feature-settings</code></a>
+              CSS property.
+          </p>
+          </section>
+          <section>
+            <h4>General <code>&lt;mtext&gt;</code> layout</h4>
+            <p>
+              In the most general case, the <code>&lt;mtext&gt;</code> element
+              may contain text with line breaks or arbitrary HTML5 phrasing
+              elements. The logical dimensions and max-content width
+              are determined and the result is used for both
+              the logical and ink values of the
+              <code>&lt;mtext&gt;</code> element. The italic correction and
+              top accent attachment are assigned the fallback values indicated
+              in  <a href="#operator-fence-separator-or-accent-mo"></a>.
+            </p>
+          </section>
         </section>
         <section>
           <h4>Identifier <code>&lt;mi&gt;</code></h4>
@@ -1149,74 +1234,6 @@
               or when to stretch them vertically &amp; horizontally.
             </p>
           </section>
-        </section>
-        <section>
-          <h4>Text <code>&lt;mtext&gt;</code></h4>
-          <p>
-            The
-            <dfn><code>&lt;mtext&gt;</code></dfn>
-            element is used to represent arbitrary text
-            that should be rendered as itself. In general, the
-            <code>&lt;mtext&gt;</code> element is intended to denote commentary text.
-          </p>
-          <p>
-            The <code>&lt;mtext&gt;</code> element accepts the attributes described
-            in <a href="#global-attributes"></a>.
-          </p>
-          <p>
-            In most cases the <code>&lt;mtext&gt;</code> element contains some text
-            that is laid out without line breaks using complex text layout. The ink ascent
-            &amp; descent, logical ascent &amp; descent and
-            advance width of the text frame are measured and these values used
-            for the MathML box of the <code>&lt;mtext&gt;</code> element.
-          </p>
-          <p>
-            If the inline-end glyph of the text content has an entry in the
-            <code>MathItalicsCorrectionInfo</code> table then the specified
-            value is used as the italic correction.
-            User agents may subtract the advance width from the abscissa of
-            the inline-end
-            ink edge as a heuristic value for the italic correction of the
-            <code>&lt;mtext&gt;</code> element when it is not specified in the
-            <code>MathItalicsCorrectionInfo</code> table.
-          </p>
-          <p>
-            If the text content is made of a single glyph and this glyph
-            has an entry in the <code>MathTopAccentAttachment</code> table
-            then the specified value is used as the top accent attachment of the
-            <code>&lt;mtext&gt;</code> element.
-          </p>
-          <p>
-            If on the <code>&lt;mtext&gt;</code> element
-            the CSS property
-            <a data-cite="CSS-WRITING-MODES-3#direction"><code>direction</code></a>
-            is <code>rtl</code>,
-            then user agents must enable the <code>rtlm</code>
-            OpenType feature on text nodes unless it contradicts what the page author
-            has specified with the <code>font-feature-settings</code> CSS property.
-          </p>
-          <div class="issue"  data-number="19">Add detailed rules for the ssty OpenType feature</div>
-          <p>
-            Some characters like primes already have script size by default and
-            hence would be too small when used in a script position.
-            To render such “prescripted” characters with the appropriate size,
-            If a <code>&lt;mtext&gt;</code> has a positive
-            <a><code>scriptlevel</code></a> value then user agents must enable
-            the <code>ssty</code> (Script Style) OpenType feature
-            on its text nodes unless it contradicts what the page author has
-            specified with the
-            <a data-cite="CSS-FONTS-3#font-rend-desc"><code>font-feature-settings</code></a>
-            CSS property.
-          </p>
-          <p>
-            In the most general case, the <code>&lt;mtext&gt;</code> element may contain
-            text with line breaks or arbitrary HTML5 phrasing elements. We assume that
-            we can still determine logical dimensions and max-content width of the text
-            content and use it for both the logical and ink values of the
-            <code>&lt;mtext&gt;</code> element. The italic correction and
-            top accent attachment are assigned the fallback values indicated in
-            <a href="#operator-fence-separator-or-accent-mo"></a>.
-          </p>
         </section>
         <section>
           <h4>Space <code>&lt;mspace&gt;</code></h4>
