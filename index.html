@@ -650,11 +650,6 @@
             Note that the schemas in this document are drawn assuming left-to-right
             directionality. If the CSS <code>direction</code> is set to right-to-left, then the
             elements should layout by making the x-axis pointing from right-to-left.
-            This document uses the terminology of
-            [[MATHML3]]: “leading”
-            means “left” in right-to-left and “right” in right-to-left mode, while
-            “trailing” means “right” in right-to-left and “left” in right-to-left
-            mode.
           </p>
           <p>
             The <code>MathItalicsCorrectionInfo</code> table contains the italic
@@ -861,8 +856,8 @@
             [[MATHML3]].
           </p>
           <p>
-            The leading space <code>lspace</code> and trailing space
-            <code>rspace</code> must be added on each side of
+            The inline-start <code>lspace</code> and
+            inline-end <code>rspace</code> must be added on each side of
             <a>outermost embellished operators</a>.
           </p>
           <p>
@@ -1048,10 +1043,11 @@
             for the MathML box of the <code>&lt;mtext&gt;</code> element.
           </p>
           <p>
-            If the trailing glyph of the text content has an entry in the
+            If the inline-end glyph of the text content has an entry in the
             <code>MathItalicsCorrectionInfo</code> table then the specified
             value is used as the italic correction.
-            User agents may subtract the advance width from the abscissa of the trailing
+            User agents may subtract the advance width from the abscissa of
+            the inline-end
             ink edge as a heuristic value for the italic correction of the
             <code>&lt;mtext&gt;</code> element when it is not specified in the
             <code>MathItalicsCorrectionInfo</code> table.
@@ -2014,8 +2010,9 @@
               When determining
               the logical box, a space of width <a>SpaceAfterScript</a>
               is added after
-              the subscript. By default, the leading edge of the subscript is
-              aligned with the trailing edge of the base. However, if the base
+              the subscript. By default, the
+              inline-start edge of the subscript is
+              aligned with the inline-end edge of the base. However, if the base
               is an <a>embellished operator</a> with
               <a>core property</a> <a><code>largeop</code></a> then
               the subscript is horizontally
@@ -2057,8 +2054,10 @@
             <p>
               When determining the logical box, a space of width
               <a>SpaceAfterScript</a> is added after
-              the superscript. By default, the leading edge of the superscript
-              is aligned with the trailing edge of the base and shifted forward
+              the superscript. By default, the
+              inline-start edge of the superscript
+              is aligned with the inline-end edge of the base and
+              shifted forward
               by the italic correction of the base, except if the base is an
               <a>embellished operator</a> with
               <a>core property</a> <a><code>largeop</code></a>.
@@ -2127,8 +2126,9 @@
             <p>
               When determining the logical box, a space of width
               <a>SpaceAfterScript</a> is added after each script. By default
-              the leading edges of the scripts are aligned with the trailing
-              edge and either the superscript is shifted forward by the italic
+              the inline-start edges of the scripts are aligned with the
+              inline-end edge of the base
+              and the superscript is shifted forward by the italic
               correction of the base. However, if the base is an
               <a>embellished operator</a> with
               <a>core property</a>
@@ -2463,7 +2463,7 @@
             <ul>
               <li>
                 The horizontal positions are determined in the following order:
-                leading edge of <code>&lt;mmultiscripts&gt;</code>,
+                inline-start edge of <code>&lt;mmultiscripts&gt;</code>,
                 <a>SpaceAfterScript</a>,
                 first prescript pair,
                 <a>SpaceAfterScript</a>,
@@ -2479,7 +2479,7 @@
                 ...,
                 last postscript pair,
                 width <a>SpaceAfterScript</a>,
-                trailing edge of <code>&lt;mmultiscripts&gt;</code>.
+                inline-end edge of <code>&lt;mmultiscripts&gt;</code>.
               </li>
               <li>
                 Each postscript pair is shift forward
@@ -2487,9 +2487,9 @@
                 <a href="#base-with-subscript-and-superscript"></a>.
               </li>
               <li>
-                For prescript pairs, the trailing edges of the subscript
+                For prescript pairs, the inline-end edges of the subscript
                 and superscript are aligned.
-                For postscript pairs, the leading edges of the subscript
+                For postscript pairs, the inline-start edges of the subscript
                 and superscript are aligned.
               </li>
               <li>
