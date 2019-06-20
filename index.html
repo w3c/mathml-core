@@ -153,7 +153,7 @@
             <dfn>MathML Core elements</dfn> as belonging to the
             <a data-cite="INFRA#mathml-namespace">MathML namespace</a>:
           </p>
-          <ul>
+          <ol>
             <li><a>&lt;annotation&gt;</a></li>
             <li><a>&lt;annotation-xml&gt;</a></li>
             <li><a>&lt;maction&gt;</a></li>
@@ -186,7 +186,7 @@
             <li><a>&lt;munderover&gt;</a></li>
             <li><a>&lt;none&gt;</a></li>
             <li><a>&lt;semantics&gt;</a></li>
-          </ul>
+          </ol>
           <p>
             Users agents must allow mixing HTML, SVG and MathML elements
             as allowed by sections
@@ -666,10 +666,10 @@
             elements should layout by making the x-axis pointing from right-to-left.
           </p>
           <p>
-            The <code>MathItalicsCorrectionInfo</code> table contains the italic
+            The <a>MathItalicsCorrectionInfo</a> table contains the italic
             correction of some glyphs, which provides a measure of how slanted the
             glyphs are (see <a href="#figure-italic-correction"></a>). The
-            <code>MathTopAccentAttachment</code> table also contains a reference
+            <a>MathTopAccentAttachment</a> table also contains a reference
             points that are used for the horizontal positioning of glyphs as an accent
             (see <a href="#figure-top-accent-attachment"></a>). In later sections, this is
             generalized by claiming that all MathML boxes have <dfn>italic correction</dfn>
@@ -791,17 +791,12 @@
             </p>
             <p>
               If the inline-end glyph of the text content has an entry in the
-              <code>MathItalicsCorrectionInfo</code> table then the specified
+              <a>MathItalicsCorrectionInfo</a> table then the specified
               value is used as the italic correction.
-              User agents may subtract the advance width from the abscissa of
-              the inline-end
-              ink edge as a heuristic value for the italic correction of the
-              <code>&lt;mtext&gt;</code> element when it is not specified in the
-              <code>MathItalicsCorrectionInfo</code> table.
             </p>
             <p>
               If the text content is made of a single glyph and this glyph
-              has an entry in the <code>MathTopAccentAttachment</code> table
+              has an entry in the <a>MathTopAccentAttachment</a> table
               then the specified value is used as the top accent attachment of
               the <code>&lt;mtext&gt;</code> element.
             </p>
@@ -3065,16 +3060,34 @@
       </section>
     </section>
     <section class="normative">
-      <h2>OpenType MATH</h2>
+      <h2>OpenType <code>MATH</code> table</h2>
+      <p>
+        This chapter describes features provided by <code>MATH</code> table
+        of an OpenType font [[OPEN-FONT-FORMAT]]. Throughout this chapter,
+        a C-like notation
+        <code>Table.Subtable1[index].Subtable2.Parameter</code> is used to
+        denote OpenType parameters.
+        Such parameters may not be available (e.g. if the font lack one of the
+        subtable, has an invalid offset, etc) and so fallback options are
+        provided.
+      </p>
+      <div class="note">
+        It is strongly encouraged to render MathML with a math font with
+        the proper OpenType features. There is no guarantee that the fallback
+        options provided will provide good enough rendering.
+      </div>
+      <p>
+        OpenType values expressed in design units (perhaps indirectly via a
+        <code>MathValueRecord</code> entry) are scaled to appropriate values
+        for layout purpose, taking into account
+        <code>head.unitsPerEm</code>, CSS
+        <a data-cite="CSS-FONTS-3#font-size-prop"><code>font-size</code></a>
+        or zoom level.
+      </p>
       <section>
-        <h3>Math Constants</h3>
-        <p>The following math constants are defined for a given font.
-          If the font has a <code>MATH</code> table this table has a
-          <code>MathConstants</code> subtable
-          then <code>MATH.MathConstants.ConstantName</code> denotes
-          the corresponding constant as defined in [[OPEN-FONT-FORMAT]].
-        </p>
+        <h3>Layout constants (<code>MathConstants</code>)</h3>
         <div class="issue" data-number="69">Define fallback values</div>
+        <p>These are global layout constants for a given mathematical font:</p>
         <dl>
           <dt><dfn>scriptPercentScaleDown</dfn></dt>
           <dd>
@@ -3089,18 +3102,12 @@
             <code>MATH.MathConstants.scriptScriptPercentScaleDown</code> is
             null or not available.
           </dd>
-          <dt><dfn>delimitedSubFormulaMinHeight</dfn></dt>
-          <dd><code>MATH.MathConstants.delimitedSubFormulaMinHeight</code> or ?? if the constant is not available.</dd>
           <dt><dfn>displayOperatorMinHeight</dfn></dt>
           <dd><code>MATH.MathConstants.displayOperatorMinHeight</code> or ?? if the constant is not available.</dd>
-          <dt><dfn>mathLeading</dfn></dt>
-          <dd><code>MATH.MathConstants.mathLeading</code> or ?? if the constant is not available.</dd>
           <dt><dfn>axisHeight</dfn></dt>
           <dd><code>MATH.MathConstants.axisHeight</code> or ?? if the constant is not available.</dd>
           <dt><dfn>accentBaseHeight</dfn></dt>
           <dd><code>MATH.MathConstants.accentBaseHeight</code> or ?? if the constant is not available.</dd>
-          <dt><dfn>flattenedAccentBaseHeight</dfn></dt>
-          <dd><code>MATH.MathConstants.flattenedAccentBaseHeight</code> or ?? if the constant is not available.</dd>
           <dt><dfn>subscriptShiftDown</dfn></dt>
           <dd><code>MATH.MathConstants.subscriptShiftDown</code> or ?? if the constant is not available.</dd>
           <dt><dfn>subscriptTopMax</dfn></dt>
@@ -3167,10 +3174,6 @@
           <dd><code>MATH.MathConstants.fractionDenominatorGapMin</code> or ?? if the constant is not available.</dd>
           <dt><dfn>fractionDenomDisplayStyleGapMin</dfn></dt>
           <dd><code>MATH.MathConstants.fractionDenomDisplayStyleGapMin</code> or ?? if the constant is not available.</dd>
-          <dt><dfn>skewedFractionHorizontalGap</dfn></dt>
-          <dd><code>MATH.MathConstants.skewedFractionHorizontalGap</code> or ?? if the constant is not available.</dd>
-          <dt><dfn>skewedFractionVerticalGap</dfn></dt>
-          <dd><code>MATH.MathConstants.skewedFractionVerticalGap</code> or ?? if the constant is not available.</dd>
           <dt><dfn>overbarVerticalGap</dfn></dt>
           <dd><code>MATH.MathConstants.overbarVerticalGap</code> or ?? if the constant is not available.</dd>
           <dt><dfn>overbarRuleThickness</dfn></dt>
@@ -3200,10 +3203,34 @@
         </dl>
       </section>
       <section>
-        <h3>Math Glyph Information</h3>
+        <h3>Glyph information (<code>MathGlyphInfo</code>)</h3>
       </section>
+      <p>
+        These are per-glyph tables a given mathematical font:
+      </p>
+      <dl>
+        <dt><dfn>MathItalicsCorrectionInfo</dfn></dt>
+        <dd>
+          The subtable
+          <code>MATH.MathGlyphInfo.MathItalicsCorrectionInfo</code>
+          of italics correction values. Use the corresponding value in
+          <code>MATH.MathGlyphInfo.MathItalicsCorrectionInfo.italicsCorrection</code>
+          if there is one for the requested glyph or
+          or <code>0</code> otherwise.
+        </dd>
+        <dt><dfn>MathTopAccentAttachment</dfn></dt>
+        <dd>
+          The subtable
+          <code>MATH.MathGlyphInfo.MathTopAccentAttachment</code>
+          of horizontal positioning of top math accents.
+          Use the corresponding value in
+          <code>MATH.MathGlyphInfo.MathTopAccentAttachment.topAccentAttachment</code>
+          if there is one for the requested glyph or
+          or half the advance width of the glyph otherwise.
+        </dd>
+      </dl>
       <section>
-        <h3>Math Variants</h3>
+        <h3>Size variants for operators (<code>MathVariants</code>)</h3>
         <p>
           They must also be able to use the <code>MathVariants</code> subtable
           to solve the following problem: given a particular default glyph
@@ -3286,7 +3313,14 @@
           <code>0.3888888888888889em</code> respectively.
         </p>
         <p>
-          Boolean valued attributes such as <a><code>stretchy</code></a> are
+          Boolean valued attributes
+          <a><code>fence</code></a>,
+          <a><code>separator</code></a>,
+          <a><code>stretchy</code></a>,
+          <a><code>symmetric</code></a>,
+          <a><code>largeop</code></a>,
+          <a><code>movablelimits</code></a>,
+          <a><code>accent</code></a> are
           specified together in the final 'Properties' column by listing the
           attribute name if its value should be set to true by the dictionary.
         </p>
