@@ -3205,31 +3205,31 @@
       </section>
       <section>
         <h3>Glyph information (<code>MathGlyphInfo</code>)</h3>
+        <p>
+          These are per-glyph tables for a given mathematical font:
+        </p>
+        <dl>
+          <dt><dfn>MathItalicsCorrectionInfo</dfn></dt>
+          <dd>
+            The subtable
+            <code>MATH.MathGlyphInfo.MathItalicsCorrectionInfo</code>
+            of italics correction values. Use the corresponding value in
+            <code>MATH.MathGlyphInfo.MathItalicsCorrectionInfo.italicsCorrection</code>
+            if there is one for the requested glyph or
+            or <code>0</code> otherwise.
+          </dd>
+          <dt><dfn>MathTopAccentAttachment</dfn></dt>
+          <dd>
+            The subtable
+            <code>MATH.MathGlyphInfo.MathTopAccentAttachment</code>
+            of horizontal positioning of top math accents.
+            Use the corresponding value in
+            <code>MATH.MathGlyphInfo.MathTopAccentAttachment.topAccentAttachment</code>
+            if there is one for the requested glyph or
+            or half the advance width of the glyph otherwise.
+          </dd>
+        </dl>
       </section>
-      <p>
-        These are per-glyph tables for a given mathematical font:
-      </p>
-      <dl>
-        <dt><dfn>MathItalicsCorrectionInfo</dfn></dt>
-        <dd>
-          The subtable
-          <code>MATH.MathGlyphInfo.MathItalicsCorrectionInfo</code>
-          of italics correction values. Use the corresponding value in
-          <code>MATH.MathGlyphInfo.MathItalicsCorrectionInfo.italicsCorrection</code>
-          if there is one for the requested glyph or
-          or <code>0</code> otherwise.
-        </dd>
-        <dt><dfn>MathTopAccentAttachment</dfn></dt>
-        <dd>
-          The subtable
-          <code>MATH.MathGlyphInfo.MathTopAccentAttachment</code>
-          of horizontal positioning of top math accents.
-          Use the corresponding value in
-          <code>MATH.MathGlyphInfo.MathTopAccentAttachment.topAccentAttachment</code>
-          if there is one for the requested glyph or
-          or half the advance width of the glyph otherwise.
-        </dd>
-      </dl>
       <section>
         <h3>Size variants for operators (<code>MathVariants</code>)</h3>
         <p>
@@ -3251,6 +3251,11 @@
               <code>GlyphPartRecord.partFlags</code> has the
               <code>fExtender</code> flag set.
             </li>
+            <li>
+              A <code>GlyphAssembly</code> is horizontal if it is obtained from
+              <code>MathVariant.horizGlyphConstructionOffsets</code>.
+              Otherwise it is vertical (and obtained from
+              <code>MathVariant.vertGlyphConstructionOffsets</code>).
             <li>
               For a given <code>GlyphAssembly</code> table,
               <dfn>N<sub>Ext</sub></dfn> (respectively
@@ -3357,8 +3362,7 @@
             are defined as follows:
           </p>
           <ul>
-            <li>If <code>GlyphAssembly</code> was obtained from
-              <code>MathVariant.vertGlyphConstructionOffsets</code>,
+            <li>If <code>GlyphAssembly</code> is horizontal,
               the width is the maximum advance width of the glyphs of id
               <code>GlyphPartRecord.glyphID</code> for all the
               <code>GlyphPartRecord</code> in
@@ -3368,8 +3372,7 @@
               for a given target size <code>T</code>
               and the descent is 0.
             </li>
-            <li>Otherwise, the <code>GlyphAssembly</code> was obtained from
-              <code>MathVariant.horizGlyphConstructionOffsets</code>,
+            <li>Otherwise, the <code>GlyphAssembly</code> is vertical,
               the width is <a>glyph assembly stretch size</a>
               for a given target size <code>T</code> while
               the ascent (respectively descent) is the
@@ -3389,16 +3392,64 @@
             (respectively horizontal) glyph assembly do not depend
             on the target size <code>T</code>.
           </div>
-
-          <div class="issue">
-            Add info from [[?OPEN-TYPE-MATH-IN-HARFBUZZ]].
-          </div>
-          <p>
-            <dfn>shaping horizontal glyph assembly</dfn>
+          <p>The <dfn>shaping of the glyph assembly</dfn>
+            at position <code>P</code> is performed with the following
+            algorithm:
           </p>
-          <p>
-            <dfn>shaping vertical glyph assembly</dfn>
-          </p>
+          <ol>
+            <li>Calculate <a>r<sub>min</sub></a> and
+              <a>o<sub>max</sub></a>.</li>
+            <li>
+              Set <code>(x, y)</code> to <code>P</code> if
+              <code>RepetitionCounter</code> to 0 and
+              <code>PartIndex</code> to -1.
+            </li>
+            <li>
+              Repeat the following steps:
+              <ol>
+                <li>
+                  If <code>RepetitionCounter</code> is 0, then
+                  <ol>
+                    <li>Increment <code>PartIndex</code>.</li>
+                    <li>If <code>PartIndex</code> is
+                      <code>GlyphAssembly.partCount</code>
+                      then stop.</li>
+                    <li>Otherwise, set
+                      <code>Part</code> to
+                      <code>GlyphAssembly.partRecords[PartIndex]</code>.
+                      Set <code>RepetitionCounter</code> to
+                      r<sub>min</sub> if
+                      <code>Part</code> is an extender and to 1 otherwise.
+                    </li>
+                  </ol>
+                </li>
+                <li>
+                  <ul>
+                    <li>If the glyph assembly is horizontal then
+                      draw the glyph of id
+                      <code>Part.glyphID</code>
+                      so that its (left, baseline) coordinates
+                      are at position <code>(x, y)</code>.
+                      Set <code>x</code> to
+                      <code>x + Part.fullAdvance −
+                        o<sub>max</sub></code>
+                    </li>
+                    <li>Otherwise (if the glyph assembly is vertical),
+                      then
+                      draw the glyph of id
+                      <code>Part.glyphID</code>
+                      so that its (left, bottom) coordinates
+                      are at position <code>(x, y)</code>.
+                      Set <code>y</code> to
+                      <code>y − Part.fullAdvance +
+                        o<sub>max</sub></code>
+                    </li>
+                  </ul>
+                </li>
+                <li>Decrement <code>RepetitionCounter</code>.</li>
+              </ol>
+            </li>
+          </ol>
         </section>
         <section>
           <h4>Preferred inline-size of stretchy glyphs</h4>
@@ -3591,8 +3642,8 @@
           <ol>
             <li>
               If the glyph's advance width is at least <code>T</code>
-              then shape the glyph so that at position
-              <code>P</code> and exit.
+              then draw the glyph so that its (left, baseline) coordinates
+              are at position <code>P</code> and exit.
             </li>
             <li>
               If there is a <code>MathGlyphConstruction</code> table
@@ -3604,13 +3655,14 @@
                   <code>MathGlyphConstruction.mathGlyphVariantRecord</code>,
                   if
                   <code>MathGlyphVariantRecord.advanceMeasurement</code>
-                  is at least <code>T</code> then shape the glyph
-                  at position <code>P</code> and exit.
+                  is at least <code>T</code> then draw the glyph
+                  so that its (left, baseline) coordinates
+                  are at position <code>P</code> and exit.
                 </li>
                 <li>
                   If there is valid <code>GlyphAssembly</code> subtable
                   then perform
-                  <a>shaping horizontal glyph assembly</a>
+                  <a>shaping of the glyph assembly</a>
                   at position <code>P</code> and exit.
                 </li>
               </ol>
@@ -3625,8 +3677,9 @@
           <ol>
             <li>
               If the glyph's height is at least <code>T</code>
-              then shape the glyph at position
-              <code>P</code> and exit.
+              then draw the glyph
+              so that its (left, baseline) coordinates
+              are at position <code>P</code> and exit.
             </li>
             <li>
               If there is a <code>MathGlyphConstruction</code> table
@@ -3638,13 +3691,14 @@
                   <code>MathGlyphConstruction.mathGlyphVariantRecord</code>,
                   if
                   <code>MathGlyphVariantRecord.advanceMeasurement</code>
-                  is at least <code>T</code> then shape the glyph at position
-                  <code>P</code> and exit.
+                  is at least <code>T</code> then draw the glyph
+                  so that its (left, baseline) coordinates
+                  are at position <code>P</code> and exit.
                 </li>
                 <li>
                   If there is valid <code>GlyphAssembly</code> subtable
                   then perform
-                  <a>shaping vertical glyph assembly</a>
+                  <a>shaping of the glyph assembly</a>
                   at position <code>P</code> and exit.
                 </li>
               </ol>
@@ -3746,6 +3800,41 @@
         characters when used in MathML accent constructs.
       </p>
       <div data-include="tables/combining-operators.html"></div>
+    </section>
+    <section>
+      <h2>Unicode Constructions</h2>
+      <div class="issue">Complete this table and generate the HTML code
+        from simple data.</div>
+      <p>
+        The following table provide fallback that user agents must use for
+        stretching given unicode character when the font does not provide a
+        <code>MATH.MathVariants</code> table.
+        The algorithms of
+        <a href="#size-variants-for-operators-mathvariants"></a>
+        works the same except with some adjustments.
+        First all the glyph IDs and metrics have to be deduced from unicode
+        code points. Next,
+        the <code>MathGlyphConstruction.mathGlyphVariantRecord</code> is
+        always empty and the
+        <code>MathVariants.minConnectorOverlap</code>,
+        <code>GlyphPartRecord.startConnectorLength</code> and
+        <code>GlyphPartRecord.endConnectorLength</code>
+        are treated as 0. Finally, the array of
+        <code>MathGlyphConstruction.GlyphAssembly.partRecords</code> is built
+        from each row as follows:
+      </p>
+        <ul>
+          <li>A (non-extender) bottom/left character.</li>
+          <li>Followed by an extender character.</li>
+          <li>Optionally followed by this:
+            <ul>
+              <li>Optionally, an (non-extender) middle character
+                and the same extender character previously mentioned.</li>
+              <li>A (non-extender) Top/Right character.
+            </ul>
+          </li>
+        </ul>
+      <div data-include="tables/unicode-assembly.html"></div>
     </section>
     <section>
       <h3>Mathvariant Mappings</h3>
