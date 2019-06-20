@@ -73,12 +73,12 @@
                   ],
                   href: "http://www.tug.org/TUGboat/tb30-1/tb94vieth.pdf",
               },
-              "VALIDATOR-SCHEMAS": {
-                  title: "HTML5-SVG-MathML schema for Nu Html Checker",
+              "OPEN-TYPE-MATH-IN-HARFBUZZ": {
+                  title: "OpenType MATH in HarfBuzz",
                   authors: [
-                      "Henri Sivonen et al."
+                      "Frédéric Wang"
                   ],
-                  href: "https://github.com/validator/validator/blob/master/schema/.drivers/html5-svg-mathml.rnc"
+                  href: "http://frederic-wang.fr/opentype-math-in-harfbuzz.html"
               }
           },
           postProcess: [sorttable.init]
@@ -809,7 +809,7 @@
               <code>math</code> script tag is enabled [[OPEN-FONT-FORMAT]],
               so user agents must
               ensure that it is the case when rendering text inside the
-              <code>&lt;mtext&gt</code> element.
+              <code>&lt;mtext&gt;</code> element.
             </p>
             <p>
               If on the <code>&lt;mtext&gt;</code> element
@@ -1058,8 +1058,9 @@
                 element other than the first child, then it has form
                 <code>postfix</code>;
               </li>
-              <li>Otherwise, the embellished operator has form
-                <code>infix</code>.</li>
+              <li>
+                Otherwise, the embellished operator has form
+                <code>infix</code>.
               </li>
             </ul>
             <p>
@@ -2289,7 +2290,7 @@
             <div class="note" id="msubsup-with-empty-scripts">
               <p>
                 Even when the subscript (respectively superscript) is an empty
-                box, <code>&lt;subsup&lgt;</code>
+                box, <code>&lt;subsup&gt;</code>
                 does not generally render the same as
                 <a href="#base-with-superscript"></a>
                 (respectively <a href="#base-with-subscript"></a>)
@@ -3206,7 +3207,7 @@
         <h3>Glyph information (<code>MathGlyphInfo</code>)</h3>
       </section>
       <p>
-        These are per-glyph tables a given mathematical font:
+        These are per-glyph tables for a given mathematical font:
       </p>
       <dl>
         <dt><dfn>MathItalicsCorrectionInfo</dfn></dt>
@@ -3232,17 +3233,395 @@
       <section>
         <h3>Size variants for operators (<code>MathVariants</code>)</h3>
         <p>
-          They must also be able to use the <code>MathVariants</code> subtable
-          to solve the following problem: given a particular default glyph
-          shape and a certain width or height, find a variant shape glyph
-          (or a construct created by
-          putting several glyphs together) that has the required measurement.
-          More information are provided in
-          <a href="operator-fence-separator-or-accent-mo"></a>.
+          This section describes how to handle stretchy glyphs of arbitrary
+          size using the <code>MATH.MathVariants</code> table.
         </p>
-        <div class="issue">Describe stretchy algo
-          http://frederic-wang.fr/opentype-math-in-harfbuzz.html
-        </div>
+        <section>
+          <h4>The <code>GlyphAssembly</code> table</h4>
+          <p>
+            The following are defined for a <code>MathVariant</code> table:
+          </p>
+          <ul>
+            <li>
+              <dfn>o<sub>min</sub></dfn> is
+              <code>MATH.MathVariant.minConnectorOverlap</code>.
+            </li>
+            <li>
+              A <code>GlyphPartRecord</code> is an extender if and only if
+              <code>GlyphPartRecord.partFlags</code> has the
+              <code>fExtender</code> flag set.
+            </li>
+            <li>
+              For a given <code>GlyphAssembly</code> table,
+              <dfn>N<sub>Ext</sub></dfn> (respectively
+              <dfn>N<sub>NonExt</sub></dfn>) is the number of extenders
+              (respectively non-extenders) in
+              <code>GlyphAssembly.partRecords</code>.
+            </li>
+            <li>
+              For a given <code>GlyphAssembly</code> table,
+              <dfn>S<sub>Ext</sub></dfn> (respectively
+              <dfn>S<sub>NonExt</sub></dfn>) is the sum of
+              <code>GlyphPartRecord.fullAdvance</code>
+              for all extenders (respectively non-extenders) in
+              <code>GlyphAssembly.partRecords</code>.
+            </li>
+          </ul>
+          <p>
+            User agents must treat the <code>GlyphAssembly</code> as invalid
+            and ignore it if the following conditions are not satisfied:
+          </p>
+          <ul>
+            <li>
+              S<sub>Ext</sub> − o<sub>min</sub> N<sub>Ext</sub> > 0.
+              Otherwise, the overlap takes at least the full advance of each
+              extender.
+            </li>
+            <li>
+              For each <code>GlyphPartRecord</code>
+              in <code>GlyphAssembly.partRecords</code>,
+              the values of
+              <code>GlyphPartRecord.startConnectorLength</code> and
+              <code>GlyphPartRecord.endConnectorLength</code>
+              must be at least o<sub>min</sub>.
+              Otherwise, it is not possible to satisfy the condition of
+              <code>MathVariant.minConnectorOverlap</code>.
+            </li>
+          </ul>
+          <p>
+            As indicated in [[?OPEN-TYPE-MATH-IN-HARFBUZZ]],
+            the stretch size of a glyph assembly
+            built by repeating each extender the same number
+            of times r and using the same overlap value o is given by the
+            formula
+            <dfn>AssembySize(o, r)</dfn> =
+            S<sub>NonExt</sub> − o (N<sub>NonExt</sub> − 1)
+            + r (S<sub>Ext</sub> − o N<sub>Ext</sub>) or, equivalently,
+            AssembySize(o, r) =
+            S<sub>NonExt</sub> + r S<sub>Ext</sub>
+            − o (N<sub>NonExt</sub> + r N<sub>Ext</sub> − 1).
+          </p>
+          <p>
+            Given a target size T, the minimal number of repetitions
+            <dfn>r<sub>min</sub></dfn> needed to obtain an assembly size of
+            size at least T is the maximum of 0 and the ceiling of
+            (T − S<sub>NonExt</sub> − o<sub>min</sub> (N<sub>NonExt</sub> − 1)) / (S<sub>Ext</sub> − o<sub>min</sub> N<sub>Ext</sub>) [[?OPEN-TYPE-MATH-IN-HARFBUZZ]].
+          </p>
+	  <p>
+            <dfn>o<sub>max</sub></dfn> is the
+            maximum overlap possible to build an assembly of size at least
+            T by repeating each extender r<sub>min</sub> times.
+            N = N<sub>NonExt</sub> + r<sub>min</sub> N<sub>Ext</sub> is
+            the number of glyphs in such an assembly.
+            If N ≤ 1, then the overlap is irrelevant, so
+            o<sub>max</sub> is defined to be o<sub>min</sub>.
+            Otherwise, it is taken to be the minimum of:
+          </p>
+          <ul>
+            <li>o<sub>max,theorical</sub> = (S<sub>NonExt</sub> + r<sub>min</sub> S<sub>Ext</sub> − T) / (N − 1)</li>
+            <li>
+              <code>GlyphPartRecord.startConnectorLength</code> for all
+              the entries in
+              <code>GlyphAssembly.partRecords</code>, excluding the
+              last one if it is not an extender.
+            </li>
+            <li>
+              <code>GlyphPartRecord.endConnectorLength</code> for all
+              the entries in
+              <code>GlyphAssembly.partRecords</code>, excluding the
+              first one if it is not an extender.
+            </li>
+            </ul>
+          <div class="note">
+            o<sub>max,theorical</sub> is the theorical maximum overlap to build
+            an assembly of size at least T by repeating each extender
+            r<sub>min</sub> times, ignoring the constraints from
+            <code>GlyphPartRecord.endConnectorLength</code>
+            and <code>GlyphPartRecord.startConnectorLength</code>.
+            It satisfies o<sub>max,theorical</sub> ≥ o<sub>min</sub>
+            [[OPEN-TYPE-MATH-IN-HARFBUZZ]].
+            With the assumptions made above for valid <code>GlyphAssembly</code>
+            tables, the following inequality is true:
+            o<sub>max</sub> ≥ o<sub>min</sub>
+          </div>
+	  <p>
+            The <dfn>stretch size of the glyph assembly</dfn>
+            for a target size T is
+            AssembySize(o<sub>max</sub>, r<sub>min</sub>).
+          </p>
+          <p>
+            If <code>GlyphAssembly</code> was obtained from
+            <code>MathVariant.vertGlyphConstructionOffsets</code> then
+            the <dfn>orthogonal size of the glyph assembly</dfn>
+            is the maximum advance width of the glyphs of id
+            <code>GlyphPartRecord.glyphID</code> for all the
+            <code>GlyphPartRecord</code> in
+            <code>GlyphAssembly.partRecords</code>.
+            If <code>GlyphAssembly</code> was obtained from
+            <code>MathVariant.horizGlyphConstructionOffsets</code>
+            then it is instead the sum of the maximum glyph ascents and of
+            the maximum glyph descents.
+          </p>
+          <div class="issue">
+            Add info from [[?OPEN-TYPE-MATH-IN-HARFBUZZ]].
+          </div>
+          <p>
+            <dfn>shaping horizontal glyph assembly</dfn>
+          </p>
+          <p>
+            <dfn>shaping vertical glyph assembly</dfn>
+          </p>
+        </section>
+        <section>
+          <h4>Preferred inline-size of stretchy glyphs</h4>
+          <p>
+            The <dfn>preferred inline-size of a stretchy glyph in inline
+            direction</dfn> for a given target size <code>T</code>
+            is calculated using the following algorithm:
+          </p>
+          <ol>
+            <li>
+              Set <code>S</code> to the glyph's advance width.
+            </li>
+            <li>
+              If <code>S ≥ T</code>, return <code>S</code>.
+            </li>
+            <li>
+              If there is a <code>MathGlyphConstruction</code> table
+              in the <code>MathVariants.horizGlyphConstructionOffsets</code>
+              table for the given glyph:
+              <ol>
+                <li>
+                  For each <code>MathGlyphVariantRecord</code> in
+                  <code>MathGlyphConstruction.mathGlyphVariantRecord</code> do:
+                  <ol>
+                    <li>
+                      Ensure that <code>S</code> is at least
+                      <code>MathGlyphVariantRecord.advanceMeasurement</code>.
+                    </li>
+                    <li>
+                      If <code>S ≥ T</code>, return <code>S</code>.
+                    </li>
+                  </ol>
+                <li>
+                  If there is valid <code>GlyphAssembly</code> subtable, ensure
+                  that <code>S</code> is at least
+                  the <a>stretch size of the glyph assembly</a>
+                  <code>GlyphAssembly</code> for
+                  the target size <code>T</code>.
+                </li>
+              </ol>
+            </li>
+            <li>Return <code>S</code>.</li>
+          </ol>
+          <p>
+            The <dfn>preferred inline-size of a stretchy glyph in block
+            direction</dfn>
+            is calculated using the following algorithm:
+          </p>
+          <ol>
+            <li>
+              Set <code>S</code> to the glyph's advance width.
+            </li>
+            <li>
+              If there is a <code>MathGlyphConstruction</code> table
+              in the <code>MathVariants.vertGlyphConstructionOffsets</code>
+              table for the given glyph:
+              <ol>
+                <li>
+                  For each <code>MathGlyphVariantRecord</code> in
+                  <code>MathGlyphConstruction.mathGlyphVariantRecord</code>,
+                  ensure that <code>S</code> is at least
+                  the advance width of the glyph of id
+                  <code>MathGlyphVariantRecord.variantGlyph</code>.
+                </li>
+                <li>
+                  If there is valid <code>GlyphAssembly</code> subtable,
+                  then ensure
+                  that <code>S</code> is at least the
+                  <a>orthogonal size of the glyph assembly</a>.
+                </li>
+              </ol>
+            </li>
+            <li>Return <code>S</code>.</li>
+          </ol>
+          <div class="note">
+            The <a>preferred inline-size of a stretchy glyph in block
+            direction</a> will return the maximum width of all possible
+            vertical constructions for that glyph.
+            In practice, math fonts are designed so that
+            vertical constructions almost constant width so possible
+            over-estimation of the actual width is small.
+          </div>
+        </section>
+        <section>
+          <h4>Box metrics of stretchy glyphs</h4>
+          <p>
+            The <dfn>box metrics of a stretchy glyph in inline
+              direction</dfn>
+            for a given target size <code>T</code>
+            are calculated using the following algorithm:
+          </p>
+          <ol>
+            <li>
+              Set <code>B</code> to glyph's advanced width and height.
+              If the glyph's advance width is at least <code>T</code>
+              then return <code>B</code>.
+            </li>
+            <li>
+              If there is a <code>MathGlyphConstruction</code> table
+              in the <code>MathVariants.horizGlyphConstructionOffsets</code>
+              table for the given glyph:
+              <ol>
+                <li>
+                  For each <code>MathGlyphVariantRecord</code> in
+                  <code>MathGlyphConstruction.mathGlyphVariantRecord</code>:
+                  <ol>
+                    <li>
+                      Set <code>B</code>
+                      to the advanced width and height of the glyph of id
+                      <code>MathGlyphVariantRecord.variantGlyph</code>.
+                    </li>
+                    <li>
+                      If
+                      <code>MathGlyphVariantRecord.advanceMeasurement</code>
+                      is at least <code>T</code> then return
+                      <code>B</code>.
+                    </li>
+                  </ol>
+                <li>
+                  If there is valid <code>GlyphAssembly</code> subtable
+                  then set <code>B</code> to the
+                  <a>stretch size of the glyph assembly</a>
+                  and the <a>orthogonal size of the glyph assembly</a>
+                  for the target size <code>T</code>.
+                </li>
+              </ol>
+            </li>
+            <li>Return <code>B</code>.</li>
+          </ol>
+          <p>
+            The <dfn>box metrics of a stretchy glyph in block
+              direction</dfn>
+            for a given target size <code>T</code>
+            are calculated using the following algorithm:
+          </p>
+          <ol>
+            <li>
+              Set <code>B</code> to glyph's advanced width and height.
+              If the glyph's height is at least <code>T</code>
+              then return <code>B</code>.
+            </li>
+            <li>
+              If there is a <code>MathGlyphConstruction</code> table
+              in the <code>MathVariants.vertGlyphConstructionOffsets</code>
+              table for the given glyph:
+              <ol>
+                <li>
+                  For each <code>MathGlyphVariantRecord</code> in
+                  <code>MathGlyphConstruction.mathGlyphVariantRecord</code>:
+                  <ol>
+                    <li>
+                      Set <code>B</code>
+                      to the advanced width and height of the glyph of id
+                      <code>MathGlyphVariantRecord.variantGlyph</code>.
+                    </li>
+                    <li>
+                      If
+                      <code>MathGlyphVariantRecord.advanceMeasurement</code>
+                      is at least <code>T</code> then return
+                      <code>B</code>.
+                    </li>
+                  </ol>
+                <li>
+                  If there is valid <code>GlyphAssembly</code> subtable
+                  then set <code>B</code> to the
+                  <a>orthogonal size of the glyph assembly</a>
+                  and <a>stretch size of the glyph assembly</a>
+                  for the target size <code>T</code>.
+                </li>
+              </ol>
+            </li>
+            <li>Return <code>B</code>.</li>
+          </ol>
+        </section>
+        <section>
+          <h4>Shaping stretchy glyphs</h4>
+          <p>The algorithm to
+            <dfn>shape a stretchy glyph in inline direction</dfn>
+            for a given target size <code>T</code> at a current position
+            <code>P</code> is the following:
+          </p>
+          <ol>
+            <li>
+              If the glyph's advance width is at least <code>T</code>
+              then shape the glyph so that
+              its inline-start, block-start corner is at position
+              <code>P</code> and exit.
+            </li>
+            <li>
+              If there is a <code>MathGlyphConstruction</code> table
+              in the <code>MathVariants.horizGlyphConstructionOffsets</code>
+              table for the given glyph:
+              <ol>
+                <li>
+                  For each <code>MathGlyphVariantRecord</code> in
+                  <code>MathGlyphConstruction.mathGlyphVariantRecord</code>,
+                  if
+                  <code>MathGlyphVariantRecord.advanceMeasurement</code>
+                  is at least <code>T</code> then shape the glyph so
+                  that
+                  its inline-start, block-start corner is at position
+                  <code>P</code> and exit.
+                </li>
+                <li>
+                  If there is valid <code>GlyphAssembly</code> subtable
+                  then perform
+                  <a>shaping horizontal glyph assembly</a>
+                  at position <code>P</code> and exit.
+                </li>
+              </ol>
+            </li>
+            <li>Otherwise, exit with a failure.</li>
+          </ol>
+          <p>The algorithm to
+            <dfn>shape a stretchy glyph in block direction</dfn>
+            for a given target size <code>T</code> at a current position
+            <code>P</code> is the following:
+          </p>
+          <ol>
+            <li>
+              If the glyph's height is at least <code>T</code>
+              then shape the glyph so that
+              its inline-start, block-start corner is at position
+              <code>P</code> and exit.
+            </li>
+            <li>
+              If there is a <code>MathGlyphConstruction</code> table
+              in the <code>MathVariants.vertGlyphConstructionOffsets</code>
+              table for the given glyph:
+              <ol>
+                <li>
+                  For each <code>MathGlyphVariantRecord</code> in
+                  <code>MathGlyphConstruction.mathGlyphVariantRecord</code>,
+                  if
+                  <code>MathGlyphVariantRecord.advanceMeasurement</code>
+                  is at least <code>T</code> then shape the glyph so
+                  that
+                  its inline-start, block-start corner is at position
+                  <code>P</code> and exit.
+                </li>
+                <li>
+                  If there is valid <code>GlyphAssembly</code> subtable
+                  then perform
+                  <a>shaping vertical glyph assembly</a>
+                  at position <code>P</code> and exit.
+                </li>
+              </ol>
+            </li>
+            <li>Otherwise, exit with a failure.</li>
+          </ol>
+        </section>
       </section>
     </section>
     <section class="appendix informative">
