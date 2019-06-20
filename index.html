@@ -3345,23 +3345,51 @@
             o<sub>max</sub> ≥ o<sub>min</sub>
           </div>
 	  <p>
-            The <dfn>stretch size of the glyph assembly</dfn>
+            The <dfn>glyph assembly stretch size</dfn>
             for a target size T is
             AssembySize(o<sub>max</sub>, r<sub>min</sub>).
           </p>
           <p>
-            If <code>GlyphAssembly</code> was obtained from
-            <code>MathVariant.vertGlyphConstructionOffsets</code> then
-            the <dfn>orthogonal size of the glyph assembly</dfn>
-            is the maximum advance width of the glyphs of id
-            <code>GlyphPartRecord.glyphID</code> for all the
-            <code>GlyphPartRecord</code> in
-            <code>GlyphAssembly.partRecords</code>.
-            If <code>GlyphAssembly</code> was obtained from
-            <code>MathVariant.horizGlyphConstructionOffsets</code>
-            then it is instead the sum of the maximum glyph ascents and of
-            the maximum glyph descents.
+            The
+            <dfn>glyph assembly width</dfn>,
+            <dfn>glyph assembly ascent</dfn>
+            and <dfn>glyph assembly descent</dfn>
+            are defined as follows:
           </p>
+          <ul>
+            <li>If <code>GlyphAssembly</code> was obtained from
+              <code>MathVariant.vertGlyphConstructionOffsets</code>,
+              the width is the maximum advance width of the glyphs of id
+              <code>GlyphPartRecord.glyphID</code> for all the
+              <code>GlyphPartRecord</code> in
+              <code>GlyphAssembly.partRecords</code>,
+              the ascent is the
+              <a>glyph assembly stretch size</a>
+              for a given target size <code>T</code>
+              and the descent is 0.
+            </li>
+            <li>Otherwise, the <code>GlyphAssembly</code> was obtained from
+              <code>MathVariant.horizGlyphConstructionOffsets</code>,
+              the width is <a>glyph assembly stretch size</a>
+              for a given target size <code>T</code> while
+              the ascent (respectively descent) is the
+              the maximum ascent (respectively descent) of the glyphs of id
+              <code>GlyphPartRecord.glyphID</code> for all the
+              <code>GlyphPartRecord</code> in
+              <code>GlyphAssembly.partRecords</code>.
+            </li>
+          </ul>
+          <p>
+            The <dfn>glyph assembly height</dfn> is the sum
+            of the <a>glyph assembly ascent</a> and
+            <a>glyph assembly descent</a>.
+          </p>
+          <div class="note">
+            The horizontal (respectively vertical) metrics for a vertical
+            (respectively horizontal) glyph assembly do not depend
+            on the target size <code>T</code>.
+          </div>
+
           <div class="issue">
             Add info from [[?OPEN-TYPE-MATH-IN-HARFBUZZ]].
           </div>
@@ -3406,7 +3434,7 @@
                 <li>
                   If there is valid <code>GlyphAssembly</code> subtable, ensure
                   that <code>S</code> is at least
-                  the <a>stretch size of the glyph assembly</a>
+                  the <a>glyph assembly stretch size</a>
                   <code>GlyphAssembly</code> for
                   the target size <code>T</code>.
                 </li>
@@ -3439,7 +3467,7 @@
                   If there is valid <code>GlyphAssembly</code> subtable,
                   then ensure
                   that <code>S</code> is at least the
-                  <a>orthogonal size of the glyph assembly</a>.
+                  <a>glyph assembly width</a>.
                 </li>
               </ol>
             </li>
@@ -3464,7 +3492,8 @@
           </p>
           <ol>
             <li>
-              Set <code>B</code> to glyph's advanced width and height.
+              Set <code>B</code> to glyph's advanced width, ascent and
+              descent.
               If the glyph's advance width is at least <code>T</code>
               then return <code>B</code>.
             </li>
@@ -3479,7 +3508,8 @@
                   <ol>
                     <li>
                       Set <code>B</code>
-                      to the advanced width and height of the glyph of id
+                      to the advanced width, ascent and
+                      descent of the glyph of id
                       <code>MathGlyphVariantRecord.variantGlyph</code>.
                     </li>
                     <li>
@@ -3492,8 +3522,9 @@
                 <li>
                   If there is valid <code>GlyphAssembly</code> subtable
                   then set <code>B</code> to the
-                  <a>stretch size of the glyph assembly</a>
-                  and the <a>orthogonal size of the glyph assembly</a>
+                  <a>glyph assembly width</a>,
+                  <a>glyph assembly ascent</a>
+                  and <a>glyph assembly descent</a>
                   for the target size <code>T</code>.
                 </li>
               </ol>
@@ -3508,7 +3539,8 @@
           </p>
           <ol>
             <li>
-              Set <code>B</code> to glyph's advanced width and height.
+              Set <code>B</code> to glyph's advanced width, ascent and
+              descent.
               If the glyph's height is at least <code>T</code>
               then return <code>B</code>.
             </li>
@@ -3523,7 +3555,8 @@
                   <ol>
                     <li>
                       Set <code>B</code>
-                      to the advanced width and height of the glyph of id
+                      to the advanced width, ascent and descent
+                      of the glyph of id
                       <code>MathGlyphVariantRecord.variantGlyph</code>.
                     </li>
                     <li>
@@ -3536,8 +3569,9 @@
                 <li>
                   If there is valid <code>GlyphAssembly</code> subtable
                   then set <code>B</code> to the
-                  <a>orthogonal size of the glyph assembly</a>
-                  and <a>stretch size of the glyph assembly</a>
+                  <a>glyph assembly width</a>,
+                  <a>glyph assembly ascent</a> and
+                  <a>glyph assembly descent</a>
                   for the target size <code>T</code>.
                 </li>
               </ol>
@@ -3547,16 +3581,17 @@
         </section>
         <section>
           <h4>Shaping stretchy glyphs</h4>
+          <div class="issue">Apply a rotation matrix
+            in vertical writing mode?</div>
           <p>The algorithm to
             <dfn>shape a stretchy glyph in inline direction</dfn>
-            for a given target size <code>T</code> at a current position
+            for a given target size <code>T</code> at a position
             <code>P</code> is the following:
           </p>
           <ol>
             <li>
               If the glyph's advance width is at least <code>T</code>
-              then shape the glyph so that
-              its inline-start, block-start corner is at position
+              then shape the glyph so that at position
               <code>P</code> and exit.
             </li>
             <li>
@@ -3569,10 +3604,8 @@
                   <code>MathGlyphConstruction.mathGlyphVariantRecord</code>,
                   if
                   <code>MathGlyphVariantRecord.advanceMeasurement</code>
-                  is at least <code>T</code> then shape the glyph so
-                  that
-                  its inline-start, block-start corner is at position
-                  <code>P</code> and exit.
+                  is at least <code>T</code> then shape the glyph
+                  at position <code>P</code> and exit.
                 </li>
                 <li>
                   If there is valid <code>GlyphAssembly</code> subtable
@@ -3586,14 +3619,13 @@
           </ol>
           <p>The algorithm to
             <dfn>shape a stretchy glyph in block direction</dfn>
-            for a given target size <code>T</code> at a current position
+            for a given target size <code>T</code> at a position
             <code>P</code> is the following:
           </p>
           <ol>
             <li>
               If the glyph's height is at least <code>T</code>
-              then shape the glyph so that
-              its inline-start, block-start corner is at position
+              then shape the glyph at position
               <code>P</code> and exit.
             </li>
             <li>
@@ -3606,9 +3638,7 @@
                   <code>MathGlyphConstruction.mathGlyphVariantRecord</code>,
                   if
                   <code>MathGlyphVariantRecord.advanceMeasurement</code>
-                  is at least <code>T</code> then shape the glyph so
-                  that
-                  its inline-start, block-start corner is at position
+                  is at least <code>T</code> then shape the glyph at position
                   <code>P</code> and exit.
                 </li>
                 <li>
