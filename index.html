@@ -1585,16 +1585,36 @@
               <a>RadicalExtraAscender</a>.
             </p>
             <p>
-              The surd is drawn by trying to vertically stretch the character
-              U+221A SQUARE ROOT
-              to at least the sum of the ink height of the base, the radical gap and
-              the radical rule thickness.
-              If the CSS property
-              <a data-cite="CSS-WRITING-MODES-3#direction"><code>direction</code></a>
-              is <code>rtl</code>,
-              then the surd is actually drawn from the glyph obtained by mirroring
-              U+221A SQUARE ROOT via the <code>rtlm</code> OpenType feature.
+              The streching of the surd is handled as follows:
             </p>
+            <ul>
+              <li>
+                T is the sum of the ink height of the base, the radical gap
+                and the radical rule thickness.
+              </li>
+              <li>
+                G is the glyph obtained for the character U+221A SQUARE ROOT,
+                applying the <code>rtlm</code> OpenType feature
+                if the CSS property
+                <a data-cite="CSS-WRITING-MODES-3#direction"><code>direction</code></a>
+                is <code>rtl</code> [[OPEN-FONT-FORMAT]].
+              </li>
+              <li>
+                The preferred inline-size of the surd is the
+                <a>preferred inline-size of a stretchy glyph in block direction</a>
+                for glyph G.
+              </li>
+              <li>
+                The box of the surd is the
+                <a>box metrics of a stretchy glyph</a> in block direction
+                for glyph G and target size T.
+              </li>
+              <li>
+                The shaping of the surd is performed by the algorithm to
+                <a>shape a stretchy glyph</a> in block direction for glyph
+                G and target size T.
+              </li>
+            </ul>
           </section>
           <section>
             <h5>Square root</h5>
