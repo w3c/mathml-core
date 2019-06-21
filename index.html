@@ -1446,7 +1446,8 @@
           <section>
             <h5>Fraction with nonzero line thickeness</h5>
             <p>
-              If the actual line thickness is nonzero, the <code>&lt;mfrac&gt;</code>
+              If the actual line thickness is nonzero, the
+              <code>&lt;mfrac&gt;</code>
               element is laid out as shown on <a href="#figure-box-mfrac"></a>.
               The fraction bar must only be painted if the
               <a data-cite="CSS2#visibility"><code>visibility</code></a> of
@@ -1454,27 +1455,63 @@
               In that case, the fraction bar must be painted with the
               <a data-cite="CSS-COLOR-3#foreground"><code>color</code></a>
               of the <code>&lt;mfrac&gt;</code> element.
-              The middle of the fraction bar is shifted by
-              <a>AxisHeight</a> above the baseline.
             </p>
             <p>
-              The width is given by the maximum width of the
-              numerator and denominator. The numerator and denominator are
-              horizontally centered. A fraction bar with the actual thickness is drawn
-              centered on the
-              axis height. The numerator and denominator are shifted
-              up and down using the values <a>FractionNumeratorShiftUp</a>,
-              <a>FractionDenominatorShiftDown</a> in inline style and
-              <a>FractionNumeratorDisplayStyleShiftUp</a>,
-              <a>FractionDenominatorDisplayStyleShiftDown</a>
-              in display style.
-              If necessary, these shift values are increased to ensure that the gaps between
-              the numerator/denominator and fraction bar satisfy the minimal values provided
-              by <a>FractionDenominatorGapMin</a> and
-              <a>FractionNumeratorGapMin</a> in inline style and
-              <a>FractionDenomDisplayStyleGapMin</a> and
+              The min-content (respectively max-content) inline size are
+              the maximum between the min-content
+              (respectively max-content) inline size of the numerator
+              and the min-content
+              (respectively max-content) of the denominator.
+            </p>
+            <p>
+              The inline size is the maximum between the inline size of the
+              numerator and the inline size of the denominator.
+              The line-left coordinate of the fraction bar is 0.
+              The numerator (respectively denominator) is centered along
+              the inline axis i.e. its line-left coordinate is
+              half the difference between the inline size and the
+              inline size of the numerator
+              (respectively denominator).
+            </p>
+            <p>
+              The inline size of the fraction bar is the inline size.
+              Its block size is the line thickness.
+              Its block-axis center is placed on the math axis
+              i.e. <a>AxisHeight</a> line-over the baseline.
+            </p>
+            <p>
+              The baseline of the numerator (respectively denominator) is
+              initially placed line-over (respectively line-under) the math-axis
+              by block-axis shifts <a>FractionNumeratorShiftUp</a>
+              (respectively <a>FractionDenominatorShiftDown</a>)
+              if the <a>math-style</a> is <code>inline</code> and
+              <a>FractionNumeratorDisplayStyleShiftUp</a>
+              (respectively <a>FractionDenominatorDisplayStyleShiftDown</a>)
+              if the <a>math-style</a> is <code>display</code>.
+            </p>
+            <p>
+              If necessary, these block-axis shifts are increased to ensure that
+              the absolute distance between the
+              line-under (respectively line-over) ink edge
+              of the numerator (respectively denominator) and the
+              line-over (respectively line-over) of the fraction bar is
+              at least
+              <a>FractionNumeratorGapMin</a>
+              (respectively <a>FractionDenominatorGapMin</a>)
+              if the <a>math-style</a> is <code>inline</code>
+              and
               <a>FractionNumDisplayStyleGapMin</a>
-              in display style.
+              (respectively <a>FractionDenomDisplayStyleGapMin</a>)
+              if the <a>math-style</a> is <code>display</code>.
+            </p>
+            <p>
+              The (ink) line-ascent is the sum of the numerator block-axis
+              shift, the numerator (ink) line-ascent and the <a>AxisHeight</a>.
+              The (ink) line-descent is sum of the denominator block-axis shift
+              and denominator (ink) line-descent, minus the the
+              <a>AxisHeight</a>.
+              The (ink) block-size is the sum of the (ink) line-ascent
+              and (ink) line-descent.
             </p>
             <figure id="figure-box-mfrac">
               <img src="figures/mfracbox.svg"/>
@@ -1487,18 +1524,44 @@
               If the actual line thickness is zero,
               the <code>&lt;mfrac&gt;</code> element is instead laid out as
               shown on <a href="#figure-box-mfrac-without-bar"></a>.
-              The gap between the top and bottom boxes
-              is equally split around the math axis, which is
-              <a>AxisHeight</a> above the baseline.
-              The relevant shift values are now
-              <a>StackTopShiftUp</a>,
-              <a>StackBottomShiftDown</a> in inline style and
-              <a>StackTopDisplayStyleShiftUp</a>,
-              <a>StackBottomDisplayStyleShiftDown</a> in display style.
-              If necessary, the two shift values are increased by a same value to ensure
-              the gap between the top and bottom boxes satisfy the values provided by
-              by <a>StackGapMin</a> in inline style and
-              <a>StackDisplayStyleGapMin</a> in display style.
+            </p>
+            <p>
+              The min-content inline size, max-content inline size
+              inline size are calculated the same
+              as in <a href="#fraction-with-nonzero-line-thickeness"></a>.
+              The line-left coordinates of the numerator and denominator too.
+            </p>
+            <p>
+              The math axis is <a>AxisHeight</a> line-over the baseline.
+              The baseline of the numerator (respectively denominator) is
+              initially placed line-over (respectively line-under)
+              the block-axis center of the math axis
+              by block-axis shifts <a>StackTopShiftUp</a>
+              (respectively <a>StackBottomShiftDown</a>)
+              if the <a>math-style</a> is <code>inline</code> and
+              <a>StackTopDisplayStyleShiftUp</a>
+              (respectively <a>StackBottomDisplayStyleShiftDown</a>)
+              if the <a>math-style</a> is <code>display</code>.
+            </p>
+            <p>
+              The stack gap is the absolute distance between the
+              line-under ink edge of the numerator
+              and the line-over ink edge of the denominator.
+              The minimal stack gap is
+              <a>StackGapMin</a>
+              if the <a>math-style</a> is <code>inline</code>
+              and
+              <a>StackDisplayStyleGapMin</a>
+              if the <a>math-style</a> is <code>display</code>.
+              If the stack gap is less than the minimal stack gap then
+              the block-axis shifts of the numerator and denominator are
+              increased by half the difference between the minimal stack gap
+              and stack gap.
+            </p>
+            <p>
+              Finally, the (ink) line-ascent, (ink) line-ascent and ink
+              (block-size) are calculated the same
+              as in <a href="#fraction-with-nonzero-line-thickeness"></a>.
             </p>
             <figure id="figure-box-mfrac-without-bar">
               <img src="figures/mfracnobarbox.svg"/>
