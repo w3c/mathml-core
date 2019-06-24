@@ -1445,7 +1445,6 @@
           </p>
           <section>
             <h5>Fraction with nonzero line thickness</h5>
-            <div class="issue">Better handle the case when ink metrics != logical metrics?</div>
             <p>
               If the actual line thickness is nonzero, the
               <code>&lt;mfrac&gt;</code>
@@ -1506,11 +1505,41 @@
               if the <a>math-style</a> is <code>display</code>.
             </p>
             <p>
-              The (ink) line-ascent is the sum of the numerator block-axis
-              shift, the numerator (ink) line-ascent and the <a>AxisHeight</a>.
-              The (ink) line-descent is sum of the denominator block-axis shift
-              and denominator (ink) line-descent, minus the the
-              <a>AxisHeight</a>.
+              The (ink) line-ascent is the maximum between:
+            </p>
+            <ul>
+              <li>
+                <a>AxisHeight</a> plus the block-axis shift of the
+                numerator plus the line-ascent of the numerator.
+              </li>
+              <li>
+                <a>AxisHeight</a>,
+                minus the block-axis shift of the denominator plus the
+                (ink) line-ascent of the denominator.
+              </li>
+              <li>
+                <a>AxisHeight</a> plus half the line thickness.
+              </li>
+            </ul>
+            <p>
+              The (ink) line-descent is the maximum between:
+            </p>
+            <ul>
+              <li>
+                −<a>AxisHeight</a>, minus the block-axis shift of the
+                numerator plus the line-descent of the numerator.
+              </li>
+              <li>
+                −<a>AxisHeight</a>, plus
+                the block-axis shift of the denominator plus
+                the (ink) line-descent of the denominator.
+              </li>
+              <li>
+                −<a>AxisHeight</a> plus half the line thickness.
+              </li>
+              <li>0</li>
+            </ul>
+            <p>
               The (ink) block-size is the sum of the (ink) line-ascent
               and (ink) line-descent.
             </p>
@@ -1521,7 +1550,6 @@
           </section>
           <section>
             <h5>Fraction with zero line thickness</h5>
-            <div class="issue">Better handle the case when ink metrics != logical metrics?</div>
             <p>
               If the actual line thickness is zero,
               the <code>&lt;mfrac&gt;</code> element is instead laid out as
@@ -1563,7 +1591,8 @@
             <p>
               Finally, the (ink) line-ascent, (ink) line-ascent and ink
               (block-size) are calculated the same
-              as in <a href="#fraction-with-nonzero-line-thickness"></a>.
+              as in <a href="#fraction-with-nonzero-line-thickness"></a>,
+              ignoring the contribution of the fraction bar.
             </p>
             <figure id="figure-box-mfrac-without-bar">
               <img src="figures/mfracnobarbox.svg"/>
@@ -1572,6 +1601,11 @@
           </section>
           <section>
             <h5>Spacing around the fraction</h5>
+            <div class="issue">
+              The embellished op spacing should probably added during the mrow
+              layout. The extra 1px spacing could be in the CSS UA sheet. Hence
+              this section can be removed.
+            </div>
             <p>
               In order to prevent the fraction bar to be confused with other items around
               the fraction (e.g. minus sign or the bar of another fraction), a 1 pixel space
