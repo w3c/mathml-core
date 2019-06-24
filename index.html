@@ -1445,6 +1445,7 @@
           </p>
           <section>
             <h5>Fraction with nonzero line thickness</h5>
+            <div class="issue">Better handle the case when ink metrics != logical metrics?</div>
             <p>
               If the actual line thickness is nonzero, the
               <code>&lt;mfrac&gt;</code>
@@ -1520,6 +1521,7 @@
           </section>
           <section>
             <h5>Fraction with zero line thickness</h5>
+            <div class="issue">Better handle the case when ink metrics != logical metrics?</div>
             <p>
               If the actual line thickness is zero,
               the <code>&lt;mfrac&gt;</code> element is instead laid out as
@@ -1637,58 +1639,94 @@
               of that element.
             </p>
             <p>
-              The line thickness of the overbar is given by
-              <a>RadicalRuleThickness</a>.
-              The gap between the overbar and base is given by
-              <a>RadicalVerticalGap</a>
-              in inline style and
-              <a>RadicalDisplayStyleVerticalGap</a>
-              in display style.
-              The ascent above the overbase is given by
-              <a>RadicalExtraAscender</a>.
+              The <dfn>radical glyph</dfn> is the glyph obtained for the
+              character U+221A SQUARE ROOT,
+              applying the <code>rtlm</code> OpenType feature
+              if the CSS property
+              <a data-cite="CSS-WRITING-MODES-3#direction"><code>direction</code></a>
+              is <code>rtl</code> [[OPEN-FONT-FORMAT]].
             </p>
             <p>
-              The streching of the surd is handled as follows:
+              The <dfn>radical gap</dfn> is given by
+              <a>RadicalVerticalGap</a>
+              if the <a>math-style</a> is <code>inline</code> and
+              <a>RadicalDisplayStyleVerticalGap</a>
+              if the <a>math-style</a> is <code>display</code>.
             </p>
-            <ul>
-              <li>
-                T is the sum of the ink height of the base, the radical gap
-                and the radical rule thickness.
-              </li>
-              <li>
-                G is the glyph obtained for the character U+221A SQUARE ROOT,
-                applying the <code>rtlm</code> OpenType feature
-                if the CSS property
-                <a data-cite="CSS-WRITING-MODES-3#direction"><code>direction</code></a>
-                is <code>rtl</code> [[OPEN-FONT-FORMAT]].
-              </li>
-              <li>
-                The preferred inline-size of the surd is the
-                <a>preferred inline-size of a stretchy glyph in block direction</a>
-                for glyph G.
-              </li>
-              <li>
-                The box of the surd is the
-                <a>box metrics of a stretchy glyph</a> in block direction
-                for glyph G and target size T.
-              </li>
-              <li>
-                The shaping of the surd is performed by the algorithm to
-                <a>shape a stretchy glyph</a> in block direction for glyph
-                G and target size T.
-              </li>
-            </ul>
+            <p>
+              The radical target size for the stretchy radical glyph is
+              the sum of <a>RadicalRuleThickness</a>,
+              <a>RadicalExtraAscender</a> and the radical gap.
+            </p>
+            <p>
+              The <dfn>box metrics of the radical glyph</dfn> is the
+              <a>box metrics of a stretchy glyph</a> in block direction
+              for the radical radical glyph and target size.
+            </p>
+            <p>
+              The shaping of the surd is performed by the algorithm to
+              <a>shape a stretchy glyph</a> in block direction
+              for the radical radical glyph and target size.
+            </p>
           </section>
           <section>
             <h5>Square root</h5>
             <p>
               The <code>&lt;msqrt&gt;</code> element is laid out as shown on
               <a href="#figure-box-msqrt"></a>.
-              The width is given by the sum of the width of the surd and of the
-              base.
-              The baseline of the square root matches the baseline of the base.
-              The ink box is determined from the ink boxes of the surd and base
-              while the logical box takes into account the extra ascender.
+            </p>
+            <p>
+              The min-content (respectively max-content) inline size is
+              the sum of the
+              <a>preferred inline-size of a stretchy glyph in block direction</a>
+              for the <a>radical glyph</a>
+              and of the min-content (respectively max-content) inline size
+              of the base.
+            </p>
+            <p>
+              The inline size is the sum of the advance width
+              of the <a>box metrics of the radical glyph</a> and
+              of the inline size of the base.
+            </p>
+            <p>
+              The ink line-ascent is the sum of <a>RadicalRuleThickness</a>,
+              the radical gap and the ink line-ascent of the base.
+              The line-ascent is the maximum between:
+            </p>
+            <ul>
+              <li>The line-ascent of the base.</li>
+              <li>The sum of ink line-ascent and <a>RadicalExtraAscender</a></li>
+            </ul>
+            <p>
+              The (ink) line-descent is the maximum between:
+            </p>
+            <ul>
+              <li>The (ink) line-descent of the base.</li>
+              <li>The sum of the line-ascent and line-descent for the
+                <a>box metrics of the radical glyph</a>, minus the ink line-ascent.
+              </li>
+            </ul>
+            <p>
+              The (ink) block size is the sum of the (ink) line-ascent
+              and (ink) line-descent.
+            </p>
+            <p>
+              The base is at line-left coordinate the width of the
+              <a>box metrics of the radical glyph</a> and
+              its baseline is aligned with the baseline.
+            </p>
+            <p>
+              The inline size of the overbar is the inline size of the
+              base. Its block size is the rule thickness
+              <a>RadicalRuleThickness</a>. It is positioned
+              line-above the baseline by the ink line-ascent.
+            </p>
+            <p>
+              Finally, the painting of the radical glyph is performed at
+              line-left 0 and
+              at distance line-below the line-over edge of the overbar,
+              given by the line-ascent of the
+              <a>box metrics of the radical glyph</a>.
             </p>
             <figure id="figure-box-msqrt">
               <img src="figures/msqrtbox.svg"/>
@@ -1700,33 +1738,51 @@
             <p>
               The <code>&lt;mroot&gt;</code> element is laid out as shown on
               <a href="#figure-box-mroot"></a>.
-              The root index is first ignored and the base and surd are laid out as
+              The root index is first ignored and the base and
+              radical glyph
+              are laid out as
               shown on figure <a href="#figure-box-msqrt"></a> to obtain a box B.
-              The horizontal metrics of the <code>&lt;mroot&gt;</code> element are
-              obtained by putting
-              <a>RadicalKernBeforeDegree</a>
-              before the root index, then placing the root index, then a kerning
-              of <a>RadicalKernAfterDegree</a>
-              after the root index and finally placing B. In general
-              the kerning before the root index is positive while the kerning after
-              it is negative,
-              which means that the root element will have some space before it and
-              that the root index will overlap the surd.
-              For the vertical metrics of the <code>&lt;mroot&gt;</code> element, the
-              baseline of B is first taken as the baseline.
-              The ink height of B is graduated with a linear
-              scale going from the bottom at coordinate 0 to the top at coordinate
-              1. Then the ink bottom of the root index will
-              be vertically positioned at coordinate
-              <a>RadicalDegreeBottomRaisePercent</a>.
-              Finally, the box of the root index and B is taken into account to
-              deduce the metrics for the whole box of the <code>&lt;mroot&gt;</code>
-              element.
+            </p>
+            <div class="issue">Handle large negative RadicalKernAfterDegree?</div>
+            <p>
+              The min-content (respectively max-content) inline size is the sum
+              of <a>RadicalKernBeforeDegree</a>,
+              the index min-content (respectively max-content) inline size,
+              <a>RadicalKernAfterDegree</a>
+              and of the min-content (respectively max-content) of B.
+            </p>
+            <p>
+              The line-left coordinate of the index is
+              <a>RadicalKernBeforeDegree</a>.
+              The line-left coordinate of B is obtained by adding the
+              inline size of the index and <a>RadicalKernAfterDegree</a>.
+              The inline size is the sum of
+              <a>RadicalKernBeforeDegree</a>,
+              the inline size of the index, <a>RadicalKernAfterDegree</a>
+              and of the inline size of B.
+            </p>
+            <div class="issue">Provide detailed computations for the block metrics?</div>
+            <p>
+              The baseline of the <code>&lt;mroot&gt;</code> is the baseline
+              of B.
+              The ink line-under ink edge of the index is positioned
+              at a distance line-above the line-under edge of B,
+              given by <a>RadicalDegreeBottomRaisePercent</a> times
+              the ink block size of B.
+              Finally, the boxes of the root index and of B are taken into
+              account to deduce the block metrics for the whole box of the
+              <code>&lt;mroot&gt;</code> element.
             </p>
             <figure id="figure-box-mroot">
               <img src="figures/mrootbox.svg"/>
               <figcaption>Box model for the <code>&lt;mroot&gt;</code> element</figcaption>
             </figure>
+            <div class="note">
+              In general, the kerning before the root index is positive while
+              the kerning after it is negative, which means that the root
+              element will have some line-left space and that the root index
+              will overlap the surd.
+            </div>
           </section>
         </section>
         <section>
@@ -2851,7 +2907,7 @@
             The size of the logical box of the <code>&lt;mtable&gt;</code>
             are provided by CSS layout. The math axis is aligned with the center of
             the table: Ascent is height plus
-            <a>AxisHeight</a> and descent the height minus
+            <a>AxisHeight</a> and line-descent the height minus
             <a>AxisHeight</a>. The ink box is the same as the
             logical box.
           </p>
