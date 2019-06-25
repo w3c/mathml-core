@@ -1795,18 +1795,29 @@
               the inline size of the index, <a>RadicalKernAfterDegree</a>
               and of the inline size of B.
             </p>
-            <div class="issue">Provide detailed computations for the block metrics?</div>
             <p>
               The baseline of the <code>&lt;mroot&gt;</code> is the baseline
               of B.
-              The ink line-under ink edge of the index is positioned
-              at a distance line-above the line-under edge of B,
+              The line-under ink edge of the index is positioned
+              at a distance line-above the line-under ink edge of B,
               given by <a>RadicalDegreeBottomRaisePercent</a> times
-              the ink block size of B.
-              Finally, the boxes of the root index and of B are taken into
-              account to deduce the block metrics for the whole box of the
-              <code>&lt;mroot&gt;</code> element.
-            </p>
+              the ink block size of B. Hence the (ink) line-ascent
+              is the maximum between:</p>
+            <ul>
+              <li>−the ink line-descent of B + <a>RadicalKernBeforeDegree</a> ×
+                the ink block size of B + the (ink) line-ascent of the
+                index</li>
+              <li>The (ink) line-ascent of B</li>
+            </ul>
+            <p>while the (ink) line-descent is the maximum between:</p>
+            <ul>
+              <li>the ink line-descent of B − <a>RadicalKernBeforeDegree</a> ×
+                the ink block size of B + the (ink) line-ascent of the
+                index</li>
+              <li>The (ink) line-descent of B</li>
+            </ul>
+            <p>Finally, the (ink) block size is the sum of the (ink)
+              line-ascent and (ink) line-descent.</p>
             <figure id="figure-box-mroot">
               <img src="figures/mrootbox.svg"/>
               <figcaption>Box model for the <code>&lt;mroot&gt;</code> element</figcaption>
