@@ -1249,19 +1249,29 @@
             <li><a href="#attribute-mspace-height" class="internalDFN" data-link-type="dfn"><code>height</code></a></li>
             <li><a href="#attribute-mspace-depth" class="internalDFN" data-link-type="dfn"><code>depth</code></a></li>
           </ul>
+          <div class="issue" data-number="40">Allow negative width, lspace to
+            produce negative spacing?</div>
           <p>The
             <dfn id="attribute-mspace-width"><code>mspace@width</code></dfn>,
             <dfn id="attribute-mspace-height"><code>mspace@height</code></dfn>,
             <dfn id="attribute-mspace-depth"><code>mspace@depth</code></dfn>, if present, must
             have a value that is a valid <a>length-percentage</a>.
-            These indicate the requested width, ascent and descent of the blank space.
-            An unspecified attribute, a percentage  value, or an invalid value is
-            interpreted as <code>0</code>.
+            An unspecified attribute, a percentage  value, or an invalid value
+            is interpreted as <code>0</code>.
+            If one of the requested values calculated is negative then it is
+            treated as <code>0</code>.
           </p>
           <p>
             The <code>&lt;mspace&gt;</code> element is laid out as shown on
-            <a href="#figure-box-mspace"></a>. The logical box is determined by the
-            requested width, ascent and descent. The ink box matches the logical box.
+            <a href="#figure-box-mspace"></a>.
+            The min-content and max-content inline sizes are equal to
+            the requested inline size.
+            The inline size, line-ascent and line-descent are respectively
+            the requested inline size, line-ascent and line-descent.
+            The ink line-ascent (respecitvely ink line-descent) is the same
+            as the line-ascent (respecitvely line-descent).
+            Finally, the (ink) block size is the sum of the (ink) line-ascent
+            and (ink) line-descent.
           </p>
           <figure id="figure-box-mspace">
             <img src="figures/mspacebox.svg"/>
@@ -1907,22 +1917,24 @@
             <code>( "+" | "-" )? (<a><code>unsigned-length-percentage</code></a> | (<a><code>unsigned-number</code></a> "%"? ("height" | "depth"))</code>.
           </p>
           <section>
-            <h5>Content box and requested parameters</h5>
+            <h5>Inner box and requested parameters</h5>
             <p>
               Children of the <code>&lt;mpadded&gt;</code> element are laid out
               using the algorithm of the <a><code>&lt;mrow&gt;</code></a> element
               to produce the
-              <em>mpadded content box</em>
-              with logical metrics called content width,
-              content height and content depth. The requested <code>&lt;mpadded&gt;</code>
+              <em>mpadded inner box</em> with parameters called
+              inner inline size, inner line-ascent and inner line-descent.
+              The requested <code>&lt;mpadded&gt;</code>
               parameters are determined as follows:
             </p>
             <ul>
               <li>If the <code>width</code> (respectively <code>height</code>,
                 <code>depth</code>, <code>lspace</code>, <code>voffset</code>)
                 attributes are absent or invalid the requested width
-                (respectively depth, height) is the content width
-                (respectively content height, content depth, <code>0</code>,
+                (respectively height, depth, lspace, voffset)
+                is the inner inline size
+                (respectively inner line-ascent, inner line-descent,
+                <code>0</code>,
                 <code>0</code>).
               </li>
               <li>If the <code>width</code> (respectively <code>height</code>,
@@ -1933,13 +1945,14 @@
                 (respectively height, depth, lspace, voffset)
                 is the resolved value
                 with percentage interpreted relative to
-                the content width (respectively height, depth, <code>0</code>,
+                the inner inline size (respectively
+                inner line-ascent, inner line-descent, <code>0</code>,
                 <code>0</code>).
               </li>
               <li>If the <code>width</code> (respectively <code>lspace</code>) attribute
                 matches <code>"<a><code>unsigned-number</code></a>width"</code>
                 then the requested width (respectively lspace) is the number multipled by
-                the content width. If instead it matches
+                the inner inline size. If instead it matches
                 <code>"<a><code>unsigned-number</code></a>%width"</code>
                 then it is the same value but divided by 100.
               </li>
@@ -1947,7 +1960,7 @@
                 <code>voffset</code>) attribute
                 matches <code>"<a><code>unsigned-number</code></a>height"</code>
                 then the requested height (respectively depth, voffset) is the number
-                multipled by the content height. If instead it matches
+                multipled by the inner line-ascent. If instead it matches
                 <code>"<a><code>unsigned-number</code></a>%heigth"</code>
                 then it is the same value but divided by 100.
               </li>
@@ -1955,7 +1968,7 @@
                 <code>voffset</code>) attribute
                 matches <code>"<a><code>unsigned-number</code></a>depth"</code>
                 then the requested height (respectively depth, voffset) is the number
-                multipled by the content depth. If instead it matches
+                multipled by the inner line-descent. If instead it matches
                 <code>"<a><code>unsigned-number</code></a>%depth"</code>
                 then it is the same value but divided by 100.
               </li>
@@ -1967,7 +1980,8 @@
                 (respectively height, depth, lspace, voffset)
                 obtained for the same attribute value with that character removed.
                 Then the requested width (respectively height, depth, lspace, voffset)
-                is the content width (respectively height, depth, <code>0</code>,
+                is the inner inline size (respectively inner line-ascent,
+                inner line-descent, <code>0</code>,
                 <code>0</code>) + εV.
               </li>
             </ul>
@@ -1983,12 +1997,30 @@
             <p>
               The <code>&lt;mpadded&gt;</code> element is laid out as shown on
               <a href="#figure-box-mpadded"></a>.
-              The mpadded content box is positioned at the origin of the
-              <code>&lt;mpadded&gt;</code> element, shift horizontally by the requested
-              lspace and vertically by the requested voffset.
-              The logical metrics of the <code>&lt;mpadded&gt;</code> element are given
-              by the requested height, depth and width. The ink metrics of the
-              <code>&lt;mpadded&gt;</code> element match their logical metrics.
+              The mpadded inner box is positioned at the origin of the
+              <code>&lt;mpadded&gt;</code> element, shift by the requested
+              lspace in the line-right direction and by the requested voffset
+              in the line-over direction.
+            </p>
+            <p>
+              The min-content (respectively max-content) inline size
+              is the requested width calculated in
+              <a href="#inner-box-and-requested-parameters"></a>
+              but using the min-content (respectively max-content)
+              inline size of the
+              mpadded inner box instead of the "inner inline size".
+            </p>
+            <div class="note">
+              The calculatation of min-content and max-content inline sizes
+              are well-defined because the requested width
+              does not depend on any block metric.
+            </div>
+            <p>
+              The inline size is the requested width.
+              The (ink) line-ascent is the requested height.
+              The (ink) line-descent is the requested depth.
+              The (ink) block size is the sum of the (ink) line-ascent and
+              (ink) line-descent.
             </p>
             <figure id="figure-box-mpadded">
               <img src="figures/mpaddedbox.svg"/>
