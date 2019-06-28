@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8">
     <title>MathML Core</title>
@@ -2054,6 +2054,7 @@
         </section>
         <section>
           <h4>Enclose Expression Inside Notation <code>&lt;menclose&gt;</code></h4>
+          <div class="issue" data-number="105">Can this element be simplified / removed?</div>
           <p>
             The
             <dfn><code>&lt;menclose&gt;</code></dfn>
@@ -2095,16 +2096,18 @@
             <a data-cite="CSS-COLOR-3#foreground"><code>color</code></a>
             of the <code>&lt;menclose&gt;</code> element.
           </p>
+          <div class="issue">Explain how to take the union of all notations?
+          </div>
           <p>
             Children of the <code>&lt;menclose&gt;</code> element are laid out
             using the algorithm of the <a><code>&lt;mrow&gt;</code></a> element
-            to produce a box B.
-            Following [[OPEN-FONT-FORMAT]] [[?TEXBOOK]], the notation ξ<sub>8</sub>
-            is used to denote the default rule thickness and is equal to
-            <a>OverbarRuleThickness</a>.
-            Gaps are set to 3ξ<sub>8</sub>.
-            Each notation is handled individually and the union of all output is taken
-            in order to determine the metrics of the <code>&lt;menclose&gt;</code>.
+            to produce a box B. Using the notation of [[?TEXBOOK]],
+            ξ<sub>8</sub> is used to denote the default rule thickness and is
+            set to <a>OverbarRuleThickness</a>.
+            Each notation is handled individually and the union of all output
+            is taken
+            in order to determine the metrics of the
+            <code>&lt;menclose&gt;</code> element.
           </p>
           <ol>
             <li>
@@ -2228,21 +2231,35 @@
             </li>
             <li>
               <p>
-                The <code>roundedbox</code> notation is drawn as follows. An expanded
-                is calculated by extending the ink box by 7ξ<sub>8</sub> / 2 on each
-                side. Using terminology from [[SVG]],
-                a rounded rectangle is drawn on this expanded box
-                with parameters <code>rx</code>, <code>ry</code> and
-                <code>stroke-width</code> set to 3ξ<sub>8</sub>.
-                The logical box is obtained by adding a space of ξ<sub>8</sub> on
-                each side of the ink box.
-                See <a href="#figure-box-menclose-roundedbox"></a>.
+                The <code>roundedbox</code> notation is drawn as
+                shown on <a href="#figure-box-menclose-roundedbox"></a>.
               </p>
               <figure id="figure-box-menclose-roundedbox">
                 <img src="figures/roundedbox.svg"/>
                 <figcaption>Box model for the <code>roundedbox</code>
                   notation of the <code>&lt;menclose&gt;</code> element</figcaption>
               </figure>
+              <p>
+                The min-content inline-size,
+                max-content inline-size and inline-size are the
+                ones of B plus 10ξ<sub>8</sub>.
+              </p>
+              <p>
+                The ink ascent (respectively descent) is the ink
+                ascent (respectively descent) of B + 4ξ<sub>8</sub>.
+                The ascent (respectively descent) is
+                the maximum between the ascent (respectively descent) of B
+                and the ink ascent (respectively descent) plus ξ<sub>8</sub>.
+              </p>
+              <p>
+                B is placed so that its baseline is the baseline and
+                its line-left coordinate is 5ξ<sub>8</sub>.
+                If B' is the ink box B expanded on each side by
+                7ξ<sub>8</sub> / 2 then using terminology from [[SVG]],
+                a rounded rectangle is drawn on B'
+                with parameters <code>rx</code>, <code>ry</code> and
+                <code>stroke-width</code> set to 3ξ<sub>8</sub>.
+              </p>
             </li>
             <li>The <code>actuarial</code> notation is treated as equivalent to <code>right top</code>.</li>
             <li>
@@ -2252,10 +2269,11 @@
             </li>
             <li>
               <p>
-                The <code>horizontalstrike</code> notation is drawn with an horizontal bar
-                of thickness ξ<sub>8</sub> and
-                vertically centered inside the <code>&lt;menclose&gt;</code> content.
-                This does not change the box metrics.
+                For the <code>horizontalstrike</code> notation,
+                the metrics are the same as B.
+                A bar of inline-size the inline-size and
+                of block-size ξ<sub>8</sub> is drawn
+                at line-over position minus half ξ<sub>8</sub>.
                 See <a href="#figure-box-horizontal-strike"></a>.
               </p>
               <figure id="figure-box-horizontal-strike">
@@ -2266,22 +2284,46 @@
             </li>
             <li>
               <p>
-                The <code>verticalstrike</code> notation is drawn the same as
-                <code>horizontalstrike</code> but with a vertical bar
-                of thickness ξ<sub>8</sub> and horizontally centered inside the <code>&lt;menclose&gt;</code>
-                content.
+                For the <code>verticalstrike</code> notation,
+                the metrics are the same as B.
+                A bar of inline size the ξ<sub>8</sub> and
+                of block-size the block size is drawn
+                at line-left position
+                half the inline size minus half ξ<sub>8</sub>.
               </p>
             </li>
             <li>
               <p>
-                The <code>updiagonalstrike</code> notation is drawn with a line
-                of thickness ξ<sub>8</sub> going from the bottom left corner of the <code>&lt;menclose&gt;</code>
-                content to its top right corner. Using terminology from [[SVG]], the
-                <code>stroke-linecap</code> of the line is <code>butt</code>.
-                As an approximation, the ink box
-                is set equal to the logical box and obtained by increasing the original box
-                from each side by ξ<sub>8</sub> / 2.
-                See <a href="#figure-box-menclose-up-diagonal-strike"></a>.
+                For the <code>updiagonalstrike</code> notation,
+                a bar is drawn
+                going from the line-left line-under corner to the
+                line-right line-over corner as shown on
+                <a href="#figure-box-menclose-up-diagonal-strike"></a>.
+              </p>
+              <p>
+                The min-content inline size,
+                max-content inline size and inline size
+                are the one of B + ξ<sub>8</sub>.
+              </p>
+              <p>
+                The ink ascent and ascent are the ascent of B + half
+                ξ<sub>8</sub>.
+                The ink descent and descent are the ascent of B + half
+                ξ<sub>8</sub>.
+                The (ink) block size is the sum of the (ink) line-ascent
+                and (ink) line-descent.
+              </p>
+              <p>
+                B is placed so that its baseline is the baseline and
+                its line-left coordinate is half ξ<sub>8</sub>.
+              </p>
+              <p>
+                Using terminology from [[SVG]],
+                the bar is drawn with a line
+                of thickness ξ<sub>8</sub> going from the
+                line-under line-left corner of B
+                to the line-over line-right corner of B with
+                <code>stroke-linecap</code> set to <code>butt</code>.
               </p>
               <figure id="figure-box-menclose-up-diagonal-strike">
                 <img src="figures/updiagstrikebox.svg"/>
@@ -2291,33 +2333,35 @@
             </li>
             <li>
               <p>
-                The <code>downdiagonalstrike</code> notation is drawn as an
-                <code>updiagonalstrike</code>
-                but the line strike goes from the top left corner to the bottom right corner.
-                Using terminology from [[SVG]], the
-                <code>stroke-linecap</code> of the line is <code>butt</code>.
+                For the <code>downdiagonalstrike</code> notation,
+                a bar is drawn
+                going from the line-left line-over corner to the
+                line-right line-under corner. The metrics are the same as
+                for the <code>updiagonalstrike</code> notation.
               </p>
             </li>
             <li>
               <p>
-                The <code>longdiv</code> notation is drawn similarly to the <code>&lt;msqrt&gt;</code> element
-                (<a href="#figure-box-msqrt"></a>).
-                It is independent of CSS property
+                The <code>longdiv</code> notation is drawn similarly to the
+                <code>&lt;msqrt&gt;</code> element
+                (<a href="#figure-box-msqrt"></a>)
+                except that the CSS
                 <a data-cite="CSS-WRITING-MODES-3#direction"><code>direction</code></a>
-                and U+221A SQUARE ROOT is replaced with
+                is ignored and U+221A SQUARE ROOT is replaced with
                 U+0029 RIGHT PARENTHESIS. The rule thickness is ξ<sub>8</sub>,
-                the gap between content and overbar is 3ξ<sub>8</sub> and the extra ascender
-                is ξ<sub>8</sub>.
+                the gap between content and overbar is 3ξ<sub>8</sub> and the
+                extra ascender is ξ<sub>8</sub>.
               </p>
             </li>
             <li>
+              <div class="issue">Give details of metrics calculation</div>
               <p>
                 The <code>circle</code> notation is drawn as follows.
                 Given the ink box of width w and height h, an ellipse is drawn using
                 the axes of symmetry of this ink box, the radii
                 w * √2 / 2, h * √2 / 2 and thickness ξ<sub>8</sub>.
-                The logical box is obtained by adding space ξ<sub>8</sub> around each
-                side of the ellipse's ink box.
+                Space of ξ<sub>8</sub> is added each side of the ellipse's ink
+                box.
               </p>
               <figure id="figure-box-menclose-circle">
                 <img src="figures/circlebox.svg"/>
