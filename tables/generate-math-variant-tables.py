@@ -67,5 +67,5 @@ for mathvariant in mathvariantTransforms:
         md.write('<tr><td>&#x%0X; U+%04X</td><td>&#x%0X; U+%05X</td></tr>\n' %
                  (baseChar, baseChar, transformedChar, transformedChar))
     md.write("</table>");
+    md.close()
     print("done.");
-md.close()

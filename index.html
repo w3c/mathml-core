@@ -3962,29 +3962,39 @@
       <div data-include="tables/combining-operators.html"></div>
     </section>
     <section>
-      <h2>Unicode Constructions</h2>
-      <div class="issue">Complete this table and generate the HTML code
-        from simple data.</div>
+      <h2>Unicode-based Glyph Assemblies</h2>
       <p>
         The following table provide fallback that user agents must use for
         stretching given unicode character when the font does not provide a
         <code>MATH.MathVariants</code> table.
         The algorithms of
         <a href="#size-variants-for-operators-mathvariants"></a>
-        works the same except with some adjustments.
-        First all the glyph IDs and metrics have to be deduced from unicode
-        code points. Next,
-        the <code>MathGlyphConstruction.mathGlyphVariantRecord</code> is
-        always empty and the
-        <code>MathVariants.minConnectorOverlap</code>,
-        <code>GlyphPartRecord.startConnectorLength</code> and
-        <code>GlyphPartRecord.endConnectorLength</code>
-        are treated as 0. Finally, the array of
+        works the same except with some adjustments:
+      </p>
+      <ul>
+        <li>
+          All the glyph IDs and metrics have to be deduced from unicode
+          code points
+        </li>
+        <li>
+          The <code>MathGlyphConstruction.mathGlyphVariantRecord</code> is
+          always empty.
+        </li>
+        <li>
+          The
+          <code>MathVariants.minConnectorOverlap</code>,
+          <code>GlyphPartRecord.startConnectorLength</code> and
+          <code>GlyphPartRecord.endConnectorLength</code>
+          are treated as 0.
+        </li>
+      </ul>
+      <p>
+        The array of
         <code>MathGlyphConstruction.GlyphAssembly.partRecords</code> is built
-        from each row as follows:
+        from each table row as follows:
       </p>
         <ul>
-          <li>A (non-extender) bottom/left character.</li>
+          <li>A (non-extender) bottom/left character</li>
           <li>Followed by an extender character.</li>
           <li>Optionally followed by this:
             <ul>
