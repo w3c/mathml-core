@@ -56,19 +56,16 @@ for entry in root:
 del mathvariantTransforms["isolated"]
 
 # Create a test font for each mathvariant.
-print("Generate mathvariant tables...", end=" ");
-md = open("mathvariants.html", "w")
-md.write("<!-- This file was automatically generated from generate-math-variant-tables.py. Do not edit. -->\n");
 for mathvariant in mathvariantTransforms:
-    md.write("<section>\n")
-    md.write("<h4><code>%s</code> mappings</h4>\n" % mathvariant)
+    print("Generate mathvariant table for %s..." % mathvariant, end=" ");
+    md = open("mathvariants-%s.html" % mathvariant, "w")
+    md.write("<!-- This file was automatically generated from generate-math-variant-tables.py. Do not edit. -->\n");
     md.write("<table>\n");
     md.write("<tr><th>Original</th><th>%s</th></tr>\n" % mathvariant)
     for baseChar in mathvariantTransforms[mathvariant]:
         transformedChar = mathvariantTransforms[mathvariant][baseChar]
         md.write('<tr><td>&#x%0X; U+%04X</td><td>&#x%0X; U+%05X</td></tr>\n' %
                  (baseChar, baseChar, transformedChar, transformedChar))
-    md.write("</table>\n");
-    md.write("</section>\n\n")
+    md.write("</table>");
+    print("done.");
 md.close()
-print("done.");
