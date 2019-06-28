@@ -1476,9 +1476,9 @@
             <p>
               The inline size is the maximum between the inline size of the
               numerator and the inline size of the denominator.
-              The line-left coordinate of the fraction bar is 0.
+              The inline-start coordinate of the fraction bar is 0.
               The numerator (respectively denominator) is centered along
-              the inline axis i.e. its line-left coordinate is
+              the inline axis i.e. its inline-start coordinate is
               half the difference between the inline size and the
               inline size of the numerator
               (respectively denominator).
@@ -1569,7 +1569,7 @@
               The min-content inline size, max-content inline size
               inline size are calculated the same
               as in <a href="#fraction-with-nonzero-line-thickness"></a>.
-              The line-left coordinates of the numerator and denominator too.
+              The inline-start coordinates of the numerator and denominator too.
             </p>
             <p>
               The math axis is <a>AxisHeight</a> line-above the baseline.
@@ -1755,7 +1755,7 @@
               and (ink) line-descent.
             </p>
             <p>
-              The base is at line-left coordinate the width of the
+              The base is at inline-start coordinate the width of the
               <a>box metrics of the radical glyph</a> and
               its baseline is aligned with the baseline.
             </p>
@@ -1767,7 +1767,7 @@
             </p>
             <p>
               Finally, the painting of the radical glyph is performed at
-              line-left 0 and
+              inline-start 0 and
               at distance line-below the line-over edge of the overbar,
               given by the line-ascent of the
               <a>box metrics of the radical glyph</a>.
@@ -1796,9 +1796,9 @@
               and of the min-content (respectively max-content) of B.
             </p>
             <p>
-              The line-left coordinate of the index is
+              The inline-start coordinate of the index is
               <a>RadicalKernBeforeDegree</a>.
-              The line-left coordinate of B is obtained by adding the
+              The inline-start coordinate of B is obtained by adding the
               inline size of the index and <a>RadicalKernAfterDegree</a>.
               The inline size is the sum of
               <a>RadicalKernBeforeDegree</a>,
@@ -1837,7 +1837,7 @@
             <div class="note">
               In general, the kerning before the root index is positive while
               the kerning after it is negative, which means that the root
-              element will have some line-left space and that the root index
+              element will have some inline-start space and that the root index
               will overlap the surd.
             </div>
           </section>
@@ -1999,7 +1999,7 @@
               <a href="#figure-box-mpadded"></a>.
               The mpadded inner box is positioned at the origin of the
               <code>&lt;mpadded&gt;</code> element, shift by the requested
-              lspace in the line-right direction and by the requested voffset
+              lspace in the inline-end direction and by the requested voffset
               in the line-over direction.
             </p>
             <p>
@@ -2098,71 +2098,128 @@
           <p>
             Children of the <code>&lt;menclose&gt;</code> element are laid out
             using the algorithm of the <a><code>&lt;mrow&gt;</code></a> element
-            to produce a content box.
+            to produce a box B.
             Following [[OPEN-FONT-FORMAT]] [[?TEXBOOK]], the notation ξ<sub>8</sub>
             is used to denote the default rule thickness and is equal to
             <a>OverbarRuleThickness</a>.
             Gaps are set to 3ξ<sub>8</sub>.
-            Contrary to what is done in general and unless specified otherwise,
-            the x-axis direction of notations is assumed to be independent of
-            the CSS
-              <a data-cite="CSS-WRITING-MODES-3#direction"><code>direction</code></a>.
             Each notation is handled individually and the union of all output is taken
             in order to determine the metrics of the <code>&lt;menclose&gt;</code>.
           </p>
           <ol>
             <li>
-              <p>
-                The <code>left</code> notation is drawn by putting a vertical bar of thickness
-                ξ<sub>8</sub> on the left of the content of the <code>&lt;menclose&gt;</code> element.
-                The length of the bar is obtained by extending the height of the content
-                with <a>OverbarVerticalGap</a> plus
-                <a>OverbarRuleThickness</a> above
-                and <a>UnderbarVerticalGap</a> plus
-                <a>UnderbarRuleThickness</a> below.
-                The gap between the bar and the content is 3ξ<sub>8</sub>.
-                The logical box is obtained by adding some space of width
-                ξ<sub>8</sub> on the left of the bar. See
-                <a href="#figure-box-menclose-left"></a>.
+              <p>For the <code>left</code> notation, a bar is drawn
+                on the line-left side along the block axis
+                as shown on <a href="#figure-box-menclose-left"></a>.
               </p>
               <figure id="figure-box-menclose-left">
                 <img src="figures/leftbox.svg"/>
                 <figcaption>Box model for the <code>left</code>
                   notation of the <code>&lt;menclose&gt;</code> element</figcaption>
               </figure>
-            </li>
-            <li>
               <p>
-                The <code>right</code> notation is drawn the same as the <code>left</code> notation,
-                but with the vertical bar placed on the right.
+                The min-content (respectively max-content) inline-size is
+                the min-content (respectively max-content) inline-size
+                of B + 5ξ<sub>8</sub>.
+              </p>
+              <p>
+                The inline size is the inline size of B +
+                5ξ<sub>8</sub>, the ink line-ascent is the one of B +
+                <a>OverbarVerticalGap</a> + <a>OverbarRuleThickness</a>
+                and the ink line-descent the one of B +
+                <a>UnderbarVerticalGap</a> + <a>UnderbarRuleThickness</a>.
+                The line-ascent (respectively line-descent) is the maximum
+                of between the ink line-ascent (respectively ink line-descent)
+                and the line-ascent (respectively line-descent) of B.
+                The (ink) block size is the sum of the (ink) line-ascent
+                and (ink) line-descent.
+              </p>
+              <p>
+                B is placed so that its baseline matches the baseline and
+                its line-left coordinate is 5ξ<sub>8</sub>.
+                The inline size of the bar is ξ<sub>8</sub>,
+                its block size is the block size, its line-left coordinate
+                is ξ<sub>8</sub> and its line-over coordinate is 0.
               </p>
             </li>
             <li>
               <p>
-                The <code>top</code> notation is drawn by putting an overbar of thickness
-                <a>OverbarRuleThickness</a>
-                over the content of the <code>&lt;menclose&gt;</code> element.
-                The length of the bar is obtained by extending the width of the content
-                with 4ξ<sub>8</sub> on each side.
-                The gap between the overbar and the content is
-                <a>OverbarVerticalGap</a>.
-                The logical box is obtained by adding some space of height
-                <a>OverbarExtraAscender</a> above the bar.
-                See <a href="#figure-box-menclose-top"></a>.
+                The <code>right</code> notation is handled the same as the
+                <code>left</code> notation,
+                but with the bar placed on the line-right side. The block
+                metrics, min-content inline size, max-content inline size
+                and inline size are the same.
               </p>
+              <p>
+                The inline size of the bar is ξ<sub>8</sub>,
+                its line-left coordinate is the inline size −
+                2ξ<sub>8</sub> and the line-left coordinate of B is 0.
+              </p>
+            </li>
+            <li>
+              <p>For the <code>top</code> notation, a bar is drawn
+                on the line-over side along the inline axis
+                as shown on <a href="#figure-box-menclose-top"></a>.
+              </p>
+              <p>
               <figure id="figure-box-menclose-top">
                 <img src="figures/topbox.svg"/>
                 <figcaption>Box model for the <code>top</code>
                   notation of the <code>&lt;menclose&gt;</code> element</figcaption>
               </figure>
+              <p>
+                The min-content (respectively max-content) inline-size is
+                the min-content (respectively max-content) inline-size
+                of B + 8ξ<sub>8</sub>.
+              </p>
+              <p>
+                The inline size is the inline size of B +
+                8ξ<sub>8</sub>, the ink line-ascent is the one of B +
+                <a>OverbarVerticalGap</a> +  <a>OverbarRuleThickness</a>.
+                The inline line-ascent is the maximum between the line-ascent
+                of B and the ink line-ascent +
+                <a>OverbarExtraAscender</a>.
+                The (ink) line-descent is the (ink) line-descent of B.
+                The (ink) block size is the sum of the (ink) line-ascent
+                and (ink) line-descent.
+              </p>
+              <p>
+                B is placed so that its baseline matches the baseline and
+                its line-left coordinate is 4ξ<sub>8</sub>.
+                The inline size of the bar is the inline size,
+                its block size is <a>OverbarRuleThickness</a>,
+                its line-left coordinate
+                is 0 and its line-over coordinate is the ascent −
+                the ink ascent of B − <a>OverbarVerticalGap</a> −
+                <a>OverbarRuleThickness</a>.
+              </p>
             </li>
             <li>
               <p>
-                The <code>bottom</code> notation is drawn the same as the <code>top</code> notation,
-                but with the vertical bar placed below the content and using parameters
+                The <code>bottom</code> notation is drawn the same as the
+                <code>top</code> notation,
+                but with the bar placed line-below B and using
+                parameters
                 <a>UnderbarRuleThickness</a>,
-                <a>UnderbarVerticalGap</a>.
+                <a>UnderbarVerticalGap</a>
                 and <a>UnderbarExtraDescender</a>.
+                The inline metrics are the same.
+              </p>
+              <p>
+                The ink line-descent is the one of B +
+                <a>UnderbarVerticalGap</a> +  <a>UnderbarRuleThickness</a>.
+                The inline line-descent is the maximum between the line-descent
+                of B and the ink line-descent +
+                <a>UnderbarExtraDescender</a>.
+                The (ink) line-ascent is the (ink) line-ascent of B.
+                The (ink) block size is the sum of the (ink) line-ascent
+                and (ink) line-descent.
+              </p>
+              <p>
+                B is placed so that its baseline matches the baseline.
+                The block size of the bar is <a>UnderbarRuleThickness</a>
+                and its line-over coordinate is the ascent +
+                the ink descent of B + <a>UnderbarVerticalGap</a>.
               </p>
             </li>
             <li>
