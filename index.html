@@ -2401,7 +2401,7 @@
                   B is placed so that its baseline is the baseline and
                   its line-left coordinate is 5ξ<sub>8</sub>.
                   If B' is the ink box B expanded on each side by
-                  7ξ<sub>8</sub> / 2 then using terminology from [[SVG]],
+                  ½7ξ<sub>8</sub> then using terminology from [[SVG]],
                   a rounded rectangle is drawn on B'
                   with parameters <code>rx</code>, <code>ry</code> and
                   <code>stroke-width</code> set to 3ξ<sub>8</sub>.
@@ -2421,14 +2421,35 @@
                 </p>
               </li>
               <li>
-                <div class="issue">Give details of metrics calculation</div>
                 <p>
-                  The <code>circle</code> notation is drawn as follows.
+                  The <code>circle</code> notation is drawn as shown
+                  on <a href="#figure-box-menclose-circle"></a>.
                   Given the ink box of width w and height h, an ellipse is drawn using
                   the axes of symmetry of this ink box, the radii
-                  w * √2 / 2, h * √2 / 2 and thickness ξ<sub>8</sub>.
+                  w x ½√2, h x ½√2 and thickness ξ<sub>8</sub>.
                   Space of ξ<sub>8</sub> is added each side of the ellipse's ink
                   box.
+                </p>
+                <p>
+                  The min-content inline-size, max-content inline-size
+                  and inline size are the ones of B times √2 plus
+                  3ξ<sub>8</sub>.
+                </p>
+                <p>
+                  The ink line-ascent (respectively line-descent) is the ink
+                  line-ascent (respectively line-descent) of B times
+                  √2 plus ½ξ<sub>8</sub>. The line-ascent
+                  (respectively line-descent) is the maximum between the
+                  line-ascent (respectively line-descent) of B and the
+                  ink line-ascent (respectively line-descent) plus
+                  ξ<sub>8</sub>.
+                  The (ink) block size is the sum of the (ink) line-ascent
+                  and (ink) line-descent.
+                </p>
+                <p>
+                  Finally, B is placed so that its baseline is aligned with
+                  the baseline and its line-left coordinate is
+                  ½(√2 − 1) times the inline size of B plus 3ξ<sub>8</sub>/2.
                 </p>
                 <figure id="figure-box-menclose-circle">
                   <img src="figures/circlebox.svg"/>
