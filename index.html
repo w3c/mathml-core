@@ -2544,157 +2544,184 @@
             <p>
               The <code>&lt;msub&gt;</code> element is laid out as shown on
               <a href="#figure-box-msub"></a>.
-              The baseline is the baseline of the base while the baseline of
-              the script is shifted down by <code>SubShift</code>, which is the
-              minimal value honoring the following conditions:
-            </p>
-            <ol>
-              <li>
-                <code>SubShift</code> is at least <a>SubscriptShiftDown</a>.
-              </li>
-              <li>
-                The top of the subscript <code>SubTop</code> with respect to
-                the baseline is not above <a>SubscriptTopMax</a>.
-              </li>
-              <li>
-                The drop <code>SubscriptBaselineDrop</code> from the bottom of
-                the base to the baseline of the script is at least
-                <a>SubscriptBaselineDropMin</a>.
-              </li>
-            </ol>
-            <p>
-              When determining
-              the logical box, a space of width <a>SpaceAfterScript</a>
-              is added after
-              the subscript. By default, the
-              inline-start edge of the subscript is
-              aligned with the inline-end edge of the base. However, if the base
-              is an <a>embellished operator</a> with
-              the <a><code>largeop</code></a> property then
-              the subscript is horizontally
-              shifted backward by the italic correction of the base.
+              <code>LargeOpItalicCorrection</code>
+              is the <a>italic correction</a> of the base
+              if it is an <a>embellished operator</a> with
+              the <a><code>largeop</code></a> property and 0 otherwise.
             </p>
             <figure id="figure-box-msub">
               <img src="figures/msubbox.svg"/>
               <figcaption>Box model for the <code>&lt;msub&gt;</code> element</figcaption>
             </figure>
+            <p>
+              The (content-min/content-max) inline size
+              is the (content-min/max-content)
+              inline size of the base −
+              <code>LargeOpItalicCorrection</code> +
+              the (content-min/max-content) inline size of
+              the subscript + <a>SpaceAfterScript</a>.
+              The inline start of the base is 0 and the inline start of
+              subscript is the inline size of the base −
+              <code>LargeOpItalicCorrection</code>.
+            </p>
+            <p>
+              <code>SubShift</code> is the maximum between:
+            </p>
+            <ul>
+              <li><a>SubscriptShiftDown</a></li>
+              <li><a>SubscriptTopMax</a> + the ink line-ascent of the
+                subscript</li>
+              <li><a>SubscriptBaselineDropMin</a> + the ink line-descent of the
+                base</li>
+            </ul>
+            <p>
+              The (ink) line-ascent is the maximum between:
+            </p>
+            <ul>
+              <li>The (ink) line-ascent of the base.</li>
+              <li>The (ink) line-ascent of the subcript −
+                <code>SubShift</code>.</li>
+            </ul>
+            <p>
+              The (ink) line-descent is the maximum between:
+            </p>
+            <ul>
+              <li>The (ink) line-descent of the base.</li>
+              <li>The (ink) line-descent of the subcript +
+                <code>SubShift</code>.</li>
+            </ul>
+            <p>
+              The (ink) block size is the sum of the (ink) line-ascent
+              and (ink) line-descent. The base is placed so that its baseline
+              matches the baseline. The subscript is placed so that its baseline
+              is shifted away from the baseline by <code>SubShift</code>
+              towards the line-under.
+            </p>
           </section>
           <section>
             <h5>Base with superscript</h5>
             <p>
               The <code>&lt;msup&gt;</code> element is laid out as shown on
               <a href="#figure-box-msup"></a>.
-              The baseline is the baseline of the base while the baseline of
-              the script is shifted up by <code>SuperShift</code>, which is the
-              minimal value honoring the following conditions:
-            </p>
-            <ol>
-              <li>
-                <code>SuperShift</code> is at least
-                <a>SuperscriptShiftUpCramped</a> if the
-                <code>&lt;msup&gt;</code> element is
-                <a>cramped</a> or at least
-                <a>SuperscriptShiftUp</a> otherwise.
-              </li>
-              <li>
-                The bottom of the superscript <code>SuperBottom</code> with
-                respect to the baseline is not below
-                <a>SuperscriptBottomMin</a>.
-              </li>
-              <li>
-                The drop <code>SuperscriptBaselineDrop</code> from the top of
-                the base to the baseline of the script is at most
-                <a>SuperscriptBaselineDropMax</a>.
-              </li>
-            </ol>
-            <p>
-              When determining the logical box, a space of width
-              <a>SpaceAfterScript</a> is added after
-              the superscript. By default, the
-              inline-start edge of the superscript
-              is aligned with the inline-end edge of the base and
-              shifted forward
-              by the italic correction of the base, except if the base is an
-              <a>embellished operator</a> with
-              the <a><code>largeop</code></a> property.
+              <code>ItalicCorrection</code>
+              is the <a>italic correction</a> of the base
+              if it is not an <a>embellished operator</a> with
+              the <a><code>largeop</code></a> property and 0 otherwise.
             </p>
             <figure id="figure-box-msup">
               <img src="figures/msupbox.svg"/>
               <figcaption>Box model for the <code>&lt;msup&gt;</code> element</figcaption>
             </figure>
+            <p>
+              The (content-min/content-max) inline size
+              is the (content-min/max-content)
+              inline size of the base +
+              <code>ItalicCorrection</code> +
+              the (content-min/max-content) inline size of
+              the superscript + <a>SpaceAfterScript</a>.
+              The inline start of the base is 0 and the inline start of
+              superscript is the inline size of the base +
+              <code>ItalicCorrection</code>.
+            </p>
+            <p>
+              <code>SuperShift</code> is the maximum between:
+            </p>
+            <ul>
+              <li>The value <a>SuperscriptShiftUpCramped</a> if the
+                <code>&lt;msup&gt;</code> element is
+                <a>cramped</a> or
+                the value <a>SuperscriptShiftUp</a> otherwise.</li>
+              <li>
+                <a>SuperscriptBottomMin</a> + the ink line-descent of the
+                superscript</li>
+              <li>The ink line-ascent of the base − <a>SuperscriptBaselineDropMax</a></li>
+            </ul>
+            <p>
+              The (ink) line-ascent is the maximum between:
+            </p>
+            <ul>
+              <li>The (ink) line-ascent of the base.</li>
+              <li>The (ink) line-ascent of the supercript +
+                <code>SuperShift</code>.</li>
+            </ul>
+            <p>
+              The (ink) line-descent is the maximum between:
+            </p>
+            <ul>
+              <li>The (ink) line-descent of the base.</li>
+              <li>The (ink) line-descent of the supercript −
+                <code>SuperShift</code>.</li>
+            </ul>
+            <p>
+              The (ink) block size is the sum of the (ink) line-ascent
+              and (ink) line-descent. The base is placed so that its baseline
+              matches the baseline. The superscript is placed so that its
+              baseline
+              is shifted away from the baseline by <code>SuperShift</code>
+              towards the line-over.
+            </p>
           </section>
           <section>
             <h5>Base with subscript and superscript</h5>
             <p>
               The <code>&lt;msubsup&gt;</code> element is laid out as shown on
               <a href="#figure-box-msup"></a>.
-              The baseline is the baseline of the base while the baseline of
-              the script is shifted down by <code>SubShift</code> and the
-              superscript is shifted up by <code>SuperShift</code> which are
-              initially set to the minimal values honoring the following
-              conditions:
-            </p>
-            <ol>
-              <li>
-                <code>SubShift</code> is at least
-                <a>SuperscriptShiftUpCramped</a> if the
-                <code>&lt;msup&gt;</code> element is <a>cramped</a> or at least
-                <a>SuperscriptShiftUp</a> otherwise.
-              </li>
-              <li>
-                The top of the subscript <code>SubTop</code> with respect to
-                the baseline is not above <a>SubscriptTopMax</a>.
-              </li>
-              <li>
-                The drop <code>SuperscriptBaselineDrop</code> from the top of
-                the base to the baseline of the superscript is at most
-                <a>SuperscriptBaselineDropMax</a>.
-              </li>
-              <li>
-                <code>SubShift</code> is at least
-                <a>SuperscriptShiftUpCramped</a> if the
-                <code>&lt;msup&gt;</code> element is
-                <a>cramped</a> or at least
-                <a>SuperscriptShiftUp</a> otherwise.
-              </li>
-              <li>
-                The bottom of the superscript <code>SuperBottom</code> with
-                respect to the baseline is not below
-                <a>SuperscriptBottomMin</a>.
-              </li>
-              <li>
-                The drop <code>SubscriptBaselineDrop</code> from
-                the bottom of the base to the the baseline of the subscript is
-                at least <a>SubscriptBaselineDropMin</a>.
-              </li>
-            </ol>
-            <p>
-              After initializing
-              <code>SubShift</code> and <code>SuperShift</code>,
-              the gap <code>SubSuperGap</code> between the bottom
-              of the superscript and the top of the subscript is increased to
-              ensure it is at least <a>SubSuperscriptGapMin</a>.
-              This is first done by continuing to shift the superscript up as
-              long as the <code>SuperBottom</code> does not exceed
-              <a>SuperscriptBottomMaxWithSubscript</a>
-              and next by continuing to shift the subscript down.
-            </p>
-            <p>
-              When determining the logical box, a space of width
-              <a>SpaceAfterScript</a> is added after each script. By default
-              the inline-start edges of the scripts are aligned with the
-              inline-end edge of the base
-              and the superscript is shifted forward by the italic
-              correction of the base. However, if the base is an
-              <a>embellished operator</a> with
-              the <a><code>largeop</code></a> property
-              then instead the subscript is
-              shifted forward by the italic correction of the base.
+              <code>LargeOpItalicCorrection</code> and <code>SubShift</code>
+              are set as in <a href="#base-with-subscript"></a>.
+              <code>ItalicCorrection</code> and <code>SuperShift</code>
+              are set as in <a href="#base-with-superscript"></a>.
             </p>
             <figure id="figure-box-msubsup">
               <img src="figures/msubsupbox.svg"/>
               <figcaption>Box model for the <code>&lt;msubsup&gt;</code> element</figcaption>
             </figure>
+            <p>
+              The min-content inline size (respectively max-content inline size,
+              inline size) is the maximum between the of the
+              inline sizes (respectively max-content inline size,
+              inline sizes) calculated in
+              <a href="#base-with-subscript"></a> and
+              <a href="#base-with-superscript"></a>.
+            </p>
+            <p>
+              <code>SubSuperGap</code> is the gap between the two scripts
+              along the block axis and is defined by
+              (<code>SubShift</code> − the ink line-ascent of the subscript) +
+              (<code>SuperShift</code> − the ink line-descent of the subscript).
+              If <code>SubSuperGap</code> is not at least
+              <a>SubSuperscriptGapMin</a> then the following steps are
+              performed to ensure that the condition holds:
+            </p>
+            <ol>
+              <li>
+                Let Δ be <a>SuperscriptBottomMaxWithSubscript</a>
+                − (<code>SuperShift</code> − the ink line-descent of the
+                superscript).
+                If Δ &gt; 0 then set Δ to the minimum between Δ set
+                <a>SubSuperscriptGapMin</a> − <code>SubSuperGap</code> and
+                increase <code>SuperShift</code> (and so
+                <code>SubSuperGap</code> too) by Δ.
+              </li>
+              <li>
+                Let Δ be <a>SubSuperscriptGapMin</a> − <code>SubSuperGap</code>.
+                If Δ &gt; 0 then
+                increase <code>SubscriptShift</code> (and so
+                <code>SubSuperGap</code> too) by Δ.
+              </li>
+            </ol>
+            <p>
+              After adjustment of the
+              <code>SubShift</code> and <code>SuperShift</code>,
+              the ink line-ascent (respectively line-ascent, ink line-descent,
+              line-descent, ink block size, block size) is set to the maximum
+              of the
+              ink line-ascents (respectively line-ascents, ink line-descents,
+              line-descents, ink block sizes, block sizes) calculated in
+              in <a href="#base-with-subscript"></a> and
+              <a href="#base-with-superscript"></a>.
+              The coordinates of the base and scripts are performed the same
+              as described in these sections.
+            </p>
             <div class="note" id="msubsup-with-empty-scripts">
               <p>
                 Even when the subscript (respectively superscript) is an empty
@@ -2702,7 +2729,8 @@
                 does not generally render the same as
                 <a href="#base-with-superscript"></a>
                 (respectively <a href="#base-with-subscript"></a>)
-                because of the additional <code>SubSuperGap</code>.
+                because of the additional constraint on
+                <code>SubSuperGap</code>.
                 Moreover, positioning the empty subscript
                 (respectively superscript)
                 may also change the total size.
