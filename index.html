@@ -337,7 +337,7 @@
         </dl>
         <dl>
           <dt><dfn>boolean</dfn></dt>
-          <dd>A string that is case-insensitively equal to <code>true</code> or
+          <dd>A string that is a case-insensitive match to <code>true</code> or
             <code>false</code>.
           </dd>
         </dl>
@@ -389,8 +389,8 @@
             The
             <dfn><code>dir</code></dfn>
             attribute, if present,
-            must be case-insensitively equal to the
-            value <code>ltr</code> or <code>ltr</code>.
+            must be a case-insensitive match
+            to <code>ltr</code> or <code>ltr</code>.
             It is mapped to the
             <a data-cite="CSS-WRITING-MODES-3#direction"><code>direction</code></a>
             CSS property.
@@ -438,8 +438,7 @@
             The
             <dfn><code>mathvariant</code></dfn>
             attribute,
-            if present, must have a value that is case-insensitively equal to
-            one of
+            if present, must be a case-insensitive match to one of: 
             <code>normal</code>,
             <code>bold</code>,
             <code>italic</code>,
@@ -456,7 +455,7 @@
             <code>monospace</code>,
             <code>initial</code>,
             <code>tailed</code>,
-            <code>looped</code>,
+            <code>looped</code>, or
             <code>stretched</code>.
           </p>
           <p>
@@ -1008,21 +1007,18 @@
             <p>
               The <dfn><code>form</code></dfn>
               property of an <a>embellished operator</a>
-              element is either <code>prefix</code>, <code>prefix</code> or
+              element must be a case-insensitive match to <code>infix</code>, <code>prefix</code> or
               <code>postfix</code>.
-              The <code>form</code> attribute,
-              if present on an <a><code>&lt;mo&gt;</code></a> element
-              must be case-insensitively equal to one of the values.
+              The <code>form</code> attribute can only be defined on its <a>core operator</a> (an 
+              <a><code>&lt;mo&gt;</code></a> element).
             </p>
-            <p>
-              If the <a>core operator</a> of an <a>embellished operator</a> has
-              a valid <code>form</code> attribute then the <code>form</code> of
-              that <a>embellished operator</a> is the value specified
-              by the <code>form</code> attribute on its <a>core operator</a>.
-              Otherwise, the <code>form</code> of the
-              <a>embellished operator</a> is determined as follows:
+            <p>             
+              The <code>form</code> of the <a>embellished operator</a> is determined as follows:
             </p>
-            <ul>
+            <ol>
+			  <li>If the <code>form</code> attribute is present and valid
+                on the <a>core operator</a>, then its value is used;
+			  </li>
               <li>If the embellished operator is the first child of an
                 <a>&lt;math&gt;</a>
                 <a>&lt;menclose&gt;</a>
@@ -1062,7 +1058,7 @@
                 Otherwise, the embellished operator has form
                 <code>infix</code>.
               </li>
-            </ul>
+            </ol>
             <p>
               The
               <dfn><code>fence</code></dfn>,
@@ -1074,11 +1070,10 @@
               <dfn><code>accent</code></dfn>
               properties of an <a>embellished operator</a> are is either
               <code>true</code> or <code>false</code>. In the former case, it
-              is said that <a>embellished operator</a> <em>has</em> the
+              is said that the <a>embellished operator</a> <em>has</em> the
               property.
-              The corresponding attributes,
-              if present on an <a><code>&lt;mo&gt;</code></a> element
-              must be <a>boolean</a>.
+			  The corresponding attributes can only be defined on their <a>core operator</a> (an 
+              <a><code>&lt;mo&gt;</code></a> element) and must be <a>boolean</a>.
             </p>
             <p>
               The
@@ -1094,9 +1089,8 @@
               <code>lspace</code>,
               <code>rspace</code>,
               <code>minsize</code> and
-              <code>maxsize</code> attributes,
-              if present on an <a><code>&lt;mo&gt;</code></a> element
-              must be <a>length-percentage</a>.
+              <code>maxsize</code> attributes can only be defined on their <a>core operator</a> (an 
+              <a><code>&lt;mo&gt;</code></a> element) and must be <a>length-percentage</a>.
             </p>
             <p>
               The
@@ -1118,7 +1112,7 @@
                 on the <a>core operator</a>, then this property is used;</li>
               <li>
                 Otherwise, if the <a>core operator</a> contains only text
-                content T the corresponding property from the
+                content T, the corresponding property from the
                 <a href="#operator-dictionary">Operator Dictionary</a>
                 is retrieved by looking for <code>Content=T,Form=F</code>
                 where <code>F</code> is the <a><code>form</code></a> of the
@@ -1126,10 +1120,9 @@
               </li>
               <li>
                 If no entry is found and the <a><code>form</code></a>
-                of <a>embellished operator</a> was actually
-                not explicitly specified
-                as an attribute on its <a>core operator</a> then
-                user agents must try other entries dictionary for different
+                of <a>embellished operator</a> was not explicitly specified
+                as an attribute on its <a>core operator</a>, then
+                user agents must try other dictionary entries for different
                 values of <code>F</code> in the following order:
                 <code>infix</code>, <code>prefix</code>, <code>postfix</code>;
               </li>
@@ -3020,7 +3013,7 @@
             However, when an overscript (respectively underscript)
             has an <a href="#attribute-munderover-accent" class="internalDFN" data-link-type="dfn"><code>accent</code></a>
             (respecitvely <a href="#attribute-munderover-accentunder" class="internalDFN" data-link-type="dfn"><code>accentunder</code></a>)
-            attribute that is case-insensitively equal to
+            attribute that is case-insensitive match
             to <code>"true"</code> then
             the <a><code>scriptlevel</code></a> is not incremented.
           </p>
@@ -3074,8 +3067,8 @@
               <li><a>frame</a></li>
             </ul>
           <p>
-            The <dfn>frame</dfn> attribute, if present, must be case-insensitively
-            equal to the value <code>none</code>, <code>solid</code> or
+            The <dfn>frame</dfn> attribute, if present, must be a case-insensitive match
+            to one of <code>none</code>, <code>solid</code> or
             <code>dashed</code>. The <a href="#user-agent-stylesheet">user agent
               stylesheet</a> must contain the following rules in order to implement
             that attribute:
