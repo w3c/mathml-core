@@ -2047,7 +2047,7 @@
         </section>
         <section>
           <h4>Enclose Expression Inside Notation <code>&lt;menclose&gt;</code></h4>
-          <div class="issue" data-number="105">Can this element be simplified / removed?</div>
+          <div class="issue" data-number="105">Can this element be simplified?</div>
           <p>
             The
             <dfn><code>&lt;menclose&gt;</code></dfn>
@@ -2089,280 +2089,376 @@
             <a data-cite="CSS-COLOR-3#foreground"><code>color</code></a>
             of the <code>&lt;menclose&gt;</code> element.
           </p>
-          <div class="issue">Explain how to take the union of all notations?
-          </div>
           <p>
             Children of the <code>&lt;menclose&gt;</code> element are laid out
             using the algorithm of the <a><code>&lt;mrow&gt;</code></a> element
-            to produce a box B. Using the notation of [[?TEXBOOK]],
-            ξ<sub>8</sub> is used to denote the default rule thickness and is
-            set to <a>OverbarRuleThickness</a>.
-            Each notation is handled individually and the union of all output
-            is taken
-            in order to determine the metrics of the
-            <code>&lt;menclose&gt;</code> element.
+            to produce a box B. ξ<sub>8</sub> is used below to denote the
+            default rule thickness and is set to <a>OverbarRuleThickness</a>.
           </p>
-          <ol>
-            <li>
-              <p>For the <code>left</code> notation, a bar is drawn
-                on the line-left side along the block axis
-                as shown on <a href="#figure-box-menclose-left"></a>.
-              </p>
-              <figure id="figure-box-menclose-left">
-                <img src="figures/leftbox.svg"/>
-                <figcaption>Box model for the <code>left</code>
-                  notation of the <code>&lt;menclose&gt;</code> element</figcaption>
-              </figure>
-              <p>
-                The min-content (respectively max-content) inline-size is
-                the min-content (respectively max-content) inline-size
-                of B + 5ξ<sub>8</sub>.
-              </p>
-              <p>
-                The inline size is the inline size of B +
-                5ξ<sub>8</sub>, the ink line-ascent is the one of B +
-                <a>OverbarVerticalGap</a> + <a>OverbarRuleThickness</a>
-                and the ink line-descent the one of B +
-                <a>UnderbarVerticalGap</a> + <a>UnderbarRuleThickness</a>.
-                The line-ascent (respectively line-descent) is the maximum
-                of between the ink line-ascent (respectively ink line-descent)
-                and the line-ascent (respectively line-descent) of B.
+          <div class="note">
+            ξ<sub>8</sub> is the notation used in [[?TEXBOOK]] for the
+            default rule thickness.
+          </div>
+          <section>
+            <h5>Multiple notations</h5>
+            <p>
+              If the <code>notation</code> attribute contains the
+              <code>box</code> value,
+              then it is treated as it was replaced with the set of values
+              <code>left right top bottom</code>, removing duplicates values
+              with the other of the notations, if any.
+              Similarly, <code>actuarial</code> and
+              <code>madruwb</code> notations are respectively treated as
+              equivalent to <code>right top</code> and
+              and <code>right bottom</code>.
+            </p>
+            <div class="issue">Specify in which order the notations are painted?</div>
+            <p>
+              The layout of other individual notation is explained in the
+              following sections. In general when the <code>notation</code>
+              attribute contains multiple
+              values, each algorithm is applied individually to obtain
+              boxes B<sub>1</sub>, B<sub>2</sub>, ... B<sub>n</sub>. The layout
+              of the <code>&lt;menclose&gt;</code> element is then performed
+              as follows:
+            </p>
+            <ul>
+              <li>
+                For each layout B<sub>i</sub>, s<sub>left,i</sub> is the
+                line-left coordinate of
+                the B and s<sub>right,i</sub> is
+                (inline size of B<sub>i</sub> − line-right coordinate of B).
+                s<sub>left</sub> (respectively s<sub>right</sub>) is the maximum
+                of the s<sub>left,i</sub> over
+                (respectively s<sub>left,i</sub>) over all the i. Then
+                the inline size is s<sub>left</sub> +
+                the inline size of B + s<sub>right</sub>.
+              </li>
+              <li>
+                Actually for each layout B<sub>i</sub>, the values
+                s<sub>left,i</sub> and
+                s<sub>right,i</sub> generally only depends on the inline size
+                of B and parameter ξ<sub>8</sub> so it is possible to
+                perform the same calculation replacing "inline size of B"
+                with "content-min inline size of B" or
+                "content-max inline size of B". The only exception is for
+                the <code>longdiv</code> notation: In that case,
+                s<sub>left,i</sub> is replaced with the
+                <a>preferred inline-size of a stretchy glyph in block direction</a>
+                for U+0029 RIGHT PARENTHESIS.
+                Again, it is possible to take the maximum values to calculate
+                the min-content and max-content inline sizes.
+              </li>
+              <li>
+                The (ink) line-ascent is the maximum of all the (ink)
+                line-ascent of the B<sub>i</sub>.
+                The (ink) line-descent is the maximum of all the (ink)
+                line-descent of the B<sub>i</sub>.
                 The (ink) block size is the sum of the (ink) line-ascent
                 and (ink) line-descent.
-              </p>
-              <p>
-                B is placed so that its baseline matches the baseline and
-                its line-left coordinate is 5ξ<sub>8</sub>.
-                The inline size of the bar is ξ<sub>8</sub>,
-                its block size is the block size, its line-left coordinate
-                is ξ<sub>8</sub> and its line-over coordinate is 0.
-              </p>
-            </li>
-            <li>
-              <p>
-                The <code>right</code> notation is handled the same as the
-                <code>left</code> notation,
-                but with the bar placed on the line-right side. The block
-                metrics, min-content inline size, max-content inline size
-                and inline size are the same.
-              </p>
-              <p>
-                The inline size of the bar is ξ<sub>8</sub>,
-                its line-left coordinate is the inline size −
-                2ξ<sub>8</sub> and the line-left coordinate of B is 0.
-              </p>
-            </li>
-            <li>
-              <p>For the <code>top</code> notation, a bar is drawn
-                on the line-over side along the inline axis
-                as shown on <a href="#figure-box-menclose-top"></a>.
-              </p>
-              <p>
-              <figure id="figure-box-menclose-top">
-                <img src="figures/topbox.svg"/>
-                <figcaption>Box model for the <code>top</code>
-                  notation of the <code>&lt;menclose&gt;</code> element</figcaption>
-              </figure>
-              <p>
-                The min-content (respectively max-content) inline-size is
-                the min-content (respectively max-content) inline-size
-                of B + 8ξ<sub>8</sub>.
-              </p>
-              <p>
-                The inline size is the inline size of B +
-                8ξ<sub>8</sub>, the ink line-ascent is the one of B +
-                <a>OverbarVerticalGap</a> +  <a>OverbarRuleThickness</a>.
-                The inline line-ascent is the maximum between the line-ascent
-                of B and the ink line-ascent +
-                <a>OverbarExtraAscender</a>.
-                The (ink) line-descent is the (ink) line-descent of B.
-                The (ink) block size is the sum of the (ink) line-ascent
-                and (ink) line-descent.
-              </p>
-              <p>
-                B is placed so that its baseline matches the baseline and
-                its line-left coordinate is 4ξ<sub>8</sub>.
-                The inline size of the bar is the inline size,
-                its block size is <a>OverbarRuleThickness</a>,
-                its line-left coordinate
-                is 0 and its line-over coordinate is the ascent −
-                the ink ascent of B − <a>OverbarVerticalGap</a> −
-                <a>OverbarRuleThickness</a>.
-              </p>
-            </li>
-            <li>
-              <p>
-                The <code>bottom</code> notation is drawn the same as the
-                <code>top</code> notation,
-                but with the bar placed line-below B and using
-                parameters
-                <a>UnderbarRuleThickness</a>,
-                <a>UnderbarVerticalGap</a>
-                and <a>UnderbarExtraDescender</a>.
-                The inline metrics are the same.
-              </p>
-              <p>
-                The ink line-descent is the one of B +
-                <a>UnderbarVerticalGap</a> +  <a>UnderbarRuleThickness</a>.
-                The inline line-descent is the maximum between the line-descent
-                of B and the ink line-descent +
-                <a>UnderbarExtraDescender</a>.
-                The (ink) line-ascent is the (ink) line-ascent of B.
-                The (ink) block size is the sum of the (ink) line-ascent
-                and (ink) line-descent.
-              </p>
-              <p>
-                B is placed so that its baseline matches the baseline.
-                The block size of the bar is <a>UnderbarRuleThickness</a>
-                and its line-over coordinate is the ascent +
-                the ink descent of B + <a>UnderbarVerticalGap</a>.
-              </p>
-            </li>
-            <li>
-              The <code>box</code> notation is treated as equivalent to
-              <code>left right top bottom</code>.
-            </li>
-            <li>
-              <p>
-                The <code>roundedbox</code> notation is drawn as
-                shown on <a href="#figure-box-menclose-roundedbox"></a>.
-              </p>
-              <figure id="figure-box-menclose-roundedbox">
-                <img src="figures/roundedbox.svg"/>
-                <figcaption>Box model for the <code>roundedbox</code>
-                  notation of the <code>&lt;menclose&gt;</code> element</figcaption>
-              </figure>
-              <p>
-                The min-content inline-size,
-                max-content inline-size and inline-size are the
-                ones of B plus 10ξ<sub>8</sub>.
-              </p>
-              <p>
-                The ink ascent (respectively descent) is the ink
-                ascent (respectively descent) of B + 4ξ<sub>8</sub>.
-                The ascent (respectively descent) is
-                the maximum between the ascent (respectively descent) of B
-                and the ink ascent (respectively descent) plus ξ<sub>8</sub>.
-              </p>
-              <p>
-                B is placed so that its baseline is the baseline and
-                its line-left coordinate is 5ξ<sub>8</sub>.
-                If B' is the ink box B expanded on each side by
-                7ξ<sub>8</sub> / 2 then using terminology from [[SVG]],
-                a rounded rectangle is drawn on B'
-                with parameters <code>rx</code>, <code>ry</code> and
-                <code>stroke-width</code> set to 3ξ<sub>8</sub>.
-              </p>
-            </li>
-            <li>The <code>actuarial</code> notation is treated as equivalent to <code>right top</code>.</li>
-            <li>
-              <p>
-                The <code>madruwb</code> notation is treated as equivalent to
-                <code>right bottom</code>.
-            </li>
-            <li>
-              <p>
-                For the <code>horizontalstrike</code> notation,
-                the metrics are the same as B.
-                A bar of inline-size the inline-size and
-                of block-size ξ<sub>8</sub> is drawn
-                at line-over position minus half ξ<sub>8</sub>.
-                See <a href="#figure-box-horizontal-strike"></a>.
-              </p>
-              <figure id="figure-box-horizontal-strike">
-                <img src="figures/horizstrikebox.svg"/>
-                <figcaption>Box model for the <code>horizontalstrike</code>
-                  notation of the <code>&lt;menclose&gt;</code> element</figcaption>
-              </figure>
-            </li>
-            <li>
-              <p>
-                For the <code>verticalstrike</code> notation,
-                the metrics are the same as B.
-                A bar of inline size the ξ<sub>8</sub> and
-                of block-size the block size is drawn
-                at line-left position
-                half the inline size minus half ξ<sub>8</sub>.
-              </p>
-            </li>
-            <li>
-              <p>
-                For the <code>updiagonalstrike</code> notation,
-                a bar is drawn
-                going from the line-left line-under corner to the
-                line-right line-over corner as shown on
-                <a href="#figure-box-menclose-up-diagonal-strike"></a>.
-              </p>
-              <p>
-                The min-content inline size,
-                max-content inline size and inline size
-                are the one of B + ξ<sub>8</sub>.
-              </p>
-              <p>
-                The ink ascent and ascent are the ascent of B + half
-                ξ<sub>8</sub>.
-                The ink descent and descent are the ascent of B + half
-                ξ<sub>8</sub>.
-                The (ink) block size is the sum of the (ink) line-ascent
-                and (ink) line-descent.
-              </p>
-              <p>
-                B is placed so that its baseline is the baseline and
-                its line-left coordinate is half ξ<sub>8</sub>.
-              </p>
-              <p>
-                Using terminology from [[SVG]],
-                the bar is drawn with a line
-                of thickness ξ<sub>8</sub> going from the
-                line-under line-left corner of B
-                to the line-over line-right corner of B with
-                <code>stroke-linecap</code> set to <code>butt</code>.
-              </p>
-              <figure id="figure-box-menclose-up-diagonal-strike">
-                <img src="figures/updiagstrikebox.svg"/>
-                <figcaption>Box model for the <code>updiagonalstrike</code>
-                  notation of the <code>&lt;menclose&gt;</code> element</figcaption>
-              </figure>
-            </li>
-            <li>
-              <p>
-                For the <code>downdiagonalstrike</code> notation,
-                a bar is drawn
-                going from the line-left line-over corner to the
-                line-right line-under corner. The metrics are the same as
-                for the <code>updiagonalstrike</code> notation.
-              </p>
-            </li>
-            <li>
-              <p>
-                The <code>longdiv</code> notation is drawn similarly to the
-                <code>&lt;msqrt&gt;</code> element
-                (<a href="#figure-box-msqrt"></a>)
-                except that the CSS
-                <a data-cite="CSS-WRITING-MODES-3#direction"><code>direction</code></a>
-                is ignored and U+221A SQUARE ROOT is replaced with
-                U+0029 RIGHT PARENTHESIS. The rule thickness is ξ<sub>8</sub>,
-                the gap between content and overbar is 3ξ<sub>8</sub> and the
-                extra ascender is ξ<sub>8</sub>.
-              </p>
-            </li>
-            <li>
-              <div class="issue">Give details of metrics calculation</div>
-              <p>
-                The <code>circle</code> notation is drawn as follows.
-                Given the ink box of width w and height h, an ellipse is drawn using
-                the axes of symmetry of this ink box, the radii
-                w * √2 / 2, h * √2 / 2 and thickness ξ<sub>8</sub>.
-                Space of ξ<sub>8</sub> is added each side of the ellipse's ink
-                box.
-              </p>
-              <figure id="figure-box-menclose-circle">
-                <img src="figures/circlebox.svg"/>
-                <figcaption>Box model for the <code>circle</code>
-                  notation of the <code>&lt;menclose&gt;</code> element</figcaption>
-              </figure>
-            </li>
-          </ol>
+              </li>
+              <li>
+                Finally each box at line-left, line-over coordinates
+                x, y in the layout of B<sub>i</sub> is moved to
+                coordinates x + s<sub>left</sub> − s<sub>left,i</sub>
+                and y + line-ascent − the line-ascent of B<sub>i</sub>.
+              </li>
+            </ul>
+            <div class="note">
+              The above description explains how to take the union of all
+              the notations. In the layout of B<sub>i</sub>,
+              B is placed at line-left position s<sub>left,i</sub> and
+              its baseline is at line-over position the line-ascent of
+              B<sub>i</sub>. So the final shifts are compatible for
+              the box B: It will be at line-left position s<sub>left</sub> and
+              its baseline aligned with the baseline.
+            </div>
+          </section>
+          <section>
+            <h5>Border-like notations</h5>
+            <ul>
+              <li>
+                <p>For the <code>left</code> notation, a bar is drawn
+                  on the line-left side along the block axis
+                  as shown on <a href="#figure-box-menclose-left"></a>.
+                </p>
+                <figure id="figure-box-menclose-left">
+                  <img src="figures/leftbox.svg"/>
+                  <figcaption>Box model for the <code>left</code>
+                    notation of the <code>&lt;menclose&gt;</code> element</figcaption>
+                </figure>
+                <p>
+                  The min-content (respectively max-content) inline-size is
+                  the min-content (respectively max-content) inline-size
+                  of B + 5ξ<sub>8</sub>.
+                </p>
+                <p>
+                  The inline size is the inline size of B +
+                  5ξ<sub>8</sub>, the ink line-ascent is the one of B +
+                  <a>OverbarVerticalGap</a> + <a>OverbarRuleThickness</a>
+                  and the ink line-descent the one of B +
+                  <a>UnderbarVerticalGap</a> + <a>UnderbarRuleThickness</a>.
+                  The line-ascent (respectively line-descent) is the maximum
+                  of between the ink line-ascent (respectively ink line-descent)
+                  and the line-ascent (respectively line-descent) of B.
+                  The (ink) block size is the sum of the (ink) line-ascent
+                  and (ink) line-descent.
+                </p>
+                <p>
+                  B is placed so that its baseline matches the baseline and
+                  its line-left coordinate is 5ξ<sub>8</sub>.
+                  The inline size of the bar is ξ<sub>8</sub>,
+                  its block size is the block size, its line-left coordinate
+                  is ξ<sub>8</sub> and its line-over coordinate is 0.
+                </p>
+              </li>
+              <li>
+                <p>
+                  The <code>right</code> notation is handled the same as the
+                  <code>left</code> notation,
+                  but with the bar placed on the line-right side. The block
+                  metrics, min-content inline size, max-content inline size
+                  and inline size are the same.
+                </p>
+                <p>
+                  The inline size of the bar is ξ<sub>8</sub>,
+                  its line-left coordinate is the inline size −
+                  2ξ<sub>8</sub> and the line-left coordinate of B is 0.
+                </p>
+              </li>
+              <li>
+                <p>For the <code>top</code> notation, a bar is drawn
+                  on the line-over side along the inline axis
+                  as shown on <a href="#figure-box-menclose-top"></a>.
+                </p>
+                <p>
+                  <figure id="figure-box-menclose-top">
+                    <img src="figures/topbox.svg"/>
+                    <figcaption>Box model for the <code>top</code>
+                      notation of the <code>&lt;menclose&gt;</code> element</figcaption>
+                  </figure>
+                <p>
+                  The min-content (respectively max-content) inline-size is
+                  the min-content (respectively max-content) inline-size
+                  of B + 8ξ<sub>8</sub>.
+                </p>
+                <p>
+                  The inline size is the inline size of B +
+                  8ξ<sub>8</sub>, the ink line-ascent is the one of B +
+                  <a>OverbarVerticalGap</a> +  <a>OverbarRuleThickness</a>.
+                  The inline line-ascent is the maximum between the line-ascent
+                  of B and the ink line-ascent +
+                  <a>OverbarExtraAscender</a>.
+                  The (ink) line-descent is the (ink) line-descent of B.
+                  The (ink) block size is the sum of the (ink) line-ascent
+                  and (ink) line-descent.
+                </p>
+                <p>
+                  B is placed so that its baseline matches the baseline and
+                  its line-left coordinate is 4ξ<sub>8</sub>.
+                  The inline size of the bar is the inline size,
+                  its block size is <a>OverbarRuleThickness</a>,
+                  its line-left coordinate
+                  is 0 and its line-over coordinate is the ascent −
+                  the ink ascent of B − <a>OverbarVerticalGap</a> −
+                  <a>OverbarRuleThickness</a>.
+                </p>
+              </li>
+              <li>
+                <p>
+                  The <code>bottom</code> notation is drawn the same as the
+                  <code>top</code> notation,
+                  but with the bar placed line-below B and using
+                  parameters
+                  <a>UnderbarRuleThickness</a>,
+                  <a>UnderbarVerticalGap</a>
+                  and <a>UnderbarExtraDescender</a>.
+                  The inline metrics are the same.
+                </p>
+                <p>
+                  The ink line-descent is the one of B +
+                  <a>UnderbarVerticalGap</a> +  <a>UnderbarRuleThickness</a>.
+                  The inline line-descent is the maximum between the line-descent
+                  of B and the ink line-descent +
+                  <a>UnderbarExtraDescender</a>.
+                  The (ink) line-ascent is the (ink) line-ascent of B.
+                  The (ink) block size is the sum of the (ink) line-ascent
+                  and (ink) line-descent.
+                </p>
+                <p>
+                  B is placed so that its baseline matches the baseline.
+                  The block size of the bar is <a>UnderbarRuleThickness</a>
+                  and its line-over coordinate is the ascent +
+                  the ink descent of B + <a>UnderbarVerticalGap</a>.
+                </p>
+              </li>
+            </ul>
+          </section>
+          <section>
+            <h5>Strike notations</h5>
+            <ul>
+              <li>
+                <p>
+                  For the <code>horizontalstrike</code> notation,
+                  the metrics are the same as B.
+                  A bar of inline-size the inline-size and
+                  of block-size ξ<sub>8</sub> is drawn
+                  at line-over position minus half ξ<sub>8</sub>.
+                  See <a href="#figure-box-horizontal-strike"></a>.
+                </p>
+                <figure id="figure-box-horizontal-strike">
+                  <img src="figures/horizstrikebox.svg"/>
+                  <figcaption>Box model for the <code>horizontalstrike</code>
+                    notation of the <code>&lt;menclose&gt;</code> element</figcaption>
+                </figure>
+              </li>
+              <li>
+                <p>
+                  For the <code>verticalstrike</code> notation,
+                  the metrics are the same as B.
+                  A bar of inline size the ξ<sub>8</sub> and
+                  of block-size the block size is drawn
+                  at line-left position
+                  half the inline size minus half ξ<sub>8</sub>.
+                </p>
+              </li>
+              <li>
+                <p>
+                  For the <code>updiagonalstrike</code> notation,
+                  a bar is drawn
+                  going from the line-left line-under corner to the
+                  line-right line-over corner as shown on
+                  <a href="#figure-box-menclose-up-diagonal-strike"></a>.
+                </p>
+                <p>
+                  The min-content inline size,
+                  max-content inline size and inline size
+                  are the one of B + ξ<sub>8</sub>.
+                </p>
+                <p>
+                  The ink ascent and ascent are the ascent of B + half
+                  ξ<sub>8</sub>.
+                  The ink descent and descent are the ascent of B + half
+                  ξ<sub>8</sub>.
+                  The (ink) block size is the sum of the (ink) line-ascent
+                  and (ink) line-descent.
+                </p>
+                <p>
+                  B is placed so that its baseline is the baseline and
+                  its line-left coordinate is half ξ<sub>8</sub>.
+                </p>
+                <p>
+                  Using terminology from [[SVG]],
+                  the bar is drawn with a line
+                  of thickness ξ<sub>8</sub> going from the
+                  line-under line-left corner of B
+                  to the line-over line-right corner of B with
+                  <code>stroke-linecap</code> set to <code>butt</code>.
+                </p>
+                <figure id="figure-box-menclose-up-diagonal-strike">
+                  <img src="figures/updiagstrikebox.svg"/>
+                  <figcaption>Box model for the <code>updiagonalstrike</code>
+                    notation of the <code>&lt;menclose&gt;</code> element</figcaption>
+                </figure>
+              </li>
+              <li>
+                <p>
+                  For the <code>downdiagonalstrike</code> notation,
+                  a bar is drawn
+                  going from the line-left line-over corner to the
+                  line-right line-under corner. The metrics are the same as
+                  for the <code>updiagonalstrike</code> notation.
+                </p>
+              </li>
+            </ul>
+          </section>
+          <section>
+            <h5>Enclosing notations</h5>
+            <ul>
+              <li>
+                <p>
+                  The <code>roundedbox</code> notation is drawn as
+                  shown on <a href="#figure-box-menclose-roundedbox"></a>.
+                </p>
+                <figure id="figure-box-menclose-roundedbox">
+                  <img src="figures/roundedbox.svg"/>
+                  <figcaption>Box model for the <code>roundedbox</code>
+                    notation of the <code>&lt;menclose&gt;</code> element</figcaption>
+                </figure>
+                <p>
+                  The min-content inline-size,
+                  max-content inline-size and inline-size are the
+                  ones of B plus 10ξ<sub>8</sub>.
+                </p>
+                <p>
+                  The ink ascent (respectively descent) is the ink
+                  ascent (respectively descent) of B + 4ξ<sub>8</sub>.
+                  The ascent (respectively descent) is
+                  the maximum between the ascent (respectively descent) of B
+                  and the ink ascent (respectively descent) plus ξ<sub>8</sub>.
+                </p>
+                <p>
+                  B is placed so that its baseline is the baseline and
+                  its line-left coordinate is 5ξ<sub>8</sub>.
+                  If B' is the ink box B expanded on each side by
+                  ½7ξ<sub>8</sub> then using terminology from [[SVG]],
+                  a rounded rectangle is drawn on B'
+                  with parameters <code>rx</code>, <code>ry</code> and
+                  <code>stroke-width</code> set to 3ξ<sub>8</sub>.
+                </p>
+              </li>
+              <li>
+                <p>
+                  The <code>longdiv</code> notation is drawn similarly to the
+                  <code>&lt;msqrt&gt;</code> element
+                  (<a href="#figure-box-msqrt"></a>)
+                  except that the CSS
+                  <a data-cite="CSS-WRITING-MODES-3#direction"><code>direction</code></a>
+                  is ignored and U+221A SQUARE ROOT is replaced with
+                  U+0029 RIGHT PARENTHESIS. The rule thickness is ξ<sub>8</sub>,
+                  the gap between content and overbar is 3ξ<sub>8</sub> and the
+                  extra ascender is ξ<sub>8</sub>.
+                </p>
+              </li>
+              <li>
+                <p>
+                  The <code>circle</code> notation is drawn as shown
+                  on <a href="#figure-box-menclose-circle"></a>.
+                  Given the ink box of width w and height h, an ellipse is drawn using
+                  the axes of symmetry of this ink box, the radii
+                  w x ½√2, h x ½√2 and thickness ξ<sub>8</sub>.
+                  Space of ξ<sub>8</sub> is added each side of the ellipse's ink
+                  box.
+                </p>
+                <p>
+                  The min-content inline-size, max-content inline-size
+                  and inline size are the ones of B times √2 plus
+                  3ξ<sub>8</sub>.
+                </p>
+                <p>
+                  The ink line-ascent (respectively line-descent) is the ink
+                  line-ascent (respectively line-descent) of B times
+                  √2 plus ½ξ<sub>8</sub>. The line-ascent
+                  (respectively line-descent) is the maximum between the
+                  line-ascent (respectively line-descent) of B and the
+                  ink line-ascent (respectively line-descent) plus
+                  ξ<sub>8</sub>.
+                  The (ink) block size is the sum of the (ink) line-ascent
+                  and (ink) line-descent.
+                </p>
+                <p>
+                  Finally, B is placed so that its baseline is aligned with
+                  the baseline and its line-left coordinate is
+                  ½(√2 − 1) times the inline size of B plus 3ξ<sub>8</sub>/2.
+                </p>
+                <figure id="figure-box-menclose-circle">
+                  <img src="figures/circlebox.svg"/>
+                  <figcaption>Box model for the <code>circle</code>
+                    notation of the <code>&lt;menclose&gt;</code> element</figcaption>
+                </figure>
+              </li>
+            </ul>
+          </section>
         </section>
       </section>
       <section>
