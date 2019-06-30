@@ -1483,7 +1483,7 @@
                 (respectively <code>display</code>).
               </li>
               <li>
-                The ink descent of the numerator +
+                The ink line-descent of the numerator +
                 <a>FractionNumeratorGapMin</a>
                 (respectively <a>FractionNumDisplayStyleGapMin</a>)
                 if the <a>math-style</a> is <code>inline</code>
@@ -1499,7 +1499,7 @@
                 (respectively <code>display</code>).
               </li>
               <li>
-                The ink ascent of the denominator +
+                The ink line-ascent of the denominator +
                 <a>FractionDenominatorGapMin</a>
                 (respectively <a>FractionDenomDisplayStyleGapMin</a>)
                 if the <a>math-style</a> is <code>inline</code>
@@ -1790,7 +1790,8 @@
             <ul>
               <li>The (ink) line-descent of the base.</li>
               <li>The sum of the line-ascent and line-descent for the
-                <a>box metrics of the radical glyph</a>, minus the ink line-ascent.
+                <a>box metrics of the radical glyph</a>, minus the ink
+                line-ascent.
               </li>
             </ul>
             <p>
@@ -2325,7 +2326,7 @@
                   its block size is <a>OverbarRuleThickness</a>,
                   its line-left coordinate
                   is 0 and its line-over coordinate is the ascent −
-                  the ink ascent of B − <a>OverbarVerticalGap</a> −
+                  the ink line-ascent of B − <a>OverbarVerticalGap</a> −
                   <a>OverbarRuleThickness</a>.
                 </p>
               </li>
@@ -2353,8 +2354,8 @@
                 <p>
                   B is placed so that its baseline matches the baseline.
                   The block size of the bar is <a>UnderbarRuleThickness</a>
-                  and its line-over coordinate is the ascent +
-                  the ink descent of B + <a>UnderbarVerticalGap</a>.
+                  and its line-over coordinate is the line-ascent +
+                  the ink line-descent of B + <a>UnderbarVerticalGap</a>.
                 </p>
               </li>
             </ul>
@@ -2401,9 +2402,11 @@
                   are the one of B + ξ<sub>8</sub>.
                 </p>
                 <p>
-                  The ink ascent and ascent are the ascent of B + half
+                  The ink line-ascent and line-ascent are the
+                  line-ascent of B + half
                   ξ<sub>8</sub>.
-                  The ink descent and descent are the ascent of B + half
+                  The ink line-descent and line-descent are the line-descent of
+                  B + half
                   ξ<sub>8</sub>.
                   The (ink) block size is the sum of the (ink) line-ascent
                   and (ink) line-descent.
@@ -2456,11 +2459,13 @@
                   ones of B plus 10ξ<sub>8</sub>.
                 </p>
                 <p>
-                  The ink ascent (respectively descent) is the ink
-                  ascent (respectively descent) of B + 4ξ<sub>8</sub>.
-                  The ascent (respectively descent) is
-                  the maximum between the ascent (respectively descent) of B
-                  and the ink ascent (respectively descent) plus ξ<sub>8</sub>.
+                  The ink line-ascent (respectively line-descent) is the ink
+                  line-ascent (respectively line-descent) of B + 4ξ<sub>8</sub>.
+                  The line-ascent (respectively line-descent) is
+                  the maximum between the line-ascent (respectively
+                  line-descent) of B
+                  and the ink line-ascent (respectively line-descent)
+                  plus ξ<sub>8</sub>.
                 </p>
                 <p>
                   B is placed so that its baseline is the baseline and
@@ -3010,7 +3015,8 @@
                   <code>OverGap</code> is equal to
                   <ol>
                     <li><a>OverbarVerticalGap</a> if the overscript is not an accent.</li>
-                    <li>Or <a>AccentBaseHeight</a> minus the ascent of the base if this difference is nonnegative.</li>
+                    <li>Or <a>AccentBaseHeight</a> minus the line-ascent
+                      of the base if this difference is nonnegative.</li>
                     <li>Or 0 otherwise.</li>
                   </ol>
                 </li>
@@ -3025,7 +3031,7 @@
             <figcaption>Box model for the <code>&lt;munderover&gt;</code> element</figcaption>
           </figure>
           <div class="note">
-            For accent overscripts and bases with ascents that are at most
+            For accent overscripts and bases with line-ascents that are at most
             <a>AccentBaseHeight</a>, the rule from
             [[OPEN-FONT-FORMAT]] [[?TEXBOOK]] is actually to align the
             baselines of the overscripts and of the bases. This assumes that
@@ -3268,8 +3274,8 @@
             when height &lt; AxisHeight </div>
           <p>
             The size of the logical box of the <code>&lt;mtable&gt;</code>
-            are provided by CSS layout. The math axis is aligned with the center of
-            the table: Ascent is height plus
+            are provided by CSS layout. The math axis is aligned with the
+            center of the table: line-ascent is height plus
             <a>AxisHeight</a> and line-descent the height minus
             <a>AxisHeight</a>. The ink box is the same as the
             logical box.
