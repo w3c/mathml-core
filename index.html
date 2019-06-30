@@ -1736,7 +1736,7 @@
             <p>
               The radical target size for the stretchy radical glyph is
               the sum of <a>RadicalRuleThickness</a>,
-              <a>RadicalExtraAscender</a> and the radical gap.
+              <a>RadicalExtraAscender</a> and the <a>radical gap</a>.
             </p>
             <p>
               The <dfn>box metrics of the radical glyph</dfn> is the
@@ -1744,7 +1744,8 @@
               for the radical radical glyph and target size.
             </p>
             <p>
-              The shaping of the surd is performed by the algorithm to
+              The <dfn>shaping of the surd</dfn>
+              is performed by the algorithm to
               <a>shape a stretchy glyph</a> in block direction
               for the radical radical glyph and target size.
             </p>
@@ -1755,6 +1756,10 @@
               The <code>&lt;msqrt&gt;</code> element is laid out as shown on
               <a href="#figure-box-msqrt"></a>.
             </p>
+            <figure id="figure-box-msqrt">
+              <img src="figures/msqrtbox.svg"/>
+              <figcaption>Box model for the <code>&lt;msqrt&gt;</code> element</figcaption>
+            </figure>
             <p>
               The min-content (respectively max-content) inline size is
               the sum of the
@@ -1770,7 +1775,7 @@
             </p>
             <p>
               The ink line-ascent is the sum of <a>RadicalRuleThickness</a>,
-              the radical gap and the ink line-ascent of the base.
+              the <a>radical gap</a> and the ink line-ascent of the base.
               The line-ascent is the maximum between:
             </p>
             <ul>
@@ -1791,27 +1796,36 @@
               and (ink) line-descent.
             </p>
             <p>
-              The base is at inline-start coordinate the width of the
-              <a>box metrics of the radical glyph</a> and
-              its baseline is aligned with the baseline.
+              The inline-start coordinate of the base is the width of the
+              <a>box metrics of the radical glyph</a>. The baseline of the base
+              is aligned with the baseline.
             </p>
             <p>
               The inline size of the overbar is the inline size of the
-              base. Its block size is the rule thickness
-              <a>RadicalRuleThickness</a>. It is positioned
-              line-above the baseline by the ink line-ascent.
+              base. Its block size is
+              <a>RadicalRuleThickness</a>. It line-over edge is shifted away
+              from the baseline by a distance towards the line-over
+              equal to the ink line-ascent.
             </p>
             <p>
-              Finally, the painting of the radical glyph is performed at
-              inline-start 0 and
-              at distance line-below the line-over edge of the overbar,
-              given by the line-ascent of the
-              <a>box metrics of the radical glyph</a>.
+              Finally, the <a>shaping of the surd</a> is performed:
             </p>
-            <figure id="figure-box-msqrt">
-              <img src="figures/msqrtbox.svg"/>
-              <figcaption>Box model for the <code>&lt;msqrt&gt;</code> element</figcaption>
-            </figure>
+            <ul>
+              <li>
+                At inline coordinate
+                the inline size minus the inline size of the
+                <a>box metrics of the radical glyph</a>
+                if the CSS property
+                <a data-cite="CSS-WRITING-MODES-3#direction"><code>direction</code></a>
+                is <code>rtl</code> and 0 otherwise.
+              </li>
+              <li>
+                At block coordinate shifted away from the
+                line-over edge of the overbar towards the line-under
+                direction by a distance given by the ascent
+                of the <a>box metrics of the radical glyph</a>.
+              </li>
+            </ul>
           </section>
           <section>
             <h5>Root with index</h5>
