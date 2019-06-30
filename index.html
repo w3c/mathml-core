@@ -1469,6 +1469,8 @@
               (respectively max-content) inline size of the numerator
               and the min-content
               (respectively max-content) of the denominator.
+            </p>
+            <p>
               The inline size is the maximum between the inline size of the
               numerator and the inline size of the denominator.
             </p>
@@ -1574,7 +1576,7 @@
             </figure>
             <p>
               The min-content inline size, max-content inline size
-              inline size are calculated the same
+              and inline size are calculated the same
               as in <a href="#fraction-with-nonzero-line-thickness"></a>.
             </p>
             <p>
@@ -1837,6 +1839,10 @@
               are laid out as
               shown on figure <a href="#figure-box-msqrt"></a> to obtain a box B.
             </p>
+            <figure id="figure-box-mroot">
+              <img src="figures/mrootbox.svg"/>
+              <figcaption>Box model for the <code>&lt;mroot&gt;</code> element</figcaption>
+            </figure>
             <div class="issue">Handle large negative RadicalKernAfterDegree?</div>
             <p>
               The min-content (respectively max-content) inline size is the sum
@@ -1846,23 +1852,14 @@
               and of the min-content (respectively max-content) of B.
             </p>
             <p>
-              The inline-start coordinate of the index is
-              <a>RadicalKernBeforeDegree</a>.
-              The inline-start coordinate of B is obtained by adding the
-              inline size of the index and <a>RadicalKernAfterDegree</a>.
               The inline size is the sum of
               <a>RadicalKernBeforeDegree</a>,
               the inline size of the index, <a>RadicalKernAfterDegree</a>
               and of the inline size of B.
             </p>
             <p>
-              The baseline of the <code>&lt;mroot&gt;</code> is the baseline
-              of B.
-              The line-under ink edge of the index is positioned
-              at a distance line-above the line-under ink edge of B,
-              given by <a>RadicalDegreeBottomRaisePercent</a> times
-              the ink block size of B. Hence the (ink) line-ascent
-              is the maximum between:</p>
+              The (ink) line-ascent is the maximum between:
+            </p>
             <ul>
               <li>−the ink line-descent of B +
                 <a>RadicalDegreeBottomRaisePercent</a> ×
@@ -1870,7 +1867,7 @@
                 index</li>
               <li>The (ink) line-ascent of B</li>
             </ul>
-            <p>while the (ink) line-descent is the maximum between:</p>
+            <p>The (ink) line-descent is the maximum between:</p>
             <ul>
               <li>the ink line-descent of B −
                 <a>RadicalDegreeBottomRaisePercent</a> ×
@@ -1878,12 +1875,23 @@
                 index</li>
               <li>The (ink) line-descent of B</li>
             </ul>
-            <p>Finally, the (ink) block size is the sum of the (ink)
-              line-ascent and (ink) line-descent.</p>
-            <figure id="figure-box-mroot">
-              <img src="figures/mrootbox.svg"/>
-              <figcaption>Box model for the <code>&lt;mroot&gt;</code> element</figcaption>
-            </figure>
+            <p>
+              The (ink) block size is the sum of the (ink)
+              line-ascent and (ink) line-descent.
+            </p>
+            <p>
+              The inline-start coordinate of B is the sum of the
+              inline size of the index and of <a>RadicalKernAfterDegree</a>.
+              The baseline of the B is aligned with the baseline.
+            </p>
+            <p>
+              The inline-start coordinate of the index is
+              <a>RadicalKernBeforeDegree</a>. Its baseline is shifted away
+              from the line-under edge by a distance of
+              <a>RadicalDegreeBottomRaisePercent</a> ×
+              the ink block size of B + the ink line-descent of the
+              index.
+            </p>
             <div class="note">
               In general, the kerning before the root index is positive while
               the kerning after it is negative, which means that the root
@@ -2325,7 +2333,7 @@
                 <p>
                   The <code>bottom</code> notation is drawn the same as the
                   <code>top</code> notation,
-                  but with the bar placed line-below B and using
+                  but with the bar placed on the line-under side of B and using
                   parameters
                   <a>UnderbarRuleThickness</a>,
                   <a>UnderbarVerticalGap</a>
