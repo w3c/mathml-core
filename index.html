@@ -1554,8 +1554,8 @@
               towards the line-over (respectively line-under).
             </p>
             <p>
-              The inline size of the fraction bar is the inline size.
-              Its block size is the line thickness.
+              The inline size of the fraction bar is the inline size and
+              its block size is the line thickness.
               Its inline-start position is 0 and its
               center is shifted away from the baseline by
               a distance of <a>AxisHeight</a> towards the line-over.
@@ -1568,49 +1568,82 @@
               the <code>&lt;mfrac&gt;</code> element is instead laid out as
               shown on <a href="#figure-box-mfrac-without-bar"></a>.
             </p>
-            <p>
-              The min-content inline size, max-content inline size
-              inline size are calculated the same
-              as in <a href="#fraction-with-nonzero-line-thickness"></a>.
-              The inline-start coordinates of the numerator and denominator too.
-            </p>
-            <p>
-              The math axis is <a>AxisHeight</a> line-above the baseline.
-              The baseline of the numerator (respectively denominator) is
-              initially placed line-above (respectively line-below)
-              the block-axis center of the math axis
-              by block-axis shifts <a>StackTopShiftUp</a>
-              (respectively <a>StackBottomShiftDown</a>)
-              if the <a>math-style</a> is <code>inline</code> and
-              <a>StackTopDisplayStyleShiftUp</a>
-              (respectively <a>StackBottomDisplayStyleShiftDown</a>)
-              if the <a>math-style</a> is <code>display</code>.
-            </p>
-            <p>
-              The stack gap is the absolute distance between the
-              line-under ink edge of the numerator
-              and the line-over ink edge of the denominator.
-              The minimal stack gap is
-              <a>StackGapMin</a>
-              if the <a>math-style</a> is <code>inline</code>
-              and
-              <a>StackDisplayStyleGapMin</a>
-              if the <a>math-style</a> is <code>display</code>.
-              If the stack gap is less than the minimal stack gap then
-              the block-axis shifts of the numerator and denominator are
-              increased by half the difference between the minimal stack gap
-              and stack gap.
-            </p>
-            <p>
-              Finally, the (ink) line-ascent, (ink) line-ascent and ink
-              (block-size) are calculated the same
-              as in <a href="#fraction-with-nonzero-line-thickness"></a>,
-              ignoring the contribution of the fraction bar.
-            </p>
             <figure id="figure-box-mfrac-without-bar">
               <img src="figures/mfracnobarbox.svg"/>
               <figcaption>Box model for the <code>&lt;mfrac&gt;</code> element without bar</figcaption>
             </figure>
+            <p>
+              The min-content inline size, max-content inline size
+              inline size are calculated the same
+              as in <a href="#fraction-with-nonzero-line-thickness"></a>.
+            </p>
+            <p>
+              If the <a>math-style</a> is <code>inline</code> then
+              <code>TopShift</code> and
+              <code>BottomShift</code> are respectively
+              set to <a>StackTopShiftUp</a> and <a>StackBottomShiftDown</a>.
+              Otherwise <a>math-style</a> is <code>display</code>) and
+              they are respectively set to <a>StackTopDisplayStyleShiftUp</a>
+              and <a>StackBottomDisplayStyleShiftDown</a>).
+            </p>
+            <p>
+              The <code>Gap</code> is defined to be
+              (<code>BottomShift</code> −
+              the ink line-descent of the denominator) +
+              (<code>TopShift</code> −
+              the ink line-descent of the numerator).
+              If <a>math-style</a> is <code>inline</code>
+              then <code>GapMin</code>
+              is <a>StackGapMin</a>
+              otherwise <a>math-style</a> is <code>display</code>
+              and it is <a>StackDisplayStyleGapMin</a>.
+              If <code>Gap</code> is not at least <code>GapMin</code> then
+              <code>TopShift</code> and <code>BottomShift</code>
+              are increased by
+              half <code>GapMin</code> − <code>Gap</code>.
+            </p>
+            <p>
+              The (ink) line-ascent is the maximum between:
+            </p>
+            <ul>
+              <li>
+                <a>AxisHeight</a> +
+                 <code>TopShift</code> +
+                 the (ink) line-ascent of the numerator.
+              </li>
+              <li>
+                <a>AxisHeight</a> − <code>BottomShift</code>
+                + the (ink) line-ascent of the denominator.
+              </li>
+            </ul>
+            <p>
+              The (ink) line-descent is the maximum between:
+            </p>
+            <ul>
+              <li>
+                −<a>AxisHeight</a> − <code>TopShift</code>
+                + the (ink) line-descent of the numerator.
+              </li>
+              <li>
+                −<a>AxisHeight</a> + <code>BottomShift</code>
+                + the (ink) line-descent of the denominator.
+              </li>
+              <li>0</li>
+            </ul>
+            <p>
+              The (ink) block-size is the sum of the (ink) line-ascent
+              and (ink) line-descent.
+            </p>
+            <p>
+              The inline-start coordinates of the numerator and denominator
+              is calculated as in
+              <a href="#fraction-with-nonzero-line-thickness"></a>.
+              The baseline of the numerator (respectively denominator) is
+              shifted away from the baseline by a distance of
+              <a>AxisHeight</a> + <code>TopShift</code> (respectively −
+              <a>AxisHeight</a> + <code>BottomShift</code>) towards the
+              line-over (respectively line-under).
+            </p>
           </section>
           <section>
             <h5>Spacing around the fraction</h5>
@@ -2697,7 +2730,8 @@
               <code>SubSuperGap</code> is the gap between the two scripts
               along the block axis and is defined by
               (<code>SubShift</code> − the ink line-ascent of the subscript) +
-              (<code>SuperShift</code> − the ink line-descent of the subscript).
+              (<code>SuperShift</code> − the ink line-descent of the
+              superscript).
               If <code>SubSuperGap</code> is not at least
               <a>SubSuperscriptGapMin</a> then the following steps are
               performed to ensure that the condition holds:
