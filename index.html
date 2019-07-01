@@ -3067,8 +3067,6 @@
               <img src="figures/moverbox.svg"/>
               <figcaption>Box model for the <code>&lt;mover&gt;</code> element</figcaption>
             </figure>
-            <div class="issue">Plug the <a>top accent attachment</a> into these
-              calculations</div>
             <p>
               The min-content (respectively max-content) inline sizes are
               calculated like the inline size below but replacing the
@@ -3077,20 +3075,24 @@
               of the base and overscript.
             </p>
             <p>
-              The inline-size is the absolute difference between:
+              The <code>TopAccentAttachment</code> is the
+              <a>top accent attachment</a> of the overscript or
+              half the inline size of the overscript if it is undefined
+              then the inline size is the asbolute difference between:
             </p>
             <ul>
               <li>The maximum of:
                 <ul>
                   <li>Half the inline size of the base.</li>
-                  <li>Half the inline size of the overscript +
+                  <li>The inline size of the overscript
+                    − <code>TopAccentAttachment</code> +
                     half <code>LargeOpItalicCorrection</code>.</li>
                 </ul>
               </li>
               <li>The minimum of:
                 <ul>
                   <li>−Half the inline size of the base.</li>
-                  <li>−Half the inline size of the overscript +
+                  <li>−<code>TopAccentAttachment</code> +
                     half <code>LargeOpItalicCorrection</code>.</li>
                 </ul>
               </li>
