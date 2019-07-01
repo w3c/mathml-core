@@ -3324,60 +3324,196 @@
             <p>
               The <code>&lt;mmultiscripts&gt;</code> element is laid out as
               shown on <a href="#figure-box-mmultiscripts"></a>.
+              For each postscript pair, the <code>ItalicCorrection</code>
+              <code>LargeOpItalicCorrection</code> are defined as
+              in <a href="#base-with-subscript"></a>
+              and <a href="#base-with-superscript"></a>.
             </p>
-            <ul>
-              <li>
-                The horizontal positions are determined in the following order:
-                inline-start edge of <code>&lt;mmultiscripts&gt;</code>,
-                <a>SpaceAfterScript</a>,
-                first prescript pair,
-                <a>SpaceAfterScript</a>,
-                second prescript pair,
-                ...,
-                <a>SpaceAfterScript</a>,
-                last prescript pair,
-                base,
-                first postscript pair,
-                <a>SpaceAfterScript</a>,
-                second postscript pair,
-                <a>SpaceAfterScript</a>,
-                ...,
-                last postscript pair,
-                width <a>SpaceAfterScript</a>,
-                inline-end edge of <code>&lt;mmultiscripts&gt;</code>.
-              </li>
-              <li>
-                Each postscript pair is shift forward
-                by the italic correction of the base as described in
-                <a href="#base-with-subscript-and-superscript"></a>.
-              </li>
-              <li>
-                For prescript pairs, the inline-end edges of the subscript
-                and superscript are aligned.
-                For postscript pairs, the inline-start edges of the subscript
-                and superscript are aligned.
-              </li>
-              <li>
-                <code>SubShift</code> (respectively <code>SuperShift</code>)
-                is calculated by taking the maximum of all subshifts
-                (respectively supershifts) of each
-                subscript/superscript pair determined using the algorithm for
-                <a href="#base-with-subscript-and-superscript"></a>.
-                Then the baseline of <code>&lt;mmultiscripts&gt;</code>
-                is the baseline of the base, the baselines of
-                the subscripts are shifted down by <code>SubShift</code>
-                and the baselines of superscripts are shifted up by
-                <code>SuperShift</code>.
-              </li>
-              <li>
-                The <code>&lt;mprescript&gt;</code> element, if any, is
-                positioned at the same coordinate as the base.
-              </li>
-            </ul>
             <figure id="figure-box-mmultiscripts">
               <img src="figures/mmultiscriptsbox.svg"/>
               <figcaption>Box model for the <code>&lt;mmultiscripts&gt;</code> element</figcaption>
             </figure>
+            <p>
+              The min-content (respectively max-content) inline size is
+              calculated the same as the inline size below, but replacing
+              "inline size" with "min-content inline size"
+              (respectively "max-content inline size") for the base and
+              scripts.
+            </p>
+            <p>
+              The inline size is calculated with the following algorithm:
+            </p>
+            <ol>
+              <li>Set <code>inline-start</code> to 0.</li>
+              <li>
+                <p>
+                  For each prescript pair, increment
+                  <code>inline-start</code> by <a>SpaceAfterScript</a> + the
+                  maximum of
+                </p>
+                <ul>
+                  <li>The inline size of the subscript.</li>
+                  <li>The inline size of the superscript.</li>
+                </ul>
+              </li>
+              <li>
+                Increment <code>inline-start</code> by the inline size of the
+                base and
+                set <code>inline-size</code> to <code>inline-start</code>.
+              </li>
+              <li>
+                <p>
+                  For each postscript pair, modify
+                  <code>inline-size</code> to be at least:
+                </p>
+                <ul>
+                  <li>
+                    x + the inline size of the subscript +
+                    <code>LargeOpItalicCorrection</code>.
+                  </li>
+                  <li>
+                    x + the inline size of the superscript −
+                    <code>ItalicCorrection</code>.
+                  </li>
+                </ul>
+                <p>Increment <code>inline-start</code> to the maximum of:</p>
+                <ul>
+                  <li>
+                    the inline size of the subscript.
+                  </li>
+                  <li>
+                    the inline size of the superscript.
+                  </li>
+                </ul>
+                <p>
+                  Increment <code>inline-start</code> by
+                  <a>SpaceAfterScript</a>.
+                </p>
+              </li>
+              <li>Return <code>inline-size</code></li>
+            </ol>
+            <p>
+              <code>SubShift</code> (respectively <code>SuperShift</code>)
+              is calculated by taking the maximum of all subshifts
+              (respectively supershifts) of each
+              subscript/superscript pair as described in
+              <a href="#base-with-subscript-and-superscript"></a>.
+            </p>
+            <p>
+              The (ink) line-ascent is calculated
+              by taking the maximum of all the (ink) line-ascent
+              of each subscript/superscript pair as described in
+              <a href="#base-with-subscript-and-superscript"></a>
+              but using the <code>SubShift</code> and
+              <code>SuperShift</code> values calculated above.
+            </p>
+            <p>
+              The (ink) line-descent is calculated
+              by taking the maximum of all the (ink) line-descent
+              of each subscript/superscript pair as described in
+              <a href="#base-with-subscript-and-superscript"></a>
+              but using the <code>SubShift</code> and
+              <code>SuperShift</code> values calculated above.
+            </p>
+            <p>
+              The (ink) block size is the sum of the (ink) line-ascent
+              and (ink) line-descent.
+            </p>
+            <p>
+              Finally, the placement of the children is performed using the
+              following algorithm:
+            </p>
+            <ol>
+              <li>Set <code>inline-start</code> to 0.</li>
+              <li>
+                <p>For each prescript pair:</p>
+                <ol>
+                  <li>
+                    Increment <code>inline-start</code> by
+                    <a>SpaceAfterScript</a>.
+                  </li>
+                  <li>
+                    Set <code>pair-inline-size</code> to the maximum of
+                    <ul>
+                      <li>
+                        the inline size of the subscript.
+                      </li>
+                      <li>
+                        the inline size of the superscript.
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    Place the subscript at inline-start position
+                    <code>inline-start</code> + <code>pair-inline-size</code>
+                    − the inline size of the subscript.
+                  </li>
+                  <li>
+                    Place the superscript at inline-start position
+                    <code>inline-start</code> + <code>pair-inline-size</code>
+                    − the inline size of the superscript.
+                  </li>
+                  <li>
+                    Place the subscript (respectively superscript) so its
+                    baseline is
+                    shifted away from the baseline by
+                    <code>SubShift</code> (respectively <code>SuperShift</code>)
+                    towards the line-under (respectively line-over).
+                  </li>
+                  <li>
+                    Increment <code>inline-start</code> by
+                    <code>pair-inline-size</code>.
+                  </li>
+              </ol>
+              <li>
+                Place the base and <code>&lt;mprescript&gt;</code> boxes
+                at inline-start coordinate
+                <code>inline-start</code> and with their baselines
+                aligned with the baseline.
+              </li>
+              <li>
+                <p>
+                  For each postscript pair:
+                </p>
+                <ol>
+                  <li>
+                    Set <code>pair-inline-size</code> to the maximum of
+                    <ul>
+                      <li>
+                        the inline size of the subscript.
+                      </li>
+                      <li>
+                        the inline size of the superscript.
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    Place the subscript
+                    at inline-start position <code>inline-start</code>
+                    − <code>LargeOpItalicCorrection</code>.
+                  </li>
+                  <li>
+                    Place the superscript
+                    at inline-start position <code>inline-start</code>
+                    + <code>ItalicCorrection</code>.
+                  </li>
+                  <li>
+                    Place the subscript (superscript) so its baseline is
+                    shifted away from the baseline by
+                    <code>SubShift</code> (respectively <code>SuperShift</code>)
+                    towards the line-under (respectively line-over).
+                  </li>
+                  <li>
+                    Increment <code>inline-start</code> by
+                    <code>pair-inline-size</code>
+                  </li>
+                  <li>
+                    Increment <code>inline-start</code> by
+                    <a>SpaceAfterScript</a>.
+                  </li>
+                </ol>
+              </li>
+            </ol>
             <div class="note">
               <p>
                 An <code>&lt;mmultiscripts&gt;</code> with only one
