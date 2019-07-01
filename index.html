@@ -594,159 +594,164 @@
         <h3>Introduction</h3>
         <section>
           <h4>Box Model</h4>
-          <div class="issue" data-number="15">Interoperable handling of invalid markup</div>
+          <div class="issue">Specify special <code>display</code> values for
+            other elements?</div>
+          <div class="issue" data-number="14">Handling of padding/border/margin</div>
           <p>
-            User agents must also follow the rules described in section 4.7.14
-            Embedded content, MathML of [[HTML]], in particular the equivalence with
-            implicit <code>&lt;mtext&gt;</code> and <code>&lt;merror&gt;</code> to handle non-conforming MathML markup.
-          </p>
-          <p>
-            MathML elements have the following box model. The <code>&lt;math&gt;</code> root may have
-            inline or block display, as suggested in
+            The <code>&lt;math&gt;</code> root may have
+            <code>inline</code> or <code>block</code> display, as suggested in
             <a href="#user-agent-stylesheet"></a>.
-            Tabular MathML elements have table, table-row and
-            table-cell display as discussed in
+            Tabular MathML elements have <code>table</code>,
+            <code>table-row</code>
+            and <code>table-cell</code> display as discussed in
             <a href="#tabular-math"></a>.
-            The <code>&lt;math&gt;</code> and <code>&lt;mtd&gt;</code> elements
-            generate an anonymous <code>&lt;mrow&gt;</code> MathML box child that contains the boxes of
-            their children and use the box parameters below to layout this anonymous
-            <code>&lt;mrow&gt;</code> box.
-            No line breaking can happen within MathML boxes and the min-content width is
-            equal to the max-content width, these are simply called the intrinsic width.
-            Each MathML box has the following parameters:
+            All the other elements have <code>block</code> display.
+          </p>
+          <p>
+            In order to specify math layout in different
+            <a href="CSS-WRITING-MODES-4#writing-mode">writing modes</a>,
+            this specification uses
+            <a href="CSS-WRITING-MODES-4#logical-directions">flow-relative directions</a>
+            <dfn>inline-start</dfn>,
+            <dfn>inline-end</dfn>,
+            <dfn>block-start</dfn>,
+            <dfn>block-end</dfn>
+            and
+            <a href="CSS-WRITING-MODES-4#line-relative-direction">line-relative directions</a>
+            <dfn>line-left</dfn>,
+            <dfn>line-right</dfn>,
+            <dfn>line-over</dfn>,
+            <dfn>line-under</dfn>
+            as defined in [[CSS-WRITING-MODES-4]].
+          </p>
+          <div class="note">
+            Unless specified otherwise,
+            the figures in this specification use a
+            <a href="CSS-WRITING-MODES-4#writing-mode">writing mode</a>
+            of <code>horizontal-lr</code> and <code>ltr</code>.
+          </div>
+          <p>
+            MathML boxes have several parameters in order to layout in
+            a way that is compatible with CSS but also to take into account
+            very accurate positions and spacing withing math formulas.
+            Each math box has the following parameters:
           </p>
           <ol>
-            <li>intrinsic width W.</li>
-            <li>logical width w, ascent above the origin a and descent below the origin b. The height is then a + b.</li>
-            <li>ink ascent A and descent B, corresponding to the exact box enclosing ink of text and bars within the MathML box.</li>
-          </ol>
-          <figure id="box-model-generic">
-            <img src="figures/boxmodel.svg"/>
-            <figcaption>Generic Box Model for MathML elements</figcaption>
-          </figure>
-          <p>
-            For a MathML element containing only text nodes or foreign elements,
-            the content is simple enough to determine these values. For example,
-            in most cases, this is just a single text node and w = W.
-            A MathML element containing only other MathML elements follows special rules to
-            layout their children at position
-            (x<sub>i</sub>, y<sub>i</sub>) with parameters
-            W<sub>i</sub>, w<sub>i</sub>, a<sub>i</sub>, b<sub>i</sub>, A<sub>i</sub>,
-            B<sub>i</sub>. Then, as a general rule, its box parameters are given
-            by taking the union of child boxes, that is:
-          </p>
-          <p>
-            w = max<sub>1 ≤ i ≤ n</sub> (x<sub>i</sub> + w<sub>i</sub>) −
-            max<sub>1 ≤ i ≤ n</sub> x<sub>i</sub>
-          </p>
-          <p>
-            W = max<sub>1 ≤ i ≤ n</sub> (x<sub>i</sub> + W<sub>i</sub>) −
-            max<sub>1 ≤ i ≤ n</sub> x<sub>i</sub>
-          </p>
-          <p>
-            a = max<sub>1 ≤ i ≤ n</sub> (a<sub>i</sub> − y<sub>i</sub>)
-          </p>
-          <p>
-            b = max<sub>1 ≤ i ≤ n</sub> (b<sub>i</sub> + y<sub>i</sub>)
-          </p>
-          <p>
-            A = max<sub>1 ≤ i ≤ n</sub> (A<sub>i</sub> − y<sub>i</sub>)
-          </p>
-          <p>
-            B = max<sub>1 ≤ i ≤ n</sub> (B<sub>i</sub> + y<sub>i</sub>)
-          </p>
-          <p>
-            Note that the schemas in this document are drawn assuming left-to-right
-            directionality. If the
-            CSS property
-            <a data-cite="CSS-WRITING-MODES-3#direction"><code>direction</code></a>
-            is <code>rtl</code>,
-            then the
-            elements should layout by making the x-axis pointing from right-to-left.
-          </p>
-          <p>
-            The <a>MathItalicsCorrectionInfo</a> table contains the italic
-            correction of some glyphs, which provides a measure of how slanted the
-            glyphs are (see <a href="#figure-italic-correction"></a>). The
-            <a>MathTopAccentAttachment</a> table also contains a reference
-            points that are used for the horizontal positioning of glyphs as an accent
-            (see <a href="#figure-top-accent-attachment"></a>). In later sections, this is
-            generalized by claiming that all MathML boxes have <dfn>italic correction</dfn>
-            and <dfn>top accent attachment</dfn> values. The values for glyphs are used to try and
-            extend to token elements or to special boxes that do not change child metrics.
-            Otherwise fallback values are used: 0 for italic correction and half
-            the width of the box for top accent attachment.
-          </p>
-          <figure id="figure-italic-correction">
-            <img src="figures/italcorr.svg"/>
-            <figcaption>Examples of italic correction for italic f and large integral</figcaption>
-          </figure>
-          <figure id="figure-top-accent-attachment">
-            <img src="figures/topaccent.svg"/>
-            <figcaption>Example of top accent attachment for a circumflex accent</figcaption>
-          </figure>
-          <p>
-            The present document assumes that W, w, a, b, A, B, italic correction
-            and top accent attachment are nonnegative values. If computations result
-            in negative values, then they must be interpreted as being zero.
-            Note that some MathML elements such as <code>&lt;mspace&gt;</code> or <code>&lt;mpadded&gt;</code> may set box
-            dimensions to negative values.
-          </p>
-        </section>
-        <section>
-          <h4>Layout Steps</h4>
-          <p>
-            For compatibility with HTML5 rendering, the MathML layout is performed in two
-            independent steps:
-          </p>
-          <ol>
-            <li>First, determine the intrinsic width W of MathML boxes following the description
-              given in this document for each MathML box. This relies on vertical positions x as
-              well as values for italic correction and top accent attachment, ignoring any vertical
-              positioning or metrics.
+            <li>Inline metrics.
+              <a data-cite="CSS-SIZING-3#min-content-inline-size">min-content inline size</a>,
+              <a data-cite="CSS-SIZING-3#max-content-inline-size">max-content inline size</a> and
+              <a data-cite="CSS-WRITING-MODES-4#inline-size">inline size</a>.
+              See <a href="#box-model-generic"></a>.
+              <figure id="box-model-generic">
+                <img src="figures/boxmodel.svg"/>
+                <figcaption>Generic Box Model for MathML elements</figcaption>
+              </figure>
+            </li>
             <li>
-              Next, the final layout of MathML boxes is performed following
-              the description given in this document, obtaining all the box metrics,
-              including the actual width w, vertical metrics a, b, A, B and
-              vertical positions y.
+              Block metrics.
+              The <dfn>line-ascent</dfn> and <dfn>line-descent</dfn>
+              corresponding to the block size of the box that
+              will respectively go line-above and line-below the baseline.
+              Their sum is always equal to the
+              <a data-cite="CSS-WRITING-MODES-4#block-size">block size</a>
+              of the box.
+              See <a href="#box-model-generic"></a>.
+            </li>
+            <li>
+              Ink block metrics.
+              The <dfn>ink line-ascent</dfn>, <dfn>ink line-descent</dfn>
+              and which are defined similarly
+              to the line-ascent, line-descent but enclose more precisely
+              the ink of the text and bars within the MathML boxes.
+              The <dfn>ink block size</dfn> is the sum of
+              the ink line-ascent and ink line-descent.
+              See <a href="#box-model-generic"></a>.
+            </li>
+            <li>
+              An optional <dfn>italic correction</dfn>
+              which provides a measure of how much the text of a box is
+              slanted in the inline direction.
+              See <a href="#figure-italic-correction"></a>.
+              <figure id="figure-italic-correction">
+                <img src="figures/italcorr.svg"/>
+                <figcaption>Examples of italic correction for italic f and large integral</figcaption>
+              </figure>
+              If it is requested during calculation of min-content or
+              max-content inline sizes or during layout
+              then 0 is used as a fallback value.
+            </li>
+            <li>
+              An optional <dfn>top accent attachment</dfn>
+              which provides a reference offset on the
+              block axis of the text of a box to be used when positioning
+              it as an accent.
+              See <a href="#figure-top-accent-attachment"></a>.
+              <figure id="figure-top-accent-attachment">
+                <img src="figures/topaccent.svg"/>
+                <figcaption>Example of top accent attachment for a circumflex accent</figcaption>
+              </figure>
+              If it is requested during calculation of min-content
+              (respectively max-content) inline size then half the
+              min-content (respectively max-content) inline size is used as a
+              fallback value.
+              If it is requested during layout then half the
+              inline-size is used as a fallback value.
             </li>
           </ol>
           <p>
-            In order to perform the first step independently of the second one, the
-            horizontal metrics must not depend on the vertical metrics.
-            As described in
-            <a href="#adjust-space-around-content-mpadded"></a>,
-            this adds some restrictions on the possible pseudo-units
-            of the <code>&lt;mpadded&gt;</code> element. As indicated in
-            <a href="#operator-fence-separator-or-accent-mo"></a>,
-            the width of size variants or of the glyph assembly used for vertical stretchy
-            operators may depend on the target size to cover. Taking the maximum widths
-            for all these size variants or for the glyph assembly during the first step
-            makes the intrinsic width independent of the target size but may lead to a
-            small over-estimation.
+            Given a MathML box, the <dfn>inline offset</dfn> of a child box
+            is the distance between the
+            <a>inline-start</a> edge of
+            the parent box and the
+            <a>inline-start</a> edge
+            of the child.
+            The <dfn>block offset</dfn> of a child box is the distance between
+            <a>block-start</a> edge of
+            the parent box and the
+            <a>block-start</a> edge
+            of the child.
           </p>
           <p>
-            Each of these steps is done recursively: the metrics of a given
-            MathML box are determined from those of the child boxes.
-            The stretching of the <a>core operator</a> of an
-            <a>embellished operator</a> may happen when processing reaches
-            the <a>outermost embellished operator</a>.
-            User agents must then apply the current operation again
-            to this embellished operator
-            (intrinsic width determination or layout).
-            Fortunately, such embellished operator subtrees are not deep in
-            practice.
+            The <dfn>baseline</dfn> of a MathML box is the line parallel to
+            the inline axis that is positioned away from the
+            <a>line-over</a> edge
+            of the box by a distance towards the
+            <a>line-under</a> given by the box's <a>line-ascent</a>.
           </p>
-          <p>
-            This document does not require support for operator stretching in table cells.
-            The “delayed” stretching of all operators must then be performed when processing
-            arrives at the anonymous <code>&lt;mrow&gt;</code> child of <code>&lt;math&gt;</code> and <code>&lt;mtd&gt;</code>
-            elements.
-            In this manner, the intrinsic width of this anonymous <code>&lt;mrow&gt;</code> is well-defined
-            for the layout of <code>&lt;mtable&gt;</code> elements and of the containers of the
-            <code>&lt;math&gt;</code> element. Similarly, the final layout of this anonymous
-            <code>&lt;mrow&gt;</code> is already done when it is time to perform the one of its ancestors.
-          </p>
+          <div class="note">
+            The position of children and graphical items inside a MathML
+            box are expressed using the <code>inline offset</code>
+            and <code>block offset</code>.
+            For convenience, the layout algorithms may describe offsets using
+            flow-relative directions, line-relative directions or
+            the <a>baseline</a>.
+            It is always possible to pass from one description to the other
+            because position of children are always performed after the
+            metrics of the box and of its children are calculated.
+          </div>
+          <div class="example">
+            <ul>
+              <li>
+                If the the offset from the line-left edge of a MathML box
+                to the line-left edge of one of its child box is x
+                then the <a>inline offset</a> of that child
+                is x if the CSS property
+                <a href="CSS-WRITING-MODES-4#direction">direction</a>
+                is <code>ltr</code> and
+                is the inline size of the box − (x + inline size of
+                the child) otherwise.
+              </li>
+              <li>
+                The <a>block offset</a> of the <a>baseline</a> of a box
+                is the <a>line-ascent</a>
+                if the CSS property
+                <a href="CSS-WRITING-MODES-4#propdef-writing-mode">writing-mode</a>
+                is <code>horizontal-lr</code>,
+                <code>vertical-rl</code> or <code>sideways-rl</code>
+                and is the <a>line-descent</a> otherwise.
+              </li>
+            </ul>
+          </div>
         </section>
       </section>
       <section>

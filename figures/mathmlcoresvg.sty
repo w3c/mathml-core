@@ -10,13 +10,11 @@
   \end{scope}}
 
 \newcommand{\MathMLBoxMetrics}[6]{
-  \begin{scope}[shift={(#1,#2)},xscale=#3,yscale=#4,color=#5!50]
-    \fill (0,0) node[style={shape=circle,fill=#5!50}] {};
-    \draw (0,0) node[below right]{$(x_#6,y_#6)$};
-    \draw[->] (0,-.5) -- (2,-.5) node[above]{$w_#6 = W_#6$} -- (5,-.5);
-    \draw[->] (4.5, 0) -- (4.5,-1) node[left]{$A_#6$} -- (4.5,-1.5);
-    \draw[->] (4.5, 0) -- (4.5, 1) node[left]{$B_#6$} -- (4.5,1.5);
-    \draw[->] (3.5, 0) -- (3.5,-1.5) node[left]{$a_#6$} -- (3.5,-2);
-    \draw[->] (3.5, 0) -- (3.5,1.5) node[left]{$b_#6$} -- (3.5,2);
+  \begin{scope}[shift={(#1,#2)},xscale=#3,yscale=#4,color=#5]
+    \draw (0,0) node[below right]{Box #6};
+    \draw[->] (0,-.5) -- (2,-.5) node[above]{inline size} -- (5,-.5);
+    \draw[->] (4.7, 0) -- (4.7,-1) node[right]{ink line-ascent} -- (4.7,-1.5);
+    \draw[->] (4.5, 0) -- (4.5, 1) node[right]{ink line-descent} -- (4.5,1.5);
+    \draw[->] (3.7, 0) -- (3.7,-1.5) node[left]{line-ascent} -- (3.7,-2);
+    \draw[->] (3.5, 0) -- (3.5,1.5) node[left]{line-descent} -- (3.5,2);
   \end{scope}}
-
