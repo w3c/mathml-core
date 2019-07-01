@@ -1473,12 +1473,6 @@
             <p>
               The inline size is the maximum between the inline size of the
               numerator and the inline size of the denominator.
-              The inline-start coordinate of the numerator
-              (respectively denominator) is half the
-              difference between the inline size and the inline size of the
-              numerator (respectively denominator).
-              The inline size of the fraction bar is the inline size and its
-              inline-start position is 0.
             </p>
             <p><code>NumeratorShift</code> is the maximum between:</p>
             <ul>
@@ -1547,8 +1541,13 @@
               <li>0</li>
             </ul>
             <p>
-              The (ink) block-size is the sum of the (ink) line-ascent
+              The (ink) block size is the sum of the (ink) line-ascent
               and (ink) line-descent.
+            </p>
+            <p>
+              The inline offset of the numerator (respectively denominator)
+              is the half the inline size − half the inline size of
+              the numerator (respectively denominator).
             </p>
             <p>
               The baseline of the numerator (respectively denominator)
@@ -1558,6 +1557,8 @@
               towards the line-over (respectively line-under).
             </p>
             <p>
+              The inline size of the fraction bar is the inline size and its
+              inline offset is 0.
               The center of the fraction bar is shifted away from the baseline
               by a distance of <a>AxisHeight</a> towards the line-over.
               Its block size is the line thickness.
@@ -1578,8 +1579,6 @@
               The min-content inline size, max-content inline size
               and inline size are calculated the same
               as in <a href="#fraction-with-nonzero-line-thickness"></a>.
-              So are the inline-start coordinates of the numerator and
-              denominator.
             </p>
             <p>
               If the <a>math-style</a> is <code>inline</code> then
@@ -1635,8 +1634,13 @@
               <li>0</li>
             </ul>
             <p>
-              The (ink) block-size is the sum of the (ink) line-ascent
+              The (ink) block size is the sum of the (ink) line-ascent
               and (ink) line-descent.
+            </p>
+            <p>
+              The inline offsets of the numerator and denominator are
+              calculated the same as in
+              <a href="#fraction-with-nonzero-line-thickness"></a>.
             </p>
             <p>
               The baseline of the numerator (respectively denominator) is
@@ -1764,7 +1768,7 @@
             <p>
               The min-content (respectively max-content) inline size is
               the sum of the
-              <a>preferred inline-size of a stretchy glyph in block direction</a>
+              <a>preferred inline size of a stretchy glyph in block direction</a>
               for the <a>radical glyph</a>
               and of the min-content (respectively max-content) inline size
               of the base.
@@ -1773,12 +1777,6 @@
               The inline size is the sum of the advance width
               of the <a>box metrics of the radical glyph</a> and
               of the inline size of the base.
-            </p>
-            <p>
-              The inline size of the overbar is the inline size of the
-              base.
-              The inline-start coordinate of the base and overbar is the width
-              of the <a>box metrics of the radical glyph</a>.
             </p>
             <p>
               The ink line-ascent is the sum of <a>RadicalRuleThickness</a>,
@@ -1804,6 +1802,13 @@
               and (ink) line-descent.
             </p>
             <p>
+              The inline size of the overbar is the inline size of the
+              base.
+              The inline offsets of the base and overbar are also the same
+              and equal to the width of the
+              <a>box metrics of the radical glyph</a>.
+            </p>
+            <p>
               The baseline of the base is aligned with the baseline.
               The block size of the overbar is
               <a>RadicalRuleThickness</a>. It line-over edge is shifted away
@@ -1815,15 +1820,10 @@
             </p>
             <ul>
               <li>
-                At inline coordinate
-                the inline size minus the inline size of the
-                <a>box metrics of the radical glyph</a>
-                if the CSS property
-                <a data-cite="CSS-WRITING-MODES-3#direction"><code>direction</code></a>
-                is <code>rtl</code> and 0 otherwise.
+                At inline offset 0.
               </li>
               <li>
-                At block coordinate shifted away from the
+                At block offset shifted away from the
                 line-over edge of the overbar towards the line-under
                 direction by a distance given by the ascent
                 of the <a>box metrics of the radical glyph</a>.
@@ -1859,12 +1859,6 @@
               and of the inline size of B.
             </p>
             <p>
-              The inline-start coordinate of the index is
-              <a>RadicalKernBeforeDegree</a>.
-              The inline-start coordinate of B is the same + the
-              inline size of the index.
-            </p>
-            <p>
               The (ink) line-ascent is the maximum between:
             </p>
             <ul>
@@ -1885,6 +1879,12 @@
             <p>
               The (ink) block size is the sum of the (ink)
               line-ascent and (ink) line-descent.
+            </p>
+            <p>
+              The inline offset of the index is
+              <a>RadicalKernBeforeDegree</a>. The inline-offset of the
+              base is the same + the
+              inline size of the index.
             </p>
             <p>
               The baseline of B is aligned with the baseline.
@@ -2077,7 +2077,7 @@
             </div>
             <p>
               The inline size is the requested width.
-              The inline start of the mpadded inner box is the requested lspace.
+              The inline offset of the mpadded inner box is the requested lspace.
             </p>
             <p>
               The (ink) line-ascent is the requested height.
@@ -2215,7 +2215,7 @@
                 "content-max inline size of B". The only exception is for
                 the <code>longdiv</code> notation: In that case,
                 s<sub>left,i</sub> is replaced with the
-                <a>preferred inline-size of a stretchy glyph in block direction</a>
+                <a>preferred inline size of a stretchy glyph in block direction</a>
                 for U+0029 RIGHT PARENTHESIS.
                 Again, it is possible to take the maximum values to calculate
                 the min-content and max-content inline sizes.
@@ -2259,8 +2259,8 @@
                     notation of the <code>&lt;menclose&gt;</code> element</figcaption>
                 </figure>
                 <p>
-                  The min-content (respectively max-content) inline-size is
-                  the min-content (respectively max-content) inline-size
+                  The min-content (respectively max-content) inline size is
+                  the min-content (respectively max-content) inline size
                   of B + 5ξ<sub>8</sub>.
                 </p>
                 <p>
@@ -2309,8 +2309,8 @@
                       notation of the <code>&lt;menclose&gt;</code> element</figcaption>
                   </figure>
                 <p>
-                  The min-content (respectively max-content) inline-size is
-                  the min-content (respectively max-content) inline-size
+                  The min-content (respectively max-content) inline size is
+                  the min-content (respectively max-content) inline size
                   of B + 8ξ<sub>8</sub>.
                 </p>
                 <p>
@@ -2372,8 +2372,8 @@
                 <p>
                   For the <code>horizontalstrike</code> notation,
                   the metrics are the same as B.
-                  A bar of inline-size the inline-size and
-                  of block-size ξ<sub>8</sub> is drawn
+                  A bar of inline size the inline size and
+                  of block size ξ<sub>8</sub> is drawn
                   at line-over position minus half ξ<sub>8</sub>.
                   See <a href="#figure-box-horizontal-strike"></a>.
                 </p>
@@ -2388,7 +2388,7 @@
                   For the <code>verticalstrike</code> notation,
                   the metrics are the same as B.
                   A bar of inline size the ξ<sub>8</sub> and
-                  of block-size the block size is drawn
+                  of block size the block size is drawn
                   at line-left position
                   half the inline size minus half ξ<sub>8</sub>.
                 </p>
@@ -2459,8 +2459,8 @@
                     notation of the <code>&lt;menclose&gt;</code> element</figcaption>
                 </figure>
                 <p>
-                  The min-content inline-size,
-                  max-content inline-size and inline-size are the
+                  The min-content inline size,
+                  max-content inline size and inline size are the
                   ones of B plus 10ξ<sub>8</sub>.
                 </p>
                 <p>
@@ -2506,7 +2506,7 @@
                   box.
                 </p>
                 <p>
-                  The min-content inline-size, max-content inline-size
+                  The min-content inline size, max-content inline size
                   and inline size are the ones of B times √2 plus
                   3ξ<sub>8</sub>.
                 </p>
@@ -2642,9 +2642,6 @@
               <code>LargeOpItalicCorrection</code> +
               the inline size of
               the subscript + <a>SpaceAfterScript</a>.
-              The inline start of the base is 0 and the inline start of the
-              subscript is the inline size of the base −
-              <code>LargeOpItalicCorrection</code>.
             </p>
             <p>
               <code>SubShift</code> is the maximum between:
@@ -2675,6 +2672,11 @@
             <p>
               The (ink) block size is the sum of the (ink) line-ascent
               and (ink) line-descent.
+            </p>
+            <p>
+              The inline offset of the base is 0 and the inline offset of the
+              subscript is the inline size of the base −
+              <code>LargeOpItalicCorrection</code>.
             </p>
             <p>
               The base is placed so that its baseline
@@ -2711,9 +2713,6 @@
               <code>ItalicCorrection</code> +
               the inline size of
               the superscript + <a>SpaceAfterScript</a>.
-              The inline start of the base is 0 and the inline start of
-              superscript is the inline size of the base +
-              <code>ItalicCorrection</code>.
             </p>
             <p>
               <code>SuperShift</code> is the maximum between:
@@ -2749,6 +2748,11 @@
               and (ink) line-descent.
             </p>
             <p>
+              The inline offset of the base is 0 and the inline offset of
+              superscript is the inline size of the base +
+              <code>ItalicCorrection</code>.
+            </p>
+            <p>
               The base is placed so that its baseline
               matches the baseline. The superscript is placed so that its
               baseline
@@ -2777,8 +2781,6 @@
               inline sizes) calculated in
               <a href="#base-with-subscript"></a> and
               <a href="#base-with-superscript"></a>.
-              The inline coordinates of the base and scripts are performed the
-              same as described in these sections.
             </p>
             <p>
               <code>SubSuperGap</code> is the gap between the two scripts
@@ -2808,17 +2810,22 @@
               </li>
             </ol>
             <p>
-              After adjustment of the
-              <code>SubShift</code> and <code>SuperShift</code>,
-              the ink line-ascent (respectively line-ascent, ink line-descent,
+              The ink line-ascent (respectively line-ascent, ink line-descent,
               line-descent, ink block size, block size) is set to the maximum
               of the
               ink line-ascents (respectively line-ascents, ink line-descents,
               line-descents, ink block sizes, block sizes) calculated in
               in <a href="#base-with-subscript"></a> and
+              <a href="#base-with-superscript"></a>
+              but using the adjusted values <code>SubShift</code> and
+              <code>SuperShift</code> above.
+            </p>
+            <p>
+              The inline and block offsets of the base and scripts are
+              performed the
+              same as described in
+              <a href="#base-with-subscript"></a> and
               <a href="#base-with-superscript"></a>.
-              The block coordinates of the base and scripts are performed the
-              same as described in these sections.
             </p>
             <div class="note" id="msubsup-with-empty-scripts">
               <p>
@@ -2955,7 +2962,7 @@
               of the base and underscript.
             </p>
             <p>
-              The inline-size is the absolute difference between:
+              The inline size is the absolute difference between:
             </p>
             <ul>
               <li>The maximum of:
@@ -2975,9 +2982,9 @@
             </ul>
             <p>
               If m is the minimum calculated in the second item above then the
-              inline start coordinate
+              inline offset
               of the base is −m − half the inline size of the base.
-              The inline start coordinate of the underscript is
+              The inline offset of the underscript is
               −m − half the inline size of the underscript −
               half <code>LargeOpItalicCorrection</code>.
             </p>
@@ -3099,9 +3106,9 @@
             </ul>
             <p>
               If m is the minimum calculated in the second item above then the
-              inline start coordinate
+              inline offset
               of the base is −m − half the inline size of the base.
-              The inline start coordinate of the overscript is
+              The inline offset of the overscript is
               −m − half the inline size of the overscript +
               half <code>LargeOpItalicCorrection</code>.
             </p>
@@ -3220,12 +3227,12 @@
             <p>
               The min-content inline size, max-content inline size
               and inline size are calculated as an absolute difference
-              between a maximum inline coordinate and minimum inline coordinate.
+              between a maximum inline offset and minimum inline offset.
               These extrema are calculated by taking the extremum value
               of the corresponding extrema calculated in
               <a href="#base-with-underscript"></a> and
               <a href="#base-with-overscript"></a>.
-              The the inline start coordinates of the base, underscript and
+              The the inline offsets of the base, underscript and
               overscript are calculated as in these sections but using
               the new minimum m (minimum of the corresponding minima).
             </p>
@@ -3344,11 +3351,11 @@
               The inline size is calculated with the following algorithm:
             </p>
             <ol>
-              <li>Set <code>inline-start</code> to 0.</li>
+              <li>Set <code>inline-offset</code> to 0.</li>
               <li>
                 <p>
                   For each prescript pair, increment
-                  <code>inline-start</code> by <a>SpaceAfterScript</a> + the
+                  <code>inline-offset</code> by <a>SpaceAfterScript</a> + the
                   maximum of
                 </p>
                 <ul>
@@ -3357,9 +3364,9 @@
                 </ul>
               </li>
               <li>
-                Increment <code>inline-start</code> by the inline size of the
+                Increment <code>inline-offset</code> by the inline size of the
                 base and
-                set <code>inline-size</code> to <code>inline-start</code>.
+                set <code>inline-size</code> to <code>inline-offset</code>.
               </li>
               <li>
                 <p>
@@ -3376,7 +3383,7 @@
                     <code>ItalicCorrection</code>.
                   </li>
                 </ul>
-                <p>Increment <code>inline-start</code> to the maximum of:</p>
+                <p>Increment <code>inline-offset</code> to the maximum of:</p>
                 <ul>
                   <li>
                     the inline size of the subscript.
@@ -3386,7 +3393,7 @@
                   </li>
                 </ul>
                 <p>
-                  Increment <code>inline-start</code> by
+                  Increment <code>inline-offset</code> by
                   <a>SpaceAfterScript</a>.
                 </p>
               </li>
@@ -3424,12 +3431,12 @@
               following algorithm:
             </p>
             <ol>
-              <li>Set <code>inline-start</code> to 0.</li>
+              <li>Set <code>inline-offset</code> to 0.</li>
               <li>
                 <p>For each prescript pair:</p>
                 <ol>
                   <li>
-                    Increment <code>inline-start</code> by
+                    Increment <code>inline-offset</code> by
                     <a>SpaceAfterScript</a>.
                   </li>
                   <li>
@@ -3445,12 +3452,12 @@
                   </li>
                   <li>
                     Place the subscript at inline-start position
-                    <code>inline-start</code> + <code>pair-inline-size</code>
+                    <code>inline-offset</code> + <code>pair-inline-size</code>
                     − the inline size of the subscript.
                   </li>
                   <li>
                     Place the superscript at inline-start position
-                    <code>inline-start</code> + <code>pair-inline-size</code>
+                    <code>inline-offset</code> + <code>pair-inline-size</code>
                     − the inline size of the superscript.
                   </li>
                   <li>
@@ -3461,14 +3468,14 @@
                     towards the line-under (respectively line-over).
                   </li>
                   <li>
-                    Increment <code>inline-start</code> by
+                    Increment <code>inline-offset</code> by
                     <code>pair-inline-size</code>.
                   </li>
               </ol>
               <li>
                 Place the base and <code>&lt;mprescript&gt;</code> boxes
-                at inline-start coordinate
-                <code>inline-start</code> and with their baselines
+                at inline offsets
+                <code>inline-offset</code> and with their baselines
                 aligned with the baseline.
               </li>
               <li>
@@ -3489,12 +3496,12 @@
                   </li>
                   <li>
                     Place the subscript
-                    at inline-start position <code>inline-start</code>
+                    at inline-start position <code>inline-offset</code>
                     − <code>LargeOpItalicCorrection</code>.
                   </li>
                   <li>
                     Place the superscript
-                    at inline-start position <code>inline-start</code>
+                    at inline-start position <code>inline-offset</code>
                     + <code>ItalicCorrection</code>.
                   </li>
                   <li>
@@ -3504,11 +3511,11 @@
                     towards the line-under (respectively line-over).
                   </li>
                   <li>
-                    Increment <code>inline-start</code> by
+                    Increment <code>inline-offset</code> by
                     <code>pair-inline-size</code>
                   </li>
                   <li>
-                    Increment <code>inline-start</code> by
+                    Increment <code>inline-offset</code> by
                     <a>SpaceAfterScript</a>.
                   </li>
                 </ol>
@@ -4320,7 +4327,7 @@
         <section>
           <h4>Algorithms for glyph stretching</h4>
           <p>
-            The <dfn>preferred inline-size of a stretchy glyph in inline
+            The <dfn>preferred inline size of a stretchy glyph in inline
             direction</dfn> for a given target size <code>T</code>
             is calculated using the following algorithm:
           </p>
@@ -4360,7 +4367,7 @@
             <li>Return <code>S</code>.</li>
           </ol>
           <p>
-            The <dfn>preferred inline-size of a stretchy glyph in block
+            The <dfn>preferred inline size of a stretchy glyph in block
             direction</dfn>
             is calculated using the following algorithm:
           </p>
@@ -4391,7 +4398,7 @@
             <li>Return <code>S</code>.</li>
           </ol>
           <div class="note">
-            The <a>preferred inline-size of a stretchy glyph in block
+            The <a>preferred inline size of a stretchy glyph in block
             direction</a> will return the maximum width of all possible
             vertical constructions for that glyph.
             In practice, math fonts are designed so that
