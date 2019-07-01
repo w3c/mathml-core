@@ -705,11 +705,18 @@
             the parent box and the
             <a>inline-start</a> edge
             of the child.
-            The <dfn>block offset</dfn> of a child box is the distance between
+            The <dfn>block offset</dfn> of a child box is the offset between
             <a>block-start</a> edge of
             the parent box and the
             <a>block-start</a> edge
             of the child.
+          </p>
+          <p>
+            The <dfn>line-left offset</dfn>,
+             <dfn>line-right offset</dfn>,
+             <dfn>line-over offset</dfn> and
+             <dfn>line-under offset</dfn> are defined similarly
+             as the offset between the corresponding parent and child edges.
           </p>
           <p>
             The <dfn>baseline</dfn> of a MathML box is the line parallel to
@@ -732,13 +739,12 @@
           <div class="example">
             <ul>
               <li>
-                If the the offset from the line-left edge of a MathML box
-                to the line-left edge of one of its child box is x
-                then the <a>inline offset</a> of that child
-                is x if the CSS property
+                The <a>inline offset</a> of a child box is
+                the <a>line-left offset</a> if the CSS property
                 <a href="CSS-WRITING-MODES-4#direction">direction</a>
                 is <code>ltr</code> and
-                is the inline size of the box − (x + inline size of
+                is the inline size of the box −
+                (<a>line-left offset</a> + inline size of
                 the child) otherwise.
               </li>
               <li>
@@ -2201,9 +2207,9 @@
             <ul>
               <li>
                 For each layout B<sub>i</sub>, s<sub>left,i</sub> is the
-                line-left coordinate of
+                line-left offset of
                 the B and s<sub>right,i</sub> is
-                (inline size of B<sub>i</sub> − line-right coordinate of B).
+                (inline size of B<sub>i</sub> − line-right offset of B).
                 s<sub>left</sub> (respectively s<sub>right</sub>) is the maximum
                 of the s<sub>left,i</sub> over
                 (respectively s<sub>left,i</sub>) over all the i. Then
@@ -2234,9 +2240,10 @@
                 and (ink) line-descent.
               </li>
               <li>
-                Finally each box at line-left, line-over coordinates
+                Finally each box at line-left and line-over offsets
                 x, y in the layout of B<sub>i</sub> is moved to
-                coordinates x + s<sub>left</sub> − s<sub>left,i</sub>
+                line-left and line-over offsets
+                offsets x + s<sub>left</sub> − s<sub>left,i</sub>
                 and y + line-ascent − the line-ascent of B<sub>i</sub>.
               </li>
             </ul>
@@ -2282,10 +2289,10 @@
                 </p>
                 <p>
                   B is placed so that its baseline matches the baseline and
-                  its line-left coordinate is 5ξ<sub>8</sub>.
+                  its line-left offset is 5ξ<sub>8</sub>.
                   The inline size of the bar is ξ<sub>8</sub>,
-                  its block size is the block size, its line-left coordinate
-                  is ξ<sub>8</sub> and its line-over coordinate is 0.
+                  its block size is the block size, its line-left offset
+                  is ξ<sub>8</sub> and its line-over offset is 0.
                 </p>
               </li>
               <li>
@@ -2298,8 +2305,8 @@
                 </p>
                 <p>
                   The inline size of the bar is ξ<sub>8</sub>,
-                  its line-left coordinate is the inline size −
-                  2ξ<sub>8</sub> and the line-left coordinate of B is 0.
+                  its line-left offset is the inline size −
+                  2ξ<sub>8</sub> and the line-left offset of B is 0.
                 </p>
               </li>
               <li>
@@ -2331,11 +2338,11 @@
                 </p>
                 <p>
                   B is placed so that its baseline matches the baseline and
-                  its line-left coordinate is 4ξ<sub>8</sub>.
+                  its line-left offset is 4ξ<sub>8</sub>.
                   The inline size of the bar is the inline size,
                   its block size is <a>OverbarRuleThickness</a>,
-                  its line-left coordinate
-                  is 0 and its line-over coordinate is the ascent −
+                  its line-left offset
+                  is 0 and its line-over offset is the ascent −
                   the ink line-ascent of B − <a>OverbarVerticalGap</a> −
                   <a>OverbarRuleThickness</a>.
                 </p>
@@ -2364,7 +2371,7 @@
                 <p>
                   B is placed so that its baseline matches the baseline.
                   The block size of the bar is <a>UnderbarRuleThickness</a>
-                  and its line-over coordinate is the line-ascent +
+                  and its line-over offset is the line-ascent +
                   the ink line-descent of B + <a>UnderbarVerticalGap</a>.
                 </p>
               </li>
@@ -2423,7 +2430,7 @@
                 </p>
                 <p>
                   B is placed so that its baseline is the baseline and
-                  its line-left coordinate is half ξ<sub>8</sub>.
+                  its line-left offset is half ξ<sub>8</sub>.
                 </p>
                 <p>
                   Using terminology from [[SVG]],
@@ -2479,7 +2486,7 @@
                 </p>
                 <p>
                   B is placed so that its baseline is the baseline and
-                  its line-left coordinate is 5ξ<sub>8</sub>.
+                  its line-left offset is 5ξ<sub>8</sub>.
                   If B' is the ink box B expanded on each side by
                   ½7ξ<sub>8</sub> then using terminology from [[SVG]],
                   a rounded rectangle is drawn on B'
@@ -2528,7 +2535,7 @@
                 </p>
                 <p>
                   Finally, B is placed so that its baseline is aligned with
-                  the baseline and its line-left coordinate is
+                  the baseline and its line-left offset is
                   ½(√2 − 1) times the inline size of B plus 3ξ<sub>8</sub>/2.
                 </p>
                 <figure id="figure-box-menclose-circle">
