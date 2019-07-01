@@ -2936,155 +2936,327 @@
           <section>
             <h4>Base with underscript</h4>
             <p>
-              The algorithm is the same as the one described in
-              <a href="#base-with-underscript-and-overscript"></a>
-              except that we only set the <code>UnderShift</code> to position
-              the underscript and add <code>UnderExtraDescender</code> space
-              below it. There is no need to position an overscript nor to add
-              extra <code>OverExtraDescender</code> space above it.
+              The <code>&lt;munder&gt;</code> element is laid out as shown on
+              <a href="#figure-box-munder"></a>.
+              <code>LargeOpItalicCorrection</code>
+              is the <a>italic correction</a> of the base
+              if it is an <a>embellished operator</a> with
+              the <a><code>largeop</code></a> property and 0 otherwise.
             </p>
             <figure id="figure-box-munder">
               <img src="figures/munderbox.svg"/>
               <figcaption>Box model for the <code>&lt;munder&gt;</code> element</figcaption>
             </figure>
+            <p>
+              The min-content (respectively max-content) inline sizes are
+              calculated like the inline size below but replacing the
+              inline sizes of the base and underscript with
+              the min-content (respectively max-content) inline sizes
+              of the base and underscript.
+            </p>
+            <p>
+              The inline-size is the absolute difference between:
+            </p>
+            <ul>
+              <li>The maximum of:
+                <ul>
+                  <li>Half the inline size of the base.</li>
+                  <li>Half the inline size of the underscript −
+                    half <code>LargeOpItalicCorrection</code>.</li>
+                </ul>
+              </li>
+              <li>The minimum of:
+                <ul>
+                  <li>−Half the inline size of the base.</li>
+                  <li>−Half the inline size of the underscript −
+                    half <code>LargeOpItalicCorrection</code>.</li>
+                </ul>
+              </li>
+            </ul>
+            <p>
+              If m is the minimum calculated in the second item above then the
+              inline start coordinate
+              of the base is −m − half the inline size of the base.
+              The inline start coordinate of the underscript is
+              −m − half the inline size of the underscript −
+              half <code>LargeOpItalicCorrection</code>.
+            </p>
+            <p>
+              Parameters
+              <code>UnderShift</code> and <code>UnderExtraDescender</code>
+              are determined by considering three cases in the following order:
+            </p>
+            <ol>
+              <li>
+                <p>
+                  The base is an
+                  <a>embellished operator</a> with the
+                  <a><code>largeop</code></a> property.
+                  <code>UnderShift</code> is the maximum of
+                </p>
+                <ul>
+                  <li><a>LowerLimitBaselineDropMin</a></li>
+                  <li><a>LowerLimitGapMin</a> + the ascent of the
+                    underscript.</li>
+                </ul>
+                <p>
+                  <code>UnderExtraDescender</code> is 0.
+                </p>
+              </li>
+              <li>
+                <p>
+                  The base is a horizontal
+                  <a>embellished operator</a> with the
+                  <a><code>stretchy</code></a> property.
+                  <code>UnderShift</code> is the maximum of:
+                </p>
+                <ul>
+                  <li><a>StretchStackBottomShiftDown</a></li>
+                  <li><a>StretchStackGapAboveMin</a> + the ascent of the
+                    underscript.</li>
+                </ul>
+                <code>UnderExtraDescender</code> is 0.
+              </li>
+              <li>
+                Otherwise,
+                <code>UnderShift</code> is equal to <a>UnderbarVerticalGap</a>
+                if the underscript is not an accent and to zero otherwise.
+                <code>UnderExtraAscender</code> is
+                <a>UnderbarExtraDescender</a>.
+              </li>
+            </ol>
+            <p>
+              The (ink) line-ascent is the maximum between:
+            </p>
+            <ul>
+              <li>The (ink) line-ascent of the base.</li>
+              <li>The (ink) line-ascent of the underscript −
+                <code>UnderShift</code>.</li>
+            </ul>
+            <p>
+              The (ink) line-descent is the maximum between:
+            </p>
+            <ul>
+              <li>The (ink) line-descent of the base.</li>
+              <li>The (ink) line-descent of the underscript +
+                <code>UnderShift</code> + <code>UnderExtraAscender</code>
+                (this last term is ignored in the ink case).</li>
+            </ul>
+            <p>
+              The (ink) block size is the sum of the (ink) line-ascent
+              and (ink) line-descent.
+            </p>
+            <p>
+              The baseline of the base is aligned with the baseline.
+              The baseline of the underscript is shifted away from the baseline
+              and towards the line-under by a distance equal to
+              the ink line-descent of the base + <code>UnderShift</code>.
+            </p>
           </section>
           <section>
             <h4>Base with overscript</h4>
             <p>
-              The algorithm is the same as the one described in
-              <a href="#base-with-underscript-and-overscript"></a>
-              except that we only set the <code>OverShift</code> to position
-              the overscript and add <code>OverExtraDescender</code> space
-              above it. There is no need to position an underscript nor to add
-              extra <code>UnderExtraDescender</code> space below it.
+              The <code>&lt;mover&gt;</code> element is laid out as shown on
+              <a href="#figure-box-mover"></a>.
+              <code>LargeOpItalicCorrection</code>
+              is the <a>italic correction</a> of the base
+              if it is an <a>embellished operator</a> with
+              the <a><code>largeop</code></a> property and 0 otherwise.
             </p>
             <figure id="figure-box-mover">
               <img src="figures/moverbox.svg"/>
               <figcaption>Box model for the <code>&lt;mover&gt;</code> element</figcaption>
             </figure>
+            <div class="issue">Plug the <a>top accent attachment</a> into these
+              calculations</div>
+            <p>
+              The min-content (respectively max-content) inline sizes are
+              calculated like the inline size below but replacing the
+              inline sizes of the base and overscript with
+              the min-content (respectively max-content) inline sizes
+              of the base and overscript.
+            </p>
+            <p>
+              The inline-size is the absolute difference between:
+            </p>
+            <ul>
+              <li>The maximum of:
+                <ul>
+                  <li>Half the inline size of the base.</li>
+                  <li>Half the inline size of the overscript +
+                    half <code>LargeOpItalicCorrection</code>.</li>
+                </ul>
+              </li>
+              <li>The minimum of:
+                <ul>
+                  <li>−Half the inline size of the base.</li>
+                  <li>−Half the inline size of the overscript +
+                    half <code>LargeOpItalicCorrection</code>.</li>
+                </ul>
+              </li>
+            </ul>
+            <p>
+              If m is the minimum calculated in the second item above then the
+              inline start coordinate
+              of the base is −m − half the inline size of the base.
+              The inline start coordinate of the overscript is
+              −m − half the inline size of the overscript +
+              half <code>LargeOpItalicCorrection</code>.
+            </p>
+            <p>
+              Parameters
+              <code>OverShift</code> and <code>OverExtraDescender</code>
+              are determined by considering three cases in the following order:
+            </p>
+            <ol>
+              <li>
+                <p>
+                  The base is an
+                  <a>embellished operator</a> with the
+                  <a><code>largeop</code></a> property.
+                  <code>OverShift</code> is the maximum of
+                </p>
+                <ul>
+                  <li><a>UpperLimitBaselineRiseMin</a></li>
+                  <li><a>UpperLimitGapMin</a> + the descent of the
+                    overscript.</li>
+                </ul>
+                <p>
+                  <code>OverExtraAscender</code> is 0.
+                </p>
+              <li>
+                <p>
+                  The base is a horizontal
+                  <a>embellished operator</a> with the
+                  <a><code>stretchy</code></a> property.
+                  <code>OverShift</code> is the maximum of:
+                </p>
+                <ul>
+                  <li><a>StretchStackTopShiftUp</a></li>
+                  <li><a>StretchStackGapBelowMin</a> + the descent of the
+                    overscript.</li>
+                </ul>
+                <code>OverExtraDescender</code> is 0.
+              </li>
+              <li>
+                <p>
+                  Otherwise, <code>OverShift</code> is equal to</p>
+                <ol>
+                  <li><a>OverbarVerticalGap</a> if the overscript is not an
+                    accent.</li>
+                  <li>Or <a>AccentBaseHeight</a> minus the line-ascent
+                    of the base if this difference is nonnegative.</li>
+                  <li>Or 0 otherwise.</li>
+                </ol>
+                <p>
+                  <code>OverExtraAscender</code> is <a>OverbarExtraAscender</a>.
+                </p>
+              </li>
+            </ol>
+            <div class="note">
+              For accent overscripts and bases with line-ascents that are at
+              most
+              <a>AccentBaseHeight</a>, the rule from
+              [[OPEN-FONT-FORMAT]] [[?TEXBOOK]] is actually to align the
+              baselines of the overscripts and of the bases. This assumes that
+              accent glyphs are designed in such a way that their ink bottoms
+              are
+              more or less <a>AccentBaseHeight</a> above their baselines. Hence,
+              the previous rule will guarantee that all the overscript bottoms
+              are aligned while still avoiding collision with the bases.
+              However, MathML can have arbitrary accent overscripts
+              a more general and simpler rule is provided above: Ensure
+              that the bottom of overscript is at least
+              <a>AccentBaseHeight</a> above the baseline of the base.
+            </div>
+            <p>
+              The (ink) line-ascent is the maximum between:
+            </p>
+            <ul>
+              <li>The (ink) line-ascent of the base.</li>
+              <li>The (ink) line-ascent of the overscript +
+                <code>OverShift</code> + <code>OverExtraAscender</code>
+                (this last term is ignored in the ink case).</li>
+            </ul>
+            <p>
+              The (ink) line-descent is the maximum between:
+            </p>
+            <ul>
+              <li>The (ink) line-descent of the base.</li>
+              <li>The (ink) line-descent of the overscript −
+                <code>OverShift</code>.</li>
+            </ul>
+            <p>
+              The (ink) block size is the sum of the (ink) line-ascent
+              and (ink) line-descent.
+            </p>
+            <p>
+              The baseline of the base is aligned with the baseline.
+              The baseline of the overscript is shifted away from the baseline
+              and towards the line-over by a distance equal to
+              the ink line-over of the base + <code>OverShift</code>.
+            </p>
           </section>
           <section>
             <h4>Base with underscript and overscript</h4>
             <p>
-            The general layout of <code>&lt;munderover&gt;</code> is shown on
-            <a href="#figure-box-munderover"></a>.
-            The overscript is placed above the base, the underscript below the
-            base and by default are aligned with respect to their geometrical
-            center.
-            If the overscript is an accent and has a
-            <a>top accent attachment</a> value, then this value may be used to
-            horizontally align the accent instead of its geometrical center.
-            <code>OverShift</code> is the distance between the top ink
-            of the base and the baseline of the overscript,
-            <code>OverGap</code> is the distance between the top ink of the
-            base and the bottom ink of the overscript,
-            <code>OverExtraAscender</code> is extra space to add above the
-            overscript when determining the logical box.
-            <code>UnderShift</code>, <code>UnderGap</code> and
-            <code>UnderExtraDescender</code> are defined similarly for the
-            underscript. Three cases are considered, in the following order:
-          </p>
-          <ol>
-            <li>
-              <p>
-                The base is an
-                <a>embellished operator</a> with the
-                <a><code>largeop</code></a> property.
-                <code>OverShift</code> is and <code>UnderShift</code> are set
-                to the minimal values satisfying the following conditions:
-              </p>
-              <ul>
-                <li><code>OverGap</code> is at least <a>UpperLimitGapMin</a></li>
-                <li><code>OverShift</code> is at least <a>UpperLimitBaselineRiseMin</a></li>
-                <li><code>UnderGap</code> is at least <a>LowerLimitGapMin</a></li>
-                <li><code>UnderShift</code> is at least <a>LowerLimitBaselineDropMin</a>.</li>
-              </ul>
-              <p>
-                <code>OverExtraAscender</code> and
-                <code>UnderExtraDescender</code> are set to zero. The
-                underscript is shifted backward by half the italic correction of
-                the base.
-                The overscript is shifted forward by half the italic correction
-                of the base.
-              </p>
-            </li>
-            <li>
-              <p>
-                The base is a horizontal
-                <a>embellished operator</a> with the
-                <a><code>stretchy</code></a> property.
-                <code>OverShift</code> is and <code>UnderShift</code> are set
-                to the minimal values satisfying the following conditions:
-              </p>
-              <ul>
-                <li><code>OverGap</code> is at least
-                  <a>StretchStackGapBelowMin</a></li>
-                <li><code>OverShift</code> is at least
-                  <a>StretchStackTopShiftUp</a>
-                </li>
-                <li><code>UnderGap</code> is at least
-                  <a>StretchStackGapAboveMin</a></li>
-                <li><code>UnderShift</code> is at least
-                  <a>StretchStackBottomShiftDown</a></li>
-              </ul>
-              <code>OverExtraAscender</code> and
-              <code>UnderExtraDescender</code> are set to zero.
-            </li>
-            <li>Otherwise,
-              <code>OverShift</code> and <code>UnderShift</code> are set to
-              values such that
-              <ul>
-                <li>
-                  <code>UnderGap</code> is equal to <a>UnderbarVerticalGap</a>
-                  if the underscript is not an accent and to zero otherwise.
-                </li>
-                <li>
-                  <code>OverGap</code> is equal to
-                  <ol>
-                    <li><a>OverbarVerticalGap</a> if the overscript is not an accent.</li>
-                    <li>Or <a>AccentBaseHeight</a> minus the line-ascent
-                      of the base if this difference is nonnegative.</li>
-                    <li>Or 0 otherwise.</li>
-                  </ol>
-                </li>
-              </ul>
-              <code>OverExtraAscender</code> and
-              <code>OverExtraAscender</code> are respectively set to
-              <a>OverbarExtraAscender</a> and <a>UnderbarExtraDescender</a>.
-            </li>
-          </ol>
-          <figure id="figure-box-munderover">
+              The general layout of <code>&lt;munderover&gt;</code> is shown on
+              <a href="#figure-box-munderover"></a>. The
+              <code>LargeOpItalicCorrection</code>,
+              <code>UnderShift</code>,
+              <code>UnderExtraDescender</code>,
+              <code>OverShift</code>,
+              <code>OverExtraDescender</code> parameters
+              are calculated the same as in
+              <a href="#base-with-underscript"></a> and
+              <a href="#base-with-overscript"></a>.
+            </p>
+            <figure id="figure-box-munderover">
             <img src="figures/munderoverbox.svg"/>
             <figcaption>Box model for the <code>&lt;munderover&gt;</code> element</figcaption>
-          </figure>
-          <div class="note">
-            For accent overscripts and bases with line-ascents that are at most
-            <a>AccentBaseHeight</a>, the rule from
-            [[OPEN-FONT-FORMAT]] [[?TEXBOOK]] is actually to align the
-            baselines of the overscripts and of the bases. This assumes that
-            accent glyphs are designed in such a way that their ink bottoms are
-            more or less <a>AccentBaseHeight</a> above their baselines. Hence,
-            the previous rule will guarantee that all the overscript bottoms
-            are aligned while still avoiding collision with the bases.
-            However, MathML can have arbitrary accent overscripts
-            a more general and simpler rule is provided above: Ensure
-            that the bottom of overscript is at least
-            <a>AccentBaseHeight</a> above the baseline of the base.
-          </div>
-          <div class="note">
+            </figure>
             <p>
-              When the underscript (respectively overscript) is an empty
-              box, the base and overscript are laid out the same as for
-              <a href="#base-with-overscript"></a>
-              (respectively <a href="#base-with-underscript"></a>)
-              but the position of the empty underscript (respectively
-              overscript) will add some extra space below the base.
+              The min-content inline size, max-content inline size
+              and inline size are calculated as an absolute difference
+              between a maximum inline coordinate and minimum inline coordinate.
+              These extrema are calculated by taking the extremum value
+              of the corresponding extrema calculated in
+              <a href="#base-with-underscript"></a> and
+              <a href="#base-with-overscript"></a>.
+              The the inline start coordinates of the base, underscript and
+              overscript are calculated as in these sections but using
+              the new minimum m (minimum of the corresponding minima).
             </p>
             <p>
-              In order to keep the algorithm simple, no attempt is made to
-              handle empty scripts in a special way.
+              The (ink) line-ascent, (ink) line-descent
+              are also calculated by taking the extremum value
+              of the extrema calculated in
+              <a href="#base-with-underscript"></a> and
+              <a href="#base-with-overscript"></a>.
             </p>
-          </div>
+            <p>
+              The (ink) block size is the sum of the (ink) line-ascent
+              and (ink) line-descent.
+            </p>
+            <p>
+              Finally, the baselines of the base, undescript and overscript
+              are calculated as in sections
+              <a href="#base-with-underscript"></a> and
+              <a href="#base-with-overscript"></a>.
+            </p>
+            <div class="note">
+              <p>
+                When the underscript (respectively overscript) is an empty
+                box, the base and overscript (respectively underscript) are laid
+                out similarly to
+                <a href="#base-with-overscript"></a>
+                (respectively <a href="#base-with-underscript"></a>)
+                but the position of the empty underscript (respectively
+                overscript) may add extra space.
+                In order to keep the algorithm simple, no attempt is made to
+                handle empty scripts in a special way.
+              </p>
+            </div>
           </section>
         </section>
         <section>
@@ -3216,8 +3388,6 @@
                 empty box then it is not necessarily laid out the same as an
                 <code>&lt;msub&gt;</code>
                 (respectively <code>&lt;msup&gt;</code>) element.
-              </p>
-              <p>
                 In order to keep the algorithm simple, no attempt is made to
                 handle empty or <code>&lt;none&gt;</code> scripts in a special
                 way.
