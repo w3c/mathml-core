@@ -2057,11 +2057,11 @@
             <p>
               The <code>&lt;mpadded&gt;</code> element is laid out as shown on
               <a href="#figure-box-mpadded"></a>.
-              The mpadded inner box is positioned at the origin of the
-              <code>&lt;mpadded&gt;</code> element, shift by the requested
-              lspace in the inline-end direction and by the requested voffset
-              in the line-over direction.
             </p>
+            <figure id="figure-box-mpadded">
+              <img src="figures/mpaddedbox.svg"/>
+              <figcaption>Box model for the <code>&lt;mpadded&gt;</code> element</figcaption>
+            </figure>
             <p>
               The min-content (respectively max-content) inline size
               is the requested width calculated in
@@ -2077,15 +2077,19 @@
             </div>
             <p>
               The inline size is the requested width.
+              The inline start of the mpadded inner box is the requested lspace.
+            </p>
+            <p>
               The (ink) line-ascent is the requested height.
               The (ink) line-descent is the requested depth.
               The (ink) block size is the sum of the (ink) line-ascent and
               (ink) line-descent.
             </p>
-            <figure id="figure-box-mpadded">
-              <img src="figures/mpaddedbox.svg"/>
-              <figcaption>Box model for the <code>&lt;mpadded&gt;</code> element</figcaption>
-            </figure>
+            <p>
+              The mpadded inner box is placed so that its baseline is
+              shifted away from the baseline by the requested voffset
+              towards the line-over.
+            </p>
           </section>
         </section>
         <section>
