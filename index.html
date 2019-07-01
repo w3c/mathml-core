@@ -1473,6 +1473,12 @@
             <p>
               The inline size is the maximum between the inline size of the
               numerator and the inline size of the denominator.
+              The inline-start coordinate of the numerator
+              (respectively denominator) is half the
+              difference between the inline size and the inline size of the
+              numerator (respectively denominator).
+              The inline size of the fraction bar is the inline size and its
+              inline-start position is 0.
             </p>
             <p><code>NumeratorShift</code> is the maximum between:</p>
             <ul>
@@ -1545,10 +1551,6 @@
               and (ink) line-descent.
             </p>
             <p>
-              The inline-start coordinate of the numerator
-              (respectively denominator) is half the
-              difference between the inline size and the inline size of the
-              numerator (respectively denominator).
               The baseline of the numerator (respectively denominator)
               is shifted away from the baseline by a distance of
               <a>AxisHeight</a> + <code>NumeratorShift</code> (respectively
@@ -1556,11 +1558,9 @@
               towards the line-over (respectively line-under).
             </p>
             <p>
-              The inline size of the fraction bar is the inline size and
-              its block size is the line thickness.
-              Its inline-start position is 0 and its
-              center is shifted away from the baseline by
-              a distance of <a>AxisHeight</a> towards the line-over.
+              The center of the fraction bar is shifted away from the baseline
+              by a distance of <a>AxisHeight</a> towards the line-over.
+              Its block size is the line thickness.
             </p>
           </section>
           <section>
@@ -1578,6 +1578,8 @@
               The min-content inline size, max-content inline size
               and inline size are calculated the same
               as in <a href="#fraction-with-nonzero-line-thickness"></a>.
+              So are the inline-start coordinates of the numerator and
+              denominator.
             </p>
             <p>
               If the <a>math-style</a> is <code>inline</code> then
@@ -1637,9 +1639,6 @@
               and (ink) line-descent.
             </p>
             <p>
-              The inline-start coordinates of the numerator and denominator
-              is calculated as in
-              <a href="#fraction-with-nonzero-line-thickness"></a>.
               The baseline of the numerator (respectively denominator) is
               shifted away from the baseline by a distance of
               <a>AxisHeight</a> + <code>TopShift</code> (respectively −
@@ -1776,6 +1775,12 @@
               of the inline size of the base.
             </p>
             <p>
+              The inline size of the overbar is the inline size of the
+              base.
+              The inline-start coordinate of the base and overbar is the width
+              of the <a>box metrics of the radical glyph</a>.
+            </p>
+            <p>
               The ink line-ascent is the sum of <a>RadicalRuleThickness</a>,
               the <a>radical gap</a> and the ink line-ascent of the base.
               The line-ascent is the maximum between:
@@ -1799,13 +1804,8 @@
               and (ink) line-descent.
             </p>
             <p>
-              The inline-start coordinate of the base is the width of the
-              <a>box metrics of the radical glyph</a>. The baseline of the base
-              is aligned with the baseline.
-            </p>
-            <p>
-              The inline size of the overbar is the inline size of the
-              base. Its block size is
+              The baseline of the base is aligned with the baseline.
+              The block size of the overbar is
               <a>RadicalRuleThickness</a>. It line-over edge is shifted away
               from the baseline by a distance towards the line-over
               equal to the ink line-ascent.
@@ -1859,6 +1859,12 @@
               and of the inline size of B.
             </p>
             <p>
+              The inline-start coordinate of the index is
+              <a>RadicalKernBeforeDegree</a>.
+              The inline-start coordinate of B is the same + the
+              inline size of the index.
+            </p>
+            <p>
               The (ink) line-ascent is the maximum between:
             </p>
             <ul>
@@ -1881,13 +1887,8 @@
               line-ascent and (ink) line-descent.
             </p>
             <p>
-              The inline-start coordinate of B is the sum of the
-              inline size of the index and of <a>RadicalKernAfterDegree</a>.
-              The baseline of the B is aligned with the baseline.
-            </p>
-            <p>
-              The inline-start coordinate of the index is
-              <a>RadicalKernBeforeDegree</a>. Its baseline is shifted away
+              The baseline of B is aligned with the baseline.
+              The baseline of the index is shifted away
               from the line-under edge by a distance of
               <a>RadicalDegreeBottomRaisePercent</a> ×
               the ink block size of B + the ink line-descent of the
@@ -2624,13 +2625,20 @@
               <figcaption>Box model for the <code>&lt;msub&gt;</code> element</figcaption>
             </figure>
             <p>
-              The (content-min/content-max) inline size
-              is the (content-min/max-content)
+              The content-min (respectively content-max) inline size
+              is the content-min (respectively max-content)
               inline size of the base −
               <code>LargeOpItalicCorrection</code> +
-              the (content-min/max-content) inline size of
+              the content-min (respectively max-content) inline size of
               the subscript + <a>SpaceAfterScript</a>.
-              The inline start of the base is 0 and the inline start of
+            </p>
+            <p>
+              The inline size
+              is the inline size of the base −
+              <code>LargeOpItalicCorrection</code> +
+              the inline size of
+              the subscript + <a>SpaceAfterScript</a>.
+              The inline start of the base is 0 and the inline start of the
               subscript is the inline size of the base −
               <code>LargeOpItalicCorrection</code>.
             </p>
@@ -2662,7 +2670,10 @@
             </ul>
             <p>
               The (ink) block size is the sum of the (ink) line-ascent
-              and (ink) line-descent. The base is placed so that its baseline
+              and (ink) line-descent.
+            </p>
+            <p>
+              The base is placed so that its baseline
               matches the baseline. The subscript is placed so that its baseline
               is shifted away from the baseline by <code>SubShift</code>
               towards the line-under.
@@ -2683,11 +2694,18 @@
               <figcaption>Box model for the <code>&lt;msup&gt;</code> element</figcaption>
             </figure>
             <p>
-              The (content-min/content-max) inline size
-              is the (content-min/max-content)
+              The content-min (respectively content-max) inline size
+              is the content-min (respectively max-content)
               inline size of the base +
               <code>ItalicCorrection</code> +
-              the (content-min/max-content) inline size of
+              the content-min (respectively max-content) inline size of
+              the superscript + <a>SpaceAfterScript</a>.
+            </p>
+            <p>
+              The inline size
+              is inline size of the base +
+              <code>ItalicCorrection</code> +
+              the inline size of
               the superscript + <a>SpaceAfterScript</a>.
               The inline start of the base is 0 and the inline start of
               superscript is the inline size of the base +
@@ -2724,7 +2742,10 @@
             </ul>
             <p>
               The (ink) block size is the sum of the (ink) line-ascent
-              and (ink) line-descent. The base is placed so that its baseline
+              and (ink) line-descent.
+            </p>
+            <p>
+              The base is placed so that its baseline
               matches the baseline. The superscript is placed so that its
               baseline
               is shifted away from the baseline by <code>SuperShift</code>
@@ -2752,6 +2773,8 @@
               inline sizes) calculated in
               <a href="#base-with-subscript"></a> and
               <a href="#base-with-superscript"></a>.
+              The inline coordinates of the base and scripts are performed the
+              same as described in these sections.
             </p>
             <p>
               <code>SubSuperGap</code> is the gap between the two scripts
@@ -2790,8 +2813,8 @@
               line-descents, ink block sizes, block sizes) calculated in
               in <a href="#base-with-subscript"></a> and
               <a href="#base-with-superscript"></a>.
-              The coordinates of the base and scripts are performed the same
-              as described in these sections.
+              The block coordinates of the base and scripts are performed the
+              same as described in these sections.
             </p>
             <div class="note" id="msubsup-with-empty-scripts">
               <p>
