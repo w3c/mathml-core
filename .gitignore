@@ -5,3 +5,4 @@ unicode.xml
 *.log
 *.aux
 *.dvi
+wpt-tests-generator.py
