@@ -25,16 +25,21 @@ def add_test(section, path):
     tests[section].append(path)
 
 def format_tests():
+    all_tests = set()
     for section in sorted(tests):
         print('$MATHML_CORE_URL/#%s' % section)
         test_list=[]
         for test in sorted(tests[section]):
             result = re.match( r'mathml/(.*)', test)
             if result:
-                test_list.append(result.group(1))
+                test = result.group(1)
             else:
-                test_list.append('../%s' % test)
+                test = \"../%s\" % test
+            test_list.append(test)
+            all_tests.add(test)
         print('data-tests=\"%s\"\n' % ','.join(test_list))
+    print('All tests:')
+    print('data-tests=\"%s\"\n' % ','.join(sorted(all_tests)))
 
 " > $PYTHON_SCRIPT
 
