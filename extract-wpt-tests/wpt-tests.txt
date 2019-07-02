@@ -67,8 +67,11 @@ data-tests="relations/css-styling/color-1.html,relations/css-styling/visibility-
 https://mathml-refresh.github.io/mathml-core/#the-displaystyle-and-scriptlevel-attributes
 data-tests="relations/css-styling/displaystyle-1.html"
 
+https://mathml-refresh.github.io/mathml-core/#the-math-script-level-property
+data-tests="math-script-level-001.tentative.html,math-script-level-002.tentative.html,math-script-level-003.tentative.html,math-script-level-004.tentative.html,math-script-level-005.tentative.html,math-script-level-auto-and-math-style-001.tentative.html,math-script-level-auto-and-math-style-002.tentative.html,math-script-level-auto-and-math-style-003.tentative.html,math-script-level-auto-and-math-style-004.tentative.html,math-script-level-auto-and-math-style-005.tentative.html,math-script-level-font-size-clamping-001.tentative.html"
+
 https://mathml-refresh.github.io/mathml-core/#the-math-style-property
-data-tests="relations/css-styling/displaystyle-1.html"
+data-tests="math-script-level-auto-and-math-style-001.tentative.html,math-script-level-auto-and-math-style-002.tentative.html,math-script-level-auto-and-math-style-003.tentative.html,math-script-level-auto-and-math-style-004.tentative.html,math-script-level-auto-and-math-style-005.tentative.html,math-style-001.tentative.html,relations/css-styling/displaystyle-1.html"
 
 https://mathml-refresh.github.io/mathml-core/#the-mathvariant-attribute
 data-tests="relations/css-styling/mathvariant-bold-fraktur.html,relations/css-styling/mathvariant-bold-italic.html,relations/css-styling/mathvariant-bold-sans-serif.html,relations/css-styling/mathvariant-bold-script.html,relations/css-styling/mathvariant-bold.html,relations/css-styling/mathvariant-double-struck.html,relations/css-styling/mathvariant-fraktur.html,relations/css-styling/mathvariant-initial.html,relations/css-styling/mathvariant-italic.html,relations/css-styling/mathvariant-looped.html,relations/css-styling/mathvariant-monospace.html,relations/css-styling/mathvariant-sans-serif-bold-italic.html,relations/css-styling/mathvariant-sans-serif-italic.html,relations/css-styling/mathvariant-sans-serif.html,relations/css-styling/mathvariant-script.html,relations/css-styling/mathvariant-stretched.html,relations/css-styling/mathvariant-tailed.html"
