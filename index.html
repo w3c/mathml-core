@@ -1224,11 +1224,6 @@
             <h4>Layout of operators</h4>
             <div class="issue">TODO: Rewrite and reorganize this section...</div>
             <p>
-              The inline-start <code>lspace</code> and
-              inline-end <code>rspace</code> must be added on each side of
-              <a>outermost embellished operators</a>.
-            </p>
-            <p>
               In most cases, the <code>&lt;mo&gt;</code> element is treated as an
               <a>&lt;mtext&gt;</a> element.
               However, when an <code>&lt;mo&gt;</code> element with a single character must be
@@ -1253,10 +1248,7 @@
               the normal character, use the <code>MathVariants</code>
               table to try and find a glyph that has at least the desired size or an
               assembly from several glyphs to cover at least the desired size
-              (<a href="#figure-base-variants-and-assembly"></a>). The rules for vertical stretching
-              are a bit more complicated and are described in section
-              “Vertical Stretching Rules” of
-              [[MATHML3]].
+              (<a href="#figure-base-variants-and-assembly"></a>).
               If the operator has property <code>symmetric="true"</code>, then it must be
               stretched symmetrically with respect to the math axis, which is given by
               the <a>AxisHeight</a> value.
@@ -1446,37 +1438,143 @@
             element with children
             child<sub>1</sub>, child<sub>2</sub>, … child<sub>N</sub>
             is laid out as show on <a href="#figure-box-mrow"></a>. The child boxes
-            are put in a horizontal row one after the other with all their baselines
+            are put in a row one after the other with all their baselines
             aligned.
           </p>
+          <figure id="figure-box-mrow">
+            <img src="figures/mrowbox.svg"/>
+            <figcaption>Box model for the <code>&lt;mrow&gt;</code> element</figcaption>
+          </figure>
+          <p>
           <div class="note">
             Because the box model ensure alignment of baselines,
             fraction bars or symmetric stretchy operators
             will also be aligned along the math axis in the typical case when
             <a>AxisHeight</a> is the same for all children.
           </div>
-          <p>
-            A child is <dfn>slanted</dfn> if it is not an
-            <a>embellished operator</a> with the <a>largeop</a> property.
-            and has nonzero <a>italic correction</a>.
-            If a <a>slanted</a> child is followed by a non-<a>slanted</a> child,
-            a space of width the <a>italic correction</a> of the former is added
-            between the two children. If the last child is <a>slanted</a>, then
-            a space of width its <a>italic correction</a> is added after that child.
-          </p>
-          <div class="note">
-            Spacing around <a>outermost embellished operators</a> is already
-            included in their box metrics.
-          </div>
-          <p>
-            If the <code>&lt;mrow&gt;</code> element contains only one child,
-            then its <a>italic correction</a> and <a>top accent attachment</a>
-            are set to the corresponding values of that single child.
-          </p>
-          <figure id="figure-box-mrow">
-            <img src="figures/mrowbox.svg"/>
-            <figcaption>Box model for the <code>&lt;mrow&gt;</code> element</figcaption>
-          </figure>
+
+          <section>
+            <h5>Layout of <code>&lt;mrow&gt;</code></h5>
+            <div class="issue">Define MathML line breaking?</div>
+            <p>
+              A child is <dfn>slanted</dfn> if it is not an
+              <a>embellished operator</a>
+              and has nonzero <a>italic correction</a>.
+            </p>
+            <div class="note">
+              Large operators may have nonzero italic correction but that one
+              is used when attaching scripts.
+              More generally, all <a>embellished operator</a>
+              are treated as non-slanted since the spacing is designed to
+              be added to the <a>outermost embellished operator</a>
+              and specifed by <a><code>lspace</code></a> and
+              <a><code>rspace</code></a>.
+            </div>
+            <p>
+              The min-content (respectively max-content) inline size are
+              calculated using the following algorithm:
+            </p>
+            <ol>
+              <li>Set <code>inline-offset</code> to 0.</li>
+              <li>Set <code>previous-italic-correction</code> to 0.</li>
+              <li>
+                For each child:
+                <ol>
+                  <li>
+                    If the child is not <a>slanted</a>, then increment
+                    <code>inline-offset</code> by
+                    <code>previous-italic-correction</code>.
+                  </li>
+                  <li>
+                    If the child is an <a>outermost embellished operators</a>
+                    increment <code>inline-offset</code> by
+                    <a><code>lspace</code></a>.
+                  </li>
+                  <li>
+                    Increment <code>inline-offset</code> by
+                    the min-content (respectively max-content) inline size of
+                    the child.
+                  </li>
+                  <li>
+                    If the child is <a>slanted</a> then
+                    set <code>previous-italic-correction</code> to
+                    its <a>italic correction</a>. Otherwise set it to 0.
+                  </li>
+                  <li>
+                    If the child is an <a>outermost embellished operators</a>
+                    increment <code>inline-offset</code> by
+                    <a><code>rspace</code></a>.
+                  </li>
+                </ol>
+              </li>
+              <li>
+                Increment <code>inline-offset</code> by
+                <code>previous-italic-correction</code>.
+              </li>
+              <li>
+                Return <code>inline-offset</code>.
+              </li>
+            </ol>
+            <div class="issue">Describe here vertical stretching of operators
+              based on [[MATHML3]].
+            </div>
+            <p>
+              The inline-size is calculated like
+              the min-content and max-content inline sizes, using the inline
+              size of the children instead.
+            </p>
+            <p>
+              The (ink) line-ascent is the maximum of the (ink) line-ascents
+              of all the children. Similarly,
+              the (ink) line-descent is the maximum of the (ink) line-descents
+              of all the children.
+            </p>
+            <p>
+              The (ink) block size is the sum of the (ink) line-ascent
+              and (ink) line-descent.
+            </p>
+            <p>
+              Finally, the children are positioned using the following
+              algorithm:
+            </p>
+            <ol>
+              <li>Set <code>inline-offset</code> to 0.</li>
+              <li>Set <code>previous-italic-correction</code> to 0.</li>
+              <li>For each child:
+                <ol>
+                  <li>
+                    If the child is not <a>slanted</a>, then increment
+                    <code>inline-offset</code> by
+                    <code>previous-italic-correction</code>.
+                  </li>
+                  <li>
+                    If the child is an <a>outermost embellished operators</a>
+                    increment <code>inline-offset</code> by
+                    <a><code>lspace</code></a>.
+                  </li>
+                  <li>
+                    Set the inline offset of the child
+                    to <code>inline-offset</code> and its block offset such
+                    that the baseline of the child is aligned with the baseline.
+                  </li>
+                  <li>
+                    Increment <code>inline-offset</code> by
+                    the inline size of the child.
+                  </li>
+                  <li>
+                    If the child is <a>slanted</a> then
+                    set <code>previous-italic-correction</code> to
+                    its <a>italic correction</a>. Otherwise set it to 0.
+                  </li>
+                  <li>
+                    If the child is an <a>outermost embellished operators</a>
+                    increment <code>inline-offset</code> by
+                    <a><code>rspace</code></a>.
+                  </li>
+                </ol>
+              </li>
+            </ol>
+          </section>
         </section>
         <section>
           <h4>Fractions <code>&lt;mfrac&gt;</code></h4>
@@ -1731,22 +1829,14 @@
           </section>
           <section>
             <h5>Spacing around the fraction</h5>
-            <div class="issue">
-              The embellished op spacing should probably added during the mrow
-              layout. The extra 1px spacing could be in the CSS UA sheet. Hence
+            <div class="issue" data-number="14">
+              The extra 1px spacing could be in the CSS UA sheet. Hence
               this section can be removed.
             </div>
             <p>
               In order to prevent the fraction bar to be confused with other items around
               the fraction (e.g. minus sign or the bar of another fraction), a 1 pixel space
               must actually be added on each side of the <code>&lt;mfrac&gt;</code> element.
-            </p>
-            <p>
-              If the <code>&lt;mfrac&gt;</code> element is an
-              <a>outermost embellished operator</a> then its
-              <a><code>lspace</code></a> and
-              <a><code>rspace</code></a> properties
-              must be added around the fraction.
             </p>
           </section>
         </section>
@@ -2955,6 +3045,7 @@
           <h4>Underscripts and Overscripts <code>&lt;munder&gt;</code>,
             <code>&lt;mover&gt;</code>, <code>&lt;munderover&gt;</code></h4>
           <div data-tests="presentation-markup/scripts/underover-1.html,presentation-markup/scripts/underover-parameters-1.html,presentation-markup/scripts/underover-parameters-2.html,presentation-markup/scripts/underover-parameters-3.html,presentation-markup/scripts/underover-parameters-4.html"></div>
+          <div class="issue">Describe horizontal stretching of operators</div>
           <p>
             The <dfn><code>&lt;munder&gt;</code></dfn>,
             <dfn><code>&lt;mover&gt;</code></dfn> and
