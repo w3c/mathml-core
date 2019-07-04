@@ -654,32 +654,54 @@
             <li>Inline metrics.
               <a data-cite="CSS-SIZING-3#min-content-inline-size">min-content inline size</a>,
               <a data-cite="CSS-SIZING-3#max-content-inline-size">max-content inline size</a> and
-              <a data-cite="CSS-WRITING-MODES-3#inline-size">inline size</a>.
-              See <a href="#box-model-generic"></a>.
+              <a data-cite="CSS-WRITING-MODES-3#inline-size">inline size</a>
+              from CSS. See <a href="#box-model-generic"></a>.
               <figure id="box-model-generic">
                 <img src="figures/horizontal-tb-ltr.svg"/>
                 <figcaption>Generic Box Model for MathML elements</figcaption>
               </figure>
             </li>
             <li>
-              Block metrics.
-              The <dfn>line-ascent</dfn> and <dfn>line-descent</dfn>
-              corresponding to the block size of the box that
-              will respectively go line-above and line-below the baseline.
-              Their sum is always equal to the
-              <a data-cite="CSS-WRITING-MODES-3#block-size">block size</a>
-              of the box.
-              See <a href="#box-model-generic"></a>.
-            </li>
-            <li>
-              Ink block metrics.
-              The <dfn>ink line-ascent</dfn>, <dfn>ink line-descent</dfn>
-              and which are defined similarly
-              to the line-ascent, line-descent but enclose more precisely
-              the ink of the text and bars within the MathML boxes.
-              The <dfn>ink block size</dfn> is the sum of
-              the ink line-ascent and ink line-descent.
-              See <a href="#box-model-generic"></a>.
+              <p>
+                Block metrics.
+                The <a data-cite="CSS-WRITING-MODES-3#block-size">block size</a>,
+                <a data-cite="CSS-ALIGN-3#first-baseline-set">first baseline set</a>
+                and
+                <a data-cite="CSS-ALIGN-3#last-baseline-set">last baseline set</a>.
+                The following baselines are defined for MathML boxes:
+              </p>
+              <ol>
+                <li>
+                  The <dfn>alphabetic baseline</dfn> also just called
+                  the <dfn>baseline</dfn>. The distance between the
+                  alphabetic baseline and the line-over
+                  (respectively line-under) edge of the box is called
+                  <dfn>line-ascent</dfn> (respectively <dfn>line-descent</dfn>).
+                </li>
+                <li>
+                  The <dfn>mathematical baseline</dfn> also called
+                  <dfn>math axis</dfn>. It is shifted away from the alphabetical
+                  baseline by <a>AxisHeight</a> towards the line-over.
+                </li>
+                <li>
+                  The <dfn>ink-over baseline</dfn>, indicating the line-over
+                  theorical limit of math content (text, bars...) excluding any
+                  extra space.
+                  It is shifted away from the alphabetic baseline
+                  by <dfn>ink line-ascent</dfn> towards the line-over.
+                  If not specified, it is equal to the line-over axis.
+                </li>
+                <li>
+                  The <dfn>ink-under baseline</dfn>, indicating the line-under
+                  theorical limit of math content (text, bars...) without extra
+                  space. It is shifted away from the alphabetic baseline
+                  by <dfn>ink line-descent</dfn> towards the line-under.
+                  If not specified, it is equal to the line-under axis.
+                </li>
+              </ol>
+              <div class="issue">Define MathML line breaking?</div>
+              Unless specified otherwise, the last baseline set is equal to the
+              first baseline set for MathML boxes.
             </li>
             <li>
               An optional <dfn>italic correction</dfn>
@@ -732,13 +754,6 @@
              <dfn>line-under offset</dfn> are defined similarly
              as the offset between the corresponding parent and child edges.
           </p>
-          <p>
-            The <dfn>baseline</dfn> of a MathML box is the line parallel to
-            the inline axis that is positioned away from the
-            <a>line-over</a> edge
-            of the box by a distance towards the
-            <a>line-under</a> given by the box's <a>line-ascent</a>.
-          </p>
           <figure id="box-model-horizontal-tb-rtl">
             <img src="figures/horizontal-tb-rtl.svg"/>
             <figcaption>Box model for writing mode <code>horizontal-tb</code> and <code>rtl</code> that may be used in e.g. Arabic math.</figcaption>
@@ -763,6 +778,8 @@
             metrics of the box and of its children are calculated.
           </div>
           <div class="example">
+            <p>Here are examples of offsets obtained from line-relative
+              metrics:</p>
             <ul>
               <li>
                 The <a>inline offset</a> of a child box is
@@ -789,55 +806,77 @@
       <section>
         <h3>Token Elements</h3>
         <div data-tests="presentation-markup/direction/direction-token.html"></div>
+        <p>
+          Token elements in presentation markup are broadly intended to
+          represent the smallest units of mathematical notation which carry
+          meaning. Tokens are roughly analogous to words in text. However,
+          because of the precise, symbolic nature of mathematical notation, the
+          various categories and properties of token elements figure
+          prominently in MathML markup. By contrast, in textual data,
+          individual words rarely need to be marked up or styled specially.
+        </p>
+        <div class="note">
+          In practice, most MathML token elements just contain simple text
+          for variables, numbers, operators etc and don't need sophisticated
+          layout. However, it can contain contain text with line breaks or
+          arbitrary HTML5 phrasing elements.
+        </div>
         <section>
           <h4>Text <code>&lt;mtext&gt;</code></h4>
           <div data-tests="relations/css-styling/visibility-1.html,relations/css-styling/color-1.html"></div>
-          <div class="issue">Improve description of layout?</div>
           <p>
             The
             <dfn><code>&lt;mtext&gt;</code></dfn>
             element is used to represent arbitrary text
             that should be rendered as itself. In general, the
-            <code>&lt;mtext&gt;</code> element is intended to denote commentary text.
+            <code>&lt;mtext&gt;</code> element is intended to denote
+            commentary text.
           </p>
           <p>
             The <code>&lt;mtext&gt;</code> element accepts the attributes described
             in <a href="#global-attributes"></a>.
           </p>
-          <p>
-            If the <code>&lt;mtext&gt;</code> element contains only text content
-            without <a data-cite="CSS-TEXT-3#forced-line-break">forced line break</a> or
-            <a data-cite="CSS-TEXT-3#soft-wrap-opportunity">soft wrap opportunity</a>
-            then a <a href="#simple-layout-of-mtext">simple layout</a> is
-            performed with the proper
-            <a href="#opentype-features">OpenType features</a> enabled.
-            Otherwise, a <a href="#general-mtext-layout">more generic layout</a>
-            is performed.
-          </p>
-          <div class="note">
-            In practice, most MathML token elements just contain simple text
-            for variables, numbers, operators etc and don't need sophisticated
-            layout.
-          </div>
           <section>
-            <h4>Simple layout of <code>&lt;mtext&gt;</code></h4>
+            <h4>Layout of <code>&lt;mtext&gt;</code></h4>
+            <div class="issue" data-number="18">Handle orthogonal flow when CSS writing-mode changes?</div>
             <p>
-              The text is laid out, ink ascent,
-              ink descent, logical ascent, logical descent and
-              advance width of the text is measured and these values used
-              for the MathML box of the <code>&lt;mtext&gt;</code> element.
+              The <code>mtext</code> element is  as a
+              <a data-cite="CSS-DISPLAY-3#block-box">block box</a>
+              and the min-content/max-content inline sizes,
+              inline size, block size, first/last baseline sets are determined
+              accordingly.
             </p>
             <p>
-              If the inline-end glyph of the text content has an entry in the
-              <a>MathItalicsCorrectionInfo</a> table then the specified
-              value is used as the italic correction.
+              If the <code>&lt;mtext&gt;</code> element contains only text
+              content without
+              <a data-cite="CSS-TEXT-3#forced-line-break">forced line break</a>
+              or
+              <a data-cite="CSS-TEXT-3#soft-wrap-opportunity">soft wrap opportunity</a>
+              then in addition:
             </p>
-            <p>
-              If the text content is made of a single glyph and this glyph
-              has an entry in the <a>MathTopAccentAttachment</a> table
-              then the specified value is used as the top accent attachment of
-              the <code>&lt;mtext&gt;</code> element.
-            </p>
+            <ul>
+              <li>
+                The <a>ink-over baseline</a> (respectively and
+                <a>ink-under baseline</a>) is set to the line-over edge
+                (respectively and <a>ink-under baseline</a>) of the
+                ink bounding box of the text.
+              </li>
+              <li>
+                If the text content is made of a single glyph and this glyph
+                has an entry an entry in the
+                <a>MathItalicsCorrectionInfo</a> table then the specified
+                value is used as the italic correction.
+              </li>
+              <li>
+                If the text content is made of a single glyph and this glyph
+                has an entry in the <a>MathTopAccentAttachment</a> table
+                then the specified value is used as the top accent attachment of
+                the <code>&lt;mtext&gt;</code> element.
+              <li>
+                OpenType features are enabled as described in
+                <a href="#opentype-features"></a>.
+              </li>
+            </ul>
           </section>
           <section>
             <h5>OpenType features</h5>
@@ -867,7 +906,8 @@
               hence would be too small when used in a script position.
               To render such “prescripted” characters with the appropriate size,
               If a <code>&lt;mtext&gt;</code> has a positive
-              <a><code>scriptlevel</code></a> value then user agents must enable
+              <a><code>math-script-level</code></a> value then user agents must
+              enable
               the <code>ssty</code> (Script Style) OpenType feature
               on its text nodes [[OPEN-FONT-FORMAT]]
               unless it contradicts what the page author has
@@ -875,19 +915,6 @@
               <a data-cite="CSS-FONTS-3#font-rend-desc"><code>font-feature-settings</code></a>
               CSS property.
           </p>
-          </section>
-          <section>
-            <h4>General <code>&lt;mtext&gt;</code> layout</h4>
-            <p>
-              In the most general case, the <code>&lt;mtext&gt;</code> element
-              may contain text with line breaks or arbitrary HTML5 phrasing
-              elements. The logical dimensions and max-content width
-              are determined and the result is used for both
-              the logical and ink values of the
-              <code>&lt;mtext&gt;</code> element. The italic correction and
-              top accent attachment are assigned the fallback values indicated
-              in  <a href="#operator-fence-separator-or-accent-mo"></a>.
-            </p>
           </section>
         </section>
         <section>
@@ -1395,6 +1422,14 @@
       </section>
       <section>
         <h3>General Layout Schemata</h3>
+        <p>Besides tokens there are several families of MathML presentation
+          elements. One family of elements deals with various "scripting"
+          notations, such as subscript and superscript. Another family is
+          concerned with matrices and tables. The remainder of the elements,
+          discussed in this section, describe other basic notations such as
+          fractions and radicals, or deal with general functions such as
+          setting style properties and error handling.
+        </p>
         <section>
           <h4>Horizontally Group Sub-Expressions <code>&lt;mrow&gt;</code></h4>
           <div data-tests="presentation-markup/mrow/inferred-mrow-baseline.html,presentation-markup/mrow/inferred-mrow-stretchy.html,presentation-markup/direction/direction-overall.html,presentation-markup/fractions/frac-mrow-001.html"></div>
@@ -2590,6 +2625,22 @@
       </section>
       <section>
         <h3>Script and Limit Schemata</h3>
+        <p>
+          The elements described in this section position one or more scripts
+          around a base. Attaching various kinds of scripts and embellishments
+          to symbols is a very common notational device in mathematics. For
+          purely visual layout, a single general-purpose element could suffice
+          for positioning scripts and embellishments in any of the traditional
+          script locations around a given base. However, in order to capture
+          the abstract structure of common notation better, MathML provides
+          several more specialized scripting elements.
+        </p>
+        <p>
+          In addition to sub/superscript elements, MathML has overscript and
+          underscript elements that place scripts above and below the base.
+          These elements can be used to place limits on large operators, or fo
+          placing accents and lines above or below the base.
+        </p>
         <section>
           <h4>Cramped Elements</h4>
           <p>
@@ -3802,8 +3853,7 @@
         </p>
         <p>
           The layout algorithm of the <code>&lt;annotation-xml&gt;</code>
-          element is the same as the <a><code>&lt;mrow&gt;</code></a> element.
-          The layout algorithm of the <code>&lt;annotation&gt;</code>
+          and <code>&lt;annotation&gt;</code>
           element is the same as the <a><code>&lt;mtext&gt;</code></a> element.
         </p>
         <div class="note">
