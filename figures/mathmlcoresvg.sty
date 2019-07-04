@@ -1,6 +1,13 @@
 \usepackage{tikz}
 \usepackage{amsmath}
 
+\usepackage{xcolor}
+\definecolor{red}{RGB}{200,0,0}
+\definecolor{green}{RGB}{0,200,0}
+\definecolor{blue}{RGB}{0,0,200}
+\definecolor{cyan}{RGB}{0,200,200}
+\definecolor{orange}{RGB}{200,100,0}
+
 \newcommand{\MathMLBox}[5]{
   \begin{scope}[shift={(#1,#2)},xscale=#3,yscale=#4,color=#5]
     \fill[color=#5!10]
