@@ -639,6 +639,10 @@
             the figures in this specification use a
             <a data-cite="CSS-WRITING-MODES-3#writing-mode">writing mode</a>
             of <code>horizontal-lr</code> and <code>ltr</code>.
+            See <a href="#box-model-horizontal-tb-rtl"></a>,
+            <a href="#box-model-vertical-lr"></a> and
+            <a href="#box-model-vertical-rl"></a> for examples of other
+            writing modes that are sometimes used for math layout.
           </div>
           <p>
             MathML boxes have several parameters in order to layout in
@@ -653,7 +657,7 @@
               <a data-cite="CSS-WRITING-MODES-3#inline-size">inline size</a>.
               See <a href="#box-model-generic"></a>.
               <figure id="box-model-generic">
-                <img src="figures/boxmodel.svg"/>
+                <img src="figures/horizontal-tb-ltr.svg"/>
                 <figcaption>Generic Box Model for MathML elements</figcaption>
               </figure>
             </li>
@@ -735,6 +739,18 @@
             of the box by a distance towards the
             <a>line-under</a> given by the box's <a>line-ascent</a>.
           </p>
+          <figure id="box-model-horizontal-tb-rtl">
+            <img src="figures/horizontal-tb-rtl.svg"/>
+            <figcaption>Box model for writing mode <code>horizontal-tb</code> and <code>rtl</code> that may be used in e.g. Arabic math.</figcaption>
+          </figure>
+          <figure id="box-model-vertical-lr">
+            <img src="figures/vertical-lr.svg"/>
+            <figcaption>Box model for writing mode <code>vertical-rl</code> and <code>ltr</code> that may be used in e.g. Mongolian math.</figcaption>
+          </figure>
+          <figure id="box-model-vertical-rl">
+            <img src="figures/vertical-rl.svg"/>
+            <figcaption>Box model for writing mode <code>vertical-lr</code> and <code>ltr</code> that may be used in e.g. Japanese math.</figcaption>
+          </figure>
           <div class="note">
             The position of children and graphical items inside a MathML
             box are expressed using the <code>inline offset</code>

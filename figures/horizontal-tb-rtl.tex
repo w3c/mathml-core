@@ -1,0 +1,12 @@
+\documentclass[dvisvgm,multi=true]{standalone}
+\usepackage{mathmlcoresvg}
+\begin{document}
+
+\begin{tikzpicture}[yscale=-1.5,xscale=1.5]
+  \draw[->] (5,0) -- (-4,0) node[below right] {inline axis (towards line-left)};
+  \draw[->] (5,0) -- (5,3) node[above left] {block axis (towards line-under)};
+  \MathMLBox{0}{0}{1}{1}{blue}
+  \MathMLBoxMetrics{0}{0}{1}{1}{blue}{above}{right}{left}
+\end{tikzpicture}
+
+\end{document}

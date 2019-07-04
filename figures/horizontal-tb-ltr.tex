@@ -1,13 +1,12 @@
 \documentclass[dvisvgm,multi=true]{standalone}
 \usepackage{mathmlcoresvg}
 \begin{document}
-%<figcaption><span>Figure 1: </span>Generic Box Model for MathML elements</figcaption>
 
 \begin{tikzpicture}[yscale=-1.5,xscale=1.5]
   \draw[->] (0,0) -- (7,0) node[below] {inline axis (towards line-right)};
-  \draw[->] (0,0) -- (0,3) node[right] {block axis (towards line-under)};
+  \draw[->] (0,0) -- (0,3) node[above right] {block axis (towards line-under)};
   \MathMLBox{0}{0}{1}{1}{blue}
-  \MathMLBoxMetrics{0}{0}{1}{1}{blue}{1}
+  \MathMLBoxMetrics{0}{0}{1}{1}{blue}{above}{right}{left}
 \end{tikzpicture}
 
 \end{document}
