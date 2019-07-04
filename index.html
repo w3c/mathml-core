@@ -1222,65 +1222,149 @@
           </section>
           <section>
             <h4>Layout of operators</h4>
-            <div class="issue">TODO: Rewrite and reorganize this section...</div>
             <p>
-              In most cases, the <code>&lt;mo&gt;</code> element is treated as an
-              <a>&lt;mtext&gt;</a> element.
-              However, when an <code>&lt;mo&gt;</code> element with a single character must be
-              displayed as a large operator then use the
-              <code>MathVariants</code>
-              table to try and find a glyph of height at least
-              <a>DisplayOperatorMinHeight</a>
-              (<a href="#figure-sum-base-and-displastyle-sizes"></a>). If none is found, fallback to the
-              largest one. Because this parameter does not always give
-              the best size, user agents may also use the following heuristic: ensure
-              that the large variant height is at least 2 times as large as the base
-              height for integrals and √2 times as large as the base height for other
-              operators.
+              The text of the operator must only be painted if the
+              <a data-cite="CSS2#visibility"><code>visibility</code></a> of
+              the <code>&lt;mo&gt;</code> element is <code>visible</code>.
+              In that case, it must be painted with the
+              <a data-cite="CSS-COLOR-3#foreground"><code>color</code></a>
+              of the <code>&lt;mo&gt;</code> element.
             </p>
-            <figure id="figure-sum-base-and-displastyle-sizes">
-              <img src="figures/sumsize.svg"/>
-              <figcaption>Base and displaystyle sizes of the summation symbol</figcaption>
-            </figure>
-            <p>
-              When an <code>&lt;mo&gt;</code> element with a single character must be
-              displayed as a horizontal or vertical operator then instead of displaying
-              the normal character, use the <code>MathVariants</code>
-              table to try and find a glyph that has at least the desired size or an
-              assembly from several glyphs to cover at least the desired size
-              (<a href="#figure-base-variants-and-assembly"></a>).
-              If the operator has property <code>symmetric="true"</code>, then it must be
-              stretched symmetrically with respect to the math axis, which is given by
-              the <a>AxisHeight</a> value.
-              <a href="#symmetric-and-non-symmetric-vertical-stretching"></a>
-              compares the symmetric and non-symmetric stretching.
-            </p>
-            <p>
-              The size variant or construction used for vertical stretchy operators
-              will depend on the target size to cover. The intrinsic width W of the
-              operator is calculated from the maximum of all possible widths
-              for the base size, size variants and construction available for the given
-              operator. In practice, for most math fonts and operators, the width
-              of the operator is almost independent of the stretch size.
-            </p>
-            <figure id="figure-base-variants-and-assembly">
-              <img src="figures/bracesize.svg"/>
-              <figcaption>Base size, size variants and glyph assembly for the
-                left brace</figcaption>
-            </figure>
-            <figure id="symmetric-and-non-symmetric-vertical-stretching">
-              <img src="figures/vstretch.svg"/>
-              <figcaption>Symmetric and non-symmetric stretching of vertical
-                operators</figcaption>
-            </figure>
-            <p>
-              See
-              <a href="#horizontally-group-sub-expressions-mrow"></a>
-              for details about how to treat
-              <a>outermost embellished operators</a>,
-              and how decide when to display operators larger
-              or when to stretch them vertically &amp; horizontally.
-            </p>
+            <p>Operators are laid out as follows:</p>
+            <ol>
+              <li>
+                If the content of the <code>&lt;mo&gt;</code> element is not
+                made
+                of a single character <code>c</code> then fallback to the
+                layout algorithm of <a href="#layout-of-mtext"></a>.
+              </li>
+              <li>
+                If the operator is
+                <dfn>requested to stretch in inline direction</dfn>
+                to a target size <code>T</code> then
+                <ol>
+                  <li>
+                    Try and get a
+                    <code>MathVariants.horizGlyphConstructionOffsets</code>
+                    table from the glyph corresponding to
+                    <code>c</code> in the current font, or otherwise
+                    from a horizontal entry
+                    corresponding to <code>c</code> from the
+                    table
+                    <a href="#unicode-based-glyph-assemblies"></a>.
+                    If that's not possible then
+                    fallback to the
+                    layout algorithm of <a href="#layout-of-mtext"></a>.
+                  </li>
+                  <li>
+                    The min-content/max-content inline sizes are set
+                    to the
+                    <a>preferred inline size of a stretchy glyph in inline
+                    direction</a> for target size <code>T</code>.
+                  </li>
+                  <li>
+                    The inline size and (ink) block metrics are given by the
+                    <a>box metrics of a stretchy glyph</a>
+                    in inline direction for
+                    for target size <code>T</code>
+                  </li>
+                  <li>
+                    The painting of the operator is performed by the algorithm
+                    to <a>shape a stretchy glyph</a>
+                     for target size <code>T</code> in inline direction and
+                    at position determined by the previous box metrics.
+                  </li>
+                </ol>
+              </li>
+              <li>
+                If the operator is requested to
+                <dfn>requested to stretch in block direction</dfn>
+                to a target size <code>T</code> then
+                <ol>
+                  <li>
+                    Try and get a
+                    <code>MathVariants.vertGlyphConstructionOffsets</code>
+                    table from the glyph corresponding to
+                    <code>c</code> in the current font, or otherwise
+                    from a vertical
+                    entry corresponding to <code>c</code> from the
+                    table
+                    <a href="#unicode-based-glyph-assemblies"></a>.
+                    If that's not possible then
+                    fallback to the
+                    layout algorithm of <a href="layout-of-mtext"></a>.
+                  </li>
+                  <li>
+                    The min-content/max-content inline sizes are set
+                    to the
+                    <a>preferred inline size of a stretchy glyph in block
+                    direction</a>.
+                  </li>
+                  <li>
+                    The inline size and (ink) block metrics are given by the
+                    <a>box metrics of a stretchy glyph</a>
+                    in block direction for
+                     for target size <code>T</code>.
+                  </li>
+                  <li>
+                    The painting of the operator is performed by the algorithm
+                    to <a>shape a stretchy glyph</a>
+                    for target size <code>T</code> in block direction and
+                    at position determined by the previous box metrics.
+                  </li>
+                </ol>
+                <figure id="figure-base-variants-and-assembly">
+                  <img src="figures/bracesize.svg"/>
+                  <figcaption>Base size, size variants and glyph assembly for
+                    the left brace</figcaption>
+                </figure>
+              </li>
+              <li>
+                If <a><code>math-style</code></a> on
+                the <code>&lt;mo&gt;</code> element is <code>display</code>,
+                then:
+                <ol>
+                  <li>
+                    <div class="issue">Clarify/improve this?
+                      How important is this MATH parameter? "integrals"
+                      is not defined</div>
+                    <p>
+                      Use the
+                      <code>MathVariants</code>
+                      table to try and find a glyph of height at least
+                      <a>DisplayOperatorMinHeight</a>
+                      If none is found, fallback to the
+                      largest non-base glyph. If none is found, fallback to
+                      the layout algorithm of <a href="#layout-of-mtext"></a>.
+                    </p>
+                    <p>
+                      Because this parameter does not always give
+                      the best size, user agents may also use the following
+                      heuristic: ensure that the large variant height is at
+                      least
+                      2 times as large as the base height for integrals and √2
+                      times as large as the base height for other operators.
+                    </p>
+                  </li>
+                  <li>
+                    The min-content/max-content inline sizes,
+                    inline size and block metrics are given by the
+                    glyph found.
+                  </li>
+                  <li>
+                    Paint the glyph.
+                  </li>
+                </ol>
+                <figure id="figure-sum-base-and-displastyle-sizes">
+                  <img src="figures/sumsize.svg"/>
+                  <figcaption>Base and displaystyle sizes of the summation symbol</figcaption>
+                </figure>
+              </li>
+              <li>
+                Other fallback to the
+                layout algorithm of <a href="#layout-of-mtext"></a>.
+              </li>
+            </ol>
           </section>
         </section>
         <section>
@@ -1517,7 +1601,13 @@
             </ol>
             <div class="issue">Describe here vertical stretching of operators
               based on [[MATHML3]].
+              Use the symmetric, maxsize, minsize properties.
             </div>
+            <figure id="symmetric-and-non-symmetric-vertical-stretching">
+              <img src="figures/vstretch.svg"/>
+              <figcaption>Symmetric and non-symmetric stretching of vertical
+                operators</figcaption>
+            </figure>
             <p>
               The inline-size is calculated like
               the min-content and max-content inline sizes, using the inline
