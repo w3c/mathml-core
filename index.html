@@ -1229,6 +1229,10 @@
           </section>
           <section>
             <h4>Layout of operators</h4>
+            <div class="issue" data-number="111">
+              Clarify how stretching of operator works with standard layout
+              steps.
+            </div>
             <p>
               The text of the operator must only be painted if the
               <a data-cite="CSS2#visibility"><code>visibility</code></a> of
@@ -1545,21 +1549,35 @@
           </div>
           <section>
             <h5>Vertical stretching algorithm</h5>
+            <div class="issue" data-number="111">
+              Clarify how stretching of operator works with standard layout
+              steps.
+            </div>
             <figure id="symmetric-and-non-symmetric-vertical-stretching">
               <img src="figures/vstretch.svg"/>
               <figcaption>Symmetric and non-symmetric stretching of vertical
                 operators</figcaption>
             </figure>
             <p>
-              The <dfn>vertical stretching algorithm</dfn> is as follows:
+              The <dfn>vertical stretching algorithm</dfn> for
+              min-content and max-content inline size calculation
+              is just flag the <a>outermost embellished operators</a>
+              child of <code>&lt;mrow&gt;</code> that have
+              the <a>stretchy</a> property
+              as <a>requested to stretch in block direction</a>.
+              The <a>vertical stretching algorithm</a> for layout is to
+              perform the following steps:
             </p>
             <ol>
+              <li>
               <li>
                 Calculate the unconstrained target sizes
                 <code>U<sub>ascent</sub></code>
                 and <code>U<sub>descent</sub></code> as respectively the maximum
                 ink ascent and maximum ink descent of the children of the
-                <code>&lt;mrow&gt;</code>.
+                <code>&lt;mrow&gt;</code> that are not
+                <a>outermost embellished operators</a> with
+                the <a>stretchy</a> property.
               </li>
               <li>
                 Calculate the symmetric target sizes:
@@ -1582,10 +1600,11 @@
               </li>
               <li>
                 For each <a>outermost embellished operators</a>
-                child of <code>&lt;mrow&gt;</code>:
+                child of <code>&lt;mrow&gt;</code>
+                with the <a>stretchy</a> property:
                 <ol>
                   <li>
-                    If the child has the <a>stretchy</a> property
+                    If the child has the <a>symmetric</a> property
                     then set the target sizes
                     <code>T<sub>ascent</sub></code> and
                     <code>T<sub>descent</sub></code> to
@@ -1629,7 +1648,7 @@
                     </ul>
                   </li>
                   <li>
-                    Make the child is
+                    Flag the child as
                     <a>requested to stretch in block direction</a>
                     to target size
                     <code>T<sub>ascent</sub></code> +
@@ -1661,6 +1680,14 @@
               calculated using the following algorithm:
             </p>
             <ol>
+              <li>
+                <div class="issue" data-number="111">
+                  Clarify how stretching of operator works with standard layout
+                  steps.
+                </div>
+                Apply the <a>vertical stretching algorithm </a> for min-content
+                (respectively max-content) calculation.
+              </li>
               <li>Set <code>inline-offset</code> to 0.</li>
               <li>Set <code>previous-italic-correction</code> to 0.</li>
               <li>
@@ -1701,19 +1728,16 @@
                 Return <code>inline-offset</code>.
               </li>
             </ol>
-            <div class="issue">
+            <div class="issue" data-number="111">
               Clarify how stretching of operator works with standard layout
               steps.
             </div>
             <p>
-              Before layout, apply the
-              <a>vertical stretching algorithm</a>
-              and relayout the children.
-            </p>
-            <p>
               The inline-size is calculated like
               the min-content and max-content inline sizes, using the inline
-              size of the children instead.
+              size of the children instead and
+              applying the <a>vertical stretching algorithm</a> for
+              layout.
             </p>
             <p>
               The (ink) line-ascent is the maximum of the (ink) line-ascents
@@ -3237,7 +3261,6 @@
           <h4>Underscripts and Overscripts <code>&lt;munder&gt;</code>,
             <code>&lt;mover&gt;</code>, <code>&lt;munderover&gt;</code></h4>
           <div data-tests="presentation-markup/scripts/underover-1.html,presentation-markup/scripts/underover-parameters-1.html,presentation-markup/scripts/underover-parameters-2.html,presentation-markup/scripts/underover-parameters-3.html,presentation-markup/scripts/underover-parameters-4.html"></div>
-          <div class="issue">Describe horizontal stretching of operators</div>
           <p>
             The <dfn><code>&lt;munder&gt;</code></dfn>,
             <dfn><code>&lt;mover&gt;</code></dfn> and
@@ -3329,6 +3352,41 @@
             </p>
           </section>
           <section>
+            <h4>Horizontal stretching algorithm</h4>
+            <div class="issue" data-number="111">
+              Clarify how stretching of operator works with standard layout
+              steps.
+            </div>
+            <p>
+              The <dfn>horizontal stretching algorithm</dfn> for layout is as
+              follows. The algorithm for min-content (respectively max-content)
+              inline size calculation is the same but with
+              "inline size" replaced with "min-content inline size"
+              (respectively "max-content inline size").
+            </p>
+            <ul>
+              <li>
+                If all the children are
+                <a>outermost embellished operators</a> with
+                <a>stretchy</a> then
+                set the target size <code>T</code>
+                to their maximum unstreched inline size.
+              </li>
+              <li>
+                Otherwise, set <code>T</code> to
+                the maximum inline size of the
+                children that are not
+                <a>outermost embellished operators</a> with
+                the <a>stretchy</a> property.
+              </li>
+              <li>
+                Flag the child as
+                <a>requested to stretch in inline direction</a>
+                to target size <code>T</code>.
+              </li>
+            </ul>
+          </section>
+          <section>
             <h4>Base with underscript</h4>
             <p>
               The <code>&lt;munder&gt;</code> element is laid out as shown on
@@ -3342,15 +3400,24 @@
               <img src="figures/munderbox.svg"/>
               <figcaption>Box model for the <code>&lt;munder&gt;</code> element</figcaption>
             </figure>
+            <div class="issue" data-number="111">
+              Clarify how stretching of operator works with standard layout
+              steps.
+            </div>
             <p>
               The min-content (respectively max-content) inline sizes are
               calculated like the inline size below but replacing the
               inline sizes of the base and underscript with
               the min-content (respectively max-content) inline sizes
-              of the base and underscript.
+              of the base and underscript and
+              applying the <a>horizontal stretching algorithm</a> for
+              min-content (respectively max-content).
             </p>
             <p>
-              The inline size is the absolute difference between:
+              The inline size is
+              calculated by
+              applying the <a>horizontal stretching algorithm</a> for
+              layout and determining the absolute difference between:
             </p>
             <ul>
               <li>The maximum of:
@@ -3462,18 +3529,29 @@
               <img src="figures/moverbox.svg"/>
               <figcaption>Box model for the <code>&lt;mover&gt;</code> element</figcaption>
             </figure>
+            <div class="issue" data-number="111">
+              Clarify how stretching of operator works with standard layout
+              steps.
+            </div>
             <p>
               The min-content (respectively max-content) inline sizes are
               calculated like the inline size below but replacing the
-              inline sizes of the base and overscript with
+              inline sizes of the base and underscript with
               the min-content (respectively max-content) inline sizes
-              of the base and overscript.
+              of the base and underscript and
+              applying the <a>horizontal stretching algorithm</a> for
+              min-content (respectively max-content).
             </p>
             <p>
               The <code>TopAccentAttachment</code> is the
               <a>top accent attachment</a> of the overscript or
-              half the inline size of the overscript if it is undefined
-              then the inline size is the asbolute difference between:
+              half the inline size of the overscript if it is undefined.
+            </p>
+            <p>
+              The inline size is
+              calculated by
+              applying the <a>horizontal stretching algorithm</a> for
+              layout and determining the absolute difference between:
             </p>
             <ul>
               <li>The maximum of:
@@ -3620,9 +3698,19 @@
               of the corresponding extrema calculated in
               <a href="#base-with-underscript"></a> and
               <a href="#base-with-overscript"></a>.
-              The the inline offsets of the base, underscript and
+              The inline offsets of the base, underscript and
               overscript are calculated as in these sections but using
               the new minimum m (minimum of the corresponding minima).
+            </p>
+            <div class="issue" data-number="111">
+              Clarify how stretching of operator works with standard layout
+              steps.
+            </div>
+            <p>
+              Like in these sections,
+              the <a>horizontal stretching algorithm</a> is applied for
+              min-content/max-content calculation and for
+              layout.
             </p>
             <p>
               The (ink) line-ascent, (ink) line-descent
