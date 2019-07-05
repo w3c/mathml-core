@@ -1211,13 +1211,20 @@
             </ol>
             <p>
               Percentage values for <code>lspace</code>,
-              <code>rspace</code>,
-              <code>minsize</code>,
-              <code>maxsize</code> properties of an <a>embellished operator</a>
-              are interpreted relative to the (non-percentage) value
-              determined when the <a>core operator</a> does not have a valid
-              attribute for the corresponding property. A percentage
-              of <code>infinity</code> is interpreted as <code>infinity</code>.
+              <code>rspace</code>
+              properties of an <a>embellished operator</a>
+              are interpreted relative to the value read from the dictionary
+              or to the fallback value above.
+            </p>
+            <p>
+              Percentages value for <code>minsize</code>
+              and
+              <code>maxsize</code>
+              properties of an <a>embellished operator</a>
+              are interpreted relative to
+              the target stretch size before application of
+              size constraints, as described in
+              <a href="#vertical-stretching-algorithm"></a>.
             </p>
           </section>
           <section>
@@ -1536,7 +1543,102 @@
             will also be aligned along the math axis in the typical case when
             <a>AxisHeight</a> is the same for all children.
           </div>
-
+          <section>
+            <h5>Vertical stretching algorithm</h5>
+            <figure id="symmetric-and-non-symmetric-vertical-stretching">
+              <img src="figures/vstretch.svg"/>
+              <figcaption>Symmetric and non-symmetric stretching of vertical
+                operators</figcaption>
+            </figure>
+            <p>
+              The <dfn>vertical stretching algorithm</dfn> is as follows:
+            </p>
+            <ol>
+              <li>
+                Calculate the unconstrained target sizes
+                <code>U<sub>ascent</sub></code>
+                and <code>U<sub>descent</sub></code> as respectively the maximum
+                ink ascent and maximum ink descent of the children of the
+                <code>&lt;mrow&gt;</code>.
+              </li>
+              <li>
+                Calculate the symmetric target sizes:
+                <ul>
+                  <li>
+                    <code>S<sub>ascent</sub></code> =
+                    max(
+                    <code>U<sub>ascent</sub></code> − <a>AxisHeight</a>,
+                    <code>U<sub>descent</sub></code> + <a>AxisHeight</a>
+                    ) + <a>AxisHeight</a>
+                  </li>
+                  <li>
+                    <code>S<sub>ascent</sub></code> =
+                    max(
+                    <code>U<sub>ascent</sub></code> − <a>AxisHeight</a>,
+                    <code>U<sub>descent</sub></code> + <a>AxisHeight</a>
+                    ) + <a>AxisHeight</a>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                For each <a>outermost embellished operators</a>
+                child of <code>&lt;mrow&gt;</code>:
+                <ol>
+                  <li>
+                    If the child has the <a>stretchy</a> property
+                    then set the target sizes
+                    <code>T<sub>ascent</sub></code> and
+                    <code>T<sub>descent</sub></code> to
+                    <code>S<sub>ascent</sub></code>
+                    <code>S<sub>descent</sub></code> respectively.
+                    Otherwise set them to
+                    <code>S<sub>ascent</sub></code> and
+                    <code>S<sub>descent</sub></code> respectively.
+                  </li>
+                  <li>
+                    Let <code>minsize</code> and <code>maxsize</code>
+                    be the <a>minsize</a> and <a>maxsize</a> properties on the
+                    child. Percentage values are intepreted relative
+                    to <code>T</code> =
+                    <code>T<sub>ascent</sub></code> +
+                    <code>T<sub>descent</sub></code>.
+                    If 0 ≤ <code>minsize</code> ≤ <code>maxsize</code> then:
+                    <ul>
+                      <li>
+                        If <code>T</code> = 0 then set
+                        <code>T<sub>ascent</sub></code> and
+                        <code>T<sub>descent</sub></code>
+                        to <code>minsize</code>/2.
+                      </li>
+                      <li>
+                        Otherwise, if
+                        0 &lt; <code>T</code> &lt; <code>minsize</code>
+                        then
+                        multiply
+                        <code>T<sub>ascent</sub></code>,
+                        <code>T<sub>descent</sub></code>
+                        by <code>minsize</code> / <code>T</code>.
+                      </li>
+                      <li>
+                        Otherwise, if <code>maxsize</code> &lt; <code>T</code>
+                        then multiply
+                        <code>T<sub>ascent</sub></code>,
+                        <code>T<sub>descent</sub></code>
+                        by <code>maxsize</code> / <code>T</code>.
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    Make the child is
+                    <a>requested to stretch in block direction</a>
+                    to target size
+                    <code>T<sub>ascent</sub></code> +
+                    <code>T<sub>descent</sub></code>.
+                  </li>
+                </ol>
+              </li>
+            </ol>
+          </section>
           <section>
             <h5>Layout of <code>&lt;mrow&gt;</code></h5>
             <div class="issue">Define MathML line breaking?</div>
@@ -1572,7 +1674,7 @@
                   <li>
                     If the child is an <a>outermost embellished operators</a>
                     increment <code>inline-offset</code> by
-                    <a><code>lspace</code></a>.
+                    its <a><code>lspace</code></a> property.
                   </li>
                   <li>
                     Increment <code>inline-offset</code> by
@@ -1587,7 +1689,7 @@
                   <li>
                     If the child is an <a>outermost embellished operators</a>
                     increment <code>inline-offset</code> by
-                    <a><code>rspace</code></a>.
+                    its <a><code>rspace</code></a> property.
                   </li>
                 </ol>
               </li>
@@ -1599,15 +1701,15 @@
                 Return <code>inline-offset</code>.
               </li>
             </ol>
-            <div class="issue">Describe here vertical stretching of operators
-              based on [[MATHML3]].
-              Use the symmetric, maxsize, minsize properties.
+            <div class="issue">
+              Clarify how stretching of operator works with standard layout
+              steps.
             </div>
-            <figure id="symmetric-and-non-symmetric-vertical-stretching">
-              <img src="figures/vstretch.svg"/>
-              <figcaption>Symmetric and non-symmetric stretching of vertical
-                operators</figcaption>
-            </figure>
+            <p>
+              Before layout, apply the
+              <a>vertical stretching algorithm</a>
+              and relayout the children.
+            </p>
             <p>
               The inline-size is calculated like
               the min-content and max-content inline sizes, using the inline
@@ -1640,7 +1742,7 @@
                   <li>
                     If the child is an <a>outermost embellished operators</a>
                     increment <code>inline-offset</code> by
-                    <a><code>lspace</code></a>.
+                    its <a><code>lspace</code></a> property.
                   </li>
                   <li>
                     Set the inline offset of the child
@@ -1659,7 +1761,7 @@
                   <li>
                     If the child is an <a>outermost embellished operators</a>
                     increment <code>inline-offset</code> by
-                    <a><code>rspace</code></a>.
+                    its <a><code>rspace</code></a> property.
                   </li>
                 </ol>
               </li>
