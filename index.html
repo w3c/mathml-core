@@ -1284,6 +1284,9 @@
               In that case, it must be painted with the
               <a data-cite="CSS-COLOR-3#foreground"><code>color</code></a>
               of the <code>&lt;mo&gt;</code> element.
+			  If the <a data-cite="CSS2#visibility"><code>visibility</code></a> of
+              the <code>&lt;mo&gt;</code> element is <code>hidden</code>, the following algorithm must still
+			  be followed to determine the size of the <code>&lt;mo&gt;</code> element.
             </p>
             <p>Operators are laid out as follows:</p>
             <ol>
@@ -4844,6 +4847,7 @@
         </section>
         <section>
           <h4>Algorithms for glyph stretching</h4>
+		  <div class="issue" data-number="117">Fix text in spec for glyph stretching</div>
           <p>
             The <dfn>preferred inline size of a stretchy glyph in inline
             direction</dfn> for a given target size <code>T</code>
