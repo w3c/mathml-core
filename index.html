@@ -428,15 +428,13 @@
             The <code>mathsize</code> property indicates indicates the desired height
             of glyphs in math formulas but also scale other parts (spacing, shifts,
             line thickness of bars etc) accordingly.
-            Is is mapped to the CSS property
+            It is mapped to the CSS property
             <a data-cite="CSS-FONTS-3#font-size-prop"><code>font-size</code></a>
             and the <code>mathsize</code> values are interpreted according to the
             definition in [[CSS-FONTS-3]].
           </p>
           <div class="note">
-            While the above attributes are preserved for backward compatibility reasons
-            with legacy documents and existing tools, modern authors and tools are strongly
-            encouraged to use CSS for styling.
+		    The above attributes are implemented for compatibility with full MathML. Authors whose only target is MathML Core are encouraged to use CSS for styling.
           </div>
         </section>
         <section>
@@ -484,10 +482,8 @@
             <code>math-</code> prefix.
           </p>
           <div class="note">
-            While <code>mathvariant</code> values other than <code>normal</code>
-            are preserved for backward compatibility reasons with legacy
-            documents and existing tools, modern authors and tools are strongly
-            encouraged to just use the corresponding Unicode characters.
+		    <code>mathvariant</code> values other than <code>normal</code>
+            are implemented for compatibility with full MathML and legacy editors that can't access characters in Plane 1 of Unicode. Authors are encouraged to use the corresponding Unicode characters.
             The <code>normal</code> value is still important to cancel automatic
             italic of the <a><code>&lt;mi&gt;</code></a> element.
           </div>
@@ -2352,9 +2348,7 @@
             same as the <a><code>&lt;mrow&gt;</code></a> element.
           </p>
           <div class="note">
-            While the <code>&lt;mstyle&gt;</code> is preserved for backward compatibility reasons
-            with legacy documents and existing tools, modern authors and tools are strongly
-            encouraged to use CSS for styling.
+            <code>&lt;mstyle&gt;</code> is implemented for compatibility with full MathML. Authors whose only target is MathML Core are encouraged to use CSS for styling.
           </div>
         </section>
         <section>
@@ -2549,9 +2543,7 @@
           </p>
           <pre class="css" data-include="user-agent-stylesheet/mphantom.css"></pre>
           <div class="note">
-            While <code>&lt;mphantom&gt;</code> is preserved for backward compatibility reasons
-            with legacy documents and existing tools, modern authors and tools are strongly
-            encouraged to use CSS for styling.
+            <code>&lt;mphantom&gt;</code> is implemented for compatibility with full MathML. Authors whose only target is MathML Core are encouraged to use CSS for styling.
           </div>
         </section>
         <section>
@@ -4230,9 +4222,7 @@
         </p>
         <pre class="css" data-include="user-agent-stylesheet/maction.css"></pre>
         <div class="note">
-          While <code>&lt;maction&gt;</code> is preserved for backward compatibility reasons
-          with legacy documents and existing tools, modern authors and tools are strongly
-          encouraged to use CSS for styling.
+		  <code>&lt;maction&gt;</code> is implemented for compatibility with full MathML. Authors whose only target is MathML Core are encouraged to use CSS for styling.
         </div>
       </section>
       <section>
