@@ -807,21 +807,34 @@
             The layout algorithms described in this chapter for MathML boxes
             have the following structure:
           </p>
-          <ul>
+          <ol>
             <li>
               Calculation of min-content / max-content inline size
-              of the content.</li>
-            <li>
-              Calculation of inline size, (ink) line-ascent and
-              (ink) line-descent of the content.
+              of the content.
             </li>
             <li>
-              Calculation of offsets of children within the content box.
+              Box layout:
+              <ol>
+                <li>
+                  Layout of children.
+                </li>
+                <li>
+                  Calculation of inline size, (ink) line-ascent and
+                  (ink) line-descent of the content.
+                </li>
+                <li>
+                  Calculation of offsets of children within the content box as
+                  well as sizes and offsets of extra graphical elements
+                  (bars, radical symbol, etc).
+                </li>
+              </ol>
             </li>
-          </ul>
+            <li>
+              Painting of extra graphical elements.
+            </li>
+          </ol>
           <p>
-            In order to get the full box metrics, the following additional
-            steps have to be performed:
+            During box layout, the following extra steps must be performed:
           </p>
           <ul>
             <li>
@@ -847,6 +860,15 @@
               are the ones of the content box.
             </li>
           </ul>
+          <p>
+            During box layout, an optional
+            <dfn>stretch size constraint</dfn> parameter may be used on
+            <a>embellished operators</a>. It indicates the target size that
+            its <a>core operator</a> should cover.
+            Unless specified otherwise, this parameter is ignored during
+            the layout of the box and children are laid out without
+            a stretch size constraint.
+          </p>
         </section>
       </section>
       <section>
@@ -1276,10 +1298,6 @@
           </section>
           <section>
             <h4>Layout of operators</h4>
-            <div class="issue" data-number="111">
-              Clarify how stretching of operator works with standard layout
-              steps.
-            </div>
             <p>
               The text of the operator must only be painted if the
               <a data-cite="CSS2#visibility"><code>visibility</code></a> of
@@ -1297,89 +1315,105 @@
                 layout algorithm of <a href="#layout-of-mtext"></a>.
               </li>
               <li>
-                If the operator is
-                <dfn>requested to stretch in inline direction</dfn>
-                to a target size <code>T</code> then
-                <ol>
+                If the operator has the <a>stretchy</a> property:
+                <ul>
                   <li>
-                    Try and get a
-                    <code>MathVariants.horizGlyphConstructionOffsets</code>
-                    table from the glyph corresponding to
-                    <code>c</code> in the current font, or otherwise
-                    from a horizontal entry
-                    corresponding to <code>c</code> from the
-                    table
-                    <a href="#unicode-based-glyph-assemblies"></a>.
-                    If that's not possible then
-                    fallback to the
-                    layout algorithm of <a href="#layout-of-mtext"></a>.
+                    If <code>c</code> is horizontal
+                    (<span class="issue">TODO: Add a table of horizontal
+                      unicode characters</span>) then
+                    <ol>
+                      <li>
+                        Try and get a
+                        <code>MathVariants.horizGlyphConstructionOffsets</code>
+                        table from the glyph corresponding to
+                        <code>c</code> in the current font, or otherwise
+                        from a horizontal entry
+                        corresponding to <code>c</code> from the
+                        table
+                        <a href="#unicode-based-glyph-assemblies"></a>.
+                        If that's not possible then
+                        fallback to the
+                        layout algorithm of <a href="#layout-of-mtext"></a>.
+                      </li>
+                      <li>
+                        The min-content/max-content inline sizes of the content
+                        are set to the one obtained by the layout algorithm of
+                        <a href="#layout-of-mtext"></a>.
+                      </li>
+                      <li>
+                        If there is not any
+                        <a>stretch size constraint</a> <code>T</code>
+                        then
+                        fallback to the
+                        layout algorithm of <a href="#layout-of-mtext"></a>.
+                      </li>
+                      <li>
+                        The inline size and (ink) block metrics of the content
+                        are given by the
+                        <a>box metrics of a stretchy glyph</a>
+                        stretched to inline dimension <code>T</code>.
+                      </li>
+                      <li>
+                        The painting of the operator is performed by the
+                        algorithm
+                        to <a>shape a stretchy glyph</a>
+                        stretched to inline dimension
+                        <code>T</code> and
+                        at position determined by the previous box metrics.
+                      </li>
+                    </ol>
                   </li>
                   <li>
-                    The min-content/max-content inline sizes of the content
-                    are set
-                    to the
-                    <a>preferred inline size of a stretchy glyph in inline
-                    direction</a> for target size <code>T</code>.
+                    Otherwise,
+                    <ol>
+                      <li>
+                        Try and get a
+                        <code>MathVariants.vertGlyphConstructionOffsets</code>
+                        table from the glyph corresponding to
+                        <code>c</code> in the current font, or otherwise
+                        from a vertical
+                        entry corresponding to <code>c</code> from the
+                        table
+                        <a href="#unicode-based-glyph-assemblies"></a>.
+                        If that's not possible then
+                        fallback to the
+                        layout algorithm of <a href="#layout-of-mtext"></a>.
+                      </li>
+                      <li>
+                        The min-content/max-content inline sizes of the content
+                        are set to the
+                        <a>preferred inline size of a glyph stretched
+                          along the block axis</a>.
+                      </li>
+                      <li>
+                        If there is not any
+                        <a>stretch size constraint</a> <code>T</code>
+                        then
+                        fallback to the
+                        layout algorithm of <a href="#layout-of-mtext"></a>.
+                      </li>
+                      <li>
+                        The inline size and (ink) block metrics of the content
+                        are given by the
+                        <a>box metrics of a stretchy glyph</a>
+                        stretched to block dimension <code>T</code>.
+                      </li>
+                      <li>
+                        The painting of the operator is performed by the
+                        algorithm
+                        to <a>shape a stretchy glyph</a>
+                        stretched to block dimension <code>T</code> and
+                        at position determined by the previous box metrics.
+                      </li>
+                    </ol>
+                    <figure id="figure-base-variants-and-assembly">
+                      <img src="figures/bracesize.svg"/>
+                      <figcaption>Base size, size variants and glyph assembly
+                        for
+                        the left brace</figcaption>
+                    </figure>
                   </li>
-                  <li>
-                    The inline size and (ink) block metrics of the content
-                    are given by the
-                    <a>box metrics of a stretchy glyph</a>
-                    in inline direction for
-                    for target size <code>T</code>
-                  </li>
-                  <li>
-                    The painting of the operator is performed by the algorithm
-                    to <a>shape a stretchy glyph</a>
-                     for target size <code>T</code> in inline direction and
-                    at position determined by the previous box metrics.
-                  </li>
-                </ol>
-              </li>
-              <li>
-                If the operator is requested to
-                <dfn>requested to stretch in block direction</dfn>
-                to a target size <code>T</code> then
-                <ol>
-                  <li>
-                    Try and get a
-                    <code>MathVariants.vertGlyphConstructionOffsets</code>
-                    table from the glyph corresponding to
-                    <code>c</code> in the current font, or otherwise
-                    from a vertical
-                    entry corresponding to <code>c</code> from the
-                    table
-                    <a href="#unicode-based-glyph-assemblies"></a>.
-                    If that's not possible then
-                    fallback to the
-                    layout algorithm of <a href="layout-of-mtext"></a>.
-                  </li>
-                  <li>
-                    The min-content/max-content inline sizes of the content
-                    are set
-                    to the
-                    <a>preferred inline size of a stretchy glyph in block
-                    direction</a>.
-                  </li>
-                  <li>
-                    The inline size and (ink) block metrics of the content
-                    are given by the
-                    <a>box metrics of a stretchy glyph</a>
-                    in block direction for
-                     for target size <code>T</code>.
-                  </li>
-                  <li>
-                    The painting of the operator is performed by the algorithm
-                    to <a>shape a stretchy glyph</a>
-                    for target size <code>T</code> in block direction and
-                    at position determined by the previous box metrics.
-                  </li>
-                </ol>
-                <figure id="figure-base-variants-and-assembly">
-                  <img src="figures/bracesize.svg"/>
-                  <figcaption>Base size, size variants and glyph assembly for
-                    the left brace</figcaption>
-                </figure>
+                </ul>
               </li>
               <li>
                 If <a><code>math-style</code></a> on
@@ -1601,35 +1635,40 @@
           </div>
           <section>
             <h5>Vertical stretching algorithm</h5>
-            <div class="issue" data-number="111">
-              Clarify how stretching of operator works with standard layout
-              steps.
-            </div>
             <figure id="symmetric-and-non-symmetric-vertical-stretching">
               <img src="figures/vstretch.svg"/>
               <figcaption>Symmetric and non-symmetric stretching of vertical
                 operators</figcaption>
             </figure>
             <p>
-              The <dfn>vertical stretching algorithm</dfn> for
-              min-content and max-content inline size calculation
-              is just flag the <a>outermost embellished operators</a>
-              child of <code>&lt;mrow&gt;</code> that have
-              the <a>stretchy</a> property
-              as <a>requested to stretch in block direction</a>.
-              The <a>vertical stretching algorithm</a> for layout is to
-              perform the following steps:
+              The <dfn>vertical stretching algorithm</dfn> consists in
+              the following steps:
             </p>
             <ol>
               <li>
+                If there is a <a>stretch size constraint</a> <code>T</code>
+                then the element being laid out is an
+                <a>embellished operator</a>. Layout the one child that is
+                an <a>embellished operator</a>
+                with <a>stretch size constraint</a> <code>T</code>,
+                all the other children without any stretch size constraint
+                and stop.
+              </li>
+              <li>
+                Layout all the children of the
+                <code>&lt;mrow&gt;</code> but the
+                <a>embellished operators</a> that have
+                the <a>stretchy</a> property and block stretch axis.
+                If this step results in all the children being laid out, then
+                stop.
+              </li>
               <li>
                 Calculate the unconstrained target sizes
                 <code>U<sub>ascent</sub></code>
                 and <code>U<sub>descent</sub></code> as respectively the maximum
-                ink ascent and maximum ink descent of the children of the
-                <code>&lt;mrow&gt;</code> that are not
-                <a>outermost embellished operators</a> with
-                the <a>stretchy</a> property.
+                ink ascent and maximum ink descent of the margin boxes of
+                children that
+                have been laid out in the previous step.
               </li>
               <li>
                 Calculate the symmetric target sizes:
@@ -1651,9 +1690,9 @@
                 </ul>
               </li>
               <li>
-                For each <a>outermost embellished operators</a>
+                For each <a>embellished operators</a>
                 child of <code>&lt;mrow&gt;</code>
-                with the <a>stretchy</a> property:
+                with the <a>stretchy</a> property and block stretch axis:
                 <ol>
                   <li>
                     If the child has the <a>symmetric</a> property
@@ -1700,9 +1739,8 @@
                     </ul>
                   </li>
                   <li>
-                    Flag the child as
-                    <a>requested to stretch in block direction</a>
-                    to target size
+                    Layout the child with
+                    <a>stretch size constraint</a>
                     <code>T<sub>ascent</sub></code> +
                     <code>T<sub>descent</sub></code>.
                   </li>
@@ -1732,14 +1770,6 @@
               calculated using the following algorithm:
             </p>
             <ol>
-              <li>
-                <div class="issue" data-number="111">
-                  Clarify how stretching of operator works with standard layout
-                  steps.
-                </div>
-                Apply the <a>vertical stretching algorithm </a> for min-content
-                (respectively max-content) calculation.
-              </li>
               <li>Set <code>inline-offset</code> to 0.</li>
               <li>Set <code>previous-italic-correction</code> to 0.</li>
               <li>
@@ -1780,16 +1810,14 @@
                 Return <code>inline-offset</code>.
               </li>
             </ol>
-            <div class="issue" data-number="111">
-              Clarify how stretching of operator works with standard layout
-              steps.
-            </div>
+            <p>
+              The children are laid out using the
+              <a>vertical stretching algorithm</a>.
+            </p>
             <p>
               The inline size of the content is calculated like
               the min-content and max-content inline sizes of the content,
-              using the inline size of the children's margin boxes instead and
-              applying the <a>vertical stretching algorithm</a> for
-              layout.
+              using the inline size of the children's margin boxes instead.
             </p>
             <p>
               The (ink) line-ascent of the content
@@ -1914,6 +1942,13 @@
               margin box.
             </p>
             <p>
+              If there is a <a>stretch size constraint</a> <code>T</code> then
+              the numerator is also laid out with <a>stretch size constraint</a>
+              <code>T</code> and otherwise it is laid out without stretch
+              size constraint. The denominator is always laid out without
+              any <a>stretch size constraint</a>.
+            </p>
+            <p>
               The inline size of the content
               is the maximum between the inline size of the
               numerator's margin box and the inline size of the
@@ -2023,6 +2058,13 @@
               The min-content inline size, max-content inline size
               and inline size of the content are calculated the same
               as in <a href="#fraction-with-nonzero-line-thickness"></a>.
+            </p>
+            <p>
+              If there is a <a>stretch size constraint</a> <code>T</code> then
+              the numerator is also laid out with <a>stretch size constraint</a>
+              <code>T</code> and otherwise it is laid out without stretch
+              size constraint. The denominator is always laid out without
+              any <a>stretch size constraint</a>.
             </p>
             <p>
               If the <a>math-style</a> is <code>inline</code> then
@@ -2141,9 +2183,13 @@
             the second child is called
             <em>index</em>
             and its layout algorithm is explained below.
+          </p>
+          <p>
             The children of the <code>&lt;msqrt&gt;</code> element are laid out
             using the algorithm of the <a><code>&lt;mrow&gt;</code></a> element
             to produce a box that is also called the <em>base</em>.
+            In particular, the
+            <a>vertical stretching algorithm</a> is used.
           </p>
           <section>
             <h5>Radical symbol</h5>
@@ -2203,7 +2249,8 @@
               The min-content (respectively max-content) inline size of the
               content is
               the sum of the
-              <a>preferred inline size of a stretchy glyph in block direction</a>
+              <a>preferred inline size of a glyph stretched along the
+                block axis</a>
               for the <a>radical glyph</a>
               and of the min-content (respectively max-content) inline size
               of the base's margin box.
@@ -2512,8 +2559,8 @@
               does not depend on any block metric.
             </div>
             <p>
-              The inline size of the content is the requested width.
-              The inline offset of the mpadded inner box is the requested lspace.
+              The children are laid out using the
+              <a>vertical stretching algorithm</a>.
             </p>
             <p>
               The (ink) line-ascent of the content is the requested height.
@@ -2598,6 +2645,8 @@
             Children of the <code>&lt;menclose&gt;</code> element are laid out
             using the algorithm of the <a><code>&lt;mrow&gt;</code></a> element
             to produce a box B corresponding to the content.
+            In particular, they use the
+            <a>vertical stretching algorithm</a>.
             ξ<sub>8</sub> is used below to denote the
             default rule thickness and is set to <a>OverbarRuleThickness</a>.
           </p>
@@ -2651,7 +2700,7 @@
                 "content-max inline size of B". The only exception is for
                 the <code>longdiv</code> notation: In that case,
                 s<sub>left,i</sub> is replaced with the
-                <a>preferred inline size of a stretchy glyph in block direction</a>
+                <a>preferred inline size of a glyph stretched along the block axis</a>
                 for U+0029 RIGHT PARENTHESIS.
                 Again, it is possible to take the maximum values to calculate
                 the min-content and max-content inline sizes of the content.
@@ -3098,6 +3147,13 @@
               the subscript's margin box + <a>SpaceAfterScript</a>.
             </p>
             <p>
+              If there is a <a>stretch size constraint</a> <code>T</code> then
+              the base is also laid out with <a>stretch size constraint</a>
+              <code>T</code> and otherwise it is laid out without any stretch
+              size constraint. The scripts are always laid out without
+              any <a>stretch size constraint</a>.
+            </p>
+            <p>
               The inline size of the content
               is the inline size of the base's margin box −
               <code>LargeOpItalicCorrection</code> +
@@ -3164,6 +3220,13 @@
               <code>ItalicCorrection</code> +
               the content-min (respectively max-content) inline size of
               the superscript's margin box + <a>SpaceAfterScript</a>.
+            </p>
+            <p>
+              If there is a <a>stretch size constraint</a> <code>T</code> then
+              the base is also laid out with <a>stretch size constraint</a>
+              <code>T</code> and otherwise it is laid out without any stretch
+              size constraint. The scripts are always laid out without
+              any <a>stretch size constraint</a>.
             </p>
             <p>
               The inline size of the content
@@ -3236,6 +3299,13 @@
               inline sizes) of the content calculated in
               <a href="#base-with-subscript"></a> and
               <a href="#base-with-superscript"></a>.
+            </p>
+            <p>
+              If there is a <a>stretch size constraint</a> <code>T</code> then
+              the base is also laid out with <a>stretch size constraint</a>
+              <code>T</code> and otherwise it is laid out without any stretch
+              size constraint. The scripts are always laid out without
+              any <a>stretch size constraint</a>.
             </p>
             <p>
               <code>SubSuperGap</code> is the gap between the two scripts
@@ -3401,38 +3471,44 @@
           </section>
           <section>
             <h4>Horizontal stretching algorithm</h4>
-            <div class="issue" data-number="111">
-              Clarify how stretching of operator works with standard layout
-              steps.
-            </div>
             <p>
               The <dfn>horizontal stretching algorithm</dfn> for layout is as
-              follows. The algorithm for min-content (respectively max-content)
-              inline size calculation is the same but with
-              "inline size" replaced with "min-content inline size"
-              (respectively "max-content inline size").
+              follows.
             </p>
-            <ul>
+            <ol>
               <li>
-                If all the children are
-                <a>outermost embellished operators</a> with
-                <a>stretchy</a> then
-                set the target size <code>T</code>
-                to the maximum unstreched inline size of their margin boxes.
+                If there is a <a>stretch size constraint</a> <code>T</code>
+                then the element being laid out is an
+                <a>embellished operator</a>. Layout the base
+                with <a>stretch size constraint</a> <code>T</code>.
               </li>
               <li>
-                Otherwise, set <code>T</code> to
+                Split the list remaining children into a first list
+                <code>L<sub>ToStretch</sub></code> containing
+                <a>embellished operators</a> with
+                a <a>stretchy</a> property and inline stretch axis
+                and a second list <code>L<sub>NotToStretch</sub></code>.
+              </li>
+              <li>
+                Perform layout without <a>stretch size constraint</a> on
+                all the elements of <code>L<sub>NotToStretch</sub></code>.
+                If <code>L<sub>ToStretch</sub></code> is empty then stop.
+                If <code>L<sub>NotToStretch</sub></code> is empty, perform
+                layout without <a>stretch size constraint</a> on
+                all the elements of <code>L<sub>ToStretch</sub></code>.
+              </li>
+              <li>
+                Calculate the target size <code>T'</code> to
                 the maximum inline size of the
-                children's margin boxes for the children that are not
-                <a>outermost embellished operators</a> with
-                the <a>stretchy</a> property.
+                margin boxes of children that have been laid out in the
+                previous step.
               </li>
               <li>
-                Flag the child as
-                <a>requested to stretch in inline direction</a>
-                to target size <code>T</code>.
+                Layout or relayout all the elements of
+                <code>L<sub>ToStretch</sub></code>
+                with <a>stretch size constraint</a> <code>T'</code>.
               </li>
-            </ul>
+            </ol>
           </section>
           <section>
             <h4>Base with underscript</h4>
@@ -3448,10 +3524,6 @@
               <img src="figures/munderbox.svg"/>
               <figcaption>Box model for the <code>&lt;munder&gt;</code> element</figcaption>
             </figure>
-            <div class="issue" data-number="111">
-              Clarify how stretching of operator works with standard layout
-              steps.
-            </div>
             <p>
               The min-content (respectively max-content) inline sizes
               of the content are
@@ -3460,15 +3532,15 @@
               inline sizes of the base's margin box and underscript's margin box
               with
               the min-content (respectively max-content) inline sizes
-              of the base's margin box and underscript's margin box and
-              applying the <a>horizontal stretching algorithm</a> for
-              min-content (respectively max-content).
+              of the base's margin box and underscript's margin box.
+            </p>
+            <p>
+              The children are laid out
+              using the <a>horizontal stretching algorithm</a>.
             </p>
             <p>
               The inline size of the content is
-              calculated by
-              applying the <a>horizontal stretching algorithm</a> for
-              layout and determining the absolute difference between:
+              calculated by determining the absolute difference between:
             </p>
             <ul>
               <li>The maximum of:
@@ -3577,10 +3649,6 @@
               <img src="figures/moverbox.svg"/>
               <figcaption>Box model for the <code>&lt;mover&gt;</code> element</figcaption>
             </figure>
-            <div class="issue" data-number="111">
-              Clarify how stretching of operator works with standard layout
-              steps.
-            </div>
             <p>
               The min-content (respectively max-content) inline sizes
               of the content are
@@ -3589,9 +3657,11 @@
               inline sizes of the base's margin box and underscript's margin
               box with
               the min-content (respectively max-content) inline sizes
-              of the base's margin box and underscript's margin box and
-              applying the <a>horizontal stretching algorithm</a> for
-              min-content (respectively max-content).
+              of the base's margin box and underscript's margin box.
+            </p>
+            <p>
+              The children are laid out
+              using the <a>horizontal stretching algorithm</a>.
             </p>
             <p>
               The <code>TopAccentAttachment</code> is the
@@ -3752,15 +3822,9 @@
               overscript are calculated as in these sections but using
               the new minimum m (minimum of the corresponding minima).
             </p>
-            <div class="issue" data-number="111">
-              Clarify how stretching of operator works with standard layout
-              steps.
-            </div>
             <p>
-              Like in these sections,
-              the <a>horizontal stretching algorithm</a> is applied for
-              min-content/max-content calculation and for
-              layout.
+              Like in these sections, the children are laid out
+              using the <a>horizontal stretching algorithm</a>.
             </p>
             <p>
               The (ink) line-ascent and (ink) line-descent of the content
@@ -3870,6 +3934,13 @@
               "inline size" with "min-content inline size"
               (respectively "max-content inline size") for the base's margin
               box and scripts's margin boxes.
+            </p>
+            <p>
+              If there is a <a>stretch size constraint</a> <code>T</code> then
+              the base is also laid out with <a>stretch size constraint</a>
+              <code>T</code> and otherwise it is laid out without any stretch
+              size constraint. The other elements are always laid out without
+              any <a>stretch size constraint</a>.
             </p>
             <p>
               The inline size of the content
@@ -4848,48 +4919,8 @@
         <section>
           <h4>Algorithms for glyph stretching</h4>
           <p>
-            The <dfn>preferred inline size of a stretchy glyph in inline
-            direction</dfn> for a given target size <code>T</code>
-            is calculated using the following algorithm:
-          </p>
-          <ol>
-            <li>
-              Set <code>S</code> to the glyph's advance width.
-            </li>
-            <li>
-              If <code>S ≥ T</code>, return <code>S</code>.
-            </li>
-            <li>
-              If there is a <code>MathGlyphConstruction</code> table
-              in the <code>MathVariants.horizGlyphConstructionOffsets</code>
-              table for the given glyph:
-              <ol>
-                <li>
-                  For each <code>MathGlyphVariantRecord</code> in
-                  <code>MathGlyphConstruction.mathGlyphVariantRecord</code> do:
-                  <ol>
-                    <li>
-                      Ensure that <code>S</code> is at least
-                      <code>MathGlyphVariantRecord.advanceMeasurement</code>.
-                    </li>
-                    <li>
-                      If <code>S ≥ T</code>, return <code>S</code>.
-                    </li>
-                  </ol>
-                <li>
-                  If there is valid <code>GlyphAssembly</code> subtable, ensure
-                  that <code>S</code> is at least
-                  the <a>glyph assembly stretch size</a>
-                  <code>GlyphAssembly</code> for
-                  the target size <code>T</code>.
-                </li>
-              </ol>
-            </li>
-            <li>Return <code>S</code>.</li>
-          </ol>
-          <p>
-            The <dfn>preferred inline size of a stretchy glyph in block
-            direction</dfn>
+            The <dfn>preferred inline size of a glyph stretched along the block
+            axis</dfn>
             is calculated using the following algorithm:
           </p>
           <ol>
@@ -4919,8 +4950,8 @@
             <li>Return <code>S</code>.</li>
           </ol>
           <div class="note">
-            The <a>preferred inline size of a stretchy glyph in block
-            direction</a> will return the maximum width of all possible
+            The <a>preferred inline size of a glyph stretched along the block
+            axis</a> will return the maximum width of all possible
             vertical constructions for that glyph.
             In practice, math fonts are designed so that
             vertical constructions almost constant width so possible
