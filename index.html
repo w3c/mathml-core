@@ -705,7 +705,7 @@
             <li>
               An optional <dfn>italic correction</dfn>
               which provides a measure of how much the text of a box is
-              slanted in the inline direction.
+              slanted along the inline axis.
               See <a href="#figure-italic-correction"></a>.
               <figure id="figure-italic-correction">
                 <img src="figures/italcorr.svg"/>
@@ -861,13 +861,16 @@
             </li>
           </ul>
           <p>
-            During box layout, an optional
-            <dfn>stretch size constraint</dfn> parameter may be used on
-            <a>embellished operators</a>. It indicates the target size that
-            its <a>core operator</a> should cover.
-            Unless specified otherwise, this parameter is ignored during
+            During box layout, optional
+            <dfn>inline stretch size constraint</dfn> and
+            <dfn>block stretch size constraint</dfn> parameters may be used on
+            <a>embellished operators</a>. The former indicates
+            a target size that a horizontal <a>core operator</a> should cover.
+            The latter indicates an ink line-ascent and ink line-descent
+            that a horizontal <a>core operator</a> should cover.
+            Unless specified otherwise, these parameters are ignored during
             the layout of the box and children are laid out without
-            a stretch size constraint.
+            any stretch size constraint.
           </p>
         </section>
       </section>
@@ -1337,7 +1340,8 @@
                       </li>
                       <li>
                         If there is not any
-                        <a>stretch size constraint</a> <code>T</code>
+                        <a>inline stretch size constraint</a>
+                        <code>T<sub>inline</sub></code>
                         then
                         fallback to the
                         layout algorithm of <a href="#layout-of-mtext"></a>.
@@ -1346,7 +1350,8 @@
                         The inline size and (ink) block metrics of the content
                         are given by the
                         <a>box metrics of a stretchy glyph</a>
-                        stretched to inline dimension <code>T</code>.
+                        stretched to inline dimension
+                        <code>T<sub>inline</sub></code>.
                       </li>
                       <li>
                         The painting of the operator is performed by the
@@ -1382,23 +1387,38 @@
                       </li>
                       <li>
                         If there is not any
-                        <a>stretch size constraint</a> <code>T</code>
+                        <a>block stretch size constraint</a>
+                        <code>(T<sub>ascent</sub>, T<sub>descent</sub>)</code>
                         then
                         fallback to the
                         layout algorithm of <a href="#layout-of-mtext"></a>.
                       </li>
                       <li>
-                        The inline size and (ink) block metrics of the content
-                        are given by the
+                        The inline size and ink block metrics of the content
+                        are obtained from the
                         <a>box metrics of a stretchy glyph</a>
-                        stretched to block dimension <code>T</code>.
+                        stretched to block dimension
+                        <code>T<sub>ascent</sub></code> +
+                        <code>T<sub>descent</sub></code>.
+                        The inline size is the stretchy glyph width returned.
+                        If Δ = <code>T<sub>ascent</sub></code> +
+                        <code>T<sub>descent</sub></code> −
+                        (stretchy glyph ascent + stretchy glyph descent)
+                        then the ink ascent of the content is
+                        <code>T<sub>ascent</sub></code> + Δ/2
+                        and the ink descent of the content is
+                        <code>T<sub>descent</sub></code> + Δ/2.
+                        The ascent and descent of the content
+                        are the same as the ink
+                        ascent and ink descent of the content.
                       </li>
                       <li>
                         The painting of the operator is performed by the
                         algorithm
                         to <a>shape a stretchy glyph</a>
                         stretched to block dimension <code>T</code> and
-                        at position determined by the previous box metrics.
+                        at position determined by the previous box metrics
+                        shifted by Δ/2 towards the line-over.
                       </li>
                     </ol>
                     <figure id="figure-base-variants-and-assembly">
@@ -1641,11 +1661,12 @@
             </p>
             <ol>
               <li>
-                If there is a <a>stretch size constraint</a> <code>T</code>
+                If there is a <a>block stretch size constraint</a>
+                or and <a>inline stretch size constraint</a>
                 then the element being laid out is an
                 <a>embellished operator</a>. Layout the one child that is
                 an <a>embellished operator</a>
-                with <a>stretch size constraint</a> <code>T</code>,
+                with the same stretch size constraint and
                 all the other children without any stretch size constraint
                 and stop.
               </li>
@@ -1735,9 +1756,8 @@
                   </li>
                   <li>
                     Layout the child with
-                    <a>stretch size constraint</a>
-                    <code>T<sub>ascent</sub></code> +
-                    <code>T<sub>descent</sub></code>.
+                    <a>block stretch size constraint</a>
+                    <code>(T<sub>ascent</sub>, T<sub>descent</sub>)</code>.
                   </li>
                 </ol>
               </li>
@@ -1950,11 +1970,13 @@
               margin box.
             </p>
             <p>
-              If there is a <a>stretch size constraint</a> <code>T</code> then
-              the numerator is also laid out with <a>stretch size constraint</a>
-              <code>T</code> and otherwise it is laid out without stretch
+              If there is an <a>inline stretch size constraint</a>
+              or a <a>block stretch size constraint</a> then
+              the numerator is also laid out with the same stretch size
+              constraint
+              otherwise it is laid out without any stretch
               size constraint. The denominator is always laid out without
-              any <a>stretch size constraint</a>.
+              any stretch size constraint.
             </p>
             <p>
               The inline size of the content
@@ -2068,11 +2090,13 @@
               as in <a href="#fraction-with-nonzero-line-thickness"></a>.
             </p>
             <p>
-              If there is a <a>stretch size constraint</a> <code>T</code> then
-              the numerator is also laid out with <a>stretch size constraint</a>
-              <code>T</code> and otherwise it is laid out without stretch
+              If there is an <a>inline stretch size constraint</a> or
+              a <a>block stretch size constraint</a> then
+              the numerator is also laid out with the same stretch size
+              constraint
+              and otherwise it is laid out without any stretch
               size constraint. The denominator is always laid out without
-              any <a>stretch size constraint</a>.
+              any stretch size constraint.
             </p>
             <p>
               If the <a>math-style</a> is <code>inline</code> then
@@ -2233,14 +2257,14 @@
             </p>
             <p>
               The <dfn>box metrics of the radical glyph</dfn> is the
-              <a>box metrics of a stretchy glyph</a> in block direction
-              for the radical radical glyph and target size.
+              <a>box metrics of a stretchy glyph</a> stretched to
+              block dimension the target size for the radical radical glyph.
             </p>
             <p>
               The <dfn>shaping of the surd</dfn>
               is performed by the algorithm to
-              <a>shape a stretchy glyph</a> in block direction
-              for the radical radical glyph and target size.
+              <a>shape a stretchy glyph</a> to block dimension the
+              target size for the radical radical glyph.
             </p>
           </section>
           <section>
@@ -2314,7 +2338,7 @@
               <li>
                 At block offset shifted away from the
                 line-over edge of the overbar towards the line-under
-                direction by a distance given by the ascent
+                by a distance given by the ascent
                 of the <a>box metrics of the radical glyph</a>.
               </li>
             </ul>
@@ -3155,11 +3179,13 @@
               the subscript's margin box + <a>SpaceAfterScript</a>.
             </p>
             <p>
-              If there is a <a>stretch size constraint</a> <code>T</code> then
-              the base is also laid out with <a>stretch size constraint</a>
-              <code>T</code> and otherwise it is laid out without any stretch
+              If there is an
+              <a>inline stretch size constraint</a>
+              or a <a>block stretch size constraint</a>
+              then the base is also laid out with the same stretch size
+              contraint and otherwise it is laid out without any stretch
               size constraint. The scripts are always laid out without
-              any <a>stretch size constraint</a>.
+              any stretch size constraint.
             </p>
             <p>
               The inline size of the content
@@ -3230,11 +3256,13 @@
               the superscript's margin box + <a>SpaceAfterScript</a>.
             </p>
             <p>
-              If there is a <a>stretch size constraint</a> <code>T</code> then
-              the base is also laid out with <a>stretch size constraint</a>
-              <code>T</code> and otherwise it is laid out without any stretch
+              If there is an
+              <a>inline stretch size constraint</a>
+              or a <a>block stretch size constraint</a>
+              then the base is also laid out with the same stretch size
+              contraint and otherwise it is laid out without any stretch
               size constraint. The scripts are always laid out without
-              any <a>stretch size constraint</a>.
+              any stretch size constraint.
             </p>
             <p>
               The inline size of the content
@@ -3309,11 +3337,22 @@
               <a href="#base-with-superscript"></a>.
             </p>
             <p>
-              If there is a <a>stretch size constraint</a> <code>T</code> then
-              the base is also laid out with <a>stretch size constraint</a>
-              <code>T</code> and otherwise it is laid out without any stretch
+              If there is an
+              <a>inline stretch size constraint</a>
+              or a <a>block stretch size constraint</a>
+              then the base is also laid out with the same stretch size
+              contraint and otherwise it is laid out without any stretch
               size constraint. The scripts are always laid out without
-              any <a>stretch size constraint</a>.
+              any stretch size constraint.
+            </p>
+            <p>
+              If there is an
+              <a>inline stretch size constraint</a>
+              or a <a>block stretch size constraint</a>
+              then the base is also laid out with the same stretch size
+              contraint and otherwise it is laid out without any stretch
+              size constraint. The scripts are always laid out without
+              any stretch size constraint.
             </p>
             <p>
               <code>SubSuperGap</code> is the gap between the two scripts
@@ -3485,10 +3524,12 @@
             </p>
             <ol>
               <li>
-                If there is a <a>stretch size constraint</a> <code>T</code>
+                If there is an
+                <a>inline stretch size constraint</a> or
+                <a>block stretch size constraint</a>
                 then the element being laid out is an
                 <a>embellished operator</a>. Layout the base
-                with <a>stretch size constraint</a> <code>T</code>.
+                with the same stretch size constraint.
               </li>
               <li>
                 Split the list remaining children into a first list
@@ -3498,15 +3539,15 @@
                 and a second list <code>L<sub>NotToStretch</sub></code>.
               </li>
               <li>
-                Perform layout without <a>stretch size constraint</a> on
+                Perform layout without any stretch size constraint on
                 all the elements of <code>L<sub>NotToStretch</sub></code>.
                 If <code>L<sub>ToStretch</sub></code> is empty then stop.
                 If <code>L<sub>NotToStretch</sub></code> is empty, perform
-                layout without <a>stretch size constraint</a> on
+                layout without any stretch size constraint on
                 all the elements of <code>L<sub>ToStretch</sub></code>.
               </li>
               <li>
-                Calculate the target size <code>T'</code> to
+                Calculate the target size <code>T</code> to
                 the maximum inline size of the
                 margin boxes of children that have been laid out in the
                 previous step.
@@ -3514,7 +3555,7 @@
               <li>
                 Layout or relayout all the elements of
                 <code>L<sub>ToStretch</sub></code>
-                with <a>stretch size constraint</a> <code>T'</code>.
+                with <a>inline stretch size constraint</a> <code>T</code>.
               </li>
             </ol>
           </section>
@@ -3944,11 +3985,12 @@
               box and scripts's margin boxes.
             </p>
             <p>
-              If there is a <a>stretch size constraint</a> <code>T</code> then
-              the base is also laid out with <a>stretch size constraint</a>
-              <code>T</code> and otherwise it is laid out without any stretch
+              If there is an <a>inline stretch size constraint</a> or a
+              <a>block stretch size constraint</a>
+              the base is also laid out with the same stretch size constraint.
+              Otherwise it is laid out without any stretch
               size constraint. The other elements are always laid out without
-              any <a>stretch size constraint</a>.
+              any stretch size constraint.
             </p>
             <p>
               The inline size of the content
@@ -4968,9 +5010,8 @@
           <p>
             The algorithm to calculate the
             <dfn>box metrics of a stretchy glyph</dfn>
-            in inline direction (respectively block direction)
-            for a given target size <code>T</code>
-            is the following:
+            stretched to inline (respectively block) dimension
+            <code>T</code> is the following:
           </p>
           <ol>
             <li>
@@ -5019,9 +5060,8 @@
           <div class="issue">Apply a rotation matrix
             in vertical writing mode?</div>
           <p>The algorithm to
-            <dfn>shape a stretchy glyph</dfn> in inline direction
-            (respectively block direction)
-            for a given target size <code>T</code> at a position
+            <dfn>shape a stretchy glyph</dfn> to inline
+            (respectively block) dimension <code>T</code> at a position
             <code>P</code> is the following:
           </p>
           <ol>
