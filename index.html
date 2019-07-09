@@ -1132,11 +1132,6 @@
                 child.
               </li>
             </ol>
-            <p>
-              An <dfn>outermost embellished operator</dfn> is an
-              <a>embellished operator</a> whose parent is not
-              an embellished operator.
-            </p>
           </section>
           <section>
             <h4>Dictionary-based attributes</h4>
@@ -1761,8 +1756,7 @@
               is used when attaching scripts.
               More generally, all <a>embellished operator</a>
               are treated as non-slanted since the spacing is designed to
-              be added to the <a>outermost embellished operator</a>
-              and specifed by <a><code>lspace</code></a> and
+              around them as specifed by <a><code>lspace</code></a> and
               <a><code>rspace</code></a>.
             </div>
             <p>
@@ -1770,6 +1764,11 @@
               calculated using the following algorithm:
             </p>
             <ol>
+              <li>
+                Set <code>add-space</code> to true if 
+                the <code>&lt;mrow&gt;</code> is not an
+                <a>embellished operator</a>; and to false otherwise.
+              </li>
               <li>Set <code>inline-offset</code> to 0.</li>
               <li>Set <code>previous-italic-correction</code> to 0.</li>
               <li>
@@ -1781,7 +1780,8 @@
                     <code>previous-italic-correction</code>.
                   </li>
                   <li>
-                    If the child is an <a>outermost embellished operators</a>
+                    If the child is an <a>embellished operators</a>
+                    and <code>add-space</code> is true then
                     increment <code>inline-offset</code> by
                     its <a><code>lspace</code></a> property.
                   </li>
@@ -1796,7 +1796,8 @@
                     its <a>italic correction</a>. Otherwise set it to 0.
                   </li>
                   <li>
-                    If the child is an <a>outermost embellished operators</a>
+                    If the child is an <a>embellished operators</a>
+                    and <code>add-space</code> is true then
                     increment <code>inline-offset</code> by
                     its <a><code>rspace</code></a> property.
                   </li>
@@ -1832,6 +1833,11 @@
               algorithm:
             </p>
             <ol>
+              <li>
+                Set <code>add-space</code> to true if 
+                the <code>&lt;mrow&gt;</code> is not an
+                <a>embellished operator</a>; and to false otherwise.
+              </li>
               <li>Set <code>inline-offset</code> to 0.</li>
               <li>Set <code>previous-italic-correction</code> to 0.</li>
               <li>For each child:
@@ -1842,7 +1848,8 @@
                     <code>previous-italic-correction</code>.
                   </li>
                   <li>
-                    If the child is an <a>outermost embellished operators</a>
+                    If the child is an <a>embellished operators</a>
+                    and <code>add-space</code> is true then
                     increment <code>inline-offset</code> by
                     its <a><code>lspace</code></a> property.
                   </li>
@@ -1861,7 +1868,8 @@
                     its <a>italic correction</a>. Otherwise set it to 0.
                   </li>
                   <li>
-                    If the child is an <a>outermost embellished operators</a>
+                    If the child is an <a>embellished operators</a>
+                    and <code>add-space</code> is true then
                     increment <code>inline-offset</code> by
                     its <a><code>rspace</code></a> property.
                   </li>
