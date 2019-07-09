@@ -4,8 +4,6 @@ function loadJSON(browser, callback) {
     var json = `https://build-chromium.igalia.com/mathml/wpt/${browser}-latest.json`;
     xobj.open('GET', json, true);
     xobj.onreadystatechange = function () {
-        if (xobj.readyState == 4)
-            alert(xobj.status)
         if (xobj.readyState == 4 && xobj.status == "200")
             callback(browser, JSON.parse(xobj.responseText));
     };
