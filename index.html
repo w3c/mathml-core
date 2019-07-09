@@ -1293,7 +1293,7 @@
               are interpreted relative to
               the target stretch size before application of
               size constraints, as described in
-              <a href="#vertical-stretching-algorithm"></a>.
+              <a href="#algorithm-for-stretching-operators-along-the-block-axis"></a>.
             </p>
           </section>
           <section>
@@ -1621,7 +1621,7 @@
           setting style properties and error handling.
         </p>
         <section>
-          <h4>Horizontally Group Sub-Expressions <code>&lt;mrow&gt;</code></h4>
+          <h4 id="horizontally-group-sub-expressions-mrow">Group Sub-Expressions <code>&lt;mrow&gt;</code></h4>
           <div data-tests="presentation-markup/mrow/inferred-mrow-baseline.html,presentation-markup/mrow/inferred-mrow-stretchy.html,presentation-markup/direction/direction-overall.html,presentation-markup/fractions/frac-mrow-001.html"></div>
           <p>
             The
@@ -1651,15 +1651,15 @@
             <a>AxisHeight</a> is the same for all children.
           </div>
           <section>
-            <h5>Vertical stretching algorithm</h5>
+            <h5>Algorithm for stretching operators along the block axis</h5>
             <figure id="symmetric-and-non-symmetric-vertical-stretching">
               <img src="figures/vstretch.svg"/>
-              <figcaption>Symmetric and non-symmetric stretching of vertical
-                operators</figcaption>
+              <figcaption>Symmetric and non-symmetric stretching of
+                operators along the block axis</figcaption>
             </figure>
             <p>
-              The <dfn>vertical stretching algorithm</dfn> consists in
-              the following steps:
+              The <dfn>Algorithm for stretching operators along the block axis</dfn>
+              consists in the following steps:
             </p>
             <ol>
               <li>
@@ -1835,7 +1835,7 @@
             </ol>
             <p>
               The children are laid out using the
-              <a>vertical stretching algorithm</a>.
+              <a>algorithm for stretching operators along the block axis</a>.
             </p>
             <p>
               The inline size of the content is calculated like
@@ -2223,7 +2223,7 @@
             using the algorithm of the <a><code>&lt;mrow&gt;</code></a> element
             to produce a box that is also called the <em>base</em>.
             In particular, the
-            <a>vertical stretching algorithm</a> is used.
+            <a>algorithm for stretching operators along the block axis</a> is used.
           </p>
           <section>
             <h5>Radical symbol</h5>
@@ -2594,7 +2594,7 @@
             </div>
             <p>
               The children are laid out using the
-              <a>vertical stretching algorithm</a>.
+              <a>algorithm for stretching operators along the block axis</a>.
             </p>
             <p>
               The (ink) line-ascent of the content is the requested height.
@@ -2680,7 +2680,7 @@
             using the algorithm of the <a><code>&lt;mrow&gt;</code></a> element
             to produce a box B corresponding to the content.
             In particular, they use the
-            <a>vertical stretching algorithm</a>.
+            <a>algorithm for stretching operators along the block axis</a>.
             ξ<sub>8</sub> is used below to denote the
             default rule thickness and is set to <a>OverbarRuleThickness</a>.
           </p>
@@ -3519,10 +3519,11 @@
             </p>
           </section>
           <section>
-            <h4>Horizontal stretching algorithm</h4>
+            <h4>Algorithm for stretching operators along the inline</h4>
             <p>
-              The <dfn>horizontal stretching algorithm</dfn> for layout is as
-              follows.
+              The <dfn>algorithm for stretching operators along the inline
+                axis</dfn>
+              is as follows.
             </p>
             <ol>
               <li>
@@ -3587,7 +3588,7 @@
             </p>
             <p>
               The children are laid out
-              using the <a>horizontal stretching algorithm</a>.
+              using the <a>algorithm for stretching operators along the inline axis</a>.
             </p>
             <p>
               The inline size of the content is
@@ -3712,7 +3713,7 @@
             </p>
             <p>
               The children are laid out
-              using the <a>horizontal stretching algorithm</a>.
+              using the <a>algorithm for stretching operators along the inline axis</a>.
             </p>
             <p>
               The <code>TopAccentAttachment</code> is the
@@ -3723,7 +3724,7 @@
             <p>
               The inline size of the content is
               calculated by
-              applying the <a>horizontal stretching algorithm</a> for
+              applying the <a>algorithm for stretching operators along the inline axis</a> for
               layout and determining the absolute difference between:
             </p>
             <ul>
@@ -3875,7 +3876,7 @@
             </p>
             <p>
               Like in these sections, the children are laid out
-              using the <a>horizontal stretching algorithm</a>.
+              using the <a>algorithm for stretching operators along the inline axis</a>.
             </p>
             <p>
               The (ink) line-ascent and (ink) line-descent of the content
