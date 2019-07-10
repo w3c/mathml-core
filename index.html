@@ -5200,8 +5200,8 @@
       <h2>Unicode-based Glyph Assemblies</h2>
       <p>
         The following table provide fallback that user agents must use for
-        stretching given unicode character when the font does not provide a
-        <code>MATH.MathVariants</code> table.
+        stretching a given <em>base character</em> when the font does not
+        provide a <code>MATH.MathVariants</code> table.
         The algorithms of
         <a href="#size-variants-for-operators-mathvariants"></a>
         works the same except with some adjustments:
@@ -5209,7 +5209,14 @@
       <ul>
         <li>
           All the glyph IDs and metrics have to be deduced from unicode
-          code points
+          code points.
+        </li>
+        <li>
+          The stretch axis indicates whether this corresponds to
+          a <code>MathVariants.horizGlyphConstructionOffsets[]</code> item
+          (horizontal <em>stretch axis</em>)
+          a <code>MathVariants.vertGlyphConstructionOffsets[]</code> item
+          (vertical <em>stretch axis</em>).
         </li>
         <li>
           The <code>MathGlyphConstruction.mathGlyphVariantRecord</code> is
@@ -5222,23 +5229,23 @@
           <code>GlyphPartRecord.endConnectorLength</code>
           are treated as 0.
         </li>
+        <li>
+          The array of
+          <code>MathGlyphConstruction.GlyphAssembly.partRecords</code> is built
+          from each table row as follows:
+          <ol>
+            <li>A (non-extender) <em>bottom/left</em> character</li>
+            <li>Followed by an <em>extender</em> character.</li>
+            <li>Optionally followed by this:
+              <ul>
+                <li>Optionally, an (non-extender) <em>middle</em> character
+                  and the same extender character previously mentioned.</li>
+                <li>A (non-extender) <em>top/right</em> character.
+              </ul>
+            </li>
+          </ol>
+        </li>
       </ul>
-      <p>
-        The array of
-        <code>MathGlyphConstruction.GlyphAssembly.partRecords</code> is built
-        from each table row as follows:
-      </p>
-        <ul>
-          <li>A (non-extender) bottom/left character</li>
-          <li>Followed by an extender character.</li>
-          <li>Optionally followed by this:
-            <ul>
-              <li>Optionally, an (non-extender) middle character
-                and the same extender character previously mentioned.</li>
-              <li>A (non-extender) Top/Right character.
-            </ul>
-          </li>
-        </ul>
       <div data-include="tables/unicode-assembly.html"></div>
     </section>
     <section>

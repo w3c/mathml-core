@@ -2,7 +2,7 @@
 
 from __future__ import print_function
 
-# Base character, direction, extender, bottom/left, middle, top/right
+# Base character, stretch axis, extender, bottom/left, middle, top/right
 unicodeAssemblies = {
     0x0028: [True,  0x239C, 0x239D, 0x0000, 0x239B], # LEFT PARENTHESIS
     0x0029: [True,  0x239F, 0x23A0, 0x0000, 0x239E], # RIGHT PARENTHESIS,
@@ -47,7 +47,7 @@ unicodeAssemblies = {
     0x295F: [False, 0x23AF, 0x22A2, 0x0000, 0x21C1], # RIGHTWARDS HARPOON WITH BARB DOWN FROM BAR
 }
 
-def direction(isVertical):
+def stretchAxis(isVertical):
     if isVertical:
         return "Vertical"
     return "Horizontal"
@@ -63,7 +63,7 @@ f.write("\
 <table class=\"sortable\">\n\
   <tr>\n\
     <th>Base Character</th>\n\
-    <th>Direction</th>\n\
+    <th>Stretch Axis</th>\n\
     <th>Extender Character</th>\n\
     <th>Bottom/Left Character</th>\n\
     <th>Middle Character</th>\n\
@@ -83,7 +83,7 @@ for baseCharacter in sorted(unicodeAssemblies):
     <td>%s</td>\n\
   </tr>\n\
 " % (codePoint(baseCharacter),
-     direction(unicodeAssemblies[baseCharacter][0]),
+     stretchAxis(unicodeAssemblies[baseCharacter][0]),
      codePoint(unicodeAssemblies[baseCharacter][1]),
      codePoint(unicodeAssemblies[baseCharacter][2]),
      codePoint(unicodeAssemblies[baseCharacter][3]),
