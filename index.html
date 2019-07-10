@@ -846,18 +846,81 @@
               <div class="issue" data-number="45">Interpret
                 width/height/inline-size/block-size?</div>
               <div class="issue" data-number="112">Define MathML line breaking?</div>
-              The box metrics of the
-              <a data-cite="CSS-DISPLAY-3#content-box">content box</a>
-              is set to the one calculated for the content.
+              The box metrics, offsets, baselines, <a>italic correction</a> and
+              <a>top accent attachment</a> of the
+              <a data-cite="CSS-BOX-3#content-box">content box</a>
+              are set to the one calculated for the content.
             </li>
             <li>
-              <div class="issue" data-number="14">CSS margin/border/padding
-                compatibility</div>
-              The box metrics of the
-              <a data-cite="CSS-DISPLAY-3#content-box">border box</a>,
-              <a data-cite="CSS-DISPLAY-3#padding-box">padding box</a> and
-              <a data-cite="CSS-DISPLAY-3#margin-box">margin box</a>
-              are the ones of the content box.
+              <p>
+                The box metrics and offsets of the
+                <a data-cite="CSS-BOX-3#padding-box">padding box</a>
+                is obtained from the
+                <a data-cite="CSS-BOX-3#content-box">content box</a>
+                by taking into account the corresponding
+                <a data-cite="CSS-BACKGROUNDS-3#padding-physical"><code>padding</code></a>
+                properties as described in CSS.
+              </p>
+              <p>
+                The baselines
+                of the padding box are the same as the one of the content box.
+              </p>
+              <p>
+                If the content box has a <a>top accent attachment</a>
+                or <a>italic correction</a> then the padding box has the same
+                properties, increased by the inline-start padding.
+              </p>
+            </li>
+            <li>
+              <p>
+                The box metrics and offsets of the
+                <a data-cite="CSS-BOX-3#border-box">border box</a>
+                is obtained from the
+                <a data-cite="CSS-BOX-3#padding-box">padding box</a>
+                by taking into account the corresponding
+                <a data-cite="CSS-BOX-3#the-border-width"><code>border-width</code></a>
+                property as described in CSS.
+              </p>
+              <p>
+                In general, the baselines of the border box are the same as
+                the one of the padding box. However, if the line-over border is
+                positive then the <a>ink-over baseline</a> is set to the
+                line-over edge of the border box and if
+                the line-under border is
+                positive then the <a>ink-under baseline</a> is set to the
+                line-under edge of the border box.
+              </p>
+              <p>
+                If the padding box has a <a>top accent attachment</a>
+                then the border box has the same top accent attachment value
+                increased by the border-width of its inline-start edge.
+              </p>
+              <p>
+                If the padding box has an <a>italic correction</a>
+                and the border-width of the inline-end edge of the border box
+                is zero then the border box has the same italic correction value
+                increased by the border-width of its inline-start edge.
+              </p>
+            </li>
+            <li>
+              <p>
+                The box metrics and offsets of the
+                <a data-cite="CSS-BOX-3#margin-box">margin box</a>
+                is obtained from the
+                <a data-cite="CSS-BOX-3#border-box">border box</a>
+                by taking into account the corresponding
+                <a data-cite="CSS-BOX-3#margin-physical"><code>margin</code></a>
+                properties as described in CSS.
+              </p>
+              <p>
+                The baselines
+                of the margin box are the same as the one of the border box.
+              </p>
+              <p>
+                If the border box has a <a>top accent attachment</a>
+                or <a>italic correction</a> then the margin box has the same
+                properties, increased by the inline-start margin.
+              </p>
             </li>
           </ul>
           <p>
