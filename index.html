@@ -5232,15 +5232,18 @@
       </p>
       <ul>
         <li>
+          Entries are indexed by the base character.
+        </li>
+        <li>
           All the glyph IDs and metrics have to be deduced from unicode
           code points.
         </li>
         <li>
-          The stretch axis indicates whether this corresponds to
-          a <code>MathVariants.horizGlyphConstructionOffsets[]</code> item
-          (horizontal <em>stretch axis</em>)
-          a <code>MathVariants.vertGlyphConstructionOffsets[]</code> item
-          (vertical <em>stretch axis</em>).
+          If the <em>glyph construction</em> is horizontal then
+          the entry corresponds to
+          a <code>MathVariants.horizGlyphConstructionOffsets[]</code> item ;
+          if it is vertical it corresponds to
+          a <code>MathVariants.vertGlyphConstructionOffsets[]</code> item.
         </li>
         <li>
           The <code>MathGlyphConstruction.mathGlyphVariantRecord</code> is

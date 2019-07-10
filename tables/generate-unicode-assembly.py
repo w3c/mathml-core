@@ -63,7 +63,7 @@ f.write("\
 <table class=\"sortable\">\n\
   <tr>\n\
     <th>Base Character</th>\n\
-    <th>Stretch Axis</th>\n\
+    <th>Glyph Construction</th>\n\
     <th>Extender Character</th>\n\
     <th>Bottom/Left Character</th>\n\
     <th>Middle Character</th>\n\
