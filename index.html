@@ -1620,8 +1620,8 @@
           fractions and radicals, or deal with general functions such as
           setting style properties and error handling.
         </p>
-        <section>
-          <h4 id="horizontally-group-sub-expressions-mrow">Group Sub-Expressions <code>&lt;mrow&gt;</code></h4>
+        <section id="horizontally-group-sub-expressions-mrow">
+          <h4>Group Sub-Expressions <code>&lt;mrow&gt;</code></h4>
           <div data-tests="presentation-markup/mrow/inferred-mrow-baseline.html,presentation-markup/mrow/inferred-mrow-stretchy.html,presentation-markup/direction/direction-overall.html,presentation-markup/fractions/frac-mrow-001.html"></div>
           <p>
             The
@@ -1787,7 +1787,7 @@
             </p>
             <ol>
               <li>
-                Set <code>add-space</code> to true if 
+                Set <code>add-space</code> to true if
                 the <code>&lt;mrow&gt;</code> is not an
                 <a>embellished operator</a>; and to false otherwise.
               </li>
@@ -1856,7 +1856,7 @@
             </p>
             <ol>
               <li>
-                Set <code>add-space</code> to true if 
+                Set <code>add-space</code> to true if
                 the <code>&lt;mrow&gt;</code> is not an
                 <a>embellished operator</a>; and to false otherwise.
               </li>
@@ -5132,13 +5132,13 @@
       </pre>
     </section>
     <section class="normative">
-      <h2>Operator Dictionary</h2>
+      <h2>Operator Tables</h2>
       <section>
-        <h3>Description</h3>
+        <h3>Operator Dictionary</h3>
         <p>
           Users agent must use a dictionary of rendering properties for MathML
           operators. The dictionary must include at least the entries of the
-          table provided in <a href="#operator-dictionary-entries"></a>.
+          <a href="#operator-dictionary-entries">table below</a>.
         </p>
         <p>
           The dictionary is indexed by 'Content' and 'Form' columns together.
@@ -5182,19 +5182,33 @@
           specified together in the final 'Properties' column by listing the
           attribute name if its value should be set to true by the dictionary.
         </p>
+        <div id="operator-dictionary-entries"
+             data-include="tables/operator-dictionary.html"></div>
       </section>
       <section>
-        <h3>Operator dictionary entries</h3>
-        <div data-include="tables/operator-dictionary.html"></div>
+        <h3>Stretchy Operator Axis</h3>
+        <p>
+          The default stretch axis for all characters is
+          <em>block</em>. However, the
+          stretch axis for the following characters is <em>inline</em>:
+        </p>
+        <code data-include="tables/block-axis-operators.txt"></code>
+        <div class="note">
+          The stretch axis can be included as a boolean property of the
+          <a href="#operator-dictionary">operator dictionary</a>. But since it
+          does not depend on the form and since very few operators can stretch
+          along the inline axis, it might be better implemented as a separate
+          sorted array.
+        </div>
       </section>
-    </section>
-    <section>
-      <h2>MathML Combining Character Equivalences</h2>
-      <p>
-        The following table gives mappings between spacing and non spacing
-        characters when used in MathML accent constructs.
-      </p>
-      <div data-include="tables/combining-operators.html"></div>
+      <section>
+        <h3>Combining Character Equivalences</h3>
+        <p>
+          The following table gives mappings between spacing and non spacing
+          characters when used in MathML accent constructs.
+        </p>
+        <div data-include="tables/combining-operators.html"></div>
+      </section>
     </section>
     <section>
       <h2>Unicode-based Glyph Assemblies</h2>
