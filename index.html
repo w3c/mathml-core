@@ -2003,8 +2003,11 @@
             <code>displaystyle</code> to <code>false</code>,
             or if it was already <code>false</code> increments
             <code>scriptlevel</code> by 1, within its children.
+            To avoid visual confusion between the fraction bar and another
+            adjacent items (e.g. minus sign or another fraction's bar),
+            a default 1-pixel space is added around the element.
             The <a href="#user-agent-stylesheet">user agent stylesheet</a>
-            must contain the following rule in order to implement that behavior:
+            must contain the following rules:
           </p>
           <pre class="css" data-include="user-agent-stylesheet/mfrac.css"></pre>
           <div class="issue" data-number="15">Decide how to handle invalid
@@ -2235,18 +2238,6 @@
               <a>AxisHeight</a> + <code>TopShift</code> (respectively −
               <a>AxisHeight</a> + <code>BottomShift</code>) towards the
               line-over (respectively line-under).
-            </p>
-          </section>
-          <section>
-            <h5>Spacing around the fraction</h5>
-            <div class="issue" data-number="14">
-              The extra 1px spacing could be in the CSS UA sheet. Hence
-              this section can be removed.
-            </div>
-            <p>
-              In order to prevent the fraction bar to be confused with other items around
-              the fraction (e.g. minus sign or the bar of another fraction), a 1 pixel space
-              must actually be added on each side of the <code>&lt;mfrac&gt;</code> element.
             </p>
           </section>
         </section>
@@ -5200,8 +5191,10 @@
 <span data-include-replace="true" data-include="user-agent-stylesheet/semantics.css"></span><span data-include-replace="true" data-include="user-agent-stylesheet/maction.css"></span><span data-include-replace="true" data-include="user-agent-stylesheet/merror.css"></span><span data-include-replace="true" data-include="user-agent-stylesheet/mphantom.css"></span>
 /* Tables */
 <span data-include-replace="true" data-include="user-agent-stylesheet/mtable.css"></span><span data-include-replace="true" data-include="user-agent-stylesheet/mtable-frame.css"></span><span data-include-replace="true" data-include="user-agent-stylesheet/mtr.css"></span><span data-include-replace="true" data-include="user-agent-stylesheet/mtd.css"></span>
+/* Fractions */
+<span data-include-replace="true" data-include="user-agent-stylesheet/mfrac.css"></span>
 /* Other rules for scriptlevel and displastyle */
-<span data-include-replace="true" data-include="user-agent-stylesheet/displaystyle.css"></span><span data-include-replace="true" data-include="user-agent-stylesheet/mfrac.css"></span><span data-include-replace="true" data-include="user-agent-stylesheet/mroot.css"></span><span data-include-replace="true" data-include="user-agent-stylesheet/scripts.css"></span>
+<span data-include-replace="true" data-include="user-agent-stylesheet/displaystyle.css"></span></span><span data-include-replace="true" data-include="user-agent-stylesheet/mroot.css"></span><span data-include-replace="true" data-include="user-agent-stylesheet/scripts.css"></span>
       </pre>
     </section>
     <section class="normative">
