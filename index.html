@@ -1137,6 +1137,16 @@
                 child.
               </li>
             </ol>
+            <p>
+              The <dfn>stretch axis</dfn> of an <a>embellished operator</a>
+                is <em>inline</em> if its
+              <a>core operator</a> contains only text content
+              made of a unique character <code>c</code> and that
+              character has stretch axis <em>inline</em> per
+              <a href="#stretchy-operator-axis"></a>.
+              Otherwise, stretch axis of the <a>embellished operator</a>
+              is <em>block</em>.
+            </p>
           </section>
           <section>
             <h4>Dictionary-based attributes</h4>
@@ -1318,19 +1328,17 @@
                 If the operator has the <a>stretchy</a> property:
                 <ul>
                   <li>
-                    If <code>c</code> is horizontal
-                    (<span class="issue">TODO: Add a table of horizontal
-                      unicode characters</span>) then
+                    If the <a>stretch axis</a> of the operator is inline
+                    then
                     <ol>
                       <li>
                         Try and get a
                         <code>MathVariants.horizGlyphConstructionOffsets</code>
                         table from the glyph corresponding to
                         <code>c</code> in the current font, or otherwise
-                        from a horizontal entry
-                        corresponding to <code>c</code> from the
-                        table
-                        <a href="#unicode-based-glyph-assemblies"></a>.
+                        from the entry
+                        <a href="#unicode-based-glyph-assemblies"></a>
+                        with base character <code>c</code>.
                         If that's not possible then
                         fallback to the
                         layout algorithm of <a href="#layout-of-mtext"></a>.
@@ -1366,17 +1374,17 @@
                     </ol>
                   </li>
                   <li>
-                    Otherwise,
+                    Otherwise, the <a>stretch axis</a> of the operator is
+                    block. The following steps are performed:
                     <ol>
                       <li>
                         Try and get a
                         <code>MathVariants.vertGlyphConstructionOffsets</code>
                         table from the glyph corresponding to
                         <code>c</code> in the current font, or otherwise
-                        from a vertical
-                        entry corresponding to <code>c</code> from the
-                        table
-                        <a href="#unicode-based-glyph-assemblies"></a>.
+                        from the entry of
+                        <a href="#unicode-based-glyph-assemblies"></a>
+                        with base character <code>c</code>.
                         If that's not possible then
                         fallback to the
                         layout algorithm of <a href="#layout-of-mtext"></a>.
@@ -1676,7 +1684,7 @@
                 Layout all the children of the
                 <code>&lt;mrow&gt;</code> but the
                 <a>embellished operators</a> that have
-                the <a>stretchy</a> property and block stretch axis.
+                the <a>stretchy</a> property and block <a>stretch axis</a>.
                 If this step results in all the children being laid out, then
                 stop.
               </li>
@@ -1710,7 +1718,7 @@
               <li>
                 For each <a>embellished operators</a>
                 child of <code>&lt;mrow&gt;</code>
-                with the <a>stretchy</a> property and block stretch axis:
+                with the <a>stretchy</a> property and block <a>stretch axis</a>:
                 <ol>
                   <li>
                     If the child has the <a>symmetric</a> property
@@ -3538,7 +3546,7 @@
                 Split the list remaining children into a first list
                 <code>L<sub>ToStretch</sub></code> containing
                 <a>embellished operators</a> with
-                a <a>stretchy</a> property and inline stretch axis
+                a <a>stretchy</a> property and inline <a>stretch axis</a>
                 and a second list <code>L<sub>NotToStretch</sub></code>.
               </li>
               <li>
@@ -3642,9 +3650,10 @@
               </li>
               <li>
                 <p>
-                  The base is a horizontal
+                  The base is an
                   <a>embellished operator</a> with the
-                  <a><code>stretchy</code></a> property.
+                  <a><code>stretchy</code></a> property
+                  and <a>stretch axis</a> inline.
                   <code>UnderShift</code> is the maximum of:
                 </p>
                 <ul>
@@ -3775,9 +3784,10 @@
                 </p>
               <li>
                 <p>
-                  The base is a horizontal
+                  The base is an
                   <a>embellished operator</a> with the
-                  <a><code>stretchy</code></a> property.
+                  <a><code>stretchy</code></a> property and
+                  <a>stretch axis</a> inline.
                   <code>OverShift</code> is the maximum of:
                 </p>
                 <ul>
@@ -4751,7 +4761,7 @@
           <dd>
             The subtable
             <code>MATH.MathGlyphInfo.MathTopAccentAttachment</code>
-            of horizontal positioning of top math accents.
+            of positioning top math accents along the inline axis.
             Use the corresponding value in
             <code>MATH.MathGlyphInfo.MathTopAccentAttachment.topAccentAttachment</code>
             if there is one for the requested glyph or
