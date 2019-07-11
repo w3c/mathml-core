@@ -585,9 +585,14 @@
           specified in the user agent stylesheet
           as described in <a href="#user-agent-stylesheet"></a>.
         </p>
+        <div class="issue" data-number="56">Improve layout description. Since
+          the <code>math</code> element is already <code>inline</code> or
+          <code>block</code> display, it should probably generate an anonymous
+          mrow-like box container?
+        </div>
         <p>
           The layout algorithm of the <code>&lt;math&gt;</code> element
-          is the same as the <code>&lt;mrow&gt;</code> element. User agents must
+          is the same as the <a><code>&lt;mrow&gt;</code></a> element. User agents must
           ensure correct baseline alignment, centering, sizing etc of the
           <code>&lt;math&gt;</code> element.
         </p>
