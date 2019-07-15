@@ -625,19 +625,33 @@
           <p>
             In order to specify math layout in different
             <a data-cite="CSS-WRITING-MODES-3#writing-mode">writing modes</a>,
-            this specification uses
-            <a data-cite="CSS-WRITING-MODES-3#logical-directions">flow-relative directions</a>
-            <dfn>inline-start</dfn>,
-            <dfn>inline-end</dfn>,
-            <dfn>block-start</dfn>,
-            <dfn>block-end</dfn>
-            and
-            <a data-cite="CSS-WRITING-MODES-3#line-relative-direction">line-relative directions</a>
-            <dfn>line-left</dfn>,
-            <dfn>line-right</dfn>,
-            <dfn>line-over</dfn>,
-            <dfn>line-under</dfn>
-            as defined in [[CSS-WRITING-MODES-3]].
+            this specification uses concepts from [[CSS-WRITING-MODES-3]]:
+          </p>
+          <ul>
+            <li>
+              <a data-cite="CSS-WRITING-MODES-3#abstract-dimensions">abstract dimensions</a>:
+              <dfn>block dimension</dfn>,
+              <dfn>inline dimension</dfn>,
+              <dfn>block axis</dfn>,
+              <dfn>inline axis</dfn>,
+              <dfn>block size</dfn>,
+              <dfn>inline size</dfn>.
+            </li>
+            <li>
+              <a data-cite="CSS-WRITING-MODES-3#logical-directions">flow-relative directions</a>:
+              <dfn>inline-start</dfn>,
+              <dfn>inline-end</dfn>,
+              <dfn>block-start</dfn>,
+              <dfn>block-end</dfn>.
+            </li>
+            <li>
+              <a data-cite="CSS-WRITING-MODES-3#line-relative-direction">line-relative directions</a>:
+              <dfn>line-left</dfn>,
+              <dfn>line-right</dfn>,
+              <dfn>line-over</dfn>,
+              <dfn>line-under</dfn>.
+            </li>
+          </ul>
           </p>
           <div class="note">
             Unless specified otherwise,
@@ -659,7 +673,7 @@
             <li>Inline metrics.
               <a data-cite="CSS-SIZING-3#min-content-inline-size">min-content inline size</a>,
               <a data-cite="CSS-SIZING-3#max-content-inline-size">max-content inline size</a> and
-              <a data-cite="CSS-WRITING-MODES-3#inline-size">inline size</a>
+              <a>inline size</a>
               from CSS. See <a href="#box-model-generic"></a>.
               <figure id="box-model-generic">
                 <img src="figures/horizontal-tb-ltr.svg"/>
@@ -669,7 +683,7 @@
             <li>
               <p>
                 Block metrics.
-                The <a data-cite="CSS-WRITING-MODES-3#block-size">block size</a>,
+                The <a>block size</a>,
                 <a data-cite="CSS-ALIGN-3#first-baseline-set">first baseline set</a>
                 and
                 <a data-cite="CSS-ALIGN-3#last-baseline-set">last baseline set</a>.
@@ -711,7 +725,7 @@
             <li>
               An optional <dfn>italic correction</dfn>
               which provides a measure of how much the text of a box is
-              slanted along the inline axis.
+              slanted along the <a>inline axis</a>.
               See <a href="#figure-italic-correction"></a>.
               <figure id="figure-italic-correction">
                 <img src="figures/italcorr.svg"/>
@@ -724,7 +738,7 @@
             <li>
               An optional <dfn>top accent attachment</dfn>
               which provides a reference offset on the
-              inline axis of a box that should be used when
+              <a>inline axis</a> of a box that should be used when
               positioning that box as an accent.
               See <a href="#figure-top-accent-attachment"></a>.
               <figure id="figure-top-accent-attachment">
@@ -935,9 +949,9 @@
             <dfn>block stretch size constraint</dfn> parameters may be used on
             <a>embellished operators</a>. The former indicates
             a target size that a <a>core operator</a> stretched along
-            the inline axis should cover.
+            the <a>inline axis</a> should cover.
             The latter indicates an ink line-ascent and ink line-descent
-            that a <a>core operator</a> stretched along the block axis
+            that a <a>core operator</a> stretched along the <a>block axis</a>
             should cover.
             Unless specified otherwise, these parameters are ignored during
             the layout of the box and children are laid out without
@@ -1429,14 +1443,14 @@
                         The inline size and (ink) block metrics of the content
                         are given by the
                         <a>box metrics of a stretchy glyph</a>
-                        stretched to inline dimension
+                        stretched to <a>inline dimension</a>
                         <code>T<sub>inline</sub></code>.
                       </li>
                       <li>
                         The painting of the operator is performed by the
                         algorithm
                         to <a>shape a stretchy glyph</a>
-                        stretched to inline dimension
+                        stretched to <a>inline dimension</a>
                         <code>T</code> and
                         at position determined by the previous box metrics.
                       </li>
@@ -1476,7 +1490,7 @@
                         The inline size and ink block metrics of the content
                         are obtained from the
                         <a>box metrics of a stretchy glyph</a>
-                        stretched to block dimension
+                        stretched to <a>block dimension</a>
                         <code>T<sub>ascent</sub></code> +
                         <code>T<sub>descent</sub></code>.
                         The inline size is the stretchy glyph width returned.
@@ -1495,7 +1509,7 @@
                         The painting of the operator is performed by the
                         algorithm
                         to <a>shape a stretchy glyph</a>
-                        stretched to block dimension <code>T</code> and
+                        stretched to <a>block dimension</a> <code>T</code> and
                         at position determined by the previous box metrics
                         shifted by Δ/2 towards the line-over.
                       </li>
@@ -1732,7 +1746,7 @@
             <figure id="symmetric-and-non-symmetric-vertical-stretching">
               <img src="figures/vstretch.svg"/>
               <figcaption>Symmetric and non-symmetric stretching of
-                operators along the block axis</figcaption>
+                operators along the <a>block axis</a></figcaption>
             </figure>
             <p>
               The <dfn>Algorithm for stretching operators along the block axis</dfn>
@@ -2328,12 +2342,12 @@
             <p>
               The <dfn>box metrics of the radical glyph</dfn> is the
               <a>box metrics of a stretchy glyph</a> stretched to
-              block dimension the target size for the radical glyph.
+              <a>block dimension</a> the target size for the radical glyph.
             </p>
             <p>
               The <dfn>shaping of the surd</dfn>
               is performed by the algorithm to
-              <a>shape a stretchy glyph</a> to block dimension the
+              <a>shape a stretchy glyph</a> to <a>block dimension</a> the
               target size for the radical glyph.
             </p>
           </section>
@@ -2839,7 +2853,7 @@
             <ul>
               <li>
                 <p>For the <code>left</code> notation, a bar is drawn
-                  on the line-left side along the block axis
+                  on the line-left side along the <a>block axis</a>
                   as shown on <a href="#figure-box-menclose-left"></a>.
                 </p>
                 <figure id="figure-box-menclose-left">
@@ -2891,7 +2905,7 @@
               </li>
               <li>
                 <p>For the <code>top</code> notation, a bar is drawn
-                  on the line-over side along the inline axis
+                  on the line-over side along the <a>inline axis</a>
                   as shown on <a href="#figure-box-menclose-top"></a>.
                 </p>
                 <p>
@@ -3426,7 +3440,7 @@
             </p>
             <p>
               <code>SubSuperGap</code> is the gap between the two scripts
-              along the block axis and is defined by
+              along the <a>block axis</a> and is defined by
               (<code>SubShift</code> − the ink line-ascent of the subscript's
               margin box) +
               (<code>SuperShift</code> − the ink line-descent of the
@@ -4821,7 +4835,7 @@
           <dd>
             The subtable
             <code>MATH.MathGlyphInfo.MathTopAccentAttachment</code>
-            of positioning top math accents along the inline axis.
+            of positioning top math accents along the <a>inline axis</a>.
             Use the corresponding value in
             <code>MATH.MathGlyphInfo.MathTopAccentAttachment.topAccentAttachment</code>
             if there is one for the requested glyph or
@@ -5269,7 +5283,7 @@
           The stretch axis can be included as a boolean property of the
           <a href="#operator-dictionary">operator dictionary</a>. But since it
           does not depend on the form and since very few operators can stretch
-          along the inline axis, it might be better implemented as a separate
+          along the <a>inline axis</a>, it might be better implemented as a separate
           sorted array.
         </div>
       </section>
