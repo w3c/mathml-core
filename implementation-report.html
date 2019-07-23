@@ -53,9 +53,6 @@
           let info = json.run_info;
           let date = new Date(json.time_start);
           output = "<pre class='build_info'>"
-          function capitalize(string) {
-              return `${string.charAt(0).toUpperCase()}${string.slice(1)}`;
-          }
           output += `${capitalize(info.product)} ${info.browser_version}\n`;
           output += `${capitalize(info.os)} ${capitalize(info.version)}\n`;
           output += `${date.toDateString()}\n`;
