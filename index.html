@@ -9,6 +9,21 @@
     <script src="wpt-tests.js"></script>
     <script src="implementation-report.js"></script>
     <script class="remove">
+      function setResults(browser, json) {
+          for (let i in json.results)
+              wptResults[json.results[i].test][browser] =
+              (json.results[i].status === "PASS");
+          // TODO: Actually do something with the results.
+          // Compare with displayResults() from implementation-report.html
+          // and with the Bikeshed's test summary
+          // (e.g. https://drafts.csswg.org/css-align)
+          // console.log(wptResults);
+      }
+      function loadWebPlaformTestsResults() {
+          loadJSON("blink", setResults);
+          loadJSON("gecko", setResults);
+          loadJSON("webkit", setResults);
+      }
       var respecConfig = {
           specStatus: "ED",
           editors: [{
@@ -26,7 +41,7 @@
           shortName: "mathml-core",
           testSuiteURI: "https://w3c-test.org/mathml/",
           issueBase: "https://github.com/mathml-refresh/mathml/issues/",
-          implementationReportURI: "https://build-chromium.igalia.com/mathml/wpt/summary.html",
+          implementationReportURI: "https://mathml-refresh.github.io/mathml-core/implementation-report.html",
           otherLinks: [{
               key: "Participate",
               data: [{
@@ -83,7 +98,7 @@
                   href: "http://frederic-wang.fr/opentype-math-in-harfbuzz.html"
               }
           },
-          postProcess: [sorttable.init]
+          postProcess: [sorttable.init, loadWebPlaformTestsResults]
       };
     </script>
   </head>

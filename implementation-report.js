@@ -10,14 +10,10 @@ function loadJSON(browser, callback) {
     xobj.send(null);
 }
 
-function setResults(browser, json) {
-    for (let i in json.results)
-        wptResults[json.results[i].test][browser] =
-        (json.results[i].status === "PASS");
-
-    console.log(wptResults);
+function uploadJSON(files, callback) {
+    if (files.length !== 1)
+        return;
+    var reader = new FileReader();
+    reader.onload = (e) => { callback(JSON.parse(e.target.result)); }
+    reader.readAsText(files[0]);
 }
-
-loadJSON("blink", setResults);
-loadJSON("gecko", setResults);
-loadJSON("webkit", setResults);

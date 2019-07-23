@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>MathML Core - Implementation Report</title>
+    <meta charset="utf-8"/>
+    <!-- TODO: Improve style of the page? -->
+    <link rel="stylesheet" type="text/css"
+          href="https://www.w3.org/StyleSheets/TR/2016/base.css"/>
+    <style>
+      #output {
+          font-family: monospace;
+          white-space: pre;
+      }
+      h1 {
+          font-size: 200%;
+      }
+      .PASS, .OK {
+          background: #afa;
+      }
+      .FAIL, .ERROR {
+          background: #faa;
+      }
+      .unfoldable {
+          display: none;
+          border: 1px dotted black;
+      }
+      .build_info {
+          font-size: 150%;
+      }
+    </style>
+    <script src="implementation-report.js"></script>
+    <script>
+      function parseResult(result) {
+          let output = "<li>";
+          output += result.test || result.name;
+          if (result.subtests && result.subtests.length > 0) {
+              output += "<ul>";
+              output += `<li>Harness status <span class=${result.status}>${result.status}</span></li>`;
+              for (let i in result.subtests)
+                  output += parseResult(result.subtests[i]);
+              output += "</ul>";
+          } else
+              output += ` <span class=${result.status}>${result.status}</span>`;
+          output += "</li>";
+          return output;
+      }
+      function displayResults(browser, json) {
+          let results = [];
+          for (let i in json.results)
+              results.push({name: json.results[i].test,
+                            output: parseResult(json.results[i])});
+          results.sort((a, b) => { return a.name.localeCompare(b.name) > 0; });
+          let info = json.run_info;
+          let date = new Date(json.time_start);
+          output = "<pre class='build_info'>"
+          function capitalize(string) {
+              return `${string.charAt(0).toUpperCase()}${string.slice(1)}`;
+          }
+          output += `${capitalize(info.product)} ${info.browser_version}\n`;
+          output += `${capitalize(info.os)} ${capitalize(info.version)}\n`;
+          output += `${date.toDateString()}\n`;
+          output += "</pre>"
+          output += "<ol>";
+          results.forEach((e) => { output += e.output; });
+          output += "</ol>";
+          let outputDiv = document.getElementById(`output-${browser}`);
+          outputDiv.innerHTML = output;
+          let N = outputDiv.getElementsByTagName("span").length;
+          let Npass = outputDiv.querySelectorAll(".PASS, .OK").length;
+          document.getElementById(browser).querySelector("span").innerHTML = `${Npass}/${N}`;
+      }
+      function toggleDisplay(browser, force) {
+          var button = document.getElementById(`${browser}`).querySelector("button");
+          var output = document.getElementById(`output-${browser}`)
+          if (force || button.innerText === "+") {
+              button.innerText = "\u2212";
+              output.style.display = "block";
+          } else {
+              button.innerText = "+";
+              output.style.display = "none";
+          }
+      }
+      window.addEventListener("load", function() {
+          loadJSON("blink", displayResults);
+          loadJSON("gecko", displayResults);
+          loadJSON("webkit", displayResults);
+          var upload =  document.getElementById("upload");
+          upload.addEventListener("change", function() {
+              uploadJSON(this.files, function(json) {
+                  displayResults("custom", json);
+                  toggleDisplay("custom", true);
+              });
+          });
+          var buttons = document.getElementsByTagName("button");
+          for (var i = 0; i < buttons.length; i++) {
+              buttons[i].addEventListener("click", function() {
+                  toggleDisplay(event.target.parentNode.id);
+              });
+          }
+      });
+    </script>
+  </head>
+  <body>
+    <section>
+      <h1>MathML Core - Implementation Report</h1>
+      <section>
+        <h2 id="blink">Blink <span>?/?</span> <button>+</button></h2>
+        <div class="unfoldable" id="output-blink">No results available</div>
+      </section>
+      <section>
+        <h2 id="gecko">Gecko <span>?/?</span> <button>+</button></h2>
+        <div class="unfoldable" id="output-gecko">No results available</div>
+      </section>
+      <section>
+        <h2 id="webkit">WebKit <span>?/?</span> <button>+</button></h2>
+        <div class="unfoldable" id="output-webkit">No results available</div>
+      </section>
+      <section>
+        <h2 id="custom">Custom results <span></span> <button>+</button></h2>
+        <div class="unfoldable" id="output-custom">No results available</div>
+        <p>Upload a wptreport JSON result: <input id="upload" type="file"/></p>
+      </section>
+    </section>
+  </body>
+</html>
