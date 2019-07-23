@@ -3,26 +3,129 @@
   <head>
     <meta charset="utf-8">
     <title>MathML Core</title>
+    <link href="https://test.csswg.org/harness/stylesheets/annotate.css" rel="stylesheet">
+
+    <style>
+      /* Overrides for annotate */
+      .annotation > details.respec-tests-details > ul {
+          width: 100%;
+          margin-top: -0.3em;
+          padding-left: 0;
+      }
+
+     .annotation >  details.respec-tests-details[open] {
+        position: initial;
+        background-color: transparent;
+        border: none;
+      }
+    </style>
     <script src="https://www.w3.org/Tools/respec/respec-w3c-common"
             class="remove"></script>
     <script src="tables/sorttable.js"></script>
     <script src="wpt-tests.js"></script>
-    <script src="implementation-report.js"></script>
-    <style>
-      .folded { display: none; }
-    </style>
     <script class="remove">
-      function setResults(browser, json) {
-          for (let i in json.results)
-              wptResults[json.results[i].test][browser] =
-              (json.results[i].status === "PASS") ? "PASS" : "FAIL";
-          addBrowserResult("implementation-report", wptResults, browser);
+      /*
+        Massage each engines data into a nice indexed
+        result set (testPath:result) for quick reference
+      */
+      async function getBrowserWPTData(browser) {
+        let ret = { 
+          engine: browser, 
+          results: {}
+        } 
+        let resp = await fetch(`https://build-chromium.igalia.com/mathml/wpt/${browser}-latest.json`)
+        let data = (await resp.json())
+        data.results.forEach(item => {
+          ret.results[item.test] = item.status
+        })
+        return ret
       }
-      function loadWebPlaformTestsResults() {
-          addTestCount("implementation-report", wptResults);
-          loadJSON("blink", setResults);
-          loadJSON("gecko", setResults);
-          loadJSON("webkit", setResults);
+
+      /*
+        We can launch these early and get data
+      */
+      let wptDataPromise = Promise.all([
+        getBrowserWPTData('blink'),
+        getBrowserWPTData('gecko'),
+        getBrowserWPTData('webkit')
+      ])  
+      
+      /*
+        Before we start, re-attach 
+        data-tests meta-information in a convenient
+        array form where we can 
+        refer to it later because respec will 
+        remove it...
+      */
+      async function initReport() {
+        document.querySelectorAll('[data-tests]').forEach(el => {
+          el.__tests = el.dataset.tests.split(',');
+        })
+      }
+
+
+      // this is using the technique and styles adapted from annotation.js
+      async function loadWebPlaformTestsResults() {
+        let wptData = await wptDataPromise;
+        let ENGINE_LOGOS = { 
+            'gecko': "https://test.csswg.org/harness/img/gecko.svg",
+            'presto': "https://test.csswg.org/harness/img/presto.svg",
+            'trident': "https://test.csswg.org/harness/img/trident.svg",
+            'webkit': "https://test.csswg.org/harness/img/webkit.svg",
+            'blink': "https://test.csswg.org/harness/img/blink.svg",
+            'edge': "https://test.csswg.org/harness/img/edge.svg"
+          };
+        console.log(wptData)
+      
+        document.querySelectorAll('.respec-tests-details').forEach(el => {
+          let summary = {};
+          let annotationEl = el.parentElement;
+          annotationEl.classList.add('annotation');
+
+
+          annotationEl.__tests.forEach(key => {
+            wptData.forEach(rec => {
+              summary[rec.engine] = summary[rec.engine] || { pass: 0, fail: 0 };
+              // TODO: look into this mismatch
+              let k = key.replace(/^\.\./, '')
+              let result = rec.results[k] || rec.results["/mathml/" + key] 
+              if (/OK|PASS/.test(result)) {
+                summary[rec.engine].pass++;
+              } else {
+                summary[rec.engine].fail++;
+              }
+            })
+          })
+
+          
+
+          let source = `
+            <div class="engines">
+              ${wptData.map(engineData => {
+                let engine = engineData.engine;
+                let passing = summary[engine].pass;
+                let failing = summary[engine].fail;
+                let total = passing + failing;
+                let status = '';
+
+                switch (Math.round((passing / total) * 10.0)) {
+                  case 10:
+                  case 9: status = 'almost-pass';  break;
+                  case 8: status = 'slightly-buggy'; break;
+                  case 7: status = 'buggy'; break;
+                  case 6: status = 'very-buggy'; break;
+                  case 5: status = 'fail'; break;
+                  default: status = 'epic-fail'; break;
+                }
+                // this also had data-needcount but...
+                return `<span title="${passing} pass, ${failing} fail" tabindex="0" data-enginename="_${engine}" data-passcount="${passing}" data-failcount="${failing}" class="${engine} ${status} active major"><img src="${ENGINE_LOGOS[engine]}" alt="${engine}"></span>`
+              })}
+            </div>`;
+          
+          let frag = document.createRange().createContextualFragment(source);
+          annotationEl.appendChild(frag);
+
+        })
       }
       var respecConfig = {
           specStatus: "ED",
@@ -39,6 +142,7 @@
           wgURI: "https://www.w3.org/community/mathml4/",
           edDraftURI: "https://mathml-refresh.github.io/mathml-core/",
           shortName: "mathml-core",
+          mdn: true,
           testSuiteURI: "https://w3c-test.org/mathml/",
           issueBase: "https://github.com/mathml-refresh/mathml/issues/",
           implementationReportURI: "https://mathml-refresh.github.io/mathml-core/implementation-report.html",
@@ -98,12 +202,13 @@
                   href: "http://frederic-wang.fr/opentype-math-in-harfbuzz.html"
               }
           },
+          preProcess: [initReport],
           postProcess: [sorttable.init, loadWebPlaformTestsResults]
       };
     </script>
   </head>
   <body>
-    <div id="implementation-report"></div>
+    <div data-tests="../css/css-fonts/math-script-level-and-math-style/math-script-level-001.tentative.html,../css/css-fonts/math-script-level-and-math-style/math-script-level-002.tentative.html,../css/css-fonts/math-script-level-and-math-style/math-script-level-003.tentative.html,../css/css-fonts/math-script-level-and-math-style/math-script-level-004.tentative.html,../css/css-fonts/math-script-level-and-math-style/math-script-level-005.tentative.html,../css/css-fonts/math-script-level-and-math-style/math-script-level-auto-and-math-style-001.tentative.html,../css/css-fonts/math-script-level-and-math-style/math-script-level-auto-and-math-style-002.tentative.html,../css/css-fonts/math-script-level-and-math-style/math-script-level-auto-and-math-style-003.tentative.html,../css/css-fonts/math-script-level-and-math-style/math-script-level-auto-and-math-style-004.tentative.html,../css/css-fonts/math-script-level-and-math-style/math-script-level-auto-and-math-style-005.tentative.html,../css/css-fonts/math-script-level-and-math-style/math-script-level-font-size-clamping-001.tentative.html,../css/css-fonts/math-script-level-and-math-style/math-style-001.tentative.html,../css/css-text/text-transform/math/text-transform-math-auto-001.tentative.html,../css/css-text/text-transform/math/text-transform-math-auto-002.tentative.html,../css/css-text/text-transform/math/text-transform-math-bold-001.tentative.html,../css/css-text/text-transform/math/text-transform-math-bold-fraktur-001.tentative.html,../css/css-text/text-transform/math/text-transform-math-bold-italic-001.tentative.html,../css/css-text/text-transform/math/text-transform-math-bold-sans-serif-001.tentative.html,../css/css-text/text-transform/math/text-transform-math-bold-script-001.tentative.html,../css/css-text/text-transform/math/text-transform-math-double-struck-001.tentative.html,../css/css-text/text-transform/math/text-transform-math-fraktur-001.tentative.html,../css/css-text/text-transform/math/text-transform-math-initial-001.tentative.html,../css/css-text/text-transform/math/text-transform-math-italic-001.tentative.html,../css/css-text/text-transform/math/text-transform-math-looped-001.tentative.html,../css/css-text/text-transform/math/text-transform-math-monospace-001.tentative.html,../css/css-text/text-transform/math/text-transform-math-sans-serif-001.tentative.html,../css/css-text/text-transform/math/text-transform-math-sans-serif-bold-italic-001.tentative.html,../css/css-text/text-transform/math/text-transform-math-sans-serif-italic-001.tentative.html,../css/css-text/text-transform/math/text-transform-math-script-001.tentative.html,../css/css-text/text-transform/math/text-transform-math-stretched-001.tentative.html,../css/css-text/text-transform/math/text-transform-math-tailed-001.tentative.html,presentation-markup/direction/direction-overall.html,presentation-markup/direction/direction-token.html,presentation-markup/direction/direction.html,presentation-markup/fractions/frac-1.html,presentation-markup/fractions/frac-bar-001.html,presentation-markup/fractions/frac-color-001.html,presentation-markup/fractions/frac-color-002.html,presentation-markup/fractions/frac-created-dynamically-2.html,presentation-markup/fractions/frac-created-dynamically-3.html,presentation-markup/fractions/frac-created-dynamically.html,presentation-markup/fractions/frac-linethickness-001.html,presentation-markup/fractions/frac-linethickness-002.html,presentation-markup/fractions/frac-linethickness-003.html,presentation-markup/fractions/frac-linethickness-004.html,presentation-markup/fractions/frac-mrow-001.html,presentation-markup/fractions/frac-numalign-denomalign-001.html,presentation-markup/fractions/frac-parameters-1.html,presentation-markup/fractions/frac-parameters-2.html,presentation-markup/fractions/frac-parameters-gap-001.html,presentation-markup/fractions/frac-parameters-gap-002.html,presentation-markup/fractions/frac-parameters-gap-003.html,presentation-markup/fractions/frac-parameters-gap-004.html,presentation-markup/fractions/frac-parameters-gap-005.html,presentation-markup/fractions/frac-parameters-gap-006.html,presentation-markup/fractions/frac-visibility-001.html,presentation-markup/mrow/inferred-mrow-baseline.html,presentation-markup/mrow/inferred-mrow-stretchy.html,presentation-markup/operators/mo-axis-height-1.html,presentation-markup/operators/mo-form-dynamic.html,presentation-markup/operators/mo-form-fallback.html,presentation-markup/operators/mo-form-minus-plus.html,presentation-markup/operators/mo-form.html,presentation-markup/operators/mo-movablelimits-default.html,presentation-markup/operators/mo-movablelimits-dynamic.html,presentation-markup/operators/mo-movablelimits.html,presentation-markup/operators/mo-paint-lspace-rspace.html,presentation-markup/radicals/root-parameters-1.html,presentation-markup/scripts/subsup-1.html,presentation-markup/scripts/subsup-2.html,presentation-markup/scripts/subsup-3.html,presentation-markup/scripts/subsup-4.html,presentation-markup/scripts/subsup-5.html,presentation-markup/scripts/subsup-parameters-1.html,presentation-markup/scripts/subsup-parameters-2.html,presentation-markup/scripts/underover-1.html,presentation-markup/scripts/underover-parameters-1.html,presentation-markup/scripts/underover-parameters-2.html,presentation-markup/scripts/underover-parameters-3.html,presentation-markup/scripts/underover-parameters-4.html,presentation-markup/spaces/mspace-children.html,presentation-markup/spaces/space-1.html,presentation-markup/spaces/space-2.html,presentation-markup/tables/table-axis-height.html,relations/css-styling/color-1.html,relations/css-styling/display-1.html,relations/css-styling/displaystyle-1.html,relations/css-styling/dynamic-dir-1.html,relations/css-styling/lengths-1.html,relations/css-styling/lengths-2.html,relations/css-styling/mathsize-attribute.html,relations/css-styling/mathvariant-auto.html,relations/css-styling/mathvariant-bold-fraktur.html,relations/css-styling/mathvariant-bold-italic.html,relations/css-styling/mathvariant-bold-sans-serif.html,relations/css-styling/mathvariant-bold-script.html,relations/css-styling/mathvariant-bold.html,relations/css-styling/mathvariant-double-struck.html,relations/css-styling/mathvariant-fraktur.html,relations/css-styling/mathvariant-initial.html,relations/css-styling/mathvariant-italic.html,relations/css-styling/mathvariant-looped.html,relations/css-styling/mathvariant-monospace.html,relations/css-styling/mathvariant-sans-serif-bold-italic.html,relations/css-styling/mathvariant-sans-serif-italic.html,relations/css-styling/mathvariant-sans-serif.html,relations/css-styling/mathvariant-script.html,relations/css-styling/mathvariant-stretched.html,relations/css-styling/mathvariant-tailed.html,relations/css-styling/visibility-1.html,relations/html5-tree/class-1.html,relations/html5-tree/class-2.html,relations/html5-tree/color-attributes-1.html,relations/html5-tree/display-1.html,relations/html5-tree/dynamic-1.html,relations/html5-tree/href-click-1.html,relations/html5-tree/href-click-2.html,relations/html5-tree/href-click-3.html,relations/html5-tree/integration-point-1.html,relations/html5-tree/integration-point-2.html,relations/html5-tree/integration-point-3.html,relations/html5-tree/required-extensions-2.html,relations/html5-tree/unique-identifier-1.html,relations/html5-tree/unique-identifier-2.html,relations/html5-tree/unique-identifier-3.html,relations/text-and-math/use-typo-metrics-1.html"></div>
     <section id="abstract">
       <p>
         This specification defines a core subset of Mathematical Markup
@@ -1666,7 +1771,6 @@
               </li>
               <li>
                 An <a><code>&lt;maction&gt;</code></a>
-                or <a><code>&lt;semantics&gt;</code></a> element
                 whose first child exists and is <a>space-like</a>.
               </li>
             </ul>
