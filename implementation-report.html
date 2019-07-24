@@ -3,7 +3,6 @@
   <head>
     <title>MathML Core - Implementation Report</title>
     <meta charset="utf-8"/>
-    <!-- TODO: Improve style of the page? -->
     <link rel="stylesheet" type="text/css"
           href="https://www.w3.org/StyleSheets/TR/2016/base.css"/>
     <style>
@@ -28,8 +27,28 @@
           font-size: 150%;
       }
     </style>
-    <script src="implementation-report.js"></script>
     <script>
+      function capitalize(string) {
+          return `${string.charAt(0).toUpperCase()}${string.slice(1)}`;
+      }
+      function loadJSON(browser, callback) {
+          let xobj = new XMLHttpRequest();
+          xobj.overrideMimeType("application/json");
+          var json = `https://build-chromium.igalia.com/mathml/wpt/${browser}-latest.json`;
+          xobj.open('GET', json, true);
+          xobj.onreadystatechange = function () {
+              if (xobj.readyState == 4 && xobj.status == "200")
+                  callback(browser, JSON.parse(xobj.responseText));
+          };
+          xobj.send(null);
+      }
+      function uploadJSON(files, callback) {
+          if (files.length !== 1)
+              return;
+          var reader = new FileReader();
+          reader.onload = (e) => { callback(JSON.parse(e.target.result)); }
+          reader.readAsText(files[0]);
+      }
       function parseResult(result) {
           let output = "<li>";
           output += result.test || result.name;
