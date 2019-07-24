@@ -84,9 +84,14 @@
           annotationEl.__tests.forEach(key => {
             wptData.forEach(rec => {
               summary[rec.engine] = summary[rec.engine] || { pass: 0, fail: 0 };
-              // TODO: look into this mismatch
-              let k = key.replace(/^\.\./, '')
-              let result = rec.results[k] || rec.results["/mathml/" + key]
+              var result;
+              if (key.substring(0, 2) == "..") {
+                // Tests outside the /mathml/ folder (e.g. CSS ones)
+                  result = rec.results[key.substring(2)];
+              } else {
+                // Tests inside the /mathml/ folder.
+                result = rec.results[`/mathml/${key}`];
+              }
               if (/OK|PASS/.test(result)) {
                 summary[rec.engine].pass++;
               } else {
