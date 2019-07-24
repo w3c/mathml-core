@@ -30,22 +30,22 @@ def format_tests():
         print('$MATHML_CORE_URL/#%s' % section, file=output)
         test_list=[]
         for test in sorted(tests[section]):
-            all_tests.add(test)
             # Adjust the path to match respec's assumptions.
             result = re.match( r'mathml/(.*)', test)
             if result:
                 test = result.group(1)
             else:
                 test = \"../%s\" % test
+            all_tests.add(test)
             test_list.append(test)
         print('data-tests=\"%s\"\n' % ','.join(test_list), file=output)
     output.close()
 
     output = open('../wpt-tests.js', 'w')
-    print('var wptResults = {', file=output)
+    print('var wptTests = [', file=output)
     for test in sorted(all_tests):
-        print('  \"/%s\": {},' % test, file=output)
-    print('};\n', file=output)
+        print('  \"%s\",' % test, file=output)
+    print('];\n', file=output)
     output.close()
 
 " > $PYTHON_SCRIPT
