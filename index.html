@@ -83,16 +83,20 @@
 
           annotationEl.__tests.forEach(key => {
             wptData.forEach(rec => {
-              summary[rec.engine] = summary[rec.engine] || { pass: 0, fail: 0 };
-              var result;
+              summary[rec.engine] = summary[rec.engine] || { pass: 0, fail: 0, untested: 0 };
+              // respec refers uses path with respect to the mathml/ folder
+              // while WPT uses the full path. So we need to tweak the key.
+              var path;
               if (key.substring(0, 2) == "..") {
                 // Tests outside the /mathml/ folder (e.g. CSS ones)
-                  result = rec.results[key.substring(2)];
+                path = key.substring(2);
               } else {
                 // Tests inside the /mathml/ folder.
-                result = rec.results[`/mathml/${key}`];
+                path = `/mathml/${key}`;
               }
-              if (/OK|PASS/.test(result)) {
+              if (!rec.results.hasOwnProperty(path)) {
+                summary[rec.engine].untested++;
+              } else if (/OK|PASS/.test(rec.results[path])) {
                 summary[rec.engine].pass++;
               } else {
                 summary[rec.engine].fail++;
@@ -106,7 +110,8 @@
                 let engine = engineData.engine;
                 let passing = summary[engine].pass;
                 let failing = summary[engine].fail;
-                let total = passing + failing;
+                let untested = summary[engine].untested;
+                let total = passing + failing + untested;
                 let status = '';
 
                 switch (Math.round((passing / total) * 10.0)) {
@@ -119,7 +124,7 @@
                   default: status = 'epic-fail'; break;
                 }
                 // this also had data-needcount but...
-                return `<span title="${passing} pass, ${failing} fail" tabindex="0" data-enginename="_${engine}" data-passcount="${passing}" data-failcount="${failing}" class="${engine} ${status} active major"><img src="${ENGINE_LOGOS[engine]}" alt="${engine}"></span>`
+                return `<span title="${passing} pass, ${failing} fail, ${untested} untested" tabindex="0" data-enginename="_${engine}" data-passcount="${passing}" data-failcount="${failing}" data-untestedcount="${untested}" class="${engine} ${status} active major"><img src="${ENGINE_LOGOS[engine]}" alt="${engine}"></span>`
               })}
             </div>`;
 
