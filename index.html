@@ -121,7 +121,9 @@
           let frag = document.createRange().createContextualFragment(source);
           annotationEl.appendChild(frag);
 
-        })
+        });
+
+        document.getElementById('implementation-report').insertAdjacentHTML("beforeend", `<div style="margin-left: 2em; margin-right: 2em"><a href="${respecConfig.implementationReportURI}">Implementation Report</a></div>`);
       }
       var respecConfig = {
           specStatus: "ED",
