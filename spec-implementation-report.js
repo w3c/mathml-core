@@ -12,7 +12,20 @@ async function getBrowserWPTData(browser) {
     }
     let data = await fetchWebPlatformTestResults(browser);
     data.results.forEach(item => {
-        ret.results[item.test] = item.status
+      if (item.status === "OK") {
+          // Check all the subtests.
+          item.status = "FAIL";
+          if (item.subtests && item.subtests.length > 0) {
+              item.status = "PASS";
+              for (i in item.subtests) {
+                  if (item.subtests[i].status !== "PASS") {
+                      item.status = "FAIL";
+                      break;
+                  }
+              }
+          }
+      }
+      ret.results[item.test] = item.status;
     })
     return ret
 }
@@ -93,7 +106,7 @@ async function loadWebPlaformTestsResults() {
                 }
                 if (!rec.results.hasOwnProperty(path)) {
                     summary[rec.engine].untested++;
-                } else if (/OK|PASS/.test(rec.results[path])) {
+                } else if (rec.results[path] === "PASS") {
                     summary[rec.engine].pass++;
                 } else {
                     summary[rec.engine].fail++;
