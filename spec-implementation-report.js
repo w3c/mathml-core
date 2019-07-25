@@ -43,15 +43,18 @@ async function initReport() {
     if (document.querySelector('[data-tests]'))
         throw "Element with data-tests attribute found!";
     for (var section in dataTests) {
-        var element = document.getElementById(section);
+        var sectionElement = document.getElementById(section);
         var div;
-        if (!element)
+        if (!sectionElement)
             throw `Cannot find section of id '${section}'.`
         if (section == 'implementation-report') {
-            div = element;
+            div = sectionElement;
         } else {
             div = document.createElement("div");
-            element.parentNode.insertBefore(div, element.nextSibling);
+            var header = sectionElement.firstElementChild;
+            if (!header)
+                throw `Cannot find header for section ${section}`;
+            header.parentNode.insertBefore(div, header.nextElementSibling);
         }
         div.dataset.tests = dataTests[section];
         div.__tests = dataTests[section].split(',');
