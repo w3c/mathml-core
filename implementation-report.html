@@ -45,7 +45,10 @@
       }
       function parseResult(result) {
           let output = "<li>";
-          output += result.test || result.name;
+          if (result.test)
+              output += `<a href="https://w3c-test.org${result.test}">${result.test}</a>`
+          else
+              output += result.name;
           if (result.subtests && result.subtests.length > 0) {
               output += "<ul>";
               output += `<li>Harness status <span class=${result.status}>${result.status}</span></li>`;
