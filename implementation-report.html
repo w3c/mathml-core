@@ -5,6 +5,7 @@
     <meta charset="utf-8"/>
     <link rel="stylesheet" type="text/css"
           href="https://www.w3.org/StyleSheets/TR/2016/base.css"/>
+    <script src="wpt/fetch-browser-results.js"></script>
     <style>
       #output {
           font-family: monospace;
@@ -31,16 +32,9 @@
       function capitalize(string) {
           return `${string.charAt(0).toUpperCase()}${string.slice(1)}`;
       }
-      function loadJSON(browser, callback) {
-          let xobj = new XMLHttpRequest();
-          xobj.overrideMimeType("application/json");
-          var json = `https://build-chromium.igalia.com/mathml/wpt/${browser}-latest.json`;
-          xobj.open('GET', json, true);
-          xobj.onreadystatechange = function () {
-              if (xobj.readyState == 4 && xobj.status == "200")
-                  callback(browser, JSON.parse(xobj.responseText));
-          };
-          xobj.send(null);
+      async function loadJSON(browser, callback) {
+          let json = await fetchWebPlatformTestResults(browser);
+          callback(browser, json);
       }
       function uploadJSON(files, callback) {
           if (files.length !== 1)
@@ -96,7 +90,7 @@
               output.style.display = "none";
           }
       }
-      window.addEventListener("load", function() {
+      window.addEventListener("load", async function() {
           loadJSON("blink", displayResults);
           loadJSON("gecko", displayResults);
           loadJSON("webkit", displayResults);

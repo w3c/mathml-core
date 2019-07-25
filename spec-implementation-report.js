@@ -10,8 +10,7 @@ async function getBrowserWPTData(browser) {
         engine: browser,
         results: {}
     }
-    let resp = await fetch(`https://build-chromium.igalia.com/mathml/wpt/${browser}-latest.json`)
-    let data = (await resp.json())
+    let data = await fetchWebPlatformTestResults(browser);
     data.results.forEach(item => {
         ret.results[item.test] = item.status
     })
