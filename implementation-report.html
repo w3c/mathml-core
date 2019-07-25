@@ -14,7 +14,7 @@
       h1 {
           font-size: 200%;
       }
-      .PASS, .OK {
+      .PASS {
           background: #afa;
       }
       .FAIL, .ERROR {
@@ -51,7 +51,6 @@
               output += result.name;
           if (result.subtests && result.subtests.length > 0) {
               output += "<ul>";
-              output += `<li>Harness status <span class=${result.status}>${result.status}</span></li>`;
               for (let i in result.subtests)
                   output += parseResult(result.subtests[i]);
               output += "</ul>";
@@ -79,7 +78,7 @@
           let outputDiv = document.getElementById(`output-${browser}`);
           outputDiv.innerHTML = output;
           let N = outputDiv.getElementsByTagName("span").length;
-          let Npass = outputDiv.querySelectorAll(".PASS, .OK").length;
+          let Npass = outputDiv.querySelectorAll(".PASS").length;
           document.getElementById(browser).querySelector("span").innerHTML = `${Npass}/${N}`;
       }
       function toggleDisplay(browser, force) {
