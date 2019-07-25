@@ -17,8 +17,13 @@
       .PASS {
           background: #afa;
       }
-      .FAIL, .ERROR {
+      .FAIL {
           background: #faa;
+      }
+      .NOTRUN, .CRASH, .ERROR {
+          color: yellow;
+          background: red;
+          font-weight: bold;
       }
       .unfoldable {
           display: none;
