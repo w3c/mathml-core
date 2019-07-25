@@ -1,0 +1,12 @@
+/* Overrides for annotate */
+.annotation > details.respec-tests-details > ul {
+    width: 100%;
+    margin-top: -0.3em;
+    padding-left: 0;
+}
+
+.annotation >  details.respec-tests-details[open] {
+    position: initial;
+    background-color: transparent;
+    border: none;
+}
