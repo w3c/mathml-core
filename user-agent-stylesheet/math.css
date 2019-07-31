@@ -16,9 +16,3 @@ math[display="inline" i] {
   display: inline;
   math-style: inline;
 }
-math[displaystyle="false" i] {
-  math-style: inline;
-}
-math[displaystyle="true" i] {
-  math-style: display;
-}
