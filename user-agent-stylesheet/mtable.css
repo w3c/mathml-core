@@ -2,6 +2,3 @@ mtable {
   display: inline-table;
   math-style: inline;
 }
-mtable[displaystyle="true" i] {
-  math-style: display;
-}
