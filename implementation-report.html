@@ -53,7 +53,7 @@
           if (result.test)
               output += `<a href="https://w3c-test.org${result.test}">${result.test}</a>`
           else
-              output += result.name;
+              output += escapeHTML(result.name);
           if (result.subtests && result.subtests.length > 0) {
               output += "<ul>";
               for (let i in result.subtests)
