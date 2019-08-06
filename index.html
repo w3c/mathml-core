@@ -2073,11 +2073,12 @@
                 (respectively <code>display</code>).
               </li>
               <li>
-                The ink line-descent of the numerator's margin box +
+                The <a>AxisHeight</a> + half the line thickness +
                 <a>FractionNumeratorGapMin</a>
                 (respectively <a>FractionNumDisplayStyleGapMin</a>)
                 if the <a>math-style</a> is <code>inline</code>
-                (respectively <code>display</code>).
+                (respectively <code>display</code>) +
+                the ink line-descent of the numerator's margin box.
               </li>
             </ul>
             <p><code>DenominatorShift</code> is the maximum between:</p>
@@ -2089,11 +2090,13 @@
                 (respectively <code>display</code>).
               </li>
               <li>
-                The ink line-ascent of the denominator's margin box +
+                Half the line thickness +
                 <a>FractionDenominatorGapMin</a>
                 (respectively <a>FractionDenomDisplayStyleGapMin</a>)
                 if the <a>math-style</a> is <code>inline</code>
-                (respectively <code>display</code>).
+                (respectively <code>display</code>) +
+                the ink line-ascent of the denominator's margin box −
+                the <a>AxisHeight</a>.
               </li>
             </ul>
             <p>
@@ -2101,13 +2104,12 @@
             </p>
             <ul>
               <li>
-                <a>AxisHeight</a> +
                  <code>Numerator Shift</code> +
                  the (ink) line-ascent of the numerator's margin box.
               </li>
               <li>
-                <a>AxisHeight</a> − <code>Denominator Shift</code>
-                + the (ink) line-ascent of the denominator's margin box.
+                −<code>Denominator Shift</code> +
+                the (ink) line-ascent of the denominator's margin box
               </li>
               <li>
                 <a>AxisHeight</a> plus half the line thickness.
@@ -2118,11 +2120,11 @@
             </p>
             <ul>
               <li>
-                −<a>AxisHeight</a> − <code>Numerator Shift</code>
+                −<code>Numerator Shift</code>
                 + the (ink) line-descent of the numerator's margin box.
               </li>
               <li>
-                −<a>AxisHeight</a> + <code>Denominator Shift</code>
+                <code>Denominator Shift</code>
                 + the (ink) line-descent of the denominator's margin box.
               </li>
               <li>
@@ -2140,8 +2142,8 @@
             <p>
               The baseline of the numerator (respectively denominator)
               is shifted away from the baseline by a distance of
-              <a>AxisHeight</a> + <code>NumeratorShift</code> (respectively
-              − <a>AxisHeight</a> + <code>DenominatorShift</code> )
+              <code>NumeratorShift</code> (respectively
+              <code>DenominatorShift</code> )
               towards the line-over (respectively line-under).
             </p>
             <p>
@@ -2208,12 +2210,11 @@
             </p>
             <ul>
               <li>
-                <a>AxisHeight</a> +
                  <code>TopShift</code> +
                  the (ink) line-ascent of the numerator's margin box.
               </li>
               <li>
-                <a>AxisHeight</a> − <code>BottomShift</code>
+                −<code>BottomShift</code>
                 + the (ink) line-ascent of the denominator's margin box.
               </li>
             </ul>
@@ -2222,11 +2223,11 @@
             </p>
             <ul>
               <li>
-                −<a>AxisHeight</a> − <code>TopShift</code>
+                −<code>TopShift</code>
                 + the (ink) line-descent of the numerator's margin box.
               </li>
               <li>
-                −<a>AxisHeight</a> + <code>BottomShift</code>
+                <code>BottomShift</code>
                 + the (ink) line-descent of the denominator's margin box.
               </li>
               <li>0</li>
@@ -2239,8 +2240,8 @@
             <p>
               The baseline of the numerator (respectively denominator) is
               shifted away from the baseline by a distance of
-              <a>AxisHeight</a> + <code>TopShift</code> (respectively −
-              <a>AxisHeight</a> + <code>BottomShift</code>) towards the
+              <code>TopShift</code> (respectively −
+              <code>BottomShift</code>) towards the
               line-over (respectively line-under).
             </p>
           </section>
