@@ -39,6 +39,7 @@ def format_tests():
             test_list.append(test)
         tests[section] = ','.join(test_list)
 
+    print('Generating test data... ', end='')
     output = open('data-tests.js', 'w')
     print('// $WARNING', file=output)
     print('var dataTests = {', file=output)
@@ -47,7 +48,10 @@ def format_tests():
         print('  \"%s\" : \"%s\",' % (section, tests[section]), file=output)
     print('};\n', file=output)
     output.close()
+    print('done')
 
+    for test in sorted(all_tests):
+        print(test)
 " > $PYTHON_SCRIPT
 
 for subdir in $WPT_SUBDIRS; do
@@ -57,7 +61,4 @@ for subdir in $WPT_SUBDIRS; do
 done
 
 echo "format_tests()" >> $PYTHON_SCRIPT
-
-echo -n "Generating test data... "
 python $PYTHON_SCRIPT
-echo "done"
