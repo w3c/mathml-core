@@ -410,6 +410,18 @@
             This attribute is used to set the directionality of math formulas, which is
             often <code>rtl</code> in Arabic speaking world.
           </p>
+          <section id="event-handler-content-attributes">
+            <h5>Event Handler Content Attributes</h5>
+            <p>
+              All MathML elements support event handler content attributes,
+              as described in  <a data-cite="HTML#event-handler-contentattributes">event handler content attributes</a> in HTML.
+            </p>
+            <p>
+              All event handler content attributes
+              <a data-cite="HTML#event-handlers-on-elements,-document-objects,-and-window-objects">noted by HTML as being supported by all HTMLElements</a>
+              are supported by all MathML elements as well, as defined in the <a href="#dom-and-javascript">MathMLElement IDL</a>.
+            </p>
+          </section>
         </section>
         <section id="legacy-mathml-style-attributes">
           <h4>Legacy MathML Style Attributes</h4>
@@ -487,7 +499,7 @@
             <code>math-</code> prefix.
           </p>
           <div class="note">
-		    <code>mathvariant</code> values other than <code>normal</code>
+		        <code>mathvariant</code> values other than <code>normal</code>
             are implemented for compatibility with full MathML and legacy editors that can't access characters in Plane 1 of Unicode. Authors are encouraged to use the corresponding Unicode characters.
             The <code>normal</code> value is still important to cancel automatic
             italic of the <a><code>&lt;mi&gt;</code></a> element.
