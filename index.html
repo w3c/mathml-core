@@ -302,6 +302,37 @@
             the OS/2 table [[OPEN-FONT-FORMAT]] when performing text layout.
           </p>
         </section>
+        <section id="focus">
+            <h4>Focus</h4>
+            <p>
+              MathML provides the ability for authors to provide
+              interactivity in supporting interactive user agents
+              using the same concepts, approach and guidance to
+              <a data-cite="HTML#focus"><code>Focus</code></a>
+              as described in HTML, with modifications or
+              clarifications regarding application
+              for MathML as described in this section.
+            </p>
+            <p>
+              When an element is focused, all applicable CSS
+              focus-related pseudo-classes as defined in
+              <a data-cite="selectors4#overview">CSS Selectors</a>
+              apply, as defined in that specification.
+            </p>
+            <p>
+              Any MathML elements containing an href attribute are valid links
+              and are focusable.  Their tabindex focus flag
+              must be set unless the user agent normally provides an alternative
+              method of keyboard traversal of links, and they appear in the
+              sequential focus order.
+            </p>
+            <p>
+              The contents of embedded <code>&lt;math&gt;</code> elements
+              (including HTML elements inside token elements),
+              contribute to the sequential focus order of the containing owner HTML
+              document (combined sequential focus order).
+            </p>
+        </section>
       </section>
       <section id="types-for-mathml-attribute-values">
         <h3>Types for MathML Attribute Values</h3>
