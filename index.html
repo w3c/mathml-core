@@ -795,12 +795,12 @@
             <a>inline-start</a> edge of
             the parent box and the
             <a>inline-start</a> edge
-            of the child.
+            of the child box.
             The <dfn>block offset</dfn> of a child box is the offset between
             <a>block-start</a> edge of
             the parent box and the
             <a>block-start</a> edge
-            of the child.
+            of the child box.
           </p>
           <p>
             The <dfn>line-left offset</dfn>,
@@ -822,15 +822,15 @@
             <figcaption>Box model for writing mode <code>vertical-rl</code> and <code>ltr</code> that may be used in e.g. Japanese math.</figcaption>
           </figure>
           <div class="note">
-            The position of children and graphical items inside a MathML
+            The position of child boxes and graphical items inside a MathML
             box are expressed using the <code>inline offset</code>
             and <code>block offset</code>.
             For convenience, the layout algorithms may describe offsets using
             flow-relative directions, line-relative directions or
             the <a>baseline</a>.
             It is always possible to pass from one description to the other
-            because position of children are always performed after the
-            metrics of the box and of its children are calculated.
+            because position of child boxes are always performed after the
+            metrics of the box and of its child boxes are calculated.
           </div>
           <div class="example">
             <p>Here are examples of offsets obtained from line-relative
@@ -843,7 +843,7 @@
                 is <code>ltr</code> and
                 is the inline size of the box −
                 (<a>line-left offset</a> + inline size of
-                the child) otherwise.
+                the child box) otherwise.
               </li>
               <li>
                 The <a>block offset</a> of the <a>baseline</a> of a box
@@ -872,14 +872,15 @@
               Box layout:
               <ol>
                 <li>
-                  Layout of children.
+                  Layout of child boxes.
                 </li>
                 <li>
                   Calculation of inline size, (ink) line-ascent and
                   (ink) line-descent of the content.
                 </li>
                 <li>
-                  Calculation of offsets of children within the content box as
+                  Calculation of offsets of child boxes within the content box
+                  as
                   well as sizes and offsets of extra graphical elements
                   (bars, radical symbol, etc).
                 </li>
@@ -990,7 +991,7 @@
             that a <a>core operator</a> stretched along the <a>block axis</a>
             should cover.
             Unless specified otherwise, these parameters are ignored during
-            the layout of the box and children are laid out without
+            box layout and child boxes are laid out without
             any stretch size constraint.
           </p>
         </section>
@@ -1208,7 +1209,7 @@
                 <a><code>&lt;mfrac&gt;</code></a>,
                 <a><code>&lt;semantics&gt;</code></a> or
                 <a><code>&lt;maction&gt;</code></a>
-                whose first child exists and is an
+                whose first in-flow child exists and is an
                 <a>embellished operator</a>;
               </li>
               <li>
@@ -1217,7 +1218,7 @@
                 <a><code>&lt;mstyle&gt;</code></a>,
                 <a><code>&lt;mphantom&gt;</code></a>,
                 <a><code>&lt;mpadded&gt;</code></a>
-                whose children consist (in any order) of one
+                whose in-flow children consist (in any order) of one
                 <a>embellished operator</a> and zero or more
                 <a>space-like</a> elements.
               </li>
@@ -1242,7 +1243,7 @@
                 <a><code>&lt;mfrac&gt;</code></a>,
                 <a><code>&lt;semantics&gt;</code></a> or
                 <a><code>&lt;maction&gt;</code></a>
-                element is the core operator of its first child.
+                element is the core operator of its first in-flow child.
               </li>
               <li>
                 The core operator of an embellished
@@ -1251,7 +1252,7 @@
                 <a><code>&lt;mphantom&gt;</code></a>,
                 <a><code>&lt;mpadded&gt;</code></a>
                 is the core operator of its unique <a>embellished operator</a>
-                child.
+                in-flow child.
               </li>
             </ol>
             <p>
@@ -1282,7 +1283,7 @@
 			  <li>If the <code>form</code> attribute is present and valid
                 on the <a>core operator</a>, then its value is used;
 			  </li>
-              <li>If the embellished operator is the first child of an
+              <li>If the embellished operator is the first in-flow child of an
                 <a>&lt;math&gt;</a>
                 <a>&lt;menclose&gt;</a>
                 <a>&lt;merror&gt;</a>
@@ -1290,11 +1291,12 @@
                 <a>&lt;mphantom&gt;</a>
                 <a>&lt;mrow&gt;</a>
                 <a>&lt;msqrt&gt;</a> or
-                <a>&lt;mstyle&gt;</a> element with more than one child
+                <a>&lt;mstyle&gt;</a> element with more than one in-flow child
                 (ignoring all <a>space-like</a> children) then it has
                 form <code>prefix</code>;
               </li>
-              <li>Or, if the embellished operator is the last child of an
+              <li>Or, if the embellished operator is the last in-flow child of
+                an
                 <a><code>&lt;math&gt;</code></a>,
                 <a><code>&lt;menclose&gt;</code></a>,
                 <a><code>&lt;merror&gt;</code></a>,
@@ -1303,10 +1305,10 @@
                 <a><code>&lt;mrow&gt;</code></a>,
                 <a><code>&lt;msqrt&gt;</code></a> or
                 <a><code>&lt;mstyle&gt;</code></a> element
-                with more than one child
+                with more than one in-flow child
                 (ignoring all <a>space-like</a> children) then it has
                 form <code>postfix</code>;
-              <li>Or, if the embellished operator is a child of an
+              <li>Or, if the embellished operator is an in-flow child of an
                 <a><code>&lt;msub&gt;</code></a>,
                 <a><code>&lt;msup&gt;</code></a>,
                 <a><code>&lt;msubsup&gt;</code></a>,
@@ -1314,7 +1316,7 @@
                 <a><code>&lt;mover&gt;</code></a>,
                 <a><code>&lt;munderover&gt;</code></a> or
                 <a><code>&lt;mmultiscripts&gt;</code></a>
-                element other than the first child, then it has form
+                element other than the first in-flow child, then it has form
                 <code>postfix</code>;
               </li>
               <li>
@@ -1680,12 +1682,12 @@
                 <a><code>&lt;mstyle&gt;</code></a>,
                 <a><code>&lt;mphantom&gt;</code></a>,
                 <a><code>&lt;mpadded&gt;</code></a> element
-                all of whose children are <a>space-like</a>;
+                all of whose in-flow children are <a>space-like</a>;
               </li>
               <li>
                 An <a><code>&lt;maction&gt;</code></a>
                 or <a><code>&lt;semantics&gt;</code></a> element
-                whose first child exists and is <a>space-like</a>.
+                whose first in-flow child exists and is <a>space-like</a>.
               </li>
             </ul>
             <div class="note">
@@ -1757,7 +1759,7 @@
           <p>
             The <code>&lt;mrow&gt;</code> element accepts the attributes described
             in <a href="#global-attributes"></a>. An <code>&lt;mrow&gt;</code>
-            element with children
+            element with in-flow children
             child<sub>1</sub>, child<sub>2</sub>, … child<sub>N</sub>
             is laid out as show on <a href="#figure-box-mrow"></a>. The child boxes
             are put in a row one after the other with all their baselines
@@ -1772,11 +1774,11 @@
             Because the box model ensure alignment of baselines,
             fraction bars or symmetric stretchy operators
             will also be aligned along the math axis in the typical case when
-            <a>AxisHeight</a> is the same for all children.
+            <a>AxisHeight</a> is the same for all in-flow children.
           </div>
           <section>
             <h5>Algorithm for stretching operators along the block axis</h5>
-            <div class="issue" data-number="124">Layout of container with only stretchy children </div>
+            <div class="issue" data-number="124">Layout of container with only stretchy in-flow children</div>
             <figure id="symmetric-and-non-symmetric-vertical-stretching">
               <img src="figures/vstretch.svg"/>
               <figcaption>Symmetric and non-symmetric stretching of
@@ -1791,18 +1793,20 @@
                 If there is a <a>block stretch size constraint</a>
                 or and <a>inline stretch size constraint</a>
                 then the element being laid out is an
-                <a>embellished operator</a>. Layout the one child that is
-                an <a>embellished operator</a>
+                <a>embellished operator</a>. Layout the one in-flow child that
+                is an <a>embellished operator</a>
                 with the same stretch size constraint and
-                all the other children without any stretch size constraint
+                all the other in-flow children
+                without any stretch size constraint
                 and stop.
               </li>
               <li>
-                Layout all the children of the
+                Layout all the in-flow children of the
                 <code>&lt;mrow&gt;</code> but the
                 <a>embellished operators</a> that have
                 the <a>stretchy</a> property and block <a>stretch axis</a>.
-                If this step results in all the children being laid out, then
+                If this step results in all the in-flow children
+                being laid out, then
                 stop.
               </li>
               <li>
@@ -1810,7 +1814,7 @@
                 <code>U<sub>ascent</sub></code>
                 and <code>U<sub>descent</sub></code> as respectively the maximum
                 ink ascent and maximum ink descent of the margin boxes of
-                children that
+                in-flow children that
                 have been laid out in the previous step.
               </li>
               <li>
@@ -1833,8 +1837,8 @@
                 </ul>
               </li>
               <li>
-                For each <a>embellished operators</a>
-                child of <code>&lt;mrow&gt;</code>
+                For each in-flow child of <code>&lt;mrow&gt;</code>
+                that is an <a>embellished operator</a>
                 with the <a>stretchy</a> property and block <a>stretch axis</a>:
                 <ol>
                   <li>
@@ -1894,7 +1898,7 @@
             <h5>Layout of <code>&lt;mrow&gt;</code></h5>
             <div class="issue" data-number="112">Define MathML line breaking?</div>
             <p>
-              A child is <dfn>slanted</dfn> if it is not an
+              A child box is <dfn>slanted</dfn> if it is not an
               <a>embellished operator</a>
               and has nonzero <a>italic correction</a>.
             </p>
@@ -1919,7 +1923,7 @@
               <li>Set <code>inline-offset</code> to 0.</li>
               <li>Set <code>previous-italic-correction</code> to 0.</li>
               <li>
-                For each child:
+                For each in-flow child:
                 <ol>
                   <li>
                     If the child is not <a>slanted</a>, then increment
@@ -1959,24 +1963,25 @@
               </li>
             </ol>
             <p>
-              The children are laid out using the
+              The in-flow children are laid out using the
               <a>algorithm for stretching operators along the block axis</a>.
             </p>
             <p>
               The inline size of the content is calculated like
               the min-content and max-content inline sizes of the content,
-              using the inline size of the children's margin boxes instead.
+              using the inline size of the
+              in-flow children's margin boxes instead.
             </p>
             <p>
               The (ink) line-ascent of the content
               is the maximum of the (ink) line-ascents
-              of all the children's margin boxes. Similarly,
+              of all the in-flow children's margin boxes. Similarly,
               the (ink) line-descent of the content
               is the maximum of the (ink) line-descents
-              of all the children's margin boxes.
+              of all the in-flow children's margin boxes.
             </p>
             <p>
-              Finally, the children are positioned using the following
+              Finally, the in-flow children are positioned using the following
               algorithm:
             </p>
             <ol>
@@ -1987,7 +1992,7 @@
               </li>
               <li>Set <code>inline-offset</code> to 0.</li>
               <li>Set <code>previous-italic-correction</code> to 0.</li>
-              <li>For each child:
+              <li>For each in-flow child:
                 <ol>
                   <li>
                     If the child is not <a>slanted</a>, then increment
@@ -2067,12 +2072,18 @@
             markup.</div>
           <p>
             If the <code>&lt;mfrac&gt;</code> element
-            has less or more than two children, its layout algorithm
+            has less or more than two in-flow children, its layout algorithm
             is the same as the <a><code>&lt;mrow&gt;</code></a> element.
-            Otherwise, the first child is called
-            <em>numerator</em>, the second child is called
+            Otherwise, the first in-flow child is called
+            <em>numerator</em>, the second in-flow child is called
             <em>denominator</em> and the layout algorithm is explained below.
           </p>
+          <div class="note" id="fraction-css-rules-on-children">
+            In practice, an <code>&lt;mfrac&gt;</code> element has two children
+            that are in-flow. Hence the CSS rules basically performs
+            scriptlevel and displaystyle changes for the numerator and
+            denominator.
+          </div>
           <section id="fraction-with-nonzero-line-thickness">
             <h5>Fraction with nonzero line thickness</h5>
             <p>
@@ -2323,17 +2334,24 @@
           <div class="issue" data-number="15">Decide how to handle invalid
             mroot.</div>
           <p>
-            If the <code>&lt;mroot&gt;</code> has less or more than two children,
+            If the <code>&lt;mroot&gt;</code> has less or more than two
+            in-flow children,
             its layout algorithm
             is the same as the <a><code>&lt;mrow&gt;</code></a> element.
-            Otherwise, the first child is called
+            Otherwise, the first in-flow child is called
             <em>base</em> and
-            the second child is called
+            the second in-flow child is called
             <em>index</em>
             and its layout algorithm is explained below.
           </p>
+          <div class="note" id="mroot-css-rules-on-children">
+            In practice, an <code>&lt;mroot&gt;</code> element has two children
+            that are in-flow. Hence the CSS rules basically performs
+            scriptlevel and displaystyle changes for the index.
+          </div>
           <p>
-            The children of the <code>&lt;msqrt&gt;</code> element are laid out
+            The children of the
+            <code>&lt;msqrt&gt;</code> element are laid out
             using the algorithm of the <a><code>&lt;mrow&gt;</code></a> element
             to produce a box that is also called the <em>base</em>.
             In particular, the
@@ -2572,8 +2590,8 @@
           <p>
             The
             <dfn><code>&lt;mpadded&gt;</code></dfn>
-            element renders the same as its child content, but with the
-            size of the child’s bounding box and the relative positioning point of its
+            element renders the same as its in-flow child content, but with the
+            size and relative positioning point of its
             content modified according to <code>&lt;mpadded&gt;</code>’s attributes.
           </p>
           <p>
@@ -2605,7 +2623,8 @@
           <section>
             <h5>Inner box and requested parameters</h5>
             <p>
-              Children of the <code>&lt;mpadded&gt;</code> element are laid out
+              In-flow children
+              of the <code>&lt;mpadded&gt;</code> element are laid out
               using the algorithm of the <a><code>&lt;mrow&gt;</code></a> element
               to produce the
               <em>mpadded inner box</em> for the content with parameters called
@@ -2785,7 +2804,8 @@
             of the <code>&lt;menclose&gt;</code> element.
           </p>
           <p>
-            Children of the <code>&lt;menclose&gt;</code> element are laid out
+            In-flow
+            children of the <code>&lt;menclose&gt;</code> element are laid out
             using the algorithm of the <a><code>&lt;mrow&gt;</code></a> element
             to produce a box B corresponding to the content.
             In particular, they use the
@@ -3238,29 +3258,30 @@
               markup.</div>
             <p>
               If the <code>&lt;msub&gt;</code> element
-              has less or more than two children, its layout algorithm
+              has less or more than two in-flow children, its layout algorithm
               is the same as the <a><code>&lt;mrow&gt;</code></a> element.
-              Otherwise, the first child is called the
-              <em>base</em>, the second child is called the
+              Otherwise, the first in-flow child is called the
+              <em>base</em>, the second in-flow child is called the
               <em>subscript</em> and the layout algorithm is explained
               in <a href="#base-with-subscript"></a>.
             </p>
             <p>
               If the <code>&lt;msub&gt;</code> element
-              has less or more than two children, its layout algorithm
+              has less or more than two in-flow children, its layout algorithm
               is the same as the <a><code>&lt;mrow&gt;</code></a> element.
-              Otherwise, the first child is called the
-              <em>base</em>, the second child is called the
+              Otherwise, the first in-flow child is called the
+              <em>base</em>, the second in-flow child is called the
               <em>superscript</em> and the layout algorithm is explained
               in <a href="#base-with-superscript"></a>.
             </p>
             <p>
               If the <code>&lt;msubsup&gt;</code> element
-              has less or more than three children, its layout algorithm
+              has less or more than three in-flow children, its layout algorithm
               is the same as the <a><code>&lt;mrow&gt;</code></a> element.
-              Otherwise, the first child is called the
-              <em>base</em>, the second child is called the <em>subscript</em>,
-              its third child is called
+              Otherwise, the first in-flow child is called the
+              <em>base</em>, the second in-flow child
+              is called the <em>subscript</em>,
+              its third in-flow child is called
               the <em>superscript</em> and the layout algorithm is explained
               in <a href="#base-with-subscript-and-superscript"></a>.
             </p>
@@ -3575,27 +3596,28 @@
               markup.</div>
             <p>
               If the <code>&lt;munder&gt;</code> element
-              has less or more than two children, its layout algorithm
+              has less or more than two in-flow children, its layout algorithm
               is the same as the <a><code>&lt;mrow&gt;</code></a> element.
-              Otherwise, the first child is called the
-              <em>base</em> and the second child is called the
+              Otherwise, the first in-flow child is called the
+              <em>base</em> and the second in-flow child is called the
               <em>underscript</em>.
             </p>
             <p>
               If the <code>&lt;mover&gt;</code> element
-              has less or more than two children, its layout algorithm
+              has less or more than two in-flow children, its layout algorithm
               is the same as the <a><code>&lt;mrow&gt;</code></a> element.
-              Otherwise, the first child is called the
-              <em>base</em> and the second child is called the
+              Otherwise, the first in-flow child is called the
+              <em>base</em> and the second in-flow child is called the
               <em>overscript</em>.
             </p>
             <p>
               If the <code>&lt;munderover&gt;</code> element
-              has less or more than three children, its layout algorithm
+              has less or more than three in-flow children, its layout algorithm
               is the same as the <a><code>&lt;mrow&gt;</code></a> element.
-              Otherwise, the first child is called the
-              <em>base</em>, the second child is called the <em>underscript</em>
-              and its third child is called
+              Otherwise, the first in-flow child is called the
+              <em>base</em>, the second in-flow child
+              is called the <em>underscript</em>
+              and its third in-flow child is called
               the <em>overscript</em>.
             </p>
             <p>
@@ -3625,7 +3647,7 @@
           </section>
           <section>
             <h4>Algorithm for stretching operators along the inline axis</h4>
-            <div class="issue" data-number="124">Layout of container with only stretchy children</div>
+            <div class="issue" data-number="124">Layout of container with only stretchy in-flow children</div>
             <p>
               The <dfn>algorithm for stretching operators along the inline
                 axis</dfn>
@@ -3641,7 +3663,7 @@
                 with the same stretch size constraint.
               </li>
               <li>
-                Split the list remaining children into a first list
+                Split the list remaining in-flow children into a first list
                 <code>L<sub>ToStretch</sub></code> containing
                 <a>embellished operators</a> with
                 a <a>stretchy</a> property and inline <a>stretch axis</a>
@@ -3649,16 +3671,16 @@
               </li>
               <li>
                 Perform layout without any stretch size constraint on
-                all the elements of <code>L<sub>NotToStretch</sub></code>.
+                all the items of <code>L<sub>NotToStretch</sub></code>.
                 If <code>L<sub>ToStretch</sub></code> is empty then stop.
                 If <code>L<sub>NotToStretch</sub></code> is empty, perform
                 layout without any stretch size constraint on
-                all the elements of <code>L<sub>ToStretch</sub></code>.
+                all the items of <code>L<sub>ToStretch</sub></code>.
               </li>
               <li>
                 Calculate the target size <code>T</code> to
                 the maximum inline size of the
-                margin boxes of children that have been laid out in the
+                margin boxes of child boxes that have been laid out in the
                 previous step.
               </li>
               <li>
@@ -3693,7 +3715,7 @@
               of the base's margin box and underscript's margin box.
             </p>
             <p>
-              The children are laid out
+              The in-flow children are laid out
               using the <a>algorithm for stretching operators along the inline axis</a>.
             </p>
             <p>
@@ -3819,7 +3841,7 @@
               of the base's margin box and underscript's margin box.
             </p>
             <p>
-              The children are laid out
+              The in-flow children are laid out
               using the <a>algorithm for stretching operators along the inline axis</a>.
             </p>
             <p>
@@ -3983,7 +4005,7 @@
               the new minimum m (minimum of the corresponding minima).
             </p>
             <p>
-              Like in these sections, the children are laid out
+              Like in these sections, the in-flow children are laid out
               using the <a>algorithm for stretching operators along the inline axis</a>.
             </p>
             <p>
@@ -4038,15 +4060,15 @@
             markup.</div>
           <p>
             A valid <code>&lt;mmultiscripts&gt;</code> element contains the
-            following children:
+            following in-flow children:
           </p>
           <ul>
             <li>
-              A first child, called the <em>base</em> that is not a
+              A first in-flow child, called the <em>base</em> that is not a
               an <a><code>&lt;mprescripts&gt;</code></a> element.
             </li>
             <li>
-              Followed by an even number of children called
+              Followed by an even number of in-flow children called
               <em>postscripts</em>, none of them being a
               <a><code>&lt;mprescripts&gt;</code></a> element.
               These scripts form a (possibly empty) list of
@@ -4054,7 +4076,7 @@
             </li>
             <li>Optionally followed by
               an <a><code>&lt;mprescripts&gt;</code></a> element and
-              an even number of children called
+              an even number of in-flow children called
               <em>prescripts</em>, none of them being a
               <a><code>&lt;mprescripts&gt;</code></a> element.
               These scripts form a (possibly empty) list of
@@ -4180,7 +4202,8 @@
               <code>SuperShift</code> values calculated above.
             </p>
             <p>
-              Finally, the placement of the children is performed using the
+              Finally, the placement of the in-flow children is performed using
+              the
               following algorithm:
             </p>
             <ol>
@@ -4278,7 +4301,7 @@
               <p>
                 An <code>&lt;mmultiscripts&gt;</code> with only one
                 postscript pair is laid out the same as a
-                <code>&lt;msubsup&gt;</code> with the same children.
+                <code>&lt;msubsup&gt;</code> with the same in-flow children.
                 However, as
                 <a href="#msubsup-with-empty-scripts">noticed for
                   <code>&lt;msubsup&gt;</code></a>,
@@ -4297,13 +4320,13 @@
           <h4>Displaystyle and scriptlevel in scripts</h4>
           <p>
             For all MathML elements used for scripts and limits schemata,
-            the first child is the base while the other children
-            are scripts. In these scripts, the rule of thumb is to set
+            the rule of thumb is to set
             <a><code>displaystyle</code></a> to <code>false</code>
-            and to increment <a><code>scriptlevel</code></a>.
+            and to increment <a><code>scriptlevel</code></a> in all child
+            elements but the first one.
             However, when an overscript (respectively underscript)
             has an <a href="#attribute-munderover-accent" class="internalDFN" data-link-type="dfn"><code>accent</code></a>
-            (respecitvely <a href="#attribute-munderover-accentunder" class="internalDFN" data-link-type="dfn"><code>accentunder</code></a>)
+            (respectively <a href="#attribute-munderover-accentunder" class="internalDFN" data-link-type="dfn"><code>accentunder</code></a>)
             attribute that is case-insensitive match
             to <code>"true"</code> then
             the <a><code>scriptlevel</code></a> is not incremented.
@@ -4319,6 +4342,13 @@
             incremented either if the underscript/overscript is an
             <a>embellished operator</a> with the
             <a><code>accent</code></a> property.
+          </div>
+          <div class="note" id="scripted-elements-css-rules-on-children">
+            In practice, all the children of the MathML elements described in
+            this section are in-flow and the
+            <code>&lt;mprescript&gt;</code> is empty.
+            Hence the CSS rules essentially performs automatic displaystyle and
+            scriptlevel changes for the scripts.
           </div>
         </section>
       </section>
@@ -4451,7 +4481,8 @@
           the same as the <code>&lt;mrow&gt;</code> element.
           The <a href="#user-agent-stylesheet">user agent stylesheet</a>
           must contain the following rules in order to hide all but
-          its first child, which is the default behavior for the legacy actiontype
+          its first child element,
+          which is the default behavior for the legacy actiontype
           values:
         </p>
         <pre class="css" data-include="user-agent-stylesheet/maction.css"></pre>
@@ -4466,8 +4497,9 @@
           <dfn><code>&lt;semantics&gt;</code></dfn>
           element is the container element that associates
           annotations with a MathML expression. Typically, the
-          <code>&lt;semantics&gt;</code> element has as its first child a
-          MathML expression to be annotated while subsequent children represent
+          <code>&lt;semantics&gt;</code> element has as its first child element
+          a MathML expression to be annotated while subsequent child elements
+          represent
           text annotations within an <dfn><code>&lt;annotation&gt;</code></dfn>
           element, or more complex markup annotations within
           an <dfn><code>&lt;annotation-xml&gt;</code></dfn> element.
