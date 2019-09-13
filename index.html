@@ -296,12 +296,8 @@
               <code>height</code>,
               <code>inline-size</code> and
               <code>block-size</code>
-              are treated as <code>auto</code> on all MathML elements
-              but the
-              <a><code>&lt;math&gt;</code></a>,
-              <a><code>&lt;mtable&gt;</code></a>,
-              <a><code>&lt;mtr&gt;</code></a> and
-              <a><code>&lt;mtd&gt;</code></a>.
+              are treated as <code>auto</code> on elements
+              with computed display value <a href="#new-display-math-value"><code>math</code></a>.
             </li>
             <li>
               Floats:
@@ -361,7 +357,7 @@
         <section id="focus">
             <h4>Focus</h4>
             <p>
-              MathML provides the ability for authors to allow for 
+              MathML provides the ability for authors to allow for
               interactivity in supporting interactive user agents
               using the same concepts, approach and guidance to
               <a data-cite="HTML#focus"><code>Focus</code></a>
@@ -672,7 +668,8 @@
           The
           <dfn><code>display</code></dfn>
           attribute, if present,
-          must have value <code>block</code> or <code>inline</code>.
+          must be a case-insensitive match
+          to <code>block</code> or <code>inline</code>.
           To fully implement this attribute, additional CSS properties must be
           specified in the user agent stylesheet
           as described in <a href="#user-agent-stylesheet"></a>.
@@ -699,20 +696,35 @@
     <section class="normative">
       <h2>Presentation Markup</h2>
       <section>
-        <h3>Introduction</h3>
+        <h3>Visual formatting model</h3>
         <section>
           <h4>Box Model</h4>
-          <div class="issue" data-number="56">Specify special <code>display</code> values for
-            other elements?</div>
           <p>
-            The <code>&lt;math&gt;</code> root may have
-            <code>inline</code> or <code>block</code> display, as suggested in
-            <a href="#user-agent-stylesheet"></a>.
-            Tabular MathML elements have <code>table</code>,
-            <code>table-row</code>
-            and <code>table-cell</code> display as discussed in
-            <a href="#tabular-math"></a>.
-            All the other elements have <code>block</code> display.
+            The default <a><code>display</code> property</a>
+            is described in <a href="#user-agent-stylesheet"></a>:
+          </p>
+          <ul>
+            <li>
+              For the <code>&lt;math&gt;</code> root,
+              <code>inline</code>
+              if the
+
+              or <code>block</code> according to the
+              value of the <a>display</a> attribute.
+            </li>
+            <li>
+              For <a href="#tabular-math">Tabular MathML elements</a>
+              <a><code>&lt;mtable&gt;</code></a>,
+              <a><code>&lt;mtr&gt;</code></a>,
+              <a><code>&lt;mtd&gt;</code></a> it respectively
+              <code>inline-table</code>,
+              <code>table-row</code> and
+              <code>table-cell</code>.
+            </li>
+            <li>
+              For all the other MathML elements it is <code>math</code>.
+            </li>
+          </ul>
           </p>
           <p>
             In order to specify math layout in different
@@ -1036,6 +1048,8 @@
               </p>
             </li>
           </ul>
+          <div class="issue" data-number="132">Expose layout constrain to
+            the CSS Layout API?</div>
           <p>
             During box layout, optional
             <dfn>inline stretch size constraint</dfn> and
@@ -1087,7 +1101,14 @@
             <h4>Layout of <code>&lt;mtext&gt;</code></h4>
             <div class="issue" data-number="18">Handle orthogonal flow when CSS writing-mode changes?</div>
             <p>
-              The <code>mtext</code> element is  as a
+              If the element does not have its computed
+              <a><code>display</code> property</a> equal to <code>math</code>
+              then it is laid out according to the CSS specification where
+              the corresponding value is described.
+              Otherwise, the layout below is performed.
+            </p>
+            <p>
+              The <code>mtext</code> element is laid out as a
               <a data-cite="CSS-DISPLAY-3#block-box">block box</a>
               and the min-content/max-content inline sizes,
               inline size, block size, first/last baseline sets are determined
@@ -1484,6 +1505,13 @@
           <section>
             <h4>Layout of operators</h4>
             <p>
+              If the <code>&lt;mo&gt;</code> element does not have its computed
+              <a><code>display</code> property</a> equal to <code>math</code>
+              then it is laid out according to the CSS specification where
+              the corresponding value is described.
+              Otherwise, the layout below is performed.
+            </p>
+            <p>
               The text of the operator must only be painted if the
               <a data-cite="CSS2#visibility"><code>visibility</code></a> of
               the <code>&lt;mo&gt;</code> element is <code>visible</code>.
@@ -1695,7 +1723,13 @@
             treated as <code>0</code>.
           </p>
           <p>
-            The <code>&lt;mspace&gt;</code> element is laid out as shown on
+            If the <code>&lt;mspace&gt;</code> element does not have its
+            computed
+            <a><code>display</code> property</a> equal to <code>math</code>
+            then it is laid out according to the CSS specification where
+            the corresponding value is described.
+            Otherwise,
+            the <code>&lt;mspace&gt;</code> element is laid out as shown on
             <a href="#figure-box-mspace"></a>.
             The min-content and max-content inline sizes of the content are
             equal to the requested inline size.
@@ -1953,6 +1987,13 @@
           </section>
           <section id="layout-of-mrow">
             <h5>Layout of <code>&lt;mrow&gt;</code></h5>
+            <p>
+              If the element does not have its computed
+              <a><code>display</code> property</a> equal to <code>math</code>
+              then it is laid out according to the CSS specification where
+              the corresponding value is described.
+              Otherwise, the layout below is performed.
+            </p>
             <div class="issue" data-number="112">Define MathML line breaking?</div>
             <p>
               A child box is <dfn>slanted</dfn> if it is not an
@@ -2094,6 +2135,13 @@
             <dfn><code>&lt;mfrac&gt;</code></dfn>
             element is used for fractions. It can also be used to mark up
             fraction-like objects such as binomial coefficients and Legendre symbols.
+          </p>
+          <p>
+            If the <code>&lt;mfrac&gt;</code> element does not have its computed
+            <a><code>display</code> property</a> equal to <code>math</code>
+            then it is laid out according to the CSS specification where
+            the corresponding value is described.
+            Otherwise, the layout below is performed.
           </p>
           <p>
             The <code>&lt;mfrac&gt;</code> element accepts the attributes described
@@ -2374,8 +2422,6 @@
             used to draw radicals with indices, e.g. a cube root.
           </p>
           <p>
-          </p>
-          <p>
             The <code>&lt;msqrt&gt;</code> and <code>&lt;mroot&gt;</code>
             elements accept the attributes described
             in <a href="#global-attributes"></a>.
@@ -2388,6 +2434,14 @@
             must contain the following rule in order to implement that behavior:
           </p>
           <pre class="css" data-include="user-agent-stylesheet/mroot.css"></pre>
+          <p>
+            If the <code>&lt;msqrt&gt;</code> or <code>&lt;mroot&gt;</code>
+            element do not have their computed
+            <a><code>display</code> property</a> equal to <code>math</code>
+            then they are laid out according to the CSS specification where
+            the corresponding value is described.
+            Otherwise, the layout below is performed.
+          </p>
           <div class="issue" data-number="15">Decide how to handle invalid
             mroot.</div>
           <p>
@@ -2757,7 +2811,12 @@
           <section>
             <h5>Layout of <code>&lt;mpadded&gt;</code></h5>
             <p>
-              The <code>&lt;mpadded&gt;</code> element is laid out as shown on
+              If the <code>&lt;mpadded&gt;</code> element does not have its
+              computed
+              <a><code>display</code> property</a> equal to <code>math</code>
+              then it is laid out according to the CSS specification where
+              the corresponding value is described.
+              Otherwise, it is laid out as shown on
               <a href="#figure-box-mpadded"></a>.
             </p>
             <figure id="figure-box-mpadded">
@@ -2851,6 +2910,14 @@
             <code>downdiagonalstrike</code>,
             <code>longdiv</code>,
             <code>circle</code>.
+          </p>
+          <p>
+            If the <code>&lt;menclose&gt;</code> element does not have its
+            computed
+            <a><code>display</code> property</a> equal to <code>math</code>
+            then it is laid out according to the CSS specification where
+            the corresponding value is described.
+            Otherwise, the layout below is performed.
           </p>
           <p>
             The notations must only be painted if the
@@ -3309,6 +3376,17 @@
             They accept the attributes described in
             <a href="#global-attributes"></a>.
           </p>
+          <p>
+            If the
+            <code>&lt;msub&gt;</code>,
+            <code>&lt;msup&gt;</code> or
+            <code>&lt;msubsup&gt;</code> elements do not have their
+            computed
+            <a><code>display</code> property</a> equal to <code>math</code>
+            then they are laid out according to the CSS specification where
+            the corresponding value is described.
+            Otherwise, the layout below is performed.
+          </p>
           <section>
             <h5>Children of <code>&lt;msub&gt;</code>,
             <code>&lt;msup&gt;</code>, <code>&lt;msubsup&gt;</code></h5>
@@ -3646,6 +3724,17 @@
             attributes, if present, must have values that are <a>booleans</a>.
             User agents must implement them as described in
             <a href="#displaystyle-and-scriptlevel-in-scripts"></a>.
+          </p>
+          <p>
+            If the
+            <code>&lt;munder&gt;</code>,
+            <code>&lt;mover&gt;</code> or
+            <code>&lt;munderover&gt;</code> elements do not have their
+            computed
+            <a><code>display</code> property</a> equal to <code>math</code>
+            then they are laid out according to the CSS specification where
+            the corresponding value is described.
+            Otherwise, the layout below is performed.
           </p>
           <section>
             <h5>Children of <code>&lt;munder&gt;</code>,
@@ -4107,6 +4196,17 @@
             (to indicate empty scripts).
             These element accept the attributes described in
             <a href="#global-attributes"></a>.
+          </p>
+          <p>
+            If the
+            <code>&lt;mmultiscripts&gt;</code>,
+            <code>&lt;mprescripts&gt;</code> or
+            <code>&lt;none&gt;</code> elements do not have their
+            computed
+            <a><code>display</code> property</a> equal to <code>math</code>
+            then they are laid out according to the CSS specification where
+            the corresponding value is described.
+            Otherwise, the layout below is performed.
           </p>
           <p>
             The empty
@@ -4596,11 +4696,11 @@
             /* Hide the annotated child. */
             semantics > :first-child { display: none; }
              /* Show all text annotations. */
-            semantics > annotation { display: block; }
+            semantics > annotation { display: inline; }
             /* Show all HTML annotations. */
             semantics > annotation-xml[encoding="text/html" i],
             semantics > annotation-xml[encoding="application/xhtml+xml" i] {
-              display: block;
+              display: inline-block;
             }
           </pre>
         </div>
@@ -4608,10 +4708,46 @@
     </section>
     <section class="normative">
       <h2>CSS Extensions for Math Layout</h2>
+      <section id="new-display-math-value">
+        <h3>The <code>display: math</code> value</h3>
+        <div class="issue" data-number="69">Should the computed value on the
+          <a><code>&lt;math&gt;</code></a> depends on the <a>display</a>
+          attribute value?
+        </div>
+        <div class="issue" data-number="56">Should we add more specific values?</div>
+        <div class="issue">Use another name? <code>math-auto</code>? <code>mathml?</code>...</div>
+        <p>The <dfn><code>display</code> property</dfn>
+          from <a data-cite="CSS-DISPLAY-3"></a>
+          is extended with a new <code>math</code> value:
+        </p>
+        <code><a data-cite="CSS-DISPLAY-3#valdef-display-table">&lt;display-old&gt;</a> <a data-cite="CSS-VALUES-3#comb-one">|</a> math</code>
+        <p>
+          For the <a><code>&lt;math&gt;</code></a>,
+          <a><code>&lt;mtable&gt;</code></a>,
+          <a><code>&lt;mtr&gt;</code></a> and
+          <a><code>&lt;mtd&gt;</code></a> elements, the
+          <code>math</code> value respectively computes to
+          <code>inline</code>,
+          <code>inline-table</code>,
+          <code>table-row</code>
+          and <code>table-cell</code>.
+          Other MathML elements with <code>display: math</code> will control
+          box generation and layout according to their tag name, as described
+          in the relevant sections.
+          For non-MathML elements, the <code>math</code> value computes to
+          <code>none</code>.
+        </p>
+        <div class="note">
+          The <code>display: math</code> value provides a default
+          layout for MathML elements while at the same time allowing authors
+          to override it with either native display values or
+          <a data-cite="CSS-LAYOUT-API-1#registering-layout">custom values</a>.
+        </div>
+      </section>
       <section id="new-text-transform-values">
         <h3>New <code>text-transform</code> values</h3>
         <p>The <dfn><code>text-transform</code></dfn> property
-          from
+          from <a data-cite="CSS-TEXT-3"></a>
           is extended with new values:
         </p>
         <code><a data-cite="CSS-TEXT-3#text-transform-property">&lt;text-transform-old&gt;</a> <a data-cite="CSS-VALUES-3#comb-one">|</a> math-auto | math-bold | math-italic | math-bold-italic | math-double-struck | math-bold-fraktur | math-script | math-bold-script | math-fraktur | math-sans-serif | math-bold-sans-serif | math-sans-serif-italic | math-sans-serif-bold-italic | math-monospace | math-initial | math-tailed | math-looped | math-stretched</code>
@@ -5301,6 +5437,8 @@
       <h2>User Agent Stylesheet</h2>
       <pre class="css">@namespace url(http://www.w3.org/1998/Math/MathML);
 
+/* Default display */
+<span data-include-replace="true" data-include="user-agent-stylesheet/display.css"></span>
 /* Links */
 <span data-include-replace="true" data-include="user-agent-stylesheet/links.css"></span>
 /* The &lt;math&gt; element */
