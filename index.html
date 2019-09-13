@@ -145,8 +145,19 @@
         greatly improve MathML interoperability. Moreover, effort on MathML
         layering will enable users to implement the rest of the MathML 4
         specification, or more generally to extend MathML Core, using
-        polyfills or converters.
+        modern web technologies such as shadow DOM, custom elements,
+        CSS layout API or other Houdini APIs.
       </p>
+      <div class="warning">
+        The MathML Refresh Community Group is still deciding what will go
+        in MathML Core and what should instead be implemented as
+        custom extensions. In particular, the list of
+        MathML elements/attributes, TeX/OpenType features and
+        supported CSS properties is not frozen yet.
+        Additionally, new HTML5 features, CSS properties and Javascript APIs
+        will be designed in order to allow authors to write better MathML
+        web components.
+      </div>
     </section>
     <section class="normative">
       <h2>MathML Fundamentals</h2>
@@ -265,6 +276,46 @@
             be replaced with equivalent expanded rules listing all possible
             <a>MathML Core elements</a>.
           </p>
+          <p>
+            The following CSS features are not supported and
+            must be ignored:
+          </p>
+          <ul>
+            <li>Vertical math layout:
+              <code>writing-mode</code>
+              is treated as <code>horizontal-tb</code> on all MathML
+              elements.</li>
+            <li>
+              Line breaking inside math formulas:
+              <code>white-space</code>
+              is treated as <code>nowrap</code> on all MathML elements.
+            </li>
+            <li>
+              Sizes:
+              <code>width</code>,
+              <code>height</code>,
+              <code>inline-size</code> and
+              <code>block-size</code>
+              are treated as <code>auto</code> on all MathML elements.
+            </li>
+            <li>
+              Floats:
+              <code>float</code> and <code>clear</code>
+              are treated as <code>none</code> on all MathML elements.
+            </li>
+            <li>
+              Alignment properties:
+              <code>align-content</code>, <code>justify-content</code>,
+              <code>align-self</code>, <code>justify-self</code> have
+              no effect on MathML elements.
+            </li>
+          </ul>
+          <div class="warning">
+            These features might be handled in future versions of this document.
+            For now, authors are discouraged from setting a different value for
+            these properties as that might lead to backward incompatibility
+            issues.
+          </div>
         </section>
         <section id="dom-and-javascript">
           <h4>DOM and Javascript</h4>
@@ -1706,6 +1757,7 @@
         </section>
         <section id="string-literal-ms">
           <h4>String Literal <code>&lt;ms&gt;</code></h4>
+          <div class="issue" data-number="120">Can this element be simplified?</div>
           <p>
             <dfn><code>&lt;ms&gt;</code></dfn>
             element is used to represent
