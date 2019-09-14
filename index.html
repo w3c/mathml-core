@@ -276,6 +276,11 @@
             be replaced with equivalent expanded rules listing all possible
             <a>MathML Core elements</a>.
           </p>
+          <div class="issue">
+            Only restrict this to
+            <code>display: math</code> elements and set a default
+            style on <code>&lt;math&gt;</code> root and tabular elements?
+          </div>
           <p>
             The following CSS features are not supported and
             must be ignored:
@@ -317,6 +322,10 @@
             these properties as that might lead to backward incompatibility
             issues.
           </div>
+          <div class="issue" data-number="18">vertical writing mode support</div>
+          <div class="issue" data-number="112">Define MathML line breaking?</div>
+          <div class="issue" data-number="16">Support floats?</div>
+          <div class="issue" data-number="129">Support for CSS alignment properties</div>
         </section>
         <section id="dom-and-javascript">
           <h4>DOM and Javascript</h4>
@@ -356,6 +365,7 @@
         </section>
         <section id="focus">
             <h4>Focus</h4>
+            <div class="issue" data-number="94">User Agent style for href hyperlinks and focusable elements</div>
             <p>
               MathML provides the ability for authors to allow for
               interactivity in supporting interactive user agents
@@ -388,6 +398,7 @@
       </section>
       <section id="types-for-mathml-attribute-values">
         <h3>Types for MathML Attribute Values</h3>
+        <div class="issue" data-number="122">Trimming of whitespace in attribute?</div>
         <dl>
           <dt><dfn>unsigned-integer</dfn></dt>
           <dd>An
@@ -470,6 +481,8 @@
             <a data-cite="HTML#the-style-attribute">style</a> attributes on
             HTML elements.
           </p>
+          <div class="issue" data-number="125">Should all MathML elements really be potential hyperlinks / match :visited?</div>
+          <div class="issue" data-number="94">User Agent style for href hyperlinks and focusable elements</div>
           <p>
             The
             <dfn><code>href</code></dfn>
@@ -726,6 +739,7 @@
             </li>
           </ul>
           </p>
+          <div class="issue" data-number="18">vertical writing mode support</div>
           <p>
             In order to specify math layout in different
             <a data-cite="CSS-WRITING-MODES-3#writing-mode">writing modes</a>,
@@ -767,6 +781,7 @@
             <a href="#box-model-vertical-rl"></a> for examples of other
             writing modes that are sometimes used for math layout.
           </div>
+          <div class="issue" data-number="128">ink ascent/descent</div>
           <p>
             MathML boxes have several parameters in order to layout in
             a way that is compatible with CSS but also to take into account
@@ -1048,7 +1063,7 @@
               </p>
             </li>
           </ul>
-          <div class="issue" data-number="132">Expose layout constrain to
+          <div class="issue" data-number="132">Expose layout constraint to
             the CSS Layout API?</div>
           <p>
             During box layout, optional
@@ -1417,6 +1432,7 @@
 			  The corresponding attributes can only be defined on their <a>core operator</a> (an
               <a><code>&lt;mo&gt;</code></a> element) and must be <a>boolean</a>.
             </p>
+            <div class="issue" data-number="107">Consider removing explicit mo@maxsize = "infinity" attribute?</div>
             <p>
               The
               <dfn><code>lspace</code></dfn>,
@@ -1649,7 +1665,7 @@
                 then:
                 <ol>
                   <li>
-                    <div class="issue">Clarify/improve this?
+                    <div class="issue" data-number="95">Clarify/improve this?
                       How important is this MATH parameter? "integrals"
                       is not defined</div>
                     <p>
@@ -1797,6 +1813,7 @@
         <section id="string-literal-ms">
           <h4>String Literal <code>&lt;ms&gt;</code></h4>
           <div class="issue" data-number="120">Can this element be simplified?</div>
+          <div class="issue" data-number="126">Does not work in RTL mode</div>
           <p>
             <dfn><code>&lt;ms&gt;</code></dfn>
             element is used to represent
@@ -1870,6 +1887,8 @@
           <section>
             <h5>Algorithm for stretching operators along the block axis</h5>
             <div class="issue" data-number="124">Layout of container with only stretchy in-flow children</div>
+            <div class="issue" data-number="109">Define what happens when maxsize &lt; minsize</div>
+            <div class="issue" data-number="110">Explicit calculation for minsize/maxsize constraints?</div>
             <figure id="symmetric-and-non-symmetric-vertical-stretching">
               <img src="figures/vstretch.svg"/>
               <figcaption>Symmetric and non-symmetric stretching of
@@ -2698,6 +2717,7 @@
         </section>
         <section id="adjust-space-around-content-mpadded">
           <h4>Adjust Space Around Content <code>&lt;mpadded&gt;</code></h4>
+          <div class="issue" data-number="103">Can this element be simplified?</div>
           <p>
             The
             <dfn><code>&lt;mpadded&gt;</code></dfn>
@@ -2878,6 +2898,7 @@
         <section id="enclose-expression-inside-notation-menclose">
           <h4>Enclose Expression Inside Notation <code>&lt;menclose&gt;</code></h4>
           <div class="issue" data-number="105">Can this element be simplified?</div>
+          <div class="issue" data-number="97">OpenType MATH values for menclose notations?</div>
           <p>
             The
             <dfn><code>&lt;menclose&gt;</code></dfn>
@@ -3794,6 +3815,7 @@
           </section>
           <section>
             <h4>Algorithm for stretching operators along the inline axis</h4>
+            <div class="issue" data-number="130">Avoid underestimation of min/max stretchy horizontal operators</div>
             <div class="issue" data-number="124">Layout of container with only stretchy in-flow children</div>
             <p>
               The <dfn>algorithm for stretching operators along the inline
@@ -3851,6 +3873,7 @@
               <img src="figures/munderbox.svg"/>
               <figcaption>Box model for the <code>&lt;munder&gt;</code> element</figcaption>
             </figure>
+            <div class="issue" data-number="130">Avoid underestimation of min/max stretchy horizontal operators</div>
             <p>
               The min-content (respectively max-content) inline sizes
               of the content are
@@ -3977,6 +4000,7 @@
               <img src="figures/moverbox.svg"/>
               <figcaption>Box model for the <code>&lt;mover&gt;</code> element</figcaption>
             </figure>
+            <div class="issue" data-number="130">Avoid underestimation of min/max stretchy horizontal operators</div>
             <p>
               The min-content (respectively max-content) inline sizes
               of the content are
@@ -4138,6 +4162,7 @@
             <img src="figures/munderoverbox.svg"/>
             <figcaption>Box model for the <code>&lt;munderover&gt;</code> element</figcaption>
             </figure>
+            <div class="issue" data-number="130">Avoid underestimation of min/max stretchy horizontal operators</div>
             <p>
               The min-content inline size, max-content inline size
               and inline size of the content
@@ -5091,6 +5116,7 @@
       </section>
       <section>
         <h3>Size variants for operators (<code>MathVariants</code>)</h3>
+        <div class="issue" data-number="135">Variable fonts and stretchy operators</div>
         <p>
           This section describes how to handle stretchy glyphs of arbitrary
           size using the <code>MATH.MathVariants</code> table.
