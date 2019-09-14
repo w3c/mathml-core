@@ -335,8 +335,14 @@
             must ensure that they keep the visual rendering of MathML
             in synchronization with the [[DOM]] tree.
           </p>
-          <div class="issue" data-number="83">Properly define DOM/IDL relationships.</div>
-          <div class="issue" data-number="118">Ensure that new IDL attributes reflects <a href="#global-attributes"></a>.</div>
+          <div class="issue">
+            <a href="https://github.com/whatwg/html/issues/4751">Rename
+              HTMLOrSVGElement</a> and define MathMLElement in [[HTML]]?
+          </div>
+          <div class="issue">
+            <code>HTMLElement includes ElementCSSInlineStyle;</code>
+            should be moved to the [[CSSOM]] specification.
+          </div>
           <p>
             All the nodes representing <a>MathML Core elements</a> in the DOM
             must implement, and expose to scripts, the following
@@ -346,11 +352,17 @@
           <p>The
             <dfn data-cite="HTML#globaleventhandlers"><code>GlobalEventHandlers</code></dfn>,
             <dfn data-cite="HTML#documentandelementeventhandlers"><code>DocumentAndElementEventHandlers</code></dfn> and
-            <dfn data-cite="HTML#htmlorsvgelement"><code>HTMLOrSVGElement</code></dfn> interfaces are defined in
+            <dfn data-cite="HTML#htmlorsvgelement"><code>HTMLOrForeignElement</code></dfn> interfaces are defined in
             [[HTML]].</p>
           <p>The
             <dfn data-cite="CSSOM#elementcssinlinestyle"><code>ElementCSSInlineStyle</code></dfn>
             interface is defined in [[CSSOM]].
+          </p>
+          <p>Each IDL attribute of the
+            <a><code>MathMLElement</code></a> interface
+            <a data-cite="HTML#reflect">reflects</a> the
+            corresponding MathML
+            <a href="#global-attributes">content attribute</a>.
           </p>
         </section>
         <section id="text-layout">
@@ -450,23 +462,26 @@
       </section>
       <section>
         <h3>Global Attributes</h3>
-          <div class="issue" data-number="118">Add more global attributes from HTML.</div>
         <p>
           The following attributes are common to and may be specified on all MathML
           elements:
         </p>
         <ul>
-          <li><a>id</a></li>
-          <li><a>class</a></li>
-          <li><a><code>style</code></a></li>
-          <li><a><code>href</code></a></li>
+          <li><a><code>data-*</code></a></li>
           <li><a><code>dir</code></a></li>
+          <li><a><code>displaystyle</code></a></li>
+          <li><a><code>href</code></a></li>
           <li><a><code>mathbackground</code></a></li>
           <li><a><code>mathcolor</code></a></li>
           <li><a><code>mathsize</code></a></li>
           <li><a><code>mathvariant</code></a></li>
-          <li><a><code>displaystyle</code></a></li>
+          <li><a><code>nonce</code></a></li>
           <li><a><code>scriptlevel</code></a></li>
+          <li><a><code>style</code></a></li>
+          <li><a><code>tabindex</code></a></li>
+          <li><a>class</a></li>
+          <li><a>id</a></li>
+          <li><a href="#event-handler-content-attributes"><code>on*</code> event handler attributes</a></li>
         </ul>
         <section id="attributes-common-to-html-and-mathml-elements">
           <h4>Attributes common to HTML and MathML elements</h4>
@@ -475,18 +490,24 @@
             <dfn><code>id</code></dfn>,
             <dfn><code>class</code></dfn>,
             <dfn><code>style</code></dfn>,
+            <dfn><code>data-*</code></dfn>,
+            <dfn><code>nonce</code></dfn> and
+            <dfn><code>tabindex</code></dfn>
             attributes have the same syntax and semantic as defined for
             <a data-cite="HTML#the-id-attribute">id</a>,
-            <a data-cite="HTML#classes">class</a> and
-            <a data-cite="HTML#the-style-attribute">style</a> attributes on
-            HTML elements.
+            <a data-cite="HTML#classes">class</a>,
+            <a data-cite="HTML#the-style-attribute">style</a>,
+            <a data-cite="HTML#embedding-custom-non-visible-data-with-the-data-*-attributes">data-*</a>,
+            <a data-cite="HTML#embedding-custom-non-visible-data-with-the-data-*-attributes">nonce</a> and
+            <a data-cite="HTML#embedding-custom-non-visible-data-with-the-data-*-attributes">tabindex</a>
+            attributes on HTML elements.
           </p>
           <div class="issue" data-number="125">Should all MathML elements really be potential hyperlinks / match :visited?</div>
           <div class="issue" data-number="94">User Agent style for href hyperlinks and focusable elements</div>
           <p>
             The
             <dfn><code>href</code></dfn>
-            attribute has the syntax and semantic as defined for
+            attribute has the same syntax and semantic as defined for
             the <a data-cite="HTML#attr-hyperlink-href">href</a> attribute on
             <code>&lt;a&gt;</code> element.
             To fully implement this attribute, the following CSS properties for
