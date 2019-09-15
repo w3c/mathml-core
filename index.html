@@ -165,6 +165,11 @@
         <h3>Integration in the Web Platform</h3>
         <section id="html-and-svg">
           <h4>HTML and SVG</h4>
+          <div class="issue" data-number="103">mpadded?</div>
+          <div class="issue" data-number="105">menclose?</div>
+          <div class="issue" data-number="120">ms?</div>
+          <div class="issue" data-number="25">mglyph?</div>
+          <div class="issue" data-number="72">mlabeledtr?</div>
           <p>
             When
             <a data-cite="HTML#parsing">parsing HTML documents</a>
@@ -322,10 +327,14 @@
             these properties as that might lead to backward incompatibility
             issues.
           </div>
+      <div class="issue" data-number="94">links and focusable elements?</div>
           <div class="issue" data-number="18">vertical writing mode support</div>
           <div class="issue" data-number="112">Define MathML line breaking?</div>
           <div class="issue" data-number="16">Support floats?</div>
           <div class="issue" data-number="129">Support for CSS alignment properties</div>
+          <div class="issue" data-number="34">text-indent, line-height, word-spacing, letter-spacing?</div>
+          <div class="issue" data-number="35">CSS writing-mode and direction on the math root?</div>
+          <div class="issue" data-number="36">font-style and font-weight on the math root?</div>
         </section>
         <section id="dom-and-javascript">
           <h4>DOM and Javascript</h4>
@@ -963,6 +972,10 @@
         </section>
         <section id="layout-algorithms">
           <h4>Layout Algorithms</h4>
+          <div class="issue" data-number="16">Handling of out-of-flow elements</div>
+          <div class="issue" data-number="52">Define how children of various mathml elements paint?</div>
+          <div class="issue" data-number="49">Define what inline percentages resolve against</div>
+          <div class="issue" data-number="50">Define what block percentages resolve against</div>
           <p>
             The layout algorithms described in this chapter for MathML boxes
             have the following structure:
@@ -1084,6 +1097,9 @@
               </p>
             </li>
           </ul>
+          <div class="note">
+            Per the description above, <a data-cite="CSS2#margin-collapsing">margin-collapsing</a> does not apply to MathML elements.
+          </div>
           <div class="issue" data-number="132">Expose layout constraint to
             the CSS Layout API?</div>
           <p>
@@ -1136,6 +1152,7 @@
           <section>
             <h4>Layout of <code>&lt;mtext&gt;</code></h4>
             <div class="issue" data-number="18">Handle orthogonal flow when CSS writing-mode changes?</div>
+            <div class="issue" data-number="28">whitespace trimming from MathML3?</div>
             <p>
               If the element does not have its computed
               <a><code>display</code> property</a> equal to <code>math</code>
@@ -2035,6 +2052,7 @@
               Otherwise, the layout below is performed.
             </p>
             <div class="issue" data-number="112">Define MathML line breaking?</div>
+            <div class="issue" data-number="38">TeX-like spacing rules?</div>
             <p>
               A child box is <dfn>slanted</dfn> if it is not an
               <a>embellished operator</a>
@@ -2188,6 +2206,7 @@
             in <a href="#global-attributes"></a> as well as the
             following attribute:
           </p>
+          <div class="issue" data-number="29">mfrac@bevelled?</div>
           <ul>
             <li><a>linethickness</a></li>
           </ul>
@@ -3410,6 +3429,8 @@
         </section>
         <section id="subscripts-and-superscripts-msub-msup-msubsup">
           <h4>Subscripts and Superscripts <code>&lt;msub&gt;</code>, <code>&lt;msup&gt;</code>, <code>&lt;msubsup&gt;</code></h4>
+          <div class="issue" data-number="22">Use MathKernInfo?</div>
+          <div class="issue" data-number="27">subscriptshift/superscriptshift attributes?</div>
           <p>
             The <dfn><code>&lt;msub&gt;</code></dfn>,
             <dfn><code>&lt;msup&gt;</code></dfn> and
@@ -4231,6 +4252,7 @@
         </section>
         <section id="prescripts-and-tensor-indices-mmultiscripts">
           <h4>Prescripts and Tensor Indices <code>&lt;mmultiscripts&gt;</code></h4>
+          <div class="issue" data-number="22">Use MathKernInfo?</div>
           <p>
             Presubscripts and tensor notations are represented
             the <dfn><code>&lt;mmultiscripts&gt;</code></dfn>
@@ -4558,6 +4580,7 @@
       </section>
       <section id="tabular-math">
         <h3>Tabular Math</h3>
+        <div class="issue" data-number="72">mlabeledtr?</div>
         <p>
           Matrices, arrays and other table-like mathematical notation are marked up
           using
@@ -5110,6 +5133,7 @@
       </section>
       <section>
         <h3>Glyph information (<code>MathGlyphInfo</code>)</h3>
+        <div class="issue" data-number="22">Use MathKernInfo?</div>
         <p>
           These are per-glyph tables for a given mathematical font:
         </p>
@@ -5482,6 +5506,11 @@
     </section>
     <section class="appendix normative">
       <h2>User Agent Stylesheet</h2>
+      <div class="issue" data-number="34">text-indent, line-height, word-spacing, letter-spacing?</div>
+      <div class="issue" data-number="35">CSS writing-mode and direction on the math root?</div>
+      <div class="issue" data-number="36">font-style and font-weight on the math root?</div>
+      <div class="issue" data-number="94">links and focusable elements?</div>
+      <div class="issue" data-number="37">default font-family?</div>
       <pre class="css">@namespace url(http://www.w3.org/1998/Math/MathML);
 
 /* Default display */
