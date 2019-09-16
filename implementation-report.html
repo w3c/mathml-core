@@ -28,6 +28,17 @@
       .build_info {
           font-size: 150%;
       }
+      .logo {
+          display: inline-block;
+          width: 1em;
+          height: 1em;
+          padding: .2em;
+          background: lightblue;
+      }
+      .logo img {
+          width: 1em;
+          height: 1em;
+      }
     </style>
     <script>
       function capitalize(string) {
@@ -83,7 +94,7 @@
           outputDiv.innerHTML = output;
           let N = outputDiv.getElementsByTagName("span").length;
           let Npass = outputDiv.querySelectorAll(".PASS").length;
-          document.getElementById(browser).querySelector("span").innerHTML = `${Npass}/${N} (${Math.round(100*(Npass*100/N))/100}%)`;
+          document.getElementById(browser).querySelector(".score").innerHTML = `${Npass}/${N} (${Math.round(100*(Npass*100/N))/100}%)`;
       }
       function toggleDisplay(browser, force) {
           var button = document.getElementById(`${browser}`).querySelector("button");
@@ -120,28 +131,28 @@
     <section>
       <h1>MathML Core - Implementation Report</h1>
       <section>
-        <h2 id="blink">Blink <span>?/? (?%)</span> <button>+</button></h2>
+        <h2 id="blink">Blink-MathML <span class="logo"><img src="https://pbs.twimg.com/profile_images/1576817016/igalia_400x400.png" alt="igalia"/></span> <span class="score">?/? (?%)</span> <button>+</button></h2>
         <p>Development build of <a href="https://mathml.igalia.com/">Igalia's Chromium fork</a>.</p>
         <div class="unfoldable">No results available</div>
       </section>
       <section>
-        <h2 id="blink-no-mathml">Blink without MathML <span>?/? (?%)</span> <button>+</button></h2>
+        <h2 id="blink-no-mathml">Blink <span class="logo"><img src="https://test.csswg.org/harness/img/blink.svg" alt="blink"/></span> <span class="score">?/? (?%)</span> <button>+</button></h2>
         <p>Development build of <a href="https://mathml.igalia.com/">Igalia's Chromium fork</a> with the <code>LayoutNGMathML</code> runtime feature disabled.</p>
         <p><em>These results might contain false positives.</em></p>
         <div class="unfoldable">No results available</div>
       </section>
       <section>
-        <h2 id="gecko">Gecko <span>?/? (?%)</span> <button>+</button></h2>
+        <h2 id="gecko">Gecko <span class="logo"><img src="https://test.csswg.org/harness/img/gecko.svg" alt="gecko"/></span> <span class="score">?/? (?%)</span> <button>+</button></h2>
         <p><a href="https://www.mozilla.org/en-US/firefox/channel/desktop/">Nightly build</a> of Firefox.</p>
         <div class="unfoldable">No results available</div>
       </section>
       <section>
-        <h2 id="webkit">WebKit <span>?/? (?%)</span> <button>+</button></h2>
+        <h2 id="webkit">WebKit <span class="logo"><img src="https://test.csswg.org/harness/img/webkit.svg" alt="webkit"/></span>  <span class="score">?/? (?%)</span> <button>+</button></h2>
         <p>Development build of <a href="https://trac.webkit.org/wiki/WebKitGTK">WebKitGTK</a>.</p>
         <div class="unfoldable">No results available</div>
       </section>
       <section>
-        <h2 id="custom">Custom results <span></span> <button>+</button></h2>
+        <h2 id="custom">Custom results <span class="score"></span> <button>+</button></h2>
         <div class="unfoldable">No results available</div>
         <p>Upload a wptreport JSON result: <input id="upload" type="file"/></p>
       </section>
