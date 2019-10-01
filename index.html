@@ -164,19 +164,15 @@
       <h2>MathML Fundamentals</h2>
       <section>
         <h3>Integration in the Web Platform</h3>
-        <section id="html-and-svg">
-          <h4>HTML and SVG</h4>
-          <div class="issue" data-number="103">mpadded?</div>
-          <div class="issue" data-number="105">menclose?</div>
-          <div class="issue" data-number="120">ms?</div>
-          <div class="issue" data-number="25">mglyph?</div>
-          <div class="issue" data-number="72">mlabeledtr?</div>
+        <section id="mathml-elements">
+          <h3>XML</h3>
           <p>
-            When
-            <a data-cite="HTML#parsing">parsing HTML documents</a>
-            user agents must treat any of the following
-            <dfn>MathML Core elements</dfn> as belonging to the
-            <a data-cite="INFRA#mathml-namespace">MathML namespace</a>:
+            The term <dfn>MathML element</dfn> refers to any element in the
+            <a data-cite="INFRA#mathml-namespace">MathML namespace</a>.
+            The MathML element defined in this specification are called the
+            <dfn>MathML Core elements</dfn> and are listed below.
+            Any MathML element that is not listed below is called an
+            <dfn>Unknown MathML element</dfn>.
           </p>
           <ol>
             <li><a>&lt;annotation&gt;</a></li>
@@ -212,6 +208,25 @@
             <li><a>&lt;none&gt;</a></li>
             <li><a>&lt;semantics&gt;</a></li>
           </ol>
+          <p>
+            The attributes defined in this specification are called
+            <dfn>MathML attributes</dfn> and have no namespace.
+          </p>
+        </section>
+        <section id="html-and-svg">
+          <h4>HTML and SVG</h4>
+          <div class="issue" data-number="103">mpadded?</div>
+          <div class="issue" data-number="105">menclose?</div>
+          <div class="issue" data-number="120">ms?</div>
+          <div class="issue" data-number="25">mglyph?</div>
+          <div class="issue" data-number="72">mlabeledtr?</div>
+          <p>
+            When
+            <a data-cite="HTML#parsing">parsing HTML documents</a>
+            user agents must treat any tag name corresponding to a
+            <a>MathML Core Element</a> as belonging to the
+            <a data-cite="INFRA#mathml-namespace">MathML namespace</a>.
+          </p>
           <p>
             Users agents must allow mixing HTML, SVG and MathML elements
             as allowed by sections
@@ -340,7 +355,7 @@
         <section id="dom-and-javascript">
           <h4>DOM and Javascript</h4>
           <div class="issue" data-number="138">Custom MathML elements?</div>
-          <div class="issue" data-number="139">Decide how to handle unknown MathML elements</div>
+          <div class="issue" data-number="139">Should <a>unknown MathML elements</a> specialize to a MathMLUnknownElement interface?</div>
           <div class="issue" data-number="140">Element.attachShadow()?</div>
           <p>
             User agents supporting
@@ -357,7 +372,7 @@
             should be moved to the [[CSSOM]] specification.
           </div>
           <p>
-            All the nodes representing <a>MathML Core elements</a> in the DOM
+            All the nodes representing <a>MathML elements</a> in the DOM
             must implement, and expose to scripts, the following
             <dfn><code>MathMLElement</code></dfn> interface.
           </p>
@@ -769,7 +784,7 @@
               <code>table-cell</code>.
             </li>
             <li>
-              For all the other MathML elements it is <code>math</code>.
+              For all the other <a>MathML elements</a> it is <code>math</code>.
             </li>
           </ul>
           </p>
@@ -1325,7 +1340,6 @@
           <section id="embellished-operators">
             <h5>Embellished operators</h5>
             <div class="issue" data-number="115">Simplify embellished operator?</div>
-            <div class="issue" data-number="139">Decide how to handle unknown MathML elements</div>
             <p>
               A <a>MathML Core element</a> is an
               <dfn data-lt="embellished">embellished operator</dfn>
@@ -1348,7 +1362,7 @@
                 <a>embellished operator</a>;
               </li>
               <li>
-                Or one of the elements
+                An <a>unknown MathML element</a> or one of the elements
                 <a><code>&lt;mrow&gt;</code></a>,
                 <a><code>&lt;mstyle&gt;</code></a>,
                 <a><code>&lt;mphantom&gt;</code></a>,
@@ -1382,6 +1396,7 @@
               </li>
               <li>
                 The core operator of an embellished
+                <a>unknown MathML element</a>,
                 <a><code>&lt;mrow&gt;</code></a>,
                 <a><code>&lt;mstyle&gt;</code></a>,
                 <a><code>&lt;mphantom&gt;</code></a>,
@@ -1419,19 +1434,21 @@
                 on the <a>core operator</a>, then its value is used;
 			  </li>
               <li>If the embellished operator is the first in-flow child of an
-                <a>&lt;math&gt;</a>
-                <a>&lt;menclose&gt;</a>
-                <a>&lt;merror&gt;</a>
-                <a>&lt;mpadded&gt;</a>
-                <a>&lt;mphantom&gt;</a>
-                <a>&lt;mrow&gt;</a>
+                <a>unknown MathML element</a>,
+                <a>&lt;math&gt;</a>,
+                <a>&lt;menclose&gt;</a>,
+                <a>&lt;merror&gt;</a>,
+                <a>&lt;mpadded&gt;</a>,
+                <a>&lt;mphantom&gt;</a>,
+                <a>&lt;mrow&gt;</a>,
                 <a>&lt;msqrt&gt;</a> or
-                <a>&lt;mstyle&gt;</a> element with more than one in-flow child
+                <a>&lt;mstyle&gt;</a> with more than one in-flow child
                 (ignoring all <a>space-like</a> children) then it has
                 form <code>prefix</code>;
               </li>
               <li>Or, if the embellished operator is the last in-flow child of
                 an
+                <a>unknown MathML element</a>,
                 <a><code>&lt;math&gt;</code></a>,
                 <a><code>&lt;menclose&gt;</code></a>,
                 <a><code>&lt;merror&gt;</code></a>,
@@ -1439,7 +1456,7 @@
                 <a><code>&lt;mphantom&gt;</code></a>,
                 <a><code>&lt;mrow&gt;</code></a>,
                 <a><code>&lt;msqrt&gt;</code></a> or
-                <a><code>&lt;mstyle&gt;</code></a> element
+                <a><code>&lt;mstyle&gt;</code></a>
                 with more than one in-flow child
                 (ignoring all <a>space-like</a> children) then it has
                 form <code>postfix</code>;
@@ -1834,10 +1851,11 @@
                 <a><code>&lt;mspace&gt;</code></a>.
               </li>
               <li>Or an
+                <a>unknown MathML element</a>,
                 <a><code>&lt;mrow&gt;</code></a>,
                 <a><code>&lt;mstyle&gt;</code></a>,
-                <a><code>&lt;mphantom&gt;</code></a>,
-                <a><code>&lt;mpadded&gt;</code></a> element
+                <a><code>&lt;mphantom&gt;</code></a> or
+                <a><code>&lt;mpadded&gt;</code></a>
                 all of whose in-flow children are <a>space-like</a>;
               </li>
               <li>
@@ -4797,7 +4815,6 @@
         </div>
         <div class="issue" data-number="56">Should we add more specific values?</div>
         <div class="issue">Use another name? <code>math-auto</code>? <code>mathml?</code>...</div>
-        <div class="issue" data-number="139">Decide how to handle unknown MathML elements</div>
         <p>The <dfn><code>display</code> property</dfn>
           from <a data-cite="CSS-DISPLAY-3"></a>
           is extended with a new <code>math</code> value:
@@ -4813,9 +4830,11 @@
           <code>inline-table</code>,
           <code>table-row</code>
           and <code>table-cell</code>.
-          Other MathML elements with <code>display: math</code> will control
-          box generation and layout according to their tag name, as described
-          in the relevant sections.
+          <a>MathML Core elements</a> with <code>display: math</code>
+          control box generation and layout according to their tag name, as
+          described in the relevant sections while
+          <a>Unknown MathML elements</a> with <code>display: math</code>
+          behave the same as the <a><code>&lt;mrow&gt;</code></a> element.
           For non-MathML elements, the <code>math</code> value computes to
           <code>none</code>.
         </p>
