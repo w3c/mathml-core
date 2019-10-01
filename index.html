@@ -2983,10 +2983,9 @@
           <p>
             The
             <dfn><code>notation</code></dfn>
-            attribute, if present, must have a value that is an
-            <a data-cite="HTML#unordered-set-of-unique-space-separated-tokens">unordered set
-              of unique space-separated tokens</a> that are ASCII case-insensitive. The
-            allowed values are
+            attribute, if present, must have a value that is a
+            <a data-cite="HTML#set-of-space-separated-tokens">set of space-separated tokens</a>.
+            A token value that is a case-insensitive match to one of
             <code>left</code>,
             <code>right</code>,
             <code>top</code>,
@@ -3000,8 +2999,19 @@
             <code>updiagonalstrike</code>,
             <code>downdiagonalstrike</code>,
             <code>longdiv</code>,
-            <code>circle</code>.
+            <code>circle</code> is handled as described in the following
+            subsections. Any other token value is ignored. If the
+            <code>notation</code> attribute is absent then it is treated as
+            equal to <code>longdiv</code>.
           </p>
+          <div class="note">
+            If the <code>notation</code> attribute is empty or equal to the
+            MathML3 value <code>radical</code> then the <code>notation</code>
+            attribute is valid and the
+            <code>&lt;menclose&gt;</code> element will be rendered without
+            any notation rather than with the default <code>longdiv</code>
+            notation.
+          </div>
           <p>
             If the <code>&lt;menclose&gt;</code> element does not have its
             computed
