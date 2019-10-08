@@ -162,9 +162,8 @@ In order to balance all of this we decided on the following:
   necessary in polyfilling, libraries or extending the platform through platform
   consistent mechanisms.
 
-<figure style="max-width: 400px; margin-left: auto; margin-right: auto;">
-  <pre><code>
-  &lt;style&gt;
+```html
+<style>
   math {
      font-family: STIX Two Math;
      color: blue;
@@ -176,18 +175,19 @@ In order to balance all of this we decided on the following:
   .myFancyMathLayout {
      display: layout(myFancyMathLayout);
   }
-  &lt;/style&gt;
-  &lt;math&gt;
-    &lt;mfrac&gt;
-      &lt;mrow class="myFancyScriptedElement"&gt;
+</style>
+<math>
+  <mfrac>
+    <mrow class="myFancyScriptedElement">
         ...
-      &lt;/mrow&gt;
-      &lt;mrow onclick="myInteractiveAction()"&gt;
+    </mrow>
+    <mrow onclick="myInteractiveAction()">
         ...
-      &lt;/mrow&gt;
-    &lt;/mfrac&gt;
-  &lt;/math&gt;
-  </code></pre>
+    </mrow>
+  </mfrac>
+</math>
+```
+
   <figcaption>
      Example of using CSS, JavaScript or the Layout API to enhance
      MathML Core with user-defined features.
@@ -218,16 +218,18 @@ is the right thing to do**. From that starting point,
 **building atop additional semantics, extensions, conversions and further
 explorations** becomes very plausible.
 
-<figure style="max-width: 400px; margin-left: auto; margin-right: auto;">
-  <pre><code>&lt;la-tex&gt;
+
+```html
+<la-tex>
   {\Gamma(t)}
   = {\int_{0}^{+\infty} x^{t-1} e^{-x} dx}
   = {\frac{1}{t}
      \prod_{n=1}^\infty
      \frac{\left(1+\frac{1}{n}\right)^t}{1+\frac{t}{n}}}
   \sim {\sqrt{\frac{2\pi}{t}} \left(\frac{t}{e}\right)^t}
-&lt;/la-tex&gt;
-  </code></pre>
+</la-tex>
+```
+<figure style="max-width: 400px; margin-left: auto; margin-right: auto;">
   <img style="max-width: 100%" src="resources/mathml-example-gamma.png" alt="Screenshot of a MathML formula in different browsers."/>
   <figcaption>
   LaTeX source in a <a href="https://fred-wang.github.io/TeXZilla/examples/customElement.html">custom element</a> and its shadow MathML rendered with
