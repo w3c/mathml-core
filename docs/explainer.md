@@ -1,12 +1,13 @@
 # MathML Core Explainer
 
-**Published**: 2019-10-08, **Updated**: 2019-10-08,
-**Draft specification**: [MathML Core](https://mathml-refresh.github.io/mathml-core/)
-
 ## Authors:
 
  * Fred Wang
  * Brian Kardell
+
+## Draft specification:
+
+[MathML Core - W3C Editor's Draft](https://mathml-refresh.github.io/mathml-core/)
 
 ## Introduction
 
