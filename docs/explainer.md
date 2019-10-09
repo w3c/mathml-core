@@ -24,7 +24,7 @@ was actually evident from the
 **integrated into numerous standards** used in ebooks or office applications.
 It can be generated, read or processed via a
 **[rich ecosystem of tools](https://www.w3.org/wiki/Math_Tools#Authoring_tools)**
-and is **natively rendered by Gecko and WebKit** browsers.
+and is **natively rendered by browsers based on Gecko and WebKit**.
 However, the [current recommendation](https://www.w3.org/TR/MathML3/) contains
 much that is
 speculative, theoretical, not universally implemented, was under adopted, or is
