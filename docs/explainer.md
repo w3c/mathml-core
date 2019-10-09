@@ -40,10 +40,9 @@ and focuses on **proper integration into the Web platform**. Combined together,
 these features enable
 **interoperable, extensible and high-quality mathematical rendering**.
 
-<figure style="max-width: 400px; margin-left: auto; margin-right: auto;">
-  <img style="max-width: 100%" src="resources/mathml-tree.png" alt="Visual MathML rendering as nested boxes representing the DOM tree, with corresponding tag name annotated for each box."/>
-  <figcaption>MathML/DOM for the formula (x^√5)/(α×7).</figcaption>
-</figure>
+*Figure 1: MathML/DOM for the formula (x^√5)/(α×7).*
+
+![Visual MathML rendering as nested boxes representing the DOM tree, with corresponding tag name annotated for each box.](resources/mathml-tree.png)
 
 ## Goals
 * To **provide users with efficient, natural, readable and high-quality rendering of mathematical notations**, consistently with other text they encounter in the browser.
@@ -78,11 +77,10 @@ these features enable
       DOM/JavaScript and math libraries.
   - **Complex graphical layout** which can instead be
     performed by embedding MathML in HTML/CSS or SVG.
-    <figure style="max-width: 400px; margin-left: auto; margin-right: auto;">
-     <a href="https://en.wikipedia.org/wiki/Commutative_diagram"><img style="max-width: 100%" src="resources/commutative-diagram.png" alt="Commutative diagram for the 'first isomorphism theorem'"/></a>
-    <figcaption>
-       Formulas in a commutative diagram.
-    </figcaption></figure>
+
+    *Figure 2: Formulas in a commutative diagram.*
+
+    [![Commutative diagram for the 'first isomorphism theorem'](resources/commutative-diagram.png)](https://en.wikipedia.org/wiki/Commutative_diagram)
 
 * To **fully explain mathematical rendering via as-yet-to-be-defined low-level
   primitives**.
@@ -119,15 +117,9 @@ these features enable
   lead to poor spacing, placement or text rendering inside mathematical
   formulas.
 
+  *Figure 3: Top: Chrome 23 using MathML3 rules and internal heuristics ; Bottom: Igalia's Chromium build using only MathML Core rules.*
 
-
-    <figure style="max-width: 400px; margin-left: auto; margin-right: auto;">
-     <img style="max-width: 100%" src="resources/mathml3-vs-core.png" alt="Screenshot of MathML in Chrome 23 and Igalia's Chromium build, showing the visual improvements when following MathML Core instead of MathML3."/>
-    <figcaption>
-     Top: Chrome 23 using MathML3 rules and internal heuristics ;
-     Bottom: Igalia's Chromium build using only MathML Core rules.
-    </figcaption>
-    </figure>
+  ![Screenshot of MathML in Chrome 23 and Igalia's Chromium build, showing the visual improvements when following MathML Core instead of MathML3.](resources/mathml3-vs-core.png)
 
 ### Applying Extensible Web principles
 
@@ -162,6 +154,8 @@ In order to balance all of this we decided on the following:
   necessary in polyfilling, libraries or extending the platform through platform
   consistent mechanisms.
 
+*Figure 4: Example of using CSS, JavaScript or the Layout API to enhance MathML Core with user-defined features.*
+
 ```html
 <style>
   math {
@@ -188,13 +182,6 @@ In order to balance all of this we decided on the following:
 </math>
 ```
 
-  <figcaption>
-     Example of using CSS, JavaScript or the Layout API to enhance
-     MathML Core with user-defined features.
-  </figcaption>
-</figure>
-
-
 ## Considered Alternatives
 
 ### Abandon MathML in favor some new thing
@@ -218,6 +205,7 @@ is the right thing to do**. From that starting point,
 **building atop additional semantics, extensions, conversions and further
 explorations** becomes very plausible.
 
+*Figure 5: LaTeX source in a [custom element](https://fred-wang.github.io/TeXZilla/examples/customElement.html) and its shadow MathML rendered with the [Latin Modern Math font](http://www.gust.org.pl/projects/e-foundry/lm-math) ; From top to bottom: Blink (Igalia's build), WebKit (r249360) and Gecko (Firefox 68)*
 
 ```html
 <la-tex>
@@ -229,14 +217,7 @@ explorations** becomes very plausible.
   \sim {\sqrt{\frac{2\pi}{t}} \left(\frac{t}{e}\right)^t}
 </la-tex>
 ```
-<figure style="max-width: 400px; margin-left: auto; margin-right: auto;">
-  <img style="max-width: 100%" src="resources/mathml-example-gamma.png" alt="Screenshot of a MathML formula in different browsers."/>
-  <figcaption>
-  LaTeX source in a <a href="https://fred-wang.github.io/TeXZilla/examples/customElement.html">custom element</a> and its shadow MathML rendered with
-  the <a href="http://www.gust.org.pl/projects/e-foundry/lm-math">Latin Modern Math font</a> ; From top to bottom:
-    Blink (Igalia's build), WebKit (r249360) and Gecko (Firefox 68)
-  </figcaption>
-</figure>
+![Screenshot of a MathML formula in different browsers.](resources/mathml-example-gamma.png)
 
 ### Focus instead solely on lacking primitives
 
