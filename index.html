@@ -1420,19 +1420,20 @@
             <h4>Dictionary-based attributes</h4>
             <p>
               The <dfn><code>form</code></dfn>
-              property of an <a>embellished operator</a>
-              element must be a case-insensitive match to <code>infix</code>, <code>prefix</code> or
+              property of an <a>embellished operator</a> is either
+              <code>infix</code>, <code>prefix</code> or
               <code>postfix</code>.
-              The <code>form</code> attribute can only be defined on its <a>core operator</a> (an
-              <a><code>&lt;mo&gt;</code></a> element).
+              The corresponding <code>form</code> attribute
+              <a><code>&lt;mo&gt;</code></a> element, if present, must
+              must be a case-insensitive match to one of these values.
             </p>
             <p>
-              The <code>form</code> of the <a>embellished operator</a> is determined as follows:
+              The <code>form</code> of an <a>embellished operator</a> is determined as follows:
             </p>
             <ol>
-			  <li>If the <code>form</code> attribute is present and valid
+              <li>If the <code>form</code> attribute is present and valid
                 on the <a>core operator</a>, then its value is used;
-			  </li>
+              </li>
               <li>If the embellished operator is the first in-flow child of an
                 <a>unknown MathML element</a>,
                 <a>&lt;math&gt;</a>,
@@ -1485,14 +1486,15 @@
               <dfn><code>largeop</code></dfn>,
               <dfn><code>movablelimits</code></dfn>,
               <dfn><code>accent</code></dfn>
-              properties of an <a>embellished operator</a> are is either
-              <code>true</code> or <code>false</code>. In the former case, it
+              properties of an <a>embellished operator</a> are
+              either <code>false</code> or <code>true</code>. In the latter
+              case, it
               is said that the <a>embellished operator</a> <em>has</em> the
               property.
-			  The corresponding attributes can only be defined on their <a>core operator</a> (an
-              <a><code>&lt;mo&gt;</code></a> element) and must be <a>boolean</a>.
+              The corresponding attributes on the
+              <a><code>&lt;mo&gt;</code></a> element, if present, must be a
+              <a>boolean</a>.
             </p>
-            <div class="issue" data-number="107">Consider removing explicit mo@maxsize = "infinity" attribute?</div>
             <p>
               The
               <dfn><code>lspace</code></dfn>,
@@ -1502,13 +1504,14 @@
               <a>length-percentage</a>.
               The <dfn><code>maxsize</code></dfn> property
               of an <a>embellished operator</a> is either an
-              <a>length-percentage</a> or <code>infinity</code>.
+              <a>length-percentage</a> or ∞.
               The
               <code>lspace</code>,
               <code>rspace</code>,
               <code>minsize</code> and
-              <code>maxsize</code> attributes can only be defined on their <a>core operator</a> (an
-              <a><code>&lt;mo&gt;</code></a> element) and must be <a>length-percentage</a>.
+              <code>maxsize</code> attributes on the
+              <a><code>&lt;mo&gt;</code></a> element, if present,
+              must be a <a>length-percentage</a>.
             </p>
             <p>
               The
@@ -1545,7 +1548,7 @@
                 <code>infix</code>, <code>prefix</code>, <code>postfix</code>;
               </li>
               <li>
-                Otherwise, use the value  <code>false</code> for
+                Otherwise, use the value <code>false</code> for
                 <code>fence</code>,
                 <code>separator</code>,
                 <code>stretchy</code>,
@@ -1557,7 +1560,7 @@
                 <code>lspace</code> and
                 <code>rspace</code> properties ;
                 <code>100%</code> for the <code>minsize</code> property and
-                <code>infinity</code> for the <code>maxsize</code> property.
+                ∞ for the <code>maxsize</code> property.
               </li>
             </ol>
             <p>
@@ -2072,6 +2075,11 @@
                 </ol>
               </li>
             </ol>
+          <div class="note">
+            If <code>maxsize</code> is equal to its default value ∞
+            then <code>minsize ≤ maxsize</code> is satisfied but
+            <code>maxsize &lt; T</code> is not.
+          </div>
           </section>
           <section id="layout-of-mrow">
             <h5>Layout of <code>&lt;mrow&gt;</code></h5>
