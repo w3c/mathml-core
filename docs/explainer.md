@@ -2,7 +2,7 @@
 
 ## Authors:
 
- * Fred Wang
+ * Frédéric Wang
  * Brian Kardell
 
 ## Draft specification:
