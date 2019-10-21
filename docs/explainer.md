@@ -206,7 +206,7 @@ is the right thing to do**. From that starting point,
 **building atop additional semantics, extensions, conversions and further
 explorations** becomes very plausible.
 
-*Figure 5: LaTeX source in a [custom element](https://fred-wang.github.io/TeXZilla/examples/customElement.html) and its shadow MathML rendered with the [Latin Modern Math font](http://www.gust.org.pl/projects/e-foundry/lm-math) ; From top to bottom: Blink (Igalia's build), WebKit (r249360) and Gecko (Firefox 68)*
+*Figure 5: LaTeX source in a [custom element](https://fred-wang.github.io/TeXZilla/examples/customElement.html) rendered using MathML in a shadow DOM, with the [Latin Modern Math font](http://www.gust.org.pl/projects/e-foundry/lm-math) ; From top to bottom: Blink (Igalia's build), WebKit (r249360) and Gecko (Firefox 68)*
 
 ```html
 <la-tex>
