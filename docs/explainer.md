@@ -11,20 +11,20 @@
 
 ## Introduction
 
-[Mathematical notations](https://en.wikipedia.org/wiki/Mathematical_notation)
-form a **fundamental aspect of writing systems found in all civilizations**
-and have been instrumental for the **diffusion and development of
-scientific and technical knowledge**. In agreement to
-[W3C TAG's Ethical Web Principles](https://www.w3.org/2001/tag/doc/ethical-web-principles/), we believe it is **important to enable this for the Web** and that
+**[Mathematical notations](https://en.wikipedia.org/wiki/Mathematical_notation)**
+form a fundamental aspect of writing systems found in all civilizations
+and have been instrumental for the diffusion and development of
+scientific and technical knowledge. In agreement to
+[W3C TAG's Ethical Web Principles](https://www.w3.org/2001/tag/doc/ethical-web-principles/), we believe it is important to enable this for the Web and that
 was actually evident from the
 [earliest days of the Web at CERN](https://www.w3.org/MarkUp/HTMLPlus/htmlplus_45.html).
 
 **MathML** is the resulting standard for describing
-**mathematical notation in DOM**. In addition to HTML5, it has been
-**integrated into numerous standards** used in ebooks or office applications.
+mathematical notation in DOM. In addition to HTML5, it has been
+integrated into numerous standards used in ebooks or office applications.
 It can be generated, read or processed via a
 **[rich ecosystem of tools](https://www.w3.org/wiki/Math_Tools#Authoring_tools)**
-and is **natively rendered by browsers based on Gecko and WebKit**.
+and is natively rendered by browsers based on Gecko and WebKit.
 However, the [current recommendation](https://www.w3.org/TR/MathML3/) contains
 much that is
 speculative, theoretical, not universally implemented, was under adopted, or is
@@ -34,12 +34,12 @@ platform specifications.
 
 **[MathML Core](https://mathml-refresh.github.io/mathml-core/)**
 then is a necessary and rigorous definition of the
-**fundamental subset of MathML features** which are widely developed, deployed
+fundamental subset of MathML features which are widely developed, deployed
 and used in practice.  It relies on
-**well-established rules from TeX and Microsoft Word**
-and focuses on **proper integration into the Web platform**. Combined together,
+well-established rules from TeX and Microsoft Word
+and focuses on proper integration into the Web platform. Combined together,
 these features enable
-**interoperable, extensible and high-quality mathematical rendering**.
+interoperable, extensible and high-quality mathematical rendering.
 
 *Figure 1: MathML/DOM for the formula (x^√5)/(α×7).*
 
@@ -67,16 +67,16 @@ these features enable
   MathML Core relies as much as possible on existing Web Platform
   features and provides a platform-aligned starting point to solve more
   problems. Examples include, but are not limited to:
-  - **Specific elements or attributes for styling** which
+  - Specific elements or attributes for styling which
     are better described by existing or new CSS features.
-  - **Complete and explicit description of semantics** which are better
+  - Complete and explicit description of semantics which are better
     described by extending ARIA.
-  - **Open-ended elements to allow implementation-specific features**
+  - Open-ended elements to allow implementation-specific features
     instead of standard techniques for customizations and extensions.
-  - **Native support for editing, interaction, exploration, simple input
-      syntax** or other advanced features that are better handled by
+  - Native support for editing, interaction, exploration, simple input
+      syntax or other advanced features that are better handled by
       DOM/JavaScript and math libraries.
-  - **Complex graphical layout** which can instead be
+  - Complex graphical layout which can instead be
     performed by embedding MathML in HTML/CSS or SVG.
 
     *Figure 2: Formulas in a commutative diagram.*
