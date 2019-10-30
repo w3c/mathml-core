@@ -46,13 +46,13 @@ interoperable, extensible and high-quality mathematical rendering.
 ![Visual MathML rendering as nested boxes representing the DOM tree, with corresponding tag name annotated for each box.](resources/mathml-tree.png)
 
 ## Goals
-* To **provide users with efficient, natural, readable and high-quality rendering of mathematical notations**, consistently with other text they encounter in the browser.
+* To **provide users with efficient, natural, readable and high-quality rendering of mathematical notations**, consistent with other text they encounter in the browser.
 
-* To **provide authors with native, efficient and interoperable rendering of mathematical notations** that they are able to reason about consistently with the rest of the Web Platform.
+* To **provide authors with native, efficient and interoperable rendering of mathematical notations** that they are able to reason about consistent with the rest of the Web Platform.
 
 * To **rigorously define the necessary subset, how it works and properly integrates into the Web Platform** and ensure testable and interoperable implementations.
 
-* To **establish a productive and agreeable starting point** for additional work and conversation going forward and make it possible to more easily explore more, consistently with the rest of the platform.
+* To **establish a productive and agreeable starting point** for additional work and conversation going forward and make it possible to more easily explore more, consistent with the rest of the platform.
 
 ## Non-Goals
 
