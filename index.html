@@ -3880,13 +3880,13 @@
               the <em>overscript</em>.
             </p>
             <p>
-              If the base is an
-              <a>embellished operator</a> with the
-              <a><code>movablelimits</code></a> property
-              then the underscript and overscript are actually
-              drawn as subscript and superscript positions.
-              Then <code>&lt;mover&gt;</code>, <code>&lt;mover&gt;</code> and
-              <code>&lt;munderover&gt;</code> layout algorithms are respectively
+              If the
+              <code>&lt;munder&gt;</code>, <code>&lt;mover&gt;</code> or
+              <code>&lt;munderover&gt;</code> element have a computed
+              <a>math-style</a> property equal to <code>inline</code>
+              and their base is an <a>embellished operator</a> with the
+              <a><code>movablelimits</code></a> property, then
+              their layout algorithms are respectively
               the same as the ones described for
               <code>&lt;msub&gt;</code>, <code>&lt;msup&gt;</code> and
               <code>&lt;msubsup&gt;</code> in
