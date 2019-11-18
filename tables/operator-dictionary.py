@@ -5,7 +5,6 @@ from download import downloadUnicodeXML
 
 import operator
 #import json, re
-#from utils import mathfont
 
 # Retrieve the unicode.xml file if necessary.
 unicodeXML = downloadUnicodeXML()
@@ -24,7 +23,7 @@ def parseSpaces(value, entry, names):
         attributeValue = entry.get(name)
         if attributeValue is not None:
             value[name] = int(attributeValue)
-            
+
 def parseProperties(value, entry, names):
     attributeValue = entry.get("properties")
     if attributeValue is not None:
@@ -47,12 +46,21 @@ xsltTransform = etree.XSLT(etree.parse("./operator-dictionary.xsl"))
 
 root = xsltTransform(etree.parse(unicodeXML)).getroot()
 entriesWithMultipleCharacters={}
-infixEntriesWithDefaultValues=[]
-infixEntriesWithSpacing4=[]
-infixEntriesWithSpacing3=[]
-infixEntriesWithSpacing5AndAccent=[]
-infixEntriesWithSpacing5AndAccentStretchy=[]
-infixEntriesWithSpacing5AndStretchy=[]
+knownTables = {
+    "infixEntriesWithDefaultValues": [],
+    "infixEntriesWithSpacing4": [],
+    "infixEntriesWithSpacing3": [],
+    "infixEntriesWithSpacing5AndAccent": [],
+    "infixEntriesWithSpacing5AndAccentStretchy": [],
+    "infixEntriesWithSpacing5AndStretchy": [],
+    "postfixEntriesWithSpacing0AndAccent": [],
+    "prefixEntriesWithSpacing0AndStretchySymmetricFence": [],
+    "postfixEntriesWithSpacing0AndStretchySymmetricFence": [],
+    "postfixEntriesWithSpacing0AndAccentStretchy": [],
+    "prefixEntriesWithLspace1Rspace2AndSymmetricMovablelimitsLargeop": [],
+    "prefixEntriesWithLspace1Rspace2AndSymmetricLargeop": [],
+    "prefixEntriesWithLspace0Rspace1AndSymmetricLargeop": [],
+}
 otherEntries={}
 otherValuesCount={}
 otherValueTotalCount=0
@@ -71,54 +79,110 @@ for entry in root:
                                    "accent",
                                    "fence",
                                    "separator"])
-    
+
     if len(characters) > 1:
         entriesWithMultipleCharacters[key] = value
         continue
-    character = characters[0] 
+    character = characters[0]
 
     if (value["lspace"] == defaultSpacing and
         value["rspace"] == defaultSpacing and
         "properties" not in value and
         form == "infix"):
-        infixEntriesWithDefaultValues.append(character)
+        knownTables["infixEntriesWithDefaultValues"].append(character)
         continue
-    
+
     if (value["lspace"] == 4 and
         value["rspace"] == 4 and
         "properties" not in value and
         form == "infix"):
-        infixEntriesWithSpacing4.append(character)
+        knownTables["infixEntriesWithSpacing4"].append(character)
         continue
-    
+
     if (value["lspace"] == 3 and
         value["rspace"] == 3 and
         "properties" not in value and
         form == "infix"):
-        infixEntriesWithSpacing3.append(character)
+        knownTables["infixEntriesWithSpacing3"].append(character)
         continue
 
     if (value["lspace"] == 5 and
         value["rspace"] == 5 and
         value["properties"] == {'accent': True} and
         form == "infix"):
-        infixEntriesWithSpacing5AndAccent.append(character)
+        knownTables["infixEntriesWithSpacing5AndAccent"].append(character)
         continue
 
     if (value["lspace"] == 5 and
         value["rspace"] == 5 and
         value["properties"] == {'accent': True, 'stretchy': True} and
         form == "infix"):
-        infixEntriesWithSpacing5AndAccentStretchy.append(character)
+        knownTables["infixEntriesWithSpacing5AndAccentStretchy"].append(character)
         continue
 
     if (value["lspace"] == 5 and
         value["rspace"] == 5 and
         value["properties"] == {'stretchy': True} and
         form == "infix"):
-        infixEntriesWithSpacing5AndStretchy.append(character)
+        knownTables["infixEntriesWithSpacing5AndStretchy"].append(character)
         continue
-    
+
+    if (value["lspace"] == 0 and
+        value["rspace"] == 0 and
+        "properties" in value and
+        value["properties"] == {'accent': True} and
+        form == "postfix"):
+        knownTables["postfixEntriesWithSpacing0AndAccent"].append(character)
+        continue
+
+    if (value["lspace"] == 0 and
+        value["rspace"] == 0 and
+        "properties" in value and
+        value["properties"] == {'symmetric': True, 'stretchy': True, 'fence': True} and
+        form == "prefix"):
+        knownTables["prefixEntriesWithSpacing0AndStretchySymmetricFence"].append(character)
+        continue
+
+    if (value["lspace"] == 0 and
+        value["rspace"] == 0 and
+        "properties" in value and
+        value["properties"] == {'symmetric': True, 'stretchy': True, 'fence': True} and
+        form == "postfix"):
+        knownTables["postfixEntriesWithSpacing0AndStretchySymmetricFence"].append(character)
+        continue
+
+    if (value["lspace"] == 0 and
+        value["rspace"] == 0 and
+        "properties" in value and
+        value["properties"] == {'accent': True, 'stretchy': True} and
+        form == "postfix"):
+        knownTables["postfixEntriesWithSpacing0AndAccentStretchy"].append(character)
+        continue
+
+    if (value["lspace"] == 1 and
+        value["rspace"] == 2 and
+        "properties" in value and
+        value["properties"] == {'symmetric': True, 'movablelimits': True, 'largeop': True} and
+        form == "prefix"):
+        knownTables["prefixEntriesWithLspace1Rspace2AndSymmetricMovablelimitsLargeop"].append(character)
+        continue
+
+    if (value["lspace"] == 1 and
+        value["rspace"] == 2 and
+        "properties" in value and
+        value["properties"] == {'symmetric': True, 'largeop': True} and
+        form == "prefix"):
+        knownTables["prefixEntriesWithLspace1Rspace2AndSymmetricLargeop"].append(character)
+        continue
+
+    if (value["lspace"] == 0 and
+        value["rspace"] == 1 and
+        "properties" in value and
+        value["properties"] == {'symmetric': True, 'largeop': True} and
+        form == "prefix"):
+        knownTables["prefixEntriesWithLspace0Rspace1AndSymmetricLargeop"].append(character)
+        continue
+
     v = str(value)
     if v not in otherValuesCount:
         otherValuesCount[v] = 0
@@ -126,17 +190,50 @@ for entry in root:
     otherValueTotalCount += 1
 
     otherEntries[key] = value
-    
-print("entriesWithMultipleCharacters", len(entriesWithMultipleCharacters))
-print("infixEntriesWithDefaultValues", len(infixEntriesWithDefaultValues))
-print("infixEntriesWithSpacing3", len(infixEntriesWithSpacing3))
-print("infixEntriesWithSpacing4", len(infixEntriesWithSpacing4))
-print("infixEntriesWithSpacing5AndAccent", len(infixEntriesWithSpacing5AndAccent))
-print("infixEntriesWithSpacing5AndAccentStretchy", len(infixEntriesWithSpacing5AndAccentStretchy))
-print("infixEntriesWithSpacing5AndStretchy", len(infixEntriesWithSpacing5AndStretchy))
+
+
+def toHexa(character):
+    return "U+%04X" % character
+
+def stringifyRange(unicodeRange):
+    if unicodeRange[0] == unicodeRange[1]:
+        return toHexa(unicodeRange[0])
+    else:
+        return "[%s, %s]" % (toHexa(unicodeRange[0]), toHexa(unicodeRange[1]))
+
+def toUnicodeRanges(operators):
+    unicodeRange = None
+    ranges = []
+
+    for character in operators:
+        if not unicodeRange:
+            unicodeRange = character, character
+        else:
+            if unicodeRange[1] + 1 == character:
+                unicodeRange = unicodeRange[0], character
+            else:
+                ranges.append(stringifyRange(unicodeRange))
+                unicodeRange = character, character
+
+    if unicodeRange:
+        ranges.append(stringifyRange(unicodeRange))
+
+    return ranges
+
+for name, table in sorted(knownTables.items(),
+                          key=(lambda v: len(v[1])), reverse=True):
+    print(name, len(table))
+    print(toUnicodeRanges(table))
+    print("")
+
 print("otherEntries", otherValueTotalCount)
-for v in sorted(otherValuesCount.items(),
-                key=operator.itemgetter(1), reverse=True):
-   print("  * %d: %s" % (v[1], str(v[0])))
+for value, count in sorted(otherValuesCount.items(),
+                           key=operator.itemgetter(1), reverse=True):
+   print("  * %d: %s" % (count, str(value)))
+print("")
+
+print("entriesWithMultipleCharacters", len(entriesWithMultipleCharacters))
+for name in entriesWithMultipleCharacters:
+   print("  * %s: %s" % (name, str(entriesWithMultipleCharacters[name])))
 
 # TODO: format tables
