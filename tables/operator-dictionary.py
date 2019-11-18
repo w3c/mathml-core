@@ -41,6 +41,9 @@ def buildKey(characters, form):
     key += " " + form
     return key
 
+def toHexa(character):
+    return "U+%04X" % character
+
 # Extract the operator dictionary.
 xsltTransform = etree.XSLT(etree.parse("./operator-dictionary.xsl"))
 
@@ -186,14 +189,11 @@ for entry in root:
     v = str(value)
     if v not in otherValuesCount:
         otherValuesCount[v] = 0
+        otherEntries[v] = []
+
     otherValuesCount[v] += 1
     otherValueTotalCount += 1
-
-    otherEntries[key] = value
-
-
-def toHexa(character):
-    return "U+%04X" % character
+    otherEntries[v].append(toHexa(character))
 
 def stringifyRange(unicodeRange):
     if unicodeRange[0] == unicodeRange[1]:
@@ -229,8 +229,9 @@ for name, table in sorted(knownTables.items(),
 print("otherEntries", otherValueTotalCount)
 for value, count in sorted(otherValuesCount.items(),
                            key=operator.itemgetter(1), reverse=True):
-   print("  * %d: %s" % (count, str(value)))
-print("")
+   print("  * %s: %d" % (value, count))
+   print("    %s" % str(otherEntries[value]))
+   print("")
 
 print("entriesWithMultipleCharacters", len(entriesWithMultipleCharacters))
 for name in entriesWithMultipleCharacters:
