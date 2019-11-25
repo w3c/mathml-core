@@ -1881,8 +1881,6 @@
         </section>
         <section id="string-literal-ms">
           <h4>String Literal <code>&lt;ms&gt;</code></h4>
-          <div class="issue" data-number="120">Can this element be simplified?</div>
-          <div class="issue" data-number="126">Does not work in RTL mode</div>
           <p>
             <dfn><code>&lt;ms&gt;</code></dfn>
             element is used to represent
@@ -1890,28 +1888,20 @@
             algebra systems or other systems containing "programming languages".
           </p>
           <p>
-            The <code>&lt;mn&gt;</code> element accepts the attributes described
-            in <a href="#global-attributes"></a> as well as the following
-            attributes:
+            The <code>&lt;ms&gt;</code> element accepts the attributes described
+            in <a href="#global-attributes"></a>.  Its layout algorithm is
+            the same as the <a><code>&lt;mtext&gt;</code></a> element.
           </p>
-          <ul>
-            <li><a><code>lquote</code></a></li>
-            <li><a><code>rquote</code></a></li>
-          </ul>
-          <p>The
-            <dfn><code>lquote</code></dfn>,
-            <dfn><code>rquote</code></dfn> attributes respectively specify the strings to use as opening and
-            closing quotes. An unspecified attribute is
-            interpreted as the character U+0022 QUOTATION MARK.
-          </p>
-          <p>
-            The layout algorithm is the same as the
-            <a><code>&lt;mtext&gt;</code></a> element.
-            The <a href="#user-agent-stylesheet">user agent stylesheet</a>
-            must contain the following rules in order to enclose the content with
-            quotes:
-          </p>
-          <pre class="css" data-include="user-agent-stylesheet/ms.css"></pre>
+          <div class="note">
+            In MathML3, it was possible to use the <code>lquote</code> and
+            <code>rquote</code> attributes to respectively specify the strings
+            to use as opening and closing quotes. These are no longer supported
+            and the quotes must instead be specified as part of the text of the
+            <code>&lt;ms&gt;</code> element. One can add CSS rules to legacy
+            documents in order to preserve visual rendering. For example,
+            in left-to-right direction:
+            <pre class="css" data-include="user-agent-stylesheet/ms.css"></pre>
+          </div>
         </section>
       </section>
       <section>
