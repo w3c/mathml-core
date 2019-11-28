@@ -120,118 +120,53 @@
         other than as work in progress.
       </p>
     </section>
-    <section>
+    <section class="informative">
       <h2>Introduction</h2>
-      <section class="informative">
-        <h2>Rationale for a core specification</h2>
-        <p>
-          The [[MATHML3]] specification has several shortcomings that make it
-          hard to implement consistently across web rendering engines or to
-          extend with user-defined constructions e.g.
-        </p>
-        <ul>
-          <li>It is a huge and standalone specification.</li>
-          <li>It does not contain any detailed rendering rules.</li>
-          <li>It is not driven by browser-implementation.</li>
-          <li>It lacks automated testing.</li>
-        </ul>
-        <p>
-          This MathML Core specification intends to address these issues by
-          being as accurate as possible on the visual rendering of mathematical
-          formulas using additional rules from the TeXBook’s Appendix G
-          [[?TEXBOOK]] and from the Open Font Format [[OPEN-FONT-FORMAT]],
-          [[OPEN-TYPE-MATH-ILLUMINATED]]. It also relies on modern browser
-          implementations and web technologies [[HTML]] clarifying interactions
-          with them when needed or introducing new low-level primitives to
-          improve the web platform layering. Parts of MathML3 that do not
-          fit well in this framework or are rarely used in practice have been
-          omitted. Instead, they are described in a separate and larger
-          [[MATHML4]] specification.
-        </p>
-        <p>
-          By increasing the level of implementation details, focusing on a
-          workable subset, following a browser-driven design and relying on
-          automated web platform tests, this specification is expected to
-          greatly improve MathML interoperability. Moreover, effort on MathML
-          layering will enable users to implement the rest of the MathML 4
-          specification, or more generally to extend MathML Core, using
-          modern web technologies such as shadow DOM, custom elements,
-          CSS layout API or other Houdini APIs.
-        </p>
-        <div class="warning">
-          The MathML Refresh Community Group is still deciding what will go
-          in MathML Core and what should instead be implemented as
-          custom extensions. In particular, the list of
-          MathML elements/attributes, TeX/OpenType features and
-          supported CSS properties is not frozen yet.
-          Additionally, new HTML5 features, CSS properties and Javascript APIs
-          will be designed in order to allow authors to write better MathML
-          web components.
-        </div>
-        <div class="issue" data-number="137">Add MathML examples to the spec.</div>
-      </section>
-      <section class="informative">
-        <h2>Acknowledgments</h2>
-        <p>MathML Core is based on MathML3. See the
-          <a href="https://www.w3.org/TR/MathML3/appendixe.html">appendix E</a>
-          of [[MathML3]] for the people that contributed to that specification.
-        </p>
-        <p>We would like to thank the people who, through their input and
-          feedback on public communication channels have helped us with the
-          creation of this specification:
-          André Greiner-Petter,
-          Anne van Kesteren,
-          Boris Zbarsky,
-          Brian Smith,
-          Daniel Marques,
-          David Carlisle,
-          Deyan Ginev,
-          Elika Etemad,
-          Emilio Cobos Álvarez,
-          ExE Boss,
-          Ian Kilpatrick,
-          Koji Ishii,
-          L. David Baron,
-          Michael Kohlhase,
-          Michael Smith,
-          Moritz Schubotz,
-          Murray Sargent,
-          Ryosuke Niwa,
-          Sergey Malkin,
-          Tab Atkins Jr.,
-          Viktor Yaffle and
-          frankvel.
-        </p>
-        <p>In addition, we would like to extend special thanks to
-          Brian Kardell,
-          Neil Soiffer and
-          Rob Buis for help with the editing.</p>
-        <p>Many thanks also to the following people for their help with the
-          test suite:
-          Brian Kardell,
-          Frédéric Wang,
-          Neil Soiffer and
-          Rob Buis.
-          Several tests are also based on MathML tests from browser
-          repositories and we are grateful to the Mozilla and WebKit
-          contributors.
-        </p>
-        <p>Community Group members who have regularly participated to MathML
-          Core meetings during the development of this specification:
-          Brian Kardell,
-          Bruce Miller,
-          David Carlisle,
-          Murray Sargent,
-          Frédéric Wang,
-          Neil Soiffer (Chair),
-          Patrick Ion,
-          Rob Buis,
-          David Farmer,
-          Steve Noble,
-          Daniel Marques,
-          Sam Dooley.
-        </p>
-      </section>
+      <p>
+        The [[MATHML3]] specification has several shortcomings that make it
+        hard to implement consistently across web rendering engines or to
+        extend with user-defined constructions e.g.
+      </p>
+      <ul>
+        <li>It is a huge and standalone specification.</li>
+        <li>It does not contain any detailed rendering rules.</li>
+        <li>It is not driven by browser-implementation.</li>
+        <li>It lacks automated testing.</li>
+      </ul>
+      <p>
+        This MathML Core specification intends to address these issues by
+        being as accurate as possible on the visual rendering of mathematical
+        formulas using additional rules from the TeXBook’s Appendix G
+        [[?TEXBOOK]] and from the Open Font Format [[OPEN-FONT-FORMAT]],
+        [[OPEN-TYPE-MATH-ILLUMINATED]]. It also relies on modern browser
+        implementations and web technologies [[HTML]] clarifying interactions
+        with them when needed or introducing new low-level primitives to
+        improve the web platform layering. Parts of MathML3 that do not
+        fit well in this framework or are rarely used in practice have been
+        omitted. Instead, they are described in a separate and larger
+        [[MATHML4]] specification.
+      </p>
+      <p>
+        By increasing the level of implementation details, focusing on a
+        workable subset, following a browser-driven design and relying on
+        automated web platform tests, this specification is expected to
+        greatly improve MathML interoperability. Moreover, effort on MathML
+        layering will enable users to implement the rest of the MathML 4
+        specification, or more generally to extend MathML Core, using
+        modern web technologies such as shadow DOM, custom elements,
+        CSS layout API or other Houdini APIs.
+      </p>
+      <div class="warning">
+        The MathML Refresh Community Group is still deciding what will go
+        in MathML Core and what should instead be implemented as
+        custom extensions. In particular, the list of
+        MathML elements/attributes, TeX/OpenType features and
+        supported CSS properties is not frozen yet.
+        Additionally, new HTML5 features, CSS properties and Javascript APIs
+        will be designed in order to allow authors to write better MathML
+        web components.
+      </div>
+      <div class="issue" data-number="137">Add MathML examples to the spec.</div>
     </section>
     <section class="normative">
       <h2>MathML Fundamentals</h2>
@@ -5838,6 +5773,72 @@
         <h4><code>bold-sans-serif</code> mappings</h4>
         <div data-include="tables/mathvariants-bold-sans-serif.html"></div>
       </section>
+    </section>
+    <section class="appendix informative">
+      <h2>Acknowledgments</h2>
+      <p>MathML Core is based on MathML3. See the
+        <a href="https://www.w3.org/TR/MathML3/appendixe.html">appendix E</a>
+        of [[MathML3]] for the people that contributed to that specification.
+      </p>
+      <p>We would like to thank the people who, through their input and
+        feedback on public communication channels have helped us with the
+        creation of this specification:
+        André Greiner-Petter,
+        Anne van Kesteren,
+        Boris Zbarsky,
+        Brian Smith,
+        Daniel Marques,
+        David Carlisle,
+        Deyan Ginev,
+        Elika Etemad,
+        Emilio Cobos Álvarez,
+        ExE Boss,
+        Ian Kilpatrick,
+        Koji Ishii,
+        L. David Baron,
+        Michael Kohlhase,
+        Michael Smith,
+        Moritz Schubotz,
+        Murray Sargent,
+        Ryosuke Niwa,
+        Sergey Malkin,
+        Tab Atkins Jr.,
+        Viktor Yaffle and
+        frankvel.
+      </p>
+      <p>In addition, we would like to extend special thanks to
+        Brian Kardell,
+        Neil Soiffer and
+        Rob Buis for help with the editing.</p>
+      <p>Many thanks also to the following people for their help with the
+        test suite:
+        Brian Kardell,
+        Frédéric Wang,
+        Neil Soiffer and
+        Rob Buis.
+        Several tests are also based on MathML tests from browser
+        repositories and we are grateful to the Mozilla and WebKit
+        contributors.
+      </p>
+      <p>Community Group members who have regularly participated to MathML
+        Core meetings during the development of this specification:
+        Brian Kardell,
+        Bruce Miller,
+        David Carlisle,
+        Murray Sargent,
+        Frédéric Wang,
+        Neil Soiffer (Chair),
+        Patrick Ion,
+        Rob Buis,
+        David Farmer,
+        Steve Noble,
+        Daniel Marques,
+        Sam Dooley.
+      </p>
+    </section>
+    <section class="appendix informative">
+      <h2>Privacy and Security Considerations</h2>
+      <div class="issue" data-number="162">TODO</div>
     </section>
     <section class="appendix normative">
       <h2>Conformance</h2>
