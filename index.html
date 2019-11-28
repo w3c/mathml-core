@@ -426,7 +426,7 @@
             <p>
               When an element is focused, all applicable CSS
               focus-related pseudo-classes as defined in
-              <a data-cite="selectors4#overview">CSS Selectors</a>
+              <a data-cite="SELECT#overview">CSS Selectors</a>
               apply, as defined in that specification.
             </p>
             <p>
@@ -4752,7 +4752,7 @@
         </p>
         <pre class="css" data-include="user-agent-stylesheet/maction.css"></pre>
         <div class="note">
-		  <code>&lt;maction&gt;</code> is implemented for compatibility with full MathML. Authors whose only target is MathML Core are encouraged to use CSS for styling.
+		  <code>&lt;maction&gt;</code> is implemented for compatibility with full MathML. Authors whose only target is MathML Core are encouraged to use other HTML, CSS and JavaScript mechanisms.
         </div>
       </section>
       <section id="semantics-and-presentation">
@@ -5028,7 +5028,7 @@
         </ol>
       </section>
     </section>
-    <section class="normative">
+    <section class="normative" id="opentype-math-table">
       <h2>OpenType <code>MATH</code> table</h2>
       <p>
         This chapter describes features provided by <code>MATH</code> table
@@ -5838,7 +5838,61 @@
     </section>
     <section class="appendix informative">
       <h2>Privacy and Security Considerations</h2>
-      <div class="issue" data-number="162">TODO</div>
+      <div class="issue" data-number="162">Privacy and Security Considerations</div>
+      <p>
+        As explained in <a href="#html-and-svg"></a>,
+        MathML can be embedded into an SVG image via the
+        <a data-cite="SVG#ForeignObjectElement"><code>&lt;foreignObject&gt;</code></a>
+        element which can thus be used in a
+        <a data-cite="HTML#the-canvas-element"><code>&lt;canvas&gt;</code></a>
+        element.
+        UA may decide to implement any measure to prevent potential
+        <a data-cite="HTML#security-with-canvas-elements">information leakage</a>
+        such as tainting the canvas and returning a
+        <a data-cite="WEBIDL#securityerror"><code>"SecurityError"</code></a>
+        <a data-cite="WEBIDL#DOMException"><code>DOMException</code></a>
+        when one tries to access the canvas' content via JavaScript APIs.
+      </p>
+      <div class="issue" data-number="125">Should all MathML elements really be potential hyperlinks / match :visited?</div>
+      <p>
+        This specification adds an <a><code>href</code></a> attribute that
+        can be used to make MathML elements match
+        <a data-cite="SELECT#link"><code>:link</code> and
+        <code>:visited</code> pseudo-classes</a> and one could rely on
+        these features to determine whether a link has been visited.
+        UAs may implement suggestions from [[SELECT]] to preserve the
+        user's privacy.
+      </p>
+      <p>
+        This specification only adds script execution mechanisms in the
+        the MathML event handler attributes described in
+        <a href="#global-attributes"></a> and
+        in <code>javascript:...</code> links for the <a><code>href</code></a>
+        attribute. UAs may decide to apply the same
+        security restrictions as HTML and SVG to prevent execution of scripts
+        in these attributes.
+      </p>
+      <p>
+        This specification describes layout of a DOM
+        <a data-cite="HTML#element">elements</a> which may involve system
+        fonts. Like for HTML/CSS layout,
+        it is thus possible to use JavaScript APIs
+        to measure box sizes and positions and infer data from system fonts
+        (e.g. default fonts, available glyphs, font layout
+        parameters...). The only font informations that are not exposed by other
+        existing Web APIs are the math layout data described in
+        <a href="#opentype-math-table"></a>.
+      </p>
+      <div class="note">
+        In MathML3, it was possible to use the
+        <a><code>&lt;maction&gt;</code></a> element with
+        the <code>actiontype</code> value set to <code>"statusline"</code>
+        in order to override the text of the browser statusline. In particular,
+        this could be used to hide the URL text of an untrusted
+        <code>href</code> link. This has been removed in MathML Core
+        and the <a><code>&lt;maction&gt;</code></a> element essentially behaves
+        like an <a><code>&lt;mrow&gt;</code></a> container with extra style.
+      </div>
     </section>
     <section class="appendix normative">
       <h2>Conformance</h2>
