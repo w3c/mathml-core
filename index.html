@@ -225,6 +225,10 @@
             <a>&lt;munder&gt;</a> and
             <a>&lt;munderover&gt;</a>.
           </p>
+          <p>The <dfn>radical elements</dfn> are
+            <a>&lt;msqrt&gt;</a> and
+            <a>&lt;mroot&gt;</a>.
+          </p>
           <p>
             The attributes defined in this specification are called
             <dfn>MathML attributes</dfn> and have no namespace.
@@ -3448,22 +3452,19 @@
           </p>
           <ol>
             <li>Its parent is <a>cramped</a>.</li>
-            <li>Its parent is a <a><code>&lt;msqrt&gt;</code></a> or
-              <a><code>&lt;mroot&gt;</code></a> element.
-            </li>
-            <li>It is the denominator of a <a><code>&lt;mfrac&gt;</code></a>
-              element.</li>
-            <li>
-              It is the subscript of a
-              <a><code>&lt;msub&gt;</code></a> or
-              <a><code>&lt;msubsup&gt;</code></a> element.
-            </li>
-            <li>
-              It is the underscript of a
+            <li>Its parent is a <a>radical element</a>.</li>
+            <li>It is the second in-flow child of an
+              <a><code>&lt;mfrac&gt;</code></a>,
+              <a><code>&lt;msub&gt;</code></a>,
+              <a><code>&lt;msubsup&gt;</code></a>,
               <a><code>&lt;munder&gt;</code></a> or
               <a><code>&lt;munderover&gt;</code></a> element.
             </li>
           </ol>
+          <div class="note" id="cramped-element">
+            The second in-flow child corresponds to a numerator, subscript or
+            underscript.
+          </div>
         </section>
         <section id="subscripts-and-superscripts-msub-msup-msubsup">
           <h4>Subscripts and Superscripts <code>&lt;msub&gt;</code>, <code>&lt;msup&gt;</code>, <code>&lt;msubsup&gt;</code></h4>
