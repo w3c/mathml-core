@@ -20,7 +20,7 @@
   \begin{scope}[shift={(#1,#2)},xscale=#3,yscale=#4,color=#5]
     \draw[<->] (0,-.5) -- (2,-.5) node[#6]{inline size} -- (5,-.5);
     \draw[->] (4.7, 0) -- (4.7,-1) node[#7]{ink line-ascent} -- (4.7,-1.5);
-    \draw[->] (4.5, 0) -- (4.5, 1) node[#7]{ink line-descent} -- (4.5,1.5);
+    \draw[<-] (4.5, 0) -- (4.5, 1) node[#7]{ink line-descent} -- (4.5,1.5);
     \draw[->] (3.7, 0) -- (3.7,-1.5) node[#8]{line-ascent} -- (3.7,-2);
-    \draw[->] (3.5, 0) -- (3.5,1.5) node[#8]{line-descent} -- (3.5,2);
+    \draw[<-] (3.5, 0) -- (3.5,1.5) node[#8]{line-descent} -- (3.5,2);
   \end{scope}}
