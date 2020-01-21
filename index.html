@@ -888,8 +888,8 @@
               <ol>
                 <li>
                   The <dfn>alphabetic baseline</dfn> also just called
-                  the <dfn>baseline</dfn>. The distance between the
-                  alphabetic baseline and the line-over
+                  the <dfn>baseline</dfn>. The algebric distance from the
+                  alphabetic baseline to the line-over
                   (respectively line-under) edge of the box is called
                   <dfn>line-ascent</dfn> (respectively <dfn>line-descent</dfn>).
                 </li>
@@ -900,20 +900,32 @@
                 </li>
                 <li>
                   The <dfn>ink-over baseline</dfn>, indicating the line-over
-                  theorical limit of math content (text, bars...) excluding any
+                  theorical limit of the content drawn, excluding any
                   extra space.
-                  It is shifted away from the alphabetic baseline
-                  by <dfn>ink line-ascent</dfn> towards the line-over.
-                  If not specified, it is equal to the line-over axis.
+                  If not specified, it is aligned with the line-over edge.
+                  The algebric distance from the <a>alphabetic baseline</a> to
+                  the <a>ink-over baseline</a> is called the
+                  <dfn>ink line-ascent</dfn>.
                 </li>
                 <li>
                   The <dfn>ink-under baseline</dfn>, indicating the line-under
-                  theorical limit of math content (text, bars...) without extra
-                  space. It is shifted away from the alphabetic baseline
-                  by <dfn>ink line-descent</dfn> towards the line-under.
-                  If not specified, it is equal to the line-under axis.
+                  theorical limit of the content drawn, excluding any
+                  extra space.
+                  If not specified, it is aligned with the line-under edge.
+                  The algebric distance from the <a>alphabetic baseline</a> to
+                  the <a>ink-under baseline</a> is called the
+                  <dfn>ink line-descent</dfn>.
                 </li>
               </ol>
+              <div class="note">
+                For math layout, it is very important to rely on the ink extent
+                when positioning text. This is not the case for more complex
+                notations (e.g. square root).
+                Although ink-ascent and ink-descent are defined for
+                all MathML elements they are really only used for the token
+                elements. In other cases, they just match normal ascent and
+                descent.
+              </div>
               <div class="issue" data-number="112">Define MathML line breaking?</div>
               Unless specified otherwise, the last baseline set is equal to the
               first baseline set for MathML boxes.
