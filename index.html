@@ -2646,24 +2646,22 @@
               of the inline size of the base's margin's box.
             </p>
             <p>
-              The ink line-ascent of the content
-              is the sum of <a>RadicalRuleThickness</a>,
-              the <a>radical gap</a> and the ink line-ascent of the base's
-              margin box.
               The line-ascent of the content is the maximum between:
             </p>
             <ul>
               <li>The line-ascent of the base's margin box.</li>
-              <li>The sum of the ink line-ascent of the content
-                and <a>RadicalExtraAscender</a></li>
+              <li>The sum of the ink line-ascent of the base,
+                the <a>radical gap</a>, the <a>RadicalRuleThickness</a>
+                and <a>RadicalExtraAscender</a>.</li>
             </ul>
             <p>
-              The (ink) line-descent of the content is the maximum between:
+              The line-descent of the content is the maximum between:
             </p>
             <ul>
-              <li>The (ink) line-descent of the base's margin box.</li>
+              <li>The line-descent of the base's margin box.</li>
               <li>The sum of the line-ascent and line-descent for the
-                <a>box metrics of the radical glyph</a>, minus the ink
+                <a>box metrics of the radical glyph</a> and of the
+                <a>RadicalExtraAscender</a>, minus the
                 line-ascent of the content.
               </li>
             </ul>
@@ -2677,9 +2675,11 @@
             <p>
               The baseline of the base is aligned with the baseline.
               The block size of the overbar is
-              <a>RadicalRuleThickness</a>. It line-over edge is shifted away
+              <a>RadicalRuleThickness</a>. Its vertical center is shifted away
               from the baseline by a distance towards the line-over
-              equal to the ink line-ascent of the content.
+              equal to the line-ascent of the content, minus
+              the <a>RadicalExtraAscender</a>,
+              minus half the <a>RadicalRuleThickness</a>.
             </p>
             <p>
               Finally, the <a>shaping of the surd</a> is performed:
@@ -2729,22 +2729,22 @@
               and of the inline size of B.
             </p>
             <p>
-              The (ink) line-ascent of the content is the maximum between:
+              The line-ascent of the content is the maximum between:
             </p>
             <ul>
-              <li>−the ink line-descent of B +
+              <li>−the line-descent of B +
                 <a>RadicalDegreeBottomRaisePercent</a> ×
-                the ink block size of B + the (ink) line-ascent of the
+                the block size of B + the line-ascent of the
                 index's margin box</li>
-              <li>The (ink) line-ascent of B</li>
+              <li>The line-ascent of B</li>
             </ul>
-            <p>The (ink) line-descent of the content is the maximum between:</p>
+            <p>The line-descent of the content is the maximum between:</p>
             <ul>
-              <li>the ink line-descent of B −
+              <li>the line-descent of B −
                 <a>RadicalDegreeBottomRaisePercent</a> ×
-                the ink block size of B + the (ink) line-ascent of the
+                the block size of B + the line-ascent of the
                 index's margin box</li>
-              <li>The (ink) line-descent of B</li>
+              <li>The line-descent of B</li>
             </ul>
             <p>
               The inline offset of the index is
@@ -2757,7 +2757,7 @@
               The baseline of the index is shifted away
               from the line-under edge by a distance of
               <a>RadicalDegreeBottomRaisePercent</a> ×
-              the ink block size of B + the ink line-descent of the
+              the block size of B + the line-descent of the
               index's margin box.
             </p>
             <div class="note">
@@ -2953,8 +2953,8 @@
               <a href="#inner-box-and-requested-parameters"></a>.
             </p>
             <p>
-              The (ink) line-ascent of the content is the requested height.
-              The (ink) line-descent of the content is the requested depth.
+              The line-ascent of the content is the requested height.
+              The line-descent of the content is the requested depth.
             </p>
             <p>
               The mpadded inner box is placed so that its baseline is
