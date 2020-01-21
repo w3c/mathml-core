@@ -216,6 +216,15 @@
             <li><a>&lt;none&gt;</a></li>
             <li><a>&lt;semantics&gt;</a></li>
           </ol>
+          <p>The <dfn>scripted MathML elements</dfn> are
+            <a>&lt;mmultiscripts&gt;</a>,
+            <a>&lt;mover&gt;</a>,
+            <a>&lt;msub&gt;</a>,
+            <a>&lt;msubsup&gt;</a>,
+            <a>&lt;msup&gt;</a>,
+            <a>&lt;munder&gt;</a> and
+            <a>&lt;munderover&gt;</a>.
+          </p>
           <p>
             The attributes defined in this specification are called
             <dfn>MathML attributes</dfn> and have no namespace.
@@ -1363,13 +1372,7 @@
             <ol>
               <li>An <a><code>&lt;mo&gt;</code></a> element;</li>
               <li>
-                Or one of the elements <a><code>&lt;msub&gt;</code></a>,
-                <a><code>&lt;msup&gt;</code></a>,
-                <a><code>&lt;msubsup&gt;</code></a>,
-                <a><code>&lt;munder&gt;</code></a>,
-                <a><code>&lt;mover&gt;</code></a>,
-                <a><code>&lt;munderover&gt;</code></a>,
-                <a><code>&lt;mmultiscripts&gt;</code></a> or
+                A <a>scripted MathML element</a> or an
                 <a><code>&lt;mfrac&gt;</code></a>
                 whose first in-flow child exists and is an
                 <a>embellished operator</a>;
@@ -1397,13 +1400,7 @@
                 element; is the element itself.</li>
               <li>
                 The core operator of an embellished
-                <a><code>&lt;msub&gt;</code></a>,
-                <a><code>&lt;msup&gt;</code></a>,
-                <a><code>&lt;msubsup&gt;</code></a>,
-                <a><code>&lt;munder&gt;</code></a>,
-                <a><code>&lt;mover&gt;</code></a>,
-                <a><code>&lt;munderover&gt;</code></a>,
-                <a><code>&lt;mmultiscripts&gt;</code></a> or
+                <a>scripted MathML element</a> or
                 <a><code>&lt;mfrac&gt;</code></a>
                 element is the core operator of its first in-flow child.
               </li>
@@ -1478,16 +1475,9 @@
                 with more than one in-flow child
                 (ignoring all <a>space-like</a> children) then it has
                 form <code>postfix</code>;
-              <li>Or, if the embellished operator is an in-flow child of an
-                <a><code>&lt;msub&gt;</code></a>,
-                <a><code>&lt;msup&gt;</code></a>,
-                <a><code>&lt;msubsup&gt;</code></a>,
-                <a><code>&lt;munder&gt;</code></a>,
-                <a><code>&lt;mover&gt;</code></a>,
-                <a><code>&lt;munderover&gt;</code></a> or
-                <a><code>&lt;mmultiscripts&gt;</code></a>
-                element other than the first in-flow child, then it has form
-                <code>postfix</code>;
+              <li>Or, if the embellished operator is an in-flow child of a
+                <a>scripted MathML element</a>, other than the first in-flow
+                child, then it has form <code>postfix</code>;
               </li>
               <li>
                 Otherwise, the embellished operator has form
