@@ -825,26 +825,26 @@
           <ul>
             <li>
               <a data-cite="CSS-WRITING-MODES-3#abstract-dimensions">abstract dimensions</a>:
-              <dfn>block dimension</dfn>,
-              <dfn>inline dimension</dfn>,
-              <dfn>block axis</dfn>,
-              <dfn>inline axis</dfn>,
-              <dfn>block size</dfn>,
-              <dfn>inline size</dfn>.
+              <a data-cite="CSS-WRITING-MODES-3#block-dimension"><dfn>block dimension</dfn></a>,
+              <a data-cite="CSS-WRITING-MODES-3#inline-dimension"><dfn>inline dimension</dfn></a>,
+              <a data-cite="CSS-WRITING-MODES-3#block-axis"><dfn>block axis</dfn></a>,
+              <a data-cite="CSS-WRITING-MODES-3#inline-axis"><dfn>inline axis</dfn></a>,
+              <a data-cite="CSS-WRITING-MODES-3#block-size"><dfn>block size</dfn></a>,
+              <a data-cite="CSS-WRITING-MODES-3#inline-size"><dfn>inline size</dfn></a>.
             </li>
             <li>
               <a data-cite="CSS-WRITING-MODES-3#logical-directions">flow-relative directions</a>:
-              <dfn>inline-start</dfn>,
-              <dfn>inline-end</dfn>,
-              <dfn>block-start</dfn>,
-              <dfn>block-end</dfn>.
+              <a data-cite="CSS-WRITING-MODES-3#inline-start"><dfn>inline-start</dfn></a>,
+              <a data-cite="CSS-WRITING-MODES-3#inline-end"><dfn>inline-end</dfn></a>,
+              <a data-cite="CSS-WRITING-MODES-3#block-start"><dfn>block-start</dfn></a>,
+              <a data-cite="CSS-WRITING-MODES-3#block-end"><dfn>block-end</dfn></a>.
             </li>
             <li>
               <a data-cite="CSS-WRITING-MODES-3#line-relative-direction">line-relative directions</a>:
-              <dfn>line-left</dfn>,
-              <dfn>line-right</dfn>,
-              <dfn>line-over</dfn>,
-              <dfn>line-under</dfn>.
+              <a data-cite="CSS-WRITING-MODES-3#line-left"><dfn>line-left</dfn></a>,
+              <a data-cite="CSS-WRITING-MODES-3#line-right"><dfn>line-right</dfn></a>,
+              <a data-cite="CSS-WRITING-MODES-3#line-over"><dfn>line-over</dfn></a>,
+              <a data-cite="CSS-WRITING-MODES-3#line-under"><dfn>line-under</dfn></a>.
             </li>
           </ul>
           </p>
@@ -867,8 +867,8 @@
           </p>
           <ol>
             <li>Inline metrics.
-              <a data-cite="CSS-SIZING-3#min-content-inline-size">min-content inline size</a>,
-              <a data-cite="CSS-SIZING-3#max-content-inline-size">max-content inline size</a> and
+              <a data-cite="CSS-SIZING-3#min-content-inline-size"><dfn>min-content inline size</dfn></a>,
+              <a data-cite="CSS-SIZING-3#max-content-inline-size"><dfn>max-content inline size</dfn></a> and
               <a>inline size</a>
               from CSS. See <a href="#box-model-generic"></a>.
               <figure id="box-model-generic">
@@ -940,8 +940,9 @@
                 <img src="figures/italcorr.svg"/>
                 <figcaption>Examples of italic correction for italic f and large integral</figcaption>
               </figure>
-              If it is requested during calculation of min-content or
-              max-content inline sizes or during layout
+              If it is requested during calculation of
+              <a>min-content inline size</a> and
+              <a>max-content inline size</a> or during layout
               then 0 is used as a fallback value.
             </li>
             <li>
@@ -954,9 +955,10 @@
                 <img src="figures/topaccent.svg"/>
                 <figcaption>Example of top accent attachment for a circumflex accent</figcaption>
               </figure>
-              If it is requested during calculation of min-content
-              (respectively max-content) inline size then half the
-              min-content (respectively max-content) inline size is used as a
+              If it is requested during calculation of
+              <a>min-content inline size</a>
+              (respectively <a>max-content inline size</a>) then half the
+              <a>min-content inline size</a> (respectively <a>max-content inline size</a>) is used as a
               fallback value.
               If it is requested during layout then half the
               inline size of the box is used as a fallback value.
@@ -1014,8 +1016,8 @@
                 the <a>line-left offset</a> if the CSS property
                 <a data-cite="CSS-WRITING-MODES-3#direction">direction</a>
                 is <code>ltr</code> and
-                is the inline size of the box −
-                (<a>line-left offset</a> + inline size of
+                is the <a>inline size</a> of the box −
+                (<a>line-left offset</a> + <a>inline size</a> of
                 the child box) otherwise.
               </li>
               <li>
@@ -1042,7 +1044,8 @@
           </p>
           <ol>
             <li>
-              Calculation of min-content / max-content inline size
+              Calculation of <a>min-content inline size</a>
+              and <a>max-content inline size</a>
               of the content.
             </li>
             <li>
@@ -1052,7 +1055,7 @@
                   Layout of child boxes.
                 </li>
                 <li>
-                  Calculation of inline size, (ink) line-ascent and
+                  Calculation of <a>inline size</a>, (ink) line-ascent and
                   (ink) line-descent of the content.
                 </li>
                 <li>
@@ -1073,7 +1076,7 @@
           <ul>
             <li>
               After calculating the (ink) line-ascent
-              and (ink) line-descent, the (ink) block size of the content
+              and (ink) line-descent, the (ink) <a>block size</a> of the content
               is set to their sum.
             </li>
             <li>
@@ -1223,8 +1226,9 @@
             <p>
               The <code>mtext</code> element is laid out as a
               <a data-cite="CSS-DISPLAY-3#block-box">block box</a>
-              and the min-content/max-content inline sizes,
-              inline size, block size, first/last baseline sets are determined
+              and the <a>min-content inline size</a>,
+              <a>max-content inline size</a>,
+              <a>inline size</a>, <a>block size</a>, first/last baseline sets are determined
               accordingly.
             </p>
             <p>
@@ -1657,7 +1661,8 @@
                         layout algorithm of <a href="#layout-of-mtext"></a>.
                       </li>
                       <li>
-                        The min-content/max-content inline sizes of the content
+                        The <a>min-content inline size</a> and
+                        <a>max-content inline size</a> of the content
                         are set to the one obtained by the layout algorithm of
                         <a href="#layout-of-mtext"></a>.
                       </li>
@@ -1670,7 +1675,7 @@
                         layout algorithm of <a href="#layout-of-mtext"></a>.
                       </li>
                       <li>
-                        The inline size and (ink) block metrics of the content
+                        The <a>inline size</a> and (ink) block metrics of the content
                         are given by the
                         <a>box metrics of a stretchy glyph</a>
                         stretched to <a>inline dimension</a>
@@ -1703,7 +1708,8 @@
                         layout algorithm of <a href="#layout-of-mtext"></a>.
                       </li>
                       <li>
-                        The min-content/max-content inline sizes of the content
+                        The <a>min-content inline size</a> and
+                        <a>max-content inline size</a> of the content
                         are set to the
                         <a>preferred inline size of a glyph stretched
                           along the block axis</a>.
@@ -1717,13 +1723,13 @@
                         layout algorithm of <a href="#layout-of-mtext"></a>.
                       </li>
                       <li>
-                        The inline size and ink block metrics of the content
+                        The <a>inline size</a> and ink block metrics of the content
                         are obtained from the
                         <a>box metrics of a stretchy glyph</a>
                         stretched to <a>block dimension</a>
                         <code>T<sub>ascent</sub></code> +
                         <code>T<sub>descent</sub></code>.
-                        The inline size is the stretchy glyph width returned.
+                        The <a>inline size</a> is the stretchy glyph width returned.
                         If Δ = <code>T<sub>ascent</sub></code> +
                         <code>T<sub>descent</sub></code> −
                         (stretchy glyph ascent + stretchy glyph descent)
@@ -1782,8 +1788,9 @@
                     </p>
                   </li>
                   <li>
-                    The min-content/max-content inline sizes,
-                    inline size and block metrics of the content
+                    The <a>min-content inline size</a>,
+                    <a>max-content inline size</a>,
+                    <a>inline size</a> and block metrics of the content
                     are given by the
                     glyph found.
                   </li>
@@ -1842,9 +1849,10 @@
             Otherwise,
             the <code>&lt;mspace&gt;</code> element is laid out as shown on
             <a href="#figure-box-mspace"></a>.
-            The min-content and max-content inline sizes of the content are
+            The <a>min-content inline size</a> and
+            <a>max-content inline size</a> of the content are
             equal to the requested inline size.
-            The inline size, line-ascent and line-descent of the content
+            The <a>inline size</a>, line-ascent and line-descent of the content
             are respectively
             the requested inline size, line-ascent and line-descent.
           </p>
@@ -2114,7 +2122,8 @@
               <a><code>rspace</code></a>.
             </div>
             <p>
-              The min-content (respectively max-content) inline size are
+              The <a>min-content inline size</a>
+              (respectively <a>max-content inline size</a>) are
               calculated using the following algorithm:
             </p>
             <ol>
@@ -2141,7 +2150,8 @@
                   </li>
                   <li>
                     Increment <code>inline-offset</code> by
-                    the min-content (respectively max-content) inline size of
+                    the <a>min-content inline size</a>
+                    (respectively <a>max-content inline size</a>) of
                     the child's margin box.
                   </li>
                   <li>
@@ -2170,9 +2180,10 @@
               <a>algorithm for stretching operators along the block axis</a>.
             </p>
             <p>
-              The inline size of the content is calculated like
-              the min-content and max-content inline sizes of the content,
-              using the inline size of the
+              The <a>inline size</a> of the content is calculated like
+              the <a>min-content inline size</a> and
+              <a>max-content inline size</a> of the content,
+              using the <a>inline size</a> of the
               in-flow children's margin boxes instead.
             </p>
             <p>
@@ -2215,7 +2226,7 @@
                   </li>
                   <li>
                     Increment <code>inline-offset</code> by
-                    the inline size of the child's margin box.
+                    the <a>inline size</a> of the child's margin box.
                   </li>
                   <li>
                     If the child is <a>slanted</a> then
@@ -2312,11 +2323,13 @@
               <img src="figures/mfracbox.svg"/>
               <figcaption>Box model for the <code>&lt;mfrac&gt;</code> element</figcaption>
             </figure>
-            <p>The min-content (respectively max-content) inline size
-              of content is the maximum between the min-content
-              (respectively max-content) inline size of the numerator's
-              margin box and the min-content
-              (respectively max-content) of the denominator's
+            <p>The <a>min-content inline size</a>
+              (respectively <a>max-content inline size</a>) 
+              of content is the maximum between the
+              <a>min-content inline size</a>
+              (respectively <a>max-content inline size</a>) of the numerator's
+              margin box and the <a>min-content inline size</a>
+              (respectively <a>max-content inline size</a>) of the denominator's
               margin box.
             </p>
             <p>
@@ -2329,9 +2342,9 @@
               any stretch size constraint.
             </p>
             <p>
-              The inline size of the content
-              is the maximum between the inline size of the
-              numerator's margin box and the inline size of the
+              The <a>inline size</a> of the content
+              is the maximum between the <a>inline size</a> of the
+              numerator's margin box and the <a>inline size</a> of the
               denominator's margin box.
             </p>
             <p><code>NumeratorShift</code> is the maximum between:</p>
@@ -2404,8 +2417,8 @@
             </ul>
             <p>
               The inline offset of the numerator (respectively denominator)
-              is the half the inline size of the content −
-              half the inline size of
+              is the half the <a>inline size</a> of the content −
+              half the <a>inline size</a> of
               the numerator's margin box
               (respectively denominator's margin box).
             </p>
@@ -2417,12 +2430,13 @@
               towards the line-over (respectively line-under).
             </p>
             <p>
-              The inline size of the fraction bar is the inline size of the
+              The <a>inline size</a> of the fraction bar is the
+              <a>inline size</a> of the
               content and its
               inline offset is 0.
               The center of the fraction bar is shifted away from the baseline
               by a distance of <a>AxisHeight</a> towards the line-over.
-              Its block size is the line thickness.
+              Its <a>block size</a> is the line thickness.
             </p>
           </section>
           <section>
@@ -2437,8 +2451,8 @@
               <figcaption>Box model for the <code>&lt;mfrac&gt;</code> element without bar</figcaption>
             </figure>
             <p>
-              The min-content inline size, max-content inline size
-              and inline size of the content are calculated the same
+              The <a>min-content inline size</a>, <a>max-content inline size</a>
+              and <a>inline size</a> of the content are calculated the same
               as in <a href="#fraction-with-nonzero-line-thickness"></a>.
             </p>
             <p>
@@ -2628,19 +2642,22 @@
               <figcaption>Box model for the <code>&lt;msqrt&gt;</code> element</figcaption>
             </figure>
             <p>
-              The min-content (respectively max-content) inline size of the
+              The <a>min-content inline size</a>
+               (respectively <a>max-content inline size</a>)
+              of the
               content is
               the sum of the
               <a>preferred inline size of a glyph stretched along the
                 block axis</a>
               for the <a>radical glyph</a>
-              and of the min-content (respectively max-content) inline size
+              and of the
+              <a>min-content inline size</a> (respectively <a>max-content inline size</a>)
               of the base's margin box.
             </p>
             <p>
-              The inline size of the content is the sum of the advance width
+              The <a>inline size</a> of the content is the sum of the advance width
               of the <a>box metrics of the radical glyph</a> and
-              of the inline size of the base's margin's box.
+              of the <a>inline size</a> of the base's margin's box.
             </p>
             <p>
               The line-ascent of the content is the maximum between:
@@ -2663,7 +2680,7 @@
               </li>
             </ul>
             <p>
-              The inline size of the overbar is the inline size of the
+              The <a>inline size</a> of the overbar is the <a>inline size</a> of the
               base's margin's box.
               The inline offsets of the base and overbar are also the same
               and equal to the width of the
@@ -2671,7 +2688,7 @@
             </p>
             <p>
               The baseline of the base is aligned with the baseline.
-              The block size of the overbar is
+              The <a>block size</a> of the overbar is
               <a>RadicalRuleThickness</a>. Its vertical center is shifted away
               from the baseline by a distance towards the line-over
               equal to the line-ascent of the content, minus
@@ -2710,20 +2727,25 @@
             </figure>
             <div class="issue">Handle large negative RadicalKernAfterDegree?</div>
             <p>
-              The min-content (respectively max-content) inline size of the
+              The <a>min-content inline size</a>
+              (respectively <a>max-content inline size</a>) of the
               content is the sum
               of <a>RadicalKernBeforeDegree</a>,
-              the index min-content (respectively max-content) inline size
+              the index's
+              <a>min-content inline size</a>
+              (respectively <a>max-content inline size</a>)
               of the index's margin box,
               <a>RadicalKernAfterDegree</a>
-              and of the min-content (respectively max-content) of B.
+              and of the
+              <a>min-content inline size</a>
+              (respectively <a>max-content inline size</a>) of B.
             </p>
             <p>
-              The inline size of the content is the sum of
+              The <a>inline size</a> of the content is the sum of
               <a>RadicalKernBeforeDegree</a>,
-              the inline size of the index's margin box,
+              the <a>inline size</a> of the index's margin box,
               <a>RadicalKernAfterDegree</a>
-              and of the inline size of B.
+              and of the <a>inline size</a> of B.
             </p>
             <p>
               The line-ascent of the content is the maximum between:
@@ -2731,7 +2753,7 @@
             <ul>
               <li>−the line-descent of B +
                 <a>RadicalDegreeBottomRaisePercent</a> ×
-                the block size of B + the line-ascent of the
+                the <a>block size</a> of B + the line-ascent of the
                 index's margin box</li>
               <li>The line-ascent of B</li>
             </ul>
@@ -2739,7 +2761,7 @@
             <ul>
               <li>the line-descent of B −
                 <a>RadicalDegreeBottomRaisePercent</a> ×
-                the block size of B + the line-ascent of the
+                the <a>block size</a> of B + the line-ascent of the
                 index's margin box</li>
               <li>The line-descent of B</li>
             </ul>
@@ -2747,14 +2769,14 @@
               The inline offset of the index is
               <a>RadicalKernBeforeDegree</a>. The inline-offset of the
               base is the same + the
-              inline size of the index's margin box.
+              <a>inline size</a> of the index's margin box.
             </p>
             <p>
               The baseline of B is aligned with the baseline.
               The baseline of the index is shifted away
               from the line-under edge by a distance of
               <a>RadicalDegreeBottomRaisePercent</a> ×
-              the block size of B + the line-descent of the
+              the <a>block size</a> of B + the line-descent of the
               index's margin box.
             </p>
             <div class="note">
@@ -2931,21 +2953,21 @@
               <figcaption>Box model for the <code>&lt;mpadded&gt;</code> element</figcaption>
             </figure>
             <p>
-              The min-content (respectively max-content) inline size
+              The <a>min-content inline size</a> (respectively <a>max-content inline size</a>)
               of the content
               is the requested width calculated in
               <a href="#inner-box-and-requested-parameters"></a>
-              but using the min-content (respectively max-content)
-              inline size of the
+              but using the <a>min-content inline size</a> (respectively <a>max-content inline size</a>) of the
               mpadded inner box instead of the "inner inline size".
             </p>
             <div class="note">
-              The calculatation of min-content and max-content inline sizes
+              The calculation of
+              <a>min-content inline size</a> and <a>max-content inline size</a>
               are well-defined because the requested width
               does not depend on any block metric.
             </div>
             <p>
-              The inline size of the content
+              The <a>inline size</a> of the content
               is the requested width calculated in
               <a href="#inner-box-and-requested-parameters"></a>.
             </p>
@@ -3090,27 +3112,28 @@
                 For each layout B<sub>i</sub>, s<sub>left,i</sub> is the
                 line-left offset of
                 the B and s<sub>right,i</sub> is
-                (inline size of B<sub>i</sub> − line-right offset of B).
+                (<a>inline size</a> of B<sub>i</sub> − line-right offset of B).
                 s<sub>left</sub> (respectively s<sub>right</sub>) is the maximum
                 of the s<sub>left,i</sub> over
                 (respectively s<sub>left,i</sub>) over all the i. Then
-                the inline size is s<sub>left</sub> +
-                the inline size of B + s<sub>right</sub>.
+                the <a>inline size</a> is s<sub>left</sub> +
+                the <a>inline size</a> of B + s<sub>right</sub>.
               </li>
               <li>
                 Actually for each layout B<sub>i</sub>, the values
                 s<sub>left,i</sub> and
-                s<sub>right,i</sub> generally only depends on the inline size
+                s<sub>right,i</sub> generally only depends on the <a>inline size</a>
                 of B and parameter ξ<sub>8</sub> so it is possible to
                 perform the same calculation replacing "inline size of B"
-                with "content-min inline size of B" or
-                "content-max inline size of B". The only exception is for
+                with "<a>min-content inline size</a> of B" or
+                "<a>max-content inline size</a> of B". The only exception is for
                 the <code>longdiv</code> notation: In that case,
                 s<sub>left,i</sub> is replaced with the
                 <a>preferred inline size of a glyph stretched along the block axis</a>
                 for U+0029 RIGHT PARENTHESIS.
                 Again, it is possible to take the maximum values to calculate
-                the min-content and max-content inline sizes of the content.
+                the
+                <a>min-content inline size</a> and <a>max-content inline size</a> of the content.
               </li>
               <li>
                 The (ink) line-ascent of the content
@@ -3153,13 +3176,15 @@
                     notation of the <code>&lt;menclose&gt;</code> element</figcaption>
                 </figure>
                 <p>
-                  The min-content (respectively max-content) inline size
+                  The
+                  <a>min-content inline size</a> (respectively <a>max-content inline size</a>)
                   of the content is
-                  the min-content (respectively max-content) inline size
+                  the
+                  <a>min-content inline size</a> (respectively <a>max-content inline size</a>)
                   of B + 5ξ<sub>8</sub>.
                 </p>
                 <p>
-                  The inline size is the inline size of B +
+                  The <a>inline size</a> is the <a>inline size</a> of B +
                   5ξ<sub>8</sub>, the ink line-ascent of the content
                   is the one of B +
                   <a>OverbarVerticalGap</a> + <a>OverbarRuleThickness</a>
@@ -3174,8 +3199,8 @@
                 <p>
                   B is placed so that its baseline matches the baseline and
                   its line-left offset is 5ξ<sub>8</sub>.
-                  The inline size of the bar is ξ<sub>8</sub>,
-                  its block size is the block size of the content,
+                  The <a>inline size</a> of the bar is ξ<sub>8</sub>,
+                  its <a>block size</a> is the <a>block size</a> of the content,
                   its line-left offset
                   is ξ<sub>8</sub> and its line-over offset is 0.
                 </p>
@@ -3185,12 +3210,13 @@
                   The <code>right</code> notation is handled the same as the
                   <code>left</code> notation,
                   but with the bar placed on the line-right side. The block
-                  metrics, min-content inline size, max-content inline size
-                  and inline size of the content are the same.
+                  metrics,
+                  <a>min-content inline size</a>, <a>max-content inline size</a>
+                  and <a>inline size</a> of the content are the same.
                 </p>
                 <p>
-                  The inline size of the bar is ξ<sub>8</sub>,
-                  its line-left offset is the inline size −
+                  The <a>inline size</a> of the bar is ξ<sub>8</sub>,
+                  its line-left offset is the <a>inline size</a> −
                   2ξ<sub>8</sub> and the line-left offset of B is 0.
                 </p>
               </li>
@@ -3206,13 +3232,15 @@
                       notation of the <code>&lt;menclose&gt;</code> element</figcaption>
                   </figure>
                 <p>
-                  The min-content (respectively max-content) inline size
+                  The
+                  <a>min-content inline size</a> (respectively <a>max-content inline size</a>)
                   of the content is
-                  the min-content (respectively max-content) inline size
+                  the
+                  <a>min-content inline size</a> (respectively <a>max-content inline size</a>)
                   of B + 8ξ<sub>8</sub>.
                 </p>
                 <p>
-                  The inline size of the content is the inline size of B +
+                  The <a>inline size</a> of the content is the <a>inline size</a> of B +
                   8ξ<sub>8</sub>, the ink line-ascent of the content
                   is the one of B +
                   <a>OverbarVerticalGap</a> +  <a>OverbarRuleThickness</a>.
@@ -3226,8 +3254,8 @@
                 <p>
                   B is placed so that its baseline matches the baseline and
                   its line-left offset is 4ξ<sub>8</sub>.
-                  The inline size of the bar is the inline size of the content,
-                  its block size is <a>OverbarRuleThickness</a>,
+                  The <a>inline size</a> of the bar is the <a>inline size</a> of the content,
+                  its <a>block size</a> is <a>OverbarRuleThickness</a>,
                   its line-left offset
                   is 0 and its line-over offset is the ascent −
                   the ink line-ascent of B − <a>OverbarVerticalGap</a> −
@@ -3257,7 +3285,7 @@
                 </p>
                 <p>
                   B is placed so that its baseline matches the baseline.
-                  The block size of the bar is <a>UnderbarRuleThickness</a>
+                  The <a>block size</a> of the bar is <a>UnderbarRuleThickness</a>
                   and its line-over offset is the line-ascent of the content +
                   the ink line-descent of B + <a>UnderbarVerticalGap</a>.
                 </p>
@@ -3271,8 +3299,8 @@
                 <p>
                   For the <code>horizontalstrike</code> notation,
                   the metrics are the same as B.
-                  A bar of inline size the inline size of the content and
-                  of block size ξ<sub>8</sub> is drawn
+                  A bar of <a>inline size</a> the <a>inline size</a> of the content and
+                  of <a>block size</a> ξ<sub>8</sub> is drawn
                   at line-over position minus half ξ<sub>8</sub>.
                   See <a href="#figure-box-horizontal-strike"></a>.
                 </p>
@@ -3286,10 +3314,10 @@
                 <p>
                   For the <code>verticalstrike</code> notation,
                   the metrics are the same as B.
-                  A bar of inline size ξ<sub>8</sub> and
-                  of block size the block size of the content is drawn
+                  A bar of <a>inline size</a> ξ<sub>8</sub> and
+                  of <a>block size</a> the <a>block size</a> of the content is drawn
                   at line-left position
-                  half the inline size of the content minus half ξ<sub>8</sub>.
+                  half the <a>inline size</a> of the content minus half ξ<sub>8</sub>.
                 </p>
               </li>
               <li>
@@ -3301,8 +3329,8 @@
                   <a href="#figure-box-menclose-up-diagonal-strike"></a>.
                 </p>
                 <p>
-                  The min-content inline size,
-                  max-content inline size and inline size
+                  The
+                  <a>min-content inline size</a>, <a>max-content inline size</a> and <a>inline size</a>
                   of the content are the one of B + ξ<sub>8</sub>.
                 </p>
                 <p>
@@ -3357,8 +3385,7 @@
                     notation of the <code>&lt;menclose&gt;</code> element</figcaption>
                 </figure>
                 <p>
-                  The min-content inline size,
-                  max-content inline size and inline size
+                  <a>min-content inline size</a>, <a>max-content inline size</a> and <a>inline size</a>
                   of the content are the
                   ones of B plus 10ξ<sub>8</sub>.
                 </p>
@@ -3406,8 +3433,8 @@
                   box.
                 </p>
                 <p>
-                  The min-content inline size, max-content inline size
-                  and inline size of the content are the ones of B times √2 plus
+                  The <a>min-content inline size</a>, <a>max-content inline size</a>
+                  and <a>inline size</a> of the content are the ones of B times √2 plus
                   3ξ<sub>8</sub>.
                 </p>
                 <p>
@@ -3424,7 +3451,7 @@
                 <p>
                   Finally, B is placed so that its baseline is aligned with
                   the baseline and its line-left offset is
-                  ½(√2 − 1) times the inline size of B plus 3ξ<sub>8</sub>/2.
+                  ½(√2 − 1) times the <a>inline size</a> of B plus 3ξ<sub>8</sub>/2.
                 </p>
                 <figure id="figure-box-menclose-circle">
                   <img src="figures/circlebox.svg"/>
@@ -3548,11 +3575,11 @@
               <figcaption>Box model for the <code>&lt;msub&gt;</code> element</figcaption>
             </figure>
             <p>
-              The content-min (respectively content-max) inline size
-              of the content is the content-min (respectively max-content)
-              inline size of the base's margin box −
+              The
+              <a>min-content inline size</a> (respectively <a>max-content inline size</a>) of the content is the
+              <a>min-content inline size</a> (respectively <a>max-content inline size</a>) inline size of the base's margin box −
               <code>LargeOpItalicCorrection</code> +
-              the content-min (respectively max-content) inline size of
+              <a>min-content inline size</a> (respectively <a>max-content inline size</a>) of
               the subscript's margin box + <a>SpaceAfterScript</a>.
             </p>
             <p>
@@ -3565,10 +3592,10 @@
               any stretch size constraint.
             </p>
             <p>
-              The inline size of the content
+              The <a>inline size</a> of the content
               is the inline size of the base's margin box −
               <code>LargeOpItalicCorrection</code> +
-              the inline size of
+              the <a>inline size</a> of
               the subscript's margin box + <a>SpaceAfterScript</a>.
             </p>
             <p>
@@ -3599,7 +3626,7 @@
             </ul>
             <p>
               The inline offset of the base is 0 and the inline offset of the
-              subscript is the inline size of the base's margin box −
+              subscript is the <a>inline size</a> of the base's margin box −
               <code>LargeOpItalicCorrection</code>.
             </p>
             <p>
@@ -3624,12 +3651,14 @@
               <figcaption>Box model for the <code>&lt;msup&gt;</code> element</figcaption>
             </figure>
             <p>
-              The content-min (respectively content-max) inline size
-              of the content
-              is the content-min (respectively max-content)
-              inline size of the base's margin box +
+              The
+              <a>min-content inline size</a> (respectively <a>max-content inline size</a>) of
+              the content
+              is the
+              <a>min-content inline size</a> (respectively <a>max-content inline size</a>) of
+              the base's margin box +
               <code>ItalicCorrection</code> +
-              the content-min (respectively max-content) inline size of
+              the <a>min-content inline size</a> (respectively <a>max-content inline size</a>) of
               the superscript's margin box + <a>SpaceAfterScript</a>.
             </p>
             <p>
@@ -3642,10 +3671,10 @@
               any stretch size constraint.
             </p>
             <p>
-              The inline size of the content
-              is inline size of the base's margin box +
+              The <a>inline size</a> of the content
+              is the <a>inline size</a> of the base's margin box +
               <code>ItalicCorrection</code> +
-              the inline size of
+              the <a>inline size</a> of
               the superscript's margin box + <a>SpaceAfterScript</a>.
             </p>
             <p>
@@ -3680,7 +3709,7 @@
             </ul>
             <p>
               The inline offset of the base is 0 and the inline offset of
-              superscript is the inline size of the base's margin box +
+              superscript is the <a>inline size</a> of the base's margin box +
               <code>ItalicCorrection</code>.
             </p>
             <p>
@@ -3706,10 +3735,11 @@
               <figcaption>Box model for the <code>&lt;msubsup&gt;</code> element</figcaption>
             </figure>
             <p>
-              The min-content inline size (respectively max-content inline size,
-              inline size) of the content is the maximum between the of the
-              inline sizes (respectively max-content inline size,
-              inline sizes) of the content calculated in
+              The
+              <a>min-content inline size</a> (respectively <a>max-content inline size</a> and
+              <a>inline size</a>) of the content is the maximum between the
+              <a>min-content inline size</a> (respectively <a>max-content inline size</a> and
+              <a>inline size</a>) of the content calculated in
               <a href="#base-with-subscript"></a> and
               <a href="#base-with-superscript"></a>.
             </p>
@@ -3939,7 +3969,7 @@
               </li>
               <li>
                 Calculate the target size <code>T</code> to
-                the maximum inline size of the
+                the maximum <a>inline size</a> of the
                 margin boxes of child boxes that have been laid out in the
                 previous step.
               </li>
@@ -3966,13 +3996,13 @@
             </figure>
             <div class="issue" data-number="130">Avoid underestimation of min/max stretchy horizontal operators</div>
             <p>
-              The min-content (respectively max-content) inline sizes
+              The <a>min-content inline size</a> (respectively <a>max-content inline size</a>)
               of the content are
-              calculated like the inline size of the content below
+              calculated like the <a>inline size</a> of the content below
               but replacing the
-              inline sizes of the base's margin box and underscript's margin box
-              with
-              the min-content (respectively max-content) inline sizes
+              <a>inline sizes</a> of the base's margin box and underscript's margin box
+              with the
+              <a>min-content inline size</a> (respectively <a>max-content inline size</a>)
               of the base's margin box and underscript's margin box.
             </p>
             <p>
@@ -3980,21 +4010,21 @@
               using the <a>algorithm for stretching operators along the inline axis</a>.
             </p>
             <p>
-              The inline size of the content is
+              The <a>inline size</a> of the content is
               calculated by determining the absolute difference between:
             </p>
             <ul>
               <li>The maximum of:
                 <ul>
-                  <li>Half the inline size of the base's margin box.</li>
-                  <li>Half the inline size of the underscript's margin box −
+                  <li>Half the <a>inline size</a> of the base's margin box.</li>
+                  <li>Half the <a>inline size</a> of the underscript's margin box −
                     half <code>LargeOpItalicCorrection</code>.</li>
                 </ul>
               </li>
               <li>The minimum of:
                 <ul>
-                  <li>−Half the inline size of the base's margin box.</li>
-                  <li>−Half the inline size of the underscript's margin box −
+                  <li>−Half the <a>inline size</a> of the base's margin box.</li>
+                  <li>−Half the <a>inline size</a> of the underscript's margin box −
                     half <code>LargeOpItalicCorrection</code>.</li>
                 </ul>
               </li>
@@ -4002,9 +4032,9 @@
             <p>
               If m is the minimum calculated in the second item above then the
               inline offset
-              of the base is −m − half the inline size of the base's margin box.
+              of the base is −m − half the <a>inline size</a> of the base's margin box.
               The inline offset of the underscript is
-              −m − half the inline size of the underscript's margin box −
+              −m − half the <a>inline size</a> of the underscript's margin box −
               half <code>LargeOpItalicCorrection</code>.
             </p>
             <p>
@@ -4092,14 +4122,13 @@
             </figure>
             <div class="issue" data-number="130">Avoid underestimation of min/max stretchy horizontal operators</div>
             <p>
-              The min-content (respectively max-content) inline sizes
+              The <a>min-content inline size</a> (respectively <a>max-content inline size</a>)
               of the content are
-              calculated like the inline size of the content
+              calculated like the <a>inline size</a> of the content
               below but replacing the
-              inline sizes of the base's margin box and underscript's margin
+              <a>inline sizes</a> of the base's margin box and underscript's margin
               box with
-              the min-content (respectively max-content) inline sizes
-              of the base's margin box and underscript's margin box.
+              the <a>min-content inline size</a> (respectively <a>max-content inline size</a>) of the base's margin box and underscript's margin box.
             </p>
             <p>
               The in-flow children are laid out
@@ -4108,11 +4137,11 @@
             <p>
               The <code>TopAccentAttachment</code> is the
               <a>top accent attachment</a> of the overscript or
-              half the inline size of the overscript's margin box
+              half the <a>inline size</a> of the overscript's margin box
               if it is undefined.
             </p>
             <p>
-              The inline size of the content is
+              The <a>inline size</a> of the content is
               calculated by
               applying the <a>algorithm for stretching operators along the inline axis</a> for
               layout and determining the absolute difference between:
@@ -4120,15 +4149,15 @@
             <ul>
               <li>The maximum of:
                 <ul>
-                  <li>Half the inline size of the base's margin box.</li>
-                  <li>The inline size of the overscript's margin box
+                  <li>Half the <a>inline size</a> of the base's margin box.</li>
+                  <li>The <a>inline size</a> of the overscript's margin box
                     − <code>TopAccentAttachment</code> +
                     half <code>LargeOpItalicCorrection</code>.</li>
                 </ul>
               </li>
               <li>The minimum of:
                 <ul>
-                  <li>−Half the inline size of the base's margin box.</li>
+                  <li>−Half the <a>inline size</a> of the base's margin box.</li>
                   <li>−<code>TopAccentAttachment</code> +
                     half <code>LargeOpItalicCorrection</code>.</li>
                 </ul>
@@ -4137,9 +4166,9 @@
             <p>
               If m is the minimum calculated in the second item above then the
               inline offset
-              of the base is −m − half the inline size of the base's margin.
+              of the base is −m − half the <a>inline size</a> of the base's margin.
               The inline offset of the overscript is
-              −m − half the inline size of the overscript's margin box +
+              −m − half the <a>inline size</a> of the overscript's margin box +
               half <code>LargeOpItalicCorrection</code>.
             </p>
             <p>
@@ -4253,8 +4282,8 @@
             </figure>
             <div class="issue" data-number="130">Avoid underestimation of min/max stretchy horizontal operators</div>
             <p>
-              The min-content inline size, max-content inline size
-              and inline size of the content
+              The <a>min-content inline size</a>, <a>max-content inline size</a>
+              and <a>inline size</a> of the content
               are calculated as an absolute difference
               between a maximum inline offset and minimum inline offset.
               These extrema are calculated by taking the extremum value
@@ -4382,12 +4411,13 @@
               <figcaption>Box model for the <code>&lt;mmultiscripts&gt;</code> element</figcaption>
             </figure>
             <p>
-              The min-content (respectively max-content) inline size of the
+              The
+              <a>min-content inline size</a> (respectively <a>max-content inline size</a>) of the
               content is
-              calculated the same as the inline size of the content
+              calculated the same as the <a>inline size</a> of the content
               below, but replacing
-              "inline size" with "min-content inline size"
-              (respectively "max-content inline size") for the base's margin
+              "<a>inline size</a>" with "<a>min-content inline size</a>"
+              (respectively "<a>max-content inline size</a>") for the base's margin
               box and scripts's margin boxes.
             </p>
             <p>
@@ -4399,7 +4429,7 @@
               any stretch size constraint.
             </p>
             <p>
-              The inline size of the content
+              The <a>inline size</a> of the content
               is calculated with the following algorithm:
             </p>
             <ol>
@@ -4411,12 +4441,12 @@
                   maximum of
                 </p>
                 <ul>
-                  <li>The inline size of the subscript's margin box.</li>
+                  <li>The <a>inline size</a> of the subscript's margin box.</li>
                   <li>The inline size of the superscript's margin box.</li>
                 </ul>
               </li>
               <li>
-                Increment <code>inline-offset</code> by the inline size of the
+                Increment <code>inline-offset</code> by the <a>inline size</a> of the
                 base's margin box and
                 set <code>inline-size</code> to <code>inline-offset</code>.
               </li>
@@ -4427,21 +4457,21 @@
                 </p>
                 <ul>
                   <li>
-                    x + the inline size of the subscript's margin box +
+                    x + the <a>inline size</a> of the subscript's margin box +
                     <code>LargeOpItalicCorrection</code>.
                   </li>
                   <li>
-                    x + the inline size of the superscript's margin box −
+                    x + the <a>inline size</a> of the superscript's margin box −
                     <code>ItalicCorrection</code>.
                   </li>
                 </ul>
                 <p>Increment <code>inline-offset</code> to the maximum of:</p>
                 <ul>
                   <li>
-                    the inline size of the subscript's margin box.
+                    the <a>inline size</a> of the subscript's margin box.
                   </li>
                   <li>
-                    the inline size of the superscript's margin box.
+                    the <a>inline size</a> of the superscript's margin box.
                   </li>
                 </ul>
                 <p>
@@ -4492,22 +4522,22 @@
                     Set <code>pair-inline-size</code> to the maximum of
                     <ul>
                       <li>
-                        the inline size of the subscript's margin box.
+                        the <a>inline size</a> of the subscript's margin box.
                       </li>
                       <li>
-                        the inline size of the superscript's margin box.
+                        the <a>inline size</a> of the superscript's margin box.
                       </li>
                     </ul>
                   </li>
                   <li>
                     Place the subscript at inline-start position
                     <code>inline-offset</code> + <code>pair-inline-size</code>
-                    − the inline size of the subscript's margin box.
+                    − the <a>inline size</a> of the subscript's margin box.
                   </li>
                   <li>
                     Place the superscript at inline-start position
                     <code>inline-offset</code> + <code>pair-inline-size</code>
-                    − the inline size of the superscript's margin box.
+                    − the <a>inline size</a> of the superscript's margin box.
                   </li>
                   <li>
                     Place the subscript (respectively superscript) so its
@@ -4536,10 +4566,10 @@
                     Set <code>pair-inline-size</code> to the maximum of
                     <ul>
                       <li>
-                        the inline size of the subscript's margin box.
+                        the <a>inline size</a> of the subscript's margin box.
                       </li>
                       <li>
-                        the inline size of the superscript's margin box.
+                        the <a>inline size</a> of the superscript's margin box.
                       </li>
                     </ul>
                   </li>
@@ -4676,8 +4706,9 @@
           <p>
             The <code>mtable</code> element is as a CSS
             <a data-cite="CSS-DISPLAY-3#valdef-display-table">table</a>
-            and the min-content/max-content inline sizes,
-            inline size, block size, first/last baseline sets are determined
+            and the
+            <a>min-content inline size</a>, <a>max-content inline size</a>,
+            <a>inline size</a>, <a>block size</a>, first/last baseline sets are determined
             accordingly.
             The math axis is aligned with the center of the table.
           </p>
