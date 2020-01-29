@@ -2196,7 +2196,7 @@
               is the maximum of the
               <a>ink line-ascents</a> (respectively <a>line-ascents</a>)
               of all the in-flow children's <a>margin boxes</a>. Similarly,
-              the <a>ink line-descent<a> (respectively <a>line-descent</a>)
+              the <a>ink line-descent</a> (respectively <a>line-descent</a>)
               of the content is the maximum of the <a>ink line-descents</a>
               (respectively <a>ink line-ascents</a>)
               of all the in-flow children's <a>margin boxes</a>.
@@ -2278,7 +2278,8 @@
           <p>
             The
             <dfn><code>linethickness</code></dfn>
-            attribute indicates the thickness to use for the fraction bar.
+            attribute indicates the <dfn>fraction line thickness</dfn>
+            to use for the fraction bar.
             If present, it must
             have a value that is a valid <a>length-percentage</a>.
             If the attribute is absent or has an invalid value,
@@ -2316,7 +2317,7 @@
           <section id="fraction-with-nonzero-line-thickness">
             <h5>Fraction with nonzero line thickness</h5>
             <p>
-              If the actual line thickness is nonzero, the
+              If the <a>fraction line thickness</a> is nonzero, the
               <code>&lt;mfrac&gt;</code>
               element is laid out as shown on <a href="#figure-box-mfrac"></a>.
               The fraction bar must only be painted if the
@@ -2363,7 +2364,8 @@
                 (respectively <code>display</code>).
               </li>
               <li>
-                The <a>AxisHeight</a> + half the line thickness +
+                The <a>AxisHeight</a> + half the
+                <a>fraction line thickness</a> +
                 <a>FractionNumeratorGapMin</a>
                 (respectively <a>FractionNumDisplayStyleGapMin</a>)
                 if the <a>math-style</a> is <code>inline</code>
@@ -2380,7 +2382,7 @@
                 (respectively <code>display</code>).
               </li>
               <li>
-                Half the line thickness +
+                Half the <a>fraction line thickness</a> +
                 <a>FractionDenominatorGapMin</a>
                 (respectively <a>FractionDenomDisplayStyleGapMin</a>)
                 if the <a>math-style</a> is <code>inline</code>
@@ -2402,7 +2404,8 @@
                 the <a>line-ascent</a> of the denominator's <a>margin box</a>
               </li>
               <li>
-                <a>AxisHeight</a> plus half the line thickness.
+                <a>AxisHeight</a> plus half the
+                <a>fraction line thickness</a>.
               </li>
             </ul>
             <p>
@@ -2418,7 +2421,8 @@
                 + the <a>line-descent</a> of the denominator's <a>margin box</a>.
               </li>
               <li>
-                −<a>AxisHeight</a> plus half the line thickness.
+                −<a>AxisHeight</a> plus half the
+                <a>fraction line thickness</a>.
               </li>
               <li>0</li>
             </ul>
@@ -2443,13 +2447,14 @@
               inline offset is 0.
               The center of the fraction bar is shifted away from the baseline
               by a distance of <a>AxisHeight</a> towards the line-over.
-              Its <a>block size</a> is the line thickness.
+              Its <a>block size</a> is the
+              <a>fraction line thickness</a>.
             </p>
           </section>
           <section>
             <h5>Fraction with zero line thickness</h5>
             <p>
-              If the actual line thickness is zero,
+              If the <a>fraction line thickness</a> is zero,
               the <code>&lt;mfrac&gt;</code> element is instead laid out as
               shown on <a href="#figure-box-mfrac-without-bar"></a>.
             </p>
