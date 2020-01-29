@@ -1055,8 +1055,11 @@
                   Layout of child boxes.
                 </li>
                 <li>
-                  Calculation of <a>inline size</a>, (ink) line-ascent and
-                  (ink) line-descent of the content.
+                  Calculation of <a>inline size</a>,
+                  <a>ink line-ascent</a>,
+                  <a>ink line-descent</a>,
+                  <a>line-ascent</a> and
+                  <a>line-ascent</a> of the content.
                 </li>
                 <li>
                   Calculation of offsets of child boxes within the content box
@@ -1075,9 +1078,8 @@
           </p>
           <ul>
             <li>
-              After calculating the (ink) line-ascent
-              and (ink) line-descent, the (ink) <a>block size</a> of the content
-              is set to their sum.
+              After calculating the <a>line-ascent</a> and <a>line-descent</a>
+              the <a>block size</a> is set to their sum.
             </li>
             <li>
               <div class="issue" data-number="45">Interpret
@@ -1172,7 +1174,7 @@
             <a>embellished operators</a>. The former indicates
             a target size that a <a>core operator</a> stretched along
             the <a>inline axis</a> should cover.
-            The latter indicates an ink line-ascent and ink line-descent
+            The latter indicates an <a>ink line-ascent</a> and <a>ink line-descent</a>
             that a <a>core operator</a> stretched along the <a>block axis</a>
             should cover.
             Unless specified otherwise, these parameters are ignored during
@@ -1723,7 +1725,12 @@
                         layout algorithm of <a href="#layout-of-mtext"></a>.
                       </li>
                       <li>
-                        The <a>inline size</a> and ink block metrics of the content
+                        The <a>inline size</a>,
+                        <a>ink line-ascent</a>,
+                        <a>ink line-descent</a>,
+                        <a>line-ascent</a> and
+                        <a>line-descent</a>
+                        of the content
                         are obtained from the
                         <a>box metrics of a stretchy glyph</a>
                         stretched to <a>block dimension</a>
@@ -1737,9 +1744,6 @@
                         <code>T<sub>ascent</sub></code> + Δ/2
                         and the ink descent of the content is
                         <code>T<sub>descent</sub></code> + Δ/2.
-                        The ascent and descent of the content
-                        are the same as the ink
-                        ascent and ink descent of the content.
                       </li>
                       <li>
                         The painting of the operator is performed by the
@@ -1852,7 +1856,7 @@
             The <a>min-content inline size</a> and
             <a>max-content inline size</a> of the content are
             equal to the requested inline size.
-            The <a>inline size</a>, line-ascent and line-descent of the content
+            The <a>inline size</a>, <a>line-ascent</a> and <a>line-descent</a> of the content
             are respectively
             the requested inline size, line-ascent and line-descent.
           </p>
@@ -2187,11 +2191,14 @@
               in-flow children's <a>margin boxes</a> instead.
             </p>
             <p>
-              The (ink) line-ascent of the content
-              is the maximum of the (ink) line-ascents
+              The <a>ink line-ascent</a> (respectively <a>line-ascent</a>)
+              of the content
+              is the maximum of the
+              <a>ink line-ascents</a> (respectively <a>line-ascents</a>)
               of all the in-flow children's <a>margin boxes</a>. Similarly,
-              the (ink) line-descent of the content
-              is the maximum of the (ink) line-descents
+              the <a>ink line-descent<a> (respectively <a>line-descent</a>)
+              of the content is the maximum of the <a>ink line-descents</a>
+              (respectively <a>ink line-ascents</a>)
               of all the in-flow children's <a>margin boxes</a>.
             </p>
             <p>
@@ -2361,7 +2368,7 @@
                 (respectively <a>FractionNumDisplayStyleGapMin</a>)
                 if the <a>math-style</a> is <code>inline</code>
                 (respectively <code>display</code>) +
-                the ink line-descent of the numerator's <a>margin box</a>.
+                the <a>ink line-descent</a> of the numerator's <a>margin box</a>.
               </li>
             </ul>
             <p><code>DenominatorShift</code> is the maximum between:</p>
@@ -2378,37 +2385,37 @@
                 (respectively <a>FractionDenomDisplayStyleGapMin</a>)
                 if the <a>math-style</a> is <code>inline</code>
                 (respectively <code>display</code>) +
-                the ink line-ascent of the denominator's <a>margin box</a> −
+                the <a>ink line-ascent</a> of the denominator's <a>margin box</a> −
                 the <a>AxisHeight</a>.
               </li>
             </ul>
             <p>
-              The line-ascent of the content is the maximum between:
+              The <a>line-ascent</a> of the content is the maximum between:
             </p>
             <ul>
               <li>
                  <code>Numerator Shift</code> +
-                 the line-ascent of the numerator's <a>margin box</a>.
+                 the <a>line-ascent</a> of the numerator's <a>margin box</a>.
               </li>
               <li>
                 −<code>Denominator Shift</code> +
-                the line-ascent of the denominator's <a>margin box</a>
+                the <a>line-ascent</a> of the denominator's <a>margin box</a>
               </li>
               <li>
                 <a>AxisHeight</a> plus half the line thickness.
               </li>
             </ul>
             <p>
-              The line-descent of the content is the maximum between:
+              The <a>line-descent</a> of the content is the maximum between:
             </p>
             <ul>
               <li>
                 −<code>Numerator Shift</code>
-                + the line-descent of the numerator's <a>margin box</a>.
+                + the <a>line-descent</a> of the numerator's <a>margin box</a>.
               </li>
               <li>
                 <code>Denominator Shift</code>
-                + the line-descent of the denominator's <a>margin box</a>.
+                + the <a>line-descent</a> of the denominator's <a>margin box</a>.
               </li>
               <li>
                 −<a>AxisHeight</a> plus half the line thickness.
@@ -2476,9 +2483,9 @@
             <p>
               The <code>Gap</code> is defined to be
               (<code>BottomShift</code> −
-              the ink line-ascent of the denominator's <a>margin box</a>) +
+              the <a>ink line-ascent</a> of the denominator's <a>margin box</a>) +
               (<code>TopShift</code> −
-              the ink line-descent of the numerator's <a>margin box</a>).
+              the <a>ink line-descent</a> of the numerator's <a>margin box</a>).
               If <a>math-style</a> is <code>inline</code>
               then <code>GapMin</code>
               is <a>StackGapMin</a>
@@ -2490,29 +2497,29 @@
               half <code>GapMin</code> − <code>Gap</code>.
             </p>
             <p>
-              The line-ascent of the content is the maximum between:
+              The <a>line-ascent</a> of the content is the maximum between:
             </p>
             <ul>
               <li>
                  <code>TopShift</code> +
-                 the line-ascent of the numerator's <a>margin box</a>.
+                 the <a>line-ascent</a> of the numerator's <a>margin box</a>.
               </li>
               <li>
                 −<code>BottomShift</code>
-                + the line-ascent of the denominator's <a>margin box</a>.
+                + the <a>line-ascent</a> of the denominator's <a>margin box</a>.
               </li>
             </ul>
             <p>
-              The line-descent of the content is the maximum between:
+              The <a>line-descent</a> of the content is the maximum between:
             </p>
             <ul>
               <li>
                 −<code>TopShift</code>
-                + the line-descent of the numerator's <a>margin box</a>.
+                + the <a>line-descent</a> of the numerator's <a>margin box</a>.
               </li>
               <li>
                 <code>BottomShift</code>
-                + the line-descent of the denominator's <a>margin box</a>.
+                + the <a>line-descent</a> of the denominator's <a>margin box</a>.
               </li>
               <li>0</li>
             </ul>
@@ -2660,23 +2667,23 @@
               of the <a>inline size</a> of the base's margin's box.
             </p>
             <p>
-              The line-ascent of the content is the maximum between:
+              The <a>line-ascent</a> of the content is the maximum between:
             </p>
             <ul>
-              <li>The line-ascent of the base's <a>margin box</a>.</li>
-              <li>The sum of the ink line-ascent of the base,
+              <li>The <a>line-ascent</a> of the base's <a>margin box</a>.</li>
+              <li>The sum of the <a>ink line-ascent</a> of the base,
                 the <a>radical gap</a>, the <a>RadicalRuleThickness</a>
                 and <a>RadicalExtraAscender</a>.</li>
             </ul>
             <p>
-              The line-descent of the content is the maximum between:
+              The <a>line-descent</a> of the content is the maximum between:
             </p>
             <ul>
-              <li>The line-descent of the base's <a>margin box</a>.</li>
-              <li>The sum of the line-ascent and line-descent for the
+              <li>The <a>line-descent</a> of the base's <a>margin box</a>.</li>
+              <li>The sum of the <a>line-ascent</a> and <a>line-descent</a> for the
                 <a>box metrics of the radical glyph</a> and of the
                 <a>RadicalExtraAscender</a>, minus the
-                line-ascent of the content.
+                <a>line-ascent</a> of the content.
               </li>
             </ul>
             <p>
@@ -2691,7 +2698,7 @@
               The <a>block size</a> of the overbar is
               <a>RadicalRuleThickness</a>. Its vertical center is shifted away
               from the baseline by a distance towards the line-over
-              equal to the line-ascent of the content, minus
+              equal to the <a>line-ascent</a> of the content, minus
               the <a>RadicalExtraAscender</a>,
               minus half the <a>RadicalRuleThickness</a>.
             </p>
@@ -2748,22 +2755,22 @@
               and of the <a>inline size</a> of B.
             </p>
             <p>
-              The line-ascent of the content is the maximum between:
+              The <a>line-ascent</a> of the content is the maximum between:
             </p>
             <ul>
-              <li>−the line-descent of B +
+              <li>−the <a>line-descent</a> of B +
                 <a>RadicalDegreeBottomRaisePercent</a> ×
-                the <a>block size</a> of B + the line-ascent of the
+                the <a>block size</a> of B + the <a>line-ascent</a> of the
                 index's <a>margin box</a></li>
-              <li>The line-ascent of B</li>
+              <li>The <a>line-ascent</a> of B</li>
             </ul>
-            <p>The line-descent of the content is the maximum between:</p>
+            <p>The <a>line-descent</a> of the content is the maximum between:</p>
             <ul>
-              <li>the line-descent of B −
+              <li>the <a>line-descent</a> of B −
                 <a>RadicalDegreeBottomRaisePercent</a> ×
-                the <a>block size</a> of B + the line-ascent of the
+                the <a>block size</a> of B + the <a>line-ascent</a> of the
                 index's <a>margin box</a></li>
-              <li>The line-descent of B</li>
+              <li>The <a>line-descent</a> of B</li>
             </ul>
             <p>
               The inline offset of the index is
@@ -2776,7 +2783,7 @@
               The baseline of the index is shifted away
               from the line-under edge by a distance of
               <a>RadicalDegreeBottomRaisePercent</a> ×
-              the <a>block size</a> of B + the line-descent of the
+              the <a>block size</a> of B + the <a>line-descent</a> of the
               index's <a>margin box</a>.
             </p>
             <div class="note">
@@ -2868,7 +2875,7 @@
               using the algorithm of the <a><code>&lt;mrow&gt;</code></a> element
               to produce the
               <em>mpadded inner box</em> for the content with parameters called
-              inner inline size, inner line-ascent and inner line-descent.
+              inner inline size, inner <a>line-ascent</a> and inner line-descent.
               The requested <code>&lt;mpadded&gt;</code>
               parameters are determined as follows:
             </p>
@@ -2878,7 +2885,7 @@
                 attributes are absent or invalid the requested width
                 (respectively height, depth, lspace, voffset)
                 is the inner inline size
-                (respectively inner line-ascent, inner line-descent,
+                (respectively inner <a>line-ascent</a>, inner line-descent,
                 <code>0</code>,
                 <code>0</code>).
               </li>
@@ -2972,8 +2979,8 @@
               <a href="#inner-box-and-requested-parameters"></a>.
             </p>
             <p>
-              The (ink) line-ascent of the content is the requested height.
-              The (ink) line-descent of the content is the requested depth.
+              The <a>line-ascent</a> of the content is the requested height.
+              The <a>line-descent</a> of the content is the requested depth.
             </p>
             <p>
               The mpadded inner box is placed so that its baseline is
@@ -3136,27 +3143,32 @@
                 <a>min-content inline size</a> and <a>max-content inline size</a> of the content.
               </li>
               <li>
-                The (ink) line-ascent of the content
-                is the maximum of all the (ink)
-                line-ascent of the B<sub>i</sub>.
-                The (ink) line-descent of the content
-                is the maximum of all the (ink)
-                line-descent of the B<sub>i</sub>.
+                The <a>ink line-ascent</a> (respectively <a>line-ascent</a>)
+                of the content
+                is the maximum of all the
+                <a>ink line-descent</a> (respectively <a>line-descent</a>)
+                of the B<sub>i</sub>.
+                The
+                <a>ink line-descent</a> (respectively <a>line-descent</a>)
+                of the content
+                is the maximum of all the
+                <a>ink line-descent</a> (respectively <a>line-descent</a>)
+                of the B<sub>i</sub>.
               </li>
               <li>
                 Finally each box at line-left and line-over offsets
                 x, y in the layout of B<sub>i</sub> is moved to
                 line-left and line-over offsets
                 offsets x + s<sub>left</sub> − s<sub>left,i</sub>
-                and y + line-ascent of the content −
-                the line-ascent of B<sub>i</sub>.
+                and y + <a>line-ascent</a> of the content −
+                the <a>line-ascent</a> of B<sub>i</sub>.
               </li>
             </ul>
             <div class="note">
               The above description explains how to take the union of all
               the notations. In the layout of B<sub>i</sub>,
               B is placed at line-left position s<sub>left,i</sub> and
-              its baseline is at line-over position the line-ascent of
+              its baseline is at line-over position the <a>line-ascent</a> of
               B<sub>i</sub>. So the final shifts are compatible for
               the box B: It will be at line-left position s<sub>left</sub> and
               its baseline aligned with the baseline.
@@ -3185,16 +3197,16 @@
                 </p>
                 <p>
                   The <a>inline size</a> is the <a>inline size</a> of B +
-                  5ξ<sub>8</sub>, the ink line-ascent of the content
+                  5ξ<sub>8</sub>, the <a>ink line-ascent</a> of the content
                   is the one of B +
                   <a>OverbarVerticalGap</a> + <a>OverbarRuleThickness</a>
-                  and the ink line-descent of the content is the one of B +
+                  and the <a>ink line-descent</a> of the content is the one of B +
                   <a>UnderbarVerticalGap</a> + <a>UnderbarRuleThickness</a>.
-                  The line-ascent (respectively line-descent) of the content
+                  The <a>line-ascent</a> (respectively <a>line-descent</a>) of the content
                   is the maximum
-                  of between the ink line-ascent (respectively ink line-descent)
+                  of between the <a>ink line-ascent</a> (respectively <a>ink line-descent</a>)
                   of the content
-                  and the line-ascent (respectively line-descent) of B.
+                  and the <a>line-ascent</a> (respectively <a>line-descent</a>) of B.
                 </p>
                 <p>
                   B is placed so that its baseline matches the baseline and
@@ -3241,15 +3253,15 @@
                 </p>
                 <p>
                   The <a>inline size</a> of the content is the <a>inline size</a> of B +
-                  8ξ<sub>8</sub>, the ink line-ascent of the content
+                  8ξ<sub>8</sub>, the <a>ink line-ascent</a> of the content
                   is the one of B +
                   <a>OverbarVerticalGap</a> +  <a>OverbarRuleThickness</a>.
-                  The inline line-ascent of the content
-                  is the maximum between the line-ascent
-                  of B and the ink line-ascent of the content +
+                  The <a>line-ascent</a> of the content
+                  is the maximum between the <a>line-ascent</a>
+                  of B and the <a>ink line-ascent</a> of the content +
                   <a>OverbarExtraAscender</a>.
-                  The (ink) line-descent of the content
-                  is the (ink) line-descent of B.
+                  The <a>line-descent</a> of the content
+                  is the <a>line-descent</a> of B.
                 </p>
                 <p>
                   B is placed so that its baseline matches the baseline and
@@ -3258,7 +3270,7 @@
                   its <a>block size</a> is <a>OverbarRuleThickness</a>,
                   its line-left offset
                   is 0 and its line-over offset is the ascent −
-                  the ink line-ascent of B − <a>OverbarVerticalGap</a> −
+                  the <a>ink line-ascent</a> of B − <a>OverbarVerticalGap</a> −
                   <a>OverbarRuleThickness</a>.
                 </p>
               </li>
@@ -3274,20 +3286,20 @@
                   The inline metrics are the same.
                 </p>
                 <p>
-                  The ink line-descent of the content is the one of B +
+                  The <a>ink line-descent</a> of the content is the one of B +
                   <a>UnderbarVerticalGap</a> +  <a>UnderbarRuleThickness</a>.
-                  The inline line-descent of the content
-                  is the maximum between the line-descent
-                  of B and the ink line-descent of the content +
+                  The <a>line-descent</a> of the content
+                  is the maximum between the <a>line-descent</a>
+                  of B and the <a>ink line-descent</a> of the content +
                   <a>UnderbarExtraDescender</a>.
-                  The (ink) line-ascent of the content
-                  is the (ink) line-ascent of B.
+                  The <a>line-ascent</a> of the content
+                  is the <a>line-ascent</a> of B.
                 </p>
                 <p>
                   B is placed so that its baseline matches the baseline.
                   The <a>block size</a> of the bar is <a>UnderbarRuleThickness</a>
-                  and its line-over offset is the line-ascent of the content +
-                  the ink line-descent of B + <a>UnderbarVerticalGap</a>.
+                  and its line-over offset is the <a>line-ascent</a> of the content +
+                  the <a>ink line-descent</a> of B + <a>UnderbarVerticalGap</a>.
                 </p>
               </li>
             </ul>
@@ -3334,11 +3346,11 @@
                   of the content are the one of B + ξ<sub>8</sub>.
                 </p>
                 <p>
-                  The ink line-ascent and line-ascent of the content are the
-                  line-ascent of B + half
+                  The<a>line-ascent</a> of the content is the
+                  <a>line-ascent</a> of B + half
                   ξ<sub>8</sub>.
-                  The ink line-descent and line-descent of the content
-                  are the line-descent of
+                  The <a>line-descent</a> of the content
+                  is the <a>line-descent</a> of
                   B + half
                   ξ<sub>8</sub>.
                 </p>
@@ -3390,13 +3402,13 @@
                   ones of B plus 10ξ<sub>8</sub>.
                 </p>
                 <p>
-                  The ink line-ascent (respectively line-descent)
-                  of the content is the ink
-                  line-ascent (respectively line-descent) of B + 4ξ<sub>8</sub>.
-                  The line-ascent (respectively line-descent) of the content is
-                  the maximum between the line-ascent (respectively
-                  line-descent) of B
-                  and the ink line-ascent (respectively line-descent)
+                  The <a>ink line-ascent</a> (respectively <a>line-descent</a>)
+                  of the content is the
+                  <a>ink line-ascent</a> (respectively <a>ink line-descent</a>) of B + 4ξ<sub>8</sub>.
+                  The <a>line-ascent</a> (respectively <a>line-descent</a>) of the content is
+                  the maximum between the <a>line-ascent</a> (respectively
+                  <a>line-descent</a>) of B
+                  and the <a>ink line-ascent</a> (respectively <a>ink line-descent</a>)
                   of the content plus ξ<sub>8</sub>.
                 </p>
                 <p>
@@ -3438,14 +3450,13 @@
                   3ξ<sub>8</sub>.
                 </p>
                 <p>
-                  The ink line-ascent (respectively line-descent) of the content
-                  is the ink
-                  line-ascent (respectively line-descent) of B times
-                  √2 plus ½ξ<sub>8</sub>. The line-ascent
-                  (respectively line-descent) of the content
+                  The <a>ink line-ascent</a> (respectively <a>ink line-descent</a>) of the content
+                  is the <a>ink line-ascent</a> (respectively <a>ink line-descent</a>) of B times
+                  √2 plus ½ξ<sub>8</sub>. The <a>line-ascent</a>
+                  (respectively <a>line-descent</a>) of the content
                   is the maximum between the
-                  line-ascent (respectively line-descent) of B and the
-                  ink line-ascent (respectively line-descent) of the content
+                  <a>line-ascent</a> (respectively <a>line-descent</a>) of B and the
+                  <a>ink line-ascent</a> (respectively <a>ink line-descent</a>) of the content
                   plus ξ<sub>8</sub>.
                 </p>
                 <p>
@@ -3603,25 +3614,25 @@
             </p>
             <ul>
               <li><a>SubscriptShiftDown</a></li>
-              <li><a>SubscriptTopMax</a> + the ink line-ascent of the
+              <li><a>SubscriptTopMax</a> + the <a>ink line-ascent</a> of the
                 subscript's <a>margin box</a></li>
-              <li><a>SubscriptBaselineDropMin</a> + the ink line-descent of the
+              <li><a>SubscriptBaselineDropMin</a> + the <a>ink line-descent</a> of the
                 base's <a>margin box</a></li>
             </ul>
             <p>
-              The line-ascent of the content is the maximum between:
+              The <a>line-ascent</a> of the content is the maximum between:
             </p>
             <ul>
-              <li>The line-ascent of the base's <a>margin box</a>.</li>
-              <li>The line-ascent of the subcript's <a>margin box</a> −
+              <li>The <a>line-ascent</a> of the base's <a>margin box</a>.</li>
+              <li>The <a>line-ascent</a> of the subcript's <a>margin box</a> −
                 <code>SubShift</code>.</li>
             </ul>
             <p>
-              The line-descent of the content is the maximum between:
+              The <a>line-descent</a> of the content is the maximum between:
             </p>
             <ul>
-              <li>The line-descent of the base's <a>margin box</a>.</li>
-              <li>The line-descent of the subcript's <a>margin box</a> +
+              <li>The <a>line-descent</a> of the base's <a>margin box</a>.</li>
+              <li>The <a>line-descent</a> of the subcript's <a>margin box</a> +
                 <code>SubShift</code>.</li>
             </ul>
             <p>
@@ -3686,25 +3697,25 @@
                 <a>cramped</a> or
                 the value <a>SuperscriptShiftUp</a> otherwise.</li>
               <li>
-                <a>SuperscriptBottomMin</a> + the ink line-descent of the
+                <a>SuperscriptBottomMin</a> + the <a>ink line-descent</a> of the
                 superscript's <a>margin box</a></li>
-              <li>The ink line-ascent of the base's <a>margin box</a>
+              <li>The <a>ink line-ascent</a> of the base's <a>margin box</a>
                 − <a>SuperscriptBaselineDropMax</a></li>
             </ul>
             <p>
-              The line-ascent of the content is the maximum between:
+              The <a>line-ascent</a> of the content is the maximum between:
             </p>
             <ul>
-              <li>The line-ascent of the base's <a>margin box</a>.</li>
-              <li>The line-ascent of the supercript's <a>margin box</a> +
+              <li>The <a>line-ascent</a> of the base's <a>margin box</a>.</li>
+              <li>The <a>line-ascent</a> of the supercript's <a>margin box</a> +
                 <code>SuperShift</code>.</li>
             </ul>
             <p>
-              The line-descent of the content is the maximum between:
+              The <a>line-descent</a> of the content is the maximum between:
             </p>
             <ul>
-              <li>The line-descent of the base's <a>margin box</a>.</li>
-              <li>The line-descent of the supercript's <a>margin box</a> −
+              <li>The <a>line-descent</a> of the base's <a>margin box</a>.</li>
+              <li>The <a>line-descent</a> of the supercript's <a>margin box</a> −
                 <code>SuperShift</code>.</li>
             </ul>
             <p>
@@ -3764,9 +3775,9 @@
             <p>
               <code>SubSuperGap</code> is the gap between the two scripts
               along the <a>block axis</a> and is defined by
-              (<code>SubShift</code> − the ink line-ascent of the subscript's
+              (<code>SubShift</code> − the <a>ink line-ascent</a> of the subscript's
               <a>margin box</a>) +
-              (<code>SuperShift</code> − the ink line-descent of the
+              (<code>SuperShift</code> − the <a>ink line-descent</a> of the
               superscript's <a>margin box</a>).
               If <code>SubSuperGap</code> is not at least
               <a>SubSuperscriptGapMin</a> then the following steps are
@@ -3775,7 +3786,7 @@
             <ol>
               <li>
                 Let Δ be <a>SuperscriptBottomMaxWithSubscript</a>
-                − (<code>SuperShift</code> − the ink line-descent of the
+                − (<code>SuperShift</code> − the <a>ink line-descent</a> of the
                 superscript's <a>margin box</a>).
                 If Δ &gt; 0 then set Δ to the minimum between Δ set
                 <a>SubSuperscriptGapMin</a> − <code>SubSuperGap</code> and
@@ -3790,12 +3801,12 @@
               </li>
             </ol>
             <p>
-              The ink line-ascent (respectively line-ascent, ink line-descent,
-              line-descent) of the content
+              The <a>ink line-ascent</a> (respectively <a>line-ascent</a>, <a>ink line-descent</a>,
+              <a>line-descent</a>) of the content
               is set to the maximum
               of the
-              ink line-ascents (respectively line-ascents, ink line-descents,
-              line-descents) of the content
+              <a>ink line-ascent</a> (respectively <a>line-ascent</a>, <a>ink line-descent</a>,
+              <a>line-descent</a>) of the content
               calculated in
               in <a href="#base-with-subscript"></a> and
               <a href="#base-with-superscript"></a>
@@ -4083,26 +4094,26 @@
               </li>
             </ol>
             <p>
-              The line-ascent of the content is the maximum between:
+              The <a>line-ascent</a> of the content is the maximum between:
             </p>
             <ul>
-              <li>The line-ascent of the base's <a>margin box</a>.</li>
-              <li>The line-ascent of the underscript's <a>margin box</a> −
+              <li>The <a>line-ascent</a> of the base's <a>margin box</a>.</li>
+              <li>The <a>line-ascent</a> of the underscript's <a>margin box</a> −
                 <code>UnderShift</code>.</li>
             </ul>
             <p>
-              The line-descent of the content is the maximum between:
+              The <a>line-descent</a> of the content is the maximum between:
             </p>
             <ul>
-              <li>The line-descent of the base's <a>margin box</a>.</li>
-              <li>The line-descent of the underscript's <a>margin box</a> +
+              <li>The <a>line-descent</a> of the base's <a>margin box</a>.</li>
+              <li>The <a>line-descent</a> of the underscript's <a>margin box</a> +
                 <code>UnderShift</code> + <code>UnderExtraAscender</code>.</li>
             </ul>
             <p>
               The baseline of the base is aligned with the baseline.
               The baseline of the underscript is shifted away from the baseline
               and towards the line-under by a distance equal to
-              the ink line-descent of the base's <a>margin box</a>
+              the <a>ink line-descent</a> of the base's <a>margin box</a>
               + <code>UnderShift</code>.
             </p>
           </section>
@@ -4212,7 +4223,7 @@
                 <ol>
                   <li><a>OverbarVerticalGap</a> if the overscript is not an
                     accent.</li>
-                  <li>Or <a>AccentBaseHeight</a> minus the line-ascent
+                  <li>Or <a>AccentBaseHeight</a> minus the <a>line-ascent</a>
                     of the base's <a>margin box</a>
                     if this difference is nonnegative.</li>
                   <li>Or 0 otherwise.</li>
@@ -4223,7 +4234,7 @@
               </li>
             </ol>
             <div class="note">
-              For accent overscripts and bases with line-ascents that are at
+              For accent overscripts and bases with <a>line-ascents</a> that are at
               most
               <a>AccentBaseHeight</a>, the rule from
               [[OPEN-FONT-FORMAT]] [[?TEXBOOK]] is actually to align the
@@ -4239,26 +4250,26 @@
               <a>AccentBaseHeight</a> above the baseline of the base.
             </div>
             <p>
-              The line-ascent of the content is the maximum between:
+              The <a>line-ascent</a> of the content is the maximum between:
             </p>
             <ul>
-              <li>The line-ascent of the base's <a>margin box</a>.</li>
-              <li>The line-ascent of the overscript's <a>margin box</a> +
+              <li>The <a>line-ascent</a> of the base's <a>margin box</a>.</li>
+              <li>The <a>line-ascent</a> of the overscript's <a>margin box</a> +
                 <code>OverShift</code> + <code>OverExtraAscender</code>.</li>
             </ul>
             <p>
-              The line-descent of the content is the maximum between:
+              The <a>line-descent</a> of the content is the maximum between:
             </p>
             <ul>
-              <li>The line-descent of the base's <a>margin box</a>.</li>
-              <li>The line-descent of the overscript's <a>margin box</a> −
+              <li>The <a>line-descent</a> of the base's <a>margin box</a>.</li>
+              <li>The <a>line-descent</a> of the overscript's <a>margin box</a> −
                 <code>OverShift</code>.</li>
             </ul>
             <p>
               The baseline of the base is aligned with the baseline.
               The baseline of the overscript is shifted away from the baseline
               and towards the line-over by a distance equal to
-              the ink line-over of the base + <code>OverShift</code>.
+              the <a>ink line-ascent</a> of the base + <code>OverShift</code>.
             </p>
           </section>
           <section>
@@ -4298,7 +4309,7 @@
               using the <a>algorithm for stretching operators along the inline axis</a>.
             </p>
             <p>
-              The line-ascent and line-descent of the content
+              The <a>line-ascent</a> and <a>line-descent</a> of the content
               are also calculated by taking the extremum value
               of the extrema calculated in
               <a href="#base-with-underscript"></a> and
@@ -4488,16 +4499,16 @@
               <a href="#base-with-subscript-and-superscript"></a>.
             </p>
             <p>
-              The line-ascent of the content is calculated
-              by taking the maximum of all the line-ascent
+              The <a>line-ascent</a> of the content is calculated
+              by taking the maximum of all the <a>line-ascent</a>
               of each subscript/superscript pair as described in
               <a href="#base-with-subscript-and-superscript"></a>
               but using the <code>SubShift</code> and
               <code>SuperShift</code> values calculated above.
             </p>
             <p>
-              The line-descent of the content is calculated
-              by taking the maximum of all the line-descent
+              The <a>line-descent</a> of the content is calculated
+              by taking the maximum of all the <a>line-descent</a>
               of each subscript/superscript pair as described in
               <a href="#base-with-subscript-and-superscript"></a>
               but using the <code>SubShift</code> and
