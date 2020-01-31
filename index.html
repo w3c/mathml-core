@@ -2305,14 +2305,14 @@
             has less or more than two in-flow children, its layout algorithm
             is the same as the <a><code>&lt;mrow&gt;</code></a> element.
             Otherwise, the first in-flow child is called
-            <em>numerator</em>, the second in-flow child is called
-            <em>denominator</em> and the layout algorithm is explained below.
+            <dfn>numerator</dfn>, the second in-flow child is called
+            <dfn>denominator</dfn> and the layout algorithm is explained below.
           </p>
           <div class="note" id="fraction-css-rules-on-children">
             In practice, an <code>&lt;mfrac&gt;</code> element has two children
             that are in-flow. Hence the CSS rules basically performs
-            scriptlevel and displaystyle changes for the numerator and
-            denominator.
+            scriptlevel and displaystyle changes for the <a>numerator</a> and
+            <a>denominator</a>.
           </div>
           <section id="fraction-with-nonzero-line-thickness">
             <h5>Fraction with nonzero line thickness</h5>
@@ -2335,25 +2335,25 @@
               (respectively <a>max-content inline size</a>) 
               of content is the maximum between the
               <a>min-content inline size</a>
-              (respectively <a>max-content inline size</a>) of the numerator's
+              (respectively <a>max-content inline size</a>) of the <a>numerator</a>'s
               <a>margin box</a> and the <a>min-content inline size</a>
-              (respectively <a>max-content inline size</a>) of the denominator's
+              (respectively <a>max-content inline size</a>) of the <a>denominator</a>'s
               <a>margin box</a>.
             </p>
             <p>
               If there is an <a>inline stretch size constraint</a>
               or a <a>block stretch size constraint</a> then
-              the numerator is also laid out with the same stretch size
+              the <a>numerator</a> is also laid out with the same stretch size
               constraint
               otherwise it is laid out without any stretch
-              size constraint. The denominator is always laid out without
+              size constraint. The <a>denominator</a> is always laid out without
               any stretch size constraint.
             </p>
             <p>
               The <a>inline size</a> of the content
               is the maximum between the <a>inline size</a> of the
-              numerator's <a>margin box</a> and the <a>inline size</a> of the
-              denominator's <a>margin box</a>.
+              <a>numerator</a>'s <a>margin box</a> and the <a>inline size</a> of the
+              <a>denominator</a>'s <a>margin box</a>.
             </p>
             <p><code>NumeratorShift</code> is the maximum between:</p>
             <ul>
@@ -2370,7 +2370,7 @@
                 (respectively <a>FractionNumDisplayStyleGapMin</a>)
                 if the <a>math-style</a> is <code>inline</code>
                 (respectively <code>display</code>) +
-                the <a>ink line-descent</a> of the numerator's <a>margin box</a>.
+                the <a>ink line-descent</a> of the <a>numerator</a>'s <a>margin box</a>.
               </li>
             </ul>
             <p><code>DenominatorShift</code> is the maximum between:</p>
@@ -2387,7 +2387,7 @@
                 (respectively <a>FractionDenomDisplayStyleGapMin</a>)
                 if the <a>math-style</a> is <code>inline</code>
                 (respectively <code>display</code>) +
-                the <a>ink line-ascent</a> of the denominator's <a>margin box</a> −
+                the <a>ink line-ascent</a> of the <a>denominator</a>'s <a>margin box</a> −
                 the <a>AxisHeight</a>.
               </li>
             </ul>
@@ -2397,11 +2397,11 @@
             <ul>
               <li>
                  <code>Numerator Shift</code> +
-                 the <a>line-ascent</a> of the numerator's <a>margin box</a>.
+                 the <a>line-ascent</a> of the <a>numerator</a>'s <a>margin box</a>.
               </li>
               <li>
                 −<code>Denominator Shift</code> +
-                the <a>line-ascent</a> of the denominator's <a>margin box</a>
+                the <a>line-ascent</a> of the <a>denominator</a>'s <a>margin box</a>
               </li>
               <li>
                 <a>AxisHeight</a> plus half the
@@ -2414,11 +2414,11 @@
             <ul>
               <li>
                 −<code>Numerator Shift</code>
-                + the <a>line-descent</a> of the numerator's <a>margin box</a>.
+                + the <a>line-descent</a> of the <a>numerator</a>'s <a>margin box</a>.
               </li>
               <li>
                 <code>Denominator Shift</code>
-                + the <a>line-descent</a> of the denominator's <a>margin box</a>.
+                + the <a>line-descent</a> of the <a>denominator</a>'s <a>margin box</a>.
               </li>
               <li>
                 −<a>AxisHeight</a> plus half the
@@ -2427,14 +2427,14 @@
               <li>0</li>
             </ul>
             <p>
-              The inline offset of the numerator (respectively denominator)
+              The inline offset of the <a>numerator</a> (respectively <a>denominator</a>)
               is the half the <a>inline size</a> of the content −
               half the <a>inline size</a> of
-              the numerator's <a>margin box</a>
-              (respectively denominator's <a>margin box</a>).
+              the <a>numerator</a>'s <a>margin box</a>
+              (respectively <a>denominator</a>'s <a>margin box</a>).
             </p>
             <p>
-              The baseline of the numerator (respectively denominator)
+              The baseline of the <a>numerator</a> (respectively <a>denominator</a>)
               is shifted away from the baseline by a distance of
               <code>NumeratorShift</code> (respectively
               <code>DenominatorShift</code> )
@@ -2470,10 +2470,10 @@
             <p>
               If there is an <a>inline stretch size constraint</a> or
               a <a>block stretch size constraint</a> then
-              the numerator is also laid out with the same stretch size
+              the <a>numerator</a> is also laid out with the same stretch size
               constraint
               and otherwise it is laid out without any stretch
-              size constraint. The denominator is always laid out without
+              size constraint. The <a>denominator</a> is always laid out without
               any stretch size constraint.
             </p>
             <p>
@@ -2488,9 +2488,9 @@
             <p>
               The <code>Gap</code> is defined to be
               (<code>BottomShift</code> −
-              the <a>ink line-ascent</a> of the denominator's <a>margin box</a>) +
+              the <a>ink line-ascent</a> of the <a>denominator</a>'s <a>margin box</a>) +
               (<code>TopShift</code> −
-              the <a>ink line-descent</a> of the numerator's <a>margin box</a>).
+              the <a>ink line-descent</a> of the <a>numerator</a>'s <a>margin box</a>).
               If <a>math-style</a> is <code>inline</code>
               then <code>GapMin</code>
               is <a>StackGapMin</a>
@@ -2507,11 +2507,11 @@
             <ul>
               <li>
                  <code>TopShift</code> +
-                 the <a>line-ascent</a> of the numerator's <a>margin box</a>.
+                 the <a>line-ascent</a> of the <a>numerator</a>'s <a>margin box</a>.
               </li>
               <li>
                 −<code>BottomShift</code>
-                + the <a>line-ascent</a> of the denominator's <a>margin box</a>.
+                + the <a>line-ascent</a> of the <a>denominator</a>'s <a>margin box</a>.
               </li>
             </ul>
             <p>
@@ -2520,21 +2520,21 @@
             <ul>
               <li>
                 −<code>TopShift</code>
-                + the <a>line-descent</a> of the numerator's <a>margin box</a>.
+                + the <a>line-descent</a> of the <a>numerator</a>'s <a>margin box</a>.
               </li>
               <li>
                 <code>BottomShift</code>
-                + the <a>line-descent</a> of the denominator's <a>margin box</a>.
+                + the <a>line-descent</a> of the <a>denominator</a>'s <a>margin box</a>.
               </li>
               <li>0</li>
             </ul>
             <p>
-              The inline offsets of the numerator and denominator are
+              The inline offsets of the <a>numerator</a> and <a>denominator</a> are
               calculated the same as in
               <a href="#fraction-with-nonzero-line-thickness"></a>.
             </p>
             <p>
-              The baseline of the numerator (respectively denominator) is
+              The baseline of the <a>numerator</a> (respectively <a>denominator</a>) is
               shifted away from the baseline by a distance of
               <code>TopShift</code> (respectively −
               <code>BottomShift</code>) towards the
@@ -3514,7 +3514,7 @@
             </li>
           </ol>
           <div class="note" id="cramped-element">
-            The second in-flow child corresponds to a numerator, subscript or
+            The second in-flow child corresponds to a <a>numerator</a>, subscript or
             underscript.
           </div>
         </section>
