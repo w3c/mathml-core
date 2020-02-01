@@ -889,30 +889,30 @@
                 <li>
                   The <dfn>alphabetic baseline</dfn> also just called
                   the <dfn>baseline</dfn>. The algebric distance from the
-                  baseline to the line-over edge of the box is the called
+                  baseline to the <a>line-over</a> edge of the box is the called
                   <dfn>line-ascent</dfn>. The algebric distance from the
-                  line-under edge to the baseline of the box
+                  <a>line-under</a> edge to the baseline of the box
                   is the called <dfn>line-descent</dfn>.
                 </li>
                 <li>
                   The <dfn>mathematical baseline</dfn> also called
                   <dfn>math axis</dfn>. It is shifted away from the alphabetical
-                  baseline by <a>AxisHeight</a> towards the line-over.
+                  baseline by <a>AxisHeight</a> towards the <a>line-over</a>.
                 </li>
                 <li>
-                  The <dfn>ink-over baseline</dfn>, indicating the line-over
+                  The <dfn>ink-over baseline</dfn>, indicating the <a>line-over</a>
                   theorical limit of the content drawn, excluding any
                   extra space.
-                  If not specified, it is aligned with the line-over edge.
+                  If not specified, it is aligned with the <a>line-over</a> edge.
                   The algebric distance from the <a>alphabetic baseline</a> to
                   the <a>ink-over baseline</a> is called the
                   <dfn>ink line-ascent</dfn>.
                 </li>
                 <li>
-                  The <dfn>ink-under baseline</dfn>, indicating the line-under
+                  The <dfn>ink-under baseline</dfn>, indicating the <a>line-under</a>
                   theorical limit of the content drawn, excluding any
                   extra space.
-                  If not specified, it is aligned with the line-under edge.
+                  If not specified, it is aligned with the <a>line-under</a> edge.
                   The algebric distance from the <a>ink-under baseline</a>
                   to the <a>alphabetic baseline</a> is called the
                   <dfn>ink line-descent</dfn>.
@@ -1122,12 +1122,12 @@
               </p>
               <p>
                 In general, the baselines of the <a>border box</a> are the same as
-                the one of the <a>padding box</a>. However, if the line-over border is
+                the one of the <a>padding box</a>. However, if the <a>line-over</a> border is
                 positive then the <a>ink-over baseline</a> is set to the
-                line-over edge of the <a>border box</a> and if
-                the line-under border is
+                <a>line-over</a> edge of the <a>border box</a> and if
+                the <a>line-under</a> border is
                 positive then the <a>ink-under baseline</a> is set to the
-                line-under edge of the <a>border box</a>.
+                <a>line-under</a> edge of the <a>border box</a>.
               </p>
               <p>
                 If the <a>padding box</a> has a <a>top accent attachment</a>
@@ -1245,7 +1245,7 @@
               <li>
                 The <a>ink-over baseline</a> (respectively and
                 <a>ink-under baseline</a>) is set to align with
-                the line-over edge
+                the <a>line-over</a> edge
                 (respectively and <a>ink-under baseline</a>) of the
                 ink bounding box of the text.
               </li>
@@ -1751,7 +1751,7 @@
                         to <a>shape a stretchy glyph</a>
                         stretched to <a>block dimension</a> <code>T</code> and
                         at position determined by the previous box metrics
-                        shifted by Δ/2 towards the line-over.
+                        shifted by Δ/2 towards the <a>line-over</a>.
                       </li>
                     </ol>
                     <figure id="figure-base-variants-and-assembly">
@@ -2438,7 +2438,7 @@
               is shifted away from the baseline by a distance of
               <code>NumeratorShift</code> (respectively
               <code>DenominatorShift</code> )
-              towards the line-over (respectively line-under).
+              towards the <a>line-over</a> (respectively <a>line-under</a>).
             </p>
             <p>
               The <a>inline size</a> of the fraction bar is the
@@ -2446,7 +2446,7 @@
               content and its
               inline offset is 0.
               The center of the fraction bar is shifted away from the baseline
-              by a distance of <a>AxisHeight</a> towards the line-over.
+              by a distance of <a>AxisHeight</a> towards the <a>line-over</a>.
               Its <a>block size</a> is the
               <a>fraction line thickness</a>.
             </p>
@@ -2538,7 +2538,7 @@
               shifted away from the baseline by a distance of
               <code>TopShift</code> (respectively −
               <code>BottomShift</code>) towards the
-              line-over (respectively line-under).
+              <a>line-over</a> (respectively <a>line-under</a>).
             </p>
           </section>
         </section>
@@ -2702,7 +2702,7 @@
               The baseline of the base is aligned with the baseline.
               The <a>block size</a> of the overbar is
               <a>RadicalRuleThickness</a>. Its vertical center is shifted away
-              from the baseline by a distance towards the line-over
+              from the baseline by a distance towards the <a>line-over</a>
               equal to the <a>line-ascent</a> of the content, minus
               the <a>RadicalExtraAscender</a>,
               minus half the <a>RadicalRuleThickness</a>.
@@ -2716,7 +2716,7 @@
               </li>
               <li>
                 At block offset shifted away from the
-                line-over edge of the overbar towards the line-under
+                <a>line-over</a> edge of the overbar towards the <a>line-under</a>
                 by a distance given by the ascent
                 of the <a>box metrics of the radical glyph</a>.
               </li>
@@ -2786,7 +2786,7 @@
             <p>
               The baseline of B is aligned with the baseline.
               The baseline of the index is shifted away
-              from the line-under edge by a distance of
+              from the <a>line-under</a> edge by a distance of
               <a>RadicalDegreeBottomRaisePercent</a> ×
               the <a>block size</a> of B + the <a>line-descent</a> of the
               index's <a>margin box</a>.
@@ -2990,7 +2990,7 @@
             <p>
               The mpadded inner box is placed so that its baseline is
               shifted away from the baseline by the requested voffset
-              towards the line-over.
+              towards the <a>line-over</a>.
             </p>
           </section>
         </section>
@@ -3161,9 +3161,9 @@
                 of the B<sub>i</sub>.
               </li>
               <li>
-                Finally each box at line-left and line-over offsets
+                Finally each box at line-left and <a>line-over offsets</a>
                 x, y in the layout of B<sub>i</sub> is moved to
-                line-left and line-over offsets
+                line-left and <a>line-over offsets</a>
                 offsets x + s<sub>left</sub> − s<sub>left,i</sub>
                 and y + <a>line-ascent</a> of the content −
                 the <a>line-ascent</a> of B<sub>i</sub>.
@@ -3173,7 +3173,7 @@
               The above description explains how to take the union of all
               the notations. In the layout of B<sub>i</sub>,
               B is placed at line-left position s<sub>left,i</sub> and
-              its baseline is at line-over position the <a>line-ascent</a> of
+              its baseline is at <a>line-over</a> position the <a>line-ascent</a> of
               B<sub>i</sub>. So the final shifts are compatible for
               the box B: It will be at line-left position s<sub>left</sub> and
               its baseline aligned with the baseline.
@@ -3219,7 +3219,7 @@
                   The <a>inline size</a> of the bar is ξ<sub>8</sub>,
                   its <a>block size</a> is the <a>block size</a> of the content,
                   its line-left offset
-                  is ξ<sub>8</sub> and its line-over offset is 0.
+                  is ξ<sub>8</sub> and its <a>line-over offset</a> is 0.
                 </p>
               </li>
               <li>
@@ -3239,7 +3239,7 @@
               </li>
               <li>
                 <p>For the <code>top</code> notation, a bar is drawn
-                  on the line-over side along the <a>inline axis</a>
+                  on the <a>line-over</a> side along the <a>inline axis</a>
                   as shown on <a href="#figure-box-menclose-top"></a>.
                 </p>
                 <p>
@@ -3274,7 +3274,7 @@
                   The <a>inline size</a> of the bar is the <a>inline size</a> of the content,
                   its <a>block size</a> is <a>OverbarRuleThickness</a>,
                   its line-left offset
-                  is 0 and its line-over offset is the ascent −
+                  is 0 and its <a>line-over offset</a> is the ascent −
                   the <a>ink line-ascent</a> of B − <a>OverbarVerticalGap</a> −
                   <a>OverbarRuleThickness</a>.
                 </p>
@@ -3283,7 +3283,7 @@
                 <p>
                   The <code>bottom</code> notation is drawn the same as the
                   <code>top</code> notation,
-                  but with the bar placed on the line-under side of B and using
+                  but with the bar placed on the <a>line-under</a> side of B and using
                   parameters
                   <a>UnderbarRuleThickness</a>,
                   <a>UnderbarVerticalGap</a>
@@ -3303,7 +3303,7 @@
                 <p>
                   B is placed so that its baseline matches the baseline.
                   The <a>block size</a> of the bar is <a>UnderbarRuleThickness</a>
-                  and its line-over offset is the <a>line-ascent</a> of the content +
+                  and its <a>line-over offset</a> is the <a>line-ascent</a> of the content +
                   the <a>ink line-descent</a> of B + <a>UnderbarVerticalGap</a>.
                 </p>
               </li>
@@ -3318,7 +3318,7 @@
                   the metrics are the same as B.
                   A bar of <a>inline size</a> the <a>inline size</a> of the content and
                   of <a>block size</a> ξ<sub>8</sub> is drawn
-                  at line-over position minus half ξ<sub>8</sub>.
+                  at <a>line-over</a> position minus half ξ<sub>8</sub>.
                   See <a href="#figure-box-horizontal-strike"></a>.
                 </p>
                 <figure id="figure-box-horizontal-strike">
@@ -3341,8 +3341,8 @@
                 <p>
                   For the <code>updiagonalstrike</code> notation,
                   a bar is drawn
-                  going from the line-left line-under corner to the
-                  line-right line-over corner as shown on
+                  going from the <a>line-left</a> <a>line-under</a> corner to the
+                  <a>line-right</a> <a>line-over</a> corner as shown on
                   <a href="#figure-box-menclose-up-diagonal-strike"></a>.
                 </p>
                 <p>
@@ -3367,8 +3367,8 @@
                   Using terminology from [[SVG]],
                   the bar is drawn with a line
                   of thickness ξ<sub>8</sub> going from the
-                  line-under line-left corner of B
-                  to the line-over line-right corner of B with
+                  <a>line-under</a> <a>line-left</a> corner of B
+                  to the <a>line-over</a> line-right corner of B with
                   <code>stroke-linecap</code> set to <code>butt</code>.
                 </p>
                 <figure id="figure-box-menclose-up-diagonal-strike">
@@ -3381,8 +3381,8 @@
                 <p>
                   For the <code>downdiagonalstrike</code> notation,
                   a bar is drawn
-                  going from the line-left line-over corner to the
-                  line-right line-under corner. The metrics are the same as
+                  going from the line-left <a>line-over</a> corner to the
+                  <a>line-right</a> <a>line-under</a> corner. The metrics are the same as
                   for the <code>updiagonalstrike</code> notation.
                 </p>
               </li>
@@ -3649,7 +3649,7 @@
               The base is placed so that its baseline
               matches the baseline. The subscript is placed so that its baseline
               is shifted away from the baseline by <code>SubShift</code>
-              towards the line-under.
+              towards the <a>line-under</a>.
             </p>
           </section>
           <section>
@@ -3733,7 +3733,7 @@
               matches the baseline. The superscript is placed so that its
               baseline
               is shifted away from the baseline by <code>SuperShift</code>
-              towards the line-over.
+              towards the <a>line-over</a>.
             </p>
           </section>
           <section>
@@ -4117,7 +4117,7 @@
             <p>
               The baseline of the base is aligned with the baseline.
               The baseline of the underscript is shifted away from the baseline
-              and towards the line-under by a distance equal to
+              and towards the <a>line-under</a> by a distance equal to
               the <a>ink line-descent</a> of the base's <a>margin box</a>
               + <code>UnderShift</code>.
             </p>
@@ -4273,7 +4273,7 @@
             <p>
               The baseline of the base is aligned with the baseline.
               The baseline of the overscript is shifted away from the baseline
-              and towards the line-over by a distance equal to
+              and towards the <a>line-over</a> by a distance equal to
               the <a>ink line-ascent</a> of the base + <code>OverShift</code>.
             </p>
           </section>
@@ -4559,7 +4559,7 @@
                     baseline is
                     shifted away from the baseline by
                     <code>SubShift</code> (respectively <code>SuperShift</code>)
-                    towards the line-under (respectively line-over).
+                    towards the <a>line-under</a> (respectively <a>line-over</a>).
                   </li>
                   <li>
                     Increment <code>inline-offset</code> by
@@ -4602,7 +4602,7 @@
                     Place the subscript (superscript) so its baseline is
                     shifted away from the baseline by
                     <code>SubShift</code> (respectively <code>SuperShift</code>)
-                    towards the line-under (respectively line-over).
+                    towards the <a>line-under</a> (respectively <a>line-over</a>).
                   </li>
                   <li>
                     Increment <code>inline-offset</code> by
