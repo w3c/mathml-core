@@ -719,7 +719,7 @@
             and <code>&lt;U&gt;</code>.
           </p>
           <p>
-            <code>displaystyle</code> and <code>scriptlevel</code> values
+            <a><code>displaystyle</code></a> and <a><code>scriptlevel</code></a> values
             are automatically adjusted within MathML elements.
             To fully implement these attributes, additional CSS properties must be
             specified in the user agent stylesheet
@@ -728,7 +728,7 @@
           <div class="note">
             T<sub>E</sub>X's <code>\displaystyle</code>, <code>\textstyle</code>,
             <code>\scriptstyle</code>, and <code>\scriptscriptstyle</code> correspond
-            to <code>displaystyle</code> and <code>scriptlevel</code> as
+            to <a><code>displaystyle</code></a> and <a><code>scriptlevel</code></a> as
             <code>true</code> and <code>0</code>,
             <code>false</code> and <code>0</code>,
             <code>false</code> and <code>1</code>,
@@ -2288,9 +2288,9 @@
           </p>
           <p>
             The <code>&lt;mfrac&gt;</code> element sets
-            <code>displaystyle</code> to <code>false</code>,
+            <a><code>displaystyle</code></a> to <code>false</code>,
             or if it was already <code>false</code> increments
-            <code>scriptlevel</code> by 1, within its children.
+            <a><code>scriptlevel</code></a> by 1, within its children.
             To avoid visual confusion between the fraction bar and another
             adjacent items (e.g. minus sign or another fraction's bar),
             a default 1-pixel space is added around the element.
@@ -2311,7 +2311,7 @@
           <div class="note" id="fraction-css-rules-on-children">
             In practice, an <code>&lt;mfrac&gt;</code> element has two children
             that are in-flow. Hence the CSS rules basically performs
-            scriptlevel and displaystyle changes for the <a>numerator</a> and
+            <a><code>scriptlevel</code></a> and <a><code>displaystyle</code></a> changes for the <a>numerator</a> and
             <a>denominator</a>.
           </div>
           <section id="fraction-with-nonzero-line-thickness">
@@ -2560,7 +2560,7 @@
           </p>
           <p>
             The <code>&lt;mroot&gt;</code> element sets
-            increments scriptlevel by 2, and sets displaystyle to "false" in all
+            increments <a><code>scriptlevel</code></a> by 2, and sets <a><code>displaystyle</code></a> to "false" in all
             but its first child.
             The <a href="#user-agent-stylesheet">user agent stylesheet</a>
             must contain the following rule in order to implement that behavior:
@@ -2590,7 +2590,7 @@
           <div class="note" id="mroot-css-rules-on-children">
             In practice, an <code>&lt;mroot&gt;</code> element has two children
             that are in-flow. Hence the CSS rules basically performs
-            scriptlevel and displaystyle changes for the index.
+            <a><code>scriptlevel</code></a> and <a><code>displaystyle</code></a> changes for the index.
           </div>
           <p>
             The children of the
@@ -4657,7 +4657,7 @@
           </p>
           <pre class="css" data-include="user-agent-stylesheet/scripts.css"></pre>
           <div class="issue" data-number="76">
-            In [[MathML3]] specification, the scriptlevel shouldn't be
+            In [[MathML3]] specification, the <a><code>scriptlevel</code></a> shouldn't be
             incremented either if the underscript/overscript is an
             <a>embellished operator</a> with the
             <a><code>accent</code></a> property.
@@ -4666,8 +4666,8 @@
             In practice, all the children of the MathML elements described in
             this section are in-flow and the
             <code>&lt;mprescript&gt;</code> is empty.
-            Hence the CSS rules essentially performs automatic displaystyle and
-            scriptlevel changes for the scripts.
+            Hence the CSS rules essentially performs automatic <a><code>displaystyle</code></a> and
+            <a><code>scriptlevel</code></a> changes for the scripts.
           </div>
         </section>
       </section>
