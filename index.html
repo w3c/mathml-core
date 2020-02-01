@@ -998,8 +998,8 @@
           </figure>
           <div class="note">
             The position of child boxes and graphical items inside a MathML
-            box are expressed using the <code>inline offset</code>
-            and <code>block offset</code>.
+            box are expressed using the <a>inline offset</a>
+            and <a>block offset</a>.
             For convenience, the layout algorithms may describe offsets using
             flow-relative directions, line-relative directions or
             the <a>baseline</a>.
@@ -2230,8 +2230,8 @@
                     its <a><code>lspace</code></a> property.
                   </li>
                   <li>
-                    Set the inline offset of the child
-                    to <code>inline-offset</code> and its block offset such
+                    Set the <a>inline offset</a> of the child
+                    to <code>inline-offset</code> and its <a>block offset</a> such
                     that the baseline of the child is aligned with the baseline.
                   </li>
                   <li>
@@ -2430,7 +2430,7 @@
               <li>0</li>
             </ul>
             <p>
-              The inline offset of the <a>numerator</a> (respectively <a>denominator</a>)
+              The <a>inline offset</a> of the <a>numerator</a> (respectively <a>denominator</a>)
               is the half the <a>inline size</a> of the content −
               half the <a>inline size</a> of
               the <a>numerator</a>'s <a>margin box</a>
@@ -2447,7 +2447,7 @@
               The <a>inline size</a> of the fraction bar is the
               <a>inline size</a> of the
               content and its
-              inline offset is 0.
+              <a>inline offset</a> is 0.
               The center of the fraction bar is shifted away from the baseline
               by a distance of <a>AxisHeight</a> towards the <a>line-over</a>.
               Its <a>block size</a> is the
@@ -2532,7 +2532,7 @@
               <li>0</li>
             </ul>
             <p>
-              The inline offsets of the <a>numerator</a> and <a>denominator</a> are
+              The <a>inline offsets</a> of the <a>numerator</a> and <a>denominator</a> are
               calculated the same as in
               <a href="#fraction-with-nonzero-line-thickness"></a>.
             </p>
@@ -2697,7 +2697,7 @@
             <p>
               The <a>inline size</a> of the overbar is the <a>inline size</a> of the
               base's margin's box.
-              The inline offsets of the base and overbar are also the same
+              The <a>inline offsets</a> of the base and overbar are also the same
               and equal to the width of the
               <a>box metrics of the radical glyph</a>.
             </p>
@@ -2715,10 +2715,10 @@
             </p>
             <ul>
               <li>
-                At inline offset 0.
+                At <a>inline offset</a> 0.
               </li>
               <li>
-                At block offset shifted away from the
+                At <a>block offset</a> shifted away from the
                 <a>line-over</a> edge of the overbar towards the <a>line-under</a>
                 by a distance given by the ascent
                 of the <a>box metrics of the radical glyph</a>.
@@ -2781,7 +2781,7 @@
               <li>The <a>line-descent</a> of B</li>
             </ul>
             <p>
-              The inline offset of the index is
+              The <a>inline offset</a> of the index is
               <a>RadicalKernBeforeDegree</a>. The inline-offset of the
               base is the same + the
               <a>inline size</a> of the index's <a>margin box</a>.
@@ -3644,7 +3644,7 @@
                 <code>SubShift</code>.</li>
             </ul>
             <p>
-              The inline offset of the base is 0 and the inline offset of the
+              The <a>inline offset</a> of the base is 0 and the <a>inline offset</a> of the
               subscript is the <a>inline size</a> of the base's <a>margin box</a> −
               <code>LargeOpItalicCorrection</code>.
             </p>
@@ -3727,7 +3727,7 @@
                 <code>SuperShift</code>.</li>
             </ul>
             <p>
-              The inline offset of the base is 0 and the inline offset of
+              The <a>inline offset</a> of the base is 0 and the <a>inline offset</a> of
               superscript is the <a>inline size</a> of the base's <a>margin box</a> +
               <code>ItalicCorrection</code>.
             </p>
@@ -3822,7 +3822,7 @@
               <code>SuperShift</code> above.
             </p>
             <p>
-              The inline and block offsets of the base and scripts are
+              The <a>inline offset</a> and <a>block offset</a> of the base and scripts are
               performed the
               same as described in
               <a href="#base-with-subscript"></a> and
@@ -4050,9 +4050,9 @@
             </ul>
             <p>
               If m is the minimum calculated in the second item above then the
-              inline offset
+              <a>inline offset</a>
               of the base is −m − half the <a>inline size</a> of the base's <a>margin box</a>.
-              The inline offset of the underscript is
+              The <a>inline offset</a> of the underscript is
               −m − half the <a>inline size</a> of the underscript's <a>margin box</a> −
               half <code>LargeOpItalicCorrection</code>.
             </p>
@@ -4182,10 +4182,10 @@
               </li>
             </ul>
             <p>
-              If m is the minimum calculated in the second item above then the
-              inline offset
+              If m is the minimum calculated in the second item above then <a>the
+              inline</a> offset
               of the base is −m − half the <a>inline size</a> of the base's margin.
-              The inline offset of the overscript is
+              The <a>inline offset</a> of the overscript is
               −m − half the <a>inline size</a> of the overscript's <a>margin box</a> +
               half <code>LargeOpItalicCorrection</code>.
             </p>
@@ -4303,12 +4303,12 @@
               The <a>min-content inline size</a>, <a>max-content inline size</a>
               and <a>inline size</a> of the content
               are calculated as an absolute difference
-              between a maximum inline offset and minimum inline offset.
+              between a maximum <a>inline offset</a> and minimum <a>inline offset</a>.
               These extrema are calculated by taking the extremum value
               of the corresponding extrema calculated in
               <a href="#base-with-underscript"></a> and
               <a href="#base-with-overscript"></a>.
-              The inline offsets of the base, underscript and
+              The <a>inline offsets</a> of the base, underscript and
               overscript are calculated as in these sections but using
               the new minimum m (minimum of the corresponding minima).
             </p>
@@ -4571,7 +4571,7 @@
               </ol>
               <li>
                 Place the base and <code>&lt;mprescript&gt;</code> boxes
-                at inline offsets
+                at <a>inline offsets</a>
                 <code>inline-offset</code> and with their baselines
                 aligned with the baseline.
               </li>
