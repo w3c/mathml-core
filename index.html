@@ -880,24 +880,25 @@
               <p>
                 Block metrics.
                 The <a>block size</a>,
-                <a data-cite="CSS-ALIGN-3#first-baseline-set">first baseline set</a>
+                <a data-cite="CSS-ALIGN-3#first-baseline-set"><dfn>first baseline set</dfn></a>
                 and
-                <a data-cite="CSS-ALIGN-3#last-baseline-set">last baseline set</a>.
-                The following baselines are defined for MathML boxes:
+                <a data-cite="CSS-ALIGN-3#last-baseline-set"><dfn>last baseline set</dfn></a>.
+                The following <a data-cite="CSS-WRITING-MODES-3#intro-baselines"><dfn>baselines</dfn></a> are defined for MathML boxes:
               </p>
               <ol>
                 <li>
-                  The <dfn>alphabetic baseline</dfn> also just called
-                  the <dfn>baseline</dfn>. The algebric distance from the
-                  baseline to the <a>line-over</a> edge of the box is the called
+                  The <dfn>alphabetic baseline</dfn>
+                  which typically aligns with the bottom of uppercase Latin
+                  glyphs. The algebric distance from the
+                  <a>alphabetic baseline</a> to the <a>line-over</a> edge of the box is the called
                   <dfn>line-ascent</dfn>. The algebric distance from the
-                  <a>line-under</a> edge to the baseline of the box
+                  <a>line-under</a> edge to the <a>alphabetic baseline</a> of the box
                   is the called <dfn>line-descent</dfn>.
                 </li>
                 <li>
                   The <dfn>mathematical baseline</dfn> also called
-                  <dfn>math axis</dfn>. It is shifted away from the alphabetical
-                  baseline by <a>AxisHeight</a> towards the <a>line-over</a>.
+                  <dfn>math axis</dfn> which typically aligns with the fraction
+                  bar, middle of fences and binary operators. It is shifted away from the <a>alphabetic baseline</a> by <a>AxisHeight</a> towards the <a>line-over</a>.
                 </li>
                 <li>
                   The <dfn>ink-over baseline</dfn>, indicating the <a>line-over</a>
@@ -928,8 +929,8 @@
                 descent.
               </div>
               <div class="issue" data-number="112">Define MathML line breaking?</div>
-              Unless specified otherwise, the last baseline set is equal to the
-              first baseline set for MathML boxes.
+              Unless specified otherwise, the <a>last baseline set</a> is equal to the
+              <a>first baseline set</a> for MathML boxes.
             </li>
             <li>
               An optional <dfn>italic correction</dfn>
@@ -1002,7 +1003,7 @@
             and <a>block offset</a>.
             For convenience, the layout algorithms may describe offsets using
             flow-relative directions, line-relative directions or
-            the <a>baseline</a>.
+            the <a>alphabetic baseline</a>.
             It is always possible to pass from one description to the other
             because position of child boxes are always performed after the
             metrics of the box and of its child boxes are calculated.
@@ -1021,7 +1022,7 @@
                 the child box) otherwise.
               </li>
               <li>
-                The <a>block offset</a> of the <a>baseline</a> of a box
+                The <a>block offset</a> of the <a>alphabetic baseline</a> of a box
                 is the <a>line-ascent</a>
                 if the CSS property
                 <a data-cite="CSS-WRITING-MODES-3#propdef-writing-mode">writing-mode</a>
@@ -1088,7 +1089,7 @@
               <div class="issue" data-number="45">Interpret
                 width/height/inline-size/block-size?</div>
               <div class="issue" data-number="112">Define MathML line breaking?</div>
-              The box metrics, offsets, baselines, <a>italic correction</a> and
+              The box metrics, offsets, <a>baselines</a>, <a>italic correction</a> and
               <a>top accent attachment</a> of the
               <a data-cite="CSS-BOX-3#content-box"><dfn>content box</dfn></a>
               are set to the one calculated for the content.
@@ -1104,7 +1105,7 @@
                 properties as described in CSS.
               </p>
               <p>
-                The baselines
+                The <a>baselines</a>
                 of the <a>padding box</a> are the same as the one of the <a>content box</a>.
               </p>
               <p>
@@ -1124,7 +1125,7 @@
                 property as described in CSS.
               </p>
               <p>
-                In general, the baselines of the <a>border box</a> are the same as
+                In general, the <a>baselines</a> of the <a>border box</a> are the same as
                 the one of the <a>padding box</a>. However, if the <a>line-over</a> border is
                 positive then the <a>ink-over baseline</a> is set to the
                 <a>line-over</a> edge of the <a>border box</a> and if
@@ -1155,7 +1156,7 @@
                 properties as described in CSS.
               </p>
               <p>
-                The baselines
+                The <a>baselines</a>
                 of the <a>margin box</a> are the same as the one of the <a>border box</a>.
               </p>
               <p>
@@ -1233,7 +1234,8 @@
               <a data-cite="CSS-DISPLAY-3#block-box">block box</a>
               and the <a>min-content inline size</a>,
               <a>max-content inline size</a>,
-              <a>inline size</a>, <a>block size</a>, first/last baseline sets are determined
+              <a>inline size</a>, <a>block size</a>,
+              <a>first baseline set</a> and <a>last baseline set</a> are determined
               accordingly.
             </p>
             <p>
@@ -1965,7 +1967,8 @@
             element with <a>in-flow</a> children
             child<sub>1</sub>, child<sub>2</sub>, … child<sub>N</sub>
             is laid out as show on <a href="#figure-box-mrow"></a>. The child boxes
-            are put in a row one after the other with all their baselines
+            are put in a row one after the other with all their
+            <a>alphabetic baselines</a>
             aligned.
           </p>
           <figure id="figure-box-mrow">
@@ -1974,7 +1977,7 @@
           </figure>
           <p>
           <div class="note">
-            Because the box model ensure alignment of baselines,
+            Because the box model ensure alignment of <a>alphabetic baselines</a>,
             fraction bars or symmetric stretchy operators
             will also be aligned along the math axis in the typical case when
             <a>AxisHeight</a> is the same for all <a>in-flow</a> children.
@@ -2232,7 +2235,7 @@
                   <li>
                     Set the <a>inline offset</a> of the child
                     to <code>inline-offset</code> and its <a>block offset</a> such
-                    that the baseline of the child is aligned with the baseline.
+                    that the <a>alphabetic baseline</a> of the child is aligned with the <a>alphabetic baseline</a>.
                   </li>
                   <li>
                     Increment <code>inline-offset</code> by
@@ -2437,8 +2440,8 @@
               (respectively <a>denominator</a>'s <a>margin box</a>).
             </p>
             <p>
-              The baseline of the <a>numerator</a> (respectively <a>denominator</a>)
-              is shifted away from the baseline by a distance of
+              The <a>alphabetic baseline</a> of the <a>numerator</a> (respectively <a>denominator</a>)
+              is shifted away from the <a>alphabetic baseline</a> by a distance of
               <code>NumeratorShift</code> (respectively
               <code>DenominatorShift</code> )
               towards the <a>line-over</a> (respectively <a>line-under</a>).
@@ -2448,7 +2451,7 @@
               <a>inline size</a> of the
               content and its
               <a>inline offset</a> is 0.
-              The center of the fraction bar is shifted away from the baseline
+              The center of the fraction bar is shifted away from the <a>alphabetic baseline</a>
               by a distance of <a>AxisHeight</a> towards the <a>line-over</a>.
               Its <a>block size</a> is the
               <a>fraction line thickness</a>.
@@ -2537,8 +2540,8 @@
               <a href="#fraction-with-nonzero-line-thickness"></a>.
             </p>
             <p>
-              The baseline of the <a>numerator</a> (respectively <a>denominator</a>) is
-              shifted away from the baseline by a distance of
+              The <a>alphabetic baseline</a> of the <a>numerator</a> (respectively <a>denominator</a>) is
+              shifted away from the <a>alphabetic baseline</a> by a distance of
               <code>TopShift</code> (respectively −
               <code>BottomShift</code>) towards the
               <a>line-over</a> (respectively <a>line-under</a>).
@@ -2702,10 +2705,10 @@
               <a>box metrics of the radical glyph</a>.
             </p>
             <p>
-              The baseline of the base is aligned with the baseline.
+              The <a>alphabetic baseline</a> of the base is aligned with the <a>alphabetic baseline</a>.
               The <a>block size</a> of the overbar is
               <a>RadicalRuleThickness</a>. Its vertical center is shifted away
-              from the baseline by a distance towards the <a>line-over</a>
+              from the <a>alphabetic baseline</a> by a distance towards the <a>line-over</a>
               equal to the <a>line-ascent</a> of the content, minus
               the <a>RadicalExtraAscender</a>,
               minus half the <a>RadicalRuleThickness</a>.
@@ -2787,8 +2790,8 @@
               <a>inline size</a> of the index's <a>margin box</a>.
             </p>
             <p>
-              The baseline of B is aligned with the baseline.
-              The baseline of the index is shifted away
+              The <a>alphabetic baseline</a> of B is aligned with the <a>alphabetic baseline</a>.
+              The <a>alphabetic baseline</a> of the index is shifted away
               from the <a>line-under</a> edge by a distance of
               <a>RadicalDegreeBottomRaisePercent</a> ×
               the <a>block size</a> of B + the <a>line-descent</a> of the
@@ -2991,8 +2994,8 @@
               The <a>line-descent</a> of the content is the requested depth.
             </p>
             <p>
-              The mpadded inner box is placed so that its baseline is
-              shifted away from the baseline by the requested voffset
+              The mpadded inner box is placed so that its <a>alphabetic baseline</a> is
+              shifted away from the <a>alphabetic baseline</a> by the requested voffset
               towards the <a>line-over</a>.
             </p>
           </section>
@@ -3003,8 +3006,8 @@
             Historically, the
             <dfn><code>&lt;mphantom&gt;</code></dfn>
             element was introduced to render
-            its content invisibly, but with the same size and other dimensions,
-            including baseline position, that its contents would have if they were
+            its content invisibly, but with the same metrics size and other dimensions,
+            including <a>alphabetic baseline</a> position</a>that its contents would have if they were
             rendered normally.
           </p>
           <p>
@@ -3125,7 +3128,7 @@
             <ul>
               <li>
                 For each layout B<sub>i</sub>, s<sub>left,i</sub> is the
-                line-left offset of
+                <a>line-left offset</a> of
                 the B and s<sub>right,i</sub> is
                 (<a>inline size</a> of B<sub>i</sub> − line-right offset of B).
                 s<sub>left</sub> (respectively s<sub>right</sub>) is the maximum
@@ -3164,9 +3167,9 @@
                 of the B<sub>i</sub>.
               </li>
               <li>
-                Finally each box at line-left and <a>line-over offsets</a>
+                Finally each box at <a>line-left offset</a> and <a>line-over offset</a>
                 x, y in the layout of B<sub>i</sub> is moved to
-                line-left and <a>line-over offsets</a>
+                <a>line-left offset</a> and <a>line-over offset</a>
                 offsets x + s<sub>left</sub> − s<sub>left,i</sub>
                 and y + <a>line-ascent</a> of the content −
                 the <a>line-ascent</a> of B<sub>i</sub>.
@@ -3176,10 +3179,10 @@
               The above description explains how to take the union of all
               the notations. In the layout of B<sub>i</sub>,
               B is placed at line-left position s<sub>left,i</sub> and
-              its baseline is at <a>line-over</a> position the <a>line-ascent</a> of
+              its <a>alphabetic baseline</a> is at <a>line-over</a> position the <a>line-ascent</a> of
               B<sub>i</sub>. So the final shifts are compatible for
               the box B: It will be at line-left position s<sub>left</sub> and
-              its baseline aligned with the baseline.
+              its <a>alphabetic baseline</a> aligned with the <a>alphabetic baseline</a>.
             </div>
           </section>
           <section>
@@ -3217,7 +3220,7 @@
                   and the <a>line-ascent</a> (respectively <a>line-descent</a>) of B.
                 </p>
                 <p>
-                  B is placed so that its baseline matches the baseline and
+                  B is placed so that its <a>alphabetic baseline</a> matches the <a>alphabetic baseline</a> and
                   its line-left offset is 5ξ<sub>8</sub>.
                   The <a>inline size</a> of the bar is ξ<sub>8</sub>,
                   its <a>block size</a> is the <a>block size</a> of the content,
@@ -3272,7 +3275,7 @@
                   is the <a>line-descent</a> of B.
                 </p>
                 <p>
-                  B is placed so that its baseline matches the baseline and
+                  B is placed so that its <a>alphabetic baseline</a> matches the <a>alphabetic baseline</a> and
                   its line-left offset is 4ξ<sub>8</sub>.
                   The <a>inline size</a> of the bar is the <a>inline size</a> of the content,
                   its <a>block size</a> is <a>OverbarRuleThickness</a>,
@@ -3304,7 +3307,7 @@
                   is the <a>line-ascent</a> of B.
                 </p>
                 <p>
-                  B is placed so that its baseline matches the baseline.
+                  B is placed so that its <a>alphabetic baseline</a> matches the <a>alphabetic baseline</a>.
                   The <a>block size</a> of the bar is <a>UnderbarRuleThickness</a>
                   and its <a>line-over offset</a> is the <a>line-ascent</a> of the content +
                   the <a>ink line-descent</a> of B + <a>UnderbarVerticalGap</a>.
@@ -3363,7 +3366,7 @@
                   ξ<sub>8</sub>.
                 </p>
                 <p>
-                  B is placed so that its baseline is the baseline and
+                  B is placed so that its <a>alphabetic baseline</a> is the <a>alphabetic baseline</a> and
                   its line-left offset is half ξ<sub>8</sub>.
                 </p>
                 <p>
@@ -3420,7 +3423,7 @@
                   of the content plus ξ<sub>8</sub>.
                 </p>
                 <p>
-                  B is placed so that its baseline is the baseline and
+                  B is placed so that its <a>alphabetic baseline</a> is the <a>alphabetic baseline</a> and
                   its line-left offset is 5ξ<sub>8</sub>.
                   If B' is the ink box B expanded on each side by
                   ½7ξ<sub>8</sub> then using terminology from [[SVG]],
@@ -3468,8 +3471,8 @@
                   plus ξ<sub>8</sub>.
                 </p>
                 <p>
-                  Finally, B is placed so that its baseline is aligned with
-                  the baseline and its line-left offset is
+                  Finally, B is placed so that its <a>alphabetic baseline</a> is aligned with
+                  the <a>alphabetic baseline</a> and its line-left offset is
                   ½(√2 − 1) times the <a>inline size</a> of B plus 3ξ<sub>8</sub>/2.
                 </p>
                 <figure id="figure-box-menclose-circle">
@@ -3649,9 +3652,9 @@
               <code>LargeOpItalicCorrection</code>.
             </p>
             <p>
-              The base is placed so that its baseline
-              matches the baseline. The subscript is placed so that its baseline
-              is shifted away from the baseline by <code>SubShift</code>
+              The base is placed so that its <a>alphabetic baseline</a>
+              matches the <a>alphabetic baseline</a>. The subscript is placed so that its <a>alphabetic baseline</a>
+              is shifted away from the <a>alphabetic baseline</a> by <code>SubShift</code>
               towards the <a>line-under</a>.
             </p>
           </section>
@@ -3732,10 +3735,10 @@
               <code>ItalicCorrection</code>.
             </p>
             <p>
-              The base is placed so that its baseline
-              matches the baseline. The superscript is placed so that its
-              baseline
-              is shifted away from the baseline by <code>SuperShift</code>
+              The base is placed so that its <a>alphabetic baseline</a>
+              matches the <a>alphabetic baseline</a>. The superscript is placed so that its
+              <a>alphabetic baseline</a>
+              is shifted away from the <a>alphabetic baseline</a> by <code>SuperShift</code>
               towards the <a>line-over</a>.
             </p>
           </section>
@@ -4118,8 +4121,8 @@
                 <code>UnderShift</code> + <code>UnderExtraAscender</code>.</li>
             </ul>
             <p>
-              The baseline of the base is aligned with the baseline.
-              The baseline of the underscript is shifted away from the baseline
+              The <a>alphabetic baseline</a> of the base is aligned with the <a>alphabetic baseline</a>.
+              The <a>alphabetic baseline</a> of the underscript is shifted away from the <a>alphabetic baseline</a>
               and towards the <a>line-under</a> by a distance equal to
               the <a>ink line-descent</a> of the base's <a>margin box</a>
               + <code>UnderShift</code>.
@@ -4182,8 +4185,8 @@
               </li>
             </ul>
             <p>
-              If m is the minimum calculated in the second item above then <a>the
-              inline</a> offset
+              If m is the minimum calculated in the second item above then the
+              <a>inline offset</a>
               of the base is −m − half the <a>inline size</a> of the base's margin.
               The <a>inline offset</a> of the overscript is
               −m − half the <a>inline size</a> of the overscript's <a>margin box</a> +
@@ -4246,16 +4249,16 @@
               most
               <a>AccentBaseHeight</a>, the rule from
               [[OPEN-FONT-FORMAT]] [[?TEXBOOK]] is actually to align the
-              baselines of the overscripts and of the bases. This assumes that
+              <a>alphabetic baselines</a> of the overscripts and of the bases. This assumes that
               accent glyphs are designed in such a way that their ink bottoms
               are
-              more or less <a>AccentBaseHeight</a> above their baselines. Hence,
+              more or less <a>AccentBaseHeight</a> above their <a>alphabetic baselines</a>. Hence,
               the previous rule will guarantee that all the overscript bottoms
               are aligned while still avoiding collision with the bases.
               However, MathML can have arbitrary accent overscripts
               a more general and simpler rule is provided above: Ensure
               that the bottom of overscript is at least
-              <a>AccentBaseHeight</a> above the baseline of the base.
+              <a>AccentBaseHeight</a> above the <a>alphabetic baseline</a> of the base.
             </div>
             <p>
               The <a>line-ascent</a> of the content is the maximum between:
@@ -4274,8 +4277,8 @@
                 <code>OverShift</code>.</li>
             </ul>
             <p>
-              The baseline of the base is aligned with the baseline.
-              The baseline of the overscript is shifted away from the baseline
+              The <a>alphabetic baseline</a> of the base is aligned with the <a>alphabetic baseline</a>.
+              The <a>alphabetic baseline</a> of the overscript is shifted away from the <a>alphabetic baseline</a>
               and towards the <a>line-over</a> by a distance equal to
               the <a>ink line-ascent</a> of the base + <code>OverShift</code>.
             </p>
@@ -4324,7 +4327,7 @@
               <a href="#base-with-overscript"></a>.
             </p>
             <p>
-              Finally, the baselines of the base, undescript and overscript
+              Finally, the <a>alphabetic baselines</a> of the base, undescript and overscript
               are calculated as in sections
               <a href="#base-with-underscript"></a> and
               <a href="#base-with-overscript"></a>.
@@ -4559,8 +4562,8 @@
                   </li>
                   <li>
                     Place the subscript (respectively superscript) so its
-                    baseline is
-                    shifted away from the baseline by
+                    <a>alphabetic baseline</a> is
+                    shifted away from the <a>alphabetic baseline</a> by
                     <code>SubShift</code> (respectively <code>SuperShift</code>)
                     towards the <a>line-under</a> (respectively <a>line-over</a>).
                   </li>
@@ -4572,8 +4575,8 @@
               <li>
                 Place the base and <code>&lt;mprescript&gt;</code> boxes
                 at <a>inline offsets</a>
-                <code>inline-offset</code> and with their baselines
-                aligned with the baseline.
+                <code>inline-offset</code> and with their <a>alphabetic baselines</a>
+                aligned with the <a>alphabetic baseline</a>.
               </li>
               <li>
                 <p>
@@ -4602,8 +4605,8 @@
                     + <code>ItalicCorrection</code>.
                   </li>
                   <li>
-                    Place the subscript (superscript) so its baseline is
-                    shifted away from the baseline by
+                    Place the subscript (superscript) so its <a>alphabetic baseline</a> is
+                    shifted away from the <a>alphabetic baseline</a> by
                     <code>SubShift</code> (respectively <code>SuperShift</code>)
                     towards the <a>line-under</a> (respectively <a>line-over</a>).
                   </li>
@@ -4726,7 +4729,9 @@
             <a data-cite="CSS-DISPLAY-3#valdef-display-table">table</a>
             and the
             <a>min-content inline size</a>, <a>max-content inline size</a>,
-            <a>inline size</a>, <a>block size</a>, first/last baseline sets are determined
+            <a>inline size</a>, <a>block size</a>,
+            <a>first baseline set</a> and <a>last baseline set</a>
+            sets are determined
             accordingly.
             The math axis is aligned with the center of the table.
           </p>
