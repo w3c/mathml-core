@@ -13,20 +13,29 @@
 **[MathML Core](https://mathml-refresh.github.io/mathml-core/)** is a definition of a fundamental subset of features described in the [current MathML 3 recommendation](https://www.w3.org/TR/MathML3/). It attempts to resolve several problems created by MathMLs origins, history and complex status, and properly define its integration in the modern Web Platform in rigorous ways.  The specific subset is derived based on what is widely developed, deployed, proven and used in practice. 
   
 ## Table of Contents
-* [Goals](#goals)
-* [Non-Goals](#non-goals)
-* [Background: MathML](#background-mathml)
-  * [Basic Example](#basic-example)
-  * [Why a tree?](#why-a-tree)
-* [What is MathML Core?](#what-is-mathml-core)
-  * [The elements of MathML-Core](#the-elements-of-mathml-core)
-* [Design Discussion](#design-discussion)
-  * [Not reinventing the wheel](#not-reinventing-the-wheel)
-  * [Applying Extensible Web principles](#applying-extensible-web-principles)
-* [Considered Alternatives](#considered-alternatives)
-  * [Abandon MathML in favor some new thing](#abandon-mathml-in-favor-some-new-thing)
-  * [Focus instead solely on lacking primitives](#focus-instead-solely-on-lacking-primitives)
-  * [Enhance MathML3 but keep all or most features](#enhance-mathml3-but-keep-all-or-most-features) 
+   * [MathML Core Explainer](#mathml-core-explainer)
+      * [Authors:](#authors)
+      * [Draft specification:](#draft-specification)
+      * [Abstract](#abstract)
+      * [Table of Contents](#table-of-contents)
+      * [Goals](#goals)
+      * [Non-Goals](#non-goals)
+      * [Background: MathML](#background-mathml)
+         * [Basic example...](#basic-example)
+         * [What is MathML-Core?](#what-is-mathml-core)
+            * [The elements of MathML-Core](#the-elements-of-mathml-core)
+      * [Design Discussion](#design-discussion)
+         * [Not reinventing the wheel](#not-reinventing-the-wheel)
+         * [Applying Extensible Web principles](#applying-extensible-web-principles)
+      * [Considered Alternatives](#considered-alternatives)
+         * [Leave math reliant on SVGs and/or JavaScript libraries](#leave-math-reliant-on-svgs-andor-javascript-libraries)
+         * [Abandon MathML in favor some new thing](#abandon-mathml-in-favor-some-new-thing)
+            * [Why a tree is good...](#why-a-tree-is-good)
+            * [Building atop...](#building-atop)
+         * [Focus instead solely on lacking primitives](#focus-instead-solely-on-lacking-primitives)
+         * [Enhance MathML3 but keep all or most features](#enhance-mathml3-but-keep-all-or-most-features)
+      * [Stakeholder Feedback](#stakeholder-feedback)
+
   
 
 ## Goals 
