@@ -9,59 +9,37 @@
 
 [MathML Core - W3C Editor's Draft](https://mathml-refresh.github.io/mathml-core/)
 
-## Introduction
+## Abstract
+**[MathML Core](https://mathml-refresh.github.io/mathml-core/)** is a definition of a fundamental subset of features described in the [current MathML 3 recommendation](https://www.w3.org/TR/MathML3/). It attempts to resolve several problems created by MathMLs origins, history and complex status, and properly define its integration in the modern Web Platform in rigorous ways.  The specific subset is derived based on what is widely developed, deployed, proven and used in practice. 
+  
+## Table of Contents
+* [Goals](#goals)
+* [Non-Goals](#non-goals)
+* [Background: MathML](#background-mathml)
+  * [Basic Example](#basic-example)
+  * [Why a tree?](#why-a-tree)
+* [What is MathML Core?](#what-is-mathml-core)
+  * [The elements of MathML-Core](#the-elements-of-mathml-core)
+* [Design Discussion](#design-discussion)
+  * [Not reinventing the wheel](#not-reinventing-the-wheel)
+  * [Applying Extensible Web principles](#applying-extensible-web-principles)
+* [Considered Alternatives](#considered-alternatives)
+  * [Abandon MathML in favor some new thing](#abandon-mathml-in-favor-some-new-thing)
+  * [Focus instead solely on lacking primitives](#focus-instead-solely-on-lacking-primitives)
+  * [Enhance MathML3 but keep all or most features](#enhance-mathml3-but-keep-all-or-most-features) 
+  
 
-**[Mathematical notations](https://en.wikipedia.org/wiki/Mathematical_notation)**
-form a fundamental aspect of writing systems found in all civilizations
-and have been instrumental for the diffusion and development of
-scientific and technical knowledge. In agreement to
-[W3C TAG's Ethical Web Principles](https://www.w3.org/2001/tag/doc/ethical-web-principles/), we believe it is important to enable this for the Web and that
-was actually evident from the
-[earliest days of the Web at CERN](https://www.w3.org/MarkUp/HTMLPlus/htmlplus_45.html).
+## Goals 
 
-**MathML** is the resulting standard for describing
-mathematical notation in DOM. In addition to HTML5, it has been
-integrated into numerous standards used in ebooks or office applications.
-It can be generated, read or processed via a
-**[rich ecosystem of tools](https://www.w3.org/wiki/Math_Tools#Authoring_tools)**
-and is natively rendered by browsers based on Gecko and WebKit.
-However, the [current recommendation](https://www.w3.org/TR/MathML3/) contains
-much that is
-speculative, theoretical, not universally implemented, was under adopted, or is
-problematic for browsers to implement. Similarly, it came from a different
-era of standardization and lacks the current rigors expected for modern Web
-platform specifications.
-
-**[MathML Core](https://mathml-refresh.github.io/mathml-core/)**
-then is a necessary and rigorous definition of the
-fundamental subset of MathML features which are widely developed, deployed
-and used in practice.  It relies on
-well-established rules from TeX and Microsoft Word
-and focuses on proper integration into the Web platform. Combined together,
-these features enable
-interoperable, extensible and high-quality mathematical rendering.
-
-*Figure 1: MathML/DOM for the formula (x^√5)/(α×7).*
-
-![Visual MathML rendering as nested boxes representing the DOM tree, with corresponding tag name annotated for each box.](resources/mathml-tree.png)
-
-## Goals
 * To **provide users with efficient, natural, readable and high-quality rendering of mathematical notations**, consistent with other text they encounter in the browser.
 
-* To **provide authors with native, efficient and interoperable rendering of mathematical notations** that they are able to reason about consistent with the rest of the Web Platform.
+* To **provide authors with native, efficient and interoperable rendering of mathematical notations** that they are able to reason about in a manner consistent with the rest of the Web Platform.
 
 * To **rigorously define the necessary subset, how it works and properly integrates into the Web Platform** and ensure testable and interoperable implementations.
 
 * To **establish a productive and agreeable starting point** for additional work and conversation going forward and make it possible to more easily explore more, consistent with the rest of the platform.
 
 ## Non-Goals
-
-* To **fundamentally change or challenge MathML's basic premises**.
-  Effort is made to keep backward compatibility for existing MathML3 content.
-
-* To **provide an exhaustive list of elements and attributes** for existing
-  mathematical notations. MathML Core only provides the base layer on which
-  one can define more advanced notations.
 
 * To **provide a self-contained solution to problems ultimately better explored through another area of the platform**.
   MathML Core relies as much as possible on existing Web Platform
@@ -87,6 +65,73 @@ interoperable, extensible and high-quality mathematical rendering.
   primitives**.
   Rather, these serve as inputs to their possible definition and provide
   valuable insight into needs.
+
+## Background: MathML 
+
+* MathML is the standard developed at the W3C in the mid/late-1990's XML/XHTML era.
+
+* It received much attention and has created a vibrant ecosystem of implementations and integration _outside_ of web browsers  
+
+* CSS, the DOM, the way we write specifications or prove support and interoperability was considerably under-defined.  As a result, the MathML specifications contain several co-evolutionary overlapping approaches better solved elsewhere in the modern platform and lack important levels of detail.
+
+* MathML was supported via a plugin in early IE, it was integrated into the HTML / Parser specifications by WHATWG in the mid-2000's. All HTML compliant parsers _parse_ MathML specially whether they support anything to do with rendering or not.  All browsers (until now) present these uniquely in DOM as simply "Element".  MathML was thus explicitly disadvantaged.
+
+* It was implemented in Firefox about the same time. It gained an implementation in Webkit shortly before the blink split, when it was removed due to complexity and early issues requiring significant attention while Chrome engineers were trying to rework the engine.
+
+* Spec-work continued, without implementation.  As a result, it contains much that is theoretical, including over 150 elements.
+
+### Basic example...
+
+The `<math>` element provides a standard for authors to express and work with text containing generalized relationships about mathematics, in a way very similar to how `<table>` does for expressing text containing relationships about tabular data.
+
+
+```
+<math>
+  <mfrac>
+    <msup>
+      <mi>x</mi>
+      <msqrt>
+        <mn>5</mn>
+      </msqrt>
+     </msup>
+    <mrow>
+      <mi>α</mi>
+      <mo>×</mo>
+      <mn>7</mn>
+    </mrow>
+  </mfrac>  
+</math>
+```
+
+*Figure 1: MathML/DOM for the above 
+
+![Visual MathML rendering as nested boxes representing the DOM tree, with corresponding tag name annotated for each box.](resources/mathml-tree.png)
+
+### What is MathML-Core?
+
+MathML Core is an attempt to create a minimal version of MathML that is well aligned with the modern web platform. It aims to resolve long-standing issues with the split evolution of philosophies between MathML specifications and the larger web platform and create a well-defined starting point based on what is currently widely implemented and increase testability and interoperability.  
+
+
+####   The elements of MathML-Core  
+
+MathML 3 contained [195 elements](https://www.w3.org/TR/MathML/appendixi.html#index.elem).  MathML-Core focuses on just 32.  Several of these elements exist in deprecated form and simply exist to map the elements and their attributes to newer concepts (let them explain the actual magic) in much the same way `font` remains.  It provides a recommended UA stylesheet for implementation, and adds a couple of new Math oriented display types.
+
+Here is a brief rundown of what those elements _are_...
+
+* the `math` element itself
+* 3 elements called `semantics`, `annotation` and `annotation-xml` which simply provide other annotations or potential semantics in existing content but are generally not rendered.
+* 6 token elements - "Token elements in presentation markup are broadly intended to represent the smallest units of mathematical notation which carry meaning. Tokens are roughly analogous to words in text. However, because of the precise, symbolic nature of mathematical notation, the various categories and properties of token elements figure prominently in MathML markup. By contrast, in textual data, individual words rarely need to be marked up or styled specially." These are 	(`mtext`, `mi` (identifier), `mn` (number), `mo` (operators in a broad sense), `mspace`, `ms` (string literal - for things like computer algebra systems)
+* Layout/Relationship elements `mrow`(for grouping sub-expressions), `mfrac` (for fractions and fraction-like objects such as binomial coefficients and Legendre symbols), `msqrt` and `mroot` for radicals
+* `mstyle` (legacy compat, deprecated - just maps to css)
+* `merror` (legacy compat - displays its contents as an ”error message”. The intent of this element is to provide a standard way for programs that generate MathML from other input to report syntax errors in their input.)
+* `mpadded` - a row-like grouping container which has attributes that map to CSS
+* `mphantom` - a co-evolutionary/legacy row-like container that just adds a UA style that maps to visibility: hidden;
+* `menclose` - a row-like element for various types of 'enclosure' renderings (see examples at  https://developer.mozilla.org/en-US/docs/Web/MathML/Element/menclose)
+* 3 elements about subscripts and superscripts `msub`, `msup` and `msubsup`
+* 3 elements about underscripts and overscripts `munder`, `mover` and `munderover`
+* 1 element about prescripts and tensor indexes (`mmultiscripts`)`
+* 3 elements about tabular math (`mtable`, `mtr` and `mtd`)
+
 
 ## Design Discussion
 
@@ -137,15 +182,10 @@ In order to balance all of this we decided on the following:
 
 * **Normalize the DOM**.  Because of when and how it was defined, MathML in all
   browsers was exposed to the DOM (in all browsers, through the parser) as
-  simply `Element` which is unpredictable and fundamentally limiting for the
-  application of any real Extensible Web ideas.  Doing so, however, allows that
-  all of our principles and separations (for example ARIA, AOM, Houdini, etc)
-  can move forward in tandem.
+  simply `Element`.  MathML is historically uniquely disadvantaged in this way.  All elements in HTML descend from `HTMLElement` or are `HTMLUnknownElement`.  All elements, even SVG define, some common surface (through a mixin which was called `HTMLOrSVGElement`).  Without remedy, this means that MathML elements lack over 100 bits of API surface.  They have no `.style` property, but are stylable with CSS, for example.  This is unpredictable and confusing for authors who come to MathML and fundamentally limiting for the application of any real Extensible Web ideas.  Aligning the IDL for MathML with the rest of the platform, however, allows that all of our principles and separations (for example ARIA, AOM, Houdini, etc) can move forward in tandem.
 
-* **Acknowledge that minimal math magic exists in the platform already in two
-  browsers**.
-  Our goal then is to keep it minimal and carefully develop what serves as
-  useful input to the ultimate definition of Houdini APIs.
+* **Acknowledge that some minimal math magic exists in the platform already in two browsers**.
+  Our goal then is to not simply block a final implementations of high-level features but to apply Extensible Web principles reasonably and pragmaticaly: Keep it minimal and carefully develop what serves as useful input to the ultimate definition of lower level Houdini APIs.
 
 * **Increase compatibility with CSS**. We provide a design
   compatible with CSS layout and describe how CSS properties are interpreted,
@@ -185,6 +225,14 @@ In order to balance all of this we decided on the following:
 
 ## Considered Alternatives
 
+### Leave math reliant on SVGs and/or JavaScript libraries
+
+Writing systems define how we share information. **[Mathematical notations](https://en.wikipedia.org/wiki/Mathematical_notation)
+form a fundamental aspect of writing systems.** Math is text, and it is a _normal part_ of text:  Mathematical notations are found in all civilizations.  They have been instrumental throughout history for the diffusion and development of
+scientific and technical knowledge. The need for browsers to natively render this kind of text was evident from the
+[earliest days of the Web at CERN](https://www.w3.org/MarkUp/HTMLPlus/htmlplus_45.html).  We believe that according to 
+the [W3C TAG's Ethical Web Principles](https://www.w3.org/2001/tag/doc/ethical-web-principles/) it is not good for either the Web, the directly impacted communities of authors, or ultimately society to specially disadvantage such an important aspect of communication.
+
 ### Abandon MathML in favor some new thing
 
 There are numerous criticisms of MathML.  Like all aspects of the existing
@@ -202,9 +250,25 @@ current state would change in any reasonable timeframe.
 This would be tragic as we don't generally require that authors use complex
 libraries in order to layout text, or recommend that they be inserted as images.
 We believe that **getting native math rendering
-is the right thing to do**. From that starting point,
-**building atop additional semantics, extensions, conversions and further
-explorations** becomes very plausible.
+is the right thing to do** and that a tree is good.
+
+
+#### Why a tree is good...
+Trees of text relationships aren't the most succinct or easy to type ways to express things. However, this is true of all HTML too.  That's why a lot of HTML is generated from simpler forms like markdown or tools like rich text editors or templating.  A rich ecosystem of tooling has been developed over many years for generating and editing MathML too.
+
+But expressing the content is only part of the challenge and the platform is heavily oriented toward solving these problems via just such a tree. Many benefits flow naturally from simply matching the platform here and expressing mathematics as a standard tree of relationships:
+
+* Browser implementations can natively handle their rendering, as text, efficiently and fluidly.
+* Authors can style individual aspects of the equation, for example for educational purposes.
+* Authors can ensure that their text, colors, etc match and scale appropriately
+* Authors can create interactivity with those elements or manipulate them (educational purposes are a good example here too)
+* Software can be used to derive more meaning from context in much the same way that search engines do (there are in fact, applications that do this)
+* We are granted common, platform-fitting places to attach additional semantics through existing mechanisms.
+* 'Find' text works
+
+#### Building atop...
+Given these abilities and approach, building atop additional semantics, extensions, conversions and further
+explorations** becomes very plausible.  It is even entirely plausible to support shorthand expansion from forms like LaTeX or ASCII Math, in much the same we can for Markdown. Patterns for extending shorthand notations like these are a common class of problem that should be well explored and, still, probably rendered into a Shadow tree natively if ever supported natively.
 
 *Figure 5: LaTeX source in a [custom element](https://fred-wang.github.io/TeXZilla/examples/customElement.html) rendered using MathML in a shadow DOM, with the [Latin Modern Math font](http://www.gust.org.pl/projects/e-foundry/lm-math) ; From top to bottom: Blink (Igalia's build), WebKit (r249360) and Gecko (Firefox 68)*
 
@@ -266,7 +330,6 @@ We discarded this approach for several reasons:
   effort. Again, the choice was instead to consider a subset of manageable size,
   corresponding to what is used on web pages and implemented in two WebKit and
   Gecko.
-
 ## Stakeholder Feedback
 
 * ...
