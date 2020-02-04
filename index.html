@@ -216,7 +216,17 @@
             <li><a>&lt;none&gt;</a></li>
             <li><a>&lt;semantics&gt;</a></li>
           </ol>
-          <p>The <dfn>scripted MathML elements</dfn> are
+          <p>The <dfn>mrow-like elements</dfn> are
+            <a>&lt;maction&gt;</a>,
+            <a>&lt;math&gt;</a>,
+            <a>&lt;merror&gt;</a>
+            <a>&lt;mphantom&gt;</a>,
+            <a>&lt;mprescripts&gt;</a>,
+            <a>&lt;mrow&gt;</a>,
+            <a>&lt;mstyle&gt;</a>,
+            <a>&lt;none&gt;</a>,
+            <a>&lt;semantics&gt;</a> and <a>unknown MathML elements</a>.</p>
+          <p>The <dfn>scripted elements</dfn> are
             <a>&lt;mmultiscripts&gt;</a>,
             <a>&lt;mover&gt;</a>,
             <a>&lt;msub&gt;</a>,
@@ -226,8 +236,7 @@
             <a>&lt;munderover&gt;</a>.
           </p>
           <p>The <dfn>radical elements</dfn> are
-            <a>&lt;msqrt&gt;</a> and
-            <a>&lt;mroot&gt;</a>.
+            <a>&lt;mroot&gt;</a> and <a>&lt;msqrt&gt;</a>.
           </p>
           <p>
             The attributes defined in this specification are called
@@ -1394,25 +1403,19 @@
             <div class="issue" data-number="115">Simplify embellished operator?</div>
             <p>
               A <a>MathML Core element</a> is an
-              <dfn data-lt="embellished">embellished operator</dfn>
+              <dfn>embellished operator</dfn>
               if is is:
             </p>
             <ol>
               <li>An <a><code>&lt;mo&gt;</code></a> element;</li>
               <li>
-                A <a>scripted MathML element</a> or an
+                A <a>scripted element</a> or an
                 <a><code>&lt;mfrac&gt;</code></a>
                 whose first <a>in-flow</a> child exists and is an
                 <a>embellished operator</a>;
               </li>
               <li>
-                An <a>unknown MathML element</a> or one of the elements
-                <a><code>&lt;mrow&gt;</code></a>,
-                <a><code>&lt;mstyle&gt;</code></a>,
-                <a><code>&lt;mphantom&gt;</code></a>,
-                <a><code>&lt;mpadded&gt;</code></a>,
-                <a><code>&lt;semantics&gt;</code></a> or
-                <a><code>&lt;maction&gt;</code></a>
+                An <a>mrow-like element</a>
                 whose <a>in-flow</a> children consist (in any order) of one
                 <a>embellished operator</a> and zero or more
                 <a>space-like</a> elements.
@@ -1428,19 +1431,13 @@
                 element; is the element itself.</li>
               <li>
                 The core operator of an embellished
-                <a>scripted MathML element</a> or
+                <a>scripted element</a> or
                 <a><code>&lt;mfrac&gt;</code></a>
                 element is the core operator of its first <a>in-flow</a> child.
               </li>
               <li>
                 The core operator of an embellished
-                <a>unknown MathML element</a>,
-                <a><code>&lt;mrow&gt;</code></a>,
-                <a><code>&lt;mstyle&gt;</code></a>,
-                <a><code>&lt;mphantom&gt;</code></a>,
-                <a><code>&lt;mpadded&gt;</code></a>,
-                <a><code>&lt;semantics&gt;</code></a> or
-                <a><code>&lt;maction&gt;</code></a>
+                <a>mrow-like element</a>
                 is the core operator of its unique <a>embellished operator</a>
                 <a>in-flow</a> child.
               </li>
@@ -1504,7 +1501,7 @@
                 (ignoring all <a>space-like</a> children) then it has
                 form <code>postfix</code>;
               <li>Or, if the embellished operator is an <a>in-flow</a> child of a
-                <a>scripted MathML element</a>, other than the first <a>in-flow</a>
+                <a>scripted element</a>, other than the first <a>in-flow</a>
                 child, then it has form <code>postfix</code>;
               </li>
               <li>
@@ -1893,13 +1890,7 @@
                 <a><code>&lt;mspace&gt;</code></a>.
               </li>
               <li>Or an
-                <a>unknown MathML element</a>,
-                <a><code>&lt;mrow&gt;</code></a>,
-                <a><code>&lt;mstyle&gt;</code></a>,
-                <a><code>&lt;mphantom&gt;</code></a>,
-                <a><code>&lt;mpadded&gt;</code></a>,
-                <a><code>&lt;maction&gt;</code></a>
-                or <a><code>&lt;semantics&gt;</code></a>
+                <a>mrow-like element</a>
                 all of whose <a>in-flow</a> children are <a>space-like</a>.
               </li>
             </ul>
@@ -2139,7 +2130,7 @@
             <ol>
               <li>
                 Set <code>add-space</code> to true if
-                the <code>&lt;mrow&gt;</code> is not an
+                the element is a <a>&lt;math&gt;</a> or is not an
                 <a>embellished operator</a>; and to false otherwise.
               </li>
               <li>Set <code>inline-offset</code> to 0.</li>
@@ -2214,7 +2205,7 @@
             <ol>
               <li>
                 Set <code>add-space</code> to true if
-                the <code>&lt;mrow&gt;</code> is not an
+                the element is a <a>&lt;math&gt;</a> or is not an
                 <a>embellished operator</a>; and to false otherwise.
               </li>
               <li>Set <code>inline-offset</code> to 0.</li>
