@@ -1410,12 +1410,12 @@
               <li>An <a><code>&lt;mo&gt;</code></a> element;</li>
               <li>
                 A <a>scripted element</a> or an
-                <a><code>&lt;mfrac&gt;</code></a>
+                <a><code>&lt;mfrac&gt;</code></a>,
                 whose first <a>in-flow</a> child exists and is an
                 <a>embellished operator</a>;
               </li>
               <li>
-                An <a>mrow-like element</a>
+                An <a>mrow-like element</a> or <a>&lt;mpadded&gt;</a>,
                 whose <a>in-flow</a> children consist (in any order) of one
                 <a>embellished operator</a> and zero or more
                 <a>space-like</a> elements.
@@ -1437,7 +1437,7 @@
               </li>
               <li>
                 The core operator of an embellished
-                <a>mrow-like element</a>
+                <a>mrow-like element</a> or <a>&lt;mpadded&gt;</a>
                 is the core operator of its unique <a>embellished operator</a>
                 <a>in-flow</a> child.
               </li>
@@ -1880,7 +1880,7 @@
                 <a><code>&lt;mspace&gt;</code></a>.
               </li>
               <li>Or an
-                <a>mrow-like element</a>
+                <a>mrow-like element</a> or <a>&lt;mpadded&gt;</a>
                 all of whose <a>in-flow</a> children are <a>space-like</a>.
               </li>
             </ul>
