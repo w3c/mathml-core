@@ -7,10 +7,6 @@
           href="https://www.w3.org/StyleSheets/TR/2016/base.css"/>
     <script src="wpt/fetch-browser-results.js"></script>
     <style>
-      #output {
-          font-family: monospace;
-          white-space: pre;
-      }
       h1 {
           font-size: 200%;
       }
@@ -20,7 +16,7 @@
       .FAIL {
           background: #faa;
       }
-      .NOTRUN, .CRASH, .ERROR {
+      .NOTRUN, .CRASH, .ERROR, .TIMEOUT {
           color: yellow;
           background: red;
           font-weight: bold;
@@ -32,6 +28,17 @@
       .build_info {
           font-size: 150%;
       }
+      .logo {
+          display: inline-block;
+          width: 1em;
+          height: 1em;
+          padding: .2em;
+          background: lightblue;
+      }
+      .logo img {
+          width: 1em;
+          height: 1em;
+      }
     </style>
     <script>
       function capitalize(string) {
@@ -40,6 +47,9 @@
       async function loadJSON(browser, callback) {
           let json = await fetchWebPlatformTestResults(browser);
           callback(browser, json);
+      }
+      function getOutputDiv(browser) {
+          return document.getElementById(browser).parentNode.getElementsByClassName("unfoldable")[0];
       }
       function uploadJSON(files, callback) {
           if (files.length !== 1)
@@ -72,7 +82,7 @@
           results.sort((a, b) => { return a.name.localeCompare(b.name) > 0; });
           let info = json.run_info;
           let date = new Date(json.time_start);
-          output = "<pre class='build_info'>"
+          let output = "<pre class='build_info'>"
           output += `${capitalize(info.product)} ${info.browser_version}\n`;
           output += `${capitalize(info.os)} ${capitalize(info.version)}\n`;
           output += `${date.toDateString()}\n`;
@@ -80,27 +90,27 @@
           output += "<ol>";
           results.forEach((e) => { output += e.output; });
           output += "</ol>";
-          let outputDiv = document.getElementById(`output-${browser}`);
+          let outputDiv = getOutputDiv(browser);
           outputDiv.innerHTML = output;
           let N = outputDiv.getElementsByTagName("span").length;
           let Npass = outputDiv.querySelectorAll(".PASS").length;
-          document.getElementById(browser).querySelector("span").innerHTML = `${Npass}/${N} (${Math.round(100*(Npass*100/N))/100}%)`;
+          document.getElementById(browser).querySelector(".score").innerHTML = `${Npass}/${N} (${Math.round(100*(Npass*100/N))/100}%)`;
       }
       function toggleDisplay(browser, force) {
           var button = document.getElementById(`${browser}`).querySelector("button");
-          var output = document.getElementById(`output-${browser}`)
+          let outputDiv = getOutputDiv(browser);
           if (force || button.innerText === "+") {
               button.innerText = "\u2212";
-              output.style.display = "block";
+              outputDiv.style.display = "block";
           } else {
               button.innerText = "+";
-              output.style.display = "none";
+              outputDiv.style.display = "none";
           }
       }
       window.addEventListener("load", async function() {
-          loadJSON("blink", displayResults);
-          loadJSON("gecko", displayResults);
-          loadJSON("webkit", displayResults);
+          ["blink", "blink-no-mathml", "gecko", "webkit"].forEach(name => {
+              loadJSON(name, displayResults);
+          });
           var upload =  document.getElementById("upload");
           upload.addEventListener("change", function() {
               uploadJSON(this.files, function(json) {
@@ -121,23 +131,29 @@
     <section>
       <h1>MathML Core - Implementation Report</h1>
       <section>
-        <h2 id="blink">Blink <span>?/? (?%)</span> <button>+</button></h2>
+        <h2 id="blink">Blink-MathML <span class="logo"><img src="https://pbs.twimg.com/profile_images/1576817016/igalia_400x400.png" alt="igalia"/></span> <span class="score">?/? (?%)</span> <button>+</button></h2>
         <p>Development build of <a href="https://mathml.igalia.com/">Igalia's Chromium fork</a>.</p>
-        <div class="unfoldable" id="output-blink">No results available</div>
+        <div class="unfoldable">No results available</div>
       </section>
       <section>
-        <h2 id="gecko">Gecko <span>?/? (?%)</span> <button>+</button></h2>
+        <h2 id="blink-no-mathml">Blink <span class="logo"><img src="https://test.csswg.org/harness/img/blink.svg" alt="blink"/></span> <span class="score">?/? (?%)</span> <button>+</button></h2>
+        <p>Development build of <a href="https://mathml.igalia.com/">Igalia's Chromium fork</a> with the <code>LayoutNGMathML</code> runtime feature disabled.</p>
+        <p><em>These results might contain false positives.</em></p>
+        <div class="unfoldable">No results available</div>
+      </section>
+      <section>
+        <h2 id="gecko">Gecko <span class="logo"><img src="https://test.csswg.org/harness/img/gecko.svg" alt="gecko"/></span> <span class="score">?/? (?%)</span> <button>+</button></h2>
         <p><a href="https://www.mozilla.org/en-US/firefox/channel/desktop/">Nightly build</a> of Firefox.</p>
-        <div class="unfoldable" id="output-gecko">No results available</div>
+        <div class="unfoldable">No results available</div>
       </section>
       <section>
-        <h2 id="webkit">WebKit <span>?/? (?%)</span> <button>+</button></h2>
+        <h2 id="webkit">WebKit <span class="logo"><img src="https://test.csswg.org/harness/img/webkit.svg" alt="webkit"/></span>  <span class="score">?/? (?%)</span> <button>+</button></h2>
         <p>Development build of <a href="https://trac.webkit.org/wiki/WebKitGTK">WebKitGTK</a>.</p>
-        <div class="unfoldable" id="output-webkit">No results available</div>
+        <div class="unfoldable">No results available</div>
       </section>
       <section>
-        <h2 id="custom">Custom results <span></span> <button>+</button></h2>
-        <div class="unfoldable" id="output-custom">No results available</div>
+        <h2 id="custom">Custom results <span class="score"></span> <button>+</button></h2>
+        <div class="unfoldable">No results available</div>
         <p>Upload a wptreport JSON result: <input id="upload" type="file"/></p>
       </section>
     </section>

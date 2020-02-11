@@ -35,6 +35,7 @@ async function getBrowserWPTData(browser) {
 */
 let wptDataPromise = Promise.all([
     getBrowserWPTData('blink'),
+    getBrowserWPTData('blink-no-mathml'),
     getBrowserWPTData('gecko'),
     getBrowserWPTData('webkit')
 ])
@@ -79,11 +80,9 @@ async function loadWebPlaformTestsResults() {
     let wptData = await wptDataPromise;
     let ENGINE_LOGOS = {
         'gecko': "https://test.csswg.org/harness/img/gecko.svg",
-        'presto': "https://test.csswg.org/harness/img/presto.svg",
-        'trident': "https://test.csswg.org/harness/img/trident.svg",
         'webkit': "https://test.csswg.org/harness/img/webkit.svg",
-        'blink': "https://test.csswg.org/harness/img/blink.svg",
-        'edge': "https://test.csswg.org/harness/img/edge.svg"
+        'blink': "https://pbs.twimg.com/profile_images/1576817016/igalia_400x400.png",
+        'blink-no-mathml': "https://test.csswg.org/harness/img/blink.svg",
     };
 
     document.querySelectorAll('.respec-tests-details').forEach(el => {

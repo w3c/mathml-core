@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>testcase</title>
+    <meta charset="utf-8"/>
+    <style>
+      body {
+          font-size: 16pt;
+      }
+      math * {
+          border: 1px dashed blue;
+          padding-top: 1em;
+          padding-left: 2em;
+          padding-bottom: .5em;
+          padding-right: .5em;
+      }      
+      span {
+          background: lightblue;
+          color: blue;
+          display: inline-block;
+          position: absolute;
+      }
+    </style>
+    
+  </head>
+  <body>
+
+    <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
+      <mfrac>
+        <msup>
+          <mi>x</mi>
+          <msqrt>
+            <mn>5</mn>
+          </msqrt>
+        </msup>
+        <mrow>
+          <mi>α</mi>
+          <mo>×</mo>
+          <mn>7</mn>
+        </mrow>
+      </mfrac>
+    </math>
+
+    <script>
+      Array.from(document.getElementsByTagNameNS("http://www.w3.org/1998/Math/MathML", "*")).forEach(el => {
+          var box = el.getBoundingClientRect();
+          var tag = el.tagName;
+          var span = document.body.insertAdjacentHTML("beforeend", `<span style="left: ${box.x}px; top: ${box.y}px;">${tag}</span>`);
+      });
+    </script>
+    
+  </body>
+</html>
