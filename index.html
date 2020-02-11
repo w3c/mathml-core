@@ -291,6 +291,10 @@
             <dfn data-cite="CSSOM#elementcssinlinestyle"><code>ElementCSSInlineStyle</code></dfn>
             interface is defined in [[CSSOM]].
           </p>
+          <p>
+            All of the nodes representing <a>MathML Hyperlink Elements</a> in the DOM must implement, and expose to scripts the following <dfn><code>MathMLLinkableElement</code></dfn> interface.
+          </p>
+          <pre class="idl" data-include="webidl/MathMLLinkableElement.idl"></pre>
         </section>
         <section id="text-layout">
           <h4>Text layout</h4>
@@ -320,9 +324,7 @@
               apply, as defined in that specification.
             </p>
             <p>
-              Any MathML elements containing an href attribute are valid links
-              and are focusable.  Their tabindex focus flag
-              must be set unless the user agent normally provides an alternative
+              All <code>MathMLLinkableElement</code> elements are potentially linkable with an <code>href</code> attribute.  Their default tabindex is <code>0</code>.  If their <code>href</code> contains a valid URL, their focus flag must be set unless the user agent normally provides an alternative
               method of keyboard traversal of links, and they appear in the
               sequential focus order.
             </p>
@@ -396,7 +398,6 @@
           <li><a>id</a></li>
           <li><a>class</a></li>
           <li><a><code>style</code></a></li>
-          <li><a><code>href</code></a></li>
           <li><a><code>dir</code></a></li>
           <li><a><code>mathbackground</code></a></li>
           <li><a><code>mathcolor</code></a></li>
@@ -638,6 +639,10 @@
           <code>display="block"</code> and <code>display="inline"</code>
           respectively.
         </div>
+      </section>
+      <section id="linkable-math-elements">
+        <h3><dfn>MathML Hyperlink Elements</dfn></h3>
+        <p>All <a href="#token-elements">token elements</a> and the <a href="#horizontally-group-sub-expressions-mrow">mrow</a> grouping element are potentially linkable and may contain an <code>href</code> attribute.  They are the MathML equivalents of HTML's <a data-cite="html#the-a-element">a</a> and must follow all of the same criteria laid out for links there.</p>
       </section>
     </section>
     <section class="normative">
