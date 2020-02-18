@@ -48,7 +48,7 @@
 * To **provide a self-contained solution to problems ultimately better explored through another area of the platform**.
   MathML Core relies as much as possible on existing Web Platform
   features and provides a platform-aligned starting point to solve more
-  problems. Examples include, but are not limited to:
+  problems. Some examples of areas that are specifically _not_  part of MathML Core are:
   - Specific elements or attributes for styling which
     are better described by existing or new CSS features.
   - Complete and explicit description of semantics which are better
@@ -76,13 +76,13 @@
 
 * It received much attention and has created a vibrant ecosystem of implementations and integration _outside_ of web browsers  
 
-* CSS, the DOM, the way we write specifications or prove support and interoperability was considerably under-defined.  As a result, the MathML specifications contain several co-evolutionary overlapping approaches better solved elsewhere in the modern platform and lack important levels of detail.
+* At the time of its development, CSS, the DOM, the way we write specifications, and prove support and interoperability were considerably under-defined.  As a result, the MathML specifications contain several co-evolutionary overlapping approaches better solved elsewhere in the modern platform and lack important levels of detail.
 
 * MathML was supported via a plugin in early IE, it was integrated into the HTML / Parser specifications by WHATWG in the mid-2000's. All HTML compliant parsers _parse_ MathML specially whether they support anything to do with rendering or not.  All browsers (until now) present these uniquely in DOM as simply "Element".  MathML was thus explicitly disadvantaged.
 
 * It was implemented in Firefox about the same time. It gained an implementation in Webkit shortly before the blink split, when it was removed due to complexity and early issues requiring significant attention while Chrome engineers were trying to rework the engine.
 
-* Spec-work continued, without implementation.  As a result, it contains much that is theoretical, including over 150 elements.
+* Spec-work continued, without browser implementation.  As a result, it contains much that is theoretical, including over 150 elements.
 
 ### Basic example...
 
@@ -113,7 +113,7 @@ The `<math>` element provides a standard for authors to express and work with te
 
 ### What is MathML-Core?
 
-MathML Core is an attempt to create a minimal version of MathML that is well aligned with the modern web platform. It aims to resolve long-standing issues with the split evolution of philosophies between MathML specifications and the larger web platform and create a well-defined starting point based on what is currently widely implemented and increase testability and interoperability.  
+MathML Core is an attempt to create a minimal version of MathML that is well aligned with the modern web platform. It aims to resolve long-standing issues with the split evolution of philosophies between MathML specifications and the larger web platform. As part of this aim, MathML Core creates a well-defined starting point based on what is currently widely implemented. By creating a minimal version of MathML, MathML Core has an increased focus on testability and interoperability.  
 
 
 ####   The elements of MathML-Core  
@@ -124,17 +124,17 @@ Here is a brief rundown of what those elements _are_...
 
 * the `math` element itself
 * 3 elements called `semantics`, `annotation` and `annotation-xml` which simply provide other annotations or potential semantics in existing content but are generally not rendered.
-* 6 token elements - "Token elements in presentation markup are broadly intended to represent the smallest units of mathematical notation which carry meaning. Tokens are roughly analogous to words in text. However, because of the precise, symbolic nature of mathematical notation, the various categories and properties of token elements figure prominently in MathML markup. By contrast, in textual data, individual words rarely need to be marked up or styled specially." These are 	(`mtext`, `mi` (identifier), `mn` (number), `mo` (operators in a broad sense), `mspace`, `ms` (string literal - for things like computer algebra systems)
+* 6 token elements - "Token elements in presentation markup are broadly intended to represent the smallest units of mathematical notation which carry meaning. Tokens are roughly analogous to words in text. However, because of the precise, symbolic nature of mathematical notation, the various categories and properties of token elements figure prominently in MathML markup. By contrast, in textual data, individual words rarely need to be marked up or styled specially." The token elements are 	(`mtext`, `mi` (identifier), `mn` (number), `mo` (operators in a broad sense), `mspace`, `ms` (string literal - for things like computer algebra systems)
 * Layout/Relationship elements `mrow`(for grouping sub-expressions), `mfrac` (for fractions and fraction-like objects such as binomial coefficients and Legendre symbols), `msqrt` and `mroot` for radicals
 * `mstyle` (legacy compat, deprecated - just maps to css)
 * `merror` (legacy compat - displays its contents as an ”error message”. The intent of this element is to provide a standard way for programs that generate MathML from other input to report syntax errors in their input.)
-* `mpadded` - a row-like grouping container which has attributes that map to CSS
+* `mpadded` - a row-like grouping container for modifying its position and bounds. (legacy compat, attributes map to CSS, although attributes are more natural for mathematical layout)
 * `mphantom` - a co-evolutionary/legacy row-like container that just adds a UA style that maps to visibility: hidden;
 * `menclose` - a row-like element for various types of 'enclosure' renderings (see examples at  https://developer.mozilla.org/en-US/docs/Web/MathML/Element/menclose)
 * 3 elements about subscripts and superscripts `msub`, `msup` and `msubsup`
 * 3 elements about underscripts and overscripts `munder`, `mover` and `munderover`
 * 1 element about prescripts and tensor indexes (`mmultiscripts`)`
-* 3 elements about tabular math (`mtable`, `mtr` and `mtd`)
+* 3 elements about tabular math such as matricies and determinants (`mtable`, `mtr` and `mtd`)
 
 
 ## Design Discussion
@@ -186,7 +186,7 @@ In order to balance all of this we decided on the following:
 
 * **Normalize the DOM**.  Because of when and how it was defined, MathML in all
   browsers was exposed to the DOM (in all browsers, through the parser) as
-  simply `Element`.  MathML is historically uniquely disadvantaged in this way.  All elements in HTML descend from `HTMLElement` or are `HTMLUnknownElement`.  All elements, even SVG define, some common surface (through a mixin which was called `HTMLOrSVGElement`).  Without remedy, this means that MathML elements lack over 100 bits of API surface.  They have no `.style` property, but are stylable with CSS, for example.  This is unpredictable and confusing for authors who come to MathML and fundamentally limiting for the application of any real Extensible Web ideas.  Aligning the IDL for MathML with the rest of the platform, however, allows that all of our principles and separations (for example ARIA, AOM, Houdini, etc) can move forward in tandem.
+  simply `Element`.  MathML is historically uniquely disadvantaged in this way.  All elements in HTML descend from `HTMLElement` or are `HTMLUnknownElement`.  All elements, including SVG, define some common surface (through a mixin which was called `HTMLOrSVGElement`).  Without remedy, this means that MathML elements lack over 100 bits of API surface.  They have no `.style` property, but are stylable with CSS, for example.  This is unpredictable and confusing for authors who come to MathML and fundamentally limiting for the application of any real Extensible Web ideas.  Aligning the IDL for MathML with the rest of the platform, however, allows that all of our principles and separations (for example ARIA, AOM, Houdini, etc) can move forward in tandem.
 
 * **Acknowledge that some minimal math magic exists in the platform already in two browsers**.
   Our goal then is to not simply block a final implementations of high-level features but to apply Extensible Web principles reasonably and pragmaticaly: Keep it minimal and carefully develop what serves as useful input to the ultimate definition of lower level Houdini APIs.
@@ -332,7 +332,7 @@ We discarded this approach for several reasons:
   only partially implemented in browsers**. This means that keeping all the
   features and at the same time achieving interoperability would require a huge
   effort. Again, the choice was instead to consider a subset of manageable size,
-  corresponding to what is used on web pages and implemented in two WebKit and
+  corresponding to what is used on web pages and implemented in WebKit and
   Gecko.
 ## Stakeholder Feedback
 
