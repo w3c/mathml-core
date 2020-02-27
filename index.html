@@ -2569,9 +2569,9 @@
             its layout algorithm
             is the same as the <a><code>&lt;mrow&gt;</code></a> element.
             Otherwise, the first <a>in-flow</a> child is called
-            <em>base</em> and
+            <dfn>mroot base</dfn> and
             the second <a>in-flow</a> child is called
-            <em>index</em>
+            <dfn>mroot index</dfn>
             and its layout algorithm is explained below.
           </p>
           <div class="note" id="mroot-css-rules-on-children">
@@ -2583,7 +2583,7 @@
             The children of the
             <code>&lt;msqrt&gt;</code> element are laid out
             using the algorithm of the <a><code>&lt;mrow&gt;</code></a> element
-            to produce a box that is also called the <em>base</em>.
+            to produce a box that is also called the <dfn>msqrt base</dfn>.
             In particular, the
             <a>algorithm for stretching operators along the block axis</a> is used.
           </p>
@@ -3538,17 +3538,17 @@
               has less or more than two <a>in-flow</a> children, its layout algorithm
               is the same as the <a><code>&lt;mrow&gt;</code></a> element.
               Otherwise, the first <a>in-flow</a> child is called the
-              <em>base</em>, the second <a>in-flow</a> child is called the
-              <em>subscript</em> and the layout algorithm is explained
+              <dfn>msub base</dfn>, the second <a>in-flow</a> child is called the
+              <dfn>msub subscript</dfn> and the layout algorithm is explained
               in <a href="#base-with-subscript"></a>.
             </p>
             <p>
-              If the <code>&lt;msub&gt;</code> element
+              If the <code>&lt;msup&gt;</code> element
               has less or more than two <a>in-flow</a> children, its layout algorithm
               is the same as the <a><code>&lt;mrow&gt;</code></a> element.
               Otherwise, the first <a>in-flow</a> child is called the
-              <em>base</em>, the second <a>in-flow</a> child is called the
-              <em>superscript</em> and the layout algorithm is explained
+              <dfn>msup base</dfn>, the second <a>in-flow</a> child is called the
+              <dfn>msup superscript</dfn> and the layout algorithm is explained
               in <a href="#base-with-superscript"></a>.
             </p>
             <p>
@@ -3556,10 +3556,10 @@
               has less or more than three <a>in-flow</a> children, its layout algorithm
               is the same as the <a><code>&lt;mrow&gt;</code></a> element.
               Otherwise, the first <a>in-flow</a> child is called the
-              <em>base</em>, the second <a>in-flow</a> child
-              is called the <em>subscript</em>,
+              <dfn>msubsup base</dfn>, the second <a>in-flow</a> child
+              is called the <dfn>msubsup subscript</dfn>,
               its third <a>in-flow</a> child is called
-              the <em>superscript</em> and the layout algorithm is explained
+              the <dfn>msupsup superscript</dfn> and the layout algorithm is explained
               in <a href="#base-with-subscript-and-superscript"></a>.
             </p>
           </section>
@@ -3890,26 +3890,26 @@
               has less or more than two <a>in-flow</a> children, its layout algorithm
               is the same as the <a><code>&lt;mrow&gt;</code></a> element.
               Otherwise, the first <a>in-flow</a> child is called the
-              <em>base</em> and the second <a>in-flow</a> child is called the
-              <em>underscript</em>.
+              <dfn>munder base</dfn> and the second <a>in-flow</a> child is called the
+              <dfn>munder underscript</dfn>.
             </p>
             <p>
               If the <code>&lt;mover&gt;</code> element
               has less or more than two <a>in-flow</a> children, its layout algorithm
               is the same as the <a><code>&lt;mrow&gt;</code></a> element.
               Otherwise, the first <a>in-flow</a> child is called the
-              <em>base</em> and the second <a>in-flow</a> child is called the
-              <em>overscript</em>.
+              <dfn>mover base</dfn> and the second <a>in-flow</a> child is called the
+              <dfn>mover overscript</dfn>.
             </p>
             <p>
               If the <code>&lt;munderover&gt;</code> element
               has less or more than three <a>in-flow</a> children, its layout algorithm
               is the same as the <a><code>&lt;mrow&gt;</code></a> element.
               Otherwise, the first <a>in-flow</a> child is called the
-              <em>base</em>, the second <a>in-flow</a> child
-              is called the <em>underscript</em>
+              <dfn>munderover base</dfn>, the second <a>in-flow</a> child
+              is called the <dfn>munderover underscript</dfn>
               and its third <a>in-flow</a> child is called
-              the <em>overscript</em>.
+              the <dfn>munderover overscript</dfn>.
             </p>
             <p>
               If the
@@ -4368,23 +4368,28 @@
           </p>
           <ul>
             <li>
-              A first <a>in-flow</a> child, called the <em>base</em> that is not a
-              an <a><code>&lt;mprescripts&gt;</code></a> element.
+              A first <a>in-flow</a> child, called the
+              <dfn>multiscripts base</dfn>, that is not a an
+              <a><code>&lt;mprescripts&gt;</code></a> element.
             </li>
             <li>
               Followed by an even number of <a>in-flow</a> children called
-              <em>postscripts</em>, none of them being a
+              <dfn>multiscripts postscripts</dfn>, none of them being a
               <a><code>&lt;mprescripts&gt;</code></a> element.
-              These scripts form a (possibly empty) list of
-              <em>subscript/superscript pairs</em>.
+              These scripts form a (possibly empty) list
+              subscript, superscript, subscript, superscript,
+              subscript, superscript, etc.
+              Each consecutive couple of children subscript, superscript
+              is called a
+              <dfn>subscript/superscript pair</dfn>.
             </li>
             <li>Optionally followed by
               an <a><code>&lt;mprescripts&gt;</code></a> element and
               an even number of <a>in-flow</a> children called
-              <em>prescripts</em>, none of them being a
+              <dfn>mmultiscripts prescripts</dfn>, none of them being a
               <a><code>&lt;mprescripts&gt;</code></a> element.
               These scripts form a (possibly empty) list of
-              <em>subscript/superscript pairs</em>.
+              <a>subscript/superscript pair</a>.
             </li>
           </ul>
           <p>
