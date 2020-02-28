@@ -5274,7 +5274,7 @@
           </p>
           <ul>
             <li>
-              o<sub>min</sub> is
+              <dfn>o<sub>min</sub></dfn> is
               <code>MATH.MathVariant.minConnectorOverlap</code>.
             </li>
             <li>
@@ -5291,18 +5291,21 @@
               <code>MathVariant.vertGlyphConstructionOffsets</code>).
             <li>
               For a given <code>GlyphAssembly</code> table,
-              N<sub>Ext</sub> (respectively
-              N<sub>NonExt</sub>) is the number of extenders
+              <dfn>N<sub>Ext</sub></dfn> (respectively
+              <dfn>N<sub>NonExt</sub></dfn>) is the number of extenders
               (respectively non-extenders) in
               <code>GlyphAssembly.partRecords</code>.
             </li>
             <li>
               For a given <code>GlyphAssembly</code> table,
-              S<sub>Ext</sub> (respectively
-              S<sub>NonExt</sub>) is the sum of
+              <dfn>S<sub>Ext</sub></dfn> (respectively
+              <dfn>S<sub>NonExt</sub></dfn>) is the sum of
               <code>GlyphPartRecord.fullAdvance</code>
               for all extenders (respectively non-extenders) in
               <code>GlyphAssembly.partRecords</code>.
+            </li>
+            <li><dfn>S<sub>Ext,NonOverlapping</sub></dfn> = <a>S<sub>Ext</sub></a></a> − <a>o<sub>min</sub></a> <a>N<sub>Ext</sub></a>
+              is the maximal sum of non overlapping parts of extenders.
             </li>
           </ul>
           <p>
@@ -5311,9 +5314,8 @@
           </p>
           <ul>
             <li>
-              S<sub>Ext</sub> − o<sub>min</sub> N<sub>Ext</sub> > 0.
-              Otherwise, the overlap takes at least the full advance of each
-              extender.
+              <a>S<sub>Ext,NonOverlapping</sub></a> > 0.
+              Otherwise, the assembly does not grow when joining extenders.
             </li>
             <li>
               For each <code>GlyphPartRecord</code>
@@ -5321,40 +5323,43 @@
               the values of
               <code>GlyphPartRecord.startConnectorLength</code> and
               <code>GlyphPartRecord.endConnectorLength</code>
-              must be at least o<sub>min</sub>.
+              must be at least <a>o<sub>min</sub></a>.
               Otherwise, it is not possible to satisfy the condition of
               <code>MathVariant.minConnectorOverlap</code>.
             </li>
           </ul>
           <p>
-            AssembySize(o, r) is the stretch size of a glyph assembly
-            built by repeating each extender r times and using the same overlap
-            value o between each glyph.
-            It is equal to
-            S<sub>NonExt</sub> − o (N<sub>NonExt</sub> − 1)
-            + r (S<sub>Ext</sub> − o N<sub>Ext</sub>) or, equivalently,
-            AssembySize(o, r) =
-            S<sub>NonExt</sub> + r S<sub>Ext</sub>
-            − o (N<sub>NonExt</sub> + r N<sub>Ext</sub> − 1).
+            In this specification, a glyph assembly is built by repeating each
+            extender r times and using the same overlap value o between each
+            glyph. The number of glyphs in such an assembly is
+            <dfn>AssemblyGlyphCount</dfn>(r) = <a>N<sub>NonExt</sub></a> + r <a>N<sub>Ext</sub></a> while
+            the stretch size is
+            <dfn>AssembySize</dfn>(o, r) =
+            <a>S<sub>NonExt</sub></a> + r <a>S<sub>Ext</sub></a>
+            − o (<a>AssemblyGlyphCount</a>(r) − 1).
           </p>
           <p>
             <dfn>r<sub>min</sub></dfn> is the minimal number of repetitions
-            needed to obtain an assembly size of
-            size at least T. It is the maximum between 0 and the ceiling of
-            (T − S<sub>NonExt</sub> − o<sub>min</sub> (N<sub>NonExt</sub> − 1)) / (S<sub>Ext</sub> − o<sub>min</sub> N<sub>Ext</sub>).
+            needed to obtain an assembly of
+            size at least T i.e. the minimal r such that
+            <a>AssembySize</a>(<a>o<sub>min</sub></a>, r)) ≥ T.
+            It is defined as the maximum between 0 and the ceiling of
+            (T − <a>S<sub>NonExt</sub></a> + <a>o<sub>min</sub></a> (<a>N<sub>NonExt</sub></a> − 1)) / <a>S<sub>Ext,NonOverlapping</sub></a>.
           </p>
 	  <p>
             <dfn>o<sub>max</sub></dfn> is the
             maximum overlap possible to build an assembly of size at least
-            T by repeating each extender r<sub>min</sub> times.
-            N = N<sub>NonExt</sub> + r<sub>min</sub> N<sub>Ext</sub> is
-            the number of glyphs in such an assembly.
-            If N ≤ 1, then the overlap is irrelevant, so
-            o<sub>max</sub> is defined to be o<sub>min</sub>.
+            T by repeating each extender <a>r<sub>min</sub></a> times.
+
+            If <a>AssemblyGlyphCount</a>(<a>r<sub>min</sub></a>) ≤ 1, then the actual overlap value is irrelevant.
             Otherwise, o<sub>max</sub> is defined to be the minimum of:
           </p>
           <ul>
-            <li>o<sub>max,theorical</sub> = (S<sub>NonExt</sub> + r<sub>min</sub> S<sub>Ext</sub> − T) / (N − 1)</li>
+            <li><dfn>o<sub>max,theorical</sub></dfn> = (<a>AssembySize</a>(0, <a>r<sub>min</sub></a>) − T) / (<a>AssemblyGlyphCount</a>(<a>r<sub>min</sub></a>) − 1)
+              is the theorical overlap obtained by
+              splitting split evenly the extra size of an assembly built with
+              null overlap.
+            </li>
             <li>
               <code>GlyphPartRecord.startConnectorLength</code> for all
               the entries in
@@ -5371,7 +5376,7 @@
 	  <p>
             The <dfn>glyph assembly stretch size</dfn>
             for a target size T is
-            AssembySize(o<sub>max</sub>, r<sub>min</sub>).
+            <a>AssembySize</a>(<a>o<sub>max</sub></a>, <a>r<sub>min</sub></a>).
           </p>
           <p>
             The
@@ -5437,7 +5442,7 @@
                       <code>Part</code> to
                       <code>GlyphAssembly.partRecords[PartIndex]</code>.
                       Set <code>RepetitionCounter</code> to
-                      r<sub>min</sub> if
+                      <a>r<sub>min</sub></a> if
                       <code>Part</code> is an extender and to 1 otherwise.
                     </li>
                   </ol>
@@ -5451,7 +5456,7 @@
                       are at position <code>(x, y)</code>.
                       Set <code>x</code> to
                       <code>x + Part.fullAdvance −
-                        o<sub>max</sub></code>
+                        <a>o<sub>max</sub></a></code>
                     </li>
                     <li>Otherwise (if the glyph assembly is vertical),
                       then
@@ -5461,7 +5466,7 @@
                       are at position <code>(x, y)</code>.
                       Set <code>y</code> to
                       <code>y − Part.fullAdvance +
-                        o<sub>max</sub></code>
+                        <a>o<sub>max</sub></a></code>
                     </li>
                   </ul>
                 </li>
