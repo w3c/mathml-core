@@ -5305,7 +5305,7 @@
               <code>GlyphAssembly.partRecords</code>.
             </li>
             <li><dfn>S<sub>Ext,NonOverlapping</sub></dfn> = <a>S<sub>Ext</sub></a></a> − <a>o<sub>min</sub></a> <a>N<sub>Ext</sub></a>
-              is the maximal sum of non overlapping parts of extenders.
+              is the sum of maximum non overlapping parts of extenders.
             </li>
           </ul>
           <p>
@@ -5344,7 +5344,7 @@
             size at least T i.e. the minimal r such that
             <a>AssembySize</a>(<a>o<sub>min</sub></a>, r)) ≥ T.
             It is defined as the maximum between 0 and the ceiling of
-            (T − <a>S<sub>NonExt</sub></a> + <a>o<sub>min</sub></a> (<a>N<sub>NonExt</sub></a> − 1)) / <a>S<sub>Ext,NonOverlapping</sub></a>.
+            ((T − <a>S<sub>NonExt</sub></a> + <a>o<sub>min</sub></a> (<a>N<sub>NonExt</sub></a> − 1)) / <a>S<sub>Ext,NonOverlapping</sub></a>).
           </p>
 	  <p>
             <dfn>o<sub>max</sub></dfn> is the
@@ -5357,7 +5357,7 @@
           <ul>
             <li><dfn>o<sub>max,theorical</sub></dfn> = (<a>AssembySize</a>(0, <a>r<sub>min</sub></a>) − T) / (<a>AssemblyGlyphCount</a>(<a>r<sub>min</sub></a>) − 1)
               is the theorical overlap obtained by
-              splitting split evenly the extra size of an assembly built with
+              splitting evenly the extra size of an assembly built with
               null overlap.
             </li>
             <li>
