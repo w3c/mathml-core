@@ -126,10 +126,10 @@ Here is a brief rundown of what those elements _are_...
 * 3 elements called `semantics`, `annotation` and `annotation-xml` which simply provide other annotations or potential semantics in existing content but are generally not rendered.
 * 6 token elements - "Token elements in presentation markup are broadly intended to represent the smallest units of mathematical notation which carry meaning. Tokens are roughly analogous to words in text. However, because of the precise, symbolic nature of mathematical notation, the various categories and properties of token elements figure prominently in MathML markup. By contrast, in textual data, individual words rarely need to be marked up or styled specially." The token elements are 	(`mtext`, `mi` (identifier), `mn` (number), `mo` (operators in a broad sense), `mspace`, `ms` (string literal - for things like computer algebra systems)
 * Layout/Relationship elements `mrow`(for grouping sub-expressions), `mfrac` (for fractions and fraction-like objects such as binomial coefficients and Legendre symbols), `msqrt` and `mroot` for radicals
-* `mstyle` (legacy compat, deprecated - just maps to css)
-* `merror` (legacy compat - displays its contents as an ”error message”. The intent of this element is to provide a standard way for programs that generate MathML from other input to report syntax errors in their input.)
-* `mpadded` - a row-like grouping container for modifying its position and bounds. (legacy compat, attributes map to CSS, although attributes are more natural for mathematical layout)
-* `mphantom` - a co-evolutionary/legacy row-like container that just adds a UA style that maps to visibility: hidden;
+* `mstyle` (<a href="#a-note-on-legacy-compat-and-following-the-platform">legacy compat</a>, deprecated - just maps to css)
+* `merror` (<a href="#a-note-on-legacy-compat-and-following-the-platform">legacy compat</a> - displays its contents as an ”error message”. The intent of this element is to provide a standard way for programs that generate MathML from other input to report syntax errors in their input.)
+* `mpadded` - a row-like grouping container for modifying its position and bounds. (<a href="#a-note-on-legacy-compat-and-following-the-platform">legacy compat</a>, attributes map to CSS, although attributes are more natural for mathematical layout)
+* `mphantom` - a co-evolutionary/<a href="#a-note-on-legacy-compat-and-following-the-platform">legacy compat</a>, row-like container that just adds a UA style that maps to visibility: hidden;
 * `menclose` - a row-like element for various types of 'enclosure' renderings (see examples at  https://developer.mozilla.org/en-US/docs/Web/MathML/Element/menclose)
 * 3 elements about subscripts and superscripts `msub`, `msup` and `msubsup`
 * 3 elements about underscripts and overscripts `munder`, `mover` and `munderover`
