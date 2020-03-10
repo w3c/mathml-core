@@ -334,6 +334,10 @@ We discarded this approach for several reasons:
   effort. Again, the choice was instead to consider a subset of manageable size,
   corresponding to what is used on web pages and implemented in WebKit and
   Gecko.
+  
+### A Note on "Legacy Compat" and "following the platform"
+MathML-Core aims to _always_ follow the platform.  Where things are noted as included for "Legacy Compat" this refers to the fact that existing, legacy patterns are mapped to their platform counterparts and deprecated.  Any support for legacy/coevolutionary (deprecated) attributes just maps to existing platform solutions in the same way that legacy (deprecated) attributes like `border` might be supported in HTML via a UA style rule.  In other words, even supporting the legacy border attribute would be explained by CSS, the box model and the border properties.  We've chosen to only recommend supporting these kinds of mappings for things which are actually in wide use and only so that existing content keeps working while we expose (functional) platform answers.
+
 ## Stakeholder Feedback
 
 * ...
