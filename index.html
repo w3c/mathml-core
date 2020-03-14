@@ -1736,16 +1736,16 @@
                         stretched to <a>block dimension</a>
                         <code>T<sub>ascent</sub></code> +
                         <code>T<sub>descent</sub></code>.
-                        The <a>inline size</a> is the stretchy glyph width returned.
-                        Let Δ = [(<code>T<sub>ascent</sub></code> −
-                        <code>T<sub>descent</sub></code>) −
-                        (stretchy glyph ascent − stretchy glyph descent)] / 2
-                        be the shift between the center of the stretch target
-                        and the center of the actual stretchy glyph.
-                        Then the ink ascent of the content is
-                        <code>T<sub>ascent</sub></code> − Δ
+                        The <a>inline size</a> of the content is the width of
+                        the stretchy glyph. The stretchy glyph is shifted
+                        towards the <a>line-under</a> by a value Δ so that its
+                        center aligns with the center of the target:
+                        the ink ascent of the content is
+                        the ascent of the stretchy glyph − Δ
                         and the ink descent of the content is
-                        <code>T<sub>descent</sub></code> + Δ.
+                        the descent of the stretchy glyph + Δ.
+                        These centers have coordinates "½(ascent − descent)"
+                        so Δ = [(ascent of stretchy glyph − descent of stretchy glyph) − (<code>T<sub>ascent</sub></code> − <code>T<sub>descent</sub></code>)] / 2.
                       </li>
                       <li>
                         The painting of the operator is performed by the
