@@ -1737,13 +1737,15 @@
                         <code>T<sub>ascent</sub></code> +
                         <code>T<sub>descent</sub></code>.
                         The <a>inline size</a> is the stretchy glyph width returned.
-                        If Δ = <code>T<sub>ascent</sub></code> +
-                        <code>T<sub>descent</sub></code> −
-                        (stretchy glyph ascent + stretchy glyph descent)
-                        then the ink ascent of the content is
-                        <code>T<sub>ascent</sub></code> + Δ/2
+                        Let Δ = [(<code>T<sub>ascent</sub></code> −
+                        <code>T<sub>descent</sub></code>) −
+                        (stretchy glyph ascent − stretchy glyph descent)] / 2
+                        be the shift between the center of the stretch target
+                        and the center of the actual stretchy glyph.
+                        Then the ink ascent of the content is
+                        <code>T<sub>ascent</sub></code> − Δ
                         and the ink descent of the content is
-                        <code>T<sub>descent</sub></code> + Δ/2.
+                        <code>T<sub>descent</sub></code> + Δ.
                       </li>
                       <li>
                         The painting of the operator is performed by the
@@ -1751,7 +1753,7 @@
                         to <a>shape a stretchy glyph</a>
                         stretched to <a>block dimension</a> <code>T</code> and
                         at position determined by the previous box metrics
-                        shifted by Δ/2 towards the <a>line-over</a>.
+                        shifted by Δ towards the <a>line-over</a>.
                       </li>
                     </ol>
                     <figure id="figure-base-variants-and-assembly">
