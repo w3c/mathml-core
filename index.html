@@ -629,9 +629,9 @@
             of glyphs in math formulas but also scale other parts (spacing, shifts,
             line thickness of bars etc) accordingly.
             It is mapped to the CSS property
-            <a data-cite="CSS-FONTS-3#font-size-prop"><code>font-size</code></a>
+            <a data-cite="CSS-FONTS-4#font-size-prop"><code>font-size</code></a>
             and the <code>mathsize</code> values are interpreted according to the
-            definition in [[CSS-FONTS-3]].
+            definition in [[CSS-FONTS-4]].
           </p>
           <div class="note">
 		    The above attributes are implemented for compatibility with full MathML. Authors whose only target is MathML Core are encouraged to use CSS for styling.
@@ -794,6 +794,16 @@
           <code>display="block"</code> and <code>display="inline"</code>
           respectively.
         </div>
+        <p>Because good mathematical rendering requires use of mathematical
+          fonts, the
+          <a href="#user-agent-stylesheet">user agent stylesheet</a>
+          should set the
+          <a data-cite="CSS-FONTS-4#font-family-prop"><code>font-family</code></a>
+          to the
+          <a data-cite="CSS-FONTS-4#valdef-font-family-math"><code>math</code></a>
+          value on the <code>&lt;math&gt;</code> element instead of inheriting
+          it.
+        </p>
       </section>
       <section id="linkable-math-elements">
         <h3><dfn>MathML Hyperlink Elements</dfn></h3>
@@ -1322,7 +1332,7 @@
               on its text nodes [[OPEN-FONT-FORMAT]]
               unless it contradicts what the page author has
               specified with the
-              <a data-cite="CSS-FONTS-3#font-rend-desc"><code>font-feature-settings</code></a>
+              <a data-cite="CSS-FONTS-4#font-rend-desc"><code>font-feature-settings</code></a>
               CSS property.
           </p>
           </section>
@@ -5001,7 +5011,7 @@
           layout on descendants should try to minimize the
           <a data-cite="CSS-WRITING-MODES-3#extent">logical height</a>.
           This includes how
-          <a data-cite="CSS-FONTS-3#font-size-prop"><code>font-size</code></a>
+          <a data-cite="CSS-FONTS-4#font-size-prop"><code>font-size</code></a>
           is changed when <a><code>math-script-level</code></a> is
           <code>auto</code> as well
           miscelleanous layout rules described in details in
@@ -5055,7 +5065,7 @@
         </p>
         <p>
           If
-          <a data-cite="CSS-FONTS-3#font-size-prop"><code>font-size</code></a>
+          <a data-cite="CSS-FONTS-4#font-size-prop"><code>font-size</code></a>
           is specified or if the specified value of
           <code>math-script-level</code> is <code>initial</code> then
           <code>math-script-level</code> does not affect the computed value of
@@ -5113,7 +5123,7 @@
         <code>MathValueRecord</code> entry) are scaled to appropriate values
         for layout purpose, taking into account
         <code>head.unitsPerEm</code>, CSS
-        <a data-cite="CSS-FONTS-3#font-size-prop"><code>font-size</code></a>
+        <a data-cite="CSS-FONTS-4#font-size-prop"><code>font-size</code></a>
         or zoom level.
       </p>
       <section>
@@ -5624,7 +5634,6 @@
       <div class="issue" data-number="35">CSS writing-mode and direction on the math root?</div>
       <div class="issue" data-number="36">font-style and font-weight on the math root?</div>
       <div class="issue" data-number="94">links and focusable elements?</div>
-      <div class="issue" data-number="37">default font-family?</div>
       <pre class="css">@namespace url(http://www.w3.org/1998/Math/MathML);
 
 /* Default display */
