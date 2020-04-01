@@ -2299,6 +2299,8 @@
             <a><code>displaystyle</code></a> to <code>false</code>,
             or if it was already <code>false</code> increments
             <a><code>scriptlevel</code></a> by 1, within its children.
+            It sets <a>math-superscript-shift-style</a> to
+            <code>inline</code> within its second child.
             To avoid visual confusion between the fraction bar and another
             adjacent items (e.g. minus sign or another fraction's bar),
             a default 1-pixel space is added around the element.
@@ -2319,7 +2321,9 @@
           <div class="note" id="fraction-css-rules-on-children">
             In practice, an <code>&lt;mfrac&gt;</code> element has two children
             that are <a>in-flow</a>. Hence the CSS rules basically performs
-            <a><code>scriptlevel</code></a> and <a><code>displaystyle</code></a> changes for the <a>numerator</a> and
+            <a><code>scriptlevel</code></a>, <a><code>displaystyle</code></a>
+            and <a>math-superscript-shift-style</a>
+            changes for the <a>numerator</a> and
             <a>denominator</a>.
           </div>
           <section id="fraction-with-nonzero-line-thickness">
@@ -2340,7 +2344,7 @@
               <figcaption>Box model for the <code>&lt;mfrac&gt;</code> element</figcaption>
             </figure>
             <p>The <a>min-content inline size</a>
-              (respectively <a>max-content inline size</a>) 
+              (respectively <a>max-content inline size</a>)
               of content is the maximum between the
               <a>min-content inline size</a>
               (respectively <a>max-content inline size</a>) of the <a>numerator</a>'s
@@ -2567,13 +2571,16 @@
             in <a href="#global-attributes"></a>.
           </p>
           <p>
+            The <code>&lt;msqrt&gt;</code> and <code>&lt;mroot&gt;</code>
+            elements sets <a>math-superscript-shift-style</a> to
+            <code>inline</code>.
             The <code>&lt;mroot&gt;</code> element sets
             increments <a><code>scriptlevel</code></a> by 2, and sets <a><code>displaystyle</code></a> to "false" in all
             but its first child.
             The <a href="#user-agent-stylesheet">user agent stylesheet</a>
             must contain the following rule in order to implement that behavior:
           </p>
-          <pre class="css" data-include="user-agent-stylesheet/mroot.css"></pre>
+          <pre class="css" data-include="user-agent-stylesheet/radicals.css"></pre>
           <p>
             If the <code>&lt;msqrt&gt;</code> or <code>&lt;mroot&gt;</code>
             element do not have their computed
@@ -3505,27 +3512,6 @@
           These elements can be used to place limits on large operators, or fo
           placing accents and lines above or below the base.
         </p>
-        <section id="cramped-elements">
-          <h4>Cramped Elements</h4>
-          <p>
-            A <a>MathML Core element</a> is <dfn>cramped</dfn> if it satisfies
-            one of the following condition:
-          </p>
-          <ol>
-            <li>Its parent is <a>cramped</a> or a <a>radical element</a>.</li>
-            <li>It is the second <a>in-flow</a> child of an
-              <a><code>&lt;mfrac&gt;</code></a>,
-              <a><code>&lt;msub&gt;</code></a>,
-              <a><code>&lt;msubsup&gt;</code></a>,
-              <a><code>&lt;munder&gt;</code></a> or
-              <a><code>&lt;munderover&gt;</code></a> element.
-            </li>
-          </ol>
-          <div class="note" id="cramped-element">
-            The second <a>in-flow</a> child corresponds to a <a>numerator</a>, subscript or
-            underscript.
-          </div>
-        </section>
         <section id="subscripts-and-superscripts-msub-msup-msubsup">
           <h4>Subscripts and Superscripts <code>&lt;msub&gt;</code>, <code>&lt;msup&gt;</code>, <code>&lt;msubsup&gt;</code></h4>
           <div class="issue" data-number="22">Use MathKernInfo?</div>
@@ -3706,9 +3692,10 @@
             </p>
             <ul>
               <li>The value <a>SuperscriptShiftUpCramped</a> if the
-                <code>&lt;msup&gt;</code> element is
-                <a>cramped</a> or
-                the value <a>SuperscriptShiftUp</a> otherwise.</li>
+                element has a computed
+                <a>math-superscript-shift-style</a> property equal to
+                <code>inline</code>, or
+                <a>SuperscriptShiftUp</a> otherwise.</li>
               <li>
                 <a>SuperscriptBottomMin</a> + the <a>ink line-descent</a> of the
                 superscript's <a>margin box</a></li>
@@ -4648,20 +4635,42 @@
           </section>
         </section>
         <section>
-          <h4>Displaystyle and scriptlevel in scripts</h4>
+          <h4 id="displaystyle-and-scriptlevel-in-scripts">Displaystyle, scriptlevel and math-superscript-shift-style in scripts</h4>
           <p>
-            For all MathML elements used for scripts and limits schemata,
-            the rule of thumb is to set
-            <a><code>displaystyle</code></a> to <code>false</code>
-            and to increment <a><code>scriptlevel</code></a> in all child
+            For all <a>scripted elements</a>, the rule of thumb is to set
+            <a><code>displaystyle</code></a> to <code>false</code> and
+            to increment <a><code>scriptlevel</code></a> in all child
             elements but the first one.
-            However, when an overscript (respectively underscript)
-            has an <a href="#attribute-munderover-accent" class="internalDFN" data-link-type="dfn"><code>accent</code></a>
-            (respectively <a href="#attribute-munderover-accentunder" class="internalDFN" data-link-type="dfn"><code>accentunder</code></a>)
+            However, an <a><code>&lt;mover&gt;</code></a> (respectively
+            <a><code>&lt;munderover&gt;</code></a>)
+            element with an <a href="#attribute-munderover-accent" class="internalDFN" data-link-type="dfn"><code>accent</code></a>
             attribute that is an
             <a data-cite="INFRA#ascii-case-insensitive">ASCII case-insensitive</a>
-            match to <code>"true"</code> then
-            the <a><code>scriptlevel</code></a> is not incremented.
+            match to <code>"true"</code> does not increment scriptlevel within
+            its second child (respectively third child). Similarly,
+            <a><code>&lt;mover&gt;</code></a> and
+            <a><code>&lt;munderover&gt;</code></a> elements
+            with an <a href="#attribute-munderover-accent" class="internalDFN" data-link-type="dfn"><code>accentunder</code></a>
+            attribute that is an
+            <a data-cite="INFRA#ascii-case-insensitive">ASCII case-insensitive</a>
+            match to <code>"true"</code> do not increment scriptlevel within
+            their second child.
+          </p>
+          <p><code>&lt;mmultiscripts&gt;</code> sets
+            <a><code>math-superscript-shift-style</code></a> to
+            <code>inline</code> on its children at even position if they are
+            before an <a>&lt;mprescripts&gt;</a>, and on those at odd position
+            if they are after
+            an <a>&lt;mprescripts&gt;</a>. Other <a>scripted elements</a>
+            set <a><code>math-superscript-shift-style</code></a> to
+            <code>inline</code> on their second child.
+            An <a><code>&lt;mover&gt;</code></a> and
+            <a><code>&lt;munderover&gt;</code></a>
+            elements with an <a href="#attribute-munderover-accent" class="internalDFN" data-link-type="dfn"><code>accent</code></a>
+            attribute that is an
+            <a data-cite="INFRA#ascii-case-insensitive">ASCII case-insensitive</a>
+            match to <code>"true"</code> also sets <a><code>math-superscript-shift-style</code></a> to
+            <code>inline</code> within their first child.
           </p>
           <p>
             The
@@ -4680,7 +4689,9 @@
             this section are <a>in-flow</a> and the
             <code>&lt;mprescript&gt;</code> is empty.
             Hence the CSS rules essentially performs automatic <a><code>displaystyle</code></a> and
-            <a><code>scriptlevel</code></a> changes for the scripts.
+            <a><code>scriptlevel</code></a> changes for the scripts ; and
+            <a><code>math-superscript-shift-style</code></a> changes for
+            subscripts and sometimes the base.
           </div>
         </section>
       </section>
@@ -5018,6 +5029,41 @@
           <a href="#presentation-markup"></a>.
           If the value of <code>math-style</code> is <code>display</code>, the math
           layout should not take such constraints into consideration.
+        </p>
+      </section>
+      <section id="the-math-superscript-shift-style">
+        <h3>The <code>math-superscript-shift-style</code> property</h3>
+        <table>
+          <tbody>
+            <tr>
+              <th>Name:</th>
+              <td>
+                <dfn><code>math-superscript-shift-style</code></dfn>
+              </td>
+            </tr>
+            <tr><th>Value:</th><td><code>display | inline</code></td></tr>
+            <tr><th>Initial:</th><td><code>display</code></td></tr>
+            <tr><th>Applies to:</th><td>All elements</td></tr>
+            <tr><th>Inherited:</th><td>yes</td></tr>
+            <tr><th>Percentages:</th><td>n/a</td></tr>
+            <tr><th>Media:</th><td>visual</td></tr>
+            <tr><th>Computed value:</th><td>specified keyword</td></tr>
+            <tr><th>Canonical order:</th><td>n/a</td></tr>
+            <tr><th>Animation type:</th><td>not animatable</td></tr>
+          </tbody>
+        </table>
+        <p>
+          If the value of <code>math-superscript-shift-style</code> is <code>inline</code>, the math layout on descendants will use the
+          <a>superscriptShiftUpCramped</a> parameter to place superscript.
+          If the value of <code>math-superscript-shift-style</code> is <code>display</code>, the math
+          will use the <a>superscriptShiftUp</a> parameter instead.
+        </p>
+        <p>
+          This property is used for positioning superscript during the layout
+          of MathML <a>scripted elements</a>.
+          See § <a href="#subscripts-and-superscripts-msub-msup-msubsup"></a>
+          <a href="#prescripts-and-tensor-indices-mmultiscripts"></a> and
+          <a href="#underscripts-and-overscripts-munder-mover-munderover"></a>.
         </p>
       </section>
       <section id="the-math-script-level-property">
@@ -5650,8 +5696,8 @@
 <span data-include-replace="true" data-include="user-agent-stylesheet/mtable.css"></span><span data-include-replace="true" data-include="user-agent-stylesheet/mtable-frame.css"></span><span data-include-replace="true" data-include="user-agent-stylesheet/mtr.css"></span><span data-include-replace="true" data-include="user-agent-stylesheet/mtd.css"></span>
 /* Fractions */
 <span data-include-replace="true" data-include="user-agent-stylesheet/mfrac.css"></span>
-/* Other rules for scriptlevel and displaystyle */
-</span><span data-include-replace="true" data-include="user-agent-stylesheet/mroot.css"></span><span data-include-replace="true" data-include="user-agent-stylesheet/scripts.css"></span>
+/* Other rules for scriptlevel, displaystyle and math-superscript-shift-style */
+</span><span data-include-replace="true" data-include="user-agent-stylesheet/radicals.css"></span><span data-include-replace="true" data-include="user-agent-stylesheet/scripts.css"></span>
       </pre>
     </section>
     <section class="normative">

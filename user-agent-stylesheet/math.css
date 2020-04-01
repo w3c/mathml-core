@@ -5,6 +5,7 @@ math {
   font-style: normal;
   font-family: math;
   math-style: inline;
+  math-superscript-shift-style: display;
   math-script-level: initial;
 }
 math[display="block" i] {
