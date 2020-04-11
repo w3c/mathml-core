@@ -53,16 +53,14 @@ knownTables = {
     "infixEntriesWithDefaultValues": [],
     "infixEntriesWithSpacing4": [],
     "infixEntriesWithSpacing3": [],
-    "infixEntriesWithSpacing5AndAccent": [],
-    "infixEntriesWithSpacing5AndAccentStretchy": [],
     "infixEntriesWithSpacing5AndStretchy": [],
-    "postfixEntriesWithSpacing0AndAccent": [],
     "prefixEntriesWithSpacing0AndStretchySymmetricFence": [],
     "postfixEntriesWithSpacing0AndStretchySymmetricFence": [],
-    "postfixEntriesWithSpacing0AndAccentStretchy": [],
     "prefixEntriesWithLspace1Rspace2AndSymmetricMovablelimitsLargeop": [],
-    "prefixEntriesWithLspace1Rspace2AndSymmetricLargeop": [],
-    "prefixEntriesWithLspace0Rspace1AndSymmetricLargeop": [],
+    "prefixEntriesWithLspace0Rspace0": [],
+    "postfixEntriesWithLspace0Rspace0": [],
+    "postfixEntriesWithLspace0Rspace0AndStretchy": [],
+    "prefixEntriesWithLspace3Rspace3AndSymmetricLargeop": [],
 }
 otherEntries={}
 otherValuesCount={}
@@ -79,7 +77,6 @@ for entry in root:
                                    "symmetric",
                                    "largeop",
                                    "movablelimits",
-                                   "accent",
                                    "fence",
                                    "separator"])
 
@@ -111,31 +108,9 @@ for entry in root:
 
     if (value["lspace"] == 5 and
         value["rspace"] == 5 and
-        value["properties"] == {'accent': True} and
-        form == "infix"):
-        knownTables["infixEntriesWithSpacing5AndAccent"].append(character)
-        continue
-
-    if (value["lspace"] == 5 and
-        value["rspace"] == 5 and
-        value["properties"] == {'accent': True, 'stretchy': True} and
-        form == "infix"):
-        knownTables["infixEntriesWithSpacing5AndAccentStretchy"].append(character)
-        continue
-
-    if (value["lspace"] == 5 and
-        value["rspace"] == 5 and
         value["properties"] == {'stretchy': True} and
         form == "infix"):
         knownTables["infixEntriesWithSpacing5AndStretchy"].append(character)
-        continue
-
-    if (value["lspace"] == 0 and
-        value["rspace"] == 0 and
-        "properties" in value and
-        value["properties"] == {'accent': True} and
-        form == "postfix"):
-        knownTables["postfixEntriesWithSpacing0AndAccent"].append(character)
         continue
 
     if (value["lspace"] == 0 and
@@ -152,14 +127,6 @@ for entry in root:
         value["properties"] == {'symmetric': True, 'stretchy': True, 'fence': True} and
         form == "postfix"):
         knownTables["postfixEntriesWithSpacing0AndStretchySymmetricFence"].append(character)
-        continue
-
-    if (value["lspace"] == 0 and
-        value["rspace"] == 0 and
-        "properties" in value and
-        value["properties"] == {'accent': True, 'stretchy': True} and
-        form == "postfix"):
-        knownTables["postfixEntriesWithSpacing0AndAccentStretchy"].append(character)
         continue
 
     if (value["lspace"] == 1 and
@@ -186,6 +153,36 @@ for entry in root:
         knownTables["prefixEntriesWithLspace0Rspace1AndSymmetricLargeop"].append(character)
         continue
 
+    if (value["lspace"] == 0 and
+        value["rspace"] == 0 and
+        "properties" not in value and
+        form == "prefix"):
+        knownTables["prefixEntriesWithLspace0Rspace0"].append(character)
+        continue
+
+    if (value["lspace"] == 0 and
+        value["rspace"] == 0 and
+        "properties" not in value and
+        form == "postfix"):
+        knownTables["postfixEntriesWithLspace0Rspace0"].append(character)
+        continue
+
+    if (value["lspace"] == 0 and
+        value["rspace"] == 0 and
+        "properties" in value and
+        value["properties"] == {'stretchy': True} and
+        form == "postfix"):
+        knownTables["postfixEntriesWithLspace0Rspace0AndStretchy"].append(character)
+        continue
+
+    if (value["lspace"] == 3 and
+        value["rspace"] == 3 and
+        "properties" in value and
+        value["properties"] == {'symmetric': True, 'largeop': True} and
+        form == "prefix"):
+        knownTables["prefixEntriesWithLspace3Rspace3AndSymmetricLargeop"].append(character)
+        continue
+    
     v = str(value)
     if v not in otherValuesCount:
         otherValuesCount[v] = 0
