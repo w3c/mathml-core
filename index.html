@@ -1543,7 +1543,7 @@
               properties of an <a>embellished operator</a> are
               <a>length-percentage</a>.
               The <dfn><code>maxsize</code></dfn> property
-              of an <a>embellished operator</a> is either an
+              of an <a>embellished operator</a> is either a
               <a>length-percentage</a> or ∞.
               The
               <code>lspace</code>,
@@ -1619,6 +1619,13 @@
               the target stretch size before application of
               size constraints, as described in
               <a href="#algorithm-for-stretching-operators-along-the-block-axis"></a>.
+            </p>
+            <p>
+              Font-relative lengths for
+              <code>lspace</code>, <code>rspace</code>,
+              <code>minsize</code> and <code>maxsize</code> rely on the
+              font style of the <a>core operator</a>, not the one of the
+              <a>embellished operator</a>.
             </p>
           <div class="note">
             The <code>fence</code> and <code>separator</code> properties do not
