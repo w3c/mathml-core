@@ -1,6 +1,6 @@
 math {
   direction: ltr;
-  display: inline;
+  display: inline-math;
   font-size: inherit;
   font-style: normal;
   font-family: math;
@@ -9,7 +9,7 @@ math {
   math-script-level: initial;
 }
 math[display="block" i] {
-  display: block;
+  display: math;
   text-align: center;
   math-style: display;
 }
