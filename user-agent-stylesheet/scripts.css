@@ -15,17 +15,13 @@ munderover[accent="true" i] > :nth-child(3) {
   math-script-level: inherit;
 }
 msub > :nth-child(2),
-msup > :nth-child(2),
 msubsup > :nth-child(2),
-munder > :nth-child(2),
-mover > :nth-child(2),
-munderover > :nth-child(2),
 mmultiscripts > :nth-child(even),
-mmultiscripts > mprescripts ~ *:nth-child(odd),
+mmultiscripts > mprescripts ~ :nth-child(odd),
 mover[accent="true" i] > :first-child,
 munderover[accent="true" i] > :first-child {
   math-superscript-shift-style: inline;
 }
-mmultiscripts > mprescripts ~ *:nth-child(even) {
+mmultiscripts > mprescripts ~ :nth-child(even) {
   math-superscript-shift-style: inherit;
 }
