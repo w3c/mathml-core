@@ -629,7 +629,7 @@
             of glyphs in math formulas but also scale other parts (spacing, shifts,
             line thickness of bars etc) accordingly.
             It is mapped to the CSS property
-            <a data-cite="CSS-FONTS-4#font-size-prop"><code>font-size</code></a>
+            <a><code>font-size</code></a>
             and the <code>mathsize</code> values are interpreted according to the
             definition in [[CSS-FONTS-4]].
           </p>
@@ -722,14 +722,14 @@
             <code>+&lt;U&gt;</code>, <code>-&lt;U&gt;</code> or <code>&lt;U&gt;</code>
             where <code>&lt;U&gt;</code> is an
             <a>unsigned-integer</a>.
-            It is mapped to the <a><code>math-script-level</code></a>.
+            It is mapped to the <a><code>font-size</code></a> property.
             More precisely,
             <code>+&lt;U&gt;</code>, <code>-&lt;U&gt;</code> and
             <code>&lt;U&gt;</code>
             are respectively mapped to
-            <code>add(&lt;U&gt;)</code>
-            <code>add(&lt;-U&gt;)</code>
-            and <code>&lt;U&gt;</code>.
+            <code>scriptlevel(add(&lt;U&gt;))</code>
+            <code>scriptlevel(add(&lt;-U&gt;))</code>
+            and <code>scriptlevel(&lt;U&gt;)</code>.
           </p>
           <p>
             <a><code>displaystyle</code></a> and <a><code>scriptlevel</code></a> values
@@ -1326,8 +1326,8 @@
               hence would be too small when used in a script position.
               To render such “prescripted” characters with the appropriate size,
               If a <code>&lt;mtext&gt;</code> has a positive
-              <a><code>math-script-level</code></a> value then user agents must
-              enable
+              <a><code>internal scriptlevel</code></a> value then user agents
+              must enable
               the <code>ssty</code> (Script Style) OpenType feature
               on its text nodes [[OPEN-FONT-FORMAT]]
               unless it contradicts what the page author has
@@ -5029,9 +5029,9 @@
           layout on descendants should try to minimize the
           <a data-cite="CSS-WRITING-MODES-3#extent">logical height</a>.
           This includes how
-          <a data-cite="CSS-FONTS-4#font-size-prop"><code>font-size</code></a>
-          is changed when <a><code>math-script-level</code></a> is
-          <code>auto</code> as well
+          <a><code>font-size</code></a>
+          is changed when its specified value is
+          <code>scriptlevel(auto)</code> as well
           miscelleanous layout rules described in details in
           <a href="#presentation-markup"></a>.
           If the value of <code>math-style</code> is <code>display</code>, the math
@@ -5074,62 +5074,45 @@
         </p>
       </section>
       <section id="the-math-script-level-property">
-        <h3>The <code>math-script-level</code> property</h3>
-        <table>
-          <tbody>
-            <tr>
-              <th>Name:</th>
-              <td>
-                <dfn><code>math-script-level</code></dfn>
-              </td>
-            </tr>
-            <tr><th>Value:</th><td><code>auto | add(&lt;integer&gt;) | &lt;integer&gt;</code></td></tr>
-            <tr><th>Initial:</th><td><code>0</code></td></tr>
-            <tr><th>Applies to:</th><td>All elements</td></tr>
-            <tr><th>Inherited:</th><td>yes</td></tr>
-            <tr><th>Percentages:</th><td>n/a</td></tr>
-            <tr><th>Media:</th><td>visual</td></tr>
-            <tr><th>Computed value:</th><td>see individual properties</td></tr>
-            <tr><th>Canonical order:</th><td>n/a</td></tr>
-            <tr><th>Animation type:</th><td>not animatable</td></tr>
-          </tbody>
-        </table>
-        <p>
-          If the specified value of <code>math-script-level</code> is
-          <code>auto</code> and the inherited value of <code>math-style</code> is
-          <code>display</code> then the computed value of
-          <code>math-script-level</code> is the inherited value.
+        <h3>New value <code>scriptlevel()</code> function for font-size</h3>
+        <p>The <dfn><code>font-size</code></dfn> property
+          from <a data-cite="CSS-FONTS-4"></a>
+          is extended with new values:
         </p>
-        <p>If the specified value of <code>math-script-level</code> is
-          <code>auto</code> and the inherited value of <code>math-style</code> is
-          <code>inline</code> then the computed value of
-          <code>math-script-level</code> is the inherited value plus one.
-        </p>
+        <code><a data-cite="CSS-FONTS-4#font-size-prop">&lt;font-size-old&gt;</a> <a data-cite="CSS-VALUES-3#comb-one">|</a> scriptlevel(auto) | scriptlevel(add(&lt;integer&gt;)) | scriptlevel(&lt;integer&gt;)</code>
+        <p>Each element has an <dfn>internal scriptlevel</dfn> which is
+          determined as folows:</p>
+        <ul>
+          <li>The <a>internal scriptlevel</a> is 0 on the root element.</li>
+          <li>If the specified value of <a>font-size</a> is
+            <code>scriptlevel(auto)</code> and
+            the inherited value of <a>math-style</a>
+            is <code>inline</code> then the <a>internal scriptlevel</a> of
+            the element is the one of its parent plus one.
+          </li>
+          <li>If the specified value of <a>font-size</a> is of
+            the form <code>scriptlevel(add(&lt;integer&gt;))</code> then the
+            <a>internal scriptlevel</a> is the one of its parent plus
+            the specified integer.
+          </li>
+          <li>If the specified value of <a>font-size</a> is of the form
+            <code>scriptlevel(&lt;integer&gt;)</code> then the
+            <a>internal scriptlevel</a> of the element is the specified
+            integer.</li>
+          <li>Otherwise, the <a>internal scriptlevel</a>
+            of the element is the same as the one of its parent.</li>
+        </ul>
         <p>
-          If the specified value of <code>math-script-level</code> is of the form
-          <code>add(&lt;integer&gt;)</code> then the computed value of
-          <code>math-script-level</code> is the inherited value plus the specified
-          integer.
-        </p>
-        <p>
-          If the specified value of <code>math-script-level</code> is of the form
-          <code>&lt;integer&gt;</code> then the computed value of
-          <code>math-script-level</code> is set to the specified integer.
-        </p>
-        <p>
-          If
-          <a data-cite="CSS-FONTS-4#font-size-prop"><code>font-size</code></a>
-          is specified or if the specified value of
-          <code>math-script-level</code> is <code>initial</code> then
-          <code>math-script-level</code> does not affect the computed value of
-          <code>font-size</code>. Otherwise, the computed value of
-          <code>font-size</code> is obtained by multiplying the inherited value of
+          If the specified value <a>font-size</a> is of the form
+          <code>scriptlevel(...)</code> then the computed value of
+          <a>font-size</a> is obtained by multiplying the inherited value of
           <code>font-size</code> by a nonzero scale factor calculated by the
           following procedure:
         </p>
         <ol>
-          <li>Let A be the inherited <code>math-script-level</code>, B the computed
-            <code>math-script-level</code>, C be 0.71 and S be 1.0</li>
+          <li>Let A be the <a>internal scriptlevel</a> of the parent,
+            B the <a>internal scriptlevel</a> of the element,
+            C be 0.71 and S be 1.0</li>
           <li>
             <ul>
               <li>If A = B then return S.</li>
@@ -5176,7 +5159,7 @@
         <code>MathValueRecord</code> entry) are scaled to appropriate values
         for layout purpose, taking into account
         <code>head.unitsPerEm</code>, CSS
-        <a data-cite="CSS-FONTS-4#font-size-prop"><code>font-size</code></a>
+        <a><code>font-size</code></a>
         or zoom level.
       </p>
       <section>

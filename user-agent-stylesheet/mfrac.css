@@ -3,7 +3,7 @@ mfrac {
   padding-inline-end: 1px;
 }
 mfrac > * {
-  math-script-level: auto;
+  font-size: scriptlevel(auto);
   math-style: inline;
 }
 mfrac > :nth-child(2) {

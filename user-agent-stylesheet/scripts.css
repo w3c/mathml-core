@@ -5,14 +5,14 @@ mmultiscripts > :not(:first-child),
 munder > :not(:first-child),
 mover > :not(:first-child),
 munderover > :not(:first-child) {
-  math-script-level: add(1);
+  font-size: scriptlevel(add(1));
   math-style: inline;
 }
 munder[accentunder="true" i] > :nth-child(2),
 mover[accent="true" i] > :nth-child(2),
 munderover[accentunder="true" i] > :nth-child(2),
 munderover[accent="true" i] > :nth-child(3) {
-  math-script-level: inherit;
+  font-size: inherit;
 }
 msub > :nth-child(2),
 msubsup > :nth-child(2),
