@@ -48,11 +48,16 @@ def buildKey(characters, form):
 def toHexa(character):
     return "U+%04X" % character
 
-def appendCharacters(name, character):
+def appendCharacters(name, character, value):
+    if value:
+        if "value" not in knownTables[name]:
+            knownTables[name]["value"] = value
+        assert knownTables[name]["value"] == value
+
     if len(characters) > 1:
         if "multipleChar" not in knownTables[name]:
             knownTables[name]["multipleChar"] = []
-        knownTables[name]["multipleChar"].append(serializeString(characters))
+        knownTables[name]["multipleChar"].append(characters)
         return
 
     if "singleChar" not in knownTables[name]:
@@ -73,12 +78,12 @@ def dumpKnownTables(fenceAndSeparators):
         if "multipleChar" in item:
             table = item["multipleChar"]
             print("  multipleChar (%d): " % len(table), end="")
-            for string in sorted(table):
-                print("'%s' " % string, end="")
+            for sequence in sorted(table):
+                print("'%s' " % serializeString(sequence), end="")
             print("")
-                
+
         print("")
-    
+
 # Extract the operator dictionary.
 xsltTransform = etree.XSLT(etree.parse("./operator-dictionary.xsl"))
 
@@ -122,10 +127,10 @@ for entry in root:
         # Use a separate tables for fence and separators as they are not needed
         # for rendering.
         if ("fence" in value["properties"]):
-            appendCharacters("fences", characters)
+            appendCharacters("fences", characters, None)
             del value["properties"]["fence"]
         if ("separator" in value["properties"]):
-            appendCharacters("separators", characters)
+            appendCharacters("separators", characters, None)
             del value["properties"]["separator"]
         if (value["properties"] == {}):
             del value["properties"]
@@ -134,28 +139,28 @@ for entry in root:
         value["rspace"] == defaultSpacing and
         "properties" not in value and
         form == "infix"):
-        appendCharacters("infixEntriesWithDefaultValues", characters)
+        appendCharacters("infixEntriesWithDefaultValues", characters, value)
         continue
 
     if (value["lspace"] == 4 and
         value["rspace"] == 4 and
         "properties" not in value and
         form == "infix"):
-        appendCharacters("infixEntriesWithSpacing4", characters)
+        appendCharacters("infixEntriesWithSpacing4", characters, value)
         continue
 
     if (value["lspace"] == 3 and
         value["rspace"] == 3 and
         "properties" not in value and
         form == "infix"):
-        appendCharacters("infixEntriesWithSpacing3", characters)
+        appendCharacters("infixEntriesWithSpacing3", characters, value)
         continue
 
     if (value["lspace"] == 5 and
         value["rspace"] == 5 and
         value["properties"] == {'stretchy': True} and
         form == "infix"):
-        appendCharacters("infixEntriesWithSpacing5AndStretchy", characters)
+        appendCharacters("infixEntriesWithSpacing5AndStretchy", characters, value)
         continue
 
     if (value["lspace"] == 0 and
@@ -163,7 +168,7 @@ for entry in root:
         "properties" in value and
         value["properties"] == {'symmetric': True, 'stretchy': True} and
         form == "prefix"):
-        appendCharacters("prefixEntriesWithSpacing0AndStretchySymmetric", characters)
+        appendCharacters("prefixEntriesWithSpacing0AndStretchySymmetric", characters, value)
         continue
 
     if (value["lspace"] == 0 and
@@ -171,7 +176,7 @@ for entry in root:
         "properties" in value and
         value["properties"] == {'symmetric': True, 'stretchy': True} and
         form == "postfix"):
-        appendCharacters("postfixEntriesWithSpacing0AndStretchySymmetric", characters)
+        appendCharacters("postfixEntriesWithSpacing0AndStretchySymmetric", characters, value)
         continue
 
     if (value["lspace"] == 1 and
@@ -179,7 +184,7 @@ for entry in root:
         "properties" in value and
         value["properties"] == {'symmetric': True, 'movablelimits': True, 'largeop': True} and
         form == "prefix"):
-        appendCharacters("prefixEntriesWithLspace1Rspace2AndSymmetricMovablelimitsLargeop", characters)
+        appendCharacters("prefixEntriesWithLspace1Rspace2AndSymmetricMovablelimitsLargeop", characters, value)
         continue
 
     if (value["lspace"] == 1 and
@@ -187,7 +192,7 @@ for entry in root:
         "properties" in value and
         value["properties"] == {'symmetric': True, 'largeop': True} and
         form == "prefix"):
-        appendCharacters("prefixEntriesWithLspace1Rspace2AndSymmetricLargeop", characters)
+        appendCharacters("prefixEntriesWithLspace1Rspace2AndSymmetricLargeop", characters, value)
         continue
 
     if (value["lspace"] == 3 and
@@ -195,7 +200,7 @@ for entry in root:
         "properties" in value and
         value["properties"] == {'symmetric': True, 'movablelimits': True, 'largeop': True} and
         form == "prefix"):
-        appendCharacters("prefixEntriesWithLspace3Rspace3AndSymmetricMovablelimitsLargeop", characters)
+        appendCharacters("prefixEntriesWithLspace3Rspace3AndSymmetricMovablelimitsLargeop", characters, value)
         continue
 
     if (value["lspace"] == 0 and
@@ -203,21 +208,21 @@ for entry in root:
         "properties" in value and
         value["properties"] == {'symmetric': True, 'largeop': True} and
         form == "prefix"):
-        appendCharacters("prefixEntriesWithLspace0Rspace1AndSymmetricLargeop", characters)
+        appendCharacters("prefixEntriesWithLspace0Rspace1AndSymmetricLargeop", characters, value)
         continue
 
     if (value["lspace"] == 0 and
         value["rspace"] == 0 and
         "properties" not in value and
         form == "prefix"):
-        appendCharacters("prefixEntriesWithLspace0Rspace0", characters)
+        appendCharacters("prefixEntriesWithLspace0Rspace0", characters, value)
         continue
 
     if (value["lspace"] == 0 and
         value["rspace"] == 0 and
         "properties" not in value and
         form == "postfix"):
-        appendCharacters("postfixEntriesWithLspace0Rspace0", characters)
+        appendCharacters("postfixEntriesWithLspace0Rspace0", characters, value)
         continue
 
     if (value["lspace"] == 0 and
@@ -225,7 +230,7 @@ for entry in root:
         "properties" in value and
         value["properties"] == {'stretchy': True} and
         form == "postfix"):
-        appendCharacters("postfixEntriesWithLspace0Rspace0AndStretchy", characters)
+        appendCharacters("postfixEntriesWithLspace0Rspace0AndStretchy", characters, value)
         continue
 
     if (value["lspace"] == 3 and
@@ -233,9 +238,9 @@ for entry in root:
         "properties" in value and
         value["properties"] == {'symmetric': True, 'largeop': True} and
         form == "prefix"):
-        appendCharacters("prefixEntriesWithLspace3Rspace3AndSymmetricLargeop", characters)
+        appendCharacters("prefixEntriesWithLspace3Rspace3AndSymmetricLargeop", characters, value)
         continue
-    
+
     if len(characters) > 1:
         otherEntriesWithMultipleCharacters[key] = value
         continue
@@ -248,7 +253,7 @@ for entry in root:
 
     otherValuesCount[v] += 1
     otherValueTotalCount += 1
-    otherEntries[v].append(toHexa(character))
+    otherEntries[v].append(character)
 
 def stringifyRange(unicodeRange):
     if unicodeRange[0] == unicodeRange[1]:
@@ -281,7 +286,10 @@ print("otherEntries", otherValueTotalCount)
 for value, count in sorted(otherValuesCount.items(),
                            key=operator.itemgetter(1), reverse=True):
    print("  * %s: %d" % (value, count))
-   print("    %s" % str(otherEntries[value]))
+   print("    [", end="")
+   for entry in otherEntries[value]:
+       print(toHexa(entry), end=", ")
+   print("]")
    print("")
 
 print("otherEntriesWithMultipleCharacters",
@@ -293,4 +301,96 @@ print("")
 print("Separate tables for fences and separators:\n")
 dumpKnownTables(True)
 
-# TODO: format tables
+
+# Dump the HTML content
+operatorProperties = ["stretchy", "symmetric", "largeop", "movablelimits"]
+def serializeValue(value):
+    properties = ""
+    if "properties" in value:
+        for p in operatorProperties:
+            if p in value["properties"]:
+                properties += "%s " % p
+    if properties == "":
+        properties = "N/A"
+
+    spaces = ["0",
+              "0.05555555555555555em",
+              "0.1111111111111111em",
+              "0.16666666666666666em",
+              "0.2222222222222222em",
+              "0.2777777777777778em",
+              "0.3333333333333333em",
+              "0.3888888888888889em"]
+
+    return "<td><code>%s</code></td><td><code>%s</code></td><td><code>%s</code></td><td>%s</td>" % (
+        value["form"],
+        spaces[value["lspace"]],
+        spaces[value["rspace"]],
+        properties)
+
+print("Generate operator-dictionary.html...", end=" ");
+md = open("operator-dictionary.html", "w")
+md.write("<!-- This file was automatically generated from generate-math-variant-tables.py. Do not edit. -->\n");
+
+md.write("<ul>");
+for name in ["fences", "separators"]:
+    md.write("<li>%s: " % name);
+    for entry in knownTables[name]["singleChar"]:
+        md.write("<code>&#x%0X; U+%04X</code>, " % (entry, entry))
+    if "multipleChar" in knownTables[name]:
+        for entry in knownTables[name]["multipleChar"]:
+            md.write("<code>")
+            md.write(serializeString(entry))
+            for character in entry:
+                md.write(" U+%04X" % character)
+            md.write("</code>, ")
+    md.write("</li>");
+md.write("</ul>")
+
+md.write("<table class='sortable'>\n");
+md.write("<tr>")
+md.write("<th>Content</th><th>form</th><th>rspace</th><th>lspace</th>")
+md.write("<th>")
+for p in operatorProperties:
+    md.write("%s " % p)
+md.write("</th>")
+md.write("</tr>")
+for name, item in sorted(knownTables.items(),
+                         key=(lambda v: len(v[1]["singleChar"])),
+                         reverse=True):
+    if ((name in ["fences", "separators", "infixEntriesWithDefaultValues"])):
+        continue
+    for entry in knownTables[name]["singleChar"]:
+        md.write("<tr>");
+        md.write("<td>&#x%0X; U+%04X</td>" % (entry, entry))
+        md.write(serializeValue(knownTables[name]["value"]))
+        md.write("</tr>");
+    if "multipleChar" in knownTables[name]:
+        for entry in knownTables[name]["multipleChar"]:
+            md.write("<tr>");
+            md.write("<td>")
+            md.write(serializeString(entry))
+            for character in entry:
+                md.write(" U+%04X" % character)
+            md.write("</td>")
+            md.write(serializeValue(knownTables[name]["value"]))
+            md.write("</tr>");
+
+# FIXME: decide what to do with these values.
+for value, count in sorted(otherValuesCount.items(),
+                           key=operator.itemgetter(1), reverse=True):
+    for entry in otherEntries[value]:
+        md.write("<tr style='text-decoration: line-through;'>");
+        md.write("<td>&#x%0X; U+%04X</td>" % (entry, entry))
+        md.write("<td colspan='5'>%s</td>" % value)
+        md.write("</tr>");
+for name in otherEntriesWithMultipleCharacters:
+    md.write("<tr style='text-decoration: line-through;'>");
+    md.write("<td>")
+    md.write(name)
+    md.write("</td>")
+    md.write(serializeValue(otherEntriesWithMultipleCharacters[name]))
+    md.write("</tr>");
+
+md.write("</table>\n");
+print("done.");

@@ -5695,52 +5695,29 @@
       <h2>Operator Tables</h2>
       <section id="operator-dictionary">
         <h3>Operator Dictionary</h3>
+        <div class="issue" data-number="176">TODO: more cleanup of the dictionary</div>
         <p>
-          Users agent must use a dictionary of rendering properties for MathML
-          operators. The dictionary must include at least the entries of the
-          <a href="#operator-dictionary-entries">table below</a>.
+          The following dictionary provides values to use for
+          <a href="#dictionary-based-attributes"></a> of operators
+          when they are not specified via explicit attributes or equal to
+          the generic default values. For details, see
+          <a href="#operator-fence-separator-or-accent-mo"></a> which explains
+          how to use this dictionary and how to
+          determine the values "Content" and "Form" indexing together
+          the dictionary.
         </p>
         <p>
-          The dictionary is indexed by 'Content' and 'Form' columns together.
-          <a href="#operator-fence-separator-or-accent-mo"></a>
-          describes how to determine these values for a given operator.
-          The 'Rendering' and 'Unicode' columns are provided for convenience,
-          but they are just alternative to the 'Content' column.
-        </p>
-        <p>
-          The 'Priority' column is significant for the proper grouping of
-          sub-expressions using <code>&lt;mrow&gt;</code>. This is especially
-          relevant to the automatic generation of MathML by conversion from
-          other formats for displayed mathematics, such as T<sub>E</sub>X,
-          which do not always specify how sub-expressions nest.
-          However, it does not affect the rendering described in this
-          specification and so is not needed for implementing it in user agents.
-        </p>
-        <p>
-          The length valued attributes <a><code>lspace</code></a> and
-          <a><code>rspace</code></a> are given here as numeric values ranging
-          from 0 to 7 in order to save space in the table. They must be
-          interpreted as multiples of 1/18em i.e.
-          <code>0</code>,
-          <code>0.05555555555555555em</code>,
-          <code>0.1111111111111111em</code>,
-          <code>0.16666666666666666em</code>,
-          <code>0.2222222222222222em</code>,
-          <code>0.2777777777777778em</code>,
-          <code>0.3333333333333333em</code>,
-          <code>0.3888888888888889em</code> respectively.
-        </p>
-        <p>
-          Boolean valued attributes
-          <a><code>fence</code></a>,
-          <a><code>separator</code></a>,
+          The values for <a>rspace</a> and <a>lspace</a> are indicated
+          in the corresponding columns.
+          The values of
           <a><code>stretchy</code></a>,
           <a><code>symmetric</code></a>,
           <a><code>largeop</code></a>,
-          <a><code>movablelimits</code></a>,
-          <a><code>accent</code></a> are
-          specified together in the final 'Properties' column by listing the
-          attribute name if its value should be set to true by the dictionary.
+          <a><code>movablelimits</code></a> are <code>true</code>
+          if they are listed in the last column.
+          Finally, the values of <a><code>fence</code></a> or
+          <a><code>separators</code></a> are <code>true</code> if the "Content"
+          of the entry is listed below:
         </p>
         <div id="operator-dictionary-entries"
              data-include="tables/operator-dictionary.html"></div>
