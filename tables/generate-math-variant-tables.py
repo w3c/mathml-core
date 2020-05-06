@@ -61,11 +61,17 @@ for mathvariant in mathvariantTransforms:
     md = open("mathvariants-%s.html" % mathvariant, "w")
     md.write("<!-- This file was automatically generated from generate-math-variant-tables.py. Do not edit. -->\n");
     md.write("<table>\n");
-    md.write("<tr><th>Original</th><th>%s</th></tr>\n" % mathvariant)
+    md.write("<tr><th>Original</th><th>%s</th><th>&#x394;<sub>code point</sub></th></tr>\n" % mathvariant)
     for baseChar in mathvariantTransforms[mathvariant]:
         transformedChar = mathvariantTransforms[mathvariant][baseChar]
-        md.write('<tr><td>&#x%0X; U+%04X</td><td>&#x%0X; U+%05X</td></tr>\n' %
-                 (baseChar, baseChar, transformedChar, transformedChar))
+        # Encode the first digit (non-BMP vs BMP) and last digits of the shift
+        # into a background color.
+        color = "rgba(%d, %d, %d, .5)" % (
+            (256/4) * ((transformedChar - baseChar) % 4),
+            (256/16) * ((transformedChar - baseChar)/4 % 16),
+            (256/2) * ((transformedChar - baseChar)/(16*16*16*16) % 2))
+        md.write('<tr style="background: %s;"><td>&#x%0X; U+%04X</td><td>&#x%0X; U+%05X</td><td>%0X</td></tr>\n' %
+                 (color, baseChar, baseChar, transformedChar, transformedChar, transformedChar - baseChar))
     md.write("</table>");
     md.close()
     print("done.");
