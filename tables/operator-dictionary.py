@@ -4,7 +4,7 @@ from lxml import etree
 from download import downloadUnicodeXML
 
 import operator
-#import json, re
+import json
 
 # Retrieve the unicode.xml file if necessary.
 unicodeXML = downloadUnicodeXML()
@@ -58,6 +58,7 @@ def appendCharacters(name, character, value):
         if "multipleChar" not in knownTables[name]:
             knownTables[name]["multipleChar"] = []
         knownTables[name]["multipleChar"].append(characters)
+        multipleCharTable.append(characters)
         return
 
     if "singleChar" not in knownTables[name]:
@@ -103,8 +104,9 @@ knownTables = {
     "prefixEntriesWithLspace3Rspace3AndSymmetricLargeop": {},
     "prefixEntriesWithLspace3Rspace3AndSymmetricMovablelimitsLargeop": {},
     "fences": {},
-    "separators": {}
+    "separators": {},
 }
+multipleCharTable = []
 otherEntries={}
 otherValuesCount={}
 otherValueTotalCount=0
@@ -255,6 +257,8 @@ for entry in root:
     otherValueTotalCount += 1
     otherEntries[v].append(character)
 
+multipleCharTable = sorted(multipleCharTable)
+
 def stringifyRange(unicodeRange):
     if unicodeRange[0] == unicodeRange[1]:
         return toHexa(unicodeRange[0])
@@ -280,6 +284,16 @@ def toUnicodeRanges(operators):
 
     return ranges
 
+singleCharCount = otherValueTotalCount
+for name in knownTables:
+    singleCharCount += len(knownTables[name]["singleChar"])
+multipleCharCount = (len(multipleCharTable) +
+                     len(otherEntriesWithMultipleCharacters))
+print("Dictionary size: %d" % (singleCharCount + multipleCharCount))
+print("  single char: %d" % singleCharCount)
+print("  multiple char: %d" % multipleCharCount)
+print("")
+
 dumpKnownTables(False)
 
 print("otherEntries", otherValueTotalCount)
@@ -298,18 +312,25 @@ for name in otherEntriesWithMultipleCharacters:
    print("  * %s: %s" % (name, str(otherEntriesWithMultipleCharacters[name])))
 print("")
 
-print("Separate tables for fences and separators:\n")
+print("Other tables:\n")
 dumpKnownTables(True)
 
+print("multiple char (%d): " % len(multipleCharTable), end="")
+for sequence in sorted(multipleCharTable):
+    print("'%s' " % serializeString(sequence), end="")
+print("\n")
 
-# Dump the HTML content
-operatorProperties = ["stretchy", "symmetric", "largeop", "movablelimits"]
-def serializeValue(value):
+################################################################################
+def serializeValue(value, fence, separator):
     properties = ""
     if "properties" in value:
-        for p in operatorProperties:
+        for p in ["stretchy", "symmetric", "largeop", "movablelimits"]:
             if p in value["properties"]:
                 properties += "%s " % p
+    if fence:
+        properties += "fence "
+    if separator:
+        properties += "separator "
     if properties == "":
         properties = "N/A"
 
@@ -332,38 +353,22 @@ print("Generate operator-dictionary.html...", end=" ");
 md = open("operator-dictionary.html", "w")
 md.write("<!-- This file was automatically generated from generate-math-variant-tables.py. Do not edit. -->\n");
 
-md.write("<ul>");
-for name in ["fences", "separators"]:
-    md.write("<li>%s: " % name);
-    for entry in knownTables[name]["singleChar"]:
-        md.write("<code>&#x%0X; U+%04X</code>, " % (entry, entry))
-    if "multipleChar" in knownTables[name]:
-        for entry in knownTables[name]["multipleChar"]:
-            md.write("<code>")
-            md.write(serializeString(entry))
-            for character in entry:
-                md.write(" U+%04X" % character)
-            md.write("</code>, ")
-    md.write("</li>");
-md.write("</ul>")
-
 md.write("<table class='sortable'>\n");
 md.write("<tr>")
 md.write("<th>Content</th><th>form</th><th>rspace</th><th>lspace</th>")
-md.write("<th>")
-for p in operatorProperties:
-    md.write("%s " % p)
-md.write("</th>")
+md.write("<th>properties</th>")
 md.write("</tr>")
 for name, item in sorted(knownTables.items(),
                          key=(lambda v: len(v[1]["singleChar"])),
                          reverse=True):
-    if ((name in ["fences", "separators", "infixEntriesWithDefaultValues"])):
+    if ((name in ["fences", "separators"])):
         continue
     for entry in knownTables[name]["singleChar"]:
         md.write("<tr>");
         md.write("<td>&#x%0X; U+%04X</td>" % (entry, entry))
-        md.write(serializeValue(knownTables[name]["value"]))
+        md.write(serializeValue(knownTables[name]["value"],
+                                entry in knownTables["fences"]["singleChar"],
+                                entry in knownTables["separators"]["singleChar"]))
         md.write("</tr>");
     if "multipleChar" in knownTables[name]:
         for entry in knownTables[name]["multipleChar"]:
@@ -373,24 +378,77 @@ for name, item in sorted(knownTables.items(),
             for character in entry:
                 md.write(" U+%04X" % character)
             md.write("</td>")
-            md.write(serializeValue(knownTables[name]["value"]))
+            fence = "multipleChar" in knownTables["fences"] and entry in knownTables["fences"]["multipleChar"]
+            separator = "multipleChar" in knownTables["separators"] and entry in knownTables["separators"]["multipleChar"]
+            md.write(serializeValue(knownTables[name]["value"],
+                                    fence,
+                                    separator))
             md.write("</tr>");
 
 # FIXME: decide what to do with these values.
+# Ugly hack for now, hopefully these edge cases will be handled normally later or removed.
 for value, count in sorted(otherValuesCount.items(),
                            key=operator.itemgetter(1), reverse=True):
     for entry in otherEntries[value]:
+        parsed_value = json.loads(value.replace("'", '"').replace("True", '"True"'))
         md.write("<tr style='text-decoration: line-through;'>");
         md.write("<td>&#x%0X; U+%04X</td>" % (entry, entry))
-        md.write("<td colspan='5'>%s</td>" % value)
+        md.write(serializeValue(parsed_value,
+                                "properties" in parsed_value and "fence" in parsed_value["properties"],
+                                "properties" in parsed_value and "separator" in parsed_value["properties"]))
         md.write("</tr>");
 for name in otherEntriesWithMultipleCharacters:
     md.write("<tr style='text-decoration: line-through;'>");
     md.write("<td>")
     md.write(name)
     md.write("</td>")
-    md.write(serializeValue(otherEntriesWithMultipleCharacters[name]))
+    md.write(serializeValue(otherEntriesWithMultipleCharacters[name], False, False))
     md.write("</tr>");
 
 md.write("</table>\n");
+print("done.");
+################################################################################
+
+def multiCharToPUA(multiChar):
+    return (0xE000 + multipleCharTable.index(multiChar))
+
+print("Generate operator-dictionary-compact.html...", end=" ");
+md = open("operator-dictionary-compact.html", "w")
+md.write("<!-- This file was automatically generated from generate-math-variant-tables.py. Do not edit. -->\n");
+
+md.write("<ol>");
+
+totalCharacterCount = 0
+md.write("<li><code>MathMLDictionaryMultipleChar = {\n");
+for sequence in multipleCharTable:
+    md.write("  {");
+    for character in sequence:
+        md.write("U+%04X " % character)
+        totalCharacterCount += 1
+    md.write("U+0000 } ");
+    totalCharacterCount += 1
+md.write("} // %d entries, %d characters</code></li>" %
+         (len(multipleCharTable), totalCharacterCount));
+
+for name, item in sorted(knownTables.items(),
+                         key=(lambda v: len(v[1]["singleChar"])),
+                         reverse=True):
+    if name == "infixEntriesWithDefaultValues":
+        continue
+    md.write("<li><code>MathMLDictionary_%s = { " % name);
+
+    count = len(knownTables[name]["singleChar"])
+    for entry in knownTables[name]["singleChar"]:
+        md.write("U+%04X " % entry)
+        totalCharacterCount += 1
+    if "multipleChar" in knownTables[name]:
+        count += len(knownTables[name]["multipleChar"])
+        for entry in knownTables[name]["multipleChar"]:
+            md.write("U+%04X " % multiCharToPUA(entry))
+            totalCharacterCount += 1
+    md.write("} // %d entries</code></li>" % count);
+md.write("</ol>")
+
+md.write("The total number of BMP characters to store these tables is %d." % totalCharacterCount)
+
 print("done.");

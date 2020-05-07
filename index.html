@@ -1398,6 +1398,7 @@
             a symbol. This chapter uses the term "operator" to refer to
             operators in this broad sense.
           </p>
+          <div class="issue" data-number="209">Remove fence/separator?</div>
           <p>
             The <code>&lt;mo&gt;</code> element accepts the attributes described
             in <a href="#global-attributes"></a> as well as the following
@@ -1518,6 +1519,7 @@
                 <code>infix</code>.
               </li>
             </ol>
+            <div class="issue" data-number="209">Remove fence/separator?</div>
             <p>
               The
               <dfn><code>fence</code></dfn>,
@@ -1575,7 +1577,7 @@
               <li>
                 Otherwise, if the <a>core operator</a> contains only text
                 content T, the corresponding property from the
-                <a href="#operator-dictionary">Operator Dictionary</a>
+                <a href="#operator-dictionary-compact">Operator Dictionary</a>
                 is retrieved by looking for <code>Content=T,Form=F</code>
                 where <code>F</code> is the <a><code>form</code></a> of the
                 <a>embellished operator</a>;
@@ -5695,17 +5697,26 @@
       <h2>Operator Tables</h2>
       <section id="operator-dictionary">
         <h3>Operator Dictionary</h3>
+        <div class="issue" data-number="209">Remove fence/separator?</div>
         <div class="issue" data-number="176">TODO: more cleanup of the dictionary</div>
         <p>
-          The following dictionary provides values to use for
+          The following dictionary provides a human-readable table
+          of values to use for
           <a href="#dictionary-based-attributes"></a> of operators
           when they are not specified via explicit attributes or equal to
-          the generic default values. For details, see
-          <a href="#operator-fence-separator-or-accent-mo"></a> which explains
+          the generic default values. Please refer to
+          <a href="#dictionary-based-attributes"></a> for explanation about
           how to use this dictionary and how to
-          determine the values "Content" and "Form" indexing together
+          determine the values <code>Content</code> and <code>Form</code>
+          indexing together
           the dictionary.
         </p>
+        <div class="warning">
+          This dictionary is quite large, with more than 1400 entries.
+          However, is also has a lot of redundancy and so
+          implementers are urged to rely on the tables from
+          <a href="#operator-dictionary-compact"></a> instead.
+        </div>
         <p>
           The values for <a>rspace</a> and <a>lspace</a> are indicated
           in the corresponding columns.
@@ -5713,14 +5724,160 @@
           <a><code>stretchy</code></a>,
           <a><code>symmetric</code></a>,
           <a><code>largeop</code></a>,
-          <a><code>movablelimits</code></a> are <code>true</code>
-          if they are listed in the last column.
-          Finally, the values of <a><code>fence</code></a> or
-          <a><code>separators</code></a> are <code>true</code> if the "Content"
-          of the entry is listed below:
+          <a><code>movablelimits</code></a>,
+          <a><code>fence</code></a> or
+          <a><code>separator</code></a>
+          are <code>true</code>
+          if they are listed in one of the two last columns.
         </p>
         <div id="operator-dictionary-entries"
              data-include="tables/operator-dictionary.html"></div>
+      </section>
+      <section id="operator-dictionary-compact">
+        <h3>Operator Dictionary (Compact)</h3>
+        <div class="issue" data-number="209">Remove fence/separator?</div>
+        <p>
+          The following dictionary provides a compact form for the
+          <a href="#operator-dictionary">operator dictionary</a>, suitable for
+          computer manipulation. It describes the values to use for
+          <a href="#dictionary-based-attributes"></a> of operators
+          when they are not specified via explicit attributes or equal to
+          the generic default values. Please refer to
+          <a href="#dictionary-based-attributes"></a> for explanation about
+          how to use this dictionary and how to
+          determine the values <code>Content</code> and
+          <code>Form</code> indexing together
+          the dictionary.
+        </p>
+
+        <div id="operator-dictionary-entries"
+             data-include="tables/operator-dictionary-compact.html"></div>
+        <div class="issue">Can we rely on order of unicode code point or
+          reorganize tables to reduce size any further? </div>
+
+        <p>
+          This compact form removes about 800 entries from the
+          <a href="#operator-dictionary">operator dictionary</a> that actually
+          correspond to
+          default values. They are not necessary since they are handled by the
+          fallback case of
+          <a href="#dictionary-based-attributes"></a> anyway. For other
+          (<code>Content</code>, <code>Form</code>)
+          key, the search is done as follows:
+        </p>
+
+        <ol>
+          <li>
+            Set properties <code>stretchy</code>, <code>symmetric</code>
+            <code>largeop</code>, <code>movablelimits</code>,
+ 	    <code>fence</code>, <code>separator</code> to <code>false</code>.
+          </li>
+          <li>If <code>Content</code> is a single character in the
+            BMP Private Use Area (range U+E000–U+F8FF)
+            then exit with <code>NotFound</code> status.</li>
+          <li>If <code>Content</code> has more than one characters then
+            try and find it in <code>MathMLDictionaryMultipleChar</code>.
+            If that fails, exit with <code>NotFound</code> status.
+            Otherwise, replace <code>Content</code> with the Unicode character
+            "U+E000 plus the index of the origin <code>Content</code> in
+            <code>MathMLDictionaryMultipleChar</code>".
+          </li>
+          <li>Search <code>Content</code> in one of the tables below.
+            If it is found, set the properties accordingly and
+            immediately move to the next step. Otherwise,
+            exit with <code>NotFound</code> status.
+            <ol>
+              <li>
+                Search <code>Content</code> in
+                <code>MathMLDictionary_infixEntriesWithSpacing5AndStretchy</code>
+                if <code>Form</code> is <code>infix</code>.
+                If found, set <code>lspace</code> to
+                <code>0.2777777777777778em</code>, <code>rspace</code> to
+                <code>0.2777777777777778em</code> and
+	        <code>stretchy</code> to true.
+              </li>
+              <li>Search <code>Content</code> in <code>MathMLDictionary_infixEntriesWithSpacing4</code> if <code>Form</code> is <code>infix</code>.
+                If found, set <code>lspace</code> to
+                <code>0.2222222222222222em</code> and <code>rspace</code> to
+                <code>0.2222222222222222em</code>.
+              </li>
+              <li>Search <code>Content</code> in <code>MathMLDictionary_infixEntriesWithSpacing3</code> if <code>Form</code> is <code>infix</code>.
+                If found, set <code>lspace</code> to
+                <code>0.16666666666666666em</code> and <code>rspace</code> to
+                <code>0.16666666666666666em</code>.
+              </li>
+              <li>Search <code>Content</code> in <code>MathMLDictionary_prefixEntriesWithLspace0Rspace0</code> if <code>Form</code> is <code>prefix</code>.
+                If found, set <code>lspace</code> to
+                <code>0</code> and <code>rspace</code> to
+                <code>0</code>.
+              </li>
+              <li>Search <code>Content</code> in <code>MathMLDictionary_postfixEntriesWithLspace0Rspace0</code> if <code>Form</code> is <code>postfix</code>.
+                If found, set <code>lspace</code> to
+                <code>0</code>, <code>rspace</code> to
+                <code>0</code>.
+              </li>
+              <li>Search <code>Content</code> in <code>MathMLDictionary_postfixEntriesWithLspace0Rspace0AndStretchy</code> if <code>Form</code> is <code>postfix</code>.
+                If found, set <code>lspace</code> to
+                <code>0</code>, <code>rspace</code> to
+                <code>0</code> and
+                <code>stretchy</code> to true.
+              </li>
+              <li>Search <code>Content</code> in <code>MathMLDictionary_prefixEntriesWithSpacing0AndStretchySymmetric</code> if <code>Form</code> is <code>prefix</code>.
+                If found, set <code>lspace</code> to
+                <code>0</code>, <code>rspace</code> to
+                <code>0</code>,
+                <code>stretchy</code> to true and
+                <code>symmetric</code> to true.
+              </li>
+              <li>Search <code>Content</code> in <code>MathMLDictionary_postfixEntriesWithSpacing0AndStretchySymmetric</code> if <code>Form</code> is <code>postifx</code>.
+                If found, set <code>lspace</code> to
+                <code>0</code>, <code>rspace</code> to
+                <code>0</code>,
+                <code>stretchy</code> to true,
+                <code>symmetric</code> to true.
+              </li>
+              <li>Search <code>Content</code> in <code>MathMLDictionary_prefixEntriesWithLspace3Rspace3AndSymmetricLargeop</code> if <code>Form</code> is <code>prefix</code>.
+                If found, set <code>lspace</code> to
+                <code>0.16666666666666666em</code>, <code>rspace</code> to
+                <code>0.16666666666666666em</code>,
+                <code>symmetric</code> to true,
+                <code>largeop</code> to true.
+              </li>
+              <li>Search <code>Content</code> in <code>MathMLDictionary_prefixEntriesWithLspace1Rspace2AndSymmetricMovablelimitsLargeop</code> if <code>Form</code> is <code>prefix</code>.
+                If found, set <code>lspace</code> to
+                <code>0.05555555555555555em</code>, <code>rspace</code> to
+                <code>0.1111111111111111em</code>,
+                <code>symmetric</code> to true,
+                <code>movablelimits</code> to true and
+                <code>largeop</code> to true.
+              </li>
+              <li>Search <code>Content</code> in <code>MathMLDictionary_prefixEntriesWithLspace3Rspace3AndSymmetricMovablelimitsLargeop</code> if <code>Form</code> is <code>prefix</code>.
+                If found, set <code>lspace</code> to
+                <code>0.16666666666666666em</code>, <code>rspace</code> to
+                <code>0.16666666666666666em</code>,
+                <code>symmetric</code> to true,
+                <code>movablelimits</code> to true and
+                <code>largeop</code> to true.
+              </li>
+            </ol>
+          </li>
+          <li>Search <code>Content</code> in
+            <code>MathMLDictionary_fences</code> and
+            <code>MathMLDictionary_separators</code>. If found,
+            set to true the property
+            <code>fence</code> and <code>separator</code>
+            respectively.
+          </li>
+          <li>Exit with the calculated
+            (<code>lspace</code>, <code>rspace</code>,
+            <code>stretchy</code>, <code>symmetric</code>
+            <code>largeop</code>,
+            <code>movablelimits</code>,
+ 	    <code>fence</code>, <code>separator</code>)
+            value.
+          </li>
+        </ol>
+
       </section>
       <section id="stretchy-operator-axis">
         <h3>Stretchy Operator Axis</h3>
