@@ -69,7 +69,7 @@ def dumpKnownTables(fenceAndSeparators):
     for name, item in sorted(knownTables.items(),
                              key=(lambda v: len(v[1]["singleChar"])),
                              reverse=True):
-        if ((name in ["fences", "separators"]) != fenceAndSeparators):
+        if ((name in ["fence", "separator"]) != fenceAndSeparators):
             continue
         print(name)
 
@@ -103,8 +103,8 @@ knownTables = {
     "postfixEntriesWithLspace0Rspace0AndStretchy": {},
     "prefixEntriesWithLspace3Rspace3AndSymmetricLargeop": {},
     "prefixEntriesWithLspace3Rspace3AndSymmetricMovablelimitsLargeop": {},
-    "fences": {},
-    "separators": {},
+    "fence": {},
+    "separator": {},
 }
 multipleCharTable = []
 otherEntries={}
@@ -129,10 +129,10 @@ for entry in root:
         # Use a separate tables for fence and separators as they are not needed
         # for rendering.
         if ("fence" in value["properties"]):
-            appendCharacters("fences", characters, None)
+            appendCharacters("fence", characters, None)
             del value["properties"]["fence"]
         if ("separator" in value["properties"]):
-            appendCharacters("separators", characters, None)
+            appendCharacters("separator", characters, None)
             del value["properties"]["separator"]
         if (value["properties"] == {}):
             del value["properties"]
@@ -343,8 +343,7 @@ def serializeValue(value, fence, separator):
               "0.3333333333333333em",
               "0.3888888888888889em"]
 
-    return "<td><code>%s</code></td><td><code>%s</code></td><td><code>%s</code></td><td>%s</td>" % (
-        value["form"],
+    return "<td><code>%s</code></td><td><code>%s</code></td><td>%s</td>" % (
         spaces[value["lspace"]],
         spaces[value["rspace"]],
         properties)
@@ -353,22 +352,21 @@ print("Generate operator-dictionary.html...", end=" ");
 md = open("operator-dictionary.html", "w")
 md.write("<!-- This file was automatically generated from generate-math-variant-tables.py. Do not edit. -->\n");
 
+md.write('<figure id="operator-dictionary-table">')
 md.write("<table class='sortable'>\n");
-md.write("<tr>")
-md.write("<th>Content</th><th>form</th><th>rspace</th><th>lspace</th>")
-md.write("<th>properties</th>")
-md.write("</tr>")
+md.write("<tr><th>Content</th><th>form</th><th>rspace</th><th>lspace</th><th>properties</th></tr>")
 for name, item in sorted(knownTables.items(),
                          key=(lambda v: len(v[1]["singleChar"])),
                          reverse=True):
-    if ((name in ["fences", "separators"])):
+    if ((name in ["fence", "separator"])):
         continue
     for entry in knownTables[name]["singleChar"]:
         md.write("<tr>");
         md.write("<td>&#x%0X; U+%04X</td>" % (entry, entry))
+        md.write("<td><code>%s</code></td>" % knownTables[name]["value"]["form"])
         md.write(serializeValue(knownTables[name]["value"],
-                                entry in knownTables["fences"]["singleChar"],
-                                entry in knownTables["separators"]["singleChar"]))
+                                entry in knownTables["fence"]["singleChar"],
+                                entry in knownTables["separator"]["singleChar"]))
         md.write("</tr>");
     if "multipleChar" in knownTables[name]:
         for entry in knownTables[name]["multipleChar"]:
@@ -378,8 +376,9 @@ for name, item in sorted(knownTables.items(),
             for character in entry:
                 md.write(" U+%04X" % character)
             md.write("</td>")
-            fence = "multipleChar" in knownTables["fences"] and entry in knownTables["fences"]["multipleChar"]
-            separator = "multipleChar" in knownTables["separators"] and entry in knownTables["separators"]["multipleChar"]
+            md.write("<td><code>%s</code></td>" % knownTables[name]["value"]["form"])
+            fence = "multipleChar" in knownTables["fence"] and entry in knownTables["fence"]["multipleChar"]
+            separator = "multipleChar" in knownTables["separator"] and entry in knownTables["separator"]["multipleChar"]
             md.write(serializeValue(knownTables[name]["value"],
                                     fence,
                                     separator))
@@ -393,6 +392,7 @@ for value, count in sorted(otherValuesCount.items(),
         parsed_value = json.loads(value.replace("'", '"').replace("True", '"True"'))
         md.write("<tr style='text-decoration: line-through;'>");
         md.write("<td>&#x%0X; U+%04X</td>" % (entry, entry))
+        md.write("<td><code>%s</code></td>" % parsed_value["form"])
         md.write(serializeValue(parsed_value,
                                 "properties" in parsed_value and "fence" in parsed_value["properties"],
                                 "properties" in parsed_value and "separator" in parsed_value["properties"]))
@@ -402,10 +402,13 @@ for name in otherEntriesWithMultipleCharacters:
     md.write("<td>")
     md.write(name)
     md.write("</td>")
+    md.write("<td><code>%s</code></td>" % otherEntriesWithMultipleCharacters[name]["form"])
     md.write(serializeValue(otherEntriesWithMultipleCharacters[name], False, False))
     md.write("</tr>");
 
 md.write("</table>\n");
+md.write('<figcaption>Mapping from operator (Content, Form) to properties.</figcaption>')
+md.write('</figure>')
 print("done.");
 ################################################################################
 
@@ -416,28 +419,35 @@ print("Generate operator-dictionary-compact.html...", end=" ");
 md = open("operator-dictionary-compact.html", "w")
 md.write("<!-- This file was automatically generated from generate-math-variant-tables.py. Do not edit. -->\n");
 
-md.write("<ol>");
+md.write('<figure id="operator-dictionary-compact-special-tables">')
+md.write("<table>");
+md.write("<tr>");
+md.write("<th>Special Table</th><th>Unicode strings/characters</th>");
+md.write("</tr>");
 
 totalCharacterCount = 0
-md.write("<li><code>MathMLDictionaryMultipleChar = {\n");
+md.write("<tr>")
+md.write("<td><code>Operators_multichar</code></td>");
+md.write("<td>%d null-terminated strings: <code>" % len(multipleCharTable));
 for sequence in multipleCharTable:
-    md.write("  {");
+    md.write("{");
     for character in sequence:
-        md.write("U+%04X " % character)
+        md.write("U+%04X," % character)
         totalCharacterCount += 1
-    md.write("U+0000 } ");
+    md.write("U+0000} ");
     totalCharacterCount += 1
-md.write("} // %d entries, %d characters</code></li>" %
-         (len(multipleCharTable), totalCharacterCount));
+md.write("</code></td>");
+md.write("</tr>")
 
 for name, item in sorted(knownTables.items(),
                          key=(lambda v: len(v[1]["singleChar"])),
                          reverse=True):
-    if name == "infixEntriesWithDefaultValues":
+    if name not in ["fence", "separator"]:
         continue
-    md.write("<li><code>MathMLDictionary_%s = { " % name);
-
     count = len(knownTables[name]["singleChar"])
+    md.write("<tr>")
+    md.write("<td><code>Operators_%s</code></td>" % name);
+    md.write("<td>%d characters: <code>" % count)
     for entry in knownTables[name]["singleChar"]:
         md.write("U+%04X " % entry)
         totalCharacterCount += 1
@@ -446,9 +456,64 @@ for name, item in sorted(knownTables.items(),
         for entry in knownTables[name]["multipleChar"]:
             md.write("U+%04X " % multiCharToPUA(entry))
             totalCharacterCount += 1
-    md.write("} // %d entries</code></li>" % count);
-md.write("</ol>")
+    md.write("</code></td>")
+    md.write("</tr>")
+md.write("</table>");
+md.write('<figcaption>Special tables for the operator dictionary.</figcaption>')
+md.write('</figure>')
 
-md.write("The total number of BMP characters to store these tables is %d." % totalCharacterCount)
+value_index = 0
+md.write('<figure id="operator-dictionary-category-table">')
+md.write("<table>");
+md.write("<tr><th>(Content, Form) keys</th><th>Category</th></tr>");
+
+for name, item in sorted(knownTables.items(),
+                         key=(lambda v: len(v[1]["singleChar"])),
+                         reverse=True):
+    if name in ["fence", "separator", "infixEntriesWithDefaultValues"]:
+        continue
+    count = len(knownTables[name]["singleChar"])
+    md.write("<tr>")
+    md.write("<td>%d characters in <strong>%s</strong> form: <code>" % (count, knownTables[name]["value"]["form"]))
+    for entry in knownTables[name]["singleChar"]:
+        md.write("U+%04X " % entry)
+        totalCharacterCount += 1
+    if "multipleChar" in knownTables[name]:
+        count += len(knownTables[name]["multipleChar"])
+        for entry in knownTables[name]["multipleChar"]:
+            md.write("U+%04X " % multiCharToPUA(entry))
+            totalCharacterCount += 1
+    md.write("</code></td>")
+    md.write("<td>%d</td>" % value_index);
+    value_index = value_index + 1;
+    md.write("</tr>")
+md.write("</table>");
+md.write('<figcaption>Mapping from operator (Content, Form) to a category.</figcaption>')
+md.write('</figure>')
+
+# md.write("<p>The total number of Basic Multilingual Plane characters to store these tables is %d.</p>" % totalCharacterCount)
+
+value_index = 0
+md.write('<figure id="operator-dictionary-categories-values">')
+md.write("<table>");
+md.write("<tr><th>Category</th><th>rspace</th><th>lspace</th><th>properties</th></tr>")
+for name, item in sorted(knownTables.items(),
+                         key=(lambda v: len(v[1]["singleChar"])),
+                         reverse=True):
+    if ((name in ["fence", "separator", "infixEntriesWithDefaultValues"])):
+        continue
+    for entry in knownTables[name]["singleChar"]:
+        md.write("<tr>");
+        md.write("<td>%d</td>" % value_index)
+        md.write(serializeValue(knownTables[name]["value"],
+                                entry in knownTables["fence"]["singleChar"],
+                                entry in knownTables["separator"]["singleChar"]))
+        md.write("</tr>");
+        break
+    value_index = value_index + 1
+
+md.write("</table>");
+md.write('<figcaption>Operators values for each category.</figcaption>')
+md.write('</figure>')
 
 print("done.");

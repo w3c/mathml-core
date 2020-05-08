@@ -5750,11 +5750,6 @@
           the dictionary.
         </p>
 
-        <div id="operator-dictionary-entries"
-             data-include="tables/operator-dictionary-compact.html"></div>
-        <div class="issue">Can we rely on order of unicode code point or
-          reorganize tables to reduce size any further? </div>
-
         <p>
           This compact form removes about 800 entries from the
           <a href="#operator-dictionary">operator dictionary</a> that actually
@@ -5775,100 +5770,26 @@
           <li>If <code>Content</code> is a single character in the
             BMP Private Use Area (range U+E000–U+F8FF)
             then exit with <code>NotFound</code> status.</li>
-          <li>If <code>Content</code> has more than one characters then
-            try and find it in <code>MathMLDictionaryMultipleChar</code>.
-            If that fails, exit with <code>NotFound</code> status.
-            Otherwise, replace <code>Content</code> with the Unicode character
-            "U+E000 plus the index of the origin <code>Content</code> in
-            <code>MathMLDictionaryMultipleChar</code>".
+          <li>If <code>Content</code> has more than one characters and
+            is listed in
+            <a href="#operator-dictionary-compact-special-tables"><code>Operators_multichar</code></a> then
+            replace <code>Content</code> with the Unicode character
+            "U+E000 plus the index of <code>Content</code> in
+            <code>Operators_multichar</code>". Otherwise, exit with
+            <code>NotFound</code> status.
           </li>
-          <li>Search <code>Content</code> in one of the tables below.
-            If it is found, set the properties accordingly and
-            immediately move to the next step. Otherwise,
-            exit with <code>NotFound</code> status.
-            <ol>
-              <li>
-                Search <code>Content</code> in
-                <code>MathMLDictionary_infixEntriesWithSpacing5AndStretchy</code>
-                if <code>Form</code> is <code>infix</code>.
-                If found, set <code>lspace</code> to
-                <code>0.2777777777777778em</code>, <code>rspace</code> to
-                <code>0.2777777777777778em</code> and
-	        <code>stretchy</code> to true.
-              </li>
-              <li>Search <code>Content</code> in <code>MathMLDictionary_infixEntriesWithSpacing4</code> if <code>Form</code> is <code>infix</code>.
-                If found, set <code>lspace</code> to
-                <code>0.2222222222222222em</code> and <code>rspace</code> to
-                <code>0.2222222222222222em</code>.
-              </li>
-              <li>Search <code>Content</code> in <code>MathMLDictionary_infixEntriesWithSpacing3</code> if <code>Form</code> is <code>infix</code>.
-                If found, set <code>lspace</code> to
-                <code>0.16666666666666666em</code> and <code>rspace</code> to
-                <code>0.16666666666666666em</code>.
-              </li>
-              <li>Search <code>Content</code> in <code>MathMLDictionary_prefixEntriesWithLspace0Rspace0</code> if <code>Form</code> is <code>prefix</code>.
-                If found, set <code>lspace</code> to
-                <code>0</code> and <code>rspace</code> to
-                <code>0</code>.
-              </li>
-              <li>Search <code>Content</code> in <code>MathMLDictionary_postfixEntriesWithLspace0Rspace0</code> if <code>Form</code> is <code>postfix</code>.
-                If found, set <code>lspace</code> to
-                <code>0</code>, <code>rspace</code> to
-                <code>0</code>.
-              </li>
-              <li>Search <code>Content</code> in <code>MathMLDictionary_postfixEntriesWithLspace0Rspace0AndStretchy</code> if <code>Form</code> is <code>postfix</code>.
-                If found, set <code>lspace</code> to
-                <code>0</code>, <code>rspace</code> to
-                <code>0</code> and
-                <code>stretchy</code> to true.
-              </li>
-              <li>Search <code>Content</code> in <code>MathMLDictionary_prefixEntriesWithSpacing0AndStretchySymmetric</code> if <code>Form</code> is <code>prefix</code>.
-                If found, set <code>lspace</code> to
-                <code>0</code>, <code>rspace</code> to
-                <code>0</code>,
-                <code>stretchy</code> to true and
-                <code>symmetric</code> to true.
-              </li>
-              <li>Search <code>Content</code> in <code>MathMLDictionary_postfixEntriesWithSpacing0AndStretchySymmetric</code> if <code>Form</code> is <code>postifx</code>.
-                If found, set <code>lspace</code> to
-                <code>0</code>, <code>rspace</code> to
-                <code>0</code>,
-                <code>stretchy</code> to true,
-                <code>symmetric</code> to true.
-              </li>
-              <li>Search <code>Content</code> in <code>MathMLDictionary_prefixEntriesWithLspace3Rspace3AndSymmetricLargeop</code> if <code>Form</code> is <code>prefix</code>.
-                If found, set <code>lspace</code> to
-                <code>0.16666666666666666em</code>, <code>rspace</code> to
-                <code>0.16666666666666666em</code>,
-                <code>symmetric</code> to true,
-                <code>largeop</code> to true.
-              </li>
-              <li>Search <code>Content</code> in <code>MathMLDictionary_prefixEntriesWithLspace1Rspace2AndSymmetricMovablelimitsLargeop</code> if <code>Form</code> is <code>prefix</code>.
-                If found, set <code>lspace</code> to
-                <code>0.05555555555555555em</code>, <code>rspace</code> to
-                <code>0.1111111111111111em</code>,
-                <code>symmetric</code> to true,
-                <code>movablelimits</code> to true and
-                <code>largeop</code> to true.
-              </li>
-              <li>Search <code>Content</code> in <code>MathMLDictionary_prefixEntriesWithLspace3Rspace3AndSymmetricMovablelimitsLargeop</code> if <code>Form</code> is <code>prefix</code>.
-                If found, set <code>lspace</code> to
-                <code>0.16666666666666666em</code>, <code>rspace</code> to
-                <code>0.16666666666666666em</code>,
-                <code>symmetric</code> to true,
-                <code>movablelimits</code> to true and
-                <code>largeop</code> to true.
-              </li>
-            </ol>
+          <li>If (<code>Content</code>, <code>Form</code>)
+            corresponds to one category of
+            <a href="#operator-dictionary-category-table"></a> then
+            set the properties according to
+            <a href="#operator-dictionary-categories-values"></a>.
+            Otherwise, exit with <code>NotFound</code> status.
           </li>
-          <li>Search <code>Content</code> in
-            <code>MathMLDictionary_fences</code> and
-            <code>MathMLDictionary_separators</code>. If found,
-            set to true the property
-            <code>fence</code> and <code>separator</code>
-            respectively.
-          </li>
-          <li>Exit with the calculated
+          <li>If <code>Content</code> is in
+            <a href="#operator-dictionary-compact-special-tables"><code>Operators_fence</code></a> then set property <code>fence</code> to true.</li>
+          <li>If <code>Content</code> is in
+            <a href="#operator-dictionary-compact-special-tables"><code>Operators_separator</code></a> then set property <code>separator</code> to true.</li>
+          <li>Return the calculated
             (<code>lspace</code>, <code>rspace</code>,
             <code>stretchy</code>, <code>symmetric</code>
             <code>largeop</code>,
@@ -5878,6 +5799,10 @@
           </li>
         </ol>
 
+        <div id="operator-dictionary-entries"
+             data-include="tables/operator-dictionary-compact.html"></div>
+        <div class="issue">Can we rely on order of unicode code point or
+          reorganize tables to reduce size any further? </div>
       </section>
       <section id="stretchy-operator-axis">
         <h3>Stretchy Operator Axis</h3>
