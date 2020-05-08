@@ -284,6 +284,8 @@ for entry in root:
 multipleCharTable = sorted(multipleCharTable)
 
 def stringifyRange(unicodeRange):
+    assert unicodeRange[1] - unicodeRange[0] < 256
+
     if unicodeRange[0] == unicodeRange[1]:
         return "{%s}" % toHexa(unicodeRange[0])
     else:
@@ -457,7 +459,7 @@ md.write("<tr>");
 md.write("<th>Special Table</th><th>Unicode strings/characters</th>");
 md.write("</tr>");
 
-totalCharacterCount = 0
+totalBytes = 0
 md.write("<tr>")
 md.write("<td><code>Operators_multichar</code></td>");
 md.write("<td>%d null-terminated strings: <code>" % len(multipleCharTable));
@@ -465,9 +467,9 @@ for sequence in multipleCharTable:
     md.write("{");
     for character in sequence:
         md.write("U+%04X," % character)
-        totalCharacterCount += 1
+        totalBytes += 2
     md.write("U+0000}, ");
-    totalCharacterCount += 1
+    totalBytes += 2
 md.write("</code></td>");
 md.write("</tr>")
 
@@ -480,23 +482,23 @@ for name, item in sorted(knownTables.items(),
     md.write("<tr>")
     md.write("<td><code>Operators_%s</code></td>" % name);
     ranges = toUnicodeRanges(knownTables[name]["singleChar"])
-    if (len(ranges) * 2 < count):
+    if (3 * len(ranges) < 2 * count):
         md.write("<td>%d ranges (%d characters): <code>" % (len(ranges), count))
         for entry in ranges:
             md.write("%s, " % entry)
-        totalCharacterCount += 2 * len(ranges)
+        totalBytes += 3 * len(ranges)
     else:
         md.write("<td>%d characters: <code>" % count)
         for entry in sorted(knownTables[name]["singleChar"]):
             md.write("U+%04X, " % entry)
-        totalCharacterCount += count
+        totalBytes += 2 * count
     md.write("</code></td>")
     md.write("</tr>")
 md.write("</table>");
-md.write('<figcaption>Special tables for the operator dictionary.<br/>Total size: %d UTF-16 characters, %d bytes.</figcaption>' % (totalCharacterCount, 2 * totalCharacterCount))
+md.write('<figcaption>Special tables for the operator dictionary.<br/>Total size: %d bytes.<br/>(assuming characters are UTF-16 and 1-byte range lengths)</figcaption>' % totalBytes)
 md.write('</figure>')
 
-totalCharacterCount = 0
+totalBytes = 0
 value_index = 0
 md.write('<figure id="operator-dictionary-category-table">')
 md.write("<table>");
@@ -511,25 +513,23 @@ for name, item in sorted(knownTables.items(),
     md.write("<tr>")
 
     ranges = toUnicodeRanges(knownTables[name]["singleChar"])
-    if (len(ranges) * 2 < count):
+    if (3 * len(ranges) < 2 * count):
         md.write("<td>%d ranges (%d characters) in <strong>%s</strong> form: <code>" % (len(ranges), count, knownTables[name]["value"]["form"]))
         for entry in ranges:
             md.write("%s, " % entry)
-        totalCharacterCount += 2 * len(ranges)
+        totalBytes += 3 * len(ranges)
     else:
         md.write("<td>%d characters in <strong>%s</strong> form: <code>" % (count, knownTables[name]["value"]["form"]))
         for entry in sorted(knownTables[name]["singleChar"]):
             md.write("U+%04X, " % entry)
-        totalCharacterCount += count
+        totalBytes += 2 * count
     md.write("</code></td>")
     md.write("<td>%d</td>" % value_index);
     value_index = value_index + 1;
     md.write("</tr>")
 md.write("</table>");
-md.write('<figcaption>Mapping from operator (Content, Form) to a category.<br/>Total size: %d UTF-16 characters, %d bytes.</figcaption>' % (totalCharacterCount, 2 * totalCharacterCount))
+md.write('<figcaption>Mapping from operator (Content, Form) to a category.<br/>Total size: %d bytes.<br/>(assuming characters are UTF-16 and 1-byte range lengths)</figcaption>' % totalBytes)
 md.write('</figure>')
-
-# md.write("<p>The total number of Basic Multilingual Plane characters to store these tables is %d.</p>" % totalCharacterCount)
 
 value_index = 0
 md.write('<figure id="operator-dictionary-categories-values">')
