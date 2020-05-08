@@ -467,8 +467,7 @@ for name in knownTables:
                 multipleCharTable.append(characters)
 
     for entry in knownTables[name]["singleChar"]:
-        if entry >= 0x10000:
-            knownTables[name]["singleChar"].remove(entry)
+        knownTables[name]["singleChar"] = [ entry for entry in knownTables[name]["singleChar"] if entry < 0x10000 ]
 
 multipleCharTable.sort()
 for name in knownTables:
