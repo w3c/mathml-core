@@ -372,6 +372,7 @@ def serializeValue(value, fence, separator):
         spaces[value["rspace"]],
         properties)
 
+totalEntryCount = 0
 print("Generate operator-dictionary.html...", end=" ");
 md = open("operator-dictionary.html", "w")
 md.write("<!-- This file was automatically generated from generate-math-variant-tables.py. Do not edit. -->\n");
@@ -391,11 +392,12 @@ for name, item in sorted(knownTables.items(),
         md.write(serializeValue(knownTables[name]["value"],
                                 entry in knownTables["fence"]["singleChar"],
                                 entry in knownTables["separator"]["singleChar"]))
+        totalEntryCount = totalEntryCount + 1
         md.write("</tr>");
     if "multipleChar" in knownTables[name]:
         for entry in knownTables[name]["multipleChar"]:
-            md.write("<tr>");
-            md.write("<td>")
+            md.write("<tr style='background: lightblue'>");
+            md.write("<td>String ")
             md.write(serializeString(entry))
             for character in entry:
                 md.write(" U+%04X" % character)
@@ -406,6 +408,7 @@ for name, item in sorted(knownTables.items(),
             md.write(serializeValue(knownTables[name]["value"],
                                     fence,
                                     separator))
+            totalEntryCount = totalEntryCount + 1
             md.write("</tr>");
 
 # FIXME: decide what to do with these values.
@@ -422,8 +425,8 @@ for value, count in sorted(otherValuesCount.items(),
                                 "properties" in parsed_value and "separator" in parsed_value["properties"]))
         md.write("</tr>");
 for name in otherEntriesWithMultipleCharacters:
-    md.write("<tr style='text-decoration: line-through;'>");
-    md.write("<td>")
+    md.write("<tr style='text-decoration: line-through; background: lightblue'>");
+    md.write("<td>String ")
     md.write(name)
     md.write("</td>")
     md.write("<td><code>%s</code></td>" % otherEntriesWithMultipleCharacters[name]["form"])
@@ -431,7 +434,7 @@ for name in otherEntriesWithMultipleCharacters:
     md.write("</tr>");
 
 md.write("</table>\n");
-md.write('<figcaption>Mapping from operator (Content, Form) to properties.</figcaption>')
+md.write('<figcaption>Mapping from operator (Content, Form) to properties.<br/>Total size: %d entries, ≥ %d bytes<br/>(assuming \'Content\' uses at least one UTF-16 character, \'Form\' 2 bits, spacing 3 bits and properties 3 bits).</figcaption>' % (totalEntryCount, totalEntryCount * (16 + 2 + 3 + 3)/8))
 md.write('</figure>')
 print("done.");
 ################################################################################
@@ -481,17 +484,19 @@ for name, item in sorted(knownTables.items(),
         md.write("<td>%d ranges (%d characters): <code>" % (len(ranges), count))
         for entry in ranges:
             md.write("%s, " % entry)
+        totalCharacterCount += 2 * len(ranges)
     else:
         md.write("<td>%d characters: <code>" % count)
         for entry in sorted(knownTables[name]["singleChar"]):
             md.write("U+%04X, " % entry)
-    totalCharacterCount += count
+        totalCharacterCount += count
     md.write("</code></td>")
     md.write("</tr>")
 md.write("</table>");
-md.write('<figcaption>Special tables for the operator dictionary.</figcaption>')
+md.write('<figcaption>Special tables for the operator dictionary.<br/>Total size: %d UTF-16 characters, %d bytes.</figcaption>' % (totalCharacterCount, 2 * totalCharacterCount))
 md.write('</figure>')
 
+totalCharacterCount = 0
 value_index = 0
 md.write('<figure id="operator-dictionary-category-table">')
 md.write("<table>");
@@ -510,18 +515,18 @@ for name, item in sorted(knownTables.items(),
         md.write("<td>%d ranges (%d characters) in <strong>%s</strong> form: <code>" % (len(ranges), count, knownTables[name]["value"]["form"]))
         for entry in ranges:
             md.write("%s, " % entry)
+        totalCharacterCount += 2 * len(ranges)
     else:
         md.write("<td>%d characters in <strong>%s</strong> form: <code>" % (count, knownTables[name]["value"]["form"]))
         for entry in sorted(knownTables[name]["singleChar"]):
             md.write("U+%04X, " % entry)
-
-    totalCharacterCount += len(knownTables[name]["singleChar"])
+        totalCharacterCount += count
     md.write("</code></td>")
     md.write("<td>%d</td>" % value_index);
     value_index = value_index + 1;
     md.write("</tr>")
 md.write("</table>");
-md.write('<figcaption>Mapping from operator (Content, Form) to a category.</figcaption>')
+md.write('<figcaption>Mapping from operator (Content, Form) to a category.<br/>Total size: %d UTF-16 characters, %d bytes.</figcaption>' % (totalCharacterCount, 2 * totalCharacterCount))
 md.write('</figure>')
 
 # md.write("<p>The total number of Basic Multilingual Plane characters to store these tables is %d.</p>" % totalCharacterCount)
