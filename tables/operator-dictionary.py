@@ -285,9 +285,9 @@ multipleCharTable = sorted(multipleCharTable)
 
 def stringifyRange(unicodeRange):
     if unicodeRange[0] == unicodeRange[1]:
-        return toHexa(unicodeRange[0])
+        return "{%s}" % toHexa(unicodeRange[0])
     else:
-        return "[%s, %s]" % (toHexa(unicodeRange[0]), toHexa(unicodeRange[1]))
+        return "[%s–%s]" % (toHexa(unicodeRange[0]), toHexa(unicodeRange[1]))
 
 def toUnicodeRanges(operators):
     unicodeRange = None
@@ -463,7 +463,7 @@ for sequence in multipleCharTable:
     for character in sequence:
         md.write("U+%04X," % character)
         totalCharacterCount += 1
-    md.write("U+0000} ");
+    md.write("U+0000}, ");
     totalCharacterCount += 1
 md.write("</code></td>");
 md.write("</tr>")
@@ -476,10 +476,16 @@ for name, item in sorted(knownTables.items(),
     count = len(knownTables[name]["singleChar"])
     md.write("<tr>")
     md.write("<td><code>Operators_%s</code></td>" % name);
-    md.write("<td>%d characters: <code>" % count)
-    for entry in sorted(knownTables[name]["singleChar"]):
-        md.write("U+%04X " % entry)
-        totalCharacterCount += 1
+    ranges = toUnicodeRanges(knownTables[name]["singleChar"])
+    if (len(ranges) * 2 < count):
+        md.write("<td>%d ranges (%d characters): <code>" % (len(ranges), count))
+        for entry in ranges:
+            md.write("%s, " % entry)
+    else:
+        md.write("<td>%d characters: <code>" % count)
+        for entry in sorted(knownTables[name]["singleChar"]):
+            md.write("U+%04X, " % entry)
+    totalCharacterCount += count
     md.write("</code></td>")
     md.write("</tr>")
 md.write("</table>");
@@ -498,10 +504,18 @@ for name, item in sorted(knownTables.items(),
         continue
     count = len(knownTables[name]["singleChar"])
     md.write("<tr>")
-    md.write("<td>%d characters in <strong>%s</strong> form: <code>" % (count, knownTables[name]["value"]["form"]))
-    for entry in sorted(knownTables[name]["singleChar"]):
-        md.write("U+%04X " % entry)
-        totalCharacterCount += 1
+
+    ranges = toUnicodeRanges(knownTables[name]["singleChar"])
+    if (len(ranges) * 2 < count):
+        md.write("<td>%d ranges (%d characters) in <strong>%s</strong> form: <code>" % (len(ranges), count, knownTables[name]["value"]["form"]))
+        for entry in ranges:
+            md.write("%s, " % entry)
+    else:
+        md.write("<td>%d characters in <strong>%s</strong> form: <code>" % (count, knownTables[name]["value"]["form"]))
+        for entry in sorted(knownTables[name]["singleChar"]):
+            md.write("U+%04X, " % entry)
+
+    totalCharacterCount += len(knownTables[name]["singleChar"])
     md.write("</code></td>")
     md.write("<td>%d</td>" % value_index);
     value_index = value_index + 1;
