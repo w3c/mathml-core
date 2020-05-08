@@ -282,7 +282,7 @@ for entry in root:
     otherValueTotalCount += 1
     otherEntries[v].append(character)
 
-multipleCharTable = sorted(multipleCharTable)
+multipleCharTable.sort()
 
 def stringifyRange(unicodeRange):
     assert unicodeRange[1] - unicodeRange[0] < 256
@@ -389,7 +389,10 @@ for name, item in sorted(knownTables.items(),
     if ((name in ["fence", "separator"])):
         continue
     for entry in knownTables[name]["singleChar"]:
-        md.write("<tr>");
+        if entry >= 0x10000:
+            md.write('<tr style="background: lightyellow;">')
+        else:
+            md.write("<tr>")
         md.write("<td>&#x%0X; U+%04X</td>" % (entry, entry))
         md.write("<td><code>%s</code></td>" % knownTables[name]["value"]["form"])
         md.write(serializeValue(knownTables[name]["value"],
@@ -442,13 +445,48 @@ md.write('</figure>')
 print("done.");
 ################################################################################
 
+def nonBMPToSurrogate(character):
+    return (low_surrogate, high_surrogate)
+
+# Delete infix operators using default values.
+del knownTables["infixEntriesWithDefaultValues"]
+
+reservedBlock = (0xE000, 0xF8FF)
+
+# Convert nonBMP characters to surrogates pair (multiChar)
+for name in knownTables:
+    for entry in knownTables[name]["singleChar"]:
+        if entry >= 0x10000:
+            if "multipleChar" not in knownTables[name]:
+                knownTables[name]["multipleChar"] = []
+            high_surrogate = ((entry - 0x10000) // 0x400) + 0xD800
+            low_surrogate = ((entry - 0x10000) & (0x400 - 1)) + 0xDC00
+            characters = (high_surrogate, low_surrogate)
+            knownTables[name]["multipleChar"].append(characters)
+            if characters not in multipleCharTable:
+                multipleCharTable.append(characters)
+
+    for entry in knownTables[name]["singleChar"]:
+        if entry >= 0x10000:
+            knownTables[name]["singleChar"].remove(entry)
+
+multipleCharTable.sort()
+for name in knownTables:
+    if "multipleChar" in knownTables[name]:
+        knownTables[name]["multipleChar"].sort()
+    knownTables[name]["singleChar"].sort()
+
 # Convert multiChar to singleChar
 for name in knownTables:
     if "multipleChar" in knownTables[name]:
         for entry in knownTables[name]["multipleChar"]:
-            PUACodePoint = 0xE000 + multipleCharTable.index(entry);
-            if PUACodePoint not in knownTables[name]["singleChar"]:
-                knownTables[name]["singleChar"].append(PUACodePoint)
+            codePoint = reservedBlock[0] + multipleCharTable.index(entry);
+            assert codePoint <= reservedBlock[1]
+            if codePoint not in knownTables[name]["singleChar"]:
+                knownTables[name]["singleChar"].append(codePoint)
+
+for name in knownTables:
+    knownTables[name]["singleChar"].sort()
 
 print("Generate operator-dictionary-compact.html...", end=" ");
 md = open("operator-dictionary-compact.html", "w")
@@ -490,7 +528,7 @@ for name, item in sorted(knownTables.items(),
         totalBytes += 3 * len(ranges)
     else:
         md.write("<td>%d characters: <code>" % count)
-        for entry in sorted(knownTables[name]["singleChar"]):
+        for entry in knownTables[name]["singleChar"]:
             md.write("U+%04X, " % entry)
         totalBytes += 2 * count
     md.write("</code></td>")
@@ -509,7 +547,7 @@ md.write("<tr><th>(Content, Form) keys</th><th>Category</th></tr>");
 for name, item in sorted(knownTables.items(),
                          key=(lambda v: len(v[1]["singleChar"])),
                          reverse=True):
-    if name in ["fence", "separator", "infixEntriesWithDefaultValues"]:
+    if name in ["fence", "separator"]:
         continue
     count = len(knownTables[name]["singleChar"])
     md.write("<tr>")
@@ -523,7 +561,7 @@ for name, item in sorted(knownTables.items(),
         totalBytes += 3 * len(ranges)
     else:
         md.write("<td>%d characters in <strong>%s</strong> form: <code>" % (count, knownTables[name]["value"]["form"]))
-        for entry in sorted(knownTables[name]["singleChar"]):
+        for entry in knownTables[name]["singleChar"]:
             md.write("U+%04X, " % entry)
         totalBytes += 2 * count
     md.write("</code></td>")
@@ -541,9 +579,9 @@ md.write("<tr><th>Category</th><th>rspace</th><th>lspace</th><th>properties</th>
 for name, item in sorted(knownTables.items(),
                          key=(lambda v: len(v[1]["singleChar"])),
                          reverse=True):
-    if ((name in ["fence", "separator", "infixEntriesWithDefaultValues"])):
+    if ((name in ["fence", "separator"])):
         continue
-    for entry in sorted(knownTables[name]["singleChar"]):
+    for entry in knownTables[name]["singleChar"]:
         md.write("<tr>");
         md.write("<td>%d</td>" % value_index)
         md.write(serializeValue(knownTables[name]["value"],

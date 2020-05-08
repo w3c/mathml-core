@@ -5770,8 +5770,9 @@
           <li>If <code>Content</code> is a single character in the
             BMP Private Use Area (range U+E000–U+F8FF)
             then exit with <code>NotFound</code> status.</li>
-          <li>If <code>Content</code> has more than one characters and
-            is listed in
+          <li>
+            If <code>Content</code> an UTF-16 strings of lengths more than 1
+            (including the case of surrogate pairs) and is listed in
             <a href="#operator-dictionary-compact-special-tables"><code>Operators_multichar</code></a> then
             replace <code>Content</code> with the Unicode character
             "U+E000 plus the index of <code>Content</code> in
