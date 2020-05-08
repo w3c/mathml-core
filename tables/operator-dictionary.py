@@ -103,6 +103,9 @@ knownTables = {
     "postfixEntriesWithLspace0Rspace0AndStretchy": {},
     "prefixEntriesWithLspace3Rspace3AndSymmetricLargeop": {},
     "prefixEntriesWithLspace3Rspace3AndSymmetricMovablelimitsLargeop": {},
+    "infixEntriesWithLspace0Rspace0": {},
+    "infixEntriesWithLspace0Rspace3": {},
+    "prefixEntriesWithLspace3Rspace0": {},
     "fence": {},
     "separator": {},
 }
@@ -241,6 +244,27 @@ for entry in root:
         value["properties"] == {'symmetric': True, 'largeop': True} and
         form == "prefix"):
         appendCharacters("prefixEntriesWithLspace3Rspace3AndSymmetricLargeop", characters, value)
+        continue
+
+    if (value["lspace"] == 0 and
+        value["rspace"] == 0 and
+        "properties" not in value and
+        form == "infix"):
+        appendCharacters("infixEntriesWithLspace0Rspace0", characters, value)
+        continue
+
+    if (value["lspace"] == 0 and
+        value["rspace"] == 3 and
+        "properties" not in value and
+        form == "infix"):
+        appendCharacters("infixEntriesWithLspace0Rspace3", characters, value)
+        continue
+
+    if (value["lspace"] == 3 and
+        value["rspace"] == 0 and
+        "properties" not in value and
+        form == "prefix"):
+        appendCharacters("prefixEntriesWithLspace3Rspace0", characters, value)
         continue
 
     if len(characters) > 1:
@@ -506,8 +530,8 @@ for name, item in sorted(knownTables.items(),
         md.write("<tr>");
         md.write("<td>%d</td>" % value_index)
         md.write(serializeValue(knownTables[name]["value"],
-                                entry in knownTables["fence"]["singleChar"],
-                                entry in knownTables["separator"]["singleChar"]))
+                                False,
+                                False))
         md.write("</tr>");
         break
     value_index = value_index + 1
