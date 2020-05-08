@@ -5802,8 +5802,40 @@
 
         <div id="operator-dictionary-entries"
              data-include="tables/operator-dictionary-compact.html"></div>
-        <div class="issue">Can we rely on order of unicode code point or
-          reorganize tables to reduce size any further? </div>
+
+        <div class="note" id="#operator-dictionary-compact-implementations">
+          <p>
+            After conversion to a single UTF-16 character, determining the
+            category of ('Content', 'Form') can be done by binary searches
+            on the tables corresponding to the 'Form' value
+            (for tables of ranges, the search is on the range start).
+            Small tables can also be handled by direct comparaisons.
+          </p>
+          <p>
+            The possible characters 'Content' values after conversion
+            characters are located into the three ranges
+            U+0000–U+03FF, U+2000–U+2BFF and
+            U+E000–U+E04F and after offset shift can be encoded on
+            12 bits. Tables can thus all be represented as a list
+            of ranges of length at most 16, each range encoded on 2 bytes.
+            Due to several contiguous Unicode blocks, the n &lt; 512 entries
+            handled by these tables would still be encoded in less than 2n
+            bytes but all the tables are now treated the same way.
+          </p>
+          <p>
+            Alternatively, discarding the smallest tables using direct
+            comparisons, it is possible to only consider the tables for
+            categories 0-7.
+            Then each of the three 'Form' corresponds to at most three
+            categories and so ('Form', 'Category') can be encoded
+            on 4 bits. Using a 12-bit encoding of the 'Content' this means that
+            each entry can be encoded on 2 bytes. Hence the n entries
+            corresponding to these tables can be encoded using only 2n
+            bytes but binary search would now be perform on a single table.
+            Constant time lookup is also possible at the cost of adding
+            at least 1.44n bytes to store a minimal perfect hash function.
+          </p>
+        </div>
       </section>
       <section id="stretchy-operator-axis">
         <h3>Stretchy Operator Axis</h3>
