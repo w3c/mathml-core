@@ -436,8 +436,13 @@ md.write('</figure>')
 print("done.");
 ################################################################################
 
-def multiCharToPUA(multiChar):
-    return (0xE000 + multipleCharTable.index(multiChar))
+# Convert multiChar to singleChar
+for name in knownTables:
+    if "multipleChar" in knownTables[name]:
+        for entry in knownTables[name]["multipleChar"]:
+            PUACodePoint = 0xE000 + multipleCharTable.index(entry);
+            if PUACodePoint not in knownTables[name]["singleChar"]:
+                knownTables[name]["singleChar"].append(PUACodePoint)
 
 print("Generate operator-dictionary-compact.html...", end=" ");
 md = open("operator-dictionary-compact.html", "w")
@@ -472,14 +477,9 @@ for name, item in sorted(knownTables.items(),
     md.write("<tr>")
     md.write("<td><code>Operators_%s</code></td>" % name);
     md.write("<td>%d characters: <code>" % count)
-    for entry in knownTables[name]["singleChar"]:
+    for entry in sorted(knownTables[name]["singleChar"]):
         md.write("U+%04X " % entry)
         totalCharacterCount += 1
-    if "multipleChar" in knownTables[name]:
-        count += len(knownTables[name]["multipleChar"])
-        for entry in knownTables[name]["multipleChar"]:
-            md.write("U+%04X " % multiCharToPUA(entry))
-            totalCharacterCount += 1
     md.write("</code></td>")
     md.write("</tr>")
 md.write("</table>");
@@ -499,14 +499,9 @@ for name, item in sorted(knownTables.items(),
     count = len(knownTables[name]["singleChar"])
     md.write("<tr>")
     md.write("<td>%d characters in <strong>%s</strong> form: <code>" % (count, knownTables[name]["value"]["form"]))
-    for entry in knownTables[name]["singleChar"]:
+    for entry in sorted(knownTables[name]["singleChar"]):
         md.write("U+%04X " % entry)
         totalCharacterCount += 1
-    if "multipleChar" in knownTables[name]:
-        count += len(knownTables[name]["multipleChar"])
-        for entry in knownTables[name]["multipleChar"]:
-            md.write("U+%04X " % multiCharToPUA(entry))
-            totalCharacterCount += 1
     md.write("</code></td>")
     md.write("<td>%d</td>" % value_index);
     value_index = value_index + 1;
@@ -526,7 +521,7 @@ for name, item in sorted(knownTables.items(),
                          reverse=True):
     if ((name in ["fence", "separator", "infixEntriesWithDefaultValues"])):
         continue
-    for entry in knownTables[name]["singleChar"]:
+    for entry in sorted(knownTables[name]["singleChar"]):
         md.write("<tr>");
         md.write("<td>%d</td>" % value_index)
         md.write(serializeValue(knownTables[name]["value"],
