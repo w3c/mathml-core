@@ -58,7 +58,8 @@ def appendCharacters(name, character, value):
         if "multipleChar" not in knownTables[name]:
             knownTables[name]["multipleChar"] = []
         knownTables[name]["multipleChar"].append(characters)
-        multipleCharTable.append(characters)
+        if (characters not in multipleCharTable):
+            multipleCharTable.append(characters)
         return
 
     if "singleChar" not in knownTables[name]:
