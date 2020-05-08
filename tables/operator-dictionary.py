@@ -395,7 +395,7 @@ for name, item in sorted(knownTables.items(),
         md.write(serializeValue(knownTables[name]["value"],
                                 entry in knownTables["fence"]["singleChar"],
                                 entry in knownTables["separator"]["singleChar"]))
-        totalEntryCount = totalEntryCount + 1
+        totalEntryCount += 1
         md.write("</tr>");
     if "multipleChar" in knownTables[name]:
         for entry in knownTables[name]["multipleChar"]:
@@ -411,7 +411,7 @@ for name, item in sorted(knownTables.items(),
             md.write(serializeValue(knownTables[name]["value"],
                                     fence,
                                     separator))
-            totalEntryCount = totalEntryCount + 1
+            totalEntryCount += 1
             md.write("</tr>");
 
 # FIXME: decide what to do with these values.
@@ -499,6 +499,7 @@ md.write("</table>");
 md.write('<figcaption>Special tables for the operator dictionary.<br/>Total size: %d bytes.<br/>(assuming characters are UTF-16 and 1-byte range lengths)</figcaption>' % totalBytes)
 md.write('</figure>')
 
+totalEntryCount = 0
 totalBytes = 0
 value_index = 0
 md.write('<figure id="operator-dictionary-category-table">')
@@ -512,6 +513,7 @@ for name, item in sorted(knownTables.items(),
         continue
     count = len(knownTables[name]["singleChar"])
     md.write("<tr>")
+    totalEntryCount += count
 
     ranges = toUnicodeRanges(knownTables[name]["singleChar"])
     if (3 * len(ranges) < 2 * count):
@@ -526,10 +528,10 @@ for name, item in sorted(knownTables.items(),
         totalBytes += 2 * count
     md.write("</code></td>")
     md.write("<td>%d</td>" % value_index);
-    value_index = value_index + 1;
+    value_index += 1;
     md.write("</tr>")
 md.write("</table>");
-md.write('<figcaption>Mapping from operator (Content, Form) to a category.<br/>Total size: %d bytes.<br/>(assuming characters are UTF-16 and 1-byte range lengths)</figcaption>' % totalBytes)
+md.write('<figcaption>Mapping from operator (Content, Form) to a category.<br/>Total size: %d entries, %d bytes.<br/>(assuming characters are UTF-16 and 1-byte range lengths)</figcaption>' % (totalEntryCount, totalBytes))
 md.write('</figure>')
 
 value_index = 0
@@ -549,7 +551,7 @@ for name, item in sorted(knownTables.items(),
                                 False))
         md.write("</tr>");
         break
-    value_index = value_index + 1
+    value_index += 1
 
 md.write("</table>");
 md.write('<figcaption>Operators values for each category.</figcaption>')
