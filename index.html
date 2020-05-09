@@ -2008,7 +2008,6 @@
             <h5>Algorithm for stretching operators along the block axis</h5>
             <div class="issue" data-number="124">Layout of container with only stretchy <a>in-flow</a> children</div>
             <div class="issue" data-number="109">Define what happens when maxsize &lt; minsize</div>
-            <div class="issue" data-number="110">Explicit calculation for minsize/maxsize constraints?</div>
             <figure id="symmetric-and-non-symmetric-vertical-stretching">
               <img src="figures/vstretch.svg"/>
               <figcaption>Symmetric and non-symmetric stretching of
@@ -2100,18 +2099,22 @@
                       <li>
                         Otherwise, if
                         0 &lt; <code>T</code> &lt; <code>minsize</code>
-                        then
+                        then first
                         multiply
-                        <code>T<sub>ascent</sub></code>,
-                        <code>T<sub>descent</sub></code>
-                        by <code>minsize</code> / <code>T</code>.
+                        <code>T<sub>ascent</sub></code>
+                        by <code>minsize</code> / <code>T</code>
+                        and then set <code>T<sub>descent</sub></code>
+                        to <code>minsize</code> -
+                        <code>T<sub>ascent</sub></code>.
                       </li>
                       <li>
                         Otherwise, if <code>maxsize</code> &lt; <code>T</code>
-                        then multiply
-                        <code>T<sub>ascent</sub></code>,
-                        <code>T<sub>descent</sub></code>
-                        by <code>maxsize</code> / <code>T</code>.
+                        then first multiply
+                        <code>T<sub>ascent</sub></code> by
+                        <code>maxsize</code> / <code>T</code> and
+                        then set <code>T<sub>descent</sub></code>
+                        to <code>maxsize</code> −
+                        <code>T<sub>ascent</sub></code>.
                       </li>
                     </ul>
                   </li>
