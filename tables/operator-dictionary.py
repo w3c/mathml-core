@@ -75,7 +75,9 @@ def dumpKnownTables(fenceAndSeparators):
         print(name)
 
         table = item["singleChar"]
-        print("  singleChar (%d): " % len(table), toUnicodeRanges(table))
+        print("  singleChar (%d): " % len(table), end="")
+        for unicodeRange in toUnicodeRanges(table):
+            print("%s, " % stringifyRange(unicodeRange), end="")
 
         if "multipleChar" in item:
             table = item["multipleChar"]
@@ -85,6 +87,66 @@ def dumpKnownTables(fenceAndSeparators):
             print("")
 
         print("")
+
+def stringifyRange(unicodeRange):
+    assert unicodeRange[1] - unicodeRange[0] < 256
+    if unicodeRange[0] == unicodeRange[1]:
+        return "{%s}" % toHexa(unicodeRange[0])
+    else:
+        return "[%s–%s]" % (toHexa(unicodeRange[0]), toHexa(unicodeRange[1]))
+
+def toUnicodeRanges(operators):
+    unicodeRange = None
+    ranges = []
+
+    for character in operators:
+        if not unicodeRange:
+            unicodeRange = character, character
+        else:
+            if unicodeRange[1] + 1 == character:
+                unicodeRange = unicodeRange[0], character
+            else:
+                ranges.append(unicodeRange)
+                unicodeRange = character, character
+
+    if unicodeRange:
+        ranges.append(unicodeRange)
+
+    return ranges
+
+def printCodePointStats():
+    ranges=[(0x0000, 0x1FFF), (0x2000, 0x2FFF), (0x3000, 0xFFFF)]
+    minmax=[]
+    for r in ranges:
+        minmax.append([r[1], r[0]])
+
+    for name in knownTables:
+        for entry in knownTables[name]["singleChar"]:
+            for index, r in enumerate(ranges):
+                if r[0] <= entry and entry <= r[1]:
+                    minmax[index][0] = min(minmax[index][0], entry)
+                    minmax[index][1] = max(minmax[index][1], entry)
+
+    print("Code points are in the following intervals:")
+    s = 0
+    for r in minmax:
+        print("  [%s–%s] (length 0x%04X)" % (toHexa(r[0]), toHexa(r[1]), r[1] - r[0] + 1))
+        s += r[1] - r[0] + 1
+
+    print("Total: %04X different code points\n" % s)
+
+def printRangeStats():
+    print("The max of codePointEnd - codePointStart for ranges are ")
+    maxDeltaTotal = 0
+    for name in knownTables:
+        maxDelta = 0
+        for unicodeRange in toUnicodeRanges(knownTables[name]["singleChar"]):
+            maxDelta = max(maxDelta, unicodeRange[1] - unicodeRange[0])
+        print(maxDelta, end=" ")
+        maxDeltaTotal = max(maxDeltaTotal, maxDelta)
+
+    print("(maximum is 0x%04X)" % maxDeltaTotal)
+    print()
 
 # Extract the operator dictionary.
 xsltTransform = etree.XSLT(etree.parse("./operator-dictionary.xsl"))
@@ -284,33 +346,6 @@ for entry in root:
 
 multipleCharTable.sort()
 
-def stringifyRange(unicodeRange):
-    assert unicodeRange[1] - unicodeRange[0] < 256
-
-    if unicodeRange[0] == unicodeRange[1]:
-        return "{%s}" % toHexa(unicodeRange[0])
-    else:
-        return "[%s–%s]" % (toHexa(unicodeRange[0]), toHexa(unicodeRange[1]))
-
-def toUnicodeRanges(operators):
-    unicodeRange = None
-    ranges = []
-
-    for character in operators:
-        if not unicodeRange:
-            unicodeRange = character, character
-        else:
-            if unicodeRange[1] + 1 == character:
-                unicodeRange = unicodeRange[0], character
-            else:
-                ranges.append(stringifyRange(unicodeRange))
-                unicodeRange = character, character
-
-    if unicodeRange:
-        ranges.append(stringifyRange(unicodeRange))
-
-    return ranges
-
 singleCharCount = otherValueTotalCount
 for name in knownTables:
     singleCharCount += len(knownTables[name]["singleChar"])
@@ -445,13 +480,8 @@ md.write('</figure>')
 print("done.");
 ################################################################################
 
-def nonBMPToSurrogate(character):
-    return (low_surrogate, high_surrogate)
-
 # Delete infix operators using default values.
 del knownTables["infixEntriesWithDefaultValues"]
-
-reservedBlock = (0xE000, 0xF8FF)
 
 # Convert nonBMP characters to surrogates pair (multiChar)
 for name in knownTables:
@@ -476,6 +506,7 @@ for name in knownTables:
     knownTables[name]["singleChar"].sort()
 
 # Convert multiChar to singleChar
+reservedBlock = (0xE000, 0xF8FF)
 for name in knownTables:
     if "multipleChar" in knownTables[name]:
         for entry in knownTables[name]["multipleChar"]:
@@ -487,20 +518,21 @@ for name in knownTables:
 for name in knownTables:
     knownTables[name]["singleChar"].sort()
 
+# Print the compact dictionary
 print("Generate operator-dictionary-compact.html...", end=" ");
 md = open("operator-dictionary-compact.html", "w")
 md.write("<!-- This file was automatically generated from generate-math-variant-tables.py. Do not edit. -->\n");
 
+totalEntryCount = 0
+totalBytes = 0
 md.write('<figure id="operator-dictionary-compact-special-tables">')
 md.write("<table>");
 md.write("<tr>");
-md.write("<th>Special Table</th><th>Unicode strings/characters</th>");
+md.write("<th>Special Table</th><th>Entries</th>");
 md.write("</tr>");
-
-totalBytes = 0
 md.write("<tr>")
 md.write("<td><code>Operators_multichar</code></td>");
-md.write("<td>%d null-terminated strings: <code>" % len(multipleCharTable));
+md.write("<td>%d entries (null-terminated UTF-16 strings): <code>" % len(multipleCharTable));
 for sequence in multipleCharTable:
     md.write("{");
     for character in sequence:
@@ -508,6 +540,7 @@ for sequence in multipleCharTable:
         totalBytes += 2
     md.write("U+0000}, ");
     totalBytes += 2
+    totalEntryCount += 1
 md.write("</code></td>");
 md.write("</tr>")
 
@@ -521,19 +554,20 @@ for name, item in sorted(knownTables.items(),
     md.write("<td><code>Operators_%s</code></td>" % name);
     ranges = toUnicodeRanges(knownTables[name]["singleChar"])
     if (3 * len(ranges) < 2 * count):
-        md.write("<td>%d ranges (%d characters): <code>" % (len(ranges), count))
+        md.write("<td>%d entries (%d Unicode ranges): <code>" % (count, len(ranges)))
         for entry in ranges:
-            md.write("%s, " % entry)
+            md.write("%s, " % stringifyRange(entry))
         totalBytes += 3 * len(ranges)
     else:
-        md.write("<td>%d characters: <code>" % count)
+        md.write("<td>%d entries: <code>" % count)
         for entry in knownTables[name]["singleChar"]:
             md.write("U+%04X, " % entry)
         totalBytes += 2 * count
+    totalEntryCount += count
     md.write("</code></td>")
     md.write("</tr>")
 md.write("</table>");
-md.write('<figcaption>Special tables for the operator dictionary.<br/>Total size: %d bytes.<br/>(assuming characters are UTF-16 and 1-byte range lengths)</figcaption>' % totalBytes)
+md.write('<figcaption>Special tables for the operator dictionary.<br/>Total size: %d entries, %d bytes.<br/>(assuming characters are UTF-16 and 1-byte range lengths)</figcaption>' % (totalEntryCount, totalBytes))
 md.write('</figure>')
 
 totalEntryCount = 0
@@ -554,12 +588,12 @@ for name, item in sorted(knownTables.items(),
 
     ranges = toUnicodeRanges(knownTables[name]["singleChar"])
     if (3 * len(ranges) < 2 * count):
-        md.write("<td>%d ranges (%d characters) in <strong>%s</strong> form: <code>" % (len(ranges), count, knownTables[name]["value"]["form"]))
+        md.write("<td>%d entries (%d Unicode ranges)  in <strong>%s</strong> form: <code>" % (count, len(ranges), knownTables[name]["value"]["form"]))
         for entry in ranges:
-            md.write("%s, " % entry)
+            md.write("%s, " % stringifyRange(entry))
         totalBytes += 3 * len(ranges)
     else:
-        md.write("<td>%d characters in <strong>%s</strong> form: <code>" % (count, knownTables[name]["value"]["form"]))
+        md.write("<td>%d entries in <strong>%s</strong> form: <code>" % (count, knownTables[name]["value"]["form"]))
         for entry in knownTables[name]["singleChar"]:
             md.write("U+%04X, " % entry)
         totalBytes += 2 * count
@@ -595,3 +629,8 @@ md.write('<figcaption>Operators values for each category.</figcaption>')
 md.write('</figure>')
 
 print("done.");
+
+# Print more statistics
+print()
+printCodePointStats()
+printRangeStats()

@@ -70,6 +70,17 @@
                   status: "WD",
                   href: "https://mathml-refresh.github.io/mathml/"
               },
+              "gperf": {
+                  title: "gperf - Perfect Hash Function Generator",
+                  href: "https://www.gnu.org/software/gperf"
+              },
+              "CMPH": {
+                  title: "CMPH - C Minimal Perfect Hashing Library",
+                  authors: [
+                      "Fabiano Cupertino Botelho et al."
+                  ],
+                  href: "http://cmph.sourceforge.net/index.html"
+              },
               "TEXBOOK": {
                   title: "The TeXBook",
                   date: "1984",
@@ -5808,32 +5819,44 @@
             After conversion to a single UTF-16 character, determining the
             category of ('Content', 'Form') can be done by binary searches
             on the tables corresponding to the 'Form' value
-            (for tables of ranges, the search is on the range start).
-            Small tables can also be handled by direct comparaisons.
+            of <a href="#operator-dictionary-category-table"></a>.
+            For tables of ranges, the binary search can be performed on the
+            range start code point. Note that small tables only have a few
+            ranges or code points to check and so can be handled by direct
+            comparaisons.
           </p>
           <p>
             The possible characters 'Content' values after conversion
-            characters are located into the three ranges
+            characters are located into the three small ranges
             U+0000–U+03FF, U+2000–U+2BFF and
-            U+E000–U+E04F and after offset shift can be encoded on
-            12 bits. Tables can thus all be represented as a list
-            of ranges of length at most 16, each range encoded on 2 bytes.
-            Due to several contiguous Unicode blocks, the n &lt; 512 entries
-            handled by these tables would still be encoded in less than 2n
-            bytes but all the tables are now treated the same way.
+            U+E000–U+E04F and after simple offset shift can be encoded on
+            12 bits. Note that all Unicode ranges from
+            and <a href="#operator-dictionary-category-table"></a>
+            contain between 1 and 32 characters. By splitting ranges into
+            at most two parts, each range can be encoded on 16 bits.
+            Due to several contiguous Unicode blocks, the tables would still be
+            encoded in significantly less than 16bits/entry but all the
+            tables are now encoded and treated the same way.
           </p>
           <p>
-            Alternatively, discarding the smallest tables using direct
-            comparisons, it is possible to only consider the tables for
-            categories 0-7.
+            Alternatively, discarding the smallest tables as explained above,
+            one can consider only those for categories 0-7.
             Then each of the three 'Form' corresponds to at most three
             categories and so ('Form', 'Category') can be encoded
-            on 4 bits. Using a 12-bit encoding of the 'Content' this means that
-            each entry can be encoded on 2 bytes. Hence the n entries
-            corresponding to these tables can be encoded using only 2n
-            bytes but binary search would now be perform on a single table.
-            Constant time lookup is also possible at the cost of adding
-            at least 1.44n bytes to store a minimal perfect hash function.
+            on 4 bits. Using the 12-bit encoding of the 'Content' described
+            above this means that these tables can be encoded with
+            16bits/entry but binary search would now be performed on a single
+            table.
+          </p>
+          <p>
+            Continuing on the previous approach, it is possible to
+            use a perfect hash function to implement table lookup in constant
+            time [[?gperf]] [[?CMPH]]. This would add 16 bits per empty entry
+            (for non-minimal perfect hash function) as well as extra data to
+            store the hash function parameters. For minimal perfect hash
+            function, the theorical lower bound for storing these parameters is
+            1.44bits/entry and existing algorithms range from close to that
+            limit up to 4bits/entry.
           </p>
         </div>
       </section>
