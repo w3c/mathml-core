@@ -64,7 +64,8 @@ def appendCharacters(name, character, value):
 
     if "singleChar" not in knownTables[name]:
         knownTables[name]["singleChar"] = []
-    knownTables[name]["singleChar"].append(characters[0])
+    if (characters[0] not in knownTables[name]["singleChar"]):
+        knownTables[name]["singleChar"].append(characters[0])
 
 def dumpKnownTables(fenceAndSeparators):
     for name, item in sorted(knownTables.items(),
