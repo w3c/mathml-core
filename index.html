@@ -5283,7 +5283,6 @@
       </section>
       <section id="operator-dictionary-compact">
         <h3>Operator Dictionary (Compact)</h3>
-        <div class="issue" data-number="209">Remove fence/separator?</div>
         <p>
           The following dictionary provides a compact form for the
           <a href="#operator-dictionary">operator dictionary</a>, suitable for
@@ -5316,23 +5315,58 @@
  	    <code>fence</code>, <code>separator</code> to <code>false</code>.
           </li>
           <li>If <code>Content</code> is a single character in the
-            BMP Private Use Area (range U+E000–U+F8FF)
+            range U+0320–U+03FF
             then exit with <code>NotFound</code> status.</li>
           <li>
             If <code>Content</code> an UTF-16 strings of lengths more than 1
             (including the case of surrogate pairs) and is listed in
             <a href="#operator-dictionary-compact-special-tables"><code>Operators_multichar</code></a> then
             replace <code>Content</code> with the Unicode character
-            "U+E000 plus the index of <code>Content</code> in
-            <code>Operators_multichar</code>". Otherwise, exit with
-            <code>NotFound</code> status.
+            "U+0320 plus the index of <code>Content</code> in
+            <code>Operators_multichar</code>". If it is not listed, then
+            exit with <code>NotFound</code> status.
           </li>
-          <li>If (<code>Content</code>, <code>Form</code>)
-            corresponds to one category of
-            <a href="#operator-dictionary-category-table"></a> then
-            set the properties according to
-            <a href="#operator-dictionary-categories-values"></a>.
-            Otherwise, exit with <code>NotFound</code> status.
+          <li>
+            During this step, the algorithm will try and find a category
+            corresponding to (<code>Content</code>, <code>Form</code>) from
+            <a href="#operator-dictionary-category-table"></a> and
+            either exit with <code>NotFound</code> status or and move to
+            the next point. More precisely, this can be done as follows:
+            <ul>
+              <li>For categories that don't have an encoding in
+                <a href="#operator-dictionary-categories-values"></a>
+                (namely K, M, N) perform a few direct verifications
+                on (<code>Content</code>, <code>Form</code>)
+                according to <a href="#operator-dictionary-category-table"></a>.
+                If a result is found then set the properties according to
+                <a href="#operator-dictionary-categories-values"></a>.
+                Otherwise exit with <code>NotFound</code> status.
+              </li>
+              <li>For other categories, perform the following steps:
+                <ul>
+                  <li>Set <code>Key</code> to <code>Content</code> if it is in
+                    range U+0000–U+03FF ; or to <code>Content</code> − 0x1C00
+                    if it is in range U+2000–U+2BFF. Otherwise, exit with
+                    <code>NotFound</code> status.
+                    <code>Key</code> is at most 0x0FFF.
+                  </li>
+                  <li>Add 0x0000, 0x1000, 0x2000
+                    to <code>Key</code> according to whether <code>Form</code>
+                    is <code>infix</code>, <code>prefix</code>,
+                    <code>postfix</code> respectively.
+                    <code>Key</code> is at most 0x2FFF.
+                  </li>
+                  <li>Search an <code>Entry</code> in table
+                    <a href="#operator-dictionary-categories-hexa-table"></a>
+                    such <code>Entry</code> % 0x4000 is equal to
+                    <code>Key</code>. Either exit with
+                    <code>NotFound</code> status or
+                    set the properties corresponding to the category with
+                    encoding <code>Entry</code> / 0x1000 in
+                    <a href="#operator-dictionary-categories-values"></a>.
+                </ul>
+              </li>
+            </ul>
           </li>
           <li>If <code>Content</code> is in
             <a href="#operator-dictionary-compact-special-tables"><code>Operators_fence</code></a> then set property <code>fence</code> to true.</li>
@@ -5348,57 +5382,40 @@
           </li>
         </ol>
 
+        <div class="note">
+          The <code>fence</code> and <code>separator</code> properties do not
+          have any visible effect on the layout described in this
+          specification. So step 5 and 6 as well as the corresponding tables
+          may be ignored.
+        </div>
+        <div class="issue" data-number="209">Remove fence/separator?</div>
+
         <div id="operator-dictionary-entries"
              data-include="tables/operator-dictionary-compact.html"></div>
 
         <div class="note" id="operator-dictionary-compact-implementations">
           <p>
-            After conversion to a single UTF-16 character, determining the
-            category of ('Content', 'Form') can be done by binary searches
-            on the tables corresponding to the 'Form' value
-            of <a href="#operator-dictionary-category-table"></a>.
-            For tables of ranges, the binary search can be performed on the
-            range start code point. Note that small tables only have a few
-            ranges or code points to check and so can be handled by direct
-            comparaisons.
+            When encoded as ranges, one can perform a binary search by looking
+            for the range start, followed by an extra check on the range length.
+            Since log is concave,
+            it is worse to do one binary search on each large subtable
+            of <a href="#operator-dictionary-category-table"></a> than one
+            binary search on the whole table of
+            <a href="#operator-dictionary-categories-hexa-table"></a>.
+            One can see that there are several contiguous Unicode blocks, so
+            encoding tables as ranges allow to get almost 8 bits per entry.
           </p>
           <p>
-            The possible characters 'Content' values after conversion
-            characters are located into the three small ranges
-            U+0000–U+03FF, U+2000–U+2BFF and
-            U+E000–U+E04F and after simple offset shift can be encoded on
-            12 bits. Note that all Unicode ranges from
-            and <a href="#operator-dictionary-category-table"></a>
-            contain between 1 and 32 characters. By splitting ranges into
-            at most two parts, each range can be encoded on 16 bits.
-            Due to several contiguous Unicode blocks, the tables would still be
-            encoded in significantly less than 16bits/entry but all the
-            tables are now encoded and treated the same way.
-          </p>
-          <p>
-            Alternatively, discarding the smallest tables as explained above,
-            one can consider only those having a 4bits encoding in
-            <a href="#operator-dictionary-categories-values"></a>.
-            Using the 12-bit encoding of the 'Content' described
-            above this means that these tables can be encoded with
-            16bits/entry but binary search would now be performed on a single
-            table.
-          </p>
-          <p>
-            Continuing on the previous approach, it is possible to
+            Alternatively, it is possible to
             use a perfect hash function to implement table lookup in constant
-            time [[?gperf]] [[?CMPH]]. This would add 16 bits per empty entry
+            time [[?gperf]] [[?CMPH]]. This would instead take 
+            16 bits per entry, plus 16 bits per extra empty entry
             (for non-minimal perfect hash function) as well as extra data to
             store the hash function parameters. For minimal perfect hash
             function, the theorical lower bound for storing these parameters is
             1.44bits/entry and existing algorithms range from close to that
             limit up to 4bits/entry.
           </p>
-        </div>
-        <div class="issue">
-          TODO give more compact form in two tables combining the two ideas above for encoding categories 0-9 + 11:
-  Table 1: 12bits (start code point) + 4bit (form+category)
-  Table 2: 1, 2 or 4bits? (number of code points in contiguous block)
         </div>
       </section>
       <section id="stretchy-operator-axis">

@@ -2,6 +2,7 @@
 
 from lxml import etree
 from download import downloadUnicodeXML
+from math import ceil
 
 import operator
 import json
@@ -77,7 +78,7 @@ def dumpKnownTables(fenceAndSeparators):
 
         table = item["singleChar"]
         print("  singleChar (%d): " % len(table), end="")
-        for unicodeRange in toUnicodeRanges(table):
+        for unicodeRange in toRanges(table):
             print("%s, " % stringifyRange(unicodeRange), end="")
 
         if "multipleChar" in item:
@@ -90,33 +91,33 @@ def dumpKnownTables(fenceAndSeparators):
         print("")
 
 def stringifyRange(unicodeRange):
-    assert unicodeRange[1] - unicodeRange[0] < 256
     if unicodeRange[0] == unicodeRange[1]:
         return "{%s}" % toHexa(unicodeRange[0])
     else:
         return "[%s–%s]" % (toHexa(unicodeRange[0]), toHexa(unicodeRange[1]))
 
-def toUnicodeRanges(operators):
-    unicodeRange = None
+def toRanges(operators, max_range_length = 256):
+    current_range = None
     ranges = []
 
     for character in operators:
-        if not unicodeRange:
-            unicodeRange = character, character
+        if not current_range:
+            current_range = character, character
         else:
-            if unicodeRange[1] + 1 == character:
-                unicodeRange = unicodeRange[0], character
+            if (current_range[1] + 1 - current_range[0] < max_range_length and
+                current_range[1] + 1 == character):
+                current_range = current_range[0], character
             else:
-                ranges.append(unicodeRange)
-                unicodeRange = character, character
+                ranges.append(current_range)
+                current_range = character, character
 
-    if unicodeRange:
-        ranges.append(unicodeRange)
+    if current_range:
+        ranges.append(current_range)
 
     return ranges
 
 def printCodePointStats():
-    ranges=[(0x0000, 0x1FFF), (0x2000, 0x2FFF), (0x3000, 0xFFFF)]
+    ranges=[(0x0000, 0x1FFF), (0x2000, 0x2FFF)]
     minmax=[]
     for r in ranges:
         minmax.append([r[1], r[0]])
@@ -134,14 +135,14 @@ def printCodePointStats():
         print("  [%s–%s] (length 0x%04X)" % (toHexa(r[0]), toHexa(r[1]), r[1] - r[0] + 1))
         s += r[1] - r[0] + 1
 
-    print("Total: %04X different code points\n" % s)
+    print("Total: 0x%04X different code points\n" % s)
 
 def printRangeStats():
     print("The max of codePointEnd - codePointStart for ranges are ")
     maxDeltaTotal = 0
     for name in knownTables:
         maxDelta = 0
-        for unicodeRange in toUnicodeRanges(knownTables[name]["singleChar"]):
+        for unicodeRange in toRanges(knownTables[name]["singleChar"]):
             maxDelta = max(maxDelta, unicodeRange[1] - unicodeRange[0])
         print(maxDelta, end=" ")
         maxDeltaTotal = max(maxDeltaTotal, maxDelta)
@@ -476,7 +477,7 @@ for name in otherEntriesWithMultipleCharacters:
     md.write("</tr>");
 
 md.write("</table>\n");
-md.write('<figcaption>Mapping from operator (Content, Form) to properties.<br/>Total size: %d entries, ≥ %d bytes<br/>(assuming \'Content\' uses at least one UTF-16 character, \'Form\' 2 bits, spacing 3 bits and properties 3 bits).</figcaption>' % (totalEntryCount, totalEntryCount * (16 + 2 + 3 + 3)/8))
+md.write('<figcaption>Mapping from operator (Content, Form) to properties.<br/>Total size: %d entries, ≥ %d bytes<br/>(assuming \'Content\' uses at least one UTF-16 character, \'Form\' 2 bits, spacing 3 bits and properties 3 bits).</figcaption>' % (totalEntryCount, ceil(totalEntryCount * (16 + 2 + 3 + 3)/8.)))
 md.write('</figure>')
 print("done.");
 ################################################################################
@@ -507,7 +508,7 @@ for name in knownTables:
     knownTables[name]["singleChar"].sort()
 
 # Convert multiChar to singleChar
-reservedBlock = (0xE000, 0xF8FF)
+reservedBlock = (0x0320, 0x03FF)
 for name in knownTables:
     if "multipleChar" in knownTables[name]:
         for entry in knownTables[name]["multipleChar"]:
@@ -518,6 +519,11 @@ for name in knownTables:
 
 for name in knownTables:
     knownTables[name]["singleChar"].sort()
+
+# Print more statistics
+print()
+printCodePointStats()
+printRangeStats()
 
 # Print the compact dictionary
 print("Generate operator-dictionary-compact.html...", end=" ");
@@ -553,7 +559,7 @@ for name, item in sorted(knownTables.items(),
     count = len(knownTables[name]["singleChar"])
     md.write("<tr>")
     md.write("<td><code>Operators_%s</code></td>" % name);
-    ranges = toUnicodeRanges(knownTables[name]["singleChar"])
+    ranges = toRanges(knownTables[name]["singleChar"])
     if (3 * len(ranges) < 2 * count):
         md.write("<td>%d entries (%d Unicode ranges): <code>" % (count, len(ranges)))
         for entry in ranges:
@@ -587,7 +593,7 @@ for name, item in sorted(knownTables.items(),
     md.write("<tr>")
     totalEntryCount += count
 
-    ranges = toUnicodeRanges(knownTables[name]["singleChar"])
+    ranges = toRanges(knownTables[name]["singleChar"])
     if (3 * len(ranges) < 2 * count):
         md.write("<td>%d entries (%d Unicode ranges)  in <strong>%s</strong> form: <code>" % (count, len(ranges), knownTables[name]["value"]["form"]))
         for entry in ranges:
@@ -606,6 +612,14 @@ md.write("</table>");
 md.write('<figcaption>Mapping from operator (Content, Form) to a category.<br/>Total size: %d entries, %d bytes.<br/>(assuming characters are UTF-16 and 1-byte range lengths)</figcaption>' % (totalEntryCount, totalBytes))
 md.write('</figure>')
 
+def formValueFromString(value):
+    form = knownTables[name]["value"]["form"]
+    if form == "infix":
+        return 0
+    if form == "prefix":
+        return 1
+    assert form == "postfix"
+    return 2
 
 category_for_form = [0, 0, 0]
 value_index = 0
@@ -620,13 +634,7 @@ for name, item in sorted(knownTables.items(),
     for entry in knownTables[name]["singleChar"]:
         md.write("<tr>");
         md.write("<td>%s</td>" % chr(ord('A') + value_index))
-        form = knownTables[name]["value"]["form"]
-        if form == "infix":
-            form = 0
-        elif form == "prefix":
-            form = 1
-        elif form == "postfix":
-            form = 2
+        form = formValueFromString(knownTables[name]["singleChar"])
         if category_for_form[form] >= 4:
             md.write("<td>N/A</td>")
         else:
@@ -644,7 +652,43 @@ md.write('</figure>')
 
 print("done.");
 
-# Print more statistics
-print()
-printCodePointStats()
-printRangeStats()
+# Calculate compact form for the largest categories.
+compact_table = []
+category_for_form = [0, 0, 0]
+totalEntryCount = 0
+for name, item in sorted(knownTables.items(),
+                         key=(lambda v: len(v[1]["singleChar"])),
+                         reverse=True):
+    if name in ["fence", "separator"]:
+        continue
+    count = len(knownTables[name]["singleChar"])
+    form = formValueFromString(knownTables[name]["singleChar"])
+    if category_for_form[form] >= 4:
+        continue
+    totalEntryCount += count
+    hexa = form + (category_for_form[form] << 2)
+    category_for_form[form] += 1
+
+    for entry in knownTables[name]["singleChar"]:
+        assert entry <= 0x3FF or (0x2000 <= entry and entry <= 0x2BFF)
+        if 0x2000 <= entry and entry <= 0x2BFF:
+            entry = entry - 0x1C00
+        entry = entry + (hexa << 12)
+        compact_table.append(entry)
+
+bits_per_range = 4
+compact_table = toRanges(compact_table, 1 << bits_per_range)
+rangeCount = 0
+
+md.write('<figure id="operator-dictionary-categories-hexa-table">')
+md.write('%d entries (%d ranges of length at most %d): <code>' % (totalEntryCount, len(compact_table), 1 << bits_per_range));
+for r in compact_table:
+    if r[0] == r[1]:
+        md.write('{0x%04X}, ' % r[0])
+    else:
+        md.write('[0x%04X–0x%04X], ' % (r[0], r[1]))
+    rangeCount += 1
+
+md.write('</code>');
+md.write('<figcaption>List of entries for the largest categories.<br/><code>Key</code> is <code>Entry</code> %% 0x400, category encoding is <code>Entry</code> / 0x1000.<br/>Total size: %d entries, %d bytes<br/>(assuming %d bits for range lengths).</figcaption>' % (totalEntryCount, ceil((16+bits_per_range) * rangeCount / 8.), bits_per_range))
+md.write('</figure>')
