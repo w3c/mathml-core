@@ -599,17 +599,19 @@ for name, item in sorted(knownTables.items(),
             md.write("U+%04X, " % entry)
         totalBytes += 2 * count
     md.write("</code></td>")
-    md.write("<td>%d</td>" % value_index);
+    md.write("<td>%s</td>" % chr(ord('A') + value_index));
     value_index += 1;
     md.write("</tr>")
 md.write("</table>");
 md.write('<figcaption>Mapping from operator (Content, Form) to a category.<br/>Total size: %d entries, %d bytes.<br/>(assuming characters are UTF-16 and 1-byte range lengths)</figcaption>' % (totalEntryCount, totalBytes))
 md.write('</figure>')
 
+
+category_for_form = [0, 0, 0]
 value_index = 0
 md.write('<figure id="operator-dictionary-categories-values">')
 md.write("<table>");
-md.write("<tr><th>Category</th><th>rspace</th><th>lspace</th><th>properties</th></tr>")
+md.write("<tr><th>Category</th><th>encoding</th><th>rspace</th><th>lspace</th><th>properties</th></tr>")
 for name, item in sorted(knownTables.items(),
                          key=(lambda v: len(v[1]["singleChar"])),
                          reverse=True):
@@ -617,16 +619,27 @@ for name, item in sorted(knownTables.items(),
         continue
     for entry in knownTables[name]["singleChar"]:
         md.write("<tr>");
-        md.write("<td>%d</td>" % value_index)
-        md.write(serializeValue(knownTables[name]["value"],
-                                False,
-                                False))
+        md.write("<td>%s</td>" % chr(ord('A') + value_index))
+        form = knownTables[name]["value"]["form"]
+        if form == "infix":
+            form = 0
+        elif form == "prefix":
+            form = 1
+        elif form == "postfix":
+            form = 2
+        if category_for_form[form] >= 4:
+            md.write("<td>N/A</td>")
+        else:
+            hexa = form + (category_for_form[form] << 2)
+            category_for_form[form] += 1
+            md.write("<td>0x%01X</td>" % hexa)
+        md.write(serializeValue(knownTables[name]["value"], False, False))
         md.write("</tr>");
         break
     value_index += 1
 
 md.write("</table>");
-md.write('<figcaption>Operators values for each category.</figcaption>')
+md.write('<figcaption>Operators values for each category.<br/>The second column provides a 4bits encoding of the categories<br/>where the 2 least significant bits encodes the form infix (0), prefix (1) and postfix (2).</figcaption>')
 md.write('</figure>')
 
 print("done.");

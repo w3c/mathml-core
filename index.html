@@ -5377,10 +5377,9 @@
           </p>
           <p>
             Alternatively, discarding the smallest tables as explained above,
-            one can consider only those for categories 0-7.
-            Then each of the three 'Form' corresponds to at most three
-            categories and so ('Form', 'Category') can be encoded
-            on 4 bits. Using the 12-bit encoding of the 'Content' described
+            one can consider only those having a 4bits encoding in
+            <a href="#operator-dictionary-categories-values"></a>.
+            Using the 12-bit encoding of the 'Content' described
             above this means that these tables can be encoded with
             16bits/entry but binary search would now be performed on a single
             table.
