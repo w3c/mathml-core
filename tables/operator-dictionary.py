@@ -55,6 +55,8 @@ def appendCharacters(name, character, value):
             knownTables[name]["value"] = value
         assert knownTables[name]["value"] == value
 
+    assert len(characters) in [1, 2]
+
     if len(characters) > 1:
         if "multipleChar" not in knownTables[name]:
             knownTables[name]["multipleChar"] = []
@@ -530,14 +532,11 @@ md.write("<th>Special Table</th><th>Entries</th>");
 md.write("</tr>");
 md.write("<tr>")
 md.write("<td><code>Operators_multichar</code></td>");
-md.write("<td>%d entries (null-terminated UTF-16 strings): <code>" % len(multipleCharTable));
+md.write("<td>%d entries (2-characters UTF-16 strings): <code>" % len(multipleCharTable));
 for sequence in multipleCharTable:
-    md.write("{");
-    for character in sequence:
-        md.write("U+%04X," % character)
-        totalBytes += 2
-    md.write("U+0000}, ");
-    totalBytes += 2
+    assert len(sequence) == 2
+    md.write("{U+%04X, U+%04X}, " % (sequence[0], sequence[1]))
+    totalBytes += 4
     totalEntryCount += 1
 md.write("</code></td>");
 md.write("</tr>")
@@ -616,7 +615,7 @@ category_for_form = [0, 0, 0]
 value_index = 0
 md.write('<figure id="operator-dictionary-categories-values">')
 md.write("<table>");
-md.write("<tr><th>Category</th><th>encoding</th><th>rspace</th><th>lspace</th><th>properties</th></tr>")
+md.write("<tr><th>Category</th><th>Form</th><th>Encoding</th><th>rspace</th><th>lspace</th><th>properties</th></tr>")
 for name, item in sorted(knownTables.items(),
                          key=(lambda v: len(v[1]["singleChar"])),
                          reverse=True):
@@ -625,6 +624,7 @@ for name, item in sorted(knownTables.items(),
     for entry in knownTables[name]["singleChar"]:
         md.write("<tr>");
         md.write("<td>%s</td>" % chr(ord('A') + value_index))
+        md.write("<td>%s</td>" % knownTables[name]["value"]["form"]);
         form = formValueFromString(knownTables[name]["singleChar"])
         if category_for_form[form] >= 4:
             md.write("<td>N/A</td>")
@@ -638,7 +638,7 @@ for name, item in sorted(knownTables.items(),
     value_index += 1
 
 md.write("</table>");
-md.write('<figcaption>Operators values for each category.<br/>The second column provides a 4bits encoding of the categories<br/>where the 2 least significant bits encodes the form infix (0), prefix (1) and postfix (2).</figcaption>')
+md.write('<figcaption>Operators values for each category.<br/>The third column provides a 4bits encoding of the categories<br/>where the 2 least significant bits encodes the form infix (0), prefix (1) and postfix (2).</figcaption>')
 md.write('</figure>')
 
 print("done.");
