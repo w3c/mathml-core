@@ -184,10 +184,6 @@ for entry in root:
     unicodeText = entry.get("unicode")
     characters = parseHexaSequence(unicodeText)
 
-    # Exclude composition with combining char until they are removed from unicode.xml
-    if len(characters) == 2 and characters[1] in [0x331, 0x338, 0x20D2]:
-        continue    
-
     form = entry.get("form")
     key = buildKey(characters, form)
     value = {"form": form}
