@@ -5260,7 +5260,7 @@
           the dictionary.
         </p>
         <div class="warning">
-          This dictionary is quite large, with more than 1400 entries.
+          This dictionary is quite large, with more than 1300 entries.
           However, is also has a lot of redundancy and so
           implementers are urged to rely on the tables from
           <a href="#operator-dictionary-compact"></a> instead.
@@ -5307,24 +5307,41 @@
           (<code>Content</code>, <code>Form</code>)
           key, the search is done as follows:
         </p>
-
         <ol>
           <li>
             Set properties <code>stretchy</code>, <code>symmetric</code>
             <code>largeop</code>, <code>movablelimits</code>,
  	    <code>fence</code>, <code>separator</code> to <code>false</code>.
           </li>
+          <li>
+            If <code>Content</code> as an UTF-16 string does not have length
+            or 1 or 2 then exit with <code>NotFound</code> status.
+          </li>
           <li>If <code>Content</code> is a single character in the
             range U+0320–U+03FF
-            then exit with <code>NotFound</code> status.</li>
-          <li>
-            If <code>Content</code> an UTF-16 strings of lengths more than 1
-            (including the case of surrogate pairs) and is listed in
-            <a href="#operator-dictionary-compact-special-tables"><code>Operators_multichar</code></a> then
-            replace <code>Content</code> with the Unicode character
-            "U+0320 plus the index of <code>Content</code> in
-            <code>Operators_multichar</code>". If it is not listed, then
-            exit with <code>NotFound</code> status.
+            then exit with <code>NotFound</code> status. Otherwise,
+            if it has two characters:
+            <ul>
+              <li>If <code>Content</code> is the surrogate pairs corresponding
+                to
+                U+1EEF0 ARABIC MATHEMATICAL OPERATOR MEEM WITH HAH WITH TATWEEL
+                or U+1EEF1 ARABIC MATHEMATICAL OPERATOR HAH WITH DAL and
+                <code>Form</code> is postfix,
+                then set properties according to category I of
+                <a href="#operator-dictionary-categories-values"></a>
+                and move to the last step.</li>
+              <li>If the second character is
+                U+338 COMBINING LONG SOLIDUS OVERLAY or
+                U+20D2 COMBINING LONG VERTICAL LINE OVERLAY then replace
+                <code>Content</code> with the first character.</li>
+              <li>Otherwise, if <code>Content</code> it is listed in
+                <a href="#operator-dictionary-compact-special-tables"><code>Operators_2_ascii_chars</code></a> then
+                replace <code>Content</code> with the Unicode character
+                "U+0320 plus the index of <code>Content</code> in
+                <code>Operators_2_ascii_chars</code>".
+              </li>
+              <li>Otherwise exit with <code>NotFound</code> status.</li>
+            </ul>
           </li>
           <li>
             During this step, the algorithm will try and find a category

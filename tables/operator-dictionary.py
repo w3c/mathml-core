@@ -183,6 +183,11 @@ otherValueTotalCount=0
 for entry in root:
     unicodeText = entry.get("unicode")
     characters = parseHexaSequence(unicodeText)
+
+    # Exclude composition with combining char until they are removed from unicode.xml
+    if len(characters) == 2 and characters[1] in [0x331, 0x338, 0x20D2]:
+        continue    
+
     form = entry.get("form")
     key = buildKey(characters, form)
     value = {"form": form}
@@ -479,26 +484,35 @@ print("done.");
 del knownTables["infixEntriesWithDefaultValues"]
 
 # Convert nonBMP characters to surrogates pair (multiChar)
+# Not used anymore, but keep it in case that changes in the future...
+def convertToSurrogatePairs():
+    for name in knownTables:
+        for entry in knownTables[name]["singleChar"]:
+            if entry >= 0x10000:
+                if "multipleChar" not in knownTables[name]:
+                    knownTables[name]["multipleChar"] = []
+                high_surrogate = ((entry - 0x10000) // 0x400) + 0xD800
+                low_surrogate = ((entry - 0x10000) & (0x400 - 1)) + 0xDC00
+                characters = (high_surrogate, low_surrogate)
+                knownTables[name]["multipleChar"].append(characters)
+                if characters not in multipleCharTable:
+                    multipleCharTable.append(characters)
+
+        for entry in knownTables[name]["singleChar"]:
+            knownTables[name]["singleChar"] = [ entry for entry in knownTables[name]["singleChar"] if entry < 0x10000 ]
+
+    multipleCharTable.sort()
+    for name in knownTables:
+        if "multipleChar" in knownTables[name]:
+            knownTables[name]["multipleChar"].sort()
+        knownTables[name]["singleChar"].sort()
+
+# Remove non-BMP characters.
+knownNonBMP = [0x1EEF0, 0x1EEF1]
 for name in knownTables:
     for entry in knownTables[name]["singleChar"]:
-        if entry >= 0x10000:
-            if "multipleChar" not in knownTables[name]:
-                knownTables[name]["multipleChar"] = []
-            high_surrogate = ((entry - 0x10000) // 0x400) + 0xD800
-            low_surrogate = ((entry - 0x10000) & (0x400 - 1)) + 0xDC00
-            characters = (high_surrogate, low_surrogate)
-            knownTables[name]["multipleChar"].append(characters)
-            if characters not in multipleCharTable:
-                multipleCharTable.append(characters)
-
-    for entry in knownTables[name]["singleChar"]:
-        knownTables[name]["singleChar"] = [ entry for entry in knownTables[name]["singleChar"] if entry < 0x10000 ]
-
-multipleCharTable.sort()
-for name in knownTables:
-    if "multipleChar" in knownTables[name]:
-        knownTables[name]["multipleChar"].sort()
-    knownTables[name]["singleChar"].sort()
+        assert entry < 0x10000 or entry in knownNonBMP
+    knownTables[name]["singleChar"] = [ entry for entry in knownTables[name]["singleChar"] if entry < 0x10000 ]
 
 # Convert multiChar to singleChar
 reservedBlock = (0x0320, 0x03FF)
@@ -531,12 +545,12 @@ md.write("<tr>");
 md.write("<th>Special Table</th><th>Entries</th>");
 md.write("</tr>");
 md.write("<tr>")
-md.write("<td><code>Operators_multichar</code></td>");
-md.write("<td>%d entries (2-characters UTF-16 strings): <code>" % len(multipleCharTable));
+md.write("<td><code>Operators_2_ascii_chars</code></td>");
+md.write("<td>%d entries (2-characters ASCII strings): <code>" % len(multipleCharTable));
 for sequence in multipleCharTable:
     assert len(sequence) == 2
-    md.write("{U+%04X, U+%04X}, " % (sequence[0], sequence[1]))
-    totalBytes += 4
+    md.write("'%s%s', " % (chr(sequence[0]), chr(sequence[1])))
+    totalBytes += 2
     totalEntryCount += 1
 md.write("</code></td>");
 md.write("</tr>")
@@ -681,5 +695,5 @@ for r in compact_table:
     rangeCount += 1
 
 md.write('</code>');
-md.write('<figcaption>List of entries for the largest categories.<br/><code>Key</code> is <code>Entry</code> %% 0x400, category encoding is <code>Entry</code> / 0x1000.<br/>Total size: %d entries, %d bytes<br/>(assuming %d bits for range lengths).</figcaption>' % (totalEntryCount, ceil((16+bits_per_range) * rangeCount / 8.), bits_per_range))
+md.write('<figcaption>List of entries for the largest categories.<br/><code>Key</code> is <code>Entry</code> %% 0x4000, category encoding is <code>Entry</code> / 0x1000.<br/>Total size: %d entries, %d bytes<br/>(assuming %d bits for range lengths).</figcaption>' % (totalEntryCount, ceil((16+bits_per_range) * rangeCount / 8.), bits_per_range))
 md.write('</figure>')
