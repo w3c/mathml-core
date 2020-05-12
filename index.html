@@ -5241,67 +5241,28 @@
 </span><span data-include-replace="true" data-include="user-agent-stylesheet/radicals.css"></span><span data-include-replace="true" data-include="user-agent-stylesheet/scripts.css"></span>
       </pre>
     </section>
-    <section class="normative">
+    <section>
       <h2>Operator Tables</h2>
-      <section id="operator-dictionary">
+      <section id="operator-dictionary-compact" class="normative">
         <h3>Operator Dictionary</h3>
-        <div class="issue" data-number="209">Remove fence/separator?</div>
-        <div class="issue" data-number="176">TODO: more cleanup of the dictionary</div>
         <p>
-          The following dictionary provides a human-readable table
-          of values to use for
-          <a href="#dictionary-based-attributes"></a> of operators
-          when they are not specified via explicit attributes or equal to
-          the generic default values. Please refer to
-          <a href="#dictionary-based-attributes"></a> for explanation about
-          how to use this dictionary and how to
-          determine the values <code>Content</code> and <code>Form</code>
-          indexing together
-          the dictionary.
-        </p>
-        <div class="warning">
-          This dictionary is quite large, with more than 1300 entries.
-          However, is also has a lot of redundancy and so
-          implementers are urged to rely on the tables from
-          <a href="#operator-dictionary-compact"></a> instead.
-        </div>
-        <p>
-          The values for <a>rspace</a> and <a>lspace</a> are indicated
-          in the corresponding columns.
-          The values of
-          <a><code>stretchy</code></a>,
-          <a><code>symmetric</code></a>,
-          <a><code>largeop</code></a>,
-          <a><code>movablelimits</code></a>,
-          <a><code>fence</code></a> or
-          <a><code>separator</code></a>
-          are <code>true</code>
-          if they are listed in the "properties" column.
-        </p>
-        <div id="operator-dictionary-entries"
-             data-include="tables/operator-dictionary.html"></div>
-      </section>
-      <section id="operator-dictionary-compact">
-        <h3>Operator Dictionary (Compact)</h3>
-        <p>
-          The following dictionary provides a compact form for the
-          <a href="#operator-dictionary">operator dictionary</a>, suitable for
-          computer manipulation. It describes the values to use for
+          The following dictionary for default values of
           <a href="#dictionary-based-attributes"></a> of operators
           when they are not specified via explicit attributes or equal to
           the generic default values. Please refer to
           <a href="#dictionary-based-attributes"></a> for explanation about
           how to use this dictionary and how to
           determine the values <code>Content</code> and
-          <code>Form</code> indexing together
-          the dictionary.
+          <code>Form</code> indexing it.
+          Tables below are suitable for computer manipulation,
+          see <a href="#operator-dictionary"></a> for an alternative
+          presentation.
         </p>
-
         <p>
-          This compact form removes about 800 entries from the
+          This compact form removes about 800 entries from the original
           <a href="#operator-dictionary">operator dictionary</a> that actually
-          correspond to
-          default values. They are not necessary since they are handled by the
+          correspond to default values.
+          They are not necessary since they are handled by the
           fallback case of
           <a href="#dictionary-based-attributes"></a> anyway. For other
           (<code>Content</code>, <code>Form</code>)
@@ -5425,7 +5386,7 @@
           <p>
             Alternatively, it is possible to
             use a perfect hash function to implement table lookup in constant
-            time [[?gperf]] [[?CMPH]]. This would instead take 
+            time [[?gperf]] [[?CMPH]]. This would instead take
             16 bits per entry, plus 16 bits per extra empty entry
             (for non-minimal perfect hash function) as well as extra data to
             store the hash function parameters. For minimal perfect hash
@@ -5435,7 +5396,7 @@
           </p>
         </div>
       </section>
-      <section id="stretchy-operator-axis">
+      <section id="stretchy-operator-axis" class="normative">
         <h3>Stretchy Operator Axis</h3>
         <p>
           The default stretch axis for all characters is
@@ -5451,7 +5412,34 @@
           sorted array.
         </div>
       </section>
-      <section>
+      <section id="operator-dictionary" class="informative">
+        <h3>Operator Dictionary (human-readable)</h3>
+        <p>
+          The following dictionary provides a human-readable version
+          of <a href="#operator-dictionary-compact"></a>. Please refer to
+          <a href="#dictionary-based-attributes"></a> for explanation about
+          how to use this dictionary and how to
+          determine the values <code>Content</code> and <code>Form</code>
+          indexing together
+          the dictionary.
+        </p>
+        <p>
+          The values for <a>rspace</a> and <a>lspace</a> are indicated
+          in the corresponding columns.
+          The values of
+          <a><code>stretchy</code></a>,
+          <a><code>symmetric</code></a>,
+          <a><code>largeop</code></a>,
+          <a><code>movablelimits</code></a>,
+          <a><code>fence</code></a> or
+          <a><code>separator</code></a>
+          are <code>true</code>
+          if they are listed in the "properties" column.
+        </p>
+        <div id="operator-dictionary-entries"
+             data-include="tables/operator-dictionary.html"></div>
+      </section>
+      <section class="informative">
         <h3>Combining Character Equivalences</h3>
         <p>
           The following table gives mappings between spacing and non spacing
