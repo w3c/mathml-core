@@ -162,7 +162,6 @@ knownTables = {
     "infixEntriesWithSpacing5AndStretchy": {},
     "prefixEntriesWithSpacing0AndStretchySymmetric": {},
     "postfixEntriesWithSpacing0AndStretchySymmetric": {},
-    "prefixEntriesWithLspace1Rspace2AndSymmetricMovablelimitsLargeop": {},
     "prefixEntriesWithLspace0Rspace0": {},
     "postfixEntriesWithLspace0Rspace0": {},
     "postfixEntriesWithLspace0Rspace0AndStretchy": {},
@@ -247,14 +246,6 @@ for entry in root:
         value["properties"] == {'symmetric': True, 'stretchy': True} and
         form == "postfix"):
         appendCharacters("postfixEntriesWithSpacing0AndStretchySymmetric", characters, value)
-        continue
-
-    if (value["lspace"] == 1 and
-        value["rspace"] == 2 and
-        "properties" in value and
-        value["properties"] == {'symmetric': True, 'movablelimits': True, 'largeop': True} and
-        form == "prefix"):
-        appendCharacters("prefixEntriesWithLspace1Rspace2AndSymmetricMovablelimitsLargeop", characters, value)
         continue
 
     if (value["lspace"] == 1 and
