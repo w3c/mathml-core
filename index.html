@@ -2638,7 +2638,7 @@
             in <a href="#global-attributes"></a>.
           </p>
           <div class="example" id="msqrt-mroot-example">
-            <p>The following MathML example contains a square root
+            <p>The following example contains a square root
               written with <a>&lt;msqrt&gt;</a> and a cube root written
               with <a>&lt;mroot&gt;</a>.
               Note that <a>&lt;msqrt&gt;</a> has several children and the
@@ -2915,7 +2915,7 @@
             <code>&lt;mstyle&gt;</code> is implemented for compatibility with full MathML. Authors whose only target is MathML Core are encouraged to use CSS for styling.
           </div>
           <div class="example" id="mstyle-example">
-            <p>In the following MathML example,
+            <p>In the following example,
               <a>&lt;mstyle&gt;</a> is used to set the <a>scriptlevel</a>
               and <a>displaystyle</a>.
               Observe this is respectively affecting the
@@ -2939,7 +2939,7 @@
             in their input.
           </p>
           <div class="example" id="merror-example">
-            <p>In the following MathML example,
+            <p>In the following example,
               <a>&lt;merror&gt;</a> is used to indicate a parsing error
               for some LaTeX-like input:
             </p>
@@ -3126,7 +3126,7 @@
             rendered normally.
           </p>
           <div class="example" id="mphantom-example">
-            <p>In the following MathML example,
+            <p>In the following example,
               <a>&lt;mphantom&gt;</a> is used to ensure alignment of
               corresponding parts of the numerator and denominator of a
               fraction:
@@ -3178,6 +3178,15 @@
             They accept the attributes described in
             <a href="#global-attributes"></a>.
           </p>
+          <div class="example" id="msub-msup-msubsup-example">
+            <p>The following example, shows basic use of subscripts and
+              superscripts. The font-size is automatically scaled down
+              within the scripts.
+            </p>
+            <pre data-include="examples/example-msub-msup-msubsup.html"
+                 data-include-format="text"></pre>
+            <img src="examples/example-msub-msup-msubsup.png" alt="msub-msup-msubsup example"/>
+          </div>
           <p>
             If the
             <code>&lt;msub&gt;</code>,
@@ -3531,6 +3540,15 @@
             User agents must implement them as described in
             <a href="#displaystyle-and-scriptlevel-in-scripts"></a>.
           </p>
+          <div class="example" id="munder-mover-munderover-example">
+            <p>The following example, shows basic use of under and over scripts.
+              The font-size is automatically scaled down within the scripts,
+              unless they are meant to be accents.
+            </p>
+            <pre data-include="examples/example-munder-mover-munderover.html"
+                 data-include-format="text"></pre>
+            <img src="examples/example-munder-mover-munderover.png" alt="munder-over-munderover example"/>
+          </div>
           <p>
             If the
             <code>&lt;munder&gt;</code>,
@@ -4005,6 +4023,17 @@
             These element accept the attributes described in
             <a href="#global-attributes"></a>.
           </p>
+          <div class="example" id="mmultiscripts-example">
+            <p>
+              The following example, shows basic use of prescripts
+              and postscripts, involving
+              <a>&lt;none&gt;</a> and <a>&lt;mprescripts&gt;</a>.
+              The font-size is automatically scaled down within the scripts.
+            </p>
+            <pre data-include="examples/example-mmultiscripts.html"
+                 data-include-format="text"></pre>
+            <img src="examples/example-mmultiscripts.png" alt="mmultiscripts example"/>
+          </div>
           <p>
             If the
             <code>&lt;mmultiscripts&gt;</code>,
@@ -4366,6 +4395,15 @@
           <a data-cite="HTML#the-td-element"><code>&lt;td&gt;</code></a>
           elements of [[HTML]].
         </p>
+        <div class="example" id="tables-example">
+          <p>
+            The following example, how tabular layout allows to write a
+            matrix:
+          </p>
+          <pre data-include="examples/example-tables.html"
+               data-include-format="text"></pre>
+          <img src="examples/example-tables.png" alt="tables example"/>
+        </div>
         <div class="issue" data-number="114">
           This describes a very partial support for [[MathML3]] tables.
           Do we want more? Should CSS be extended to cover math table's use cases?
@@ -4480,6 +4518,21 @@
           by authors to implement custom actions on the
           <code>&lt;maction&gt;</code> element.
         </p>
+        <div class="example" id="maction-example">
+          <p>
+            The following example, shows the "toggle" action type from
+            [[MathML3]]
+            where the renderer alternately displays the selected subexpression,
+            starting from "one third" and cycling through them when there is a
+            click on the selected subexpression ("one quarter", "one half",
+            "one third", etc). This is not part of MathML Core but can be
+            implemented using JavaScript and CSS polyfills. The default behavior
+            is just to render the first child.
+          </p>
+          <pre data-include="examples/example-maction.html"
+               data-include-format="text"></pre>
+          <img src="examples/example-maction.png" alt="maction example"/>
+        </div>
         <p>
           The layout algorithm of the <code>&lt;maction&gt;</code> element
           the same as the <code>&lt;mrow&gt;</code> element.
@@ -4508,6 +4561,17 @@
           element, or more complex markup annotations within
           an <dfn><code>&lt;annotation-xml&gt;</code></dfn> element.
         </p>
+        <div class="example" id="semantics-example">
+          <p>
+            The following example, shows how the fraction "one half" can be
+            annotated with a textual annotation (LaTeX) or an XML annotation
+            (content MathML). These annotations are not intended to be rendered
+            by the user agent.
+          </p>
+          <pre data-include="examples/example-semantics.html"
+               data-include-format="text"></pre>
+          <img src="examples/example-semantics.png" alt="semantics example"/>
+        </div>
         <p>
           The <code>&lt;semantics&gt;</code> element accepts the attributes
           described in <a href="#global-attributes"></a>. Its layout algorithm
