@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Example container</title>
+    <meta charset="utf-8"/>
+    <style>
+      body {
+          margin: 0;
+          background: #0f0;
+      }
+      math {
+          background: white;
+          font-family: 'Latin Modern Math';
+          font-size: 32px;
+          padding: 1px;
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+      var params = new URLSearchParams(window.location.search);
+      if (params.has('mathBase64')) {
+          document.body.insertAdjacentHTML("beforeend",
+                                           params.get('mathBase64'));
+      }
+    </script>
+  </body>
+</html>
