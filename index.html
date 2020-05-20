@@ -1255,6 +1255,13 @@
             The <code>&lt;mtext&gt;</code> element accepts the attributes described
             in <a href="#global-attributes"></a>.
           </p>
+          <div class="example" id="mtext-example">
+            <p>In the following example, <a>&lt;mtext&gt;</a> is used
+              to put conditional words in a definition:</p>
+            <pre data-include="examples/example-mtext.html"
+                 data-include-format="text"></pre>
+            <img src="examples/example-mtext.png" alt="mtext example"/>
+          </div>
           <section>
             <h4>Layout of <code>&lt;mtext&gt;</code></h4>
             <div class="issue" data-number="18">Handle orthogonal flow when CSS writing-mode changes?</div>
@@ -1367,6 +1374,14 @@
             italic:
           </p>
           <pre class="css" data-include="user-agent-stylesheet/mi.css"></pre>
+          <div class="example" id="mi-example">
+            <p>In the following example, <a>&lt;mi&gt;</a> is used to render
+              variables and function names. Note that identifiers containing a
+              single letter are italic by default.</p>
+            <pre data-include="examples/example-mi.html"
+                 data-include-format="text"></pre>
+            <img src="examples/example-mi.png" alt="mi example"/>
+          </div>
         </section>
         <section>
           <h4>Number <code>&lt;mn&gt;</code></h4>
@@ -1384,6 +1399,13 @@
             the same as the
             <a><code>&lt;mtext&gt;</code></a> element.
           </p>
+          <div class="example" id="mn-example">
+            <p>In the following example, <a>&lt;mn&gt;</a> is used to
+              write a decimal number.</p>
+            <pre data-include="examples/example-mn.html"
+                 data-include-format="text"></pre>
+            <img src="examples/example-mn.png" alt="mn example"/>
+          </div>
         </section>
         <section id="operator-fence-separator-or-accent-mo">
           <h4>Operator, Fence, Separator or Accent <code>&lt;mo&gt;</code></h4>
@@ -1874,6 +1896,14 @@
             If one of the requested values calculated is negative then it is
             treated as <code>0</code>.
           </p>
+          <div class="example" id="mspace-example">
+            <p>In the following example, <a>&lt;mspace&gt;</a> is used to
+              write force spacing within the formula (a 1px blue border is
+              added to easily visualize the space):</p>
+            <pre data-include="examples/example-mspace.html"
+                 data-include-format="text"></pre>
+            <img src="examples/example-mspace.png" alt="mspace example"/>
+          </div>
           <p>
             If the <code>&lt;mspace&gt;</code> element does not have its
             computed
@@ -1949,6 +1979,13 @@
             in <a href="#global-attributes"></a>.  Its layout algorithm is
             the same as the <a><code>&lt;mtext&gt;</code></a> element.
           </p>
+          <div class="example" id="ms-example">
+            <p>In the following example, <a>&lt;ms&gt;</a> is used to
+              write a literal string of characters:</p>
+            <pre data-include="examples/example-ms.html"
+                 data-include-format="text"></pre>
+            <img src="examples/example-ms.png" alt="ms example"/>
+          </div>
           <div class="note">
             In MathML3, it was possible to use the <code>lquote</code> and
             <code>rquote</code> attributes to respectively specify the strings
@@ -2314,6 +2351,17 @@
             value. A percentage is interpreted relative to that default value.
             A negative value is interpreted as 0.
           </p>
+          <div class="example" id="mfrac-example">
+            <p>The following example contains four fractions
+              with different <a>linethickness</a> values. The bars are always
+              aligned with the middle of plus and minus signs.
+              The numerator and denominator are horizontally centered.
+              The fractions that are not in <a>displaystyle</a>
+              use smaller gaps and font-size.</p>
+            <pre data-include="examples/example-mfrac.html"
+                 data-include-format="text"></pre>
+            <img src="examples/example-mfrac.png" alt="mfrac example"/>
+          </div>
           <p>
             The <code>&lt;mfrac&gt;</code> element sets
             <a><code>displaystyle</code></a> to <code>false</code>,
@@ -2346,19 +2394,6 @@
             changes for the <a>numerator</a> and
             <a>denominator</a>.
           </div>
-          <div class="example" id="mfrac-example">
-            <p>The following MathML example contains four fractions
-              with different <a>linethickness</a> values. The bars are always
-              aligned with the middle of plus and minus signs.
-              The numerator and denominator are horizontally centered.
-              The fractions that are not in <a>displaystyle</a>
-              use smaller gaps and font-size.</p>
-            <pre data-include="examples/example-mfrac.html"
-                 data-include-format="text"></pre>
-            <p>
-            <img src="examples/example-mfrac.png" alt="mfrac example"/>
-          </div>
-
           <section id="fraction-with-nonzero-line-thickness">
             <h5>Fraction with nonzero line thickness</h5>
             <p>
@@ -2602,6 +2637,23 @@
             elements accept the attributes described
             in <a href="#global-attributes"></a>.
           </p>
+          <div class="example" id="msqrt-mroot-example">
+            <p>The following MathML example contains a square root
+              written with <a>&lt;msqrt&gt;</a> and a cube root written
+              with <a>&lt;mroot&gt;</a>.
+              Note that <a>&lt;msqrt&gt;</a> has several children and the
+              square root applies to all of them.
+              <a>&lt;mroot&gt;</a> has exactly two children: it is a
+              root of index the second child (the number 3), applied to the
+              the first child (the square root).
+              Also note these elements only change the font-size within the
+              <a>&lt;mroot&gt;</a> index, but it is scaled down more than
+              within the numerator and denumerator of the fraction.
+            </p>
+            <pre data-include="examples/example-msqrt-mroot.html"
+                 data-include-format="text"></pre>
+            <img src="examples/example-msqrt-mroot.png" alt="msqrt-mroot example"/>
+          </div>
           <p>
             The <code>&lt;msqrt&gt;</code> and <code>&lt;mroot&gt;</code>
             elements sets <a>math-superscript-shift-style</a> to
@@ -2862,6 +2914,19 @@
           <div class="note">
             <code>&lt;mstyle&gt;</code> is implemented for compatibility with full MathML. Authors whose only target is MathML Core are encouraged to use CSS for styling.
           </div>
+          <div class="example" id="mstyle-example">
+            <p>In the following MathML example,
+              <a>&lt;mstyle&gt;</a> is used to set the <a>scriptlevel</a>
+              and <a>displaystyle</a>.
+              Observe this is respectively affecting the
+              font-size and placement of subscripts of their
+              descendants. In MathML Core, one could just have used
+              <a>&lt;mrow&gt;</a> elements instead.
+            </p>
+            <pre data-include="examples/example-mstyle.html"
+                 data-include-format="text"></pre>
+            <img src="examples/example-mstyle.png" alt="mstyle example"/>
+          </div>
         </section>
         <section id="error-message-merror">
           <h4>Error Message <code>&lt;merror&gt;</code></h4>
@@ -2873,6 +2938,15 @@
             for programs that generate MathML from other input to report syntax errors
             in their input.
           </p>
+          <div class="example" id="merror-example">
+            <p>In the following MathML example,
+              <a>&lt;merror&gt;</a> is used to indicate a parsing error
+              for some LaTeX-like input:
+            </p>
+            <pre data-include="examples/example-merror.html"
+                 data-include-format="text"></pre>
+            <img src="examples/example-merror.png" alt="merror example"/>
+          </div>
           <p>
             The <code>&lt;merror&gt;</code> element accepts the attributes described in
             <a href="#global-attributes"></a>. Its layout algorithm is the
@@ -3051,6 +3125,16 @@
             including <a>alphabetic baseline</a> position</a>that its contents would have if they were
             rendered normally.
           </p>
+          <div class="example" id="mphantom-example">
+            <p>In the following MathML example,
+              <a>&lt;mphantom&gt;</a> is used to ensure alignment of
+              corresponding parts of the numerator and denominator of a
+              fraction:
+            </p>
+            <pre data-include="examples/example-mphantom.html"
+                 data-include-format="text"></pre>
+            <img src="examples/example-mphantom.png" alt="mphantom example"/>
+          </div>
           <p>
             The <code>&lt;mphantom&gt;</code> element accepts the attributes described
             in <a href="#global-attributes"></a>. Its layout algorithm is
