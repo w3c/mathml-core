@@ -4538,7 +4538,6 @@
       <h2>CSS Extensions for Math Layout</h2>
       <section id="new-display-math-value">
         <h3>The <code>display: math</code> and <code>display: inline-math</code> value</h3>
-        <div class="issue">Use another name? <code>math-auto</code>? <code>mathml?</code>...</div>
         <p>The <dfn><code>display</code> property</dfn>
           from <a data-cite="CSS-DISPLAY-3"></a>
           is extended with new values value:
@@ -4571,6 +4570,12 @@
           layout for MathML elements while at the same time allowing authors
           to override it with either native display values or
           <a data-cite="CSS-LAYOUT-API-1#registering-layout">custom values</a>.
+        </div>
+        <div class="issue" data-number="214">Should
+          <code>display: invalid-math</code> computes to <code>math</code>
+          for most MathML elements but <a>math</a>? Should
+          <code>display: block|inline</code> computes to these values for
+          backward compatibility?
         </div>
       </section>
       <section id="new-text-transform-values">
