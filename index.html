@@ -1664,15 +1664,9 @@
                     then
                     <ol>
                       <li>
-                        Try and get a
-                        <code>MathVariants.horizGlyphConstructionOffsets</code>
-                        table from the glyph corresponding to
-                        <code>c</code> in the current font, or otherwise
-                        from the entry
-                        <a href="#unicode-based-glyph-assemblies"></a>
-                        with base character <code>c</code>.
-                        If that's not possible then
-                        fallback to the
+                        If it is not possible to <a>shape a stretchy glyph</a>
+                        corresponding to <code>c</code> in the inline direction
+                        with the current font then fallback to the
                         layout algorithm of <a href="#layout-of-mtext"></a>.
                       </li>
                       <li>
@@ -1691,9 +1685,8 @@
                       </li>
                       <li>
                         The <a>inline size</a> and (ink) block metrics of the content
-                        are given by the
-                        <a>box metrics of a stretchy glyph</a>
-                        stretched to <a>inline dimension</a>
+                        are given by algorithm to
+                        <a>shape a stretchy glyph</a> to <a>inline dimension</a>
                         <code>T<sub>inline</sub></code>.
                       </li>
                       <li>
@@ -1711,15 +1704,9 @@
                     block. The following steps are performed:
                     <ol>
                       <li>
-                        Try and get a
-                        <code>MathVariants.vertGlyphConstructionOffsets</code>
-                        table from the glyph corresponding to
-                        <code>c</code> in the current font, or otherwise
-                        from the entry of
-                        <a href="#unicode-based-glyph-assemblies"></a>
-                        with base character <code>c</code>.
-                        If that's not possible then
-                        fallback to the
+                        If it is not possible to <a>shape a stretchy glyph</a>
+                        corresponding to <code>c</code> in the block direction
+                        with the current font then fallback to the
                         layout algorithm of <a href="#layout-of-mtext"></a>.
                       </li>
                       <li>
@@ -1744,9 +1731,9 @@
                         <a>line-ascent</a> and
                         <a>line-descent</a>
                         of the content
-                        are obtained from the
-                        <a>box metrics of a stretchy glyph</a>
-                        stretched to <a>block dimension</a>
+                        are obtained by the algorithm to
+                        <a>shape a stretchy glyph</a>
+                        to <a>block dimension</a>
                         <code>T<sub>ascent</sub></code> +
                         <code>T<sub>descent</sub></code>.
                         The <a>inline size</a> of the content is the width of
@@ -2674,13 +2661,8 @@
               <a>radical gap</a> and the ink height of the base.
             </p>
             <p>
-              The <dfn>box metrics of the radical glyph</dfn> is the
-              <a>box metrics of a stretchy glyph</a> stretched to
-              <a>block dimension</a> the target size for the radical glyph.
-            </p>
-            <p>
-              The <dfn>shaping of the surd</dfn>
-              is performed by the algorithm to
+              The <dfn>box metrics of the radical glyph</dfn>
+              and <dfn>painting of the surd</dfn> are given by the algorithm to
               <a>shape a stretchy glyph</a> to <a>block dimension</a> the
               target size for the radical glyph.
             </p>
@@ -2750,7 +2732,7 @@
               minus half the <a>RadicalRuleThickness</a>.
             </p>
             <p>
-              Finally, the <a>shaping of the surd</a> is performed:
+              Finally, the <a>painting of the surd</a> is performed:
             </p>
             <ul>
               <li>
@@ -5114,14 +5096,13 @@
             on the target size <code>T</code>.
           </div>
           <p>The <dfn>shaping of the glyph assembly</dfn>
-            at position <code>P</code> is performed with the following
-            algorithm:
+            is performed with the following algorithm:
           </p>
           <ol>
             <li>Calculate <a>r<sub>min</sub></a> and
               <a>o<sub>max</sub></a>.</li>
             <li>
-              Set <code>(x, y)</code> to <code>P</code> if
+              Set <code>(x, y)</code> to <code>(0, 0)</code>,
               <code>RepetitionCounter</code> to 0 and
               <code>PartIndex</code> to -1.
             </li>
@@ -5214,93 +5195,52 @@
             over-estimation of the actual width is small.
           </div>
           <p>
-            The algorithm to calculate the
-            <dfn>box metrics of a stretchy glyph</dfn>
-            stretched to inline (respectively block) dimension
-            <code>T</code> is the following:
+            The algorithm to <dfn>shape a stretchy glyph</dfn> to inline
+            (respectively block) dimension <code>T</code>
+            is the following:
           </p>
           <ol>
             <li>
-              Set <code>B</code> to glyph's advanced width, ascent and
-              descent.
-              If the glyph's advance width
-              (respectively height) is at least <code>T</code>
-              then return <code>B</code>.
-            </li>
-            <li>
-              If there is a <code>MathGlyphConstruction</code> table
+              If there is not any <code>MathGlyphConstruction</code> table
               in the <code>MathVariants.horizGlyphConstructionOffsets</code>
               table  (respectively
               <code>MathVariants.vertGlyphConstructionOffsets</code> table)
-              for the given glyph:
-              <ol>
-                <li>
-                  For each <code>MathGlyphVariantRecord</code> in
-                  <code>MathGlyphConstruction.mathGlyphVariantRecord</code>:
-                  <ol>
-                    <li>
-                      Set <code>B</code>
-                      to the advanced width, ascent and
-                      descent of the glyph of id
-                      <code>MathGlyphVariantRecord.variantGlyph</code>.
-                    </li>
-                    <li>
-                      If
-                      <code>MathGlyphVariantRecord.advanceMeasurement</code>
-                      is at least <code>T</code> then return
-                      <code>B</code>.
-                    </li>
-                  </ol>
-                <li>
-                  If there is valid <code>GlyphAssembly</code> subtable
-                  then set <code>B</code> to the
-                  <a>glyph assembly width</a>,
-                  <a>glyph assembly ascent</a>
-                  and <a>glyph assembly descent</a>
-                  for the target size <code>T</code>.
-                </li>
-              </ol>
-            </li>
-            <li>Return <code>B</code>.</li>
-          </ol>
-          <p>The algorithm to
-            <dfn>shape a stretchy glyph</dfn> to inline
-            (respectively block) dimension <code>T</code> at a position
-            <code>P</code> is the following:
-          </p>
-          <ol>
-            <li>
-              If the glyph's advance width (respectively height)
-              is at least <code>T</code>
-              then draw the glyph so that its (left, baseline) coordinates
-              are at position <code>P</code> and exit.
+              for the given glyph the exit with failure.
             </li>
             <li>
-              If there is a <code>MathGlyphConstruction</code> table
-              in the <code>MathVariants.horizGlyphConstructionOffsets</code>
-              table (respectively
-              <code>MathVariants.vertGlyphConstructionOffsets</code> table)
-              for the given glyph:
-              <ol>
-                <li>
-                  For each <code>MathGlyphVariantRecord</code> in
-                  <code>MathGlyphConstruction.mathGlyphVariantRecord</code>,
-                  if
-                  <code>MathGlyphVariantRecord.advanceMeasurement</code>
-                  is at least <code>T</code> then draw the glyph
-                  so that its (left, baseline) coordinates
-                  are at position <code>P</code> and exit.
-                </li>
-                <li>
-                  If there is valid <code>GlyphAssembly</code> subtable
-                  then perform
-                  <a>shaping of the glyph assembly</a>
-                  at position <code>P</code> and exit.
-                </li>
-              </ol>
+              If the glyph's advance width
+              (respectively height) is at least <code>T</code>
+              then use normal shaping and bounding box for that glyph and
+              exit with success.
             </li>
-            <li>Otherwise, exit with a failure.</li>
+            <li>
+              Browse the list of <code>MathGlyphVariantRecord</code> in
+              <code>MathGlyphConstruction.mathGlyphVariantRecord</code>.
+              If one <code>MathGlyphVariantRecord.advanceMeasurement</code>
+              is at least <code>T</code> then use
+              normal shaping and bounding box for
+              <code>MathGlyphVariantRecord.variantGlyph</code>
+              and exit with success.
+            </li>
+            <li>
+              If there is valid <code>GlyphAssembly</code> subtable
+              then use the bounding box given by
+              <a>glyph assembly width</a>,
+              <a>glyph assembly ascent</a>,
+              perform <a>shaping of the glyph assembly</a> and exit with
+              success.
+            </li>
+            <li>If none of the stretch option above allowed to cover the target
+              size <code>T</code>, then choose last one that was tried and exit
+              with success.
+            </li>
           </ol>
+          <div class="note">
+            If a font does not provide tables for stretchy constructions, User
+            Agents may use their own internal constructions as a fallback
+            such that
+            the one suggested in <a href="#unicode-based-glyph-assemblies"></a>.
+          </div>
         </section>
       </section>
     </section>
@@ -5448,7 +5388,6 @@
             value.
           </li>
         </ol>
-
         <div class="note">
           The <code>fence</code> and <code>separator</code> properties do not
           have any visible effect on the layout described in this
@@ -5536,61 +5475,61 @@
         </p>
         <div data-include="tables/combining-operators.html"></div>
       </section>
-    </section>
-    <section>
-      <h2>Unicode-based Glyph Assemblies</h2>
-      <p>
-        The following table provide fallback that user agents must use for
-        stretching a given <em>base character</em> when the font does not
-        provide a <code>MATH.MathVariants</code> table.
-        The algorithms of
-        <a href="#size-variants-for-operators-mathvariants"></a>
-        works the same except with some adjustments:
-      </p>
-      <ul>
-        <li>
-          Entries are indexed by the base character.
-        </li>
-        <li>
-          All the glyph IDs and metrics have to be deduced from unicode
-          code points.
-        </li>
-        <li>
-          If the <em>glyph construction</em> is horizontal then
-          the entry corresponds to
-          a <code>MathVariants.horizGlyphConstructionOffsets[]</code> item ;
-          if it is vertical it corresponds to
-          a <code>MathVariants.vertGlyphConstructionOffsets[]</code> item.
-        </li>
-        <li>
-          The <code>MathGlyphConstruction.mathGlyphVariantRecord</code> is
-          always empty.
-        </li>
-        <li>
-          The
-          <code>MathVariants.minConnectorOverlap</code>,
-          <code>GlyphPartRecord.startConnectorLength</code> and
-          <code>GlyphPartRecord.endConnectorLength</code>
-          are treated as 0.
-        </li>
-        <li>
-          The array of
-          <code>MathGlyphConstruction.GlyphAssembly.partRecords</code> is built
-          from each table row as follows:
-          <ol>
-            <li>A (non-extender) <em>bottom/left</em> character</li>
-            <li>Followed by an <em>extender</em> character.</li>
-            <li>Optionally followed by this:
-              <ul>
-                <li>Optionally, an (non-extender) <em>middle</em> character
-                  and the same extender character previously mentioned.</li>
-                <li>A (non-extender) <em>top/right</em> character.
-              </ul>
-            </li>
-          </ol>
-        </li>
-      </ul>
-      <div data-include="tables/unicode-assembly.html"></div>
+      <section class="informative">
+        <h2>Unicode-based Glyph Assemblies</h2>
+        <p>
+          The following table provide fallback that user agents may use for
+          stretching a given <em>base character</em> when the font does not
+          provide a <code>MATH.MathVariants</code> table.
+          The algorithms of
+          <a href="#size-variants-for-operators-mathvariants"></a>
+          works the same except with some adjustments:
+        </p>
+        <ul>
+          <li>
+            Entries are indexed by the base character.
+          </li>
+          <li>
+            All the glyph IDs and metrics have to be deduced from unicode
+            code points.
+          </li>
+          <li>
+            If the <em>glyph construction</em> is horizontal then
+            the entry corresponds to
+            a <code>MathVariants.horizGlyphConstructionOffsets[]</code> item ;
+            if it is vertical it corresponds to
+            a <code>MathVariants.vertGlyphConstructionOffsets[]</code> item.
+          </li>
+          <li>
+            The <code>MathGlyphConstruction.mathGlyphVariantRecord</code> is
+            always empty.
+          </li>
+          <li>
+            The
+            <code>MathVariants.minConnectorOverlap</code>,
+            <code>GlyphPartRecord.startConnectorLength</code> and
+            <code>GlyphPartRecord.endConnectorLength</code>
+            are treated as 0.
+          </li>
+          <li>
+            The array of
+            <code>MathGlyphConstruction.GlyphAssembly.partRecords</code> is built
+            from each table row as follows:
+            <ol>
+              <li>A (non-extender) <em>bottom/left</em> character</li>
+              <li>Followed by an <em>extender</em> character.</li>
+              <li>Optionally followed by this:
+                <ul>
+                  <li>Optionally, an (non-extender) <em>middle</em> character
+                    and the same extender character previously mentioned.</li>
+                  <li>A (non-extender) <em>top/right</em> character.
+                </ul>
+              </li>
+            </ol>
+          </li>
+        </ul>
+        <div data-include="tables/unicode-assembly.html"></div>
+      </section>
     </section>
     <section>
       <h3>New <code>text-transform</code> Mappings</h3>
