@@ -152,10 +152,15 @@
         [[OPEN-TYPE-MATH-ILLUMINATED]]. It also relies on modern browser
         implementations and web technologies [[HTML]] clarifying interactions
         with them when needed or introducing new low-level primitives to
-        improve the web platform layering. Parts of MathML3 that do not
-        fit well in this framework or are rarely used in practice have been
-        omitted. Instead, they are described in a separate and larger
-        [[MATHML4]] specification.
+        improve the web platform layering.
+      </p>
+      <p>
+        Parts of MathML3 that do not fit well in this framework or less
+        fundamental have been omitted. Instead, they are described in a
+        separate and larger [[MATHML4]] specification. The details of which
+        math feature will be included in future versions of MathML Core or
+        implemented as polyfills is still open. This question and other
+        potential improvements are <a href="https://github.com/mathml-refresh/mathml/issues?q=is%3Aissue+is%3Aopen+label%3A%22MathML+Core%22">tracked on GitHub</a>.
       </p>
       <p>
         By increasing the level of implementation details, focusing on a
@@ -167,16 +172,6 @@
         modern web technologies such as shadow DOM, custom elements,
         CSS layout API or other Houdini APIs.
       </p>
-      <div class="warning">
-        The MathML Refresh Community Group is still deciding what will go
-        in MathML Core and what should instead be implemented as
-        custom extensions. In particular, the list of
-        MathML elements/attributes, TeX/OpenType features and
-        supported CSS properties is not frozen yet.
-        Additionally, new HTML5 features, CSS properties and Javascript APIs
-        will be designed in order to allow authors to write better MathML
-        web components.
-      </div>
       <div class="issue" data-number="137">Add MathML examples to the spec.</div>
     </section>
     <section class="normative">
@@ -278,11 +273,6 @@
             specified in the user agent stylesheet
             as described in <a href="#user-agent-stylesheet"></a>.
           </p>
-          <div class="issue" data-number="56">Improve layout description. Since
-            the <code>math</code> element is already <code>inline</code> or
-            <code>block</code> display, it should probably generate an anonymous
-            mrow-like box container?
-          </div>
           <p>
             The layout algorithm of the <code>&lt;math&gt;</code> element
             is the same as the <a><code>&lt;mrow&gt;</code></a> element. User agents must
@@ -312,7 +302,6 @@
         </section>
         <section id="types-for-mathml-attribute-values">
           <h4>Types for MathML Attribute Values</h4>
-          <div class="issue" data-number="122">Trimming of whitespace in attribute?</div>
           <dl>
             <dt><dfn>unsigned-integer</dfn></dt>
             <dd>An
@@ -409,8 +398,6 @@
             <a data-cite="HTML#embedding-custom-non-visible-data-with-the-data-*-attributes">tabindex</a>
             attributes on HTML elements.
           </p>
-          <div class="issue" data-number="125">Should all MathML elements really be potential hyperlinks / match :visited?</div>
-          <div class="issue" data-number="94">User Agent style for href hyperlinks and focusable elements</div>
           <p>
             The
             <dfn><code>href</code></dfn>
@@ -528,9 +515,6 @@
             The <code>normal</code> value is still important to cancel automatic
             italic of the <a><code>&lt;mi&gt;</code></a> element.
           </div>
-          <div class="issue" data-number="61">
-            Consider a new script style to distinguish Chancery and Spencerian?
-          </div>
           <div class="note">
             Unicode does not distinguish between Chancery and Spencerian style
             for the Unicode MATHEMATICAL SCRIPT characters. However, some
@@ -539,6 +523,9 @@
             to provide both styles. Page authors may use the
             <a data-cite="CSS-FONTS-4#font-variant-alternates-prop"><code>font-variant-alternates</code></a> property with corresponding OpenType font features
             to access these glyphs.
+          </div>
+          <div class="issue" data-number="61">
+            Consider a new script style to distinguish Chancery and Spencerian?
           </div>
         </section>
         <section id="the-displaystyle-and-scriptlevel-attributes">
@@ -594,10 +581,6 @@
         <h3>Integration in the Web Platform</h3>
         <section id="html-and-svg">
           <h4>HTML and SVG</h4>
-          <div class="issue" data-number="103">mpadded?</div>
-          <div class="issue" data-number="105">menclose?</div>
-          <div class="issue" data-number="25">mglyph?</div>
-          <div class="issue" data-number="72">mlabeledtr?</div>
           <p>
             When
             <a data-cite="HTML#parsing">parsing HTML documents</a>
@@ -675,11 +658,6 @@
             be replaced with equivalent expanded rules listing all possible
             <a>MathML Core elements</a>.
           </p>
-          <div class="issue">
-            Only restrict this to
-            <code>display: math</code> elements and set a default
-            style on <code>&lt;math&gt;</code> root and tabular elements?
-          </div>
           <p>
             The following CSS features are not supported and
             must be ignored:
@@ -715,40 +693,21 @@
               no effect on MathML elements.
             </li>
           </ul>
-          <div class="warning">
+          <div class="note">
             These features might be handled in future versions of this document.
             For now, authors are discouraged from setting a different value for
             these properties as that might lead to backward incompatibility
             issues.
           </div>
-          <div class="issue" data-number="94">links and focusable elements?</div>
-          <div class="issue" data-number="18">vertical writing mode support</div>
-          <div class="issue" data-number="112">Define MathML line breaking?</div>
-          <div class="issue" data-number="16">Support floats?</div>
-          <div class="issue" data-number="129">Support for CSS alignment properties</div>
-          <div class="issue" data-number="34">text-indent, line-height, word-spacing, letter-spacing?</div>
-          <div class="issue" data-number="35">CSS writing-mode and direction on the math root?</div>
-          <div class="issue" data-number="36">font-style and font-weight on the math root?</div>
         </section>
         <section id="dom-and-javascript">
           <h4>DOM and Javascript</h4>
-          <div class="issue" data-number="138">Custom MathML elements?</div>
-          <div class="issue" data-number="139">Should <a>unknown MathML elements</a> specialize to a MathMLUnknownElement interface?</div>
-          <div class="issue" data-number="140">Element.attachShadow()?</div>
           <p>
             User agents supporting
             <a data-cite="HTML#webappapis">Web application APIs</a>
             must ensure that they keep the visual rendering of MathML
             in synchronization with the [[DOM]] tree.
           </p>
-          <div class="issue">
-            <a href="https://github.com/whatwg/html/pull/5248">Rename
-              HTMLOrSVGElement</a> and define MathMLElement in [[HTML]]?
-          </div>
-          <div class="issue">
-            <code>HTMLElement includes ElementCSSInlineStyle;</code>
-            should be moved to the [[CSSOM]] specification.
-          </div>
           <p>
             All the nodes representing <a>MathML elements</a> in the DOM
             must implement, and expose to scripts, the following
@@ -774,6 +733,16 @@
             All of the nodes representing <a>MathML Hyperlink Elements</a> in the DOM must implement, and expose to scripts the following <dfn><code>MathMLLinkableElement</code></dfn> interface.
           </p>
           <pre class="idl" data-include="webidl/MathMLLinkableElement.idl"></pre>
+          <div class="issue" data-number="138">Allow custom elements in the MathML namespace?</div>
+          <div class="issue" data-number="139">Specialize <a>unknown MathML elements</a> to a <code>MathMLUnknownElement</code> interface?</div>
+          <div class="issue">
+            <a href="https://github.com/whatwg/html/pull/5248">Rename
+              HTMLOrSVGElement</a> and define MathMLElement in [[HTML]].
+          </div>
+          <div class="issue">
+            Move <code>HTMLElement includes ElementCSSInlineStyle;</code>
+            to the [[CSSOM]] specification.
+          </div>
         </section>
         <section id="text-layout">
           <h4>Text layout</h4>
@@ -787,7 +756,6 @@
         </section>
         <section id="focus">
           <h4>Focus</h4>
-          <div class="issue" data-number="94">User Agent style for href hyperlinks and focusable elements</div>
           <p>
             MathML provides the ability for authors to allow for
             interactivity in supporting interactive user agents
@@ -850,7 +818,6 @@
             </li>
           </ul>
           </p>
-          <div class="issue" data-number="18">vertical writing mode support</div>
           <p>
             In order to specify math layout in different
             <a data-cite="CSS-WRITING-MODES-3#writing-mode">writing modes</a>,
@@ -892,7 +859,6 @@
             <a href="#box-model-vertical-rl"></a> for examples of other
             writing modes that are sometimes used for math layout.
           </div>
-          <div class="issue" data-number="128">ink ascent/descent</div>
           <p>
             MathML boxes have several parameters in order to layout in
             a way that is compatible with CSS but also to take into account
@@ -962,7 +928,6 @@
                 elements. In other cases, they just match normal ascent and
                 descent.
               </div>
-              <div class="issue" data-number="112">Define MathML line breaking?</div>
               Unless specified otherwise, the <a>last baseline set</a> is equal to the
               <a>first baseline set</a> for MathML boxes.
             </li>
@@ -1066,13 +1031,13 @@
               </li>
             </ul>
           </div>
-        </section>
+          <div class="issue" data-number="128">Improve definition of ink ascent/descent?</div>
+          <div class="issue" data-number="18">Should future version of this specification support vertical writing mode?</div>
+          <div class="issue" data-number="112">Should future version of this specification support line breaking?</div>
+           <div class="issue" data-number="129">Should future version of this specification support CSS alignment properties?</div>
+</section>
         <section id="layout-algorithms">
           <h4>Layout Algorithms</h4>
-          <div class="issue" data-number="16">Handling of out-of-flow elements</div>
-          <div class="issue" data-number="52">Define how children of various mathml elements paint?</div>
-          <div class="issue" data-number="49">Define what inline percentages resolve against</div>
-          <div class="issue" data-number="50">Define what block percentages resolve against</div>
           <p>
             The layout algorithms described in this chapter for MathML boxes
             have the following structure:
@@ -1120,9 +1085,6 @@
               the <a>block size</a> is set to their sum.
             </li>
             <li>
-              <div class="issue" data-number="45">Interpret
-                width/height/inline-size/block-size?</div>
-              <div class="issue" data-number="112">Define MathML line breaking?</div>
               The box metrics, offsets, <a>baselines</a>, <a>italic correction</a> and
               <a>top accent attachment</a> of the
               <a data-cite="CSS-BOX-3#content-box"><dfn>content box</dfn></a>
@@ -1203,8 +1165,6 @@
           <div class="note">
             Per the description above, <a data-cite="CSS2#margin-collapsing">margin-collapsing</a> does not apply to MathML elements.
           </div>
-          <div class="issue" data-number="132">Expose layout constraint to
-            the CSS Layout API?</div>
           <p>
             During box layout, optional
             <dfn>inline stretch size constraint</dfn> and
@@ -1219,6 +1179,14 @@
             box layout and child boxes are laid out without
             any stretch size constraint.
           </p>
+          <div class="issue" data-number="16">Explain how out-of-flow elements are positioned.</div>
+          <div class="issue" data-number="52">Specify whether MathML elements paint their children atomically or per-phase.</div>
+          <div class="issue" data-number="45">Interpret
+            width/height/inline-size/block-size?</div>
+          <div class="issue" data-number="49">Define what inline percentages resolve against</div>
+          <div class="issue" data-number="50">Define what block percentages resolve against</div>
+          <div class="issue" data-number="132">Expose stretch size constraint to
+            the CSS Layout API?</div>
         </section>
       </section>
       <section id="token-elements">
@@ -1261,8 +1229,6 @@
           </div>
           <section>
             <h4>Layout of <code>&lt;mtext&gt;</code></h4>
-            <div class="issue" data-number="18">Handle orthogonal flow when CSS writing-mode changes?</div>
-            <div class="issue" data-number="28">whitespace trimming from MathML3?</div>
             <p>
               If the element does not have its computed
               <a><code>display</code> property</a> equal to <code>math</code>
@@ -1333,7 +1299,6 @@
               page author has specified with the
               <code>font-feature-settings</code> CSS property.
             </p>
-            <div class="issue" data-number="19">Add detailed rules for the ssty OpenType feature</div>
             <p>
               Some characters like primes already have script size by default
               and
@@ -1348,7 +1313,8 @@
               specified with the
               <a data-cite="CSS-FONTS-4#font-rend-desc"><code>font-feature-settings</code></a>
               CSS property.
-          </p>
+            </p>
+            <div class="issue" data-number="19">Add detailed rules for the ssty OpenType feature</div>
           </section>
         </section>
         <section>
@@ -1819,9 +1785,6 @@
                 then:
                 <ol>
                   <li>
-                    <div class="issue" data-number="95">Clarify/improve this?
-                      How important is this MATH parameter? "integrals"
-                      is not defined</div>
                     <p>
                       Use the
                       <code>MathVariants</code>
@@ -1830,14 +1793,6 @@
                       If none is found, fallback to the
                       largest non-base glyph. If none is found, fallback to
                       the layout algorithm of <a href="#layout-of-mtext"></a>.
-                    </p>
-                    <p>
-                      Because this parameter does not always give
-                      the best size, user agents may also use the following
-                      heuristic: ensure that the large variant height is at
-                      least
-                      2 times as large as the base height for integrals and √2
-                      times as large as the base height for other operators.
                     </p>
                   </li>
                   <li>
@@ -1881,8 +1836,6 @@
             <li><a href="#attribute-mspace-height" class="internalDFN" data-link-type="dfn"><code>height</code></a></li>
             <li><a href="#attribute-mspace-depth" class="internalDFN" data-link-type="dfn"><code>depth</code></a></li>
           </ul>
-          <div class="issue" data-number="40">Allow negative width, lspace to
-            produce negative spacing?</div>
           <p>The
             <dfn id="attribute-mspace-width"><code>mspace@width</code></dfn>,
             <dfn id="attribute-mspace-height"><code>mspace@height</code></dfn>,
@@ -2037,7 +1990,6 @@
           </div>
           <section>
             <h5>Algorithm for stretching operators along the block axis</h5>
-            <div class="issue" data-number="124">Layout of container with only stretchy <a>in-flow</a> children</div>
             <figure id="symmetric-and-non-symmetric-vertical-stretching">
               <img src="figures/vstretch.svg"/>
               <figcaption>Symmetric and non-symmetric stretching of
@@ -2161,6 +2113,7 @@
             then <code>minsize ≤ maxsize</code> is satisfied but
             <code>maxsize &lt; T</code> is not.
           </div>
+          <div class="issue" data-number="124">Layout of container with only stretchy <a>in-flow</a> children</div>
           </section>
           <section id="layout-of-mrow">
             <h5>Layout of <code>&lt;mrow&gt;</code></h5>
@@ -2171,8 +2124,6 @@
               the corresponding value is described.
               Otherwise, the layout below is performed.
             </p>
-            <div class="issue" data-number="112">Define MathML line breaking?</div>
-            <div class="issue" data-number="38">TeX-like spacing rules?</div>
             <p>
               A child box is <dfn>slanted</dfn> if it is not an
               <a>embellished operator</a>
@@ -2332,7 +2283,6 @@
             in <a href="#global-attributes"></a> as well as the
             following attribute:
           </p>
-          <div class="issue" data-number="29">mfrac@bevelled?</div>
           <ul>
             <li><a>linethickness</a></li>
           </ul>
@@ -2373,8 +2323,6 @@
             must contain the following rules:
           </p>
           <pre class="css" data-include="user-agent-stylesheet/mfrac.css"></pre>
-          <div class="issue" data-number="15">Decide how to handle invalid
-            markup.</div>
           <p>
             If the <code>&lt;mfrac&gt;</code> element
             has less or more than two <a>in-flow</a> children, its layout algorithm
@@ -2670,8 +2618,6 @@
             the corresponding value is described.
             Otherwise, the layout below is performed.
           </p>
-          <div class="issue" data-number="15">Decide how to handle invalid
-            mroot.</div>
           <p>
             If the <code>&lt;mroot&gt;</code> has less or more than two
             <a>in-flow</a> children,
@@ -2833,7 +2779,6 @@
               <img src="figures/mrootbox.svg"/>
               <figcaption>Box model for the <code>&lt;mroot&gt;</code> element</figcaption>
             </figure>
-            <div class="issue">Handle large negative RadicalKernAfterDegree?</div>
             <p>
               The <a>min-content inline size</a>
               (respectively <a>max-content inline size</a>) of the
@@ -2893,6 +2838,7 @@
               element will have some inline-start space and that the root index
               will overlap the surd.
             </div>
+            <div class="issue" data-number="213">Define what happens with edge cases of RadicalKernBeforeDegree and RadicalKernAfterDegree</div>
           </section>
         </section>
         <section id="style-change-mstyle">
@@ -3060,8 +3006,6 @@
                 <code>0</code>) + εV.
               </li>
             </ul>
-            <div class="issue" data-number="40">Allow negative width, lspace to
-              produce negative spacing?</div>
             <p>
               If one of the requested width, depth, height or lspace values calculated
               above is negative then it is treated as <code>0</code>.
@@ -3165,8 +3109,6 @@
         </p>
         <section id="subscripts-and-superscripts-msub-msup-msubsup">
           <h4>Subscripts and Superscripts <code>&lt;msub&gt;</code>, <code>&lt;msup&gt;</code>, <code>&lt;msubsup&gt;</code></h4>
-          <div class="issue" data-number="22">Use MathKernInfo?</div>
-          <div class="issue" data-number="27">subscriptshift/superscriptshift attributes?</div>
           <p>
             The <dfn><code>&lt;msub&gt;</code></dfn>,
             <dfn><code>&lt;msup&gt;</code></dfn> and
@@ -3198,8 +3140,6 @@
           <section>
             <h5>Children of <code>&lt;msub&gt;</code>,
             <code>&lt;msup&gt;</code>, <code>&lt;msubsup&gt;</code></h5>
-            <div class="issue" data-number="15">Decide how to handle invalid
-              markup.</div>
             <p>
               If the <code>&lt;msub&gt;</code> element
               has less or more than two <a>in-flow</a> children, its layout algorithm
@@ -3560,8 +3500,6 @@
           <section>
             <h5>Children of <code>&lt;munder&gt;</code>,
             <code>&lt;mover&gt;</code>, <code>&lt;munderover&gt;</code></h5>
-            <div class="issue" data-number="15">Decide how to handle invalid
-              markup.</div>
             <p>
               If the <code>&lt;munder&gt;</code> element
               has less or more than two <a>in-flow</a> children, its layout algorithm
@@ -3617,7 +3555,6 @@
             <h4>Algorithm for stretching operators along the inline axis</h4>
             <div class="issue" data-number="130">Avoid underestimation of min/max stretchy horizontal operators</div>
             <div class="issue" data-number="124">Layout of container with only stretchy <a>in-flow</a> children</div>
-            <div class="issue" data-number="153">minsize/maxsize?</div>
             <p>
               The <dfn>algorithm for stretching operators along the inline
                 axis</dfn>
@@ -4007,7 +3944,6 @@
         </section>
         <section id="prescripts-and-tensor-indices-mmultiscripts">
           <h4>Prescripts and Tensor Indices <code>&lt;mmultiscripts&gt;</code></h4>
-          <div class="issue" data-number="22">Use MathKernInfo?</div>
           <p>
             Presubscripts and tensor notations are represented
             the <dfn><code>&lt;mmultiscripts&gt;</code></dfn>
@@ -4048,8 +3984,6 @@
             elements are laid out as an <a><code>&lt;mrow&gt;</code></a>
             element.
           </p>
-          <div class="issue" data-number="15">Decide how to handle invalid
-            markup.</div>
           <p>
             A valid <code>&lt;mmultiscripts&gt;</code> element contains the
             following <a>in-flow</a> children:
@@ -4378,7 +4312,6 @@
       </section>
       <section id="tabular-math">
         <h3>Tabular Math</h3>
-        <div class="issue" data-number="72">mlabeledtr?</div>
         <p>
           Matrices, arrays and other table-like mathematical notation are marked up
           using
@@ -4400,10 +4333,6 @@
           <pre data-include="examples/example-tables.html"
                data-include-format="text"></pre>
           <img src="examples/example-tables.png" alt="tables example"/>
-        </div>
-        <div class="issue" data-number="114">
-          This describes a very partial support for [[MathML3]] tables.
-          Do we want more? Should CSS be extended to cover math table's use cases?
         </div>
         <section id="table-or-matrix-mtable">
           <h4>Table or Matrix <code>&lt;mtable&gt;</code></h4>
@@ -4431,7 +4360,6 @@
             that attribute:
           </p>
           <pre data-include="user-agent-stylesheet/mtable-frame.css"></pre>
-          <div class="issue">Improve baseline description here.</div>
           <p>
             The <code>mtable</code> element is as a CSS
             <a data-cite="CSS-DISPLAY-3#valdef-display-table">table</a>
@@ -4441,7 +4369,7 @@
             <a>first baseline set</a> and <a>last baseline set</a>
             sets are determined
             accordingly.
-            The math axis is aligned with the center of the table.
+            The center of the table is aligned with the math axis.
           </p>
         </section>
         <section>
@@ -4995,7 +4923,6 @@
       </section>
       <section>
         <h3>Glyph information (<code>MathGlyphInfo</code>)</h3>
-        <div class="issue" data-number="22">Use MathKernInfo?</div>
         <p>
           These are per-glyph tables for a given mathematical font:
         </p>
@@ -5020,14 +4947,20 @@
             or half the advance width of the glyph otherwise.
           </dd>
         </dl>
+        <div class="issue" data-number="22">Use <code>MathKernInfo</code>
+          for positioning scripts in
+          <a href="#script-and-limit-schemata"></a></div>
       </section>
       <section>
         <h3>Size variants for operators (<code>MathVariants</code>)</h3>
-        <div class="issue" data-number="135">Variable fonts and stretchy operators</div>
         <p>
           This section describes how to handle stretchy glyphs of arbitrary
           size using the <code>MATH.MathVariants</code> table.
         </p>
+        <div class="issue" data-number="135">
+          It could be possible to use variable
+          fonts for stretchy operators but
+          this will require improvements to [[OPEN-FONT-FORMAT]].</div>
         <section>
           <h4>The <code>GlyphAssembly</code> table</h4>
           <p>
@@ -5330,8 +5263,6 @@
             </li>
             <li>Return <code>B</code>.</li>
           </ol>
-          <div class="issue">Apply a rotation matrix
-            in vertical writing mode?</div>
           <p>The algorithm to
             <dfn>shape a stretchy glyph</dfn> to inline
             (respectively block) dimension <code>T</code> at a position
@@ -5375,10 +5306,6 @@
     </section>
     <section class="appendix normative" id="user-agent-stylesheet">
       <h2>User Agent Stylesheet</h2>
-      <div class="issue" data-number="34">text-indent, line-height, word-spacing, letter-spacing?</div>
-      <div class="issue" data-number="35">CSS writing-mode and direction on the math root?</div>
-      <div class="issue" data-number="36">font-style and font-weight on the math root?</div>
-      <div class="issue" data-number="94">links and focusable elements?</div>
       <pre class="css">@namespace url(http://www.w3.org/1998/Math/MathML);
 
 /* Default display */
@@ -5398,6 +5325,10 @@
 /* Other rules for scriptlevel, displaystyle and math-superscript-shift-style */
 </span><span data-include-replace="true" data-include="user-agent-stylesheet/radicals.css"></span><span data-include-replace="true" data-include="user-agent-stylesheet/scripts.css"></span>
       </pre>
+      <div class="issue" data-number="34">Add rules for text-indent, line-height, word-spacing, letter-spacing?</div>
+      <div class="issue" data-number="35">Add CSS writing-mode and direction on the math root?</div>
+      <div class="issue" data-number="36">Add font-style and font-weight on the math root?</div>
+          <div class="issue" data-number="94">Improve rules for href hyperlinks and focusable elements?</div>
     </section>
     <section>
       <h2>Operator Tables</h2>
@@ -5796,7 +5727,6 @@
     </section>
     <section class="appendix informative">
       <h2>Privacy and Security Considerations</h2>
-      <div class="issue" data-number="162">Privacy and Security Considerations</div>
       <p>
         As explained in <a href="#html-and-svg"></a>,
         MathML can be embedded into an SVG image via the
@@ -5811,7 +5741,6 @@
         <a data-cite="WEBIDL#DOMException"><code>DOMException</code></a>
         when one tries to access the canvas' content via JavaScript APIs.
       </p>
-      <div class="issue" data-number="125">Should all MathML elements really be potential hyperlinks / match :visited?</div>
       <p>
         This specification adds an <a><code>href</code></a> attribute that
         can be used to make MathML elements match
@@ -5851,6 +5780,10 @@
         and the <a><code>&lt;maction&gt;</code></a> element essentially behaves
         like an <a><code>&lt;mrow&gt;</code></a> container with extra style.
       </div>
+      <div class="issue" data-number="125">
+        There are potential risks associated with <a href="#linkable-math-elements">hyperlinks</a> if they match :visited.
+      </div>
+      <div class="issue" data-number="140">There are potential risks if we allow MathML elements to have <a data-cite="HTML#dom-element-attachshadow">Element.attachShadow()</a>.</div>
     </section>
     <section id="conformance" class="appendix normative">
       <h2>Conformance</h2>
