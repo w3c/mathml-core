@@ -1392,7 +1392,6 @@
             a symbol. This chapter uses the term "operator" to refer to
             operators in this broad sense.
           </p>
-          <div class="issue" data-number="209">Remove fence/separator?</div>
           <div class="issue" data-number="210">Remove mo@accent?</div>
           <p>
             The <code>&lt;mo&gt;</code> element accepts the attributes described
@@ -1413,6 +1412,19 @@
             <li><a><code>movablelimits</code></a></li>
             <li><a><code>accent</code></a></li>
           </ul>
+          <p>
+            This specification does not define any observable behavior that is
+            specific to the <dfn>fence</dfn> and <dfn>separator</dfn> attributes.
+          </p>
+          <div class="note">
+            Authors may use the
+            <a><code>fence</code></a> and <a><code>separator</code></a>
+            to describe specific semantics of operators.
+            The default values may be determined from the
+            <a href="#operator-dictionary-compact-special-tables"><code>Operators_fence</code></a> and <a href="#operator-dictionary-compact-special-tables"><code>Operators_separator</code></a> tables, or equivalently
+            the <a href="#operator-dictionary-human">human-readable version</a>
+            of the operator dictionary.
+        </div>
           <section id="embellished-operators">
             <h5>Embellished operators</h5>
             <p>
@@ -1511,12 +1523,9 @@
                 <code>infix</code>.
               </li>
             </ol>
-            <div class="issue" data-number="209">Remove fence/separator?</div>
             <div class="issue" data-number="210">Remove mo@accent?</div>
             <p>
               The
-              <dfn><code>fence</code></dfn>,
-              <dfn><code>separator</code></dfn>,
               <dfn><code>stretchy</code></dfn>,
               <dfn><code>symmetric</code></dfn>,
               <dfn><code>largeop</code></dfn>,
@@ -1551,8 +1560,6 @@
             </p>
             <p>
               The
-              <code>fence</code>,
-              <code>separator</code>,
               <code>stretchy</code>,
               <code>symmetric</code>,
               <code>largeop</code>,
@@ -1585,8 +1592,6 @@
               </li>
               <li>
                 Otherwise, use the value <code>false</code> for
-                <code>fence</code>,
-                <code>separator</code>,
                 <code>stretchy</code>,
                 <code>symmetric</code>,
                 <code>largeop</code>,
@@ -1623,13 +1628,6 @@
               font style of the <a>core operator</a>, not the one of the
               <a>embellished operator</a>.
             </p>
-          <div class="note">
-            The <code>fence</code> and <code>separator</code> properties do not
-            have any visible effect on the layout described in this
-            specification. However, they can still be useful e.g. to provide
-            extra semantic information to assistive technlologies via the
-            accessible tree.
-          </div>
           </section>
           <section>
             <h4>Layout of operators</h4>
@@ -4416,14 +4414,13 @@
           attributes:
         </p>
         <ul>
-          <li><code>actiontype</code></li>
-          <li><code>selection</code></li>
+          <li><a><code>actiontype</code></a></li>
+          <li><a><code>selection</code></a></li>
         </ul>
         <p>
-          The <dfn>actiontype</dfn> and <dfn>selection</dfn> attributes are
-          not taken into account in the present specification but may be used
-          by authors to implement custom actions on the
-          <code>&lt;maction&gt;</code> element.
+          This specification does not define any observable behavior
+          that is specific to the <dfn>actiontype</dfn> and <dfn>selection</dfn>
+          attributes.
         </p>
         <div class="example" id="maction-example">
           <p>
@@ -4451,7 +4448,8 @@
         </p>
         <pre class="css" data-include="user-agent-stylesheet/maction.css"></pre>
         <div class="note">
-		  <code>&lt;maction&gt;</code> is implemented for compatibility with full MathML. Authors whose only target is MathML Core are encouraged to use other HTML, CSS and JavaScript mechanisms.
+	  <code>&lt;maction&gt;</code> is implemented for compatibility with full MathML. Authors whose only target is MathML Core are encouraged to use other HTML, CSS and JavaScript mechanisms to implement custom actions. They may
+          rely on maction attributes defined in [[MathML3]].
         </div>
       </section>
       <section id="semantics-and-presentation">
@@ -4495,12 +4493,11 @@
           following attribute:
         </p>
         <ul>
-          <li><code>encoding</code></li>
+          <li><a><code>encoding</code></a></li>
         </ul>
         <p>
-          The <dfn>encoding</dfn> attribute is not taken into account in the
-          present specification but it is intended to distinguish annotations
-          for <a data-cite="HTML#html-integration-point">HTML integration point</a>, clipboard copy, alternative rendering etc
+          This specification does not define any observable behavior that is
+          specific to the <dfn>encoding</dfn> attribute.
         </p>
         <p>
           The layout algorithm of the <code>&lt;annotation-xml&gt;</code>
@@ -4508,7 +4505,11 @@
           element is the same as the <a><code>&lt;mtext&gt;</code></a> element.
         </p>
         <div class="note">
-          CSS can be used to render alternative annotations e.g.
+          Authors can use the <a>encoding</a> attribute to distinguish
+          annotations
+          for <a data-cite="HTML#html-integration-point">HTML integration point</a>,
+          clipboard copy, alternative rendering, etc.
+          In particular, CSS can be used to render alternative annotations e.g.
           <pre class="css">
             /* Hide the annotated child. */
             semantics > :first-child { display: none; }
@@ -5310,8 +5311,8 @@
         <ol>
           <li>
             Set properties <code>stretchy</code>, <code>symmetric</code>
-            <code>largeop</code>, <code>movablelimits</code>,
- 	    <code>fence</code>, <code>separator</code> to <code>false</code>.
+            <code>largeop</code>, <code>movablelimits</code>
+ 	    to <code>false</code>.
           </li>
           <li>
             If <code>Content</code> as an UTF-16 string does not have length
@@ -5385,27 +5386,14 @@
               </li>
             </ul>
           </li>
-          <li>If <code>Content</code> is in
-            <a href="#operator-dictionary-compact-special-tables"><code>Operators_fence</code></a> then set property <code>fence</code> to true.</li>
-          <li>If <code>Content</code> is in
-            <a href="#operator-dictionary-compact-special-tables"><code>Operators_separator</code></a> then set property <code>separator</code> to true.</li>
           <li>Return the calculated
             (<code>lspace</code>, <code>rspace</code>,
             <code>stretchy</code>, <code>symmetric</code>
             <code>largeop</code>,
-            <code>movablelimits</code>,
- 	    <code>fence</code>, <code>separator</code>)
+            <code>movablelimits</code>)
             value.
           </li>
         </ol>
-        <div class="note">
-          The <code>fence</code> and <code>separator</code> properties do not
-          have any visible effect on the layout described in this
-          specification. So step 5 and 6 as well as the corresponding tables
-          may be ignored.
-        </div>
-        <div class="issue" data-number="209">Remove fence/separator?</div>
-
         <div id="operator-dictionary-entries"
              data-include="tables/operator-dictionary-compact.html"></div>
 
@@ -5469,8 +5457,6 @@
           <a><code>symmetric</code></a>,
           <a><code>largeop</code></a>,
           <a><code>movablelimits</code></a>,
-          <a><code>fence</code></a> or
-          <a><code>separator</code></a>
           are <code>true</code>
           if they are listed in the "properties" column.
         </p>
