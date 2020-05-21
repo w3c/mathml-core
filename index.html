@@ -155,7 +155,7 @@
         improve the web platform layering.
       </p>
       <p>
-        Parts of MathML3 that do not fit well in this framework or less
+        Parts of MathML3 that do not fit well in this framework or are less
         fundamental have been omitted. Instead, they are described in a
         separate and larger [[MATHML4]] specification. The details of which
         math feature will be included in future versions of MathML Core or
@@ -675,7 +675,9 @@
               <code>inline-size</code> and
               <code>block-size</code>
               are treated as <code>auto</code> on elements
-              with computed display value <a href="#new-display-math-value"><code>math</code></a>.
+              with computed display value
+              <a href="#new-display-math-value"><code>math</code> or
+                <code>inline-math</code></a>.
             </li>
             <li>
               Floats:
@@ -810,7 +812,8 @@
               <code>table-cell</code>.
             </li>
             <li>
-              For all the other <a>MathML elements</a> it is <code>math</code>.
+              For all the other <a>MathML elements</a> it is <code>math</code>
+              or <code>inline-math</code>.
             </li>
           </ul>
           </p>
@@ -1227,7 +1230,8 @@
             <h4>Layout of <code>&lt;mtext&gt;</code></h4>
             <p>
               If the element does not have its computed
-              <a><code>display</code> property</a> equal to <code>math</code>
+              <a><code>display</code> property</a> equal to
+              <code>math</code> or <code>inline-math</code>
               then it is laid out according to the CSS specification where
               the corresponding value is described.
               Otherwise, the layout below is performed.
@@ -1629,7 +1633,8 @@
             <h4>Layout of operators</h4>
             <p>
               If the <code>&lt;mo&gt;</code> element does not have its computed
-              <a><code>display</code> property</a> equal to <code>math</code>
+              <a><code>display</code> property</a> equal to
+              <code>math</code> or <code>inline-math</code>
               then it is laid out according to the CSS specification where
               the corresponding value is described.
               Otherwise, the layout below is performed.
@@ -1838,7 +1843,8 @@
           <p>
             If the <code>&lt;mspace&gt;</code> element does not have its
             computed
-            <a><code>display</code> property</a> equal to <code>math</code>
+            <a><code>display</code> property</a> equal to
+            <code>math</code> or <code>inline-math</code>
             then it is laid out according to the CSS specification where
             the corresponding value is described.
             Otherwise,
@@ -2100,7 +2106,8 @@
             <h5>Layout of <code>&lt;mrow&gt;</code></h5>
             <p>
               If the element does not have its computed
-              <a><code>display</code> property</a> equal to <code>math</code>
+              <a><code>display</code> property</a> equal to
+              <code>math</code> or <code>inline-math</code>
               then it is laid out according to the CSS specification where
               the corresponding value is described.
               Otherwise, the layout below is performed.
@@ -2255,6 +2262,7 @@
           <p>
             If the <code>&lt;mfrac&gt;</code> element does not have its computed
             <a><code>display</code> property</a> equal to <code>math</code>
+            or <code>inline-math</code>
             then it is laid out according to the CSS specification where
             the corresponding value is described.
             Otherwise, the layout below is performed.
@@ -2595,6 +2603,7 @@
             If the <code>&lt;msqrt&gt;</code> or <code>&lt;mroot&gt;</code>
             element do not have their computed
             <a><code>display</code> property</a> equal to <code>math</code>
+            or <code>inline-math</code>
             then they are laid out according to the CSS specification where
             the corresponding value is described.
             Otherwise, the layout below is performed.
@@ -2993,6 +3002,7 @@
               If the <code>&lt;mpadded&gt;</code> element does not have its
               computed
               <a><code>display</code> property</a> equal to <code>math</code>
+              or <code>inline-math</code>
               then it is laid out according to the CSS specification where
               the corresponding value is described.
               Otherwise, it is laid out as shown on
@@ -3109,6 +3119,7 @@
             <code>&lt;msubsup&gt;</code> elements do not have their
             computed
             <a><code>display</code> property</a> equal to <code>math</code>
+            or <code>inline-math</code>
             then they are laid out according to the CSS specification where
             the corresponding value is described.
             Otherwise, the layout below is performed.
@@ -3469,6 +3480,7 @@
             <code>&lt;munderover&gt;</code> elements do not have their
             computed
             <a><code>display</code> property</a> equal to <code>math</code>
+            or <code>inline-math</code>
             then they are laid out according to the CSS specification where
             the corresponding value is described.
             Otherwise, the layout below is performed.
@@ -3950,6 +3962,7 @@
             <code>&lt;none&gt;</code> elements do not have their
             computed
             <a><code>display</code> property</a> equal to <code>math</code>
+            or <code>inline-math</code>
             then they are laid out according to the CSS specification where
             the corresponding value is described.
             Otherwise, the layout below is performed.
@@ -4524,18 +4537,13 @@
     <section class="normative">
       <h2>CSS Extensions for Math Layout</h2>
       <section id="new-display-math-value">
-        <h3>The <code>display: math</code> value</h3>
-        <div class="issue" data-number="69">Should the computed value on the
-          <a><code>&lt;math&gt;</code></a> depends on the <a>display</a>
-          attribute value?
-        </div>
-        <div class="issue" data-number="56">Should we add more specific values?</div>
+        <h3>The <code>display: math</code> and <code>display: inline-math</code> value</h3>
         <div class="issue">Use another name? <code>math-auto</code>? <code>mathml?</code>...</div>
         <p>The <dfn><code>display</code> property</dfn>
           from <a data-cite="CSS-DISPLAY-3"></a>
-          is extended with a new <code>math</code> value:
+          is extended with new values value:
         </p>
-        <code><a data-cite="CSS-DISPLAY-3#valdef-display-table">&lt;display-old&gt;</a> <a data-cite="CSS-VALUES-3#comb-one">|</a> math</code>
+        <code><a data-cite="CSS-DISPLAY-3#valdef-display-table">&lt;display-old&gt;</a> <a data-cite="CSS-VALUES-3#comb-one">|</a> math | inline-math </code>
         <p>
           For the <a><code>&lt;math&gt;</code></a>,
           <a><code>&lt;mtable&gt;</code></a>,
@@ -4546,16 +4554,20 @@
           <code>inline-table</code>,
           <code>table-row</code>
           and <code>table-cell</code>.
-          <a>MathML Core elements</a> with <code>display: math</code>
+          <a>MathML Core elements</a> with <code>display: math</code> or
+          <code>display: inline-math</code>
           control box generation and layout according to their tag name, as
           described in the relevant sections while
           <a>Unknown MathML elements</a> with <code>display: math</code>
+          or <code>display: inline-math</code>
           behave the same as the <a><code>&lt;mrow&gt;</code></a> element.
-          For non-MathML elements, the <code>math</code> value computes to
+          For non-MathML elements, the <code>display: math</code> value
+          and <code>display: inline-math</code> computes to
           <code>none</code>.
         </p>
         <div class="note">
-          The <code>display: math</code> value provides a default
+          The <code>display: math</code> and
+          <code>display: math</code> values provide a default
           layout for MathML elements while at the same time allowing authors
           to override it with either native display values or
           <a data-cite="CSS-LAYOUT-API-1#registering-layout">custom values</a>.
