@@ -4783,12 +4783,13 @@
       </p>
       <section>
         <h3>Layout constants (<code>MathConstants</code>)</h3>
-        <div class="issue" data-number="69">Define fallback values</div>
         <p>These are global layout constants for a given mathematical font:</p>
         <dl>
+          <dt><dfn>Default fallback constant</dfn></dt>
+          <dd>0</dd>
           <dt><dfn>Default rule thickness</dfn></dt>
           <dd>
-            ??
+            <code>post.underlineThickness</code>
           </dd>
           <dt><dfn>scriptPercentScaleDown</dfn></dt>
           <dd>
@@ -4804,9 +4805,12 @@
             null or not available.
           </dd>
           <dt><dfn>displayOperatorMinHeight</dfn></dt>
-          <dd><code>MATH.MathConstants.displayOperatorMinHeight</code> or ?? if the constant is not available.</dd>
+          <dd><code>MATH.MathConstants.displayOperatorMinHeight</code> or
+            <a>Default fallback constant</a>
+            if the constant is not available.</dd>
           <dt><dfn>axisHeight</dfn></dt>
-          <dd><code>MATH.MathConstants.axisHeight</code> or ?? if the constant is not available.</dd>
+          <dd><code>MATH.MathConstants.axisHeight</code> or
+            <a>Default fallback constant</a> if the constant is not available.</dd>
           <dt><dfn>accentBaseHeight</dfn></dt>
           <dd><code>MATH.MathConstants.accentBaseHeight</code> or <code>OS/2.sxHeight</code> if the constant is not available.</dd>
           <dt><dfn>subscriptShiftDown</dfn></dt>
@@ -4814,15 +4818,18 @@
           <dt><dfn>subscriptTopMax</dfn></dt>
           <dd><code>MATH.MathConstants.subscriptTopMax</code> or ⅘ × <code>OS/2.sxHeight</code> if the constant is not available.</dd>
           <dt><dfn>subscriptBaselineDropMin</dfn></dt>
-          <dd><code>MATH.MathConstants.subscriptBaselineDropMin</code> or ?? if the constant is not available.</dd>
+          <dd><code>MATH.MathConstants.subscriptBaselineDropMin</code> or
+            <a>Default fallback constant</a> if the constant is not available.</dd>
           <dt><dfn>superscriptShiftUp</dfn></dt>
           <dd><code>MATH.MathConstants.superscriptShiftUp</code> or <code>OS/2.ySuperscriptYOffset</code> if the constant is not available.</dd>
           <dt><dfn>superscriptShiftUpCramped</dfn></dt>
-          <dd><code>MATH.MathConstants.superscriptShiftUpCramped</code> or ?? if the constant is not available.</dd>
+          <dd><code>MATH.MathConstants.superscriptShiftUpCramped</code> or
+            <a>Default fallback constant</a> if the constant is not available.</dd>
           <dt><dfn>superscriptBottomMin</dfn></dt>
           <dd><code>MATH.MathConstants.superscriptBottomMin</code> or ¼ × <code>OS/2.sxHeight</code> if the constant is not available.</dd>
           <dt><dfn>superscriptBaselineDropMax</dfn></dt>
-          <dd><code>MATH.MathConstants.superscriptBaselineDropMax</code> or ?? if the constant is not available.</dd>
+          <dd><code>MATH.MathConstants.superscriptBaselineDropMax</code> or
+            <a>Default fallback constant</a> if the constant is not available.</dd>
           <dt><dfn>subSuperscriptGapMin</dfn></dt>
           <dd><code>MATH.MathConstants.subSuperscriptGapMin</code> or 4 × <a>default rule thickness</a> if the constant is not available.</dd>
           <dt><dfn>superscriptBottomMaxWithSubscript</dfn></dt>
@@ -4830,39 +4837,40 @@
           <dt><dfn>spaceAfterScript</dfn></dt>
           <dd><code>MATH.MathConstants.spaceAfterScript</code> or 1/24em if the constant is not available.</dd>
           <dt><dfn>upperLimitGapMin</dfn></dt>
-          <dd><code>MATH.MathConstants.upperLimitGapMin</code> or ?? if the constant is not available.</dd>
+          <dd><code>MATH.MathConstants.upperLimitGapMin</code> or
+            <a>Default fallback constant</a> if the constant is not available.</dd>
           <dt><dfn>upperLimitBaselineRiseMin</dfn></dt>
-          <dd><code>MATH.MathConstants.upperLimitBaselineRiseMin</code> or ?? if the constant is not available.</dd>
+          <dd><code>MATH.MathConstants.upperLimitBaselineRiseMin</code> or <a>Default fallback constant</a> if the constant is not available.</dd>
           <dt><dfn>lowerLimitGapMin</dfn></dt>
-          <dd><code>MATH.MathConstants.lowerLimitGapMin</code> or ?? if the constant is not available.</dd>
+          <dd><code>MATH.MathConstants.lowerLimitGapMin</code> or <a>Default fallback constant</a> if the constant is not available.</dd>
           <dt><dfn>lowerLimitBaselineDropMin</dfn></dt>
-          <dd><code>MATH.MathConstants.lowerLimitBaselineDropMin</code> or ?? if the constant is not available.</dd>
+          <dd><code>MATH.MathConstants.lowerLimitBaselineDropMin</code> or <a>Default fallback constant</a> if the constant is not available.</dd>
           <dt><dfn>stackTopShiftUp</dfn></dt>
-          <dd><code>MATH.MathConstants.stackTopShiftUp</code> or ?? if the constant is not available.</dd>
+          <dd><code>MATH.MathConstants.stackTopShiftUp</code> or <a>Default fallback constant</a> if the constant is not available.</dd>
           <dt><dfn>stackTopDisplayStyleShiftUp</dfn></dt>
-          <dd><code>MATH.MathConstants.stackTopDisplayStyleShiftUp</code> or ?? if the constant is not available.</dd>
+          <dd><code>MATH.MathConstants.stackTopDisplayStyleShiftUp</code> or <a>Default fallback constant</a> if the constant is not available.</dd>
           <dt><dfn>stackBottomShiftDown</dfn></dt>
-          <dd><code>MATH.MathConstants.stackBottomShiftDown</code> or ?? if the constant is not available.</dd>
+          <dd><code>MATH.MathConstants.stackBottomShiftDown</code> or <a>Default fallback constant</a> if the constant is not available.</dd>
           <dt><dfn>stackBottomDisplayStyleShiftDown</dfn></dt>
-          <dd><code>MATH.MathConstants.stackBottomDisplayStyleShiftDown</code> or ?? if the constant is not available.</dd>
+          <dd><code>MATH.MathConstants.stackBottomDisplayStyleShiftDown</code> or <a>Default fallback constant</a> if the constant is not available.</dd>
           <dt><dfn>stackGapMin</dfn></dt>
           <dd><code>MATH.MathConstants.stackGapMin</code> or 3 × <a>default rule thickness</a> if the constant is not available.</dd>
           <dt><dfn>stackDisplayStyleGapMin</dfn></dt>
           <dd><code>MATH.MathConstants.stackDisplayStyleGapMin</code> or 7 × <a>default rule thickness</a> if the constant is not available.</dd>
           <dt><dfn>stretchStackTopShiftUp</dfn></dt>
-          <dd><code>MATH.MathConstants.stretchStackTopShiftUp</code> or ?? if the constant is not available.</dd>
+          <dd><code>MATH.MathConstants.stretchStackTopShiftUp</code> or <a>Default fallback constant</a> if the constant is not available.</dd>
           <dt><dfn>stretchStackBottomShiftDown</dfn></dt>
-          <dd><code>MATH.MathConstants.stretchStackBottomShiftDown</code> or ?? if the constant is not available.</dd>
+          <dd><code>MATH.MathConstants.stretchStackBottomShiftDown</code> or <a>Default fallback constant</a> if the constant is not available.</dd>
           <dt><dfn>stretchStackGapAboveMin</dfn></dt>
           <dd><code>MATH.MathConstants.stretchStackGapAboveMin</code> or <a>upperLimitGapMin</a> if the constant is not available.</dd>
           <dt><dfn>stretchStackGapBelowMin</dfn></dt>
           <dd><code>MATH.MathConstants.stretchStackGapBelowMin</code> or <a>lowerLimitGapMin</a> if the constant is not available.</dd>
           <dt><dfn>fractionNumeratorShiftUp</dfn></dt>
-          <dd><code>MATH.MathConstants.fractionNumeratorShiftUp</code> or ?? if the constant is not available.</dd>
+          <dd><code>MATH.MathConstants.fractionNumeratorShiftUp</code> or <a>Default fallback constant</a> if the constant is not available.</dd>
           <dt><dfn>fractionNumeratorDisplayStyleShiftUp</dfn></dt>
           <dd><code>MATH.MathConstants.fractionNumeratorDisplayStyleShiftUp</code> or <a>stackTopDisplayStyleShiftUp</a> if the constant is not available.</dd>
           <dt><dfn>fractionDenominatorShiftDown</dfn></dt>
-          <dd><code>MATH.MathConstants.fractionDenominatorShiftDown</code> or ?? if the constant is not available.</dd>
+          <dd><code>MATH.MathConstants.fractionDenominatorShiftDown</code> or <a>Default fallback constant</a> if the constant is not available.</dd>
           <dt><dfn>fractionDenominatorDisplayStyleShiftDown</dfn></dt>
           <dd><code>MATH.MathConstants.fractionDenominatorDisplayStyleShiftDown</code> or <a>stackBottomDisplayStyleShiftDown</a> if the constant is not available.</dd>
           <dt><dfn>fractionNumeratorGapMin</dfn></dt>
@@ -4902,6 +4910,8 @@
           <dt><dfn>radicalDegreeBottomRaisePercent</dfn></dt>
           <dd><code>MATH.MathConstants.radicalDegreeBottomRaisePercent / 100.0</code> or 0.6 if the constant is not available.</dd>
         </dl>
+        <div class="issue" data-number="69">Improve fallback values when
+          a math font is not used?</div>
       </section>
       <section>
         <h3>Glyph information (<code>MathGlyphInfo</code>)</h3>
