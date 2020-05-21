@@ -181,78 +181,417 @@
     </section>
     <section class="normative">
       <h2>MathML Fundamentals</h2>
-      <section>
-        <h3>Integration in the Web Platform</h3>
-        <section id="mathml-elements">
-          <h3>XML</h3>
+      <section id="mathml-elements-and-attributes">
+        <h3>Elements and attributes</h3>
+        <p id="mathml-elements">
+          The term <dfn>MathML element</dfn> refers to any element in the
+          <a data-cite="INFRA#mathml-namespace">MathML namespace</a>.
+          The MathML element defined in this specification are called the
+          <dfn>MathML Core elements</dfn> and are listed below.
+          Any MathML element that is not listed below is called an
+          <dfn>Unknown MathML element</dfn>.
+        </p>
+        <ol>
+          <li><a>&lt;annotation&gt;</a></li>
+          <li><a>&lt;annotation-xml&gt;</a></li>
+          <li><a>&lt;maction&gt;</a></li>
+          <li><a>&lt;math&gt;</a></li>
+          <li><a>&lt;merror&gt;</a></li>
+          <li><a>&lt;mfrac&gt;</a></li>
+          <li><a>&lt;mi&gt;</a></li>
+          <li><a>&lt;mmultiscripts&gt;</a></li>
+          <li><a>&lt;mn&gt;</a></li>
+          <li><a>&lt;mo&gt;</a></li>
+          <li><a>&lt;mover&gt;</a></li>
+          <li><a>&lt;mpadded&gt;</a></li>
+          <li><a>&lt;mphantom&gt;</a></li>
+          <li><a>&lt;mprescripts&gt;</a></li>
+          <li><a>&lt;mroot&gt;</a></li>
+          <li><a>&lt;mrow&gt;</a></li>
+          <li><a>&lt;ms&gt;</a></li>
+          <li><a>&lt;mspace&gt;</a></li>
+          <li><a>&lt;msqrt&gt;</a></li>
+          <li><a>&lt;mstyle&gt;</a></li>
+          <li><a>&lt;msub&gt;</a></li>
+          <li><a>&lt;msubsup&gt;</a></li>
+          <li><a>&lt;msup&gt;</a></li>
+          <li><a>&lt;mtable&gt;</a></li>
+          <li><a>&lt;mtd&gt;</a></li>
+          <li><a>&lt;mtext&gt;</a></li>
+          <li><a>&lt;mtr&gt;</a></li>
+          <li><a>&lt;munder&gt;</a></li>
+          <li><a>&lt;munderover&gt;</a></li>
+          <li><a>&lt;none&gt;</a></li>
+          <li><a>&lt;semantics&gt;</a></li>
+        </ol>
+        <p>The <dfn>mrow-like elements</dfn> are
+          <a>&lt;maction&gt;</a>,
+          <a>&lt;math&gt;</a>,
+          <a>&lt;merror&gt;</a>
+          <a>&lt;mphantom&gt;</a>,
+          <a>&lt;mprescripts&gt;</a>,
+          <a>&lt;mrow&gt;</a>,
+          <a>&lt;mstyle&gt;</a>,
+          <a>&lt;none&gt;</a>,
+          <a>&lt;semantics&gt;</a> and <a>unknown MathML elements</a>.</p>
+        <p>The <dfn>scripted elements</dfn> are
+          <a>&lt;mmultiscripts&gt;</a>,
+          <a>&lt;mover&gt;</a>,
+          <a>&lt;msub&gt;</a>,
+          <a>&lt;msubsup&gt;</a>,
+          <a>&lt;msup&gt;</a>,
+          <a>&lt;munder&gt;</a> and
+          <a>&lt;munderover&gt;</a>.
+        </p>
+        <p>The <dfn>radical elements</dfn> are
+          <a>&lt;mroot&gt;</a> and <a>&lt;msqrt&gt;</a>.
+        </p>
+        <p>
+          The attributes defined in this specification are called
+          <dfn>MathML attributes</dfn> and have no namespace.
+        </p>
+        <section id="the-top-level-math-element">
+          <h4>The Top-Level <code>&lt;math&gt;</code> Element</h4>
+          <p>MathML specifies a single top-level or root
+            <dfn><code>&lt;math&gt;</code></dfn> element, which encapsulates each
+            instance of MathML markup within a document. All other MathML content
+            must be contained in a <code>&lt;math&gt;</code> element.
+          </p>
           <p>
-            The term <dfn>MathML element</dfn> refers to any element in the
-            <a data-cite="INFRA#mathml-namespace">MathML namespace</a>.
-            The MathML element defined in this specification are called the
-            <dfn>MathML Core elements</dfn> and are listed below.
-            Any MathML element that is not listed below is called an
-            <dfn>Unknown MathML element</dfn>.
+            The <code>&lt;math&gt;</code>
+            element accepts the attributes described
+            in <a href="#global-attributes"></a> as well as the
+            following attribute:
           </p>
-          <ol>
-            <li><a>&lt;annotation&gt;</a></li>
-            <li><a>&lt;annotation-xml&gt;</a></li>
-            <li><a>&lt;maction&gt;</a></li>
-            <li><a>&lt;math&gt;</a></li>
-            <li><a>&lt;merror&gt;</a></li>
-            <li><a>&lt;mfrac&gt;</a></li>
-            <li><a>&lt;mi&gt;</a></li>
-            <li><a>&lt;mmultiscripts&gt;</a></li>
-            <li><a>&lt;mn&gt;</a></li>
-            <li><a>&lt;mo&gt;</a></li>
-            <li><a>&lt;mover&gt;</a></li>
-            <li><a>&lt;mpadded&gt;</a></li>
-            <li><a>&lt;mphantom&gt;</a></li>
-            <li><a>&lt;mprescripts&gt;</a></li>
-            <li><a>&lt;mroot&gt;</a></li>
-            <li><a>&lt;mrow&gt;</a></li>
-            <li><a>&lt;ms&gt;</a></li>
-            <li><a>&lt;mspace&gt;</a></li>
-            <li><a>&lt;msqrt&gt;</a></li>
-            <li><a>&lt;mstyle&gt;</a></li>
-            <li><a>&lt;msub&gt;</a></li>
-            <li><a>&lt;msubsup&gt;</a></li>
-            <li><a>&lt;msup&gt;</a></li>
-            <li><a>&lt;mtable&gt;</a></li>
-            <li><a>&lt;mtd&gt;</a></li>
-            <li><a>&lt;mtext&gt;</a></li>
-            <li><a>&lt;mtr&gt;</a></li>
-            <li><a>&lt;munder&gt;</a></li>
-            <li><a>&lt;munderover&gt;</a></li>
-            <li><a>&lt;none&gt;</a></li>
-            <li><a>&lt;semantics&gt;</a></li>
-          </ol>
-          <p>The <dfn>mrow-like elements</dfn> are
-            <a>&lt;maction&gt;</a>,
-            <a>&lt;math&gt;</a>,
-            <a>&lt;merror&gt;</a>
-            <a>&lt;mphantom&gt;</a>,
-            <a>&lt;mprescripts&gt;</a>,
-            <a>&lt;mrow&gt;</a>,
-            <a>&lt;mstyle&gt;</a>,
-            <a>&lt;none&gt;</a>,
-            <a>&lt;semantics&gt;</a> and <a>unknown MathML elements</a>.</p>
-          <p>The <dfn>scripted elements</dfn> are
-            <a>&lt;mmultiscripts&gt;</a>,
-            <a>&lt;mover&gt;</a>,
-            <a>&lt;msub&gt;</a>,
-            <a>&lt;msubsup&gt;</a>,
-            <a>&lt;msup&gt;</a>,
-            <a>&lt;munder&gt;</a> and
-            <a>&lt;munderover&gt;</a>.
-          </p>
-          <p>The <dfn>radical elements</dfn> are
-            <a>&lt;mroot&gt;</a> and <a>&lt;msqrt&gt;</a>.
-          </p>
+          <ul>
+            <li><a>display</a></li>
+          </ul>
           <p>
-            The attributes defined in this specification are called
-            <dfn>MathML attributes</dfn> and have no namespace.
+            The
+            <dfn><code>display</code></dfn>
+            attribute, if present,
+            must be an
+            <a data-cite="INFRA#ascii-case-insensitive">ASCII case-insensitive</a>
+            match
+            to <code>block</code> or <code>inline</code>.
+            To fully implement this attribute, additional CSS properties must be
+            specified in the user agent stylesheet
+            as described in <a href="#user-agent-stylesheet"></a>.
+          </p>
+          <div class="issue" data-number="56">Improve layout description. Since
+            the <code>math</code> element is already <code>inline</code> or
+            <code>block</code> display, it should probably generate an anonymous
+            mrow-like box container?
+          </div>
+          <p>
+            The layout algorithm of the <code>&lt;math&gt;</code> element
+            is the same as the <a><code>&lt;mrow&gt;</code></a> element. User agents must
+            ensure correct baseline alignment, centering, sizing etc of the
+            <code>&lt;math&gt;</code> element.
+          </p>
+          <div class="note">
+            T<sub>E</sub>X's display mode <code>$...$</code>
+            and inline mode <code>$...$</code> correspond to
+            <code>display="block"</code> and <code>display="inline"</code>
+            respectively.
+          </div>
+          <p>Because good mathematical rendering requires use of mathematical
+            fonts, the
+            <a href="#user-agent-stylesheet">user agent stylesheet</a>
+            should set the
+            <a data-cite="CSS-FONTS-4#font-family-prop"><code>font-family</code></a>
+            to the
+            <a data-cite="CSS-FONTS-4#valdef-font-family-math"><code>math</code></a>
+            value on the <code>&lt;math&gt;</code> element instead of inheriting
+            it.
           </p>
         </section>
+        <section id="linkable-math-elements">
+          <h4><dfn>MathML Hyperlink Elements</dfn></h4>
+          <p>All <a href="#token-elements">token elements</a> and the <a href="#horizontally-group-sub-expressions-mrow">mrow</a> grouping element are potentially linkable and may contain an <code>href</code> attribute.  They are the MathML equivalents of HTML's <a data-cite="html#the-a-element">a</a> and must follow all of the same criteria laid out for links there.</p>
+        </section>
+        <section id="types-for-mathml-attribute-values">
+          <h4>Types for MathML Attribute Values</h4>
+          <div class="issue" data-number="122">Trimming of whitespace in attribute?</div>
+          <dl>
+            <dt><dfn>unsigned-integer</dfn></dt>
+            <dd>An
+              <a data-cite="CSS-VALUES-3#integer-value"><code>&lt;integer-value&gt;</code></a> value as defined in
+              [[CSS-VALUES-3]], whose first character is neither
+              U+002D HYPHEN-MINUS character (-) nor
+              U+002B PLUS SIGN (+).
+            </dd>
+          </dl>
+          <dl>
+            <dt><dfn>unsigned-number</dfn></dt>
+            <dd>A
+              <a data-cite="CSS-VALUES-3#number-value"><code>&lt;number-value&gt;</code></a> value as defined in
+              [[CSS-VALUES-3]], whose first character is neither
+              U+002D HYPHEN-MINUS character (-) nor
+              U+002B PLUS SIGN (+).
+            </dd>
+          </dl>
+          <dl>
+            <dt><dfn>length-percentage</dfn></dt>
+            <dd>A
+              <a data-cite="CSS-VALUES-3#typedef-length-percentage"><code>&lt;length-percentage&gt;</code></a>
+              value as defined in
+              [[CSS-VALUES-3]]
+            </dd>
+          </dl>
+          <dl>
+            <dt><dfn>unsigned-length-percentage</dfn></dt>
+            <dd>A
+              <a><code>length-percentage</code></a>
+              whose first character is neither
+              U+002D HYPHEN-MINUS character (-) nor
+              U+002B PLUS SIGN (+).
+            </dd>
+          </dl>
+          <dl>
+            <dt><dfn>color</dfn></dt>
+            <dd>A
+              <a data-cite="CSS-COLOR-3#colorunits"><code>&lt;color&gt;</code></a>
+              value as defined in [[CSS-COLOR-3]]
+            </dd>
+          </dl>
+          <dl>
+            <dt><dfn>boolean</dfn></dt>
+            <dd>A string that is an
+              <a data-cite="INFRA#ascii-case-insensitive">ASCII case-insensitive</a>
+              match to <code>true</code> or
+              <code>false</code>.
+            </dd>
+          </dl>
+        </section>
+        <section>
+          <h4>Global Attributes</h4>
+          <p>
+            The following attributes are common to and may be specified on all MathML
+            elements:
+          </p>
+          <ul>
+            <li><a>id</a></li>
+            <li><a>class</a></li>
+            <li><a><code>style</code></a></li>
+            <li><a><code>data-*</code></a></li>
+            <li><a><code>dir</code></a></li>
+            <li><a><code>displaystyle</code></a></li>
+            <li><a><code>mathbackground</code></a></li>
+            <li><a><code>mathcolor</code></a></li>
+            <li><a><code>mathsize</code></a></li>
+            <li><a><code>mathvariant</code></a></li>
+            <li><a><code>nonce</code></a></li>
+            <li><a><code>scriptlevel</code></a></li>
+            <li><a><code>style</code></a></li>
+            <li><a><code>tabindex</code></a></li>
+            <li><a>class</a></li>
+            <li><a>id</a></li>
+            <li><a href="#event-handler-content-attributes"><code>on*</code> event handler attributes</a></li>
+          </ul>
+        </section>
+        <section id="attributes-common-to-html-and-mathml-elements">
+          <h4>Attributes common to HTML and MathML elements</h4>
+          <p>
+            The
+            <dfn><code>id</code></dfn>,
+            <dfn><code>class</code></dfn>,
+            <dfn><code>style</code></dfn>,
+            <dfn><code>data-*</code></dfn>,
+            <dfn><code>nonce</code></dfn> and
+            <dfn><code>tabindex</code></dfn>
+            attributes have the same syntax and semantic as defined for
+            <a data-cite="HTML#the-id-attribute">id</a>,
+            <a data-cite="HTML#classes">class</a>,
+            <a data-cite="HTML#the-style-attribute">style</a>,
+            <a data-cite="HTML#embedding-custom-non-visible-data-with-the-data-*-attributes">data-*</a>,
+            <a data-cite="HTML#embedding-custom-non-visible-data-with-the-data-*-attributes">nonce</a> and
+            <a data-cite="HTML#embedding-custom-non-visible-data-with-the-data-*-attributes">tabindex</a>
+            attributes on HTML elements.
+          </p>
+          <div class="issue" data-number="125">Should all MathML elements really be potential hyperlinks / match :visited?</div>
+          <div class="issue" data-number="94">User Agent style for href hyperlinks and focusable elements</div>
+          <p>
+            The
+            <dfn><code>href</code></dfn>
+            attribute has the same syntax and semantic as defined for
+            the <a data-cite="HTML#attr-hyperlink-href">href</a> attribute on
+            <code>&lt;a&gt;</code> element.
+            To fully implement this attribute, the following CSS properties for
+            links must be specified in the
+            <a href="#user-agent-stylesheet">user agent stylesheet</a>:
+          </p>
+          <pre class="css" data-include="user-agent-stylesheet/links.css"></pre>
+          <p>
+            The
+            <dfn><code>dir</code></dfn>
+            attribute, if present,
+            must be an
+            <a data-cite="INFRA#ascii-case-insensitive">ASCII case-insensitive</a> match
+            to <code>ltr</code> or <code>ltr</code>.
+            It is mapped to the
+            <a data-cite="CSS-WRITING-MODES-3#direction"><code>direction</code></a>
+            CSS property.
+            This attribute is used to set the directionality of math formulas, which is
+            often <code>rtl</code> in Arabic speaking world.
+          </p>
+          <p id="event-handler-content-attributes">
+            All MathML elements support event handler content attributes,
+            as described in  <a data-cite="HTML#event-handler-contentattributes">event handler content attributes</a> in HTML.
+          </p>
+          <p>
+            All event handler content attributes
+            <a data-cite="HTML#event-handlers-on-elements,-document-objects,-and-window-objects">noted by HTML as being supported by all HTMLElements</a>
+            are supported by all MathML elements as well, as defined in the <a href="#dom-and-javascript">MathMLElement IDL</a>.
+          </p>
+        </section>
+        <section id="legacy-mathml-style-attributes">
+          <h4>Legacy MathML Style Attributes</h4>
+          <p>
+            The
+            <dfn><code>mathcolor</code></dfn>
+            and
+            <dfn><code>mathbackground</code></dfn>
+            attributes, if present, must
+            have a value that is a <a>color</a>.
+            The <code>mathcolor</code> property describes the foreground fill color of
+            an MathML text, bars etc and the background color of an element.
+            They are mapped to the
+            <a data-cite="CSS-COLOR-3#foreground"><code>color</code></a> and
+            <a data-cite="CSS-BACKGROUNDS-3#the-background-color"><code>background-color</code></a> CSS properties.
+          </p>
+          <p>
+            The
+            <dfn><code>mathsize</code></dfn>
+            attribute, if present, must
+            have a value that is a valid <a>length-percentage</a>.
+            The <code>mathsize</code> property indicates indicates the desired height
+            of glyphs in math formulas but also scale other parts (spacing, shifts,
+            line thickness of bars etc) accordingly.
+            It is mapped to the CSS property
+            <a><code>font-size</code></a>
+            and the <code>mathsize</code> values are interpreted according to the
+            definition in [[CSS-FONTS-4]].
+          </p>
+          <div class="note">
+	    The above attributes are implemented for compatibility with full MathML. Authors whose only target is MathML Core are encouraged to use CSS for styling.
+          </div>
+        </section>
+        <section id="the-mathvariant-attribute">
+          <h4>The <code>mathvariant</code> attribute</h4>
+          <p>
+            The
+            <dfn><code>mathvariant</code></dfn>
+            attribute,
+            if present, must be an
+            <a data-cite="INFRA#ascii-case-insensitive">ASCII case-insensitive</a>
+            match to one of:
+            <code>normal</code>,
+            <code>bold</code>,
+            <code>italic</code>,
+            <code>bold-italic</code>,
+            <code>double-struck</code>,
+            <code>bold-fraktur</code>,
+            <code>script</code>,
+            <code>bold-script</code>,
+            <code>fraktur</code>,
+            <code>sans-serif</code>,
+            <code>bold-sans-serif</code>,
+            <code>sans-serif-italic</code>,
+            <code>sans-serif-bold-italic</code>,
+            <code>monospace</code>,
+            <code>initial</code>,
+            <code>tailed</code>,
+            <code>looped</code>, or
+            <code>stretched</code>.
+          </p>
+          <p>
+            The <code>mathvariant</code> attribute defines logical classes of token
+            elements. Each class provides a collection of typographically-related
+            symbolic tokens with specific meaning within a given mathematical
+            expression.
+            For <code>mathvariant</code> values other than <code>normal</code>,
+            this is done by using glyphs of
+            Unicode's Mathematical Alphanumeric Symbols.
+          </p>
+          <p>
+            Hence, the <code>mathvariant</code> attribute
+            is mapped to new values of the CSS property
+            <a><code>text-transform</code></a>.
+            More precisely, <code>normal</code> is mapped to <code>none</code>
+            while all the other values the corresponding CSS value with the extra
+            <code>math-</code> prefix.
+          </p>
+          <div class="note">
+	    <code>mathvariant</code> values other than <code>normal</code>
+            are implemented for compatibility with full MathML and legacy editors that can't access characters in Plane 1 of Unicode. Authors are encouraged to use the corresponding Unicode characters.
+            The <code>normal</code> value is still important to cancel automatic
+            italic of the <a><code>&lt;mi&gt;</code></a> element.
+          </div>
+          <div class="issue" data-number="61">
+            Consider a new script style to distinguish Chancery and Spencerian?
+          </div>
+          <div class="note">
+            Unicode does not distinguish between Chancery and Spencerian style
+            for the Unicode MATHEMATICAL SCRIPT characters. However, some
+            mathematical fonts rely on <code>salt</code> or
+            <code>ssXY</code> properties from [[OPEN-FONT-FORMAT]]
+            to provide both styles. Page authors may use the
+            <a data-cite="CSS-FONTS-4#font-variant-alternates-prop"><code>font-variant-alternates</code></a> property with corresponding OpenType font features
+            to access these glyphs.
+          </div>
+        </section>
+        <section id="the-displaystyle-and-scriptlevel-attributes">
+          <h4>The <code>displaystyle</code> and <code>scriptlevel</code> attributes</h4>
+          <p>
+            The
+            <dfn><code>displaystyle</code></dfn>
+            attribute, if present, must have a value that is a <a>boolean</a>.
+            It is mapped to the CSS property <a><code>math-style</code></a>.
+            More precisely,  <code>true</code> is mapped to <code>display</code> and
+            <code>false</code> to  <code>inline</code>.
+            This attribute indicate whether formulas should try to minimize
+            the logical height (value is <code>false</code>) or not
+            (value is <code>true</code>) e.g. by changing the size of content or
+            the layout of scripts.
+          </p>
+          <p>
+            The
+            <dfn><code>scriptlevel</code></dfn>
+            attribute, if present, must have value
+            <code>+&lt;U&gt;</code>, <code>-&lt;U&gt;</code> or <code>&lt;U&gt;</code>
+            where <code>&lt;U&gt;</code> is an
+            <a>unsigned-integer</a>.
+            If the <a>mathsize</a> attribute is absent, it is
+            mapped to the <a><code>font-size</code></a> property.
+            More precisely,
+            <code>+&lt;U&gt;</code>, <code>-&lt;U&gt;</code> and
+            <code>&lt;U&gt;</code>
+            are respectively mapped to
+            <code>scriptlevel(add(&lt;U&gt;))</code>
+            <code>scriptlevel(add(&lt;-U&gt;))</code>
+            and <code>scriptlevel(&lt;U&gt;)</code>.
+          </p>
+          <p>
+            <a><code>displaystyle</code></a> and <a><code>scriptlevel</code></a> values
+            are automatically adjusted within MathML elements.
+            To fully implement these attributes, additional CSS properties must be
+            specified in the user agent stylesheet
+            as described in <a href="#user-agent-stylesheet"></a>.
+          </p>
+          <div class="note">
+            T<sub>E</sub>X's <code>\displaystyle</code>, <code>\textstyle</code>,
+            <code>\scriptstyle</code>, and <code>\scriptscriptstyle</code> correspond
+            to <a><code>displaystyle</code></a> and <a><code>scriptlevel</code></a> as
+            <code>true</code> and <code>0</code>,
+            <code>false</code> and <code>0</code>,
+            <code>false</code> and <code>1</code>,
+            and <code>false</code> and 2, respectively.
+          </div>
+        </section>
+      </section>
+      <section>
+        <h3>Integration in the Web Platform</h3>
         <section id="html-and-svg">
           <h4>HTML and SVG</h4>
           <div class="issue" data-number="103">mpadded?</div>
@@ -382,7 +721,7 @@
             these properties as that might lead to backward incompatibility
             issues.
           </div>
-      <div class="issue" data-number="94">links and focusable elements?</div>
+          <div class="issue" data-number="94">links and focusable elements?</div>
           <div class="issue" data-number="18">vertical writing mode support</div>
           <div class="issue" data-number="112">Define MathML line breaking?</div>
           <div class="issue" data-number="16">Support floats?</div>
@@ -447,377 +786,35 @@
           </p>
         </section>
         <section id="focus">
-            <h4>Focus</h4>
-            <div class="issue" data-number="94">User Agent style for href hyperlinks and focusable elements</div>
-            <p>
-              MathML provides the ability for authors to allow for
-              interactivity in supporting interactive user agents
-              using the same concepts, approach and guidance to
-              <a data-cite="HTML#focus"><code>Focus</code></a>
-              as described in HTML, with modifications or
-              clarifications regarding application
-              for MathML as described in this section.
-            </p>
-            <p>
-              When an element is focused, all applicable CSS
-              focus-related pseudo-classes as defined in
-              <a data-cite="SELECT#overview">CSS Selectors</a>
-              apply, as defined in that specification.
-            </p>
-            <p>
-              All <code>MathMLLinkableElement</code> elements are potentially linkable with an <code>href</code> attribute.  Their default tabindex is <code>0</code>.  If their <code>href</code> contains a valid URL, their focus flag must be set unless the user agent normally provides an alternative
-              method of keyboard traversal of links, and they appear in the
-              sequential focus order.
-            </p>
-            <p>
-              The contents of embedded <code>&lt;math&gt;</code> elements
-              (including HTML elements inside token elements),
-              contribute to the sequential focus order of the containing owner HTML
-              document (combined sequential focus order).
-            </p>
-        </section>
-      </section>
-      <section id="types-for-mathml-attribute-values">
-        <h3>Types for MathML Attribute Values</h3>
-        <div class="issue" data-number="122">Trimming of whitespace in attribute?</div>
-        <dl>
-          <dt><dfn>unsigned-integer</dfn></dt>
-          <dd>An
-            <a data-cite="CSS-VALUES-3#integer-value"><code>&lt;integer-value&gt;</code></a> value as defined in
-            [[CSS-VALUES-3]], whose first character is neither
-            U+002D HYPHEN-MINUS character (-) nor
-            U+002B PLUS SIGN (+).
-          </dd>
-        </dl>
-        <dl>
-          <dt><dfn>unsigned-number</dfn></dt>
-          <dd>A
-            <a data-cite="CSS-VALUES-3#number-value"><code>&lt;number-value&gt;</code></a> value as defined in
-            [[CSS-VALUES-3]], whose first character is neither
-            U+002D HYPHEN-MINUS character (-) nor
-            U+002B PLUS SIGN (+).
-          </dd>
-        </dl>
-        <dl>
-          <dt><dfn>length-percentage</dfn></dt>
-          <dd>A
-            <a data-cite="CSS-VALUES-3#typedef-length-percentage"><code>&lt;length-percentage&gt;</code></a>
-            value as defined in
-            [[CSS-VALUES-3]]
-          </dd>
-        </dl>
-        <dl>
-          <dt><dfn>unsigned-length-percentage</dfn></dt>
-          <dd>A
-            <a><code>length-percentage</code></a>
-            whose first character is neither
-            U+002D HYPHEN-MINUS character (-) nor
-            U+002B PLUS SIGN (+).
-          </dd>
-        </dl>
-        <dl>
-          <dt><dfn>color</dfn></dt>
-          <dd>A
-            <a data-cite="CSS-COLOR-3#colorunits"><code>&lt;color&gt;</code></a>
-            value as defined in [[CSS-COLOR-3]]
-          </dd>
-        </dl>
-        <dl>
-          <dt><dfn>boolean</dfn></dt>
-          <dd>A string that is an
-            <a data-cite="INFRA#ascii-case-insensitive">ASCII case-insensitive</a>
-            match to <code>true</code> or
-            <code>false</code>.
-          </dd>
-        </dl>
-      </section>
-      <section>
-        <h3>Global Attributes</h3>
-        <p>
-          The following attributes are common to and may be specified on all MathML
-          elements:
-        </p>
-        <ul>
-          <li><a>id</a></li>
-          <li><a>class</a></li>
-          <li><a><code>style</code></a></li>
-          <li><a><code>data-*</code></a></li>
-          <li><a><code>dir</code></a></li>
-          <li><a><code>displaystyle</code></a></li>
-          <li><a><code>mathbackground</code></a></li>
-          <li><a><code>mathcolor</code></a></li>
-          <li><a><code>mathsize</code></a></li>
-          <li><a><code>mathvariant</code></a></li>
-          <li><a><code>nonce</code></a></li>
-          <li><a><code>scriptlevel</code></a></li>
-          <li><a><code>style</code></a></li>
-          <li><a><code>tabindex</code></a></li>
-          <li><a>class</a></li>
-          <li><a>id</a></li>
-          <li><a href="#event-handler-content-attributes"><code>on*</code> event handler attributes</a></li>
-        </ul>
-        <section id="attributes-common-to-html-and-mathml-elements">
-          <h4>Attributes common to HTML and MathML elements</h4>
-          <p>
-            The
-            <dfn><code>id</code></dfn>,
-            <dfn><code>class</code></dfn>,
-            <dfn><code>style</code></dfn>,
-            <dfn><code>data-*</code></dfn>,
-            <dfn><code>nonce</code></dfn> and
-            <dfn><code>tabindex</code></dfn>
-            attributes have the same syntax and semantic as defined for
-            <a data-cite="HTML#the-id-attribute">id</a>,
-            <a data-cite="HTML#classes">class</a>,
-            <a data-cite="HTML#the-style-attribute">style</a>,
-            <a data-cite="HTML#embedding-custom-non-visible-data-with-the-data-*-attributes">data-*</a>,
-            <a data-cite="HTML#embedding-custom-non-visible-data-with-the-data-*-attributes">nonce</a> and
-            <a data-cite="HTML#embedding-custom-non-visible-data-with-the-data-*-attributes">tabindex</a>
-            attributes on HTML elements.
-          </p>
-          <div class="issue" data-number="125">Should all MathML elements really be potential hyperlinks / match :visited?</div>
+          <h4>Focus</h4>
           <div class="issue" data-number="94">User Agent style for href hyperlinks and focusable elements</div>
           <p>
-            The
-            <dfn><code>href</code></dfn>
-            attribute has the same syntax and semantic as defined for
-            the <a data-cite="HTML#attr-hyperlink-href">href</a> attribute on
-            <code>&lt;a&gt;</code> element.
-            To fully implement this attribute, the following CSS properties for
-            links must be specified in the
-            <a href="#user-agent-stylesheet">user agent stylesheet</a>:
+            MathML provides the ability for authors to allow for
+            interactivity in supporting interactive user agents
+            using the same concepts, approach and guidance to
+            <a data-cite="HTML#focus"><code>Focus</code></a>
+            as described in HTML, with modifications or
+            clarifications regarding application
+            for MathML as described in this section.
           </p>
-          <pre class="css" data-include="user-agent-stylesheet/links.css"></pre>
           <p>
-            The
-            <dfn><code>dir</code></dfn>
-            attribute, if present,
-            must be an
-            <a data-cite="INFRA#ascii-case-insensitive">ASCII case-insensitive</a> match
-            to <code>ltr</code> or <code>ltr</code>.
-            It is mapped to the
-            <a data-cite="CSS-WRITING-MODES-3#direction"><code>direction</code></a>
-            CSS property.
-            This attribute is used to set the directionality of math formulas, which is
-            often <code>rtl</code> in Arabic speaking world.
+            When an element is focused, all applicable CSS
+            focus-related pseudo-classes as defined in
+            <a data-cite="SELECT#overview">CSS Selectors</a>
+            apply, as defined in that specification.
           </p>
-          <section id="event-handler-content-attributes">
-            <h5>Event Handler Content Attributes</h5>
-            <p>
-              All MathML elements support event handler content attributes,
-              as described in  <a data-cite="HTML#event-handler-contentattributes">event handler content attributes</a> in HTML.
-            </p>
-            <p>
-              All event handler content attributes
-              <a data-cite="HTML#event-handlers-on-elements,-document-objects,-and-window-objects">noted by HTML as being supported by all HTMLElements</a>
-              are supported by all MathML elements as well, as defined in the <a href="#dom-and-javascript">MathMLElement IDL</a>.
-            </p>
-          </section>
+          <p>
+            All <a><code>MathMLLinkableElement</code></a> elements are potentially linkable with an <a><code>href</code></a> attribute.  Their default tabindex is <code>0</code>.  If their <a><code>href</code></a> contains a valid URL, their focus flag must be set unless the user agent normally provides an alternative
+            method of keyboard traversal of links, and they appear in the
+            sequential focus order.
+          </p>
+          <p>
+            The contents of embedded <a><code>&lt;math&gt;</code></a> elements
+            (including HTML elements inside token elements),
+            contribute to the sequential focus order of the containing owner HTML
+            document (combined sequential focus order).
+          </p>
         </section>
-        <section id="legacy-mathml-style-attributes">
-          <h4>Legacy MathML Style Attributes</h4>
-          <p>
-            The
-            <dfn><code>mathcolor</code></dfn>
-            and
-            <dfn><code>mathbackground</code></dfn>
-            attributes, if present, must
-            have a value that is a <a>color</a>.
-            The <code>mathcolor</code> property describes the foreground fill color of
-            an MathML text, bars etc and the background color of an element.
-            They are mapped to the
-            <a data-cite="CSS-COLOR-3#foreground"><code>color</code></a> and
-            <a data-cite="CSS-BACKGROUNDS-3#the-background-color"><code>background-color</code></a> CSS properties.
-          </p>
-          <p>
-            The
-            <dfn><code>mathsize</code></dfn>
-            attribute, if present, must
-            have a value that is a valid <a>length-percentage</a>.
-            The <code>mathsize</code> property indicates indicates the desired height
-            of glyphs in math formulas but also scale other parts (spacing, shifts,
-            line thickness of bars etc) accordingly.
-            It is mapped to the CSS property
-            <a><code>font-size</code></a>
-            and the <code>mathsize</code> values are interpreted according to the
-            definition in [[CSS-FONTS-4]].
-          </p>
-          <div class="note">
-		    The above attributes are implemented for compatibility with full MathML. Authors whose only target is MathML Core are encouraged to use CSS for styling.
-          </div>
-        </section>
-        <section id="the-mathvariant-attribute">
-          <h4>The <code>mathvariant</code> attribute</h4>
-          <p>
-            The
-            <dfn><code>mathvariant</code></dfn>
-            attribute,
-            if present, must be an
-            <a data-cite="INFRA#ascii-case-insensitive">ASCII case-insensitive</a>
-            match to one of:
-            <code>normal</code>,
-            <code>bold</code>,
-            <code>italic</code>,
-            <code>bold-italic</code>,
-            <code>double-struck</code>,
-            <code>bold-fraktur</code>,
-            <code>script</code>,
-            <code>bold-script</code>,
-            <code>fraktur</code>,
-            <code>sans-serif</code>,
-            <code>bold-sans-serif</code>,
-            <code>sans-serif-italic</code>,
-            <code>sans-serif-bold-italic</code>,
-            <code>monospace</code>,
-            <code>initial</code>,
-            <code>tailed</code>,
-            <code>looped</code>, or
-            <code>stretched</code>.
-          </p>
-          <p>
-            The <code>mathvariant</code> attribute defines logical classes of token
-            elements. Each class provides a collection of typographically-related
-            symbolic tokens with specific meaning within a given mathematical
-            expression.
-            For <code>mathvariant</code> values other than <code>normal</code>,
-            this is done by using glyphs of
-            Unicode's Mathematical Alphanumeric Symbols.
-          </p>
-          <p>
-            Hence, the <code>mathvariant</code> attribute
-            is mapped to new values of the CSS property
-            <a><code>text-transform</code></a>.
-            More precisely, <code>normal</code> is mapped to <code>none</code>
-            while all the other values the corresponding CSS value with the extra
-            <code>math-</code> prefix.
-          </p>
-          <div class="note">
-		        <code>mathvariant</code> values other than <code>normal</code>
-            are implemented for compatibility with full MathML and legacy editors that can't access characters in Plane 1 of Unicode. Authors are encouraged to use the corresponding Unicode characters.
-            The <code>normal</code> value is still important to cancel automatic
-            italic of the <a><code>&lt;mi&gt;</code></a> element.
-          </div>
-          <div class="issue" data-number="61">
-            Consider a new script style to distinguish Chancery and Spencerian?
-          </div>
-          <div class="note">
-            Unicode does not distinguish between Chancery and Spencerian style
-            for the Unicode MATHEMATICAL SCRIPT characters. However, some
-            mathematical fonts rely on <code>salt</code> or
-            <code>ssXY</code> properties from [[OPEN-FONT-FORMAT]]
-            to provide both styles. Page authors may use the
-            <a data-cite="CSS-FONTS-4#font-variant-alternates-prop"><code>font-variant-alternates</code></a> property with corresponding OpenType font features
-            to access these glyphs.
-          </div>
-        </section>
-        <section id="the-displaystyle-and-scriptlevel-attributes">
-          <h4>The <code>displaystyle</code> and <code>scriptlevel</code> attributes</h4>
-          <p>
-            The
-            <dfn><code>displaystyle</code></dfn>
-            attribute, if present, must have a value that is a <a>boolean</a>.
-            It is mapped to the CSS property <a><code>math-style</code></a>.
-            More precisely,  <code>true</code> is mapped to <code>display</code> and
-            <code>false</code> to  <code>inline</code>.
-            This attribute indicate whether formulas should try to minimize
-            the logical height (value is <code>false</code>) or not
-            (value is <code>true</code>) e.g. by changing the size of content or
-            the layout of scripts.
-          </p>
-          <p>
-            The
-            <dfn><code>scriptlevel</code></dfn>
-            attribute, if present, must have value
-            <code>+&lt;U&gt;</code>, <code>-&lt;U&gt;</code> or <code>&lt;U&gt;</code>
-            where <code>&lt;U&gt;</code> is an
-            <a>unsigned-integer</a>.
-            If the <a>mathsize</a> attribute is absent, it is
-            mapped to the <a><code>font-size</code></a> property.
-            More precisely,
-            <code>+&lt;U&gt;</code>, <code>-&lt;U&gt;</code> and
-            <code>&lt;U&gt;</code>
-            are respectively mapped to
-            <code>scriptlevel(add(&lt;U&gt;))</code>
-            <code>scriptlevel(add(&lt;-U&gt;))</code>
-            and <code>scriptlevel(&lt;U&gt;)</code>.
-          </p>
-          <p>
-            <a><code>displaystyle</code></a> and <a><code>scriptlevel</code></a> values
-            are automatically adjusted within MathML elements.
-            To fully implement these attributes, additional CSS properties must be
-            specified in the user agent stylesheet
-            as described in <a href="#user-agent-stylesheet"></a>.
-          </p>
-          <div class="note">
-            T<sub>E</sub>X's <code>\displaystyle</code>, <code>\textstyle</code>,
-            <code>\scriptstyle</code>, and <code>\scriptscriptstyle</code> correspond
-            to <a><code>displaystyle</code></a> and <a><code>scriptlevel</code></a> as
-            <code>true</code> and <code>0</code>,
-            <code>false</code> and <code>0</code>,
-            <code>false</code> and <code>1</code>,
-            and <code>false</code> and 2, respectively.
-          </div>
-        </section>
-      </section>
-      <section id="the-top-level-math-element">
-        <h3>The Top-Level <code>&lt;math&gt;</code> Element</h3>
-        <p>MathML specifies a single top-level or root
-          <dfn><code>&lt;math&gt;</code></dfn> element, which encapsulates each
-          instance of MathML markup within a document. All other MathML content
-          must be contained in a <code>&lt;math&gt;</code> element.
-        </p>
-        <p>
-          The <code>&lt;math&gt;</code>
-          element accepts the attributes described
-          in <a href="#global-attributes"></a> as well as the
-          following attribute:
-        </p>
-        <ul>
-          <li><a>display</a></li>
-        </ul>
-        <p>
-          The
-          <dfn><code>display</code></dfn>
-          attribute, if present,
-          must be an
-          <a data-cite="INFRA#ascii-case-insensitive">ASCII case-insensitive</a>
-          match
-          to <code>block</code> or <code>inline</code>.
-          To fully implement this attribute, additional CSS properties must be
-          specified in the user agent stylesheet
-          as described in <a href="#user-agent-stylesheet"></a>.
-        </p>
-        <div class="issue" data-number="56">Improve layout description. Since
-          the <code>math</code> element is already <code>inline</code> or
-          <code>block</code> display, it should probably generate an anonymous
-          mrow-like box container?
-        </div>
-        <p>
-          The layout algorithm of the <code>&lt;math&gt;</code> element
-          is the same as the <a><code>&lt;mrow&gt;</code></a> element. User agents must
-          ensure correct baseline alignment, centering, sizing etc of the
-          <code>&lt;math&gt;</code> element.
-        </p>
-        <div class="note">
-          T<sub>E</sub>X's display mode <code>$...$</code>
-          and inline mode <code>$...$</code> correspond to
-          <code>display="block"</code> and <code>display="inline"</code>
-          respectively.
-        </div>
-        <p>Because good mathematical rendering requires use of mathematical
-          fonts, the
-          <a href="#user-agent-stylesheet">user agent stylesheet</a>
-          should set the
-          <a data-cite="CSS-FONTS-4#font-family-prop"><code>font-family</code></a>
-          to the
-          <a data-cite="CSS-FONTS-4#valdef-font-family-math"><code>math</code></a>
-          value on the <code>&lt;math&gt;</code> element instead of inheriting
-          it.
-        </p>
-      </section>
-      <section id="linkable-math-elements">
-        <h3><dfn>MathML Hyperlink Elements</dfn></h3>
-        <p>All <a href="#token-elements">token elements</a> and the <a href="#horizontally-group-sub-expressions-mrow">mrow</a> grouping element are potentially linkable and may contain an <code>href</code> attribute.  They are the MathML equivalents of HTML's <a data-cite="html#the-a-element">a</a> and must follow all of the same criteria laid out for links there.</p>
       </section>
     </section>
     <section class="normative">
