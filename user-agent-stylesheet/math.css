@@ -9,7 +9,6 @@ math {
 }
 math[display="block" i] {
   display: math;
-  text-align: center;
   math-style: display;
 }
 math[display="inline" i] {

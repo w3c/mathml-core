@@ -269,21 +269,58 @@
             <a data-cite="INFRA#ascii-case-insensitive">ASCII case-insensitive</a>
             match
             to <code>block</code> or <code>inline</code>.
-            To fully implement this attribute, additional CSS properties must be
-            specified in the user agent stylesheet
-            as described in <a href="#user-agent-stylesheet"></a>.
+            The user agent stylesheet
+            described in <a href="#user-agent-stylesheet"></a>
+            contains rules for this attribute that affect the
+            default values for the <a><code>display</code></a>
+            (<code>math</code> or <code>inline-math</code>)
+            and <a><code>math-style</code></a>
+            (<code>block</code> or <code>inline</code>) properties.
+            If the <code>display</code>
+            attribute is absent or has an invalid value, the User Agent
+            stylesheet treats it the same as <code>inline</code>.
           </p>
           <p>
-            The layout algorithm of the <code>&lt;math&gt;</code> element
-            is the same as the <a><code>&lt;mrow&gt;</code></a> element. User agents must
-            ensure correct baseline alignment, centering, sizing etc of the
-            <code>&lt;math&gt;</code> element.
+            If the element does not have its computed
+            <a><code>display</code> property</a> equal to
+            <code>math</code> or <code>inline-math</code>
+            then it is laid out according to the CSS specification where
+            the corresponding value is described.
+            Otherwise the layout algorithm of the
+            <a><code>&lt;mrow&gt;</code></a> element is used to produce a
+            box. That MathML box is used as the content for the layout of
+            the element, as described by CSS for <code>display: block</code>
+            (if the computed value is <code>math</code>) or
+            <code>display: inline</code>
+            (if the computed value is <code>inline-math</code>).
+            Additionally, if the computed
+            <a><code>display</code> property</a> is equal to
+            <code>math</code> then that MathML box is rendered horizontally
+            centered within the content box.
           </p>
           <div class="note">
             T<sub>E</sub>X's display mode <code>$...$</code>
             and inline mode <code>$...$</code> correspond to
             <code>display="block"</code> and <code>display="inline"</code>
             respectively.
+          </div>
+          <div class="example" id="math-example">
+            <p>In the following example, a <a>&lt;math&gt;</a> formula
+              is rendered in display mode on a new line and taking full width,
+              with the math content centered within the container:</p>
+            <pre data-include="examples/example-math-display-block.html"
+                 data-include-format="text"></pre>
+            <img src="examples/example-math-display-block.png" alt="math example (display)"/>
+            <p>As a comparison, the same formula would look as follows in
+              inline mode. The formula is embedded in the paragraph of text
+              without forced line breaking.
+              The baselines specified by the layout algorithm of the
+              <a><code>&lt;mrow&gt;</code></a> are used for vertical
+              alignement. Note that
+              the middle of sum and equal symbols or fractions are all aligned,
+              but not with the alphabetical baseline of the surrounding
+              text.</p>
+            <img src="examples/example-math-display-inline.png" alt="math example (inline)"/>
           </div>
           <p>Because good mathematical rendering requires use of mathematical
             fonts, the
@@ -295,6 +332,7 @@
             value on the <code>&lt;math&gt;</code> element instead of inheriting
             it.
           </p>
+          <pre class="css" data-include="user-agent-stylesheet/math.css"></pre>
         </section>
         <section id="linkable-math-elements">
           <h4><dfn>MathML Hyperlink Elements</dfn></h4>

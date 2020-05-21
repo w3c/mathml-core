@@ -8,20 +8,25 @@
           margin: 0;
           background: #0f0;
       }
-      math {
-          background: white;
-          font-family: 'Latin Modern Math';
+      #container {
+          display: inline-block;
           font-size: 32px;
+          background: white;
           padding: 1px;
+      }
+      math {
+          font-family: 'Latin Modern Math';
       }
     </style>
   </head>
   <body>
+    <div id="container"></div>
     <script>
       var params = new URLSearchParams(window.location.search);
       if (params.has('mathBase64')) {
-          document.body.insertAdjacentHTML("beforeend",
-                                           params.get('mathBase64'));
+          document.getElementById("container").
+              insertAdjacentHTML("beforeend",
+                                 params.get('mathBase64'));
       }
     </script>
   </body>
