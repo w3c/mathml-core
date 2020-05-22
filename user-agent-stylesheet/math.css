@@ -1,5 +1,6 @@
 math {
   direction: ltr;
+  writing-mode:  horizontal-tb;
   display: inline-math;
   font-size: inherit;
   font-style: normal;
