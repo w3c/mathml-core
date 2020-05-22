@@ -1516,7 +1516,6 @@
             a symbol. This chapter uses the term "operator" to refer to
             operators in this broad sense.
           </p>
-          <div class="issue" data-number="210">Remove mo@accent?</div>
           <p>
             The <code>&lt;mo&gt;</code> element accepts the attributes described
             in <a href="#global-attributes"></a> as well as the following
@@ -1534,7 +1533,6 @@
             <li><a><code>minsize</code></a></li>
             <li><a><code>largeop</code></a></li>
             <li><a><code>movablelimits</code></a></li>
-            <li><a><code>accent</code></a></li>
           </ul>
           <p>
             This specification does not define any observable behavior that is
@@ -1647,14 +1645,12 @@
                 <code>infix</code>.
               </li>
             </ol>
-            <div class="issue" data-number="210">Remove mo@accent?</div>
             <p>
               The
               <dfn><code>stretchy</code></dfn>,
               <dfn><code>symmetric</code></dfn>,
               <dfn><code>largeop</code></dfn>,
               <dfn><code>movablelimits</code></dfn>,
-              <dfn><code>accent</code></dfn>
               properties of an <a>embellished operator</a> are
               either <code>false</code> or <code>true</code>. In the latter
               case, it
@@ -1688,7 +1684,6 @@
               <code>symmetric</code>,
               <code>largeop</code>,
               <code>movablelimits</code>,
-              <code>accent</code>,
               <code>lspace</code>,
               <code>rspace</code>,
               <code>maxsize</code>,
@@ -1718,9 +1713,8 @@
                 Otherwise, use the value <code>false</code> for
                 <code>stretchy</code>,
                 <code>symmetric</code>,
-                <code>largeop</code>,
-                <code>movablelimits</code> and
-                <code>accent</code> properties ;
+                <code>largeop</code> and
+                <code>movablelimits</code> properties ;
                 <code>0.2777777777777778em</code> for
                 <code>lspace</code> and
                 <code>rspace</code> properties ;
@@ -3573,24 +3567,20 @@
             following attributes:
           </p>
           <ul id="munderover-attributes">
-            <li><a href="#attribute-munderover-accent" class="internalDFN" data-link-type="dfn"><code>accent</code></a></li>
-            <li><a href="#attribute-munderover-accentunder" class="internalDFN" data-link-type="dfn"><code>accentunder</code></a></li>
+            <li><a><code>accent</code></a></li>
+            <li><a><code>accentunder</code></a></li>
           </ul>
           <p>
             Similarly, the <code>&lt;mover&gt;</code> element
             (respectively <code>&lt;munder&gt;</code> element) accepts the
             attribute described in <a href="#global-attributes"></a>
-            as well as the <a href="#attribute-munderover-accent"
-                              class="internalDFN"
-                              data-link-type="dfn"><code>accent</code></a>
+            as well as the <a><code>accent</code></a>
             attribute (respectively the
-            <a href="#attribute-munderover-accentunder"
-               class="internalDFN"
-               data-link-type="dfn"><code>accentunder</code></a> attribute).
+            <a><code>accentunder</code></a> attribute).
           </p>
           <p>
-            <dfn id="attribute-munderover-accent"><code>munderover@accent</code></dfn>,
-            <dfn id="attribute-munderover-accentunder"><code>munderover@accentunder</code></dfn>,
+            <dfn><code>accent</code></dfn>,
+            <dfn><code>accentunder</code></dfn>,
             attributes, if present, must have values that are <a>booleans</a>.
             User agents must implement them as described in
             <a href="#displaystyle-and-scriptlevel-in-scripts"></a>.
@@ -3813,7 +3803,9 @@
               <li>
                 Otherwise,
                 <code>UnderShift</code> is equal to <a>UnderbarVerticalGap</a>
-                if the underscript is not an accent and to zero otherwise.
+                if the <a>accentunder</a> attribute is equal to
+                <code>false</code>
+                and to zero otherwise.
                 <code>UnderExtraAscender</code> is
                 <a>UnderbarExtraDescender</a>.
               </li>
@@ -3946,8 +3938,8 @@
                 <p>
                   Otherwise, <code>OverShift</code> is equal to</p>
                 <ol>
-                  <li><a>OverbarVerticalGap</a> if the overscript is not an
-                    accent.</li>
+                  <li><a>OverbarVerticalGap</a> if the
+                    <a>accent</a> attribute is equal to <code>false</code>.</li>
                   <li>Or <a>AccentBaseHeight</a> minus the <a>line-ascent</a>
                     of the base's <a>margin box</a>
                     if this difference is nonnegative.</li>
@@ -4377,14 +4369,14 @@
             elements but the first one.
             However, an <a><code>&lt;mover&gt;</code></a> (respectively
             <a><code>&lt;munderover&gt;</code></a>)
-            element with an <a href="#attribute-munderover-accent" class="internalDFN" data-link-type="dfn"><code>accent</code></a>
+            element with an <a><code>accent</code></a>
             attribute that is an
             <a data-cite="INFRA#ascii-case-insensitive">ASCII case-insensitive</a>
             match to <code>"true"</code> does not increment scriptlevel within
             its second child (respectively third child). Similarly,
             <a><code>&lt;mover&gt;</code></a> and
             <a><code>&lt;munderover&gt;</code></a> elements
-            with an <a href="#attribute-munderover-accent" class="internalDFN" data-link-type="dfn"><code>accentunder</code></a>
+            with an <a><code>accentunder</code></a>
             attribute that is an
             <a data-cite="INFRA#ascii-case-insensitive">ASCII case-insensitive</a>
             match to <code>"true"</code> do not increment scriptlevel within
@@ -4401,7 +4393,7 @@
             <code>inline</code> on their second child.
             An <a><code>&lt;mover&gt;</code></a> and
             <a><code>&lt;munderover&gt;</code></a>
-            elements with an <a href="#attribute-munderover-accent" class="internalDFN" data-link-type="dfn"><code>accent</code></a>
+            elements with an <a><code>accent</code></a>
             attribute that is an
             <a data-cite="INFRA#ascii-case-insensitive">ASCII case-insensitive</a>
             match to <code>"true"</code> also sets <a><code>math-superscript-shift-style</code></a> to
@@ -4413,12 +4405,6 @@
             style in order to implement this behavior:
           </p>
           <pre class="css" data-include="user-agent-stylesheet/scripts.css"></pre>
-          <div class="issue" data-number="76">
-            In [[MathML3]] specification, the <a><code>scriptlevel</code></a> shouldn't be
-            incremented either if the underscript/overscript is an
-            <a>embellished operator</a> with the
-            <a><code>accent</code></a> property.
-          </div>
           <div class="note" id="scripted-elements-css-rules-on-children">
             In practice, all the children of the MathML elements described in
             this section are <a>in-flow</a> and the
