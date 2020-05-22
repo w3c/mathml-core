@@ -918,24 +918,25 @@
           <ul>
             <li>
               For the <code>&lt;math&gt;</code> root,
-              <code>inline</code>
-              if the
-
-              or <code>block</code> according to the
-              value of the <a>display</a> attribute.
+              it is equal to <code>inline-math</code> or <code>math</code>
+              according to the value of the <a>display</a> attribute.
             </li>
             <li>
               For <a href="#tabular-math">Tabular MathML elements</a>
               <a><code>&lt;mtable&gt;</code></a>,
               <a><code>&lt;mtr&gt;</code></a>,
-              <a><code>&lt;mtd&gt;</code></a> it respectively
+              <a><code>&lt;mtd&gt;</code></a> it is respectively equal to
               <code>inline-table</code>,
               <code>table-row</code> and
               <code>table-cell</code>.
             </li>
+            <li>For the all but the first children of the <a>&lt;maction&gt;</a>
+              and <a>&lt;semantics&gt;</a> elements, it is equal to
+              <code>none</code>.
+            </li>
             <li>
-              For all the other <a>MathML elements</a> it is <code>math</code>
-              or <code>inline-math</code>.
+              For all the other <a>MathML elements</a> it is equal
+              to <code>math</code>.
             </li>
           </ul>
           </p>
@@ -981,7 +982,7 @@
             writing modes that are sometimes used for math layout.
           </div>
           <p>
-            MathML boxes have several parameters in order to layout in
+            MathML boxes have several parameters in order to perform layout in
             a way that is compatible with CSS but also to take into account
             very accurate positions and spacing within math formulas.
             Each math box has the following parameters:
@@ -2324,7 +2325,7 @@
               of all the <a>in-flow</a> children's <a>margin boxes</a>.
             </p>
             <p>
-              Finally, the <a>in-flow</a> children are positioned using the following
+              The <a>in-flow</a> children are positioned using the following
               algorithm:
             </p>
             <ol>
@@ -2371,6 +2372,9 @@
                 </ol>
               </li>
             </ol>
+            <p>The <a>italic correction</a> of the content is set to the italic
+              correction of the last <a>in-flow</a> child, which is
+              the final value of <code>previous-italic-correction</code>.</p>
           </section>
         </section>
         <section id="fractions-mfrac">
