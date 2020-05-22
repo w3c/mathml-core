@@ -2156,7 +2156,11 @@
                     to <code>T</code> =
                     <code>T<sub>ascent</sub></code> +
                     <code>T<sub>descent</sub></code>.
-                    If 0 ≤ <code>minsize</code> ≤ <code>maxsize</code> then:
+                    If <code>minsize</code> &lt; 0 then set <code>minsize</code>
+                    to 0.
+                    If <code>maxsize</code> &lt; <code>minsize</code> then
+                    then set <code>maxsize</code> to <code>minsize</code>.
+                    Then 0 ≤ <code>minsize</code> ≤ <code>maxsize</code>:
                     <ul>
                       <li>
                         If <code>T</code> = 0 then set
