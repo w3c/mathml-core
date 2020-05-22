@@ -242,9 +242,21 @@
           <a>&lt;mroot&gt;</a> and <a>&lt;msqrt&gt;</a>.
         </p>
         <p>
-          The attributes defined in this specification are called
-          <dfn>MathML attributes</dfn> and have no namespace.
+          The attributes defined in this specification have no namespace
+          and are called <dfn>MathML attributes</dfn>:
         </p>
+        <ul>
+          <li><a href="#global-attributes">Global attributes</a></li>
+          <li><a href="#legacy-maction-attributes">Legacy <code>maction</code> attributes</a></li>
+          <li><a href="#mo-attributes"><code>mo</code> attributes</a></li>
+          <li><a href="#mpadded-attributes"><code>mpadded</code> attributes</a></li>
+          <li><a href="#mspace-attributes"><code>mspace</code> attributes</a></li>
+          <li><a href="#munderover-attributes"><code>munderover</code> attributes</a></li>
+          <li><a><code>encoding</code></a></li>
+          <li><a><code>display</code></a></li>
+          <li><a><code>frame</code></a></li>
+          <li><a><code>linethickness</code></a></li>
+        </ul>
         <section id="the-top-level-math-element">
           <h4>The Top-Level <code>&lt;math&gt;</code> Element</h4>
           <p>MathML specifies a single top-level or root
@@ -1436,7 +1448,7 @@
             in <a href="#global-attributes"></a> as well as the following
             attributes:
           </p>
-          <ul>
+          <ul id="mo-attributes">
             <li><a><code>form</code></a></li>
             <li><a><code>fence</code></a></li>
             <li><a><code>separator</code></a></li>
@@ -1855,7 +1867,7 @@
             in <a href="#global-attributes"></a> as well as the following
             attributes:
           </p>
-          <ul>
+          <ul id="mspace-attributes">
             <li><a href="#attribute-mspace-width" class="internalDFN" data-link-type="dfn"><code>width</code></a></li>
             <li><a href="#attribute-mspace-height" class="internalDFN" data-link-type="dfn"><code>height</code></a></li>
             <li><a href="#attribute-mspace-depth" class="internalDFN" data-link-type="dfn"><code>depth</code></a></li>
@@ -2938,7 +2950,7 @@
             in <a href="#global-attributes"></a> as well as the following
             attributes:
           </p>
-          <ul>
+          <ul id="mpadded-attributes">
             <li><a class="internalDFN" data-link-type="dfn" href="#attribute-mpadded-width"><code>width</code></a></li>
             <li><a class="internalDFN" data-link-type="dfn" href="#attribute-mpadded-height"><code>height</code></a></li>
             <li><a class="internalDFN" data-link-type="dfn" href="#attribute-mpadded-depth"><code>depth</code></a></li>
@@ -3479,7 +3491,7 @@
             described in <a href="#global-attributes"></a> as well as the
             following attributes:
           </p>
-          <ul>
+          <ul id="munderover-attributes">
             <li><a href="#attribute-munderover-accent" class="internalDFN" data-link-type="dfn"><code>accent</code></a></li>
             <li><a href="#attribute-munderover-accentunder" class="internalDFN" data-link-type="dfn"><code>accentunder</code></a></li>
           </ul>
@@ -4461,7 +4473,7 @@
           in <a href="#global-attributes"></a> as well as the following
           attributes:
         </p>
-        <ul>
+        <ul id="legacy-maction-attributes">
           <li><a><code>actiontype</code></a></li>
           <li><a><code>selection</code></a></li>
         </ul>
