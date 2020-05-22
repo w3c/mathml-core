@@ -360,41 +360,17 @@
               U+002D HYPHEN-MINUS character (-) nor
               U+002B PLUS SIGN (+).
             </dd>
-          </dl>
-          <dl>
-            <dt><dfn>unsigned-number</dfn></dt>
-            <dd>A
-              <a data-cite="CSS-VALUES-3#number-value"><code>&lt;number-value&gt;</code></a> value as defined in
-              [[CSS-VALUES-3]], whose first character is neither
-              U+002D HYPHEN-MINUS character (-) nor
-              U+002B PLUS SIGN (+).
-            </dd>
-          </dl>
-          <dl>
             <dt><dfn>length-percentage</dfn></dt>
             <dd>A
               <a data-cite="CSS-VALUES-3#typedef-length-percentage"><code>&lt;length-percentage&gt;</code></a>
               value as defined in
               [[CSS-VALUES-3]]
             </dd>
-          </dl>
-          <dl>
-            <dt><dfn>unsigned-length-percentage</dfn></dt>
-            <dd>A
-              <a><code>length-percentage</code></a>
-              whose first character is neither
-              U+002D HYPHEN-MINUS character (-) nor
-              U+002B PLUS SIGN (+).
-            </dd>
-          </dl>
-          <dl>
             <dt><dfn>color</dfn></dt>
             <dd>A
               <a data-cite="CSS-COLOR-3#colorunits"><code>&lt;color&gt;</code></a>
               value as defined in [[CSS-COLOR-3]]
             </dd>
-          </dl>
-          <dl>
             <dt><dfn>boolean</dfn></dt>
             <dd>A string that is an
               <a data-cite="INFRA#ascii-case-insensitive">ASCII case-insensitive</a>
@@ -3047,6 +3023,24 @@
             attributes, if present, must match the syntax
             <code>( "+" | "-" )? (<a><code>unsigned-length-percentage</code></a> | (<a><code>unsigned-number</code></a> "%"? ("height" | "depth"))</code>.
           </p>
+          with the following definitons:
+          <dl>
+            <dt><dfn>unsigned-number</dfn></dt>
+            <dd>A
+              <a data-cite="CSS-VALUES-3#number-value"><code>&lt;number-value&gt;</code></a> value as defined in
+              [[CSS-VALUES-3]], whose first character is neither
+              U+002D HYPHEN-MINUS character (-) nor
+              U+002B PLUS SIGN (+).
+            </dd>
+            <dt><dfn>unsigned-length-percentage</dfn></dt>
+            <dd>A
+              <a><code>length-percentage</code></a>
+              whose first character is neither
+              U+002D HYPHEN-MINUS character (-) nor
+              U+002B PLUS SIGN (+).
+            </dd>
+          </dl>
+
           <section>
             <h5>Inner box and requested parameters</h5>
             <p>
