@@ -1925,6 +1925,10 @@
                 layout algorithm of <a href="#layout-of-mtext"></a>.
               </li>
             </ol>
+            <p>If the algorithm to <a>shape a stretchy glyph</a> has been
+              used for one of the step above, then the <a>italic correction</a>
+              of the content is set to the value returned by that algorithm.
+            </p>
           </section>
         </section>
         <section id="space-mspace">
@@ -5361,25 +5365,28 @@
             <li>
               If the glyph's advance width
               (respectively height) is at least <code>T</code>
-              then use normal shaping and bounding box for that glyph and
-              exit with success.
+              then use normal shaping and bounding box for that glyph,
+              the <a>MathItalicsCorrectionInfo</a> for that glyph as
+              italic correction and exit with success.
             </li>
             <li>
               Browse the list of <code>MathGlyphVariantRecord</code> in
               <code>MathGlyphConstruction.mathGlyphVariantRecord</code>.
               If one <code>MathGlyphVariantRecord.advanceMeasurement</code>
               is at least <code>T</code> then use
-              normal shaping and bounding box for
-              <code>MathGlyphVariantRecord.variantGlyph</code>
-              and exit with success.
+              normal shaping and bounding box
+              for <code>MathGlyphVariantRecord.variantGlyph</code>,
+              the <a>MathItalicsCorrectionInfo</a> for that glyph as
+              italic correction and exit with success.
             </li>
             <li>
               If there is valid <code>GlyphAssembly</code> subtable
               then use the bounding box given by
               <a>glyph assembly width</a>,
-              <a>glyph assembly ascent</a>,
-              perform <a>shaping of the glyph assembly</a> and exit with
-              success.
+              <a>glyph assembly ascent</a>, the value
+              <code>GlyphAssembly.italicsCorrection</code> as italic
+              correction, perform <a>shaping of the glyph assembly</a> and
+              exit with success.
             </li>
             <li>If none of the stretch option above allowed to cover the target
               size <code>T</code>, then choose last one that was tried and exit
