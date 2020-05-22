@@ -1,0 +1,14 @@
+<script>
+  function ModifyMath(mi) {
+      mi.style.color = 'blue';
+      mi.textContent = 'β';
+  }
+</script>
+<math>
+  <mrow>
+    <mfrac>
+      <mi style="color: red" onclick="ModifyMath(this)">α</mi>
+      <mn>2</mn>
+    </mfrac>
+  </mrow>
+</math>

@@ -465,13 +465,23 @@
             attribute, if present,
             must be an
             <a data-cite="INFRA#ascii-case-insensitive">ASCII case-insensitive</a> match
-            to <code>ltr</code> or <code>ltr</code>.
+            to <code>ltr</code> or <code>rtl</code>.
             It is mapped to the
             <a data-cite="CSS-WRITING-MODES-3#direction"><code>direction</code></a>
             CSS property.
             This attribute is used to set the directionality of math formulas, which is
             often <code>rtl</code> in Arabic speaking world.
           </p>
+          <div class="example" id="dir-example">
+            <p>
+              In the following example, the <a>dir</a> attribute
+              is used to render "𞸎 plus 𞸑 raised to the power of
+              (٢ over, 𞸟 plus ١)" from right-to-left.
+            </p>
+            <pre data-include="examples/example-dir.html"
+                 data-include-format="text"></pre>
+            <img src="examples/example-dir.png" alt="dir example"/>
+          </div>
           <p id="event-handler-content-attributes">
             All MathML elements support event handler content attributes,
             as described in  <a data-cite="HTML#event-handler-contentattributes">event handler content attributes</a> in HTML.
@@ -559,6 +569,16 @@
             while all the other values the corresponding CSS value with the extra
             <code>math-</code> prefix.
           </p>
+          <div class="example" id="mathvariant-example">
+            <p>
+              In the following example, the <a>mathvariant</a> attribute
+              is used to render different A letters. Note that by default
+              variables use mathematical italic.
+            </p>
+            <pre data-include="examples/example-mathvariant.html"
+                 data-include-format="text"></pre>
+            <img src="examples/example-mathvariant.png" alt="mathvariant example"/>
+          </div>
           <div class="note">
 	    <code>mathvariant</code> values other than <code>normal</code>
             are implemented for compatibility with full MathML and legacy editors that can't access characters in Plane 1 of Unicode. Authors are encouraged to use the corresponding Unicode characters.
@@ -587,7 +607,7 @@
             It is mapped to the CSS property <a><code>math-style</code></a>.
             More precisely,  <code>true</code> is mapped to <code>display</code> and
             <code>false</code> to  <code>inline</code>.
-            This attribute indicate whether formulas should try to minimize
+            This attribute indicates whether formulas should try to minimize
             the logical height (value is <code>false</code>) or not
             (value is <code>true</code>) e.g. by changing the size of content or
             the layout of scripts.
@@ -616,6 +636,22 @@
             specified in the user agent stylesheet
             as described in <a href="#user-agent-stylesheet"></a>.
           </p>
+          <div class="example" id="displaystyle-scriptlevel-example">
+            <p>
+              In this example, a <a>&lt;munder&gt;</a>
+              element is used to attach a
+              script "A" attached to a base "∑". By default, the summation
+              symbol is rendered with the font-size inherited from its
+              parent and the A as a scaled down subscript.
+              If <a>displaystyle</a> is true, the summation symbol is drawn
+              bigger and the "A" becomes an underscript.
+              If <a>scriptlevel</a> is reset to 0 on the "A", then it will
+              use the same font-size as the top-level <code>math</code> root.
+            </p>
+            <pre data-include="examples/example-displaystyle-scriptlevel.html"
+                 data-include-format="text"></pre>
+            <img src="examples/example-displaystyle-scriptlevel.png" alt="displaystyle-scriptlevel example"/>
+          </div>
           <div class="note">
             T<sub>E</sub>X's <code>\displaystyle</code>, <code>\textstyle</code>,
             <code>\scriptstyle</code>, and <code>\scriptscriptstyle</code> correspond
@@ -656,6 +692,22 @@
             identified by the
             <a data-cite="INFRA#mathml-namespace">MathML namespace</a>.
           </p>
+          <div class="example" id="html-svg-example">
+            <p>
+              In this example, inline MathML and SVG elements are used inside
+              a HTML document. SVG elements <code>&lt;switch&gt;</code> and
+              <code>&lt;foreignObject&gt;</code> (with
+              proper <code>&lt;requiredExtensions&gt;</code>) are used to
+              embed a MathML formula with a text fallback, inside a diagram.
+              HTML <code>input</code> element is used within the
+              <a>&lt;mtext&gt;</a>
+              include an interactive input field inside a mathematical
+              formula.
+            </p>
+            <pre data-include="examples/example-html-svg.html"
+                 data-include-format="text"></pre>
+            <img src="examples/example-html-svg.png" alt="html-svg example"/>
+          </div>
           <div class="note">
             <ul>
               <li>
@@ -699,6 +751,16 @@
             They must follow the computation rule for
             <a data-cite="CSS-DISPLAY-3#unbox-mathml">display: contents</a>.
           </p>
+          <div class="example" id="style-example">
+            <p>
+              In this example, the MathML formula inherits the CSS color of its
+              parent and uses the <code>font-family</code> specified via the
+              <a>style</a> attribute.
+            </p>
+            <pre data-include="examples/example-style.html"
+                 data-include-format="text"></pre>
+            <img src="examples/example-style.png" alt="style example"/>
+          </div>
           <p>
             All documents containing <a>MathML Core elements</a> must include
             CSS rules described in <a href="#user-agent-stylesheet"></a>
@@ -777,6 +839,16 @@
             corresponding MathML
             <a href="#global-attributes">content attribute</a>.
           </p>
+          <div class="example" id="dom-idl-example">
+            <p>
+              In the following example, a MathML formula is used to render
+              the fraction "α over 2". When clicking the red α, it is changed
+              into a blue β.
+            </p>
+            <pre data-include="examples/example-dom-idl.html"
+                 data-include-format="text"></pre>
+            <img src="examples/example-dom-idl.png" alt="dom-idl example"/>
+          </div>
           <p>
             All of the nodes representing <a>MathML Hyperlink Elements</a> in the DOM must implement, and expose to scripts the following <dfn><code>MathMLLinkableElement</code></dfn> interface.
           </p>

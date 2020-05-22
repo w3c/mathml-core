@@ -16,6 +16,7 @@ def generateScreenShot(name):
         os.path.dirname(os.path.realpath(sys.argv[0])),
         quote(example.read())
     )
+    print("Opening %s..." % url)
     image = name.replace(".html", ".png")
     subprocess.run([CHROMIUM_PATH,
                     "--headless",
