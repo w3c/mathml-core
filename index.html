@@ -4777,18 +4777,28 @@
           </tbody>
         </table>
         <p>
-          If the value of <code>math-style</code> is <code>inline</code>, the math
-          layout on descendants should try to minimize the
-          <a data-cite="CSS-WRITING-MODES-3#extent">logical height</a>.
-          This includes how
-          <a><code>font-size</code></a>
-          is changed when its specified value is
-          <code>scriptlevel(auto)</code> as well
-          miscelleanous layout rules described in details in
-          <a href="#presentation-markup"></a>.
-          If the value of <code>math-style</code> is <code>display</code>, the math
-          layout should not take such constraints into consideration.
+          When <code>math-style</code> is <code>inline</code>,
+          the math layout on descendants try to minimize the
+          <a data-cite="CSS-WRITING-MODES-3#extent">logical height</a> by
+          applying the following rules:
         </p>
+        <ul>
+          <li>The <a><code>font-size</code></a> is scaled down when
+            <code>scriptlevel(auto)</code> is specified
+            (default for <a>&lt;mfrac&gt;</a>)
+            as described in <a href="#the-math-script-level-property"></a>.</li>
+          <li>Operators with the <a>largeop</a> property are actually
+            not drawn bigger as described in
+            <a href="#layout-of-operators"></a>.</li>
+          <li>Under/over scripts attached to an operator with
+            the <a>movablelimits</a> property are actually drawn as sub/super
+            scripts as described in <a href="#children-of-munder-mover-munderover"></a>.</li>
+          <li>Smaller vertical gaps and shifts from the <a href="#opentype-math-table">OpenType MATH table</a> are used for fractions and radicals,
+            as described in
+            <a href="#fraction-with-nonzero-line-thickness"></a>,
+            <a href="#fraction-with-zero-line-thickness"></a> and
+            <a href="#radical-symbol"></a>.</li>
+        </ul>
       </section>
       <section id="the-math-superscript-shift-style">
         <h3>The <code>math-superscript-shift-style</code> property</h3>
