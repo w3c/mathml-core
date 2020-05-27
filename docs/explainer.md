@@ -128,12 +128,12 @@ Here is a brief rundown of what those elements _are_...
 * Layout/Relationship elements `mrow`(for grouping sub-expressions), `mfrac` (for fractions and fraction-like objects such as binomial coefficients and Legendre symbols), `msqrt` and `mroot` for radicals
 * `mstyle` (<a href="#a-note-on-legacy-compat-and-following-the-platform">legacy compat</a>, deprecated - just maps to css)
 * `merror` (<a href="#a-note-on-legacy-compat-and-following-the-platform">legacy compat</a> - displays its contents as an ”error message”. The intent of this element is to provide a standard way for programs that generate MathML from other input to report syntax errors in their input.)
+* `maction` (<a href="#a-note-on-legacy-compat-and-following-the-platform">legacy compat</a>, deprecated - just use JavaScript/CSS instead).
 * `mpadded` - a row-like grouping container for modifying its position and bounds. (<a href="#a-note-on-legacy-compat-and-following-the-platform">legacy compat</a>, attributes map to CSS, although attributes are more natural for mathematical layout)
 * `mphantom` - a co-evolutionary/<a href="#a-note-on-legacy-compat-and-following-the-platform">legacy compat</a>, row-like container that just adds a UA style that maps to visibility: hidden;
-* `menclose` - a row-like element for various types of 'enclosure' renderings (see examples at  https://developer.mozilla.org/en-US/docs/Web/MathML/Element/menclose)
 * 3 elements about subscripts and superscripts `msub`, `msup` and `msubsup`
 * 3 elements about underscripts and overscripts `munder`, `mover` and `munderover`
-* 1 element about prescripts and tensor indexes (`mmultiscripts`)`
+* 3 elements about prescripts and tensor indexes (`mmultiscripts`, `none`, `mprescripts`)`
 * 3 elements about tabular math such as matricies and determinants (`mtable`, `mtr` and `mtd`)
 
 
