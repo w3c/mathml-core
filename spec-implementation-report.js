@@ -5,6 +5,8 @@
   Massage each engines data into a nice indexed
   result set (testPath:result) for quick reference
 */
+
+
 async function getBrowserWPTData(browser) {
     let ret = {
         engine: browser,
@@ -35,9 +37,9 @@ async function getBrowserWPTData(browser) {
 */
 let wptDataPromise = Promise.all([
     getBrowserWPTData('blink'),
-    getBrowserWPTData('blink-no-mathml'),
-    getBrowserWPTData('gecko'),
-    getBrowserWPTData('webkit')
+    getBrowserWPTData('chrome'),
+    getBrowserWPTData('firefox'),
+    getBrowserWPTData('safari')
 ])
 
 /*
@@ -79,10 +81,10 @@ async function initReport() {
 async function loadWebPlaformTestsResults() {
     let wptData = await wptDataPromise;
     let ENGINE_LOGOS = {
-        'gecko': "https://test.csswg.org/harness/img/gecko.svg",
-        'webkit': "https://test.csswg.org/harness/img/webkit.svg",
+        'firefox': "https://test.csswg.org/harness/img/gecko.svg",
+        'safari': "https://test.csswg.org/harness/img/webkit.svg",
         'blink': "https://pbs.twimg.com/profile_images/1576817016/igalia_400x400.png",
-        'blink-no-mathml': "https://test.csswg.org/harness/img/blink.svg",
+        'chrome': "https://test.csswg.org/harness/img/blink.svg",
     };
 
     document.querySelectorAll('.respec-tests-details').forEach(el => {
