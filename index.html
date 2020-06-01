@@ -2126,6 +2126,26 @@
             consisting of one or more <code>&lt;mo&gt;</code> elements acting as
             "operators" on one or more other expressions that are their "operands".
           </p>
+          <div class="example" id="mrow-example">
+            <p>In the following example, <a>&lt;mrow&gt;</a> is used to
+              group a sum "1 + 2/3" as a fraction numerator (first child
+              of <a>&lt;mfrac&gt;</a>) and to construct a fenced expression
+              (first child of <a>&lt;msup&gt;</a>) that is raised to the power of 5.
+              Note that <a>&lt;mrow&gt;</a> alone does not add visual fences
+              around its grouped content, one has to explicitly specify them
+              using the <a>&lt;mo&gt;</a> element.
+            </p>
+            <p>
+              Within the <a>&lt;mrow&gt;</a> elements, one can see that
+              vertical alignment of children (according to the
+              <a>alphabetic baseline</a> or the <a>mathematical baseline</a>)
+              is properly performed, fences are vertically stretched and
+              spacing around the binary + operator automatically calculated.
+            </p>
+            <pre data-include="examples/example-mrow.html"
+                 data-include-format="text"></pre>
+            <img src="examples/example-mrow.png" alt="mrow example"/>
+          </div>
           <p>
             The <code>&lt;mrow&gt;</code> element accepts the attributes described
             in <a href="#global-attributes"></a>. An <code>&lt;mrow&gt;</code>
