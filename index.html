@@ -2156,7 +2156,7 @@
                 operators along the <a>block axis</a></figcaption>
             </figure>
             <p>
-              The <dfn>Algorithm for stretching operators along the block axis</dfn>
+              The <dfn>algorithm for stretching operators along the block axis</dfn>
               consists in the following steps:
             </p>
             <ol>
@@ -2171,14 +2171,20 @@
                 without any stretch size constraint
                 and stop.
               </li>
+              <li>Otherwise,
+                split the list of <a>in-flow</a> children into a first list
+                <code>L<sub>ToStretch</sub></code> containing
+                <a>embellished operators</a> with
+                a <a>stretchy</a> property and block <a>stretch axis</a> ;
+                and a second list <code>L<sub>NotToStretch</sub></code>.
+              </li>
               <li>
-                Layout all the <a>in-flow</a> children of the
-                <code>&lt;mrow&gt;</code> except the
-                <a>embellished operators</a> that have
-                the <a>stretchy</a> property and block <a>stretch axis</a>.
-                If this step results in all the <a>in-flow</a> children
-                being laid out, then
-                stop.
+                Perform layout without any stretch size constraint on
+                all the items of <code>L<sub>NotToStretch</sub></code>.
+                If <code>L<sub>ToStretch</sub></code> is empty then stop.
+                If <code>L<sub>NotToStretch</sub></code> is empty, perform
+                layout with stretch size constraint 0 on
+                all the items of <code>L<sub>ToStretch</sub></code>.
               </li>
               <li>
                 Calculate the unconstrained target sizes
@@ -2189,14 +2195,12 @@
                 have been laid out in the previous step.
               </li>
               <li>
-                For each <a>in-flow</a> child of <code>&lt;mrow&gt;</code>
-                that is an <a>embellished operator</a>
-                with the <a>stretchy</a> property and block <a>stretch axis</a>,
-                layout the child with <a>block stretch size constraint</a>
+                Layout or relayout all the elements of
+                <code>L<sub>ToStretch</sub></code> with
+                <a>block stretch size constraint</a>
                 <code>(U<sub>ascent</sub>, U<sub>descent</sub>)</code>.
               </li>
             </ol>
-          <div class="issue" data-number="124">Layout of container with only stretchy <a>in-flow</a> children</div>
           </section>
           <section id="layout-of-mrow">
             <h5>Layout of <code>&lt;mrow&gt;</code></h5>
@@ -3655,7 +3659,6 @@
           <section>
             <h4>Algorithm for stretching operators along the inline axis</h4>
             <div class="issue" data-number="130">Avoid underestimation of min/max stretchy horizontal operators</div>
-            <div class="issue" data-number="124">Layout of container with only stretchy <a>in-flow</a> children</div>
             <p>
               The <dfn>algorithm for stretching operators along the inline
                 axis</dfn>
@@ -3671,10 +3674,11 @@
                 with the same stretch size constraint.
               </li>
               <li>
-                Split the list remaining <a>in-flow</a> children into a first list
+                Split the list of <a>in-flow</a> children that have not been
+                laid out yet into a first list
                 <code>L<sub>ToStretch</sub></code> containing
                 <a>embellished operators</a> with
-                a <a>stretchy</a> property and inline <a>stretch axis</a>
+                a <a>stretchy</a> property and inline <a>stretch axis</a> ;
                 and a second list <code>L<sub>NotToStretch</sub></code>.
               </li>
               <li>
