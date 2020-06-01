@@ -8,7 +8,7 @@ async function fetchWPTFYITestResults(browser) {
 }
 
 async function fetchIgaliaBuildWebPlatformTestResults(browser) {
-    let response = await fetch(`https://build-chromium.igalia.com/mathml/wpt/blink-latest.json`);
+    let response = await fetch(`https://build-chromium.igalia.com/mathml/wpt/${browser}-latest.json`);
     return await response.json();
 }
 

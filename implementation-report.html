@@ -45,7 +45,7 @@
           return `${string.charAt(0).toUpperCase()}${string.slice(1)}`;
       }
       async function loadJSON(browser, callback) {
-          let json = await fetchWebPlatformTestResults(browser);
+          let json = await fetchIgaliaBuildWebPlatformTestResults(browser);
           callback(browser, json);
       }
       function getOutputDiv(browser) {
