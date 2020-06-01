@@ -1,9 +1,0 @@
-mtable[frame="none" i] {
-  border: none;
-}
-mtable[frame="solid" i] {
-  border: solid thin;
-}
-mtable[frame="dashed" i] {
-  border: dashed thin;
-}
