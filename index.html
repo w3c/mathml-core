@@ -1788,7 +1788,7 @@
                         algorithm
                         to <a>shape a stretchy glyph</a>
                         stretched to <a>inline dimension</a>
-                        <code>T</code> and
+                        <code>T<sub>inline</sub></code> and
                         at position determined by the previous box metrics.
                       </li>
                     </ol>
@@ -1813,10 +1813,78 @@
                       <li>
                         If there is not any
                         <a>block stretch size constraint</a>
-                        <code>(T<sub>ascent</sub>, T<sub>descent</sub>)</code>
+                        <code>(U<sub>ascent</sub>, U<sub>descent</sub>)</code>
                         then
                         fallback to the
                         layout algorithm of <a href="#layout-of-mtext"></a>.
+                      </li>
+                      <li>If the operator has the <a>symmetric</a> property
+                        then set the target sizes
+                        <code>T<sub>ascent</sub></code> and
+                        <code>T<sub>descent</sub></code> to
+                        <code>S<sub>ascent</sub></code> and
+                        <code>S<sub>descent</sub></code> respectively:
+                        <ul>
+                          <li>
+                            <code>S<sub>ascent</sub></code> =
+                            max(
+                            <code>U<sub>ascent</sub></code> − <a>AxisHeight</a>,
+                            <code>U<sub>descent</sub></code> + <a>AxisHeight</a>
+                            ) + <a>AxisHeight</a>
+                          </li>
+                          <li>
+                            <code>S<sub>descent</sub></code> =
+                            max(
+                            <code>U<sub>ascent</sub></code> − <a>AxisHeight</a>,
+                            <code>U<sub>descent</sub></code> + <a>AxisHeight</a>
+                            ) − <a>AxisHeight</a>
+                          </li>
+                        </ul>
+
+                        Otherwise set them to
+                        <code>U<sub>ascent</sub></code> and
+                        <code>U<sub>descent</sub></code> respectively.
+                      </li>
+                      <li>
+                        Let <code>minsize</code> and <code>maxsize</code>
+                        be the <a>minsize</a> and <a>maxsize</a> properties on the
+                        operator. Percentage values are intepreted relative
+                        to <code>T</code> =
+                        <code>T<sub>ascent</sub></code> +
+                        <code>T<sub>descent</sub></code>.
+                        If <code>minsize</code> &lt; 0 then set <code>minsize</code>
+                        to 0.
+                        If <code>maxsize</code> &lt; <code>minsize</code> then
+                        then set <code>maxsize</code> to <code>minsize</code>.
+                        Then 0 ≤ <code>minsize</code> ≤ <code>maxsize</code>:
+                        <ul>
+                          <li>
+                            If <code>T</code> = 0 then set
+                            <code>T<sub>ascent</sub></code> and
+                            <code>T<sub>descent</sub></code>
+                            to <code>minsize</code>/2.
+                          </li>
+                          <li>
+                            Otherwise, if
+                            0 &lt; <code>T</code> &lt; <code>minsize</code>
+                            then first
+                            multiply
+                            <code>T<sub>ascent</sub></code>
+                            by <code>minsize</code> / <code>T</code>
+                            and then set <code>T<sub>descent</sub></code>
+                            to <code>minsize</code> -
+                            <code>T<sub>ascent</sub></code>.
+                          </li>
+                          <li>
+                            Otherwise, if <code>maxsize</code> &lt; <code>T</code>
+                            then first multiply
+                            <code>T<sub>ascent</sub></code> by
+                            <code>maxsize</code> / <code>T</code> and
+                            then set <code>T<sub>descent</sub></code>
+                            to <code>maxsize</code> −
+                            <code>T<sub>ascent</sub></code>.
+                          </li>
+                        </ul>
                       </li>
                       <li>
                         The <a>inline size</a>,
@@ -1843,10 +1911,11 @@
                       </li>
                       <li>
                         The painting of the operator is performed by the
-                        algorithm
-                        to <a>shape a stretchy glyph</a>
-                        stretched to <a>block dimension</a> <code>T</code> and
-                        at position determined by the previous box metrics
+                        algorithm to <a>shape a stretchy glyph</a>
+                        stretched to <a>block dimension</a>
+                        <code>T<sub>ascent</sub></code> +
+                        <code>T<sub>descent</sub></code>
+                        and at position determined by the previous box metrics
                         shifted by Δ towards the <a>line-over</a>.
                       </li>
                     </ol>
@@ -1901,6 +1970,11 @@
               used for one of the step above, then the <a>italic correction</a>
               of the content is set to the value returned by that algorithm.
             </p>
+            <div class="note">
+              If <code>maxsize</code> is equal to its default value ∞
+              then <code>minsize ≤ maxsize</code> is satisfied but
+              <code>maxsize &lt; T</code> is not.
+            </div>
           </section>
         </section>
         <section id="space-mspace">
@@ -2115,94 +2189,13 @@
                 have been laid out in the previous step.
               </li>
               <li>
-                Calculate the symmetric target sizes:
-                <ul>
-                  <li>
-                    <code>S<sub>ascent</sub></code> =
-                    max(
-                    <code>U<sub>ascent</sub></code> − <a>AxisHeight</a>,
-                    <code>U<sub>descent</sub></code> + <a>AxisHeight</a>
-                    ) + <a>AxisHeight</a>
-                  </li>
-                  <li>
-                    <code>S<sub>descent</sub></code> =
-                    max(
-                    <code>U<sub>ascent</sub></code> − <a>AxisHeight</a>,
-                    <code>U<sub>descent</sub></code> + <a>AxisHeight</a>
-                    ) − <a>AxisHeight</a>
-                  </li>
-                </ul>
-              </li>
-              <li>
                 For each <a>in-flow</a> child of <code>&lt;mrow&gt;</code>
                 that is an <a>embellished operator</a>
-                with the <a>stretchy</a> property and block <a>stretch axis</a>:
-                <ol>
-                  <li>
-                    If the child has the <a>symmetric</a> property
-                    then set the target sizes
-                    <code>T<sub>ascent</sub></code> and
-                    <code>T<sub>descent</sub></code> to
-                    <code>S<sub>ascent</sub></code> and
-                    <code>S<sub>descent</sub></code> respectively.
-                    Otherwise set them to
-                    <code>U<sub>ascent</sub></code> and
-                    <code>U<sub>descent</sub></code> respectively.
-                  </li>
-                  <li>
-                    Let <code>minsize</code> and <code>maxsize</code>
-                    be the <a>minsize</a> and <a>maxsize</a> properties on the
-                    child. Percentage values are intepreted relative
-                    to <code>T</code> =
-                    <code>T<sub>ascent</sub></code> +
-                    <code>T<sub>descent</sub></code>.
-                    If <code>minsize</code> &lt; 0 then set <code>minsize</code>
-                    to 0.
-                    If <code>maxsize</code> &lt; <code>minsize</code> then
-                    then set <code>maxsize</code> to <code>minsize</code>.
-                    Then 0 ≤ <code>minsize</code> ≤ <code>maxsize</code>:
-                    <ul>
-                      <li>
-                        If <code>T</code> = 0 then set
-                        <code>T<sub>ascent</sub></code> and
-                        <code>T<sub>descent</sub></code>
-                        to <code>minsize</code>/2.
-                      </li>
-                      <li>
-                        Otherwise, if
-                        0 &lt; <code>T</code> &lt; <code>minsize</code>
-                        then first
-                        multiply
-                        <code>T<sub>ascent</sub></code>
-                        by <code>minsize</code> / <code>T</code>
-                        and then set <code>T<sub>descent</sub></code>
-                        to <code>minsize</code> -
-                        <code>T<sub>ascent</sub></code>.
-                      </li>
-                      <li>
-                        Otherwise, if <code>maxsize</code> &lt; <code>T</code>
-                        then first multiply
-                        <code>T<sub>ascent</sub></code> by
-                        <code>maxsize</code> / <code>T</code> and
-                        then set <code>T<sub>descent</sub></code>
-                        to <code>maxsize</code> −
-                        <code>T<sub>ascent</sub></code>.
-                      </li>
-                    </ul>
-                  </li>
-                  <li>
-                    Layout the child with
-                    <a>block stretch size constraint</a>
-                    <code>(T<sub>ascent</sub>, T<sub>descent</sub>)</code>.
-                  </li>
-                </ol>
+                with the <a>stretchy</a> property and block <a>stretch axis</a>,
+                layout the child with <a>block stretch size constraint</a>
+                <code>(U<sub>ascent</sub>, U<sub>descent</sub>)</code>.
               </li>
             </ol>
-          <div class="note">
-            If <code>maxsize</code> is equal to its default value ∞
-            then <code>minsize ≤ maxsize</code> is satisfied but
-            <code>maxsize &lt; T</code> is not.
-          </div>
           <div class="issue" data-number="124">Layout of container with only stretchy <a>in-flow</a> children</div>
           </section>
           <section id="layout-of-mrow">
