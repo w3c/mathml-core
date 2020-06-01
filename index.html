@@ -1523,6 +1523,52 @@
             the <a href="#operator-dictionary-human">human-readable version</a>
             of the operator dictionary.
         </div>
+          <div class="example" id="mo-example">
+            <p>
+              In the following example, the <a>&lt;mo&gt;</a> element
+              is used for the binary operator +. Default spacing is symmetric
+              around that operator. A tigher spacing is used if you rely
+              on the <a><code>form</code></a> attribute to force it to be
+              treated as a prefix operator.
+              Spacing can also be specified explicitly using the
+              <a><code>lspace</code></a> and
+              <a><code>rspace</code></a> attributes.
+            </p>
+            <pre data-include="examples/example-mo-1.html"
+                 data-include-format="text"></pre>
+            <img src="examples/example-mo-1.png" alt="mo example 1"/>
+            <p>
+              Another use case is for big operator such as summation.
+              When <a>displaystyle</a> is true, such an operator are drawn
+              larger but one can change that with the <a>largeop</a> attribute.
+              When <a>displaystyle</a> is false, underscript are actually
+              rendered as subscript but one can change that with the
+              <a>movablelimits</a> attribute.
+            </p>
+            <pre data-include="examples/example-mo-2.html"
+                 data-include-format="text"></pre>
+            <img src="examples/example-mo-2.png" alt="mo example 2"/>
+            <p>Operators are also used for stretchy symbols such as fences,
+              accents, arrows etc. In the following example, the vertical arrow
+              stretches to the height of the <a>&lt;mspace&gt;</a> element.
+              One can override default stretch behavior with the
+              <a>stretchy</a> attribute e.g. to force an unstretched arrow.
+              The <a>symmetric</a> attribute allows to indicate whether
+              the operator
+              should stretchy symmetrically above and below the baseline.
+              Finally the <a>minsize</a> and <a>maxsize</a> attributes add
+              additional constraints over the stretch size.
+            </p>
+            <pre data-include="examples/example-mo-3.html"
+                 data-include-format="text"></pre>
+            <img src="examples/example-mo-3.png" alt="mo example 3"/>
+            <p>Note that the default properties of operators are
+              dictionary-based, as explained in
+              <a href="#dictionary-based-attributes"></a>. For example a binary
+              operator typically has default symmetric spacing around it while a
+              fence is generally stretchy by default.
+            </p>
+          </div>
           <section id="embellished-operators">
             <h5>Embellished operators</h5>
             <p>
