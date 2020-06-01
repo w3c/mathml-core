@@ -2990,6 +2990,7 @@
         </section>
         <section id="adjust-space-around-content-mpadded">
           <h4>Adjust Space Around Content <code>&lt;mpadded&gt;</code></h4>
+          <div class="issue" data-number="103">Can this element be simplified?</div>
           <p>
             The
             <dfn><code>&lt;mpadded&gt;</code></dfn>
@@ -3009,16 +3010,37 @@
             <li><a class="internalDFN" data-link-type="dfn" href="#attribute-mpadded-lspace"><code>lspace</code></a></li>
             <li><a class="internalDFN" data-link-type="dfn" href="#attribute-mpadded-voffset"><code>voffset</code></a></li>
           </ul>
-          <p>The
-            <dfn id="attribute-mpadded-width"><code>mpadded@width</code></dfn>,
-            <dfn id="attribute-mpadded-height"><code>mpadded@height</code></dfn>,
-            <dfn id="attribute-mpadded-depth"><code>mpadded@depth</code></dfn>,
-            <dfn id="attribute-mpadded-lspace"><code>mpadded@lspace</code></dfn>
-            and
-            <dfn id="attribute-mpadded-voffset"><code>mpadded@voffset</code></dfn>
-            if present, must
-            have a value that is a valid <a>length-percentage</a>.
+          <p>
+            The
+            <dfn id="attribute-mpadded-width"><code>mpadded@width</code></dfn> and
+            <dfn id="attribute-mpadded-lspace"><code>mpadded@lspace</code></dfn> attributes, if present, must match the syntax
+            <code>( "+" | "-" )? (<a><code>unsigned-length-percentage</code></a> | (<a><code>unsigned-number</code></a> "%"? "width"))</code>.
           </p>
+          <p>
+            The
+            <dfn id="attribute-mpadded-height"><code>mpadded@height</code></dfn>,
+            <dfn id="attribute-mpadded-depth"><code>mpadded@depth</code></dfn> and
+            <dfn id="attribute-mpadded-voffset"><code>mpadded@voffset</code></dfn>
+            attributes, if present, must match the syntax
+            <code>( "+" | "-" )? (<a><code>unsigned-length-percentage</code></a> | (<a><code>unsigned-number</code></a> "%"? ("height" | "depth"))</code>.
+          </p>
+          with the following definitons:
+          <dl>
+            <dt><dfn>unsigned-number</dfn></dt>
+            <dd>A
+              <a data-cite="CSS-VALUES-3#number-value"><code>&lt;number-value&gt;</code></a> value as defined in
+              [[CSS-VALUES-3]], whose first character is neither
+              U+002D HYPHEN-MINUS character (-) nor
+              U+002B PLUS SIGN (+).
+            </dd>
+            <dt><dfn>unsigned-length-percentage</dfn></dt>
+            <dd>A
+              <a><code>length-percentage</code></a>
+              whose first character is neither
+              U+002D HYPHEN-MINUS character (-) nor
+              U+002B PLUS SIGN (+).
+            </dd>
+          </dl>
 
           <section>
             <h5>Inner box and requested parameters</h5>
@@ -3027,7 +3049,7 @@
               of the <code>&lt;mpadded&gt;</code> element are laid out
               using the algorithm of the <a><code>&lt;mrow&gt;</code></a> element
               to produce the
-              <dfn>mpadded inner box</dfn> for the content with parameters called
+              <em>mpadded inner box</em> for the content with parameters called
               inner inline size, inner <a>line-ascent</a> and inner line-descent.
               The requested <code>&lt;mpadded&gt;</code>
               parameters are determined as follows:
@@ -3044,8 +3066,8 @@
               </li>
               <li>If the <code>width</code> (respectively <code>height</code>,
                 <code>depth</code>, <code>lspace</code>, <code>voffset</code>)
-                attribute is a
-                <a><code>length-percentage</code></a>
+                attribute is an
+                <a><code>unsigned-length-percentage</code></a>
                 then the requested width
                 (respectively height, depth, lspace, voffset)
                 is the resolved value
@@ -3053,6 +3075,41 @@
                 the inner inline size (respectively
                 inner line-ascent, inner line-descent, <code>0</code>,
                 <code>0</code>).
+              </li>
+              <li>If the <code>width</code> (respectively <code>lspace</code>) attribute
+                matches <code>"<a><code>unsigned-number</code></a>width"</code>
+                then the requested width (respectively lspace) is the number multipled by
+                the inner inline size. If instead it matches
+                <code>"<a><code>unsigned-number</code></a>%width"</code>
+                then it is the same value but divided by 100.
+              </li>
+              <li>If the <code>height</code> (respectively <code>depth</code>,
+                <code>voffset</code>) attribute
+                matches <code>"<a><code>unsigned-number</code></a>height"</code>
+                then the requested height (respectively depth, voffset) is the number
+                multipled by the inner line-ascent. If instead it matches
+                <code>"<a><code>unsigned-number</code></a>%heigth"</code>
+                then it is the same value but divided by 100.
+              </li>
+              <li>If the <code>height</code> (respectively <code>depth</code>,
+                <code>voffset</code>) attribute
+                matches <code>"<a><code>unsigned-number</code></a>depth"</code>
+                then the requested height (respectively depth, voffset) is the number
+                multipled by the inner line-descent. If instead it matches
+                <code>"<a><code>unsigned-number</code></a>%depth"</code>
+                then it is the same value but divided by 100.
+              </li>
+              <li>If the <code>width</code> (respectively <code>height</code>,
+                <code>depth</code>, <code>lspace</code>, <code>voffset</code>)
+                starts with a U+002B PLUS SIGN or U+002D HYPHEN-MINUS character,
+                then choose ε = ±1 to match the sign of that character
+                and let V be the requested width
+                (respectively height, depth, lspace, voffset)
+                obtained for the same attribute value with that character removed.
+                Then the requested width (respectively height, depth, lspace, voffset)
+                is the inner inline size (respectively inner line-ascent,
+                inner line-descent, <code>0</code>,
+                <code>0</code>) + εV.
               </li>
             </ul>
             <p>
@@ -3084,6 +3141,12 @@
               but using the <a>min-content inline size</a> (respectively <a>max-content inline size</a>) of the
               mpadded inner box instead of the "inner inline size".
             </p>
+            <div class="note">
+              The calculation of
+              <a>min-content inline size</a> and <a>max-content inline size</a>
+              are well-defined because the requested width
+              does not depend on any block metric.
+            </div>
             <p>
               The <a>inline size</a> of the content
               is the requested width calculated in
