@@ -2007,7 +2007,7 @@
           </p>
           <div class="example" id="mspace-example">
             <p>In the following example, <a>&lt;mspace&gt;</a> is used to
-              write force spacing within the formula (a 1px blue border is
+              force spacing within the formula (a 1px blue border is
               added to easily visualize the space):</p>
             <pre data-include="examples/example-mspace.html"
                  data-include-format="text"></pre>
@@ -3019,6 +3019,19 @@
             if present, must
             have a value that is a valid <a>length-percentage</a>.
           </p>
+          <div class="example" id="mpadded-example">
+            <p>In the following example, <a>&lt;mpadded&gt;</a> is used to
+              tweak spacing around a fraction
+              (a blue background is used to visualize it).
+              Without attributes, it behaves like an <a>&lt;mrow&gt;</a> but
+              the attributes allow to specify the size of the box
+              (width, height, depth) and position of the fraction within that
+              box (lspace and voffset).
+            </p>
+            <pre data-include="examples/example-mpadded.html"
+                 data-include-format="text"></pre>
+            <img src="examples/example-mpadded.png" alt="mpadded example"/>
+          </div>
 
           <section>
             <h5>Inner box and requested parameters</h5>
