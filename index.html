@@ -440,9 +440,10 @@
             must be an
             <a data-cite="INFRA#ascii-case-insensitive">ASCII case-insensitive</a> match
             to <code>ltr</code> or <code>rtl</code>.
-            It is mapped to the
+            In that case, the user agent is expected to treat the attribute as a
+            <a data-cite="HTML#presentational-hints">presentational hint</a> setting the element's
             <a data-cite="CSS-WRITING-MODES-3#direction"><code>direction</code></a>
-            CSS property.
+            property to the corresponding value.
             This attribute is used to set the directionality of math formulas, which is
             often <code>rtl</code> in Arabic speaking world.
           </p>
@@ -475,24 +476,26 @@
             <dfn><code>mathbackground</code></dfn>
             attributes, if present, must
             have a value that is a <a>color</a>.
+            In that case, the user agent is expected to treat these attributes as a
+            <a data-cite="HTML#presentational-hints">presentational hint</a> setting the element's
+            <a data-cite="CSS-COLOR-3#foreground"><code>color</code></a> and
+            <a data-cite="CSS-BACKGROUNDS-3#the-background-color"><code>background-color</code></a>
+            properties to the corresponding values.
             The <code>mathcolor</code> property describes the foreground fill color of
             an MathML text, bars etc and the background color of an element.
-            They are mapped to the
-            <a data-cite="CSS-COLOR-3#foreground"><code>color</code></a> and
-            <a data-cite="CSS-BACKGROUNDS-3#the-background-color"><code>background-color</code></a> CSS properties.
           </p>
           <p>
             The
             <dfn><code>mathsize</code></dfn>
             attribute, if present, must
             have a value that is a valid <a>length-percentage</a>.
+            In that case, the user agent is expected to treat the attribute as a
+            <a data-cite="HTML#presentational-hints">presentational hint</a> setting the element's
+            <a><code>font-size</code></a>
+            property to the corresponding value.
             The <code>mathsize</code> property indicates indicates the desired height
             of glyphs in math formulas but also scale other parts (spacing, shifts,
             line thickness of bars etc) accordingly.
-            It is mapped to the CSS property
-            <a><code>font-size</code></a>
-            and the <code>mathsize</code> values are interpreted according to the
-            definition in [[CSS-FONTS-4]].
           </p>
           <div class="note">
 	    The above attributes are implemented for compatibility with full MathML. Authors whose only target is MathML Core are encouraged to use CSS for styling.
@@ -525,6 +528,13 @@
             <code>tailed</code>,
             <code>looped</code>, or
             <code>stretched</code>.
+            In that case, the user agent is expected to treat the attribute as a
+            <a data-cite="HTML#presentational-hints">presentational hint</a> setting the element's
+            <a><code>text-transform</code></a>
+            property to the corresponding value.
+            More precisely, <code>normal</code> is mapped to <code>none</code>
+            while all the other values the corresponding CSS value with the extra
+            <code>math-</code> prefix.
           </p>
           <p>
             The <code>mathvariant</code> attribute defines logical classes of token
@@ -534,14 +544,6 @@
             For <code>mathvariant</code> values other than <code>normal</code>,
             this is done by using glyphs of
             Unicode's Mathematical Alphanumeric Symbols.
-          </p>
-          <p>
-            Hence, the <code>mathvariant</code> attribute
-            is mapped to new values of the CSS property
-            <a><code>text-transform</code></a>.
-            More precisely, <code>normal</code> is mapped to <code>none</code>
-            while all the other values the corresponding CSS value with the extra
-            <code>math-</code> prefix.
           </p>
           <div class="example" id="mathvariant-example">
             <p>
@@ -578,7 +580,10 @@
             The
             <dfn><code>displaystyle</code></dfn>
             attribute, if present, must have a value that is a <a>boolean</a>.
-            It is mapped to the CSS property <a><code>math-style</code></a>.
+            In that case, the user agent is expected to treat the attribute as a
+            <a data-cite="HTML#presentational-hints">presentational hint</a> setting the element's
+            <a><code>math-style</code></a>
+            property to the corresponding value.
             More precisely,  <code>true</code> is mapped to <code>display</code> and
             <code>false</code> to  <code>inline</code>.
             This attribute indicates whether formulas should try to minimize
@@ -593,8 +598,12 @@
             <code>+&lt;U&gt;</code>, <code>-&lt;U&gt;</code> or <code>&lt;U&gt;</code>
             where <code>&lt;U&gt;</code> is an
             <a>unsigned-integer</a>.
-            If the <a>mathsize</a> attribute is absent, it is
-            mapped to the <a><code>font-size</code></a> property.
+            In that case and if the <a>mathsize</a> attribute is absent,
+            the user agent is expected to treat the <code>scriptlevel</code>
+            attribute as a
+            <a data-cite="HTML#presentational-hints">presentational hint</a> setting the element's
+            <a><code>font-size</code></a>
+            property to the corresponding value.
             More precisely,
             <code>+&lt;U&gt;</code>, <code>-&lt;U&gt;</code> and
             <code>&lt;U&gt;</code>
