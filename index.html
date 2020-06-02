@@ -1166,16 +1166,13 @@
                 <li>
                   Calculation of offsets of child boxes within the content box
                   as
-                  well as sizes and offsets of extra graphical elements
+                  well as sizes and offsets of extra graphical items
                   (bars, radical symbol, etc).
                 </li>
                 <li>
                   Layout and positioning of <a data-cite="CSS-POSITION-3#pos-sch"><dfn>out-of-flow<df></a> child boxes.
                 </li>
               </ol>
-            </li>
-            <li>
-              Painting of extra graphical elements.
             </li>
           </ol>
           <p>
@@ -1282,7 +1279,6 @@
             any stretch size constraint.
           </p>
           <div class="issue" data-number="16">Explain how out-of-flow elements are positioned.</div>
-          <div class="issue" data-number="52">Specify whether MathML elements paint their children atomically or per-phase.</div>
           <div class="issue" data-number="45">Interpret
             width/height/inline-size/block-size?</div>
           <div class="issue" data-number="49">Define what inline percentages resolve against</div>
@@ -1290,6 +1286,19 @@
           <div class="issue" data-number="132">Expose stretch size constraint to
             the CSS Layout API?</div>
           <div class="issue" data-number="194">Review how the italic correction correction is affect by padding/border/margin</div>
+        </section>
+        <section id="stacking-contexts">
+          <h4>Stacking contexts</h4>
+          <p>MathML elements can overlap due to various spacing rules. They
+            can as well contain extra graphical items
+            (bars, radical symbol, etc).
+            A MathML element with computed style <code>display: math</code>
+            or <code>display: inline-math</code> generates a new stacking
+            context. The <a data-cite="CSS2#painting-order">painting order</a>
+            of <a>in-flow</a> children of such a MathML element
+            is exactly the same as block elements. The extra graphical
+            items are painted right before its outline.
+          </p>
         </section>
       </section>
       <section id="token-elements">
