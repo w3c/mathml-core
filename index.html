@@ -1205,8 +1205,10 @@
               </p>
               <p>
                 If the <a>content box</a> has a <a>top accent attachment</a>
-                or <a>italic correction</a> then the <a>padding box</a> has the same
-                properties, increased by the inline-start padding.
+                then the <a>padding box</a> has the same property, increased
+                by the inline-start padding. If the <a>content box</a> has an
+                <a>italic correction</a> then the <a>padding box</a> has the
+                same property, increased by the inline-end padding.
               </p>
             </li>
             <li>
@@ -1230,14 +1232,11 @@
               </p>
               <p>
                 If the <a>padding box</a> has a <a>top accent attachment</a>
-                then the <a>border box</a> has the same top accent attachment value
-                increased by the border-width of its inline-start edge.
-              </p>
-              <p>
-                If the <a>padding box</a> has an <a>italic correction</a>
-                and the border-width of the inline-end edge of the <a>border box</a>
-                is zero then the <a>border box</a> has the same <a>italic correction</a> value
-                increased by the border-width of its inline-start edge.
+                then the <a>border box</a> has the same property, increased by
+                the border-width of its inline-start egde. If the
+                <a>padding box</a> has an <a>italic correction</a> then the
+                <a>border box</a> has the same property, increased by the
+                border-width of its inline-end egde.
               </p>
             </li>
             <li>
@@ -1255,9 +1254,11 @@
                 of the <a>margin box</a> are the same as the one of the <a>border box</a>.
               </p>
               <p>
-                If the <a>border box</a> has a <a>top accent attachment</a>
-                or <a>italic correction</a> then the <a>margin box</a> has the same
-                properties, increased by the inline-start margin.
+                If the <a>padding box</a> has a <a>top accent attachment</a>
+                then the <a>margin box</a> has the same property, increased
+                by the inline-start margin. If the <a>padding box</a> has an
+                <a>italic correction</a> then the <a>margin box</a> has the
+                same property, increased by the inline-end margin.
               </p>
             </li>
           </ul>
@@ -1283,7 +1284,6 @@
             width/height/inline-size/block-size?</div>
           <div class="issue" data-number="49">Define what inline percentages resolve against</div>
           <div class="issue" data-number="50">Define what block percentages resolve against</div>
-          <div class="issue" data-number="194">Review how the italic correction correction is affect by padding/border/margin</div>
         </section>
         <section id="stacking-contexts">
           <h4>Stacking contexts</h4>
