@@ -533,7 +533,8 @@
             <a><code>text-transform</code></a>
             property to the corresponding value.
             More precisely, <code>normal</code> is mapped to <code>none</code>
-            while all the other values the corresponding CSS value with the extra
+            while all the other values are mapped to the corresponding CSS
+            value with the extra
             <code>math-</code> prefix.
           </p>
           <p>
@@ -569,9 +570,6 @@
             to provide both styles. Page authors may use the
             <a data-cite="CSS-FONTS-4#font-variant-alternates-prop"><code>font-variant-alternates</code></a> property with corresponding OpenType font features
             to access these glyphs.
-          </div>
-          <div class="issue" data-number="61">
-            Consider a new script style to distinguish Chancery and Spencerian?
           </div>
         </section>
         <section id="the-displaystyle-and-scriptlevel-attributes">
@@ -836,8 +834,6 @@
             All of the nodes representing <a>MathML Hyperlink Elements</a> in the DOM must implement, and expose to scripts the following <dfn><code>MathMLLinkableElement</code></dfn> interface.
           </p>
           <pre class="idl" data-include="webidl/MathMLLinkableElement.idl"></pre>
-          <div class="issue" data-number="138">Allow custom elements in the MathML namespace?</div>
-          <div class="issue" data-number="140">Allow to call <a data-cite="HTML#dom-element-attachshadow">Element.attachShadow()</a> on MathML elements?</div>
           <div class="issue" data-number="139">Specialize <a>unknown MathML elements</a> to a <code>MathMLUnknownElement</code> interface?</div>
           <div class="issue">
             <a href="https://github.com/whatwg/html/pull/5248">Rename
