@@ -2935,21 +2935,28 @@
               The <a>min-content inline size</a>
               (respectively <a>max-content inline size</a>) of the
               content is the sum
-              of <a>RadicalKernBeforeDegree</a>,
+              of max(0, <a>RadicalKernBeforeDegree</a>),
               the index's
               <a>min-content inline size</a>
               (respectively <a>max-content inline size</a>)
               of the index's <a>margin box</a>,
-              <a>RadicalKernAfterDegree</a>
+              max(−<a>min-content inline size</a>, <a>RadicalKernAfterDegree</a>)
+              (respectively max(−<a>max-content inline size</a>, <a>RadicalKernAfterDegree</a>))
               and of the
               <a>min-content inline size</a>
               (respectively <a>max-content inline size</a>) of B.
             </p>
+            <p>Using the same clamping,
+              <dfn>AdjustedRadicalKernBeforeDegree</dfn> and
+              <dfn>AdjustedRadicalKernAfterDegree</dfn> are respectively
+              defined as max(0, <a>RadicalKernBeforeDegree</a>) and
+              is max(−<a>inline size</a> of the index's <a>margin box</a>,
+              <a>RadicalKernAfterDegree</a>).</p>
             <p>
               The <a>inline size</a> of the content is the sum of
-              <a>RadicalKernBeforeDegree</a>,
+              <a>AdjustedRadicalKernBeforeDegree</a>,
               the <a>inline size</a> of the index's <a>margin box</a>,
-              <a>RadicalKernAfterDegree</a>
+              <a>AdjustedRadicalKernAfterDegree</a>
               and of the <a>inline size</a> of B.
             </p>
             <p>
@@ -2972,7 +2979,8 @@
             </ul>
             <p>
               The <a>inline offset</a> of the index is
-              <a>RadicalKernBeforeDegree</a>. The inline-offset of the
+              <a>AdjustedRadicalKernBeforeDegree</a>.
+              The inline-offset of the
               base is the same + the
               <a>inline size</a> of the index's <a>margin box</a>.
             </p>
@@ -2990,7 +2998,6 @@
               element will have some inline-start space and that the root index
               will overlap the surd.
             </div>
-            <div class="issue" data-number="213">Define what happens with edge cases of RadicalKernBeforeDegree and RadicalKernAfterDegree</div>
           </section>
         </section>
         <section id="style-change-mstyle">
