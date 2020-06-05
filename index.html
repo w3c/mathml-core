@@ -4990,6 +4990,30 @@
           <li>Multiply S by C<sup>E</sup></li>
           <li>Return S if <code>InvertScaleFactor</code> is false and 1/S otherwise.</li>
         </ol>
+          <div class="example" id="font-size-scriptlevel-example">
+            <p>The following example shows a mathematical formula
+              with display <a>math-style</a>
+              rendered with the Latin Modern Math font.
+              When entering subexpressions like scripts or fractions,
+              the font-size is automatically scaled down according to the
+              values of MATH table contained in that font.
+              Note that font-size is scaled down when
+              entering the superscripts but even faster when entering a
+              root's prescript. Also it is scaled down when entering the inner
+              fraction but not when entering the outer one, due to automatic
+              change of <a>math-style</a> in fractions.
+            </p>
+            <img src="examples/example-font-size-scriptlevel.png" alt="font-size-scriptlevel example"/>
+            <p>These rules from [[TeXBook]] are subtle and it's worth having a
+              separate <code>scriptlevel()</code> function to express and
+              handle them. They can be implemented in MathML using the
+              <a href="#user-agent-stylesheet">User Agent Stylesheet</a>.
+              Page authors or developers of polyfill may also benefit from
+              having access to this property to tweak or refine the default
+              implementation. In particular, the <a>scriptlevel</a> attribute
+              from MathML provides a way to perform scriptlevel changes.
+            </p>
+          </div>
       </section>
     </section>
     <section class="normative" id="opentype-math-table">
