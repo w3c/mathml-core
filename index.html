@@ -4691,9 +4691,21 @@
         <div class="note">
           The <code>display: math</code> and
           <code>display: math</code> values provide a default
-          layout for MathML elements while at the same time allowing authors
+          layout for MathML elements while at the same time allowing
           to override it with either native display values or
           <a data-cite="CSS-LAYOUT-API-1#registering-layout">custom values</a>.
+          This allows authors or polyfills to define their own custom notations
+          to tweak or extend MathML Core.
+        </div>
+        <div class="example" id="display-example">
+          <p>
+            In the following example, the default layout of the
+            MathML <a>&lt;mrow&gt;</a> element is overriden to render its
+            content as a grid.
+          </p>
+          <pre data-include="examples/example-display.html"
+               data-include-format="text"></pre>
+          <img src="examples/example-display.png" alt="display example"/>
         </div>
         <div class="issue" data-number="214">Should
           <code>display: invalid-math</code> computes to <code>math</code>
