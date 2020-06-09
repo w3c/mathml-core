@@ -1293,7 +1293,9 @@
             context. The <a data-cite="CSS2#painting-order">painting order</a>
             of <a>in-flow</a> children of such a MathML element
             is exactly the same as block elements. The extra graphical
-            items are painted right before its outline.
+            items are painted after text and background (right after
+            step 7.2.4 for <code>display: inline-math</code> and right after
+            step 7.2 for <code>display: math</code>).
           </p>
         </section>
       </section>
@@ -4707,12 +4709,6 @@
           <pre data-include="examples/example-display.html"
                data-include-format="text"></pre>
           <img src="examples/example-display.png" alt="display example"/>
-        </div>
-        <div class="issue" data-number="214">Should
-          <code>display: invalid-math</code> computes to <code>math</code>
-          for most MathML elements but <a>&lt;math&gt;</a> element? Should
-          <code>display: block|inline</code> computes to these values for
-          backward compatibility?
         </div>
       </section>
       <section id="new-text-transform-values">
