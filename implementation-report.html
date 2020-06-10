@@ -45,7 +45,7 @@
           return `${string.charAt(0).toUpperCase()}${string.slice(1)}`;
       }
       async function loadJSON(browser, callback) {
-          let json = await fetchIgaliaBuildWebPlatformTestResults(browser);
+          let json = await fetchWebPlatformTestResults(browser);
           callback(browser, json);
       }
       function getOutputDiv(browser) {
@@ -108,7 +108,7 @@
           }
       }
       window.addEventListener("load", async function() {
-          ["blink", "blink-no-mathml", "gecko", "webkit"].forEach(name => {
+          ["blink", "chrome", "firefox", "safari"].forEach(name => {
               loadJSON(name, displayResults);
           });
           var upload =  document.getElementById("upload");
@@ -136,19 +136,15 @@
         <div class="unfoldable">No results available</div>
       </section>
       <section>
-        <h2 id="blink-no-mathml">Blink <span class="logo"><img src="https://test.csswg.org/harness/img/blink.svg" alt="blink"/></span> <span class="score">?/? (?%)</span> <button>+</button></h2>
-        <p>Development build of <a href="https://mathml.igalia.com/">Igalia's Chromium fork</a> with the <code>LayoutNGMathML</code> runtime feature disabled.</p>
-        <p><em>These results might contain false positives.</em></p>
+        <h2 id="chrome">Chrome <span class="logo"><img src="https://test.csswg.org/harness/img/blink.svg" alt="blink logo"/></span> <span class="score">?/? (?%)</span> <button>+</button></h2>
         <div class="unfoldable">No results available</div>
       </section>
       <section>
-        <h2 id="gecko">Gecko <span class="logo"><img src="https://test.csswg.org/harness/img/gecko.svg" alt="gecko"/></span> <span class="score">?/? (?%)</span> <button>+</button></h2>
-        <p><a href="https://www.mozilla.org/en-US/firefox/channel/desktop/">Nightly build</a> of Firefox.</p>
+        <h2 id="firefox">Firefox <span class="logo"><img src="https://test.csswg.org/harness/img/gecko.svg" alt="gecko logo"/></span> <span class="score">?/? (?%)</span> <button>+</button></h2>
         <div class="unfoldable">No results available</div>
       </section>
       <section>
-        <h2 id="webkit">WebKit <span class="logo"><img src="https://test.csswg.org/harness/img/webkit.svg" alt="webkit"/></span>  <span class="score">?/? (?%)</span> <button>+</button></h2>
-        <p>Development build of <a href="https://trac.webkit.org/wiki/WebKitGTK">WebKitGTK</a>.</p>
+        <h2 id="safari">Safari <span class="logo"><img src="https://test.csswg.org/harness/img/webkit.svg" alt="webkit log"/></span>  <span class="score">?/? (?%)</span> <button>+</button></h2>
         <div class="unfoldable">No results available</div>
       </section>
       <section>
