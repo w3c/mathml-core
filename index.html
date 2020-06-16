@@ -286,7 +286,7 @@
             default values for the <a><code>display</code></a>
             (<code>math</code> or <code>inline-math</code>)
             and <a><code>math-style</code></a>
-            (<code>block</code> or <code>inline</code>) properties.
+            (<code>normal</code> or <code>compact</code>) properties.
             If the <code>display</code>
             attribute is absent or has an invalid value, the User Agent
             stylesheet treats it the same as <code>inline</code>.
@@ -580,8 +580,8 @@
             <a data-cite="HTML#presentational-hints">presentational hint</a> setting the element's
             <a><code>math-style</code></a>
             property to the corresponding value.
-            More precisely,  <code>true</code> is mapped to <code>display</code> and
-            <code>false</code> to  <code>inline</code>.
+            More precisely,  <code>true</code> is mapped to <code>normal</code> and
+            <code>false</code> to  <code>compact</code>.
             This attribute indicates whether formulas should try to minimize
             the logical height (value is <code>false</code>) or not
             (value is <code>true</code>) e.g. by changing the size of content or
@@ -1960,7 +1960,7 @@
               <li>
                 If the operator has the <a>largeop</a> property and
                 if <a><code>math-style</code></a> on
-                the <code>&lt;mo&gt;</code> element is <code>display</code>,
+                the <code>&lt;mo&gt;</code> element is <code>normal</code>,
                 then:
                 <ol>
                   <li>
@@ -2526,16 +2526,16 @@
               <li>
                 <a>FractionNumeratorShiftUp</a> (respectively
                 <a>FractionNumeratorDisplayStyleShiftUp</a>) if
-                the <a>math-style</a> is <code>inline</code>
-                (respectively <code>display</code>).
+                the <a>math-style</a> is <code>compact</code>
+                (respectively <code>normal</code>).
               </li>
               <li>
                 The <a>AxisHeight</a> + half the
                 <a>fraction line thickness</a> +
                 <a>FractionNumeratorGapMin</a>
                 (respectively <a>FractionNumDisplayStyleGapMin</a>)
-                if the <a>math-style</a> is <code>inline</code>
-                (respectively <code>display</code>) +
+                if the <a>math-style</a> is <code>compact</code>
+                (respectively <code>normal</code>) +
                 the <a>ink line-descent</a> of the <a>numerator</a>'s <a>margin box</a>.
               </li>
             </ul>
@@ -2544,15 +2544,15 @@
               <li>
                 <a>FractionDenominatorShiftDown</a> (respectively
                 <a>FractionDenominatorDisplayStyleShiftDown</a>) if
-                the <a>math-style</a> is <code>inline</code>
-                (respectively <code>display</code>).
+                the <a>math-style</a> is <code>compact</code>
+                (respectively <code>normal</code>).
               </li>
               <li>
                 Half the <a>fraction line thickness</a> +
                 <a>FractionDenominatorGapMin</a>
                 (respectively <a>FractionDenomDisplayStyleGapMin</a>)
-                if the <a>math-style</a> is <code>inline</code>
-                (respectively <code>display</code>) +
+                if the <a>math-style</a> is <code>compact</code>
+                (respectively <code>normal</code>) +
                 the <a>ink line-ascent</a> of the <a>denominator</a>'s <a>margin box</a> −
                 the <a>AxisHeight</a>.
               </li>
@@ -2643,13 +2643,13 @@
               any stretch size constraint.
             </p>
             <p>
-              If the <a>math-style</a> is <code>inline</code> then
+              If the <a>math-style</a> is <code>compact</code> then
               <code>TopShift</code> and
               <code>BottomShift</code> are respectively
               set to <a>StackTopShiftUp</a> and <a>StackBottomShiftDown</a>.
-              Otherwise <a>math-style</a> is <code>display</code>) and
+              Otherwise <a>math-style</a> is <code>normal</code> and
               they are respectively set to <a>StackTopDisplayStyleShiftUp</a>
-              and <a>StackBottomDisplayStyleShiftDown</a>).
+              and <a>StackBottomDisplayStyleShiftDown</a>.
             </p>
             <p>
               The <code>Gap</code> is defined to be
@@ -2657,10 +2657,10 @@
               the <a>ink line-ascent</a> of the <a>denominator</a>'s <a>margin box</a>) +
               (<code>TopShift</code> −
               the <a>ink line-descent</a> of the <a>numerator</a>'s <a>margin box</a>).
-              If <a>math-style</a> is <code>inline</code>
+              If <a>math-style</a> is <code>compact</code>
               then <code>GapMin</code>
               is <a>StackGapMin</a>
-              otherwise <a>math-style</a> is <code>display</code>
+              otherwise <a>math-style</a> is <code>normal</code>
               and it is <a>StackDisplayStyleGapMin</a>.
               If Δ = <code>GapMin</code> − <code>Gap</code> is positive then
               <code>TopShift</code> and <code>BottomShift</code>
@@ -2802,9 +2802,9 @@
             <p>
               The <dfn>radical gap</dfn> is given by
               <a>RadicalVerticalGap</a>
-              if the <a>math-style</a> is <code>inline</code> and
+              if the <a>math-style</a> is <code>compact</code> and
               <a>RadicalDisplayStyleVerticalGap</a>
-              if the <a>math-style</a> is <code>display</code>.
+              if the <a>math-style</a> is <code>normal</code>.
             </p>
             <p>
               The radical target size for the stretchy radical glyph is
@@ -3638,7 +3638,7 @@
               If the
               <code>&lt;munder&gt;</code>, <code>&lt;mover&gt;</code> or
               <code>&lt;munderover&gt;</code> element have a computed
-              <a>math-style</a> property equal to <code>inline</code>
+              <a>math-style</a> property equal to <code>compact</code>
               and their base is an <a>embellished operator</a> with the
               <a><code>movablelimits</code></a> property, then
               their layout algorithms are respectively
@@ -4786,8 +4786,8 @@
                 <dfn><code>math-style</code></dfn>
               </td>
             </tr>
-            <tr><th>Value:</th><td><code>display | inline</code></td></tr>
-            <tr><th>Initial:</th><td><code>inline</code></td></tr>
+            <tr><th>Value:</th><td><code>normal | compact</code></td></tr>
+            <tr><th>Initial:</th><td><code>normal</code></td></tr>
             <tr><th>Applies to:</th><td>All elements</td></tr>
             <tr><th>Inherited:</th><td>yes</td></tr>
             <tr><th>Percentages:</th><td>n/a</td></tr>
@@ -4798,7 +4798,7 @@
           </tbody>
         </table>
         <p>
-          When <code>math-style</code> is <code>inline</code>,
+          When <code>math-style</code> is <code>compact</code>,
           the math layout on descendants try to minimize the
           <a data-cite="CSS-WRITING-MODES-3#extent">logical height</a> by
           applying the following rules:
@@ -4824,8 +4824,8 @@
             <p>The following example shows a
               mathematical formula renderered with
               its <a><code>&lt;math&gt;</code></a> root styled with
-              <code>math-style: inline</code> (left) and
-              <code>math-style: display</code> (right).
+              <code>math-style: normal</code> (left) and
+              <code>math-style: compact</code> (right).
               In the former case, the font-size is automatically scaled down
               within the fractions and the summation limits are rendered as
               subscript and superscript of the ∑. In the latter case, the ∑ is
@@ -4885,7 +4885,7 @@
         </p>
           <div class="example" id="math-superscript-shift-style-example">
             <p>In the following example, the two "x squared" are rendered with
-              inline <a>math-style</a> and the same <code>font-size</code>.
+              compact <a>math-style</a> and the same <code>font-size</code>.
               However, the one within the square root is rendered with
               inline <code>math-superscript-shift-style</code> while
               the other one is rendered with
@@ -4920,7 +4920,7 @@
           <li>If the specified value of <a>font-size</a> is
             <code>scriptlevel(auto)</code> and
             the inherited value of <a>math-style</a>
-            is <code>inline</code> then the <a>internal scriptlevel</a> of
+            is <code>compact</code> then the <a>internal scriptlevel</a> of
             the element is the one of its parent plus one.
           </li>
           <li>If the specified value of <a>font-size</a> is of
@@ -4970,7 +4970,7 @@
         </ol>
           <div class="example" id="font-size-scriptlevel-example">
             <p>The following example shows a mathematical formula
-              with display <a>math-style</a>
+              with normal <a>math-style</a>
               rendered with the Latin Modern Math font.
               When entering subexpressions like scripts or fractions,
               the font-size is automatically scaled down according to the

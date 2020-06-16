@@ -4,8 +4,8 @@ mfrac {
 }
 mfrac > * {
   font-size: scriptlevel(auto);
-  math-style: inline;
+  math-style: compact;
 }
 mfrac > :nth-child(2) {
-  math-superscript-shift-style: inline;
+  math-superscript-shift-style: compact;
 }

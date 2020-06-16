@@ -6,7 +6,7 @@ munder > :not(:first-child),
 mover > :not(:first-child),
 munderover > :not(:first-child) {
   font-size: scriptlevel(add(1));
-  math-style: inline;
+  math-style: compact;
 }
 munder[accentunder="true" i] > :nth-child(2),
 mover[accent="true" i] > :nth-child(2),

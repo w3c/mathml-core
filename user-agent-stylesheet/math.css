@@ -5,14 +5,14 @@ math {
   font-size: inherit;
   font-style: normal;
   font-family: math;
-  math-style: inline;
+  math-style: compact;
   math-superscript-shift-style: display;
 }
 math[display="block" i] {
   display: math;
-  math-style: display;
+  math-style: normal;
 }
 math[display="inline" i] {
   display: inline-math;
-  math-style: inline;
+  math-style: compact;
 }

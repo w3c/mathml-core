@@ -1,6 +1,6 @@
 mroot > :not(:first-child) {
   font-size: scriptlevel(add(2));
-  math-style: inline;
+  math-style: compact;
 }
 mroot, msqrt {
   math-superscript-shift-style: inline;
