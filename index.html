@@ -1399,22 +1399,6 @@
               ensure that it is the case when rendering text inside the
               <code>&lt;mtext&gt;</code> element.
             </p>
-            <p>
-              Some characters like primes already have script size by default
-              and
-              hence would be too small when used in a script position.
-              To render such “prescripted” characters with the appropriate size,
-              If a <code>&lt;mtext&gt;</code> has a positive
-              <a><code>internal scriptlevel</code></a> value then user agents
-              must enable
-              the <code>ssty</code> (Script Style) OpenType feature
-              on its text nodes [[OPEN-FONT-FORMAT]]
-              unless it contradicts what the page author has
-              specified with the
-              <a data-cite="CSS-FONTS-4#font-rend-desc"><code>font-feature-settings</code></a>
-              CSS property.
-            </p>
-            <div class="issue" data-number="19">Add detailed rules for the ssty OpenType feature</div>
           </section>
         </section>
         <section>
