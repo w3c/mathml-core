@@ -3,5 +3,5 @@ mroot > :not(:first-child) {
   math-style: compact;
 }
 mroot, msqrt {
-  math-superscript-shift-style: inline;
+  math-shift: compact;
 }

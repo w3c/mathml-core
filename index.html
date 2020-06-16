@@ -2455,8 +2455,8 @@
             <a><code>displaystyle</code></a> to <code>false</code>,
             or if it was already <code>false</code> increments
             <a><code>scriptlevel</code></a> by 1, within its children.
-            It sets <a>math-superscript-shift-style</a> to
-            <code>inline</code> within its second child.
+            It sets <a>math-shift</a> to
+            <code>compact</code> within its second child.
             To avoid visual confusion between the fraction bar and another
             adjacent items (e.g. minus sign or another fraction's bar),
             a default 1-pixel space is added around the element.
@@ -2476,7 +2476,7 @@
             In practice, an <code>&lt;mfrac&gt;</code> element has two children
             that are <a>in-flow</a>. Hence the CSS rules basically performs
             <a><code>scriptlevel</code></a>, <a><code>displaystyle</code></a>
-            and <a>math-superscript-shift-style</a>
+            and <a>math-shift</a>
             changes for the <a>numerator</a> and
             <a>denominator</a>.
           </div>
@@ -2742,8 +2742,8 @@
           </div>
           <p>
             The <code>&lt;msqrt&gt;</code> and <code>&lt;mroot&gt;</code>
-            elements sets <a>math-superscript-shift-style</a> to
-            <code>inline</code>.
+            elements sets <a>math-shift</a> to
+            <code>compact</code>.
             The <code>&lt;mroot&gt;</code> element sets
             increments <a><code>scriptlevel</code></a> by 2, and sets <a><code>displaystyle</code></a> to "false" in all
             but its first child.
@@ -3404,8 +3404,8 @@
             <ul>
               <li>The value <a>SuperscriptShiftUpCramped</a> if the
                 element has a computed
-                <a>math-superscript-shift-style</a> property equal to
-                <code>inline</code>, or
+                <a>math-shift</a> property equal to
+                <code>compact</code>, or
                 <a>SuperscriptShiftUp</a> otherwise.</li>
               <li>
                 <a>SuperscriptBottomMin</a> + the <a>ink line-descent</a> of the
@@ -4356,7 +4356,7 @@
           </section>
         </section>
         <section id="displaystyle-and-scriptlevel-in-scripts">
-          <h4>Displaystyle, scriptlevel and math-superscript-shift-style in scripts</h4>
+          <h4>Displaystyle, scriptlevel and math-shift in scripts</h4>
           <p>
             For all <a>scripted elements</a>, the rule of thumb is to set
             <a><code>displaystyle</code></a> to <code>false</code> and
@@ -4378,21 +4378,21 @@
             their second child.
           </p>
           <p><code>&lt;mmultiscripts&gt;</code> sets
-            <a><code>math-superscript-shift-style</code></a> to
-            <code>inline</code> on its children at even position if they are
+            <a><code>math-shift</code></a> to
+            <code>compact</code> on its children at even position if they are
             before an <a>&lt;mprescripts&gt;</a>, and on those at odd position
             if they are after
             an <a>&lt;mprescripts&gt;</a>.
             The <code>&lt;msub&lt;</code> and <code>&lt;msubsup&lt;</code>
-            elements set <a><code>math-superscript-shift-style</code></a> to
-            <code>inline</code> on their second child.
+            elements set <a><code>math-shift</code></a> to
+            <code>compact</code> on their second child.
             An <a><code>&lt;mover&gt;</code></a> and
             <a><code>&lt;munderover&gt;</code></a>
             elements with an <a><code>accent</code></a>
             attribute that is an
             <a data-cite="INFRA#ascii-case-insensitive">ASCII case-insensitive</a>
-            match to <code>"true"</code> also sets <a><code>math-superscript-shift-style</code></a> to
-            <code>inline</code> within their first child.
+            match to <code>"true"</code> also sets <a><code>math-shift</code></a> to
+            <code>compact</code> within their first child.
           </p>
           <p>
             The
@@ -4406,7 +4406,7 @@
             <code>&lt;mprescript&gt;</code> is empty.
             Hence the CSS rules essentially performs automatic <a><code>displaystyle</code></a> and
             <a><code>scriptlevel</code></a> changes for the scripts ; and
-            <a><code>math-superscript-shift-style</code></a> changes for
+            <a><code>math-shift</code></a> changes for
             subscripts and sometimes the base.
           </div>
         </section>
@@ -4849,18 +4849,18 @@
             </p>
           </div>
       </section>
-      <section id="the-math-superscript-shift-style">
-        <h3>The <code>math-superscript-shift-style</code> property</h3>
+      <section id="the-math-shift">
+        <h3>The <code>math-shift</code> property</h3>
         <table>
           <tbody>
             <tr>
               <th>Name:</th>
               <td>
-                <dfn><code>math-superscript-shift-style</code></dfn>
+                <dfn><code>math-shift</code></dfn>
               </td>
             </tr>
-            <tr><th>Value:</th><td><code>display | inline</code></td></tr>
-            <tr><th>Initial:</th><td><code>display</code></td></tr>
+            <tr><th>Value:</th><td><code>normal | compact</code></td></tr>
+            <tr><th>Initial:</th><td><code>normal</code></td></tr>
             <tr><th>Applies to:</th><td>All elements</td></tr>
             <tr><th>Inherited:</th><td>yes</td></tr>
             <tr><th>Percentages:</th><td>n/a</td></tr>
@@ -4871,9 +4871,9 @@
           </tbody>
         </table>
         <p>
-          If the value of <code>math-superscript-shift-style</code> is <code>inline</code>, the math layout on descendants will use the
+          If the value of <code>math-shift</code> is <code>compact</code>, the math layout on descendants will use the
           <a>superscriptShiftUpCramped</a> parameter to place superscript.
-          If the value of <code>math-superscript-shift-style</code> is <code>display</code>, the math
+          If the value of <code>math-shift</code> is <code>normal</code>, the math
           will use the <a>superscriptShiftUp</a> parameter instead.
         </p>
         <p>
@@ -4883,21 +4883,22 @@
           <a href="#prescripts-and-tensor-indices-mmultiscripts"></a> and
           <a href="#underscripts-and-overscripts-munder-mover-munderover"></a>.
         </p>
-          <div class="example" id="math-superscript-shift-style-example">
+          <div class="example" id="math-shift-example">
             <p>In the following example, the two "x squared" are rendered with
               compact <a>math-style</a> and the same <code>font-size</code>.
               However, the one within the square root is rendered with
-              inline <code>math-superscript-shift-style</code> while
+              compact <code>math-shift</code> while
               the other one is rendered with
-              display <code>math-superscript-shift-style</code>, leading
+              normal <code>math-shift</code>, leading
               to subtle different shift of the superscript "2".
             </p>
-            <img src="examples/example-math-superscript-shift-style.png" alt="math-superscript-shift-style example"/>
+            <img src="examples/example-math-shift.png" alt="math-shift example"/>
             <p>Per [[TeXBook]], a
-              mathematical formula uses non-cramped style by default but may
-              switch to cramped style within some subformulas
+              mathematical formula uses normal style by default but may
+              switch to compact style ("cramped" in TeX's terminology)
+              within some subformulas
               (e.g. radicals, fraction denominators, etc).
-              The <a>math-superscript-shift-style</a> property allows to easily
+              The <a>math-shift</a> property allows to easily
               implement these rules for MathML in the
               <a href="#user-agent-stylesheet">User Agent Stylesheet</a>.
               Page authors or developers of polyfill may also benefit from
@@ -5513,7 +5514,7 @@
 <span data-include-replace="true" data-include="user-agent-stylesheet/mtable.css"></span><span data-include-replace="true" data-include="user-agent-stylesheet/mtr.css"></span><span data-include-replace="true" data-include="user-agent-stylesheet/mtd.css"></span>
 /* Fractions */
 <span data-include-replace="true" data-include="user-agent-stylesheet/mfrac.css"></span>
-/* Other rules for scriptlevel, displaystyle and math-superscript-shift-style */
+/* Other rules for scriptlevel, displaystyle and math-shift */
 </span><span data-include-replace="true" data-include="user-agent-stylesheet/radicals.css"></span><span data-include-replace="true" data-include="user-agent-stylesheet/scripts.css"></span>
       </pre>
       <div class="issue" data-number="34">Add rules for text-indent, line-height, word-spacing, letter-spacing?</div>

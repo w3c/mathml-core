@@ -6,7 +6,7 @@ math {
   font-style: normal;
   font-family: math;
   math-style: compact;
-  math-superscript-shift-style: display;
+  math-shift: normal;
 }
 math[display="block" i] {
   display: math;

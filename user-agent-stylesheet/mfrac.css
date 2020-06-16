@@ -7,5 +7,5 @@ mfrac > * {
   math-style: compact;
 }
 mfrac > :nth-child(2) {
-  math-superscript-shift-style: compact;
+  math-shift: compact;
 }

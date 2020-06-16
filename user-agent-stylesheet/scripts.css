@@ -20,8 +20,8 @@ mmultiscripts > :nth-child(even),
 mmultiscripts > mprescripts ~ :nth-child(odd),
 mover[accent="true" i] > :first-child,
 munderover[accent="true" i] > :first-child {
-  math-superscript-shift-style: inline;
+  math-shift: compact;
 }
 mmultiscripts > mprescripts ~ :nth-child(even) {
-  math-superscript-shift-style: inherit;
+  math-shift: inherit;
 }
