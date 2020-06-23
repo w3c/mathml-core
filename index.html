@@ -1132,7 +1132,6 @@
             </ul>
           </div>
           <div class="issue" data-number="128">Improve definition of ink ascent/descent?</div>
-          <div class="issue" data-number="18">Should future version of this specification support vertical writing mode?</div>
           <div class="issue" data-number="112">Should future version of this specification support line breaking?</div>
            <div class="issue" data-number="129">Should future version of this specification support CSS alignment properties?</div>
 </section>
@@ -5137,6 +5136,7 @@
       </section>
       <section>
         <h3>Glyph information (<code>MathGlyphInfo</code>)</h3>
+        <div class="note">MathTopAccentAttachment is at risk.</div>
         <p>
           These are per-glyph tables for a given mathematical font:
         </p>
@@ -5161,9 +5161,6 @@
             or half the advance width of the glyph otherwise.
           </dd>
         </dl>
-        <div class="issue" data-number="22">Use <code>MathKernInfo</code>
-          for positioning scripts in
-          <a href="#script-and-limit-schemata"></a></div>
       </section>
       <section>
         <h3>Size variants for operators (<code>MathVariants</code>)</h3>
@@ -5171,10 +5168,6 @@
           This section describes how to handle stretchy glyphs of arbitrary
           size using the <code>MATH.MathVariants</code> table.
         </p>
-        <div class="issue" data-number="135">
-          It could be possible to use variable
-          fonts for stretchy operators but
-          this will require improvements to [[OPEN-FONT-FORMAT]].</div>
         <section>
           <h4>The <code>GlyphAssembly</code> table</h4>
           <p>
