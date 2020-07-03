@@ -341,7 +341,13 @@
             to the
             <a data-cite="CSS-FONTS-4#valdef-font-family-math"><code>math</code></a>
             value on the <code>&lt;math&gt;</code> element instead of inheriting
-            it.
+            it. Additionally, several CSS properties that can be set on
+            a parent container such as
+            <code>font-style</code>, <code>font-weight</code>,
+            <code>direction</code> or <code>text-indent</code> etc
+            are not expected to apply to the math formula and so the
+            <a href="#user-agent-stylesheet">user agent stylesheet</a>
+            has rules to reset them by default.
           </p>
           <pre class="css" data-include="user-agent-stylesheet/math.css"></pre>
         </section>
@@ -5491,8 +5497,6 @@
 /* Other rules for scriptlevel, displaystyle and math-shift */
 </span><span data-include-replace="true" data-include="user-agent-stylesheet/radicals.css"></span><span data-include-replace="true" data-include="user-agent-stylesheet/scripts.css"></span>
       </pre>
-      <div class="issue" data-number="34">Add rules for text-indent, line-height, word-spacing, letter-spacing?</div>
-      <div class="issue" data-number="36">Add font-style and font-weight on the math root?</div>
           <div class="issue" data-number="94">Improve rules for href hyperlinks and focusable elements?</div>
     </section>
     <section>

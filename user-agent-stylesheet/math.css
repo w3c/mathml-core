@@ -1,10 +1,14 @@
 math {
   direction: ltr;
   writing-mode:  horizontal-tb;
-  display: inline-math;
-  font-size: inherit;
-  font-style: normal;
+  text-indent: 0;
+  letter-spacing: normal;
+  line-height: normal;
+  word-spacing: normal;
   font-family: math;
+  font-style: normal;
+  font-weight: normal;
+  display: inline-math;
   math-style: compact;
   math-shift: normal;
 }
