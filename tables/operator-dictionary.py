@@ -677,6 +677,10 @@ for name, item in sorted(knownTables.items(),
         entry = entry + (hexa << 12)
         compact_table.append(entry)
 
+def cmp_key(x):
+    return x & 0x3FFF
+compact_table.sort(key=cmp_key)
+
 bits_per_range = 4
 compact_table = toRanges(compact_table, 1 << bits_per_range)
 rangeCount = 0
@@ -691,5 +695,10 @@ for r in compact_table:
     rangeCount += 1
 
 md.write('</code>');
-md.write('<figcaption>List of entries for the largest categories.<br/><code>Key</code> is <code>Entry</code> %% 0x4000, category encoding is <code>Entry</code> / 0x1000.<br/>Total size: %d entries, %d bytes<br/>(assuming %d bits for range lengths).</figcaption>' % (totalEntryCount, ceil((16+bits_per_range) * rangeCount / 8.), bits_per_range))
+md.write('<figcaption>List of entries for the largest categories, sorted by key.<br/><code>Key</code> is <code>Entry</code> %% 0x4000, category encoding is <code>Entry</code> / 0x1000.<br/>Total size: %d entries, %d bytes<br/>(assuming %d bits for range lengths).</figcaption>' % (totalEntryCount, ceil((16+bits_per_range) * rangeCount / 8.), bits_per_range))
 md.write('</figure>')
+
+# Dump compact dictionary for C++-like table.
+#for r in compact_table:
+#    print('{0x%04X, %d}, ' % (r[0], r[1] - r[0]), end="")
+#print()
