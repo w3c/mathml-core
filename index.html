@@ -218,7 +218,7 @@
           <li><a>&lt;none&gt;</a></li>
           <li><a>&lt;semantics&gt;</a></li>
         </ol>
-        <p>The <dfn>mrow-like elements</dfn> are
+        <p>The <dfn>grouping elements</dfn> are
           <a>&lt;maction&gt;</a>,
           <a>&lt;math&gt;</a>,
           <a>&lt;merror&gt;</a>
@@ -1559,7 +1559,7 @@
                 <a>embellished operator</a>;
               </li>
               <li>
-                An <a>mrow-like element</a> or <a>&lt;mpadded&gt;</a>,
+                A <a>grouping element</a> or <a>&lt;mpadded&gt;</a>,
                 whose <a>in-flow</a> children consist (in any order) of one
                 <a>embellished operator</a> and zero or more
                 <a>space-like</a> elements.
@@ -1581,7 +1581,7 @@
               </li>
               <li>
                 The core operator of an embellished
-                <a>mrow-like element</a> or <a>&lt;mpadded&gt;</a>
+                <a>grouping element</a> or <a>&lt;mpadded&gt;</a>
                 is the core operator of its unique <a>embellished operator</a>
                 <a>in-flow</a> child.
               </li>
@@ -1617,16 +1617,16 @@
               <li>If the <code>form</code> attribute is present and valid
                 on the <a>core operator</a>, then its value is used;
               </li>
-              <li>If the embellished operator is the first <a>in-flow</a> child of an
-                <a>mrow-like element</a>,
+              <li>If the embellished operator is the first <a>in-flow</a> child of a
+                <a>grouping element</a>,
                 <a>&lt;mpadded&gt;</a> or
                 <a>&lt;msqrt&gt;</a> with more than one <a>in-flow</a> child
                 (ignoring all <a>space-like</a> children) then it has
                 form <code>prefix</code>;
               </li>
               <li>Or, if the embellished operator is the last <a>in-flow</a> child of
-                an
-                <a>mrow-like element</a>,
+                a
+                <a>grouping element</a>,
                 <a><code>&lt;mpadded&gt;</code></a> or
                 <a><code>&lt;msqrt&gt;</code></a>
                 with more than one <a>in-flow</a> child
@@ -2076,8 +2076,8 @@
                 <a><code>&lt;mtext&gt;</code></a> or
                 <a><code>&lt;mspace&gt;</code></a>.
               </li>
-              <li>Or an
-                <a>mrow-like element</a> or <a>&lt;mpadded&gt;</a>
+              <li>Or a
+                <a>grouping element</a> or <a>&lt;mpadded&gt;</a>
                 all of whose <a>in-flow</a> children are <a>space-like</a>.
               </li>
             </ul>
