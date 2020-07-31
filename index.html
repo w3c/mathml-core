@@ -485,8 +485,10 @@
             <a data-cite="CSS-COLOR-3#foreground"><code>color</code></a> and
             <a data-cite="CSS-BACKGROUNDS-3#the-background-color"><code>background-color</code></a>
             properties to the corresponding values.
-            The <code>mathcolor</code> property describes the foreground fill color of
-            an MathML text, bars etc and the background color of an element.
+            The <code>mathcolor</code> attribute describes the foreground fill
+            color of MathML text, bars etc
+            while the <code>mathbackground</code>
+            attribute describes the background color of an element.
           </p>
           <p>
             The
@@ -4812,8 +4814,8 @@
             <p>The following example shows a
               mathematical formula renderered with
               its <a><code>&lt;math&gt;</code></a> root styled with
-              <code>math-style: normal</code> (left) and
-              <code>math-style: compact</code> (right).
+              <code>math-style: compact</code> (left) and
+              <code>math-style: normal</code> (right).
               In the former case, the font-size is automatically scaled down
               within the fractions and the summation limits are rendered as
               subscript and superscript of the ∑. In the latter case, the ∑ is
@@ -4889,7 +4891,7 @@
               The <a>math-shift</a> property allows to easily
               implement these rules for MathML in the
               <a href="#user-agent-stylesheet">User Agent Stylesheet</a>.
-              Page authors or developers of polyfill may also benefit from
+              Page authors or developers of polyfills may also benefit from
               having access to this property to tweak or refine the default
               implementation.
             </p>
@@ -4975,7 +4977,7 @@
               separate <code>scriptlevel()</code> function to express and
               handle them. They can be implemented in MathML using the
               <a href="#user-agent-stylesheet">User Agent Stylesheet</a>.
-              Page authors or developers of polyfill may also benefit from
+              Page authors or developers of polyfills may also benefit from
               having access to this property to tweak or refine the default
               implementation. In particular, the <a>scriptlevel</a> attribute
               from MathML provides a way to perform scriptlevel changes.
