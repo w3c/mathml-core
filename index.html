@@ -3091,30 +3091,27 @@
             <ul>
               <li>If the <code>width</code> (respectively <code>height</code>,
                 <code>depth</code>, <code>lspace</code>, <code>voffset</code>)
-                attributes are absent or invalid the requested width
+                attribute is absent, invalid or a
+                <a><code>length-percentage</code></a> then the requested width
                 (respectively height, depth, lspace, voffset)
                 is the inner inline size
                 (respectively inner <a>line-ascent</a>, inner line-descent,
                 <code>0</code>,
                 <code>0</code>).
               </li>
-              <li>If the <code>width</code> (respectively <code>height</code>,
-                <code>depth</code>, <code>lspace</code>, <code>voffset</code>)
-                attribute is a
-                <a><code>length-percentage</code></a>
-                then the requested width
-                (respectively height, depth, lspace, voffset)
-                is the resolved value
-                with percentage interpreted relative to
-                the inner inline size (respectively
-                inner line-ascent, inner line-descent, <code>0</code>,
-                <code>0</code>).
+              <li>Otherwise the requested width
+                (respectively height, depth, lspace, voffset) is the resolved
+                value of the <code>width</code> attribute
+                (respectively <code>height</code>, <code>depth</code>,
+                <code>lspace</code>, <code>voffset</code> attributes).
+                If one of the requested width, depth, height or lspace values
+                is negative then it is treated as <code>0</code>.
               </li>
             </ul>
-            <p>
-              If one of the requested width, depth, height or lspace values calculated
-              above is negative then it is treated as <code>0</code>.
-            </p>
+            <div class="note">
+              Negative <code>&lt;voffset&gt;</code> values are not clamped to
+              <code>0</code>.
+            </div>
           </section>
           <section>
             <h5>Layout of <code>&lt;mpadded&gt;</code></h5>
