@@ -351,6 +351,10 @@
           </p>
           <pre class="css" data-include="user-agent-stylesheet/math.css"></pre>
         </section>
+        <section id="linkable-math-elements">
+          <h4><dfn>MathML Hyperlink Elements</dfn></h4>
+          <p>All <a href="#token-elements">token elements</a> and the <a href="#horizontally-group-sub-expressions-mrow">mrow</a> grouping element are potentially linkable and may contain an <code>href</code> attribute.  They are the MathML equivalents of HTML's <a data-cite="html#the-a-element">a</a> and must follow all of the same criteria laid out for links there.</p>
+        </section>
         <section id="types-for-mathml-attribute-values">
           <h4>Types for MathML Attribute Values</h4>
           <dl>
@@ -422,6 +426,17 @@
             <a data-cite="HTML#attr-tabindex">tabindex</a>
             attributes on HTML elements.
           </p>
+          <p>
+            The
+            <dfn><code>href</code></dfn>
+            attribute has the same syntax and semantic as defined for
+            the <a data-cite="HTML#attr-hyperlink-href">href</a> attribute on
+            <code>&lt;a&gt;</code> element.
+            To fully implement this attribute, the following CSS properties for
+            links must be specified in the
+            <a href="#user-agent-stylesheet">user agent stylesheet</a>:
+          </p>
+          <pre class="css" data-include="user-agent-stylesheet/links.css"></pre>
           <p>
             The
             <dfn><code>dir</code></dfn>
@@ -821,6 +836,10 @@
                  data-include-format="text"></pre>
             <img src="examples/example-dom-idl.png" alt="dom-idl example"/>
           </div>
+          <p>
+            All of the nodes representing <a>MathML Hyperlink Elements</a> in the DOM must implement, and expose to scripts the following <dfn><code>MathMLLinkableElement</code></dfn> interface.
+          </p>
+          <pre class="idl" data-include="webidl/MathMLLinkableElement.idl"></pre>
           <div class="issue" data-number="139">Specialize <a>unknown MathML elements</a> to a <code>MathMLUnknownElement</code> interface?</div>
           <div class="issue">
             <a href="https://github.com/whatwg/html/pull/5248">Rename
@@ -857,6 +876,11 @@
             focus-related pseudo-classes as defined in
             <a data-cite="SELECT#overview">CSS Selectors</a>
             apply, as defined in that specification.
+          </p>
+          <p>
+            All <a><code>MathMLLinkableElement</code></a> elements are potentially linkable with an <a><code>href</code></a> attribute.  Their default tabindex is <code>0</code>.  If their <a><code>href</code></a> contains a valid URL, their focus flag must be set unless the user agent normally provides an alternative
+            method of keyboard traversal of links, and they appear in the
+            sequential focus order.
           </p>
           <p>
             The contents of embedded <a><code>&lt;math&gt;</code></a> elements
@@ -5457,6 +5481,8 @@
 
 /* Default display */
 <span data-include-replace="true" data-include="user-agent-stylesheet/display.css"></span>
+/* Links */
+<span data-include-replace="true" data-include="user-agent-stylesheet/links.css"></span>
 /* The &lt;math&gt; element */
 <span data-include-replace="true" data-include="user-agent-stylesheet/math.css"></span>
 /* &lt;mrow&gt;-like elements */
@@ -5470,6 +5496,7 @@
 /* Other rules for scriptlevel, displaystyle and math-shift */
 </span><span data-include-replace="true" data-include="user-agent-stylesheet/radicals.css"></span><span data-include-replace="true" data-include="user-agent-stylesheet/scripts.css"></span>
       </pre>
+          <div class="issue" data-number="94">Improve rules for href hyperlinks and focusable elements?</div>
     </section>
     <section>
       <h2>Operator Tables</h2>
@@ -5867,9 +5894,20 @@
         when one tries to access the canvas' content via JavaScript APIs.
       </p>
       <p>
+        This specification adds an <a><code>href</code></a> attribute that
+        can be used to make MathML elements match
+        <a data-cite="SELECT#link"><code>:link</code> and
+        <code>:visited</code> pseudo-classes</a> and one could rely on
+        these features to determine whether a link has been visited.
+        UAs may implement suggestions from [[SELECT]] to preserve the
+        user's privacy.
+      </p>
+      <p>
         This specification only adds script execution mechanisms in the
         the MathML event handler attributes described in
-        <a href="#global-attributes"></a>. UAs may decide to apply the same
+        <a href="#global-attributes"></a> and
+        in <code>javascript:...</code> links for the <a><code>href</code></a>
+        attribute. UAs may decide to apply the same
         security restrictions as HTML and SVG to prevent execution of scripts
         in these attributes.
       </p>
