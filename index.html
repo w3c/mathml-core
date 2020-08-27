@@ -1587,7 +1587,7 @@
               match to one of these values.
             </p>
             <p>
-              The <code>form</code> of an <a>embellished operator</a> is determined as follows:
+              The <dfn>algorithm for determining the <code>form</code> of an <a>embellished operator</a></dfn> is as follows:
             </p>
             <ol>
               <li>If the <code>form</code> attribute is present and valid
@@ -1651,19 +1651,20 @@
               must be a <a>length-percentage</a>.
             </p>
             <p>
-              The
-              <code>stretchy</code>,
-              <code>symmetric</code>,
-              <code>largeop</code>,
-              <code>movablelimits</code>,
-              <code>lspace</code>,
-              <code>rspace</code>,
-              <code>maxsize</code>,
-              <code>minsize</code> properties of
-              an <a>embellished operator</a> are determined as follows:
+              The <dfn>algorithm for determining the properties of
+              an <a>embellished operator</a></dfn> is as follows:
             </p>
             <ol>
-              <li>If the corresponding attribute is present and valid
+              <li>If the corresponding
+                <code>stretchy</code>,
+                <code>symmetric</code>,
+                <code>largeop</code>,
+                <code>movablelimits</code>,
+                <code>lspace</code>,
+                <code>rspace</code>,
+                <code>maxsize</code> or
+                <code>minsize</code>
+                attribute is present and valid
                 on the <a>core operator</a>, then this property is used;</li>
               <li>
                 Otherwise, if the <a>core operator</a> contains only text
