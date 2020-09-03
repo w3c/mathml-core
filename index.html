@@ -3545,6 +3545,8 @@
             <dfn><code>accent</code></dfn>,
             <dfn><code>accentunder</code></dfn>,
             attributes, if present, must have values that are <a>booleans</a>.
+            If these attributes are absent or invalid, they are treated as
+            equal to <code>false</code>.
             User agents must implement them as described in
             <a href="#displaystyle-and-scriptlevel-in-scripts"></a>.
           </p>
@@ -3764,8 +3766,8 @@
               <li>
                 Otherwise,
                 <code>UnderShift</code> is equal to <a>UnderbarVerticalGap</a>
-                if the <a>accentunder</a> attribute is equal to
-                <code>false</code>
+                if the <a>accentunder</a> attribute is not an
+                <a data-cite="INFRA#ascii-case-insensitive">ASCII case-insensitive</a> match to <code>"true"</code>
                 and to zero otherwise.
                 <code>UnderExtraAscender</code> is
                 <a>UnderbarExtraDescender</a>.
@@ -3899,7 +3901,8 @@
                   Otherwise, <code>OverShift</code> is equal to</p>
                 <ol>
                   <li><a>OverbarVerticalGap</a> if the
-                    <a>accent</a> attribute is equal to <code>false</code>.</li>
+                    <a>accent</a> attribute is not an
+                    <a data-cite="INFRA#ascii-case-insensitive">ASCII case-insensitive</a> match to <code>"true"</code>.</li>
                   <li>Or <a>AccentBaseHeight</a> minus the <a>line-ascent</a>
                     of the base's <a>margin box</a>
                     if this difference is nonnegative.</li>
