@@ -1583,8 +1583,7 @@
               <code>infix</code>, <code>prefix</code> or
               <code>postfix</code>.
               The corresponding <code>form</code> attribute on the
-              <a><code>&lt;mo&gt;</code></a> element, if present, must
-              must be an
+              <a><code>&lt;mo&gt;</code></a> element, if present, must be an
               <a data-cite="INFRA#ascii-case-insensitive">ASCII case-insensitive</a>
               match to one of these values.
             </p>
@@ -1593,7 +1592,9 @@
             </p>
             <ol>
               <li>If the <code>form</code> attribute is present and valid
-                on the <a>core operator</a>, then its value is used;
+                on the <a>core operator</a>, then its
+                <a data-cite="INFRA#ascii-lowercase">ASCII lowercased value</a>
+                is used;
               </li>
               <li>If the embellished operator is the first <a>in-flow</a> child of a
                 <a>grouping element</a>,
@@ -1667,7 +1668,9 @@
                 <code>maxsize</code> or
                 <code>minsize</code>
                 attribute is present and valid
-                on the <a>core operator</a>, then this property is used;</li>
+                on the <a>core operator</a>, then the
+                <a data-cite="INFRA#ascii-lowercase">ASCII lowercased value</a>
+                of this property is used;</li>
               <li>
                 Otherwise, if the <a>core operator</a> contains only text
                 content T, the corresponding property from the
