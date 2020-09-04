@@ -536,10 +536,12 @@
             <a data-cite="HTML#presentational-hints">presentational hint</a> setting the element's
             <a><code>text-transform</code></a>
             property to the corresponding value.
-            More precisely, <code>normal</code> is mapped to <code>none</code>
-            while all the other values are mapped to the corresponding CSS
-            value with the extra
-            <code>math-</code> prefix.
+            More precisely, an
+            <a data-cite="INFRA#ascii-case-insensitive">ASCII case-insensitive</a> match
+            to <code>normal</code> is mapped to <code>none</code>
+            while any other valid value is mapped to its
+            <a data-cite="INFRA#ascii-lowercase">ASCII lowercased value</a>,
+            prefixed with <code>math-</code>.
           </p>
           <p>
             The <code>mathvariant</code> attribute defines logical classes of token
