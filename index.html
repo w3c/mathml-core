@@ -433,9 +433,22 @@
             <a data-cite="HTML#presentational-hints">presentational hint</a> setting the element's
             <a data-cite="CSS-WRITING-MODES-3#direction"><code>direction</code></a>
             property to the corresponding value.
-            This attribute is used to set the directionality of math formulas, which is
-            often <code>rtl</code> in Arabic speaking world.
+            More precisely, an
+            <a data-cite="INFRA#ascii-case-insensitive">ASCII case-insensitive</a> match
+            to <code>rtl</code> is mapped to <code>rtl</code> while
+            an <a data-cite="INFRA#ascii-case-insensitive">ASCII case-insensitive</a> match to <code>ltr</code> is mapped to <code>ltr</code>.
           </p>
+          <div class="note">
+            The <a>dir</a>  attribute is used to set the directionality of math
+            formulas, which is often <code>rtl</code> in Arabic speaking world.
+            However, languages written from right to left often embed math
+            written from left to right and so the
+            <a href="#user-agent-stylesheet">user agent stylesheet</a> resets
+            the
+            <a data-cite="CSS-WRITING-MODES-3#direction"><code>direction</code></a>
+            property accordingly on the <a><code>&lt;math&gt;</code></a>
+            elements.
+          </div>
           <div class="example" id="dir-example">
             <p>
               In the following example, the <a>dir</a> attribute
