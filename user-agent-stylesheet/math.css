@@ -8,15 +8,15 @@ math {
   font-family: math;
   font-style: normal;
   font-weight: normal;
-  display: inline-math;
+  display: inline math;
   math-style: compact;
   math-shift: normal;
 }
 math[display="block" i] {
-  display: math;
+  display: block math;
   math-style: normal;
 }
 math[display="inline" i] {
-  display: inline-math;
+  display: inline math;
   math-style: compact;
 }
