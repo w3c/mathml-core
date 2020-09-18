@@ -284,7 +284,7 @@
             described in <a href="#user-agent-stylesheet"></a>
             contains rules for this attribute that affect the
             default values for the <a><code>display</code></a>
-            (<code>math</code> or <code>inline-math</code>)
+            (<code>block math</code> or <code>inline math</code>)
             and <a><code>math-style</code></a>
             (<code>normal</code> or <code>compact</code>) properties.
             If the <code>display</code>
@@ -294,20 +294,20 @@
           <p>
             If the element does not have its computed
             <a><code>display</code> property</a> equal to
-            <code>math</code> or <code>inline-math</code>
+            <code>block math</code> or <code>inline math</code>
             then it is laid out according to the CSS specification where
             the corresponding value is described.
             Otherwise the layout algorithm of the
             <a><code>&lt;mrow&gt;</code></a> element is used to produce a
             box. That MathML box is used as the content for the layout of
             the element, as described by CSS for <code>display: block</code>
-            (if the computed value is <code>math</code>) or
+            (if the computed value is <code>block math</code>) or
             <code>display: inline</code>
-            (if the computed value is <code>inline-math</code>).
+            (if the computed value is <code>inline math</code>).
             Additionally, if the computed
             <a><code>display</code> property</a> is equal to
-            <code>math</code> then that MathML box is rendered horizontally
-            centered within the content box.
+            <code>block math</code> then that MathML box is rendered
+            horizontally centered within the content box.
           </p>
           <div class="note">
             T<sub>E</sub>X's display mode <code>$...$</code>
@@ -777,8 +777,8 @@
               <code>block-size</code>
               are treated as <code>auto</code> on elements
               with computed display value
-              <a href="#new-display-math-value"><code>math</code> or
-                <code>inline-math</code></a>.
+              <a href="#new-display-math-value"><code>block math</code> or
+                <code>inline math</code></a>.
             </li>
             <li>
               Floats:
@@ -892,7 +892,7 @@
           <ul>
             <li>
               For the <code>&lt;math&gt;</code> root,
-              it is equal to <code>inline-math</code> or <code>math</code>
+              it is equal to <code>inline math</code> or <code>block math</code>
               according to the value of the <a>display</a> attribute.
             </li>
             <li>
@@ -910,7 +910,7 @@
             </li>
             <li>
               For all the other <a>MathML elements</a> it is equal
-              to <code>math</code>.
+              to <code>block math</code>.
             </li>
           </ul>
           </p>
@@ -1281,14 +1281,15 @@
           <p>MathML elements can overlap due to various spacing rules. They
             can as well contain extra graphical items
             (bars, radical symbol, etc).
-            A MathML element with computed style <code>display: math</code>
-            or <code>display: inline-math</code> generates a new stacking
+            A MathML element with computed style
+            <code>display: block math</code>
+            or <code>display: inline math</code> generates a new stacking
             context. The <a data-cite="CSS2#painting-order">painting order</a>
             of <a>in-flow</a> children of such a MathML element
             is exactly the same as block elements. The extra graphical
             items are painted after text and background (right after
-            step 7.2.4 for <code>display: inline-math</code> and right after
-            step 7.2 for <code>display: math</code>).
+            step 7.2.4 for <code>display: inline math</code> and right after
+            step 7.2 for <code>display: block math</code>).
           </p>
         </section>
       </section>
@@ -1335,7 +1336,7 @@
             <p>
               If the element does not have its computed
               <a><code>display</code> property</a> equal to
-              <code>math</code> or <code>inline-math</code>
+              <code>block math</code> or <code>inline math</code>
               then it is laid out according to the CSS specification where
               the corresponding value is described.
               Otherwise, the layout below is performed.
@@ -1740,7 +1741,7 @@
             <p>
               If the <code>&lt;mo&gt;</code> element does not have its computed
               <a><code>display</code> property</a> equal to
-              <code>math</code> or <code>inline-math</code>
+              <code>block math</code> or <code>inline math</code>
               then it is laid out according to the CSS specification where
               the corresponding value is described.
               Otherwise, the layout below is performed.
@@ -2028,7 +2029,7 @@
             If the <code>&lt;mspace&gt;</code> element does not have its
             computed
             <a><code>display</code> property</a> equal to
-            <code>math</code> or <code>inline-math</code>
+            <code>block math</code> or <code>inline math</code>
             then it is laid out according to the CSS specification where
             the corresponding value is described.
             Otherwise,
@@ -2238,7 +2239,7 @@
             <p>
               If the element does not have its computed
               <a><code>display</code> property</a> equal to
-              <code>math</code> or <code>inline-math</code>
+              <code>block math</code> or <code>inline math</code>
               then it is laid out according to the CSS specification where
               the corresponding value is described.
               Otherwise, the layout below is performed.
@@ -2395,8 +2396,8 @@
           </p>
           <p>
             If the <code>&lt;mfrac&gt;</code> element does not have its computed
-            <a><code>display</code> property</a> equal to <code>math</code>
-            or <code>inline-math</code>
+            <a><code>display</code> property</a> equal to <code>block math</code>
+            or <code>inline math</code>
             then it is laid out according to the CSS specification where
             the corresponding value is described.
             Otherwise, the layout below is performed.
@@ -2736,8 +2737,8 @@
           <p>
             If the <code>&lt;msqrt&gt;</code> or <code>&lt;mroot&gt;</code>
             element do not have their computed
-            <a><code>display</code> property</a> equal to <code>math</code>
-            or <code>inline-math</code>
+            <a><code>display</code> property</a> equal to <code>block math</code>
+            or <code>inline math</code>
             then they are laid out according to the CSS specification where
             the corresponding value is described.
             Otherwise, the layout below is performed.
@@ -3110,8 +3111,8 @@
             <p>
               If the <code>&lt;mpadded&gt;</code> element does not have its
               computed
-              <a><code>display</code> property</a> equal to <code>math</code>
-              or <code>inline-math</code>
+              <a><code>display</code> property</a> equal to <code>block math</code>
+              or <code>inline math</code>
               then it is laid out according to the CSS specification where
               the corresponding value is described.
               Otherwise, it is laid out as shown on
@@ -3221,8 +3222,8 @@
             <code>&lt;msup&gt;</code> or
             <code>&lt;msubsup&gt;</code> elements do not have their
             computed
-            <a><code>display</code> property</a> equal to <code>math</code>
-            or <code>inline-math</code>
+            <a><code>display</code> property</a> equal to <code>block math</code>
+            or <code>inline math</code>
             then they are laid out according to the CSS specification where
             the corresponding value is described.
             Otherwise, the layout below is performed.
@@ -3580,8 +3581,8 @@
             <code>&lt;mover&gt;</code> or
             <code>&lt;munderover&gt;</code> elements do not have their
             computed
-            <a><code>display</code> property</a> equal to <code>math</code>
-            or <code>inline-math</code>
+            <a><code>display</code> property</a> equal to <code>block math</code>
+            or <code>inline math</code>
             then they are laid out according to the CSS specification where
             the corresponding value is described.
             Otherwise, the layout below is performed.
@@ -4061,8 +4062,8 @@
             <code>&lt;mprescripts&gt;</code> or
             <code>&lt;none&gt;</code> elements do not have their
             computed
-            <a><code>display</code> property</a> equal to <code>math</code>
-            or <code>inline-math</code>
+            <a><code>display</code> property</a> equal to <code>block math</code>
+            or <code>inline math</code>
             then they are laid out according to the CSS specification where
             the corresponding value is described.
             Otherwise, the layout below is performed.
@@ -4614,37 +4615,38 @@
     <section class="normative">
       <h2>CSS Extensions for Math Layout</h2>
       <section id="new-display-math-value">
-        <h3>The <code>display: math</code> and <code>display: inline-math</code> value</h3>
+        <h3>The <code>display: block math</code>
+          and <code>display: inline math</code> value</h3>
         <p>The <dfn><code>display</code> property</dfn>
           from <a data-cite="CSS-DISPLAY-3"></a>
-          is extended with new values value:
+          is extended with a new inner display type:
         </p>
-        <code><a data-cite="CSS-DISPLAY-3#valdef-display-table">&lt;display-old&gt;</a> <a data-cite="CSS-VALUES-3#comb-one">|</a> math | inline-math </code>
+        <code><a data-cite="CSS-DISPLAY-3#typedef-display-inside">&lt;display-inside-old&gt;</a> <a data-cite="CSS-VALUES-3#comb-one">|</a> math</code>
         <p>
-          For the <a><code>&lt;math&gt;</code></a>,
-          <a><code>&lt;mtable&gt;</code></a>,
-          <a><code>&lt;mtr&gt;</code></a> and
-          <a><code>&lt;mtd&gt;</code></a> elements, the
-          <code>math</code> value respectively computes to
-          <code>inline</code>,
-          <code>inline-table</code>,
-          <code>table-row</code>
-          and <code>table-cell</code>.
-          <a>MathML Core elements</a> with <code>display: math</code> or
-          <code>display: inline-math</code>
-          control box generation and layout according to their tag name, as
-          described in the relevant sections while
-          <a>Unknown MathML elements</a> with <code>display: math</code>
-          or <code>display: inline-math</code>
-          behave the same as the <a><code>&lt;mrow&gt;</code></a> element.
-          For elements that are not <a>MathML elements</a>, the
-          <code>display: math</code>
-          and <code>display: inline-math</code> values compute to
+          For elements that are not <a>MathML elements</a>, if the specified
+          value of <code>display</code> is <code>inline math</code> or
+          <code>block math</code> then the computed value is
           <code>block flow</code> and <code>inline flow</code> respectively.
+          For the <a><code>&lt;mtable&gt;</code></a> element
+          the computed value is <code>block table</code> and
+          <code>inline table</code> respectively.
+          For the <a><code>&lt;mtr&gt;</code></a> element, the computed value
+          is <code>table-row</code>.
+          For the <a><code>&lt;mtd&gt;</code></a> element, the computed value
+          is <code>table-cell</code>.
+        </p>
+        <p>
+          <a>MathML elements</a> with a
+          computed <code>display</code> value equal to
+          <code>block math</code> or <code>inline math</code>
+          control box generation and layout according to their tag name, as
+          described in the relevant sections.
+          <a>Unknown MathML elements</a>
+          behave the same as the <a><code>&lt;mrow&gt;</code></a> element.
         </p>
         <div class="note">
-          The <code>display: math</code> and
-          <code>display: inline-math</code> values provide a default
+          The <code>display: block math</code> and
+          <code>display: inline math</code> values provide a default
           layout for MathML elements while at the same time allowing
           to override it with either native display values or
           <a data-cite="CSS-LAYOUT-API-1#registering-layout">custom values</a>.
