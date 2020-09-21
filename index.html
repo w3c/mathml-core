@@ -4621,7 +4621,7 @@
           from <a data-cite="CSS-DISPLAY-3"></a>
           is extended with a new inner display type:
         </p>
-        <code><a data-cite="CSS-DISPLAY-3#typedef-display-inside">&lt;display-inside-old&gt;</a> <a data-cite="CSS-VALUES-3#comb-one">|</a> math</code>
+        <code>&lt;display&gt; = <a data-cite="CSS-DISPLAY-3#typedef-display-inside">&lt;display-inside-old&gt;</a> <a data-cite="CSS-VALUES-3#comb-one">|</a> math</code>
         <p>
           For elements that are not <a>MathML elements</a>, if the specified
           value of <code>display</code> is <code>inline math</code> or
@@ -4670,7 +4670,7 @@
           from <a data-cite="CSS-TEXT-3"></a>
           is extended with new values:
         </p>
-        <code><a data-cite="CSS-TEXT-3#text-transform-property">&lt;text-transform-old&gt;</a> <a data-cite="CSS-VALUES-3#comb-one">|</a> math-auto | math-bold | math-italic | math-bold-italic | math-double-struck | math-bold-fraktur | math-script | math-bold-script | math-fraktur | math-sans-serif | math-bold-sans-serif | math-sans-serif-italic | math-sans-serif-bold-italic | math-monospace | math-initial | math-tailed | math-looped | math-stretched</code>
+        <code>&lt;text-transform&gt; = <a data-cite="CSS-TEXT-3#text-transform-property">&lt;text-transform-old&gt;</a> <a data-cite="CSS-VALUES-3#comb-one">|</a> math-auto | math-bold | math-italic | math-bold-italic | math-double-struck | math-bold-fraktur | math-script | math-bold-script | math-fraktur | math-sans-serif | math-bold-sans-serif | math-sans-serif-italic | math-sans-serif-bold-italic | math-monospace | math-initial | math-tailed | math-looped | math-stretched</code>
         <p>If the specified value of text-transform is <code>math-auto</code>
           and the inherited value is not <code>none</code> then the
           computed value is the inherited value.</p>
@@ -4895,44 +4895,70 @@
           </div>
       </section>
       <section id="the-math-script-level-property">
-        <h3>New value <code>scriptlevel()</code> function for font-size</h3>
+        <h3>New value <code>math-level</code> property and <code>font-size: math</code> value</h3>
         <p>The <dfn><code>font-size</code></dfn> property
           from <a data-cite="CSS-FONTS-4"></a>
-          is extended with new values:
+          is extended with a new value <code>math</code> value, indicating that
+          special mathematical scaling rules must be applied when determining
+          the computed value of the <code>font-size</code> property:
         </p>
-        <code><a data-cite="CSS-FONTS-4#font-size-prop">&lt;font-size-old&gt;</a> <a data-cite="CSS-VALUES-3#comb-one">|</a> scriptlevel(auto) | scriptlevel(add(&lt;integer&gt;)) | scriptlevel(&lt;integer&gt;)</code>
-        <p>Each element has an <dfn>internal scriptlevel</dfn> which is
-          determined as folows:</p>
+        <code>&lt;font-size&gt; = <a data-cite="CSS-FONTS-4#font-size-prop">&lt;font-size-old&gt;</a> <a data-cite="CSS-VALUES-3#comb-one">|</a> math</code>
+        <p>
+          A new <a>math-level</a> property is introduced to describe a notion
+          of "depth" for each element of a mathematical formula, with respect to
+          the top-level container of that formula. Concretely, this is used to
+          determine the computed value of the <code>font-size</code>
+          property when its specified value is <code>math</code>.
+        </p>
+        <table>
+          <tbody>
+            <tr>
+              <th>Name:</th>
+              <td>
+                <dfn><code>math-level</code></dfn>
+              </td>
+            </tr>
+            <tr><th>Value:</th><td><code>auto | add(&lt;integer&gt;) | &lt;integer&gt;</code></td></tr>
+            <tr><th>Initial:</th><td><code>0</code></td></tr>
+            <tr><th>Applies to:</th><td>All elements</td></tr>
+            <tr><th>Inherited:</th><td>yes</td></tr>
+            <tr><th>Percentages:</th><td>n/a</td></tr>
+            <tr><th>Media:</th><td>visual</td></tr>
+            <tr><th>Computed value:</th><td>an integer, see below</td></tr>
+            <tr><th>Canonical order:</th><td>n/a</td></tr>
+            <tr><th>Animation type:</th><td>not animatable</td></tr>
+          </tbody>
+        </table>
+        <p>The computed value of the <a>math-level</a> value is
+          determined as follows:</p>
         <ul>
-          <li>The <a>internal scriptlevel</a> is 0 on the root element.</li>
-          <li>If the specified value of <a>font-size</a> is
-            <code>scriptlevel(auto)</code> and
+          <li>If the specified value of <a>math-level</a> is
+            <code>auto</code> and
             the inherited value of <a>math-style</a>
-            is <code>compact</code> then the <a>internal scriptlevel</a> of
-            the element is the one of its parent plus one.
+            is <code>compact</code> then the computed value of
+            <a>math-level</a> of the element is its inherited value plus one.
           </li>
-          <li>If the specified value of <a>font-size</a> is of
-            the form <code>scriptlevel(add(&lt;integer&gt;))</code> then the
-            <a>internal scriptlevel</a> is the one of its parent plus
+          <li>If the specified value of <a>math-level</a> is of
+            the form <code>add(&lt;integer&gt;)</code> then the computed value
+            of <a>math-level</a> of the element is its inherited value plus
             the specified integer.
           </li>
-          <li>If the specified value of <a>font-size</a> is of the form
-            <code>scriptlevel(&lt;integer&gt;)</code> then the
-            <a>internal scriptlevel</a> of the element is the specified
-            integer.</li>
-          <li>Otherwise, the <a>internal scriptlevel</a>
-            of the element is the same as the one of its parent.</li>
+          <li>If the specified value of <a>math-level</a> is of the form
+            <code>&lt;integer&gt;</code> then the computed value
+            of <a>math-level</a> of the element is the specified integer.
+          <li>Otherwise, the computed value
+            of <a>math-level</a> of the element is the inherited one.</li>
         </ul>
         <p>
-          If the specified value <a>font-size</a> is of the form
-          <code>scriptlevel(...)</code> then the computed value of
+          If the specified value <a>font-size</a> is <code>math</code> then the
+          computed value of
           <a>font-size</a> is obtained by multiplying the inherited value of
           <code>font-size</code> by a nonzero scale factor calculated by the
           following procedure:
         </p>
         <ol>
-          <li>Let A be the <a>internal scriptlevel</a> of the parent,
-            B the <a>internal scriptlevel</a> of the element,
+          <li>Let A be the inherited <a>math-level</a> value,
+            B the computed <a>math-level</a> value,
             C be 0.71 and S be 1.0</li>
           <li>
             <ul>
@@ -4971,13 +4997,14 @@
             </p>
             <img src="examples/example-font-size-scriptlevel.png" alt="font-size-scriptlevel example"/>
             <p>These rules from [[TeXBook]] are subtle and it's worth having a
-              separate <code>scriptlevel()</code> function to express and
+              separate <code>math-level</code> mechanism to express and
               handle them. They can be implemented in MathML using the
               <a href="#user-agent-stylesheet">User Agent Stylesheet</a>.
               Page authors or developers of polyfills may also benefit from
               having access to this property to tweak or refine the default
               implementation. In particular, the <a>scriptlevel</a> attribute
-              from MathML provides a way to perform scriptlevel changes.
+              from MathML provides a way to perform <code>math-level</code>
+              changes.
             </p>
           </div>
       </section>
