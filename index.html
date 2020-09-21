@@ -604,19 +604,19 @@
             <code>+&lt;U&gt;</code>, <code>-&lt;U&gt;</code> or <code>&lt;U&gt;</code>
             where <code>&lt;U&gt;</code> is an
             <a>unsigned-integer</a>.
-            In that case and if the <a>mathsize</a> attribute is absent,
+            In that case
             the user agent is expected to treat the <code>scriptlevel</code>
             attribute as a
             <a data-cite="HTML#presentational-hints">presentational hint</a> setting the element's
-            <a><code>font-size</code></a>
+            <a><code>math-level</code></a>
             property to the corresponding value.
             More precisely,
             <code>+&lt;U&gt;</code>, <code>-&lt;U&gt;</code> and
             <code>&lt;U&gt;</code>
             are respectively mapped to
-            <code>scriptlevel(add(&lt;U&gt;))</code>
-            <code>scriptlevel(add(&lt;-U&gt;))</code>
-            and <code>scriptlevel(&lt;U&gt;)</code>.
+            <code>add(&lt;U&gt;)</code>
+            <code>add(&lt;-U&gt;)</code>
+            and <code>&lt;U&gt;</code>.
           </p>
           <p>
             <a><code>displaystyle</code></a> and <a><code>scriptlevel</code></a> values
@@ -624,6 +624,9 @@
             To fully implement these attributes, additional CSS properties must be
             specified in the user agent stylesheet
             as described in <a href="#user-agent-stylesheet"></a>.
+            In particular, for all MathML elements a default
+            <code>font-size: math</code> is specified to ensure that
+            <code>scriptlevel</code> changes are taken into account.
           </p>
           <div class="example" id="displaystyle-scriptlevel-example">
             <p>
@@ -4792,8 +4795,9 @@
         </p>
         <ul>
           <li>The <a><code>font-size</code></a> is scaled down when
-            <code>scriptlevel(auto)</code> is specified
-            (default for <a>&lt;mfrac&gt;</a>)
+            its specified value is <code>math</code> and
+            the computed value of <a><code>math-level</code></a> is
+            <code>auto</code> (default for <a>&lt;mfrac&gt;</a>)
             as described in <a href="#the-math-script-level-property"></a>.</li>
           <li>Operators with the <a>largeop</a> property
             do not follow rules from <a href="#layout-of-operators"></a>
@@ -5507,8 +5511,8 @@
       <h2>User Agent Stylesheet</h2>
       <pre class="css">@namespace url(http://www.w3.org/1998/Math/MathML);
 
-/* Default display */
-<span data-include-replace="true" data-include="user-agent-stylesheet/display.css"></span>
+/* Universal rules */
+<span data-include-replace="true" data-include="user-agent-stylesheet/universal.css"></span>
 /* The &lt;math&gt; element */
 <span data-include-replace="true" data-include="user-agent-stylesheet/math.css"></span>
 /* &lt;mrow&gt;-like elements */

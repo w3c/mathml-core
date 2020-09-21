@@ -5,7 +5,7 @@ mmultiscripts > :not(:first-child),
 munder > :not(:first-child),
 mover > :not(:first-child),
 munderover > :not(:first-child) {
-  font-size: scriptlevel(add(1));
+  math-level: add(1);
   math-style: compact;
 }
 munder[accentunder="true" i] > :nth-child(2),

@@ -6,6 +6,7 @@ math {
   line-height: normal;
   word-spacing: normal;
   font-family: math;
+  font-size: inherited;
   font-style: normal;
   font-weight: normal;
   display: inline math;
