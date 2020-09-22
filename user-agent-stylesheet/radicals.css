@@ -1,5 +1,5 @@
 mroot > :not(:first-child) {
-  math-level: add(2);
+  math-depth: add(2);
   math-style: compact;
 }
 mroot, msqrt {
