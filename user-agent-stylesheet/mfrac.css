@@ -3,7 +3,7 @@ mfrac {
   padding-inline-end: 1px;
 }
 mfrac > * {
-  math-depth: auto;
+  math-depth: auto-add;
   math-style: compact;
 }
 mfrac > :nth-child(2) {

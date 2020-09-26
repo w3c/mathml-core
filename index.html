@@ -4796,7 +4796,7 @@
           <li>The <a><code>font-size</code></a> is scaled down when
             its specified value is <code>math</code> and
             the computed value of <a><code>math-depth</code></a> is
-            <code>auto</code> (default for <a>&lt;mfrac&gt;</a>)
+            <code>auto-add</code> (default for <a>&lt;mfrac&gt;</a>)
             as described in <a href="#the-math-script-level-property"></a>.</li>
           <li>Operators with the <a>largeop</a> property
             do not follow rules from <a href="#layout-of-operators"></a>
@@ -4921,7 +4921,7 @@
                 <dfn><code>math-depth</code></dfn>
               </td>
             </tr>
-            <tr><th>Value:</th><td><code>auto | add(&lt;integer&gt;) | &lt;integer&gt;</code></td></tr>
+            <tr><th>Value:</th><td><code>auto-add | add(&lt;integer&gt;) | &lt;integer&gt;</code></td></tr>
             <tr><th>Initial:</th><td><code>0</code></td></tr>
             <tr><th>Applies to:</th><td>All elements</td></tr>
             <tr><th>Inherited:</th><td>yes</td></tr>
@@ -4936,7 +4936,7 @@
           determined as follows:</p>
         <ul>
           <li>If the specified value of <a>math-depth</a> is
-            <code>auto</code> and
+            <code>auto-add</code> and
             the inherited value of <a>math-style</a>
             is <code>compact</code> then the computed value of
             <a>math-depth</a> of the element is its inherited value plus one.
