@@ -86,29 +86,29 @@ div.annotation .button:hover {
 div.annotation .button.disclosure {
 	float: left;
 	margin: -3px 4px 0 -3px;
-	background-image: url(../img/open_dark.png);
+	background-image: url(img/open_dark.png);
 }
 
 div.annotation .button.close {
 	float:right;
 	margin: -3px -3px 0 4px;
-	background-image: url(../img/close_dark.png);
+	background-image: url(img/close_dark.png);
 }
 
 div.annotation.closed .button.disclosure {
-	background-image: url(../img/closed_dark.png);
+	background-image: url(img/closed_dark.png);
 }
 
 div.annotation .button.disclosure:hover {
-	background-image: url(../img/open_light.png);
+	background-image: url(img/open_light.png);
 }
 
 div.annotation.closed .button.disclosure:hover {
-	background-image: url(../img/closed_light.png);
+	background-image: url(img/closed_light.png);
 }
 
 div.annotation .button.close:hover {
-	background-image: url(../img/close_light.png);
+	background-image: url(img/close_light.png);
 }
 
 div.annotation div.title {
@@ -193,7 +193,7 @@ div.annotation div.title + div.heading {
 	}
 	
 	div.annotation div.engines span.active::after {
-		content: url(../img/bookmark.svg);
+		content: url(img/bookmark.svg);
 		position: absolute;
 		top: -2px;
 		right: 2px;
