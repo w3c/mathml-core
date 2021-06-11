@@ -91,6 +91,7 @@ async function loadWebPlaformTestsResults() {
         let summary = {};
         let annotationEl = el.parentElement;
         annotationEl.classList.add('annotation');
+        annotationEl.classList.add('removeOnSave');
 
         annotationEl.__tests.forEach(key => {
             wptData.forEach(rec => {
