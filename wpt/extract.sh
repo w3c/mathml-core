@@ -5,7 +5,7 @@ if [ "$#" -ne 1 ]; then
     exit
 fi
 
-MATHML_CORE_URL=https://mathml-refresh.github.io/mathml-core
+MATHML_CORE_URL=https://w3c.github.io/mathml-core
 WPT_DIR=$1
 WPT_SUBDIRS="mathml css/css-fonts/math-script-level-and-math-style css/css-text/text-transform/math"
 PYTHON_SCRIPT=wpt-tests-generator.py
