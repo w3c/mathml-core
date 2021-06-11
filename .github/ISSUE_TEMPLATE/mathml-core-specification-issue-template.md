@@ -9,7 +9,7 @@ assignees: ''
 
 Please raise any issues on the MathML Core draft in the main repository for MathML
 
-https://github.com/mathml-refresh/mathml/issues
+https://github.com/w3c/mathml/issues
 
 Use the label **Core** if the issue applies to the MathML-Core specification.
 
