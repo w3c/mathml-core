@@ -8,7 +8,7 @@ try:
 except ImportError:
     from urllib2 import urlopen
 
-UnicodeXMLURL = "https://mathml-refresh.github.io/xml-entities/unicode.xml"
+UnicodeXMLURL = "https://w3c.github.io/xml-entities/unicode.xml"
 
 def downloadWithProgressBar(url, outputDirectory="./", forceDownload=False):
 
