@@ -42,6 +42,8 @@ def generateScreenShot(name):
                             image])
             break
      
+print("Generation assumes development version chromium-mathml is available.")
+print("Use the commited examples in git.\n")
 
 # Generate screenshot for the specified file example, or for all of them.
 if len(sys.argv) >= 2:
