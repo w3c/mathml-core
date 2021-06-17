@@ -413,7 +413,7 @@ md.write("<!-- This file was automatically generated from generate-math-variant-
 
 md.write('<figure id="operator-dictionary-table">')
 md.write("<table class='sortable'>\n");
-md.write("<tr><th>Content</th><th>form</th><th>rspace</th><th>lspace</th><th>properties</th></tr>")
+md.write("<tr><th>Content</th><th>form</th><th>rspace</th><th>lspace</th><th>properties</th></tr>\n")
 for name, item in sorted(knownTables.items(),
                          key=(lambda v: len(v[1]["singleChar"])),
                          reverse=True):
@@ -430,7 +430,7 @@ for name, item in sorted(knownTables.items(),
                                 entry in knownTables["fence"]["singleChar"],
                                 entry in knownTables["separator"]["singleChar"]))
         totalEntryCount += 1
-        md.write("</tr>");
+        md.write("</tr>\n");
     if "multipleChar" in knownTables[name]:
         for entry in knownTables[name]["multipleChar"]:
             md.write("<tr style='background: lightblue'>");
@@ -446,7 +446,7 @@ for name, item in sorted(knownTables.items(),
                                     fence,
                                     separator))
             totalEntryCount += 1
-            md.write("</tr>");
+            md.write("</tr>\n");
 
 # FIXME: decide what to do with these values.
 # Ugly hack for now, hopefully these edge cases will be handled normally later or removed.
@@ -460,7 +460,7 @@ for value, count in sorted(otherValuesCount.items(),
         md.write(serializeValue(parsed_value,
                                 "properties" in parsed_value and "fence" in parsed_value["properties"],
                                 "properties" in parsed_value and "separator" in parsed_value["properties"]))
-        md.write("</tr>");
+        md.write("</tr>\n");
 for name in otherEntriesWithMultipleCharacters:
     md.write("<tr style='text-decoration: line-through; background: lightblue'>");
     md.write("<td>String ")
@@ -468,7 +468,7 @@ for name in otherEntriesWithMultipleCharacters:
     md.write("</td>")
     md.write("<td><code>%s</code></td>" % otherEntriesWithMultipleCharacters[name]["form"])
     md.write(serializeValue(otherEntriesWithMultipleCharacters[name], False, False))
-    md.write("</tr>");
+    md.write("</tr>\n");
 
 md.write("</table>\n");
 md.write('<figcaption>Mapping from operator (Content, Form) to properties.<br/>Total size: %d entries, ≥ %d bytes<br/>(assuming \'Content\' uses at least one UTF-16 character, \'Form\' 2 bits, spacing 3 bits and properties 3 bits).</figcaption>' % (totalEntryCount, ceil(totalEntryCount * (16 + 2 + 3 + 3)/8.)))
@@ -539,7 +539,7 @@ md.write('<figure id="operator-dictionary-compact-special-tables">')
 md.write("<table>");
 md.write("<tr>");
 md.write("<th>Special Table</th><th>Entries</th>");
-md.write("</tr>");
+md.write("</tr>\n");
 md.write("<tr>")
 md.write("<td><code>Operators_2_ascii_chars</code></td>");
 md.write("<td>%d entries (2-characters ASCII strings): <code>" % len(multipleCharTable));
@@ -549,7 +549,7 @@ for sequence in multipleCharTable:
     totalBytes += 2
     totalEntryCount += 1
 md.write("</code></td>");
-md.write("</tr>")
+md.write("</tr>\n")
 
 for name, item in sorted(knownTables.items(),
                          key=(lambda v: len(v[1]["singleChar"])),
@@ -572,7 +572,7 @@ for name, item in sorted(knownTables.items(),
         totalBytes += 2 * count
     totalEntryCount += count
     md.write("</code></td>")
-    md.write("</tr>")
+    md.write("</tr>\n")
 md.write("</table>");
 md.write('<figcaption>Special tables for the operator dictionary.<br/>Total size: %d entries, %d bytes.<br/>(assuming characters are UTF-16 and 1-byte range lengths)</figcaption>' % (totalEntryCount, totalBytes))
 md.write('</figure>')
@@ -582,7 +582,7 @@ totalBytes = 0
 value_index = 0
 md.write('<figure id="operator-dictionary-category-table">')
 md.write("<table>");
-md.write("<tr><th>(Content, Form) keys</th><th>Category</th></tr>");
+md.write("<tr><th>(Content, Form) keys</th><th>Category</th></tr>\n");
 
 for name, item in sorted(knownTables.items(),
                          key=(lambda v: len(v[1]["singleChar"])),
@@ -607,7 +607,7 @@ for name, item in sorted(knownTables.items(),
     md.write("</code></td>")
     md.write("<td>%s</td>" % chr(ord('A') + value_index));
     value_index += 1;
-    md.write("</tr>")
+    md.write("</tr>\n")
 md.write("</table>");
 md.write('<figcaption>Mapping from operator (Content, Form) to a category.<br/>Total size: %d entries, %d bytes.<br/>(assuming characters are UTF-16 and 1-byte range lengths)</figcaption>' % (totalEntryCount, totalBytes))
 md.write('</figure>')
@@ -625,7 +625,7 @@ category_for_form = [0, 0, 0]
 value_index = 0
 md.write('<figure id="operator-dictionary-categories-values">')
 md.write("<table>");
-md.write("<tr><th>Category</th><th>Form</th><th>Encoding</th><th>rspace</th><th>lspace</th><th>properties</th></tr>")
+md.write("<tr><th>Category</th><th>Form</th><th>Encoding</th><th>rspace</th><th>lspace</th><th>properties</th></tr>\n")
 for name, item in sorted(knownTables.items(),
                          key=(lambda v: len(v[1]["singleChar"])),
                          reverse=True):
@@ -643,7 +643,7 @@ for name, item in sorted(knownTables.items(),
             category_for_form[form] += 1
             md.write("<td>0x%01X</td>" % hexa)
         md.write(serializeValue(knownTables[name]["value"], False, False))
-        md.write("</tr>");
+        md.write("</tr>\n");
         break
     value_index += 1
 
