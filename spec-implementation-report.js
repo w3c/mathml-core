@@ -36,7 +36,7 @@ async function getBrowserWPTData(browser) {
   We can launch these early and get data
 */
 let wptDataPromise = Promise.all([
-    getBrowserWPTData('blink'),
+//    getBrowserWPTData('blink'),
     getBrowserWPTData('chrome'),
     getBrowserWPTData('firefox'),
     getBrowserWPTData('safari')
@@ -83,7 +83,7 @@ async function loadWebPlaformTestsResults() {
     let ENGINE_LOGOS = {
         'firefox': "https://test.csswg.org/harness/img/gecko.svg",
         'safari': "https://test.csswg.org/harness/img/webkit.svg",
-        'blink': "https://pbs.twimg.com/profile_images/1576817016/igalia_400x400.png",
+        //        'blink': "https://pbs.twimg.com/profile_images/1576817016/igalia_400x400.png",
         'chrome': "https://test.csswg.org/harness/img/blink.svg",
     };
 
