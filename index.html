@@ -21,7 +21,7 @@
               w3cid: 4238
           }, {
               name: "Frédéric Wang",
-              url: "http://frederic-wang.fr",
+              url: "https://frederic-wang.fr",
               company: "Igalia",
               w3cid: 112458
           }],
@@ -36,12 +36,11 @@
           group: "math",
           edDraftURI: "https://w3c.github.io/mathml-core/",
           shortName: "mathml-core",
-	  github: "w3c/mathml-core",
 	  wgPublicList: "www-math",
+	  github: "w3c/mathml-core",
           mdn: false,
           testSuiteURI: "https://w3c-test.org/mathml/",
-          issueBase: "https://github.com/w3c/mathml/issues/",
-          implementationReportURI: "implementation-report.html",
+          implementationReportURI: "https://github.com/w3c/mathml-core/implementation-report.html",
 	  
           localBiblio: {
               "MATHML4": {
@@ -54,7 +53,7 @@
               },
               "gperf": {
                   title: "gperf - Perfect Hash Function Generator",
-                  href: "https://www.gnu.org/software/gperf"
+                  href: "https://www.gnu.org/software/gperf/"
               },
               "CMPH": {
                   title: "CMPH - C Minimal Perfect Hashing Library",
@@ -78,14 +77,14 @@
                   authors: [
                       "Ulrik Vieth"
                   ],
-                  href: "http://www.tug.org/TUGboat/tb30-1/tb94vieth.pdf",
+                  href: "https://www.tug.org/TUGboat/tb30-1/tb94vieth.pdf",
               },
               "OPEN-TYPE-MATH-IN-HARFBUZZ": {
                   title: "OpenType MATH in HarfBuzz",
                   authors: [
                       "Frédéric Wang"
                   ],
-                  href: "http://frederic-wang.fr/opentype-math-in-harfbuzz.html"
+                  href: "https://frederic-wang.fr/opentype-math-in-harfbuzz.html"
               }
           },
           preProcess: [initReport],
@@ -228,7 +227,7 @@
           <li><a href="#mpadded-attributes"><code>mpadded</code> attributes</a></li>
           <li><a href="#mspace-attributes"><code>mspace</code> attributes</a></li>
           <li><a href="#munderover-attributes"><code>munderover</code> attributes</a></li>
-          <li><a href="mtd-attributes"><code>mtd</code> attributes</a></li>
+          <li><a href="#mtd-attributes"><code>mtd</code> attributes</a></li>
           <li><a><code>encoding</code></a></li>
           <li><a><code>display</code></a></li>
           <li><a><code>linethickness</code></a></li>
@@ -391,12 +390,12 @@
             <dfn><code>nonce</code></dfn> and
             <dfn><code>tabindex</code></dfn>
             attributes have the same syntax and semantic as defined for
-            <a data-cite="HTML#the-id-attribute">id</a>,
-            <a data-cite="HTML#classes">class</a>,
-            <a data-cite="HTML#the-style-attribute">style</a>,
-            <a data-cite="HTML#embedding-custom-non-visible-data-with-the-data-*-attributes">data-*</a>,
-            <a data-cite="HTML#nonce-attributes">nonce</a> and
-            <a data-cite="HTML#attr-tabindex">tabindex</a>
+            <a data-cite="HTML/../#the-id-attribute">id</a>,
+            <a data-cite="HTML/../#classes">class</a>,
+            <a data-cite="HTML/../#the-style-attribute">style</a>,
+            <a data-cite="HTML/../#embedding-custom-non-visible-data-with-the-data-*-attributes">data-*</a>,
+            <a data-cite="HTML/../#nonce-attributes">nonce</a> and
+            <a data-cite="HTML/../#attr-tabindex">tabindex</a>
             attributes on HTML elements.
           </p>
           <p>
@@ -407,7 +406,7 @@
             <a data-cite="INFRA#ascii-case-insensitive">ASCII case-insensitive</a> match
             to <code>ltr</code> or <code>rtl</code>.
             In that case, the user agent is expected to treat the attribute as a
-            <a data-cite="HTML#presentational-hints">presentational hint</a> setting the element's
+            <a data-cite="HTML/../#presentational-hints">presentational hint</a> setting the element's
             <a data-cite="CSS-WRITING-MODES-3#direction"><code>direction</code></a>
             property to the corresponding value.
             More precisely, an
@@ -438,11 +437,11 @@
           </div>
           <p id="event-handler-content-attributes">
             All MathML elements support event handler content attributes,
-            as described in  <a data-cite="HTML#event-handler-contentattributes">event handler content attributes</a> in HTML.
+            as described in  <a data-cite="HTML/../#event-handler-content-attributes">event handler content attributes</a> in HTML.
           </p>
           <p>
             All event handler content attributes
-            <a data-cite="HTML#event-handlers-on-elements,-document-objects,-and-window-objects">noted by HTML as being supported by all HTMLElements</a>
+            <a data-cite="HTML/../#event-handlers-on-elements,-document-objects,-and-window-objects">noted by HTML as being supported by all HTMLElements</a>
             are supported by all MathML elements as well, as defined in the <a href="#dom-and-javascript">MathMLElement IDL</a>.
           </p>
         </section>
@@ -456,7 +455,7 @@
             attributes, if present, must
             have a value that is a <a>color</a>.
             In that case, the user agent is expected to treat these attributes as a
-            <a data-cite="HTML#presentational-hints">presentational hint</a> setting the element's
+            <a data-cite="HTML/../#presentational-hints">presentational hint</a> setting the element's
             <a data-cite="CSS-COLOR-3#foreground"><code>color</code></a> and
             <a data-cite="CSS-BACKGROUNDS-3#the-background-color"><code>background-color</code></a>
             properties to the corresponding values.
@@ -471,7 +470,7 @@
             attribute, if present, must
             have a value that is a valid <a>length-percentage</a>.
             In that case, the user agent is expected to treat the attribute as a
-            <a data-cite="HTML#presentational-hints">presentational hint</a> setting the element's
+            <a data-cite="HTML/../#presentational-hints">presentational hint</a> setting the element's
             <a><code>font-size</code></a>
             property to the corresponding value.
             The <code>mathsize</code> property indicates indicates the desired height
@@ -510,7 +509,7 @@
             <code>looped</code>, or
             <code>stretched</code>.
             In that case, the user agent is expected to treat the attribute as a
-            <a data-cite="HTML#presentational-hints">presentational hint</a> setting the element's
+            <a data-cite="HTML/../#presentational-hints">presentational hint</a> setting the element's
             <a><code>text-transform</code></a>
             property to the corresponding value.
             More precisely, an
@@ -562,7 +561,7 @@
             <dfn><code>displaystyle</code></dfn>
             attribute, if present, must have a value that is a <a>boolean</a>.
             In that case, the user agent is expected to treat the attribute as a
-            <a data-cite="HTML#presentational-hints">presentational hint</a> setting the element's
+            <a data-cite="HTML/../#presentational-hints">presentational hint</a> setting the element's
             <a><code>math-style</code></a>
             property to the corresponding value.
             More precisely, an
@@ -584,7 +583,7 @@
             In that case
             the user agent is expected to treat the <code>scriptlevel</code>
             attribute as a
-            <a data-cite="HTML#presentational-hints">presentational hint</a> setting the element's
+            <a data-cite="HTML/../#presentational-hints">presentational hint</a> setting the element's
             <a><code>math-depth</code></a>
             property to the corresponding value.
             More precisely,
@@ -638,7 +637,7 @@
           <h4>HTML and SVG</h4>
           <p>
             When
-            <a data-cite="HTML#parsing">parsing HTML documents</a>
+            <a data-cite="HTML/../#parsing">parsing HTML documents</a>
             user agents must treat any tag name corresponding to a
             <a>MathML Core Element</a> as belonging to the
             <a data-cite="INFRA#mathml-namespace">MathML namespace</a>.
@@ -646,17 +645,17 @@
           <p>
             Users agents must allow mixing HTML, SVG and MathML elements
             as allowed by sections
-            <a data-cite="HTML#html-integration-point">HTML integration point</a>,
-            <a data-cite="HTML#mathml-text-integration-point">MathML integration point</a>,
-            <a data-cite="HTML#tree-construction-dispatcher">tree construction
+            <a data-cite="HTML/../#html-integration-point">HTML integration point</a>,
+            <a data-cite="HTML/../#mathml-text-integration-point">MathML integration point</a>,
+            <a data-cite="HTML/../#tree-construction-dispatcher">tree construction
               dispatcher</a>,
-            <a data-cite="HTML#mathml">MathML</a> and
-            <a data-cite="HTML#svg-0">SVG</a>
+            <a data-cite="HTML/../#mathml">MathML</a> and
+            <a data-cite="HTML/../#svg-0">SVG</a>
             from [[HTML]].
           </p>
           <p>
             When evaluating the SVG
-            <a data-cite="SVG#RequiredExtensionsAttribute"><code>requiredExtensions</code></a>
+            <a data-cite="SVG/struct.html#ConditionalProcessingRequiredExtensionsAttribute"><code>requiredExtensions</code></a>
             attribute, user agents must claim support for the language extension
             identified by the
             <a data-cite="INFRA#mathml-namespace">MathML namespace</a>.
@@ -682,14 +681,14 @@
               <li>
                 The <code>&lt;math&gt;</code> element can be used at
                 position permitted for
-                <a data-cite="HTML#flow-content-2">flow content</a>
+                <a data-cite="HTML/../#flow-content-2">flow content</a>
                 (e.g. a
-                <a data-cite="SVG#ForeignObjectElement"><code>&lt;foreignObject&gt;</code></a> element)
-                or <a data-cite="HTML#phrasing-content-2">phrasing content</a>.
+                <a data-cite="SVG/embedded.html#ForeignObjectElement"><code>&lt;foreignObject&gt;</code></a> element)
+                or <a data-cite="HTML/../#phrasing-content-2">phrasing content</a>.
               </li>
               <li>
                 Any
-                <a data-cite="HTML#phrasing-content-2">phrasing content</a>
+                <a data-cite="HTML/../#phrasing-content-2">phrasing content</a>
                 can be used inside
                 <a><code>&lt;mi&gt;</code></a>,
                 <a><code>&lt;mo&gt;</code></a>,
@@ -703,7 +702,7 @@
                 <a><code>&lt;annotation-xml&gt;</code></a> elements.
               </li>
               <li>
-                Any <a data-cite="HTML#flow-content-2">flow content</a>
+                Any <a data-cite="HTML/../#flow-content-2">flow content</a>
                 can be used inside
                 <a><code>&lt;annotation-xml&gt;</code></a> elements with
                 encoding
@@ -783,7 +782,7 @@
           <h4>DOM and Javascript</h4>
           <p>
             User agents supporting
-            <a data-cite="HTML#webappapis">Web application APIs</a>
+            <a data-cite="HTML/../#webappapis">Web application APIs</a>
             must ensure that they keep the visual rendering of MathML
             synchronized with the [[DOM]] tree.
           </p>
@@ -794,13 +793,13 @@
           </p>
           <pre class="idl" data-include="webidl/MathMLElement.idl"></pre>
           <p>The
-            <dfn data-cite="HTML#globaleventhandlers"><code>GlobalEventHandlers</code></dfn>,
-            <dfn data-cite="HTML#documentandelementeventhandlers"><code>DocumentAndElementEventHandlers</code></dfn> and
-            <dfn data-cite="HTML#htmlorsvgelement"><code>HTMLOrForeignElement</code></dfn> interfaces are defined in
+            <dfn data-cite="HTML/../#globaleventhandlers"><code>GlobalEventHandlers</code></dfn>,
+            <dfn data-cite="HTML/../#documentandelementeventhandlers"><code>DocumentAndElementEventHandlers</code></dfn> and
+            <dfn data-cite="HTML/../#htmlorsvgelement"><code>HTMLOrForeignElement</code></dfn> interfaces are defined in
             [[HTML]].</p>
           <p>Each IDL attribute of the
             <a><code>MathMLElement</code></a> interface
-            <a data-cite="HTML#reflect">reflects</a> the
+            <a data-cite="HTML/../#reflect">reflects</a> the
             corresponding MathML
             <a href="#global-attributes">content attribute</a>.
           </p>
@@ -835,7 +834,7 @@
             MathML provides the ability for authors to allow for
             interactivity in supporting interactive user agents
             using the same concepts, approach and guidance to
-            <a data-cite="HTML#focus"><code>Focus</code></a>
+            <a data-cite="HTML/../#focus"><code>Focus</code></a>
             as described in HTML, with modifications or
             clarifications regarding application
             for MathML as described in this section.
@@ -843,7 +842,7 @@
           <p>
             When an element is focused, all applicable CSS
             focus-related pseudo-classes as defined in
-            <a data-cite="SELECT#overview">CSS Selectors</a>
+            <a data-cite="SELECT#title">Selectors Level 3</a>
             apply, as defined in that specification.
           </p>
           <p>
@@ -1122,7 +1121,7 @@
               Box layout:
               <ol>
                 <li>
-                  Layout of <a data-cite="CSS-POSITION-3#pos-sch"><dfn>in-flow</dfn></a> child boxes.
+                  Layout of <a data-cite="css-display-3#in-flow"><dfn>in-flow</dfn></a> child boxes.
                 </li>
                 <li>
                   Calculation of <a>inline size</a>,
@@ -1138,7 +1137,7 @@
                   (bars, radical symbol, etc).
                 </li>
                 <li>
-                  Layout and positioning of <a data-cite="CSS-POSITION-3#pos-sch"><dfn>out-of-flow</dfn></a> child boxes.
+                  Layout and positioning of <a data-cite="css-display-3#out-of-flow"><dfn>out-of-flow</dfn></a> child boxes.
                 </li>
               </ol>
             </li>
@@ -1164,7 +1163,7 @@
                 are obtained from the
                 <a>content box</a>
                 by taking into account the corresponding
-                <a data-cite="CSS-BACKGROUNDS-3#padding-physical"><code>padding</code></a>
+                <a data-cite="css-box-4#propdef-padding"><code>padding</code></a>
                 properties as described in CSS.
               </p>
               <p>
@@ -1186,7 +1185,7 @@
                 are obtained from the
                 <a>padding box</a>
                 by taking into account the corresponding
-                <a data-cite="CSS-BOX-3#the-border-width"><code>border-width</code></a>
+                <a data-cite="CSS-BOX-3#borders"><code>border-width</code></a>
                 property as described in CSS.
               </p>
               <p>
@@ -1231,7 +1230,7 @@
             </li>
           </ul>
           <div class="note">
-            Per the description above, <a data-cite="CSS2#margin-collapsing">margin-collapsing</a> does not apply to MathML elements.
+            Per the description above, <a data-cite="CSS2/box.html#collapsing-margins">margin-collapsing</a> does not apply to MathML elements.
           </div>
           <p>
             During box layout, optional
@@ -1261,7 +1260,7 @@
             A MathML element with computed style
             <code>display: block math</code>
             or <code>display: inline math</code> generates a new stacking
-            context. The <a data-cite="CSS2#painting-order">painting order</a>
+            context. The <a data-cite="CSS2/zindex.html#painting-order">painting order</a>
             of <a>in-flow</a> children of such a MathML element
             is exactly the same as block elements. The extra graphical
             items are painted after text and background (right after
@@ -1725,7 +1724,7 @@
             </p>
             <p>
               The text of the operator must only be painted if the
-              <a data-cite="CSS2#visibility"><code>visibility</code></a> of
+              <a data-cite="CSS2/visufx.html#propdef-visibility"><code>visibility</code></a> of
               the <code>&lt;mo&gt;</code> element is <code>visible</code>.
               In that case, it must be painted with the
               <a data-cite="CSS-COLOR-3#foreground"><code>color</code></a>
@@ -2451,7 +2450,7 @@
               <code>&lt;mfrac&gt;</code>
               element is laid out as shown on <a href="#figure-box-mfrac"></a>.
               The fraction bar must only be painted if the
-              <a data-cite="CSS2#visibility"><code>visibility</code></a> of
+              <a data-cite="CSS2/visufx.html#propdef-visibility"><code>visibility</code></a> of
               the <code>&lt;mfrac&gt;</code> element is <code>visible</code>.
               In that case, the fraction bar must be painted with the
               <a data-cite="CSS-COLOR-3#foreground"><code>color</code></a>
@@ -2752,7 +2751,7 @@
             <h5>Radical symbol</h5>
             <p>
               The radical symbol must only be painted if the
-              <a data-cite="CSS2#visibility"><code>visibility</code></a> of
+              <a data-cite="CSS2/visufx.html#propdef-visibility"><code>visibility</code></a> of
               the <code>&lt;msqrt&gt;</code> or <code>&lt;mroot&gt;</code>
               element is <code>visible</code>.
               In that case, the radical symbol must be painted with the
@@ -4384,10 +4383,10 @@
           <a><code>&lt;mtr&gt;</code></a>
           <a><code>&lt;mtd&gt;</code></a>
           elements.  These  elements are similar to the
-          <a data-cite="HTML#the-table-element"><code>&lt;table&gt;</code></a>,
-          <a data-cite="HTML#the-tr-element"><code>&lt;tr&gt;</code></a>
+          <a data-cite="HTML/../#the-table-element"><code>&lt;table&gt;</code></a>,
+          <a data-cite="HTML/../#the-tr-element"><code>&lt;tr&gt;</code></a>
           and
-          <a data-cite="HTML#the-td-element"><code>&lt;td&gt;</code></a>
+          <a data-cite="HTML/../#the-td-element"><code>&lt;td&gt;</code></a>
           elements of [[HTML]].
         </p>
         <div class="example" id="tables-example">
@@ -4457,9 +4456,9 @@
             The <dfn><code>columnspan</code></dfn> (respectively
             <dfn><code>rowspan</code></dfn>) attribute has the same
             syntax and semantic as the
-            <a data-cite="HTML#attr-tdth-colspan"><code>&lt;colspan&gt;</code></a>
+            <a data-cite="HTML/../#attr-tdth-colspan"><code>&lt;colspan&gt;</code></a>
             (respectively
-            <a data-cite="HTML#attr-tdth-rowspan"><code>&lt;rowspan&gt;</code></a>)
+            <a data-cite="HTML/../#attr-tdth-rowspan"><code>&lt;rowspan&gt;</code></a>)
             attribute on the <code>&lt;td&gt;</code> element from [[HTML]].
           </p>
           <div class="note">
@@ -4576,7 +4575,7 @@
         <div class="note">
           Authors can use the <a>encoding</a> attribute to distinguish
           annotations
-          for <a data-cite="HTML#html-integration-point">HTML integration point</a>,
+          for <a data-cite="HTML/../#html-integration-point">HTML integration point</a>,
           clipboard copy, alternative rendering, etc.
           In particular, CSS can be used to render alternative annotations e.g.
           <pre class="css">
@@ -5891,15 +5890,15 @@
       <p>
         As explained in <a href="#html-and-svg"></a>,
         MathML can be embedded into an SVG image via the
-        <a data-cite="SVG#ForeignObjectElement"><code>&lt;foreignObject&gt;</code></a>
+        <a data-cite="SVG/embedded.html#ForeignObjectElement"><code>&lt;foreignObject&gt;</code></a>
         element which can thus be used in a
-        <a data-cite="HTML#the-canvas-element"><code>&lt;canvas&gt;</code></a>
+        <a data-cite="HTML/../#the-canvas-element"><code>&lt;canvas&gt;</code></a>
         element.
         UA may decide to implement any measure to prevent potential
-        <a data-cite="HTML#security-with-canvas-elements">information leakage</a>
+        <a data-cite="HTML/../#security-with-canvas-elements">information leakage</a>
         such as tainting the canvas and returning a
         <a data-cite="WEBIDL#securityerror"><code>"SecurityError"</code></a>
-        <a data-cite="WEBIDL#DOMException"><code>DOMException</code></a>
+        <a data-cite="WEBIDL#idl-DOMException"><code>DOMException</code></a>
         when one tries to access the canvas' content via JavaScript APIs.
       </p>
       <p>
@@ -5911,7 +5910,7 @@
       </p>
       <p>
         This specification describes layout of a DOM
-        <a data-cite="HTML#element">elements</a> which may involve system
+        <a data-cite="HTML/../#element">elements</a> which may involve system
         fonts. Like for HTML/CSS layout,
         it is thus possible to use JavaScript APIs
         to measure box sizes and positions and infer data from system fonts
