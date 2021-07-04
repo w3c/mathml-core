@@ -331,7 +331,7 @@
           <dl>
             <dt><dfn>unsigned-integer</dfn></dt>
             <dd>An
-              <a data-cite="CSS-VALUES-3#integer-value"><code>&lt;integer-value&gt;</code></a> value as defined in
+              <a data-cite="CSS-VALUES-3#integer-value"><code>&lt;integer&gt;</code></a> value as defined in
               [[CSS-VALUES-3]], whose first character is neither
               U+002D HYPHEN-MINUS character (-) nor
               U+002B PLUS SIGN (+).
@@ -3080,7 +3080,7 @@
               </li>
             </ul>
             <div class="note">
-              Negative <code>&lt;voffset&gt;</code> values are not clamped to
+              Negative <code>voffset</code> values are not clamped to
               <code>0</code>.
             </div>
           </section>
@@ -3492,7 +3492,7 @@
             <div class="note" id="msubsup-with-empty-scripts">
               <p>
                 Even when the subscript (respectively superscript) is an empty
-                box, <code>&lt;subsup&gt;</code>
+                box, <code>&lt;msubsup&gt;</code>
                 does not generally render the same as
                 <a href="#base-with-superscript"></a>
                 (respectively <a href="#base-with-subscript"></a>)
@@ -4251,7 +4251,7 @@
                 </ol>
 	      </li>
               <li>
-                Place the base and <code>&lt;mprescript&gt;</code> boxes
+                Place the base and <code>&lt;mprescripts&gt;</code> boxes
                 at <a>inline offsets</a>
                 <code>inline-offset</code> and with their <a>alphabetic baselines</a>
                 aligned with the <a>alphabetic baseline</a>.
@@ -4346,7 +4346,7 @@
             before an <a>&lt;mprescripts&gt;</a>, and on those at odd position
             if they are after
             an <a>&lt;mprescripts&gt;</a>.
-            The <code>&lt;msub&lt;</code> and <code>&lt;msubsup&lt;</code>
+            The <code>&lt;msub&gt;</code> and <code>&lt;msubsup&gt;</code>
             elements set <a><code>math-shift</code></a> to
             <code>compact</code> on their second child.
             An <a><code>&lt;mover&gt;</code></a> and
@@ -4366,7 +4366,7 @@
           <div class="note" id="scripted-elements-css-rules-on-children">
             In practice, all the children of the MathML elements described in
             this section are <a>in-flow</a> and the
-            <code>&lt;mprescript&gt;</code> is empty.
+            <code>&lt;mprescripts&gt;</code> is empty.
             Hence the CSS rules essentially performs automatic <a><code>displaystyle</code></a> and
             <a><code>scriptlevel</code></a> changes for the scripts ; and
             <a><code>math-shift</code></a> changes for
@@ -4456,9 +4456,9 @@
             The <dfn><code>columnspan</code></dfn> (respectively
             <dfn><code>rowspan</code></dfn>) attribute has the same
             syntax and semantic as the
-            <a data-cite="HTML/../#attr-tdth-colspan"><code>&lt;colspan&gt;</code></a>
+            <a data-cite="HTML/../#attr-tdth-colspan"><code>colspan</code></a>
             (respectively
-            <a data-cite="HTML/../#attr-tdth-rowspan"><code>&lt;rowspan&gt;</code></a>)
+            <a data-cite="HTML/../#attr-tdth-rowspan"><code>rowspan</code></a>)
             attribute on the <code>&lt;td&gt;</code> element from [[HTML]].
           </p>
           <div class="note">
