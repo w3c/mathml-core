@@ -3761,7 +3761,7 @@
                 Otherwise,
                 <code>UnderShift</code> is equal to <a>UnderbarVerticalGap</a>
                 if the <a>accentunder</a> attribute is not an
-                <a data-cite="INFRA#ascii-case-insensitive">ASCII case-insensitive</a> match to <code>"true"</code>
+                <a data-cite="INFRA#ascii-case-insensitive">ASCII case-insensitive</a> match to <code>true</code>
                 and to zero otherwise.
                 <code>UnderExtraAscender</code> is
                 <a>UnderbarExtraDescender</a>.
@@ -3897,7 +3897,7 @@
                 <ol>
                   <li><a>OverbarVerticalGap</a> if the
                     <a>accent</a> attribute is not an
-                    <a data-cite="INFRA#ascii-case-insensitive">ASCII case-insensitive</a> match to <code>"true"</code>.</li>
+                    <a data-cite="INFRA#ascii-case-insensitive">ASCII case-insensitive</a> match to <code>true</code>.</li>
                   <li>Or <a>AccentBaseHeight</a> minus the <a>line-ascent</a>
                     of the base's <a>margin box</a>
                     if this difference is nonnegative.</li>
@@ -4330,14 +4330,14 @@
             element with an <a><code>accent</code></a>
             attribute that is an
             <a data-cite="INFRA#ascii-case-insensitive">ASCII case-insensitive</a>
-            match to <code>"true"</code> does not increment scriptlevel within
+            match to <code>true</code> does not increment scriptlevel within
             its second child (respectively third child). Similarly,
             <a><code>&lt;mover&gt;</code></a> and
             <a><code>&lt;munderover&gt;</code></a> elements
             with an <a><code>accentunder</code></a>
             attribute that is an
             <a data-cite="INFRA#ascii-case-insensitive">ASCII case-insensitive</a>
-            match to <code>"true"</code> do not increment scriptlevel within
+            match to <code>true</code> do not increment scriptlevel within
             their second child.
           </p>
           <p><code>&lt;mmultiscripts&gt;</code> sets
@@ -4354,7 +4354,7 @@
             elements with an <a><code>accent</code></a>
             attribute that is an
             <a data-cite="INFRA#ascii-case-insensitive">ASCII case-insensitive</a>
-            match to <code>"true"</code> also sets <a><code>math-shift</code></a> to
+            match to <code>true</code> also sets <a><code>math-shift</code></a> to
             <code>compact</code> within their first child.
           </p>
           <p>
@@ -4927,7 +4927,6 @@
           <li>If the specified value of <a>math-depth</a> is of the form
             <code>&lt;integer&gt;</code> then the computed value
             of <a>math-depth</a> of the element is the specified integer.
-	  </li>	  
           <li>Otherwise, the computed value
             of <a>math-depth</a> of the element is the inherited one.</li>
         </ul>
@@ -5205,7 +5204,6 @@
               <code>MathVariant.horizGlyphConstructionOffsets</code>.
               Otherwise it is <em>vertical</em> (and obtained from
               <code>MathVariant.vertGlyphConstructionOffsets</code>).
-	    </li>
             <li>
               For a given <code>GlyphAssembly</code> table,
               <dfn>N<sub>Ext</sub></dfn> (respectively
@@ -5608,7 +5606,6 @@
                     set the properties corresponding to the category with
                     encoding <code>Entry</code> / 0x1000 in
                     <a href="#operator-dictionary-categories-values"></a>.
-		  </li>
                 </ul>
               </li>
             </ul>
@@ -5745,7 +5742,7 @@
                 <ul>
                   <li>Optionally, an (non-extender) <em>middle</em> character
                     and the same extender character previously mentioned.</li>
-			<li>A (non-extender) <em>top/right</em> character.</li>
+                  <li>A (non-extender) <em>top/right</em> character.
                 </ul>
               </li>
             </ol>
