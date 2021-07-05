@@ -1846,14 +1846,15 @@
                         If <code>minsize</code> &lt; 0 then set <code>minsize</code>
                         to 0.
                         If <code>maxsize</code> &lt; <code>minsize</code> then
-                        then set <code>maxsize</code> to <code>minsize</code>.
+                        set <code>maxsize</code> to <code>minsize</code>.
                         Then 0 ≤ <code>minsize</code> ≤ <code>maxsize</code>:
                         <ul>
                           <li>
-                            If <code>T</code> = 0 then set
-                            <code>T<sub>ascent</sub></code> and
-                            <code>T<sub>descent</sub></code>
-                            to <code>minsize</code>/2.
+                            If <code>T</code> &le; 0 then set
+                            <code>T<sub>ascent</sub></code> to <code>minsize</code> / 2  and
+                            then set <code>T<sub>descent</sub></code>
+                            to <code>minsize</code> −
+                            <code>T<sub>ascent</sub></code>                            
                           </li>
                           <li>
                             Otherwise, if
