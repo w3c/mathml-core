@@ -1682,7 +1682,7 @@
                 <code>0.2777777777777778em</code> for
                 <code>lspace</code> and
                 <code>rspace</code> properties ;
-                <code>100%</code> for the <code>minsize</code> property and
+                <code>1em</code> for the <code>minsize</code> property and
                 ∞ for the <code>maxsize</code> property.
               </li>
             </ol>
@@ -1694,14 +1694,9 @@
               or to the fallback value above.
             </p>
             <p>
-              Percentages value for <code>minsize</code>
-              and
-              <code>maxsize</code>
-              properties of an <a>embellished operator</a>
-              are interpreted relative to
-              the target stretch size before application of
-              size constraints, as described in
-              <a href="#algorithm-for-stretching-operators-along-the-block-axis"></a>.
+              Interpretation of percentage values for <code>minsize</code>
+              and <code>maxsize</code> are described in
+              <a href="#layout-of-operators"></a>.
             </p>
             <p>
               Font-relative lengths for
@@ -1711,7 +1706,7 @@
               <a>embellished operator</a>.
             </p>
           </section>
-          <section>
+          <section id="layout-of-operators">
             <h4>Layout of operators</h4>
             <p>
               If the <code>&lt;mo&gt;</code> element does not have its computed
