@@ -1,6 +1,4 @@
-#!/usr/bin/python
-
-from __future__ import print_function
+#!/usr/bin/env python3
 
 # Base character, stretch axis, extender, bottom/left, middle, top/right
 unicodeAssemblies = {

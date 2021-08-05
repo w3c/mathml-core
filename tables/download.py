@@ -1,14 +1,10 @@
-#!/usr/bin/python
+#!/usr/bin/env python3
 
-from __future__ import print_function
 import os
 import progressbar
-try:
-    from urllib.request import urlopen
-except ImportError:
-    from urllib2 import urlopen
+from urllib.request import urlopen
 
-UnicodeXMLURL = "https://w3c.github.io/xml-entities/unicode.xml"
+UnicodeXMLURL = "https://raw.githubusercontent.com/w3c/xml-entities/gh-pages/unicode.xml"
 
 def downloadWithProgressBar(url, outputDirectory="./", forceDownload=False):
 
@@ -19,7 +15,7 @@ def downloadWithProgressBar(url, outputDirectory="./", forceDownload=False):
         return fileName
 
     request = urlopen(url)
-    totalSize = int(request.info().getheader('Content-Length').strip())
+    totalSize = int(request.info().get('Content-Length').strip())
     bar = progressbar.ProgressBar(maxval=totalSize).start()
 
     chunkSize = 16 * 1024
