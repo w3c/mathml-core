@@ -503,11 +503,11 @@ def convertToSurrogatePairs():
             knownTables[name]["multipleChar"].sort()
         knownTables[name]["singleChar"].sort()
 
-# Remove non-BMP characters. (Arabic Operators and supplemental arrows-C
+# Remove non-BMP characters.
 knownNonBMP = [0x1EEF0, 0x1EEF1]
 for name in knownTables:
     for entry in knownTables[name]["singleChar"]:
-        assert entry < 0x10000 or entry in knownNonBMP or (entry >=0x1F800 and entry < 0x1F900)
+        assert entry < 0x10000 or entry in knownNonBMP
     knownTables[name]["singleChar"] = [ entry for entry in knownTables[name]["singleChar"] if entry < 0x10000 ]
 
 # Convert multiChar to singleChar
