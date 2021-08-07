@@ -49,6 +49,11 @@ def buildKey(characters, form):
 def toHexa(character):
     return "U+%04X" % character
 
+# Whether this is one of the known BMP characters handled in step 3 of
+# https://w3c.github.io/mathml-core/#operator-dictionary
+def isKnownNonBMP(codePoint):
+    return codePoint in [0x1EEF0, 0x1EEF1]
+
 def appendCharacters(name, character, value):
     if value:
         if "value" not in knownTables[name]:
@@ -421,6 +426,8 @@ for name, item in sorted(knownTables.items(),
         continue
     for entry in knownTables[name]["singleChar"]:
         if entry >= 0x10000:
+            if not isKnownNonBMP(entry):
+                continue
             md.write('<tr style="background: lightyellow;">')
         else:
             md.write("<tr>")
@@ -504,10 +511,13 @@ def convertToSurrogatePairs():
         knownTables[name]["singleChar"].sort()
 
 # Remove non-BMP characters.
-knownNonBMP = [0x1EEF0, 0x1EEF1]
 for name in knownTables:
     for entry in knownTables[name]["singleChar"]:
-        assert entry < 0x10000 or entry in knownNonBMP
+        # FIXME(mathml-core/104): Decide what to do with all these supplemental
+        # arrows-C.
+        if entry >=0x1F800 and entry < 0x1F900:
+            continue
+        assert entry < 0x10000 or isKnownNonBMP(entry)
     knownTables[name]["singleChar"] = [ entry for entry in knownTables[name]["singleChar"] if entry < 0x10000 ]
 
 # Convert multiChar to singleChar
