@@ -3,6 +3,7 @@
 from lxml import etree
 from download import downloadUnicodeXML
 from math import ceil
+from inline_axis_operators import stretchAxis, inlineAxisOperators
 
 import operator
 import json
@@ -11,6 +12,8 @@ import json
 unicodeXML = downloadUnicodeXML()
 
 defaultSpacing = 5 # 0.2777777777777778em
+
+automaticallyGenerated = "<!-- This file was automatically generated from operator-dictionary.py. Do not edit. -->\n"
 
 def parseHexaNumber(string):
     return int("0x%s" % string, 16)
@@ -414,11 +417,11 @@ def serializeValue(value, fence, separator):
 totalEntryCount = 0
 print("Generate operator-dictionary.html...", end=" ");
 md = open("operator-dictionary.html", "w")
-md.write("<!-- This file was automatically generated from generate-math-variant-tables.py. Do not edit. -->\n");
+md.write(automaticallyGenerated)
 
 md.write('<figure id="operator-dictionary-table">')
 md.write("<table class='sortable'>\n");
-md.write("<tr><th>Content</th><th>form</th><th>rspace</th><th>lspace</th><th>properties</th></tr>\n")
+md.write("<tr><th>Content</th><th>Stretch Axis</th><th>form</th><th>rspace</th><th>lspace</th><th>properties</th></tr>\n")
 for name, item in sorted(knownTables.items(),
                          key=(lambda v: len(v[1]["singleChar"])),
                          reverse=True):
@@ -432,6 +435,7 @@ for name, item in sorted(knownTables.items(),
         else:
             md.write("<tr>")
         md.write("<td>&#x%0X; U+%04X</td>" % (entry, entry))
+        md.write("<td>%s</td>" % stretchAxis(entry))
         md.write("<td><code>%s</code></td>" % knownTables[name]["value"]["form"])
         md.write(serializeValue(knownTables[name]["value"],
                                 entry in knownTables["fence"]["singleChar"],
@@ -446,6 +450,7 @@ for name, item in sorted(knownTables.items(),
             for character in entry:
                 md.write(" U+%04X" % character)
             md.write("</td>")
+            md.write("<td>block</td>")
             md.write("<td><code>%s</code></td>" % knownTables[name]["value"]["form"])
             fence = "multipleChar" in knownTables["fence"] and entry in knownTables["fence"]["multipleChar"]
             separator = "multipleChar" in knownTables["separator"] and entry in knownTables["separator"]["multipleChar"]
@@ -478,8 +483,9 @@ for name in otherEntriesWithMultipleCharacters:
     md.write("</tr>\n");
 
 md.write("</table>\n");
-md.write('<figcaption>Mapping from operator (Content, Form) to properties.<br/>Total size: %d entries, ≥ %d bytes<br/>(assuming \'Content\' uses at least one UTF-16 character, \'Form\' 2 bits, spacing 3 bits and properties 3 bits).</figcaption>' % (totalEntryCount, ceil(totalEntryCount * (16 + 2 + 3 + 3)/8.)))
+md.write('<figcaption>Mapping from operator (Content, Form) to properties.<br/>Total size: %d entries, ≥ %d bytes<br/>(assuming \'Content\' uses at least one UTF-16 character, \'Stretch Axis\' 1 bit, \'Form\' 2 bits,the different combinations of \'rspace\' and \'space\' at least 3 bits, and the different combinations of properties 3 bits).</figcaption>' % (totalEntryCount, ceil(totalEntryCount * (16 + 1 + 2 + 3 + 3)/8.)))
 md.write('</figure>')
+md.close()
 print("done.");
 ################################################################################
 
@@ -541,7 +547,7 @@ printRangeStats()
 # Print the compact dictionary
 print("Generate operator-dictionary-compact.html...", end=" ");
 md = open("operator-dictionary-compact.html", "w")
-md.write("<!-- This file was automatically generated from generate-math-variant-tables.py. Do not edit. -->\n");
+md.write(automaticallyGenerated)
 
 totalEntryCount = 0
 totalBytes = 0
@@ -661,8 +667,6 @@ md.write("</table>");
 md.write('<figcaption>Operators values for each category.<br/>The third column provides a 4bits encoding of the categories<br/>where the 2 least significant bits encodes the form infix (0), prefix (1) and postfix (2).</figcaption>')
 md.write('</figure>')
 
-print("done.");
-
 # Calculate compact form for the largest categories.
 compact_table = []
 category_for_form = [0, 0, 0]
@@ -707,6 +711,31 @@ for r in compact_table:
 md.write('</code>');
 md.write('<figcaption>List of entries for the largest categories, sorted by key.<br/><code>Key</code> is <code>Entry</code> %% 0x4000, category encoding is <code>Entry</code> / 0x1000.<br/>Total size: %d entries, %d bytes<br/>(assuming %d bits for range lengths).</figcaption>' % (totalEntryCount, ceil((16+bits_per_range) * rangeCount / 8.), bits_per_range))
 md.write('</figure>')
+md.close()
+print("done.");
+
+# Generate operators with inline stretch axis.
+print("Generating inline-axis-operators.txt/html... ", end="")
+txt = open("inline-axis-operators.txt", "w")
+md = open("inline-axis-operators.html", "w")
+md.write(automaticallyGenerated)
+md.write('<figure id="inline-stretch-axis">')
+md.write('<code>')
+nonBMPCount = 0
+for codePoint in inlineAxisOperators:
+    if entry >= 0x10000:
+        if not isKnownNonBMP(entry):
+            continue
+        nonBMPCount = nonBMPCount+1
+    txt.write("U+%04X,\n" % codePoint)
+    md.write("U+%04X,\n" % codePoint)
+md.write('</code>')
+md.write('<figcaption>Sorted list of unicode code point corresponding to operators with inline stretch axis.<br/>Total size: %d entries, %d bytes (assuming 16bits for all but the non-BMP entries)</figcaption>' % (len(inlineAxisOperators), 2  * (len(inlineAxisOperators) - nonBMPCount) + (4 * nonBMPCount)))
+md.write('</figure>')
+
+md.close()
+txt.close()
+print("done.");
 
 # Dump compact dictionary for C++-like table.
 #for r in compact_table:

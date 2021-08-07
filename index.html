@@ -5652,13 +5652,15 @@
           <em>block</em>. However, the
           stretch axis for the following characters is <em>inline</em>:
         </p>
-        <code data-include="tables/inline-axis-operators.txt"></code>
+        <div data-include="tables/inline-axis-operators.html"></div>
         <div class="note">
           The stretch axis can be included as a boolean property of the
           <a href="#operator-dictionary">operator dictionary</a>. But since it
           does not depend on the form and since very few operators can stretch
-          along the <a>inline axis</a>, it might be better implemented as a separate
-          sorted array.
+          along the <a>inline axis</a>, it is better implemented as a separate
+          sorted array of 16-bytes items (with special handling for
+          U+1EEF0 ARABIC MATHEMATICAL OPERATOR MEEM WITH HAH WITH TATWEEL and
+          U+1EEF1 ARABIC MATHEMATICAL OPERATOR HAH WITH DAL).
         </div>
       </section>
       <section id="operator-dictionary-human" class="informative">
