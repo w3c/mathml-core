@@ -5264,6 +5264,10 @@
             It is defined as the maximum between 0 and the ceiling of
             ((T − <a>S<sub>NonExt</sub></a> + <a>o<sub>min</sub></a> (<a>N<sub>NonExt</sub></a> − 1)) / <a>S<sub>Ext,NonOverlapping</sub></a>).
           </p>
+          <p><dfn>o<sub>max,theorical</sub></dfn> = (<a>AssembySize</a>(0, <a>r<sub>min</sub></a>) − T) / (<a>AssemblyGlyphCount</a>(<a>r<sub>min</sub></a>) − 1)
+              is the theorical overlap obtained by
+              splitting evenly the extra size of an assembly built with
+              null overlap.</p>
 	  <p>
             <dfn>o<sub>max</sub></dfn> is the
             maximum overlap possible to build an assembly of size at least
@@ -5273,11 +5277,7 @@
             Otherwise, o<sub>max</sub> is defined to be the minimum of:
           </p>
           <ul>
-            <li><dfn>o<sub>max,theorical</sub></dfn> = (<a>AssembySize</a>(0, <a>r<sub>min</sub></a>) − T) / (<a>AssemblyGlyphCount</a>(<a>r<sub>min</sub></a>) − 1)
-              is the theorical overlap obtained by
-              splitting evenly the extra size of an assembly built with
-              null overlap.
-            </li>
+            <li><a>o<sub>max,theorical</sub></a>.</li>
             <li>
               <code>GlyphPartRecord.startConnectorLength</code> for all
               the entries in
@@ -5467,7 +5467,9 @@
               If there is valid <code>GlyphAssembly</code> subtable
               then use the bounding box given by
               <a>glyph assembly width</a>,
-              <a>glyph assembly ascent</a>, the value
+              <a>glyph assembly height</a>,
+              <a>glyph assembly ascent</a>,
+              <a>glyph assembly descent</a>, the value
               <code>GlyphAssembly.italicsCorrection</code> as italic
               correction, perform <a>shaping of the glyph assembly</a> and
               exit with success.
