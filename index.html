@@ -1657,13 +1657,14 @@
                 on the <a>core operator</a>, then the
                 <a data-cite="INFRA#ascii-lowercase">ASCII lowercased value</a>
                 of this property is used;</li>
+              <li>Otherwise, run the <a>algorithm for determining the <code>form</code> of an embellished operator</a>;</li>
               <li>
-                Otherwise, if the <a>core operator</a> contains only text
+                If the <a>core operator</a> contains only text
                 content T, the corresponding property from the
                 <a href="#operator-dictionary">Operator Dictionary</a>
                 is retrieved by looking for <code>Content=T,Form=F</code>
-                where <code>F</code> is the <a><code>form</code></a> of the
-                <a>embellished operator</a>;
+                where <code>F</code> is the <a><code>form</code></a> calculated
+                at the previous step;
               </li>
               <li>
                 If no entry is found and the <a><code>form</code></a>
@@ -1686,25 +1687,35 @@
                 ∞ for the <code>maxsize</code> property.
               </li>
             </ol>
-            <p>
-              Percentage values for <code>lspace</code>,
-              <code>rspace</code>
-              properties of an <a>embellished operator</a>
-              are interpreted relative to the value read from the dictionary
+            <p>When used during layout,
+              the values of <a><code>stretchy</code></a>,
+              <a><code>symmetric</code></a>,
+              <a><code>largeop</code></a>,
+              <a><code>movablelimits</code></a>,
+              <a><code>lspace</code></a>,
+              <a><code>rspace</code></a>,
+              <a><code>minsize</code></a> are
+              obtained by the
+              <a>algorithm for determining the properties of an embellished operator</a> with the following extra resolutions:</p>
+            <ul>
+              <li>Percentage values for <code>lspace</code>,
+              <code>rspace</code> are interpreted
+              relative to the value read from the dictionary
               or to the fallback value above.
-            </p>
-            <p>
+              </li>
+            <li>
               Interpretation of percentage values for <code>minsize</code>
               and <code>maxsize</code> are described in
               <a href="#layout-of-operators"></a>.
-            </p>
-            <p>
+            </li>
+            <li>
               Font-relative lengths for
               <code>lspace</code>, <code>rspace</code>,
               <code>minsize</code> and <code>maxsize</code> rely on the
               font style of the <a>core operator</a>, not the one of the
               <a>embellished operator</a>.
-            </p>
+            </li>
+          </ul>
           </section>
           <section id="layout-of-operators">
             <h4>Layout of operators</h4>
