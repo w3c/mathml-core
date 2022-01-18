@@ -785,7 +785,8 @@
             User agents supporting
             <a data-cite="HTML/../#webappapis">Web application APIs</a>
             must ensure that they keep the visual rendering of MathML
-            synchronized with the [[DOM]] tree.
+            synchronized with the [[DOM]] tree, in particular perform necessary
+            updates when <a>MathML attributes</a> are modified dynamically.
           </p>
           <p>
             All the nodes representing <a>MathML elements</a> in the DOM
@@ -908,13 +909,11 @@
               <a data-cite="CSS-WRITING-MODES-3#logical-directions">flow-relative directions</a>:
               <a data-cite="CSS-WRITING-MODES-3#inline-start"><dfn>inline-start</dfn></a>,
               <a data-cite="CSS-WRITING-MODES-3#inline-end"><dfn>inline-end</dfn></a>,
-              <a data-cite="CSS-WRITING-MODES-3#block-start"><dfn>block-start</dfn></a>,
-              <a data-cite="CSS-WRITING-MODES-3#block-end"><dfn>block-end</dfn></a>.
+              <a data-cite="CSS-WRITING-MODES-3#block-start"><dfn>block-start</dfn></a>.
             </li>
             <li>
               <a data-cite="CSS-WRITING-MODES-3#line-relative-direction">line-relative directions</a>:
               <a data-cite="CSS-WRITING-MODES-3#line-left"><dfn>line-left</dfn></a>,
-              <a data-cite="CSS-WRITING-MODES-3#line-right"><dfn>line-right</dfn></a>,
               <a data-cite="CSS-WRITING-MODES-3#line-over"><dfn>line-over</dfn></a>,
               <a data-cite="CSS-WRITING-MODES-3#line-under"><dfn>line-under</dfn></a>.
             </li>
@@ -1034,25 +1033,24 @@
               inline size of the box is used as a fallback value.
             </li>
           </ol>
-          <p>
-            Given a MathML box, the <dfn>inline offset</dfn> of a child box
-            is the distance between the
+          <p>Given a MathML box, the following offsets are defined:</p>
+          <ul>
+            <li>The <dfn>inline offset</dfn> of a child box
+            is the offset between the
             <a>inline-start</a> edge of
             the parent box and the
             <a>inline-start</a> edge
-            of the child box.
-            The <dfn>block offset</dfn> of a child box is the offset between
-            <a>block-start</a> edge of
+            of the child box.</li>
+            <li>The <dfn>block offset</dfn> of a child box
+            is the offset between the <a>block-start</a> edge of
             the parent box and the
             <a>block-start</a> edge
-            of the child box.
-          </p>
-          <p>
-            The <dfn>line-left offset</dfn>,
-             <dfn>line-right offset</dfn>,
-             <dfn>line-over offset</dfn> and
-             <dfn>line-under offset</dfn> are defined similarly
-             as offsets between the corresponding parent and child edges.
+            of the child box.</li>
+            <li>The <dfn>line-left offset</dfn> of a child box
+            is the offset between the <a>line-left</a> edge of
+            the parent box and the
+            <a>line-left</a> edge
+            of the child box.</li>
           </p>
           <figure id="box-model-horizontal-tb-rtl">
             <img src="figures/horizontal-tb-rtl.svg"/>
@@ -1136,7 +1134,7 @@
                   (bars, radical symbol, etc).
                 </li>
                 <li>
-                  Layout and positioning of <a data-cite="css-display-3#out-of-flow"><dfn>out-of-flow</dfn></a> child boxes.
+                  Layout and positioning of <a data-cite="css-display-3#out-of-flow">out-of-flow</a> child boxes.
                 </li>
               </ol>
             </li>
@@ -1174,7 +1172,7 @@
                 then the <a>padding box</a> has the same property, increased
                 by the inline-start padding. If the <a>content box</a> has an
                 <a>italic correction</a> then the <a>padding box</a> has the
-                same property, increased by the inline-end padding.
+                same property, increased by the <a>inline-end</a> padding.
               </p>
             </li>
             <li>
@@ -1202,7 +1200,7 @@
                 the border-width of its inline-start egde. If the
                 <a>padding box</a> has an <a>italic correction</a> then the
                 <a>border box</a> has the same property, increased by the
-                border-width of its inline-end egde.
+                border-width of its <a>inline-end</a> egde.
               </p>
             </li>
             <li>
@@ -1224,7 +1222,7 @@
                 then the <a>margin box</a> has the same property, increased
                 by the inline-start margin. If the <a>padding box</a> has an
                 <a>italic correction</a> then the <a>margin box</a> has the
-                same property, increased by the inline-end margin.
+                same property, increased by the <a>inline-end</a> margin.
               </p>
             </li>
           </ul>
@@ -2669,12 +2667,10 @@
         <section id="radicals-msqrt-mroot">
           <h4>Radicals <code>&lt;msqrt&gt;</code>, <code>&lt;mroot&gt;</code></h4>
           <p>
-            The
-            <dfn><code>&lt;msqrt&gt;</code></dfn>
-            and
-            <dfn><code>&lt;mroot&gt;</code></dfn>
-            elements construct radicals. The <code>&lt;msqrt&gt;</code> element is
-            used for square roots, while the <code>&lt;mroot&gt;</code> element is
+            The <a>radical elements</a> construct an expression with a
+            root symbol √ with a line over the content.
+            The <dfn><code>&lt;msqrt&gt;</code></dfn> element is
+            used for square roots, while the <dfn><code>&lt;mroot&gt;</code></dfn> element is
             used to draw radicals with indices, e.g. a cube root.
           </p>
           <p>
@@ -2798,19 +2794,19 @@
               for the <a>radical glyph</a>
               and of the
               <a>min-content inline size</a> (respectively <a>max-content inline size</a>)
-              of the base's <a>margin box</a>.
+              of the <a>msqrt base</a>'s <a>margin box</a>.
             </p>
             <p>
               The <a>inline size</a> of the content is the sum of the advance width
               of the <a>box metrics of the radical glyph</a> and
-              of the <a>inline size</a> of the base's margin's box.
+              of the <a>inline size</a> of the <a>msqrt base</a>'s margin's box.
             </p>
             <p>
               The <a>line-ascent</a> of the content is the maximum between:
             </p>
             <ul>
-              <li>The <a>line-ascent</a> of the base's <a>margin box</a>.</li>
-              <li>The sum of the <a>ink line-ascent</a> of the base,
+              <li>The <a>line-ascent</a> of the <a>msqrt base</a>'s <a>margin box</a>.</li>
+              <li>The sum of the <a>ink line-ascent</a> of the <a>msqrt base</a>,
                 the <a>radical gap</a>, the <a>RadicalRuleThickness</a>
                 and <a>RadicalExtraAscender</a>.</li>
             </ul>
@@ -2818,7 +2814,7 @@
               The <a>line-descent</a> of the content is the maximum between:
             </p>
             <ul>
-              <li>The <a>line-descent</a> of the base's <a>margin box</a>.</li>
+              <li>The <a>line-descent</a> of the <a>msqrt base</a>'s <a>margin box</a>.</li>
               <li>The sum of the <a>line-ascent</a> and <a>line-descent</a> for the
                 <a>box metrics of the radical glyph</a> and of the
                 <a>RadicalExtraAscender</a>, minus the
@@ -2827,13 +2823,13 @@
             </ul>
             <p>
               The <a>inline size</a> of the overbar is the <a>inline size</a> of the
-              base's margin's box.
-              The <a>inline offsets</a> of the base and overbar are also the same
+              <a>msqrt base</a>'s margin's box.
+              The <a>inline offsets</a> of the <a>msqrt base</a> and overbar are also the same
               and equal to the width of the
               <a>box metrics of the radical glyph</a>.
             </p>
             <p>
-              The <a>alphabetic baseline</a> of the base is aligned with the <a>alphabetic baseline</a>.
+              The <a>alphabetic baseline</a> of the <a>msqrt base</a> is aligned with the <a>alphabetic baseline</a>.
               The <a>block size</a> of the overbar is
               <a>RadicalRuleThickness</a>. Its vertical center is shifted away
               from the <a>alphabetic baseline</a> by a distance towards the <a>line-over</a>
@@ -2861,7 +2857,8 @@
             <p>
               The <code>&lt;mroot&gt;</code> element is laid out as shown on
               <a href="#figure-box-mroot"></a>.
-              The root index is first ignored and the base and
+              The <a>mroot index</a> is first ignored and the <a>mroot base</a>
+              and
               radical glyph are laid out as
               shown on figure <a href="#figure-box-msqrt"></a>
               using the same algorithm as in
@@ -2877,10 +2874,10 @@
               (respectively <a>max-content inline size</a>) of the
               content is the sum
               of max(0, <a>RadicalKernBeforeDegree</a>),
-              the index's
+              the <a>mroot index</a>'s
               <a>min-content inline size</a>
               (respectively <a>max-content inline size</a>)
-              of the index's <a>margin box</a>,
+              of the <a>mroot index</a>'s <a>margin box</a>,
               max(−<a>min-content inline size</a>, <a>RadicalKernAfterDegree</a>)
               (respectively max(−<a>max-content inline size</a>, <a>RadicalKernAfterDegree</a>))
               and of the
@@ -2922,7 +2919,7 @@
               The <a>inline offset</a> of the index is
               <a>AdjustedRadicalKernBeforeDegree</a>.
               The inline-offset of the
-              base is the same + the
+              <a>mroot base</a> is the same + the
               <a>inline size</a> of the index's <a>margin box</a>.
             </p>
             <p>
@@ -3104,7 +3101,7 @@
               is the requested width calculated in
               <a href="#inner-box-and-requested-parameters"></a>
               but using the <a>min-content inline size</a> (respectively <a>max-content inline size</a>) of the
-              mpadded inner box instead of the "inner inline size".
+              <a>mpadded inner box</a> instead of the "inner inline size".
             </p>
             <p>
               The <a>inline size</a> of the content
@@ -3116,7 +3113,7 @@
               The <a>line-descent</a> of the content is the requested depth.
             </p>
             <p>
-              The mpadded inner box is placed so that its <a>alphabetic baseline</a> is
+              The <a>mpadded inner box</a> is placed so that its <a>alphabetic baseline</a> is
               shifted away from the <a>alphabetic baseline</a> by the requested voffset
               towards the <a>line-over</a>.
             </p>
@@ -3233,7 +3230,7 @@
               <dfn>msubsup base</dfn>, the second <a>in-flow</a> child
               is called the <dfn>msubsup subscript</dfn>,
               its third <a>in-flow</a> child is called
-              the <dfn>msupsup superscript</dfn> and the layout algorithm is explained
+              the <dfn>msubsup superscript</dfn> and the layout algorithm is explained
               in <a href="#base-with-subscript-and-superscript"></a>.
             </p>
           </section>
@@ -3243,7 +3240,7 @@
               The <code>&lt;msub&gt;</code> element is laid out as shown on
               <a href="#figure-box-msub"></a>.
               <code>LargeOpItalicCorrection</code>
-              is the <a>italic correction</a> of the base
+              is the <a>italic correction</a> of the <a>msub base</a>
               if it is an <a>embellished operator</a> with
               the <a><code>largeop</code></a> property and 0 otherwise.
             </p>
@@ -3254,26 +3251,26 @@
             <p>
               The
               <a>min-content inline size</a> (respectively <a>max-content inline size</a>) of the content is the
-              <a>min-content inline size</a> (respectively <a>max-content inline size</a>) inline size of the base's <a>margin box</a> −
+              <a>min-content inline size</a> (respectively <a>max-content inline size</a>) inline size of the <a>msub base</a>'s <a>margin box</a> −
               <code>LargeOpItalicCorrection</code> +
               <a>min-content inline size</a> (respectively <a>max-content inline size</a>) of
-              the subscript's <a>margin box</a> + <a>SpaceAfterScript</a>.
+              the <a>msub subscript</a>'s <a>margin box</a> + <a>SpaceAfterScript</a>.
             </p>
             <p>
               If there is an
               <a>inline stretch size constraint</a>
               or a <a>block stretch size constraint</a>
-              then the base is also laid out with the same stretch size
+              then the <a>msub base</a> is also laid out with the same stretch size
               contraint and otherwise it is laid out without any stretch
               size constraint. The scripts are always laid out without
               any stretch size constraint.
             </p>
             <p>
               The <a>inline size</a> of the content
-              is the inline size of the base's <a>margin box</a> −
+              is the inline size of the <a>msub base</a>'s <a>margin box</a> −
               <code>LargeOpItalicCorrection</code> +
               the <a>inline size</a> of
-              the subscript's <a>margin box</a> + <a>SpaceAfterScript</a>.
+              the <a>msub subscript</a>'s <a>margin box</a> + <a>SpaceAfterScript</a>.
             </p>
             <p>
               <code>SubShift</code> is the maximum between:
@@ -3283,13 +3280,13 @@
               <li>the <a>ink line-ascent</a> of the
                 subscript's <a>margin box</a> − <a>SubscriptTopMax</a></li>
               <li><a>SubscriptBaselineDropMin</a> + the <a>ink line-descent</a> of the
-                base's <a>margin box</a></li>
+                <a>msub base</a>'s <a>margin box</a></li>
             </ul>
             <p>
               The <a>line-ascent</a> of the content is the maximum between:
             </p>
             <ul>
-              <li>The <a>line-ascent</a> of the base's <a>margin box</a>.</li>
+              <li>The <a>line-ascent</a> of the <a>msub base</a>'s <a>margin box</a>.</li>
               <li>The <a>line-ascent</a> of the subcript's <a>margin box</a> −
                 <code>SubShift</code>.</li>
             </ul>
@@ -3297,18 +3294,18 @@
               The <a>line-descent</a> of the content is the maximum between:
             </p>
             <ul>
-              <li>The <a>line-descent</a> of the base's <a>margin box</a>.</li>
+              <li>The <a>line-descent</a> of the <a>msub base</a>'s <a>margin box</a>.</li>
               <li>The <a>line-descent</a> of the subcript's <a>margin box</a> +
                 <code>SubShift</code>.</li>
             </ul>
             <p>
-              The <a>inline offset</a> of the base is 0 and the <a>inline offset</a> of the
-              subscript is the <a>inline size</a> of the base's <a>margin box</a> −
+              The <a>inline offset</a> of the <a>msub base</a> is 0 and the <a>inline offset</a> of the
+              <a>msub subscript</a> is the <a>inline size</a> of the <a>msub base</a>'s <a>margin box</a> −
               <code>LargeOpItalicCorrection</code>.
             </p>
             <p>
-              The base is placed so that its <a>alphabetic baseline</a>
-              matches the <a>alphabetic baseline</a>. The subscript is placed so that its <a>alphabetic baseline</a>
+              The <a>msub base</a> is placed so that its <a>alphabetic baseline</a>
+              matches the <a>alphabetic baseline</a>. The <a>msub subscript</a> is placed so that its <a>alphabetic baseline</a>
               is shifted away from the <a>alphabetic baseline</a> by <code>SubShift</code>
               towards the <a>line-under</a>.
             </p>
@@ -3319,7 +3316,7 @@
               The <code>&lt;msup&gt;</code> element is laid out as shown on
               <a href="#figure-box-msup"></a>.
               <code>ItalicCorrection</code>
-              is the <a>italic correction</a> of the base
+              is the <a>italic correction</a> of the <a>msup base</a>
               if it is not an <a>embellished operator</a> with
               the <a><code>largeop</code></a> property and 0 otherwise.
             </p>
@@ -3333,26 +3330,26 @@
               the content
               is the
               <a>min-content inline size</a> (respectively <a>max-content inline size</a>) of
-              the base's <a>margin box</a> +
+              the <a>msup base</a>'s <a>margin box</a> +
               <code>ItalicCorrection</code> +
               the <a>min-content inline size</a> (respectively <a>max-content inline size</a>) of
-              the superscript's <a>margin box</a> + <a>SpaceAfterScript</a>.
+              the <a>msup superscript</a>'s <a>margin box</a> + <a>SpaceAfterScript</a>.
             </p>
             <p>
               If there is an
               <a>inline stretch size constraint</a>
               or a <a>block stretch size constraint</a>
-              then the base is also laid out with the same stretch size
+              then the <a>msup base</a> is also laid out with the same stretch size
               contraint and otherwise it is laid out without any stretch
               size constraint. The scripts are always laid out without
               any stretch size constraint.
             </p>
             <p>
               The <a>inline size</a> of the content
-              is the <a>inline size</a> of the base's <a>margin box</a> +
+              is the <a>inline size</a> of the <a>msup base</a>'s <a>margin box</a> +
               <code>ItalicCorrection</code> +
               the <a>inline size</a> of
-              the superscript's <a>margin box</a> + <a>SpaceAfterScript</a>.
+              the <a>msup superscript</a>'s <a>margin box</a> + <a>SpaceAfterScript</a>.
             </p>
             <p>
               <code>SuperShift</code> is the maximum between:
@@ -3366,14 +3363,14 @@
               <li>
                 <a>SuperscriptBottomMin</a> + the <a>ink line-descent</a> of the
                 superscript's <a>margin box</a></li>
-              <li>The <a>ink line-ascent</a> of the base's <a>margin box</a>
+              <li>The <a>ink line-ascent</a> of the <a>msup base</a>'s <a>margin box</a>
                 − <a>SuperscriptBaselineDropMax</a></li>
             </ul>
             <p>
               The <a>line-ascent</a> of the content is the maximum between:
             </p>
             <ul>
-              <li>The <a>line-ascent</a> of the base's <a>margin box</a>.</li>
+              <li>The <a>line-ascent</a> of the <a>msup base</a>'s <a>margin box</a>.</li>
               <li>The <a>line-ascent</a> of the supercript's <a>margin box</a> +
                 <code>SuperShift</code>.</li>
             </ul>
@@ -3381,18 +3378,18 @@
               The <a>line-descent</a> of the content is the maximum between:
             </p>
             <ul>
-              <li>The <a>line-descent</a> of the base's <a>margin box</a>.</li>
+              <li>The <a>line-descent</a> of the <a>msup base</a>'s <a>margin box</a>.</li>
               <li>The <a>line-descent</a> of the supercript's <a>margin box</a> −
                 <code>SuperShift</code>.</li>
             </ul>
             <p>
-              The <a>inline offset</a> of the base is 0 and the <a>inline offset</a> of
-              superscript is the <a>inline size</a> of the base's <a>margin box</a> +
+              The <a>inline offset</a> of the <a>msup base</a> is 0 and the <a>inline offset</a> of
+              <a>msup superscript</a> is the <a>inline size</a> of the <a>msup base</a>'s <a>margin box</a> +
               <code>ItalicCorrection</code>.
             </p>
             <p>
-              The base is placed so that its <a>alphabetic baseline</a>
-              matches the <a>alphabetic baseline</a>. The superscript is placed so that its
+              The <a>msup base</a> is placed so that its <a>alphabetic baseline</a>
+              matches the <a>alphabetic baseline</a>. The <a>msup superscript</a> is placed so that its
               <a>alphabetic baseline</a>
               is shifted away from the <a>alphabetic baseline</a> by <code>SuperShift</code>
               towards the <a>line-over</a>.
@@ -3425,7 +3422,7 @@
               If there is an
               <a>inline stretch size constraint</a>
               or a <a>block stretch size constraint</a>
-              then the base is also laid out with the same stretch size
+              then the <a>msubsup base</a> is also laid out with the same stretch size
               contraint and otherwise it is laid out without any stretch
               size constraint. The scripts are always laid out without
               any stretch size constraint.
@@ -3434,7 +3431,7 @@
               If there is an
               <a>inline stretch size constraint</a>
               or a <a>block stretch size constraint</a>
-              then the base is also laid out with the same stretch size
+              then the <a>msubsup base</a> is also laid out with the same stretch size
               contraint and otherwise it is laid out without any stretch
               size constraint. The scripts are always laid out without
               any stretch size constraint.
@@ -3442,10 +3439,10 @@
             <p>
               <code>SubSuperGap</code> is the gap between the two scripts
               along the <a>block axis</a> and is defined by
-              (<code>SubShift</code> − the <a>ink line-ascent</a> of the subscript's
+              (<code>SubShift</code> − the <a>ink line-ascent</a> of the <a>msubsup subscript</a>'s
               <a>margin box</a>) +
               (<code>SuperShift</code> − the <a>ink line-descent</a> of the
-              superscript's <a>margin box</a>).
+              <a>msubsup superscript</a>'s <a>margin box</a>).
               If <code>SubSuperGap</code> is not at least
               <a>SubSuperscriptGapMin</a> then the following steps are
               performed to ensure that the condition holds:
@@ -3454,7 +3451,7 @@
               <li>
                 Let Δ be <a>SuperscriptBottomMaxWithSubscript</a>
                 − (<code>SuperShift</code> − the <a>ink line-descent</a> of the
-                superscript's <a>margin box</a>).
+                <a>msubsup superscript</a>'s <a>margin box</a>).
                 If Δ &gt; 0 then set Δ to the minimum between Δ set
                 <a>SubSuperscriptGapMin</a> − <code>SubSuperGap</code> and
                 increase <code>SuperShift</code> (and so
@@ -3481,7 +3478,7 @@
               <code>SuperShift</code> above.
             </p>
             <p>
-              The <a>inline offset</a> and <a>block offset</a> of the base and scripts are
+              The <a>inline offset</a> and <a>block offset</a> of the <a>msubsup base</a> and scripts are
               performed the
               same as described in
               <a href="#base-with-subscript"></a> and
@@ -3489,15 +3486,15 @@
             </p>
             <div class="note" id="msubsup-with-empty-scripts">
               <p>
-                Even when the subscript (respectively superscript) is an empty
+                Even when the <a>msubsup subscript</a> (respectively <a>msubsup superscript</a>) is an empty
                 box, <code>&lt;msubsup&gt;</code>
                 does not generally render the same as
                 <a href="#base-with-superscript"></a>
                 (respectively <a href="#base-with-subscript"></a>)
                 because of the additional constraint on
                 <code>SubSuperGap</code>.
-                Moreover, positioning the empty subscript
-                (respectively superscript)
+                Moreover, positioning the empty <a>msubsup subscript</a>
+                (respectively <a>msubsup superscript</a>)
                 may also change the total size.
               </p>
               <p>
@@ -3668,7 +3665,7 @@
               The <code>&lt;munder&gt;</code> element is laid out as shown on
               <a href="#figure-box-munder"></a>.
               <code>LargeOpItalicCorrection</code>
-              is the <a>italic correction</a> of the base
+              is the <a>italic correction</a> of the <a>munder base</a>
               if it is an <a>embellished operator</a> with
               the <a><code>largeop</code></a> property and 0 otherwise.
             </p>
@@ -3681,10 +3678,10 @@
               of the content are
               calculated like the <a>inline size</a> of the content below
               but replacing the
-              <a>inline sizes</a> of the base's <a>margin box</a> and underscript's <a>margin box</a>
+              <a>inline sizes</a> of the <a>munder base</a>'s <a>margin box</a> and <a>munder underscript</a>'s <a>margin box</a>
               with the
               <a>min-content inline size</a> (respectively <a>max-content inline size</a>)
-              of the base's <a>margin box</a> and underscript's <a>margin box</a>.
+              of the <a>munder base</a>'s <a>margin box</a> and <a>munder underscript</a>'s <a>margin box</a>.
             </p>
             <p>
               The <a>in-flow</a> children are laid out
@@ -3697,15 +3694,15 @@
             <ul>
               <li>The maximum of:
                 <ul>
-                  <li>Half the <a>inline size</a> of the base's <a>margin box</a>.</li>
-                  <li>Half the <a>inline size</a> of the underscript's <a>margin box</a> −
+                  <li>Half the <a>inline size</a> of the <a>munder base</a>'s <a>margin box</a>.</li>
+                  <li>Half the <a>inline size</a> of the <a>munder underscript</a>'s <a>margin box</a> −
                     half <code>LargeOpItalicCorrection</code>.</li>
                 </ul>
               </li>
               <li>The minimum of:
                 <ul>
-                  <li>−Half the <a>inline size</a> of the base's <a>margin box</a>.</li>
-                  <li>−Half the <a>inline size</a> of the underscript's <a>margin box</a> −
+                  <li>−Half the <a>inline size</a> of the <a>munder base</a>'s <a>margin box</a>.</li>
+                  <li>−Half the <a>inline size</a> of the <a>munder underscript</a>'s <a>margin box</a> −
                     half <code>LargeOpItalicCorrection</code>.</li>
                 </ul>
               </li>
@@ -3713,9 +3710,9 @@
             <p>
               If m is the minimum calculated in the second item above then the
               <a>inline offset</a>
-              of the base is −m − half the <a>inline size</a> of the base's <a>margin box</a>.
-              The <a>inline offset</a> of the underscript is
-              −m − half the <a>inline size</a> of the underscript's <a>margin box</a> −
+              of the <a>munder base</a> is −m − half the <a>inline size</a> of the base's <a>margin box</a>.
+              The <a>inline offset</a> of the <a>munder underscript</a> is
+              −m − half the <a>inline size</a> of the <a>munder underscript</a>'s <a>margin box</a> −
               half <code>LargeOpItalicCorrection</code>.
             </p>
             <p>
@@ -3726,7 +3723,7 @@
             <ol>
               <li>
                 <p>
-                  The base is an
+                  The <a>munder base</a> is an
                   <a>embellished operator</a> with the
                   <a><code>largeop</code></a> property.
                   <code>UnderShift</code> is the maximum of
@@ -3734,7 +3731,7 @@
                 <ul>
                   <li><a>LowerLimitBaselineDropMin</a></li>
                   <li><a>LowerLimitGapMin</a> + the ascent of the
-                    underscript.</li>
+                    <a>munder underscript</a>.</li>
                 </ul>
                 <p>
                   <code>UnderExtraDescender</code> is 0.
@@ -3742,7 +3739,7 @@
               </li>
               <li>
                 <p>
-                  The base is an
+                  The <a>munder base</a> is an
                   <a>embellished operator</a> with the
                   <a><code>stretchy</code></a> property
                   and <a>stretch axis</a> inline.
@@ -3751,7 +3748,7 @@
                 <ul>
                   <li><a>StretchStackBottomShiftDown</a></li>
                   <li><a>StretchStackGapAboveMin</a> + the ascent of the
-                    underscript.</li>
+                    <a>munder underscript</a>.</li>
                 </ul>
                 <code>UnderExtraDescender</code> is 0.
               </li>
@@ -3769,23 +3766,23 @@
               The <a>line-ascent</a> of the content is the maximum between:
             </p>
             <ul>
-              <li>The <a>line-ascent</a> of the base's <a>margin box</a>.</li>
-              <li>The <a>line-ascent</a> of the underscript's <a>margin box</a> −
+              <li>The <a>line-ascent</a> of the <a>munder base</a>'s <a>margin box</a>.</li>
+              <li>The <a>line-ascent</a> of the <a>munder underscript</a>'s <a>margin box</a> −
                 <code>UnderShift</code>.</li>
             </ul>
             <p>
               The <a>line-descent</a> of the content is the maximum between:
             </p>
             <ul>
-              <li>The <a>line-descent</a> of the base's <a>margin box</a>.</li>
-              <li>The <a>line-descent</a> of the underscript's <a>margin box</a> +
+              <li>The <a>line-descent</a> of the <a>munder base</a>'s <a>margin box</a>.</li>
+              <li>The <a>line-descent</a> of the <a>munder underscript</a>'s <a>margin box</a> +
                 <code>UnderShift</code> + <code>UnderExtraAscender</code>.</li>
             </ul>
             <p>
-              The <a>alphabetic baseline</a> of the base is aligned with the <a>alphabetic baseline</a>.
-              The <a>alphabetic baseline</a> of the underscript is shifted away from the <a>alphabetic baseline</a>
+              The <a>alphabetic baseline</a> of the <a>munder base</a> is aligned with the <a>alphabetic baseline</a>.
+              The <a>alphabetic baseline</a> of the <a>munder underscript</a> is shifted away from the <a>alphabetic baseline</a>
               and towards the <a>line-under</a> by a distance equal to
-              the <a>ink line-descent</a> of the base's <a>margin box</a>
+              the <a>ink line-descent</a> of the <a>munder base</a>'s <a>margin box</a>
               + <code>UnderShift</code>.
             </p>
           </section>
@@ -3795,7 +3792,7 @@
               The <code>&lt;mover&gt;</code> element is laid out as shown on
               <a href="#figure-box-mover"></a>.
               <code>LargeOpItalicCorrection</code>
-              is the <a>italic correction</a> of the base
+              is the <a>italic correction</a> of the <a>mover base</a>
               if it is an <a>embellished operator</a> with
               the <a><code>largeop</code></a> property and 0 otherwise.
             </p>
@@ -3808,8 +3805,8 @@
               of the content are
               calculated like the <a>inline size</a> of the content
               below but replacing the
-              <a>inline sizes</a> of the base's <a>margin box</a> and underscript's <a>margin box</a> with
-              the <a>min-content inline size</a> (respectively <a>max-content inline size</a>) of the base's <a>margin box</a> and underscript's <a>margin box</a>.
+              <a>inline sizes</a> of the <a>mover base</a>'s <a>margin box</a> and <a>mover overscript</a>'s <a>margin box</a> with
+              the <a>min-content inline size</a> (respectively <a>max-content inline size</a>) of the <a>mover base</a>'s <a>margin box</a> and <a>mover overscript</a>'s <a>margin box</a>.
             </p>
             <p>
               The <a>in-flow</a> children are laid out
@@ -3817,8 +3814,8 @@
             </p>
             <p>
               The <code>TopAccentAttachment</code> is the
-              <a>top accent attachment</a> of the overscript or
-              half the <a>inline size</a> of the overscript's <a>margin box</a>
+              <a>top accent attachment</a> of the <a>mover overscript</a> or
+              half the <a>inline size</a> of the <a>mover overscript</a>'s <a>margin box</a>
               if it is undefined.
             </p>
             <p>
@@ -3830,15 +3827,15 @@
             <ul>
               <li>The maximum of:
                 <ul>
-                  <li>Half the <a>inline size</a> of the base's <a>margin box</a>.</li>
-                  <li>The <a>inline size</a> of the overscript's <a>margin box</a>
+                  <li>Half the <a>inline size</a> of the <a>mover base</a>'s <a>margin box</a>.</li>
+                  <li>The <a>inline size</a> of the <a>mover overscript</a>'s <a>margin box</a>
                     − <code>TopAccentAttachment</code> +
                     half <code>LargeOpItalicCorrection</code>.</li>
                 </ul>
               </li>
               <li>The minimum of:
                 <ul>
-                  <li>−Half the <a>inline size</a> of the base's <a>margin box</a>.</li>
+                  <li>−Half the <a>inline size</a> of the <a>mover base</a>'s <a>margin box</a>.</li>
                   <li>−<code>TopAccentAttachment</code> +
                     half <code>LargeOpItalicCorrection</code>.</li>
                 </ul>
@@ -3847,9 +3844,9 @@
             <p>
               If m is the minimum calculated in the second item above then the
               <a>inline offset</a>
-              of the base is −m − half the <a>inline size</a> of the base's margin.
-              The <a>inline offset</a> of the overscript is
-              −m − half the <a>inline size</a> of the overscript's <a>margin box</a> +
+              of the <a>mover base</a> is −m − half the <a>inline size</a> of the base's margin.
+              The <a>inline offset</a> of the <a>mover overscript</a> is
+              −m − half the <a>inline size</a> of the <a>mover overscript</a>'s <a>margin box</a> +
               half <code>LargeOpItalicCorrection</code>.
             </p>
             <p>
@@ -3860,7 +3857,7 @@
             <ol>
               <li>
                 <p>
-                  The base is an
+                  The <a>mover base</a> is an
                   <a>embellished operator</a> with the
                   <a><code>largeop</code></a> property.
                   <code>OverShift</code> is the maximum of
@@ -3868,7 +3865,7 @@
                 <ul>
                   <li><a>UpperLimitBaselineRiseMin</a></li>
                   <li><a>UpperLimitGapMin</a> + the descent of the
-                    overscript.</li>
+                    <a>mover overscript</a>.</li>
                 </ul>
                 <p>
                   <code>OverExtraAscender</code> is 0.
@@ -3876,7 +3873,7 @@
 	      </li>
               <li>
                 <p>
-                  The base is an
+                  The <a>mover base</a> is an
                   <a>embellished operator</a> with the
                   <a><code>stretchy</code></a> property and
                   <a>stretch axis</a> inline.
@@ -3885,7 +3882,7 @@
                 <ul>
                   <li><a>StretchStackTopShiftUp</a></li>
                   <li><a>StretchStackGapBelowMin</a> + the descent of the
-                    overscript.</li>
+                    <a>mover overscript</a>.</li>
                 </ul>
                 <code>OverExtraDescender</code> is 0.
               </li>
@@ -3897,7 +3894,7 @@
                     <a>accent</a> attribute is not an
                     <a data-cite="INFRA#ascii-case-insensitive">ASCII case-insensitive</a> match to <code>true</code>.</li>
                   <li>Or <a>AccentBaseHeight</a> minus the <a>line-ascent</a>
-                    of the base's <a>margin box</a>
+                    of the <a>mover base</a>'s <a>margin box</a>
                     if this difference is nonnegative.</li>
                   <li>Or 0 otherwise.</li>
                 </ol>
@@ -3926,21 +3923,21 @@
               The <a>line-ascent</a> of the content is the maximum between:
             </p>
             <ul>
-              <li>The <a>line-ascent</a> of the base's <a>margin box</a>.</li>
-              <li>The <a>line-ascent</a> of the overscript's <a>margin box</a> +
+              <li>The <a>line-ascent</a> of the <a>mover base</a>'s <a>margin box</a>.</li>
+              <li>The <a>line-ascent</a> of the <a>mover overscript</a>'s <a>margin box</a> +
                 <code>OverShift</code> + <code>OverExtraAscender</code>.</li>
             </ul>
             <p>
               The <a>line-descent</a> of the content is the maximum between:
             </p>
             <ul>
-              <li>The <a>line-descent</a> of the base's <a>margin box</a>.</li>
-              <li>The <a>line-descent</a> of the overscript's <a>margin box</a> −
+              <li>The <a>line-descent</a> of the <a>mover base</a>'s <a>margin box</a>.</li>
+              <li>The <a>line-descent</a> of the <a>mover overscript</a>'s <a>margin box</a> −
                 <code>OverShift</code>.</li>
             </ul>
             <p>
-              The <a>alphabetic baseline</a> of the base is aligned with the <a>alphabetic baseline</a>.
-              The <a>alphabetic baseline</a> of the overscript is shifted away from the <a>alphabetic baseline</a>
+              The <a>alphabetic baseline</a> of the <a>mover base</a> is aligned with the <a>alphabetic baseline</a>.
+              The <a>alphabetic baseline</a> of the <a>mover overscript</a> is shifted away from the <a>alphabetic baseline</a>
               and towards the <a>line-over</a> by a distance equal to
               the <a>ink line-ascent</a> of the base + <code>OverShift</code>.
             </p>
@@ -3972,8 +3969,10 @@
               of the corresponding extrema calculated in
               <a href="#base-with-underscript"></a> and
               <a href="#base-with-overscript"></a>.
-              The <a>inline offsets</a> of the base, underscript and
-              overscript are calculated as in these sections but using
+              The <a>inline offsets</a> of the <a>munderover base</a>,
+              <a>munderover underscript</a> and
+              <a>munderover overscript</a>
+              are calculated as in these sections but using
               the new minimum m (minimum of the corresponding minima).
             </p>
             <p>
@@ -3988,7 +3987,10 @@
               <a href="#base-with-overscript"></a>.
             </p>
             <p>
-              Finally, the <a>alphabetic baselines</a> of the base, undescript and overscript
+              Finally, the <a>alphabetic baselines</a> of the
+              <a>munderover base</a>,
+              <a>munderover underscript</a> and
+              <a>munderover overscript</a>
               are calculated as in sections
               <a href="#base-with-underscript"></a> and
               <a href="#base-with-overscript"></a>.
@@ -4058,7 +4060,7 @@
           <ul>
             <li>
               A first <a>in-flow</a> child, called the
-              <dfn>multiscripts base</dfn>, that is not a an
+              <dfn>mmultiscripts base</dfn>, that is not a an
               <a><code>&lt;mprescripts&gt;</code></a> element.
             </li>
             <li>
@@ -4113,13 +4115,15 @@
               calculated the same as the <a>inline size</a> of the content
               below, but replacing
               "<a>inline size</a>" with "<a>min-content inline size</a>"
-              (respectively "<a>max-content inline size</a>") for the base's
+              (respectively "<a>max-content inline size</a>") for the
+              <a>mmultiscripts base</a>'s
               <a>margin box</a> and scripts's <a>margin boxes</a>.
             </p>
             <p>
               If there is an <a>inline stretch size constraint</a> or a
               <a>block stretch size constraint</a>
-              the base is also laid out with the same stretch size constraint.
+              the <a>mmultiscripts base</a>
+              is also laid out with the same stretch size constraint.
               Otherwise it is laid out without any stretch
               size constraint. The other elements are always laid out without
               any stretch size constraint.
@@ -4143,7 +4147,7 @@
               </li>
               <li>
                 Increment <code>inline-offset</code> by the <a>inline size</a> of the
-                base's <a>margin box</a> and
+                <a>mmultiscripts base</a>'s <a>margin box</a> and
                 set <code>inline-size</code> to <code>inline-offset</code>.
               </li>
               <li>
@@ -4249,7 +4253,8 @@
                 </ol>
 	      </li>
               <li>
-                Place the base and <code>&lt;mprescripts&gt;</code> boxes
+                Place the <a>mmultiscripts base</a>
+                and <code>&lt;mprescripts&gt;</code> boxes
                 at <a>inline offsets</a>
                 <code>inline-offset</code> and with their <a>alphabetic baselines</a>
                 aligned with the <a>alphabetic baseline</a>.
@@ -5120,14 +5125,10 @@
           <dd><code>MATH.MathConstants.fractionDenomDisplayStyleGapMin</code> or 3 × <a>default rule thickness</a> if the constant is not available.</dd>
           <dt><dfn>overbarVerticalGap</dfn></dt>
           <dd><code>MATH.MathConstants.overbarVerticalGap</code> or 3 × <a>default rule thickness</a> if the constant is not available.</dd>
-          <dt><dfn>overbarRuleThickness</dfn></dt>
-          <dd><code>MATH.MathConstants.overbarRuleThickness</code> or <a>default rule thickness</a> if the constant is not available.</dd>
           <dt><dfn>overbarExtraAscender</dfn></dt>
           <dd><code>MATH.MathConstants.overbarExtraAscender</code> or <a>default rule thickness</a> if the constant is not available.</dd>
           <dt><dfn>underbarVerticalGap</dfn></dt>
           <dd><code>MATH.MathConstants.underbarVerticalGap</code> or 3 × <a>default rule thickness</a> if the constant is not available.</dd>
-          <dt><dfn>underbarRuleThickness</dfn></dt>
-          <dd><code>MATH.MathConstants.underbarRuleThickness</code> or <a>default rule thickness</a> if the constant is not available.</dd>
           <dt><dfn>underbarExtraDescender</dfn></dt>
           <dd><code>MATH.MathConstants.underbarExtraDescender</code> or <a>default rule thickness</a> if the constant is not available.</dd>
           <dt><dfn>radicalVerticalGap</dfn></dt>
