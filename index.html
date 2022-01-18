@@ -527,7 +527,8 @@
             expression.
             For <code>mathvariant</code> values other than <code>normal</code>,
             this is done by using glyphs of
-            Unicode's Mathematical Alphanumeric Symbols.
+            <a data-cite="UNICODE">Unicode</a>'s
+            Mathematical Alphanumeric Symbols.
           </p>
           <div class="example" id="mathvariant-example">
             <p>
@@ -546,8 +547,19 @@
             italic of the <a><code>&lt;mi&gt;</code></a> element.
           </div>
           <div class="note">
-            Unicode does not distinguish between Chancery and Spencerian style
-            for the Unicode MATHEMATICAL SCRIPT characters. However, some
+            <p>It is sometimes needed to distinguish between
+            Chancery and Roundhand style for MATHEMATICAL SCRIPT characters.
+            These are notably used in LaTeX for the
+            <code>\mathcal</code> and <code>\mathscr</code> commands.</p>
+            <p>One way to do that is to rely on
+            Chapter 23.4 Variation Selectors of
+            <a data-cite="UNICODE">Unicode 14</a> which describes a way to
+            specify selection of particular glyph variants. Indeed, the
+            <code>StandardizedVariants.txt</code> file from the
+            Unicode Character Database indicates that variant selectors
+            U+FE00 and U+FE01 can be used on capital script to specify
+            Chancery and Roundhand respectively.</p>
+            <p>Alternatively, some
             mathematical fonts rely on <code>salt</code> or
             <code>ssXY</code> properties from [[OPEN-FONT-FORMAT]]
             to provide both styles. Page authors may use the
@@ -4741,7 +4753,8 @@
             In the previous example, one can guess that the author
             decided to use the convention of bold variables for
             matrices, fraktur variables for Lie algebras and double-struck
-            variables for set of numbers. Although the corresponding Unicode
+            variables for set of numbers. Although the corresponding
+            <a data-cite="UNICODE">Unicode</a>
             characters could have been used directly in these cases, it may
             be helpful for authoring tools or polyfills to support these
             transformations via the <code>text-transform</code> property.
@@ -4753,7 +4766,8 @@
             <code>math-auto</code> property is intended to implement this
             default behavior, which can be overriden by authors if necessary.
             Note that mathematical fonts are designed with special kind
-            of italic glyphs located at the Unicode positions of
+            of italic glyphs located at the
+            <a data-cite="UNICODE">Unicode</a> positions of
             <a href="#italic-mappings"></a>, which  differ from the shaping
             obtained via italic font style. Compare this
             mathematical formula
@@ -5575,7 +5589,8 @@
                 <code>Content</code> with the first character.</li>
               <li>Otherwise, if <code>Content</code> it is listed in
                 <a href="#operator-dictionary-compact-special-tables"><code>Operators_2_ascii_chars</code></a> then
-                replace <code>Content</code> with the Unicode character
+                replace <code>Content</code> with the
+                <a data-cite="UNICODE">Unicode</a> character
                 "U+0320 plus the index of <code>Content</code> in
                 <code>Operators_2_ascii_chars</code>".
               </li>
@@ -5645,7 +5660,8 @@
             of <a href="#operator-dictionary-category-table"></a> than one
             binary search on the whole table of
             <a href="#operator-dictionary-categories-hexa-table"></a>.
-            One can see that there are several contiguous Unicode blocks, so
+            One can see that there are several contiguous
+            <a data-cite="UNICODE">Unicode</a> blocks, so
             encoding tables as ranges allow to get almost 8 bits per entry.
           </p>
           <p>
