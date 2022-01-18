@@ -4065,7 +4065,7 @@
             </li>
             <li>
               Followed by an even number of <a>in-flow</a> children called
-              <dfn>multiscripts postscripts</dfn>, none of them being a
+              <dfn>mmultiscripts postscripts</dfn>, none of them being a
               <a><code>&lt;mprescripts&gt;</code></a> element.
               These scripts form a (possibly empty) list
               subscript, superscript, subscript, superscript,
@@ -4099,7 +4099,9 @@
             <p>
               The <code>&lt;mmultiscripts&gt;</code> element is laid out as
               shown on <a href="#figure-box-mmultiscripts"></a>.
-              For each postscript pair, the <code>ItalicCorrection</code>
+              For each <a>subscript/superscript pair</a> of
+              <a>mmultiscripts postscripts</a>,
+              the <code>ItalicCorrection</code>
               <code>LargeOpItalicCorrection</code> are defined as
               in <a href="#base-with-subscript"></a>
               and <a href="#base-with-superscript"></a>.
@@ -4136,7 +4138,8 @@
               <li>Set <code>inline-offset</code> to 0.</li>
               <li>
                 <p>
-                  For each prescript pair, increment
+                  For each <a>subscript/superscript pair</a> of
+                  <a>mmultiscripts prescripts</a>, increment
                   <code>inline-offset</code> by <a>SpaceAfterScript</a> + the
                   maximum of
                 </p>
@@ -4152,7 +4155,8 @@
               </li>
               <li>
                 <p>
-                  For each postscript pair, modify
+                  For each <a>subscript/superscript pair</a> of
+                  <a>mmultiscripts postscripts</a>, modify
                   <code>inline-size</code> to be at least:
                 </p>
                 <ul>
@@ -4185,13 +4189,13 @@
               <code>SubShift</code> (respectively <code>SuperShift</code>)
               is calculated by taking the maximum of all subshifts
               (respectively supershifts) of each
-              subscript/superscript pair as described in
+              <a>subscript/superscript pair</a> as described in
               <a href="#base-with-subscript-and-superscript"></a>.
             </p>
             <p>
               The <a>line-ascent</a> of the content is calculated
               by taking the maximum of all the <a>line-ascent</a>
-              of each subscript/superscript pair as described in
+              of each <a>subscript/superscript pair</a> as described in
               <a href="#base-with-subscript-and-superscript"></a>
               but using the <code>SubShift</code> and
               <code>SuperShift</code> values calculated above.
@@ -4199,7 +4203,7 @@
             <p>
               The <a>line-descent</a> of the content is calculated
               by taking the maximum of all the <a>line-descent</a>
-              of each subscript/superscript pair as described in
+              of each <a>subscript/superscript pair</a> as described in
               <a href="#base-with-subscript-and-superscript"></a>
               but using the <code>SubShift</code> and
               <code>SuperShift</code> values calculated above.
@@ -4212,7 +4216,8 @@
             <ol>
               <li>Set <code>inline-offset</code> to 0.</li>
               <li>
-                <p>For each prescript pair:</p>
+                <p>For each <a>subscript/superscript pair</a> of
+                  <a>mmultiscripts prescripts</a>:</p>
                 <ol>
                   <li>
                     Increment <code>inline-offset</code> by
@@ -4261,7 +4266,8 @@
               </li>
               <li>
                 <p>
-                  For each postscript pair:
+                  For each <a>subscript/superscript pair</a> of
+                  <a>mmultiscripts postscripts</a>:
                 </p>
                 <ol>
                   <li>
@@ -4305,7 +4311,8 @@
             <div class="note">
               <p>
                 An <code>&lt;mmultiscripts&gt;</code> with only one
-                postscript pair is laid out the same as a
+                <a>subscript/superscript pair</a> of
+                <a>mmultiscripts postscripts</a> is laid out the same as a
                 <code>&lt;msubsup&gt;</code> with the same <a>in-flow</a> children.
                 However, as
                 <a href="#msubsup-with-empty-scripts">noticed for
