@@ -472,7 +472,7 @@
             have a value that is a valid <a>length-percentage</a>.
             In that case, the user agent is expected to treat the attribute as a
             <a data-cite="HTML/../#presentational-hints">presentational hint</a> setting the element's
-            <a><code>font-size</code></a>
+            <a data-cite="CSS-FONTS-4#font-size-prop"><code>font-size</code></a>
             property to the corresponding value.
             The <code>mathsize</code> property indicates indicates the desired height
             of glyphs in math formulas but also scale other parts (spacing, shifts,
@@ -4806,7 +4806,7 @@
           applying the following rules:
         </p>
         <ul>
-          <li>The <a><code>font-size</code></a> is scaled down when
+          <li>The <a data-cite="CSS-FONTS-4#font-size-prop"><code>font-size</code></a> is scaled down when
             its specified value is <code>math</code> and
             the computed value of <a><code>math-depth</code></a> is
             <code>auto-add</code> (default for <a>&lt;mfrac&gt;</a>)
@@ -4916,7 +4916,8 @@
           A new <a>math-depth</a> property is introduced to describe a notion
           of "depth" for each element of a mathematical formula, with respect to
           the top-level container of that formula. Concretely, this is used to
-          determine the computed value of the <code>font-size</code>
+          determine the computed value of the
+          <a data-cite="CSS-FONTS-4#font-size-prop"><code>font-size</code></a>
           property when its specified value is <code>math</code>.
         </p>
         <table>
@@ -4955,15 +4956,19 @@
           <li>If the specified value of <a>math-depth</a> is of the form
             <code>&lt;integer&gt;</code> then the computed value
             of <a>math-depth</a> of the element is the specified integer.
-	  </li>	  
+	  </li>
           <li>Otherwise, the computed value
             of <a>math-depth</a> of the element is the inherited one.</li>
         </ul>
         <p>
-          If the specified value <code>font-size</code> is <code>math</code> then the
+          If the specified value
+          <a data-cite="CSS-FONTS-4#font-size-prop"><code>font-size</code></a>
+          is <code>math</code> then the
           computed value of
-          <code>font-size</code> is obtained by multiplying the inherited value of
-          <code>font-size</code> by a nonzero scale factor calculated by the
+          <a data-cite="CSS-FONTS-4#font-size-prop"><code>font-size</code></a>
+          is obtained by multiplying the inherited value of
+          <a data-cite="CSS-FONTS-4#font-size-prop"><code>font-size</code></a>
+          by a nonzero scale factor calculated by the
           following procedure:
         </p>
         <ol>
@@ -5041,7 +5046,7 @@
         <code>MathValueRecord</code> entry) are scaled to appropriate values
         for layout purpose, taking into account
         <code>head.unitsPerEm</code>, CSS
-        <a><code>font-size</code></a>
+        <a data-cite="CSS-FONTS-4#font-size-prop"><code>font-size</code></a>
         or zoom level.
       </p>
       <section>
