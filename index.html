@@ -5923,7 +5923,31 @@
       </p>
     </section>
     <section class="appendix informative">
-      <h2>Privacy and Security Considerations</h2>
+      <h2>Security Considerations</h2>
+      <p>
+        This specification only adds script execution mechanisms in the
+        MathML event handler attributes described in
+        <a href="#global-attributes"></a>. UAs may decide to apply the same
+        security restrictions as HTML and SVG to prevent execution of scripts
+        in these attributes.
+      </p>
+      <div class="note">
+        <p>In [[MathML3]], it was possible to use the
+        <a><code>&lt;maction&gt;</code></a> element with
+        the <code>actiontype</code> value set to <code>"statusline"</code>
+        in order to override the text of the browser statusline. In particular,
+        this could be used to hide the URL text of an untrusted link e.g.</p>
+
+        <pre data-include="examples/example-maction-statusline.html"
+             data-include-format="text"></pre>
+
+        <p>This feature has been removed in MathML Core
+        and the <a><code>&lt;maction&gt;</code></a> element essentially behaves
+        like an <a><code>&lt;mrow&gt;</code></a> container with extra style.
+      </div>
+    </section>
+    <section class="appendix informative">
+      <h2>Privacy Considerations</h2>
       <p>
         As explained in <a href="#html-and-svg"></a>,
         MathML can be embedded into an SVG image via the
@@ -5939,13 +5963,6 @@
         when one tries to access the canvas' content via JavaScript APIs.
       </p>
       <p>
-        This specification only adds script execution mechanisms in the
-        MathML event handler attributes described in
-        <a href="#global-attributes"></a>. UAs may decide to apply the same
-        security restrictions as HTML and SVG to prevent execution of scripts
-        in these attributes.
-      </p>
-      <p>
         This specification describes layout of a DOM
         <a data-cite="HTML/../#element">elements</a> which may involve system
         fonts. Like for HTML/CSS layout,
@@ -5956,16 +5973,6 @@
         existing Web APIs are the math layout data described in
         <a href="#opentype-math-table"></a>.
       </p>
-      <div class="note">
-        In MathML3, it was possible to use the
-        <a><code>&lt;maction&gt;</code></a> element with
-        the <code>actiontype</code> value set to <code>"statusline"</code>
-        in order to override the text of the browser statusline. In particular,
-        this could be used to hide the URL text of an untrusted link.
-        This has been removed in MathML Core
-        and the <a><code>&lt;maction&gt;</code></a> element essentially behaves
-        like an <a><code>&lt;mrow&gt;</code></a> container with extra style.
-      </div>
     </section>
     <section id="conformance" class="appendix normative">
       <h2>Conformance</h2>
