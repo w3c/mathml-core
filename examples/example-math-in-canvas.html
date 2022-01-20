@@ -1,0 +1,25 @@
+let svg = `
+  <svg xmlns="http://www.w3.org/2000/svg" width="100px" height="100px">
+    <foreignObject width="100" height="100"
+                   requiredExtensions="http://www.w3.org/1998/Math/MathML">
+      <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <msqrt style="font-size: 25px">
+          <mtext>&#x25a0;</mtext>
+          <mtext><a href="https://example.org/">&#x25a0;</a></mtext>
+        </msqrt>
+      </math>
+    </foreignObject>
+  </svg>`;
+let image = new Image();
+image.width = 100;
+image.height = 100;
+image.onload = () => {
+  let canvas = document.createElement('canvas');
+  canvas.width = 100;
+  canvas.height = 100;
+  canvas.style = "border: 1px solid black";
+  document.body.appendChild(canvas);
+  let context = canvas.getContext("2d");
+  context.drawImage(image, 0, 0);
+};
+image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;

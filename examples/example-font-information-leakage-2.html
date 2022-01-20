@@ -1,0 +1,24 @@
+<style>
+  @font-face {
+    font-family: MyWebFontWithVeryWideAsianGlyphs;
+    src: url("/fonts/my-web-fonts-with-very-wide-asian-glyphs.woff");
+  }
+  #container {
+    font-family: ui-serif, MyWebFontWithVeryWideAsianGlyphs
+  }
+  #reference {
+    font-family: MyWebFontWithVeryWideAsianGlyphs;
+  }
+</style>
+<div id="container">王</div>
+<div id="reference">王</div>
+<script>
+document.fonts.ready.then(() => {
+  let containerWidth =
+    document.getElementById("container").getBoundingClientRect().width;
+  let referenceWidth =
+    document.getElementById("reference").getBoundingClientRect().width;
+  let uiSerifFontDoesNotContainAsianGlyph =
+    Math.abs(containerWidth - referenceWidth) < 1;
+});
+</script>

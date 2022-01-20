@@ -1,0 +1,21 @@
+<style>
+  @font-face {
+    font-family: MyWebFontWithVeryWideGlyphs;
+    src: url("/fonts/my-web-fonts-with-very-wide-glyphs.woff");
+  }
+  #container {
+    font-family: AWellKnownSystemFont, MyWebFontWithVeryWideGlyphs;
+  }
+</style>
+<div id="container">SOMETEXT</div>
+<div id="reference">SOMETEXT</div>
+<script>
+document.fonts.ready.then(() => {
+  let containerWidth =
+    document.getElementById("container").getBoundingClientRect().width;
+  let referenceWidth =
+    document.getElementById("reference").getBoundingClientRect().width;
+  let isWellKnownSystemFontAvailable =
+    Math.abs(containerWidth - referenceWidth) < 1;
+});
+</script>
