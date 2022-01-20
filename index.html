@@ -5925,26 +5925,58 @@
     <section class="appendix informative">
       <h2>Security Considerations</h2>
       <p>
-        This specification only adds script execution mechanisms in the
+        This specification adds script execution mechanisms via the
         MathML event handler attributes described in
-        <a href="#global-attributes"></a>. UAs may decide to apply the same
-        security restrictions as HTML and SVG to prevent execution of scripts
-        in these attributes.
+        <a href="#global-attributes"></a>. UAs may decide to prevent execution
+        of scripts specified in these attributes, following the same
+        security restrictions as those applying to HTML or SVG elements.
       </p>
+      <div class="note">
+        <p>In [[MathML3]], it was possible to make any element linkable
+          via <code>href</code> or <code>xlink:href</code> attributes, with
+          an URL pointing to an untrusted resource or even
+          <code>javascript:</code> execution. These attributes are not
+          available in MathML Core. However, as described in
+          <a href="#html-and-svg"></a> it is possible to embed
+          HTML or SVG content inside MathML, including HTML or SVG links.
+        </p>
+      </div>
       <div class="note">
         <p>In [[MathML3]], it was possible to use the
         <a><code>&lt;maction&gt;</code></a> element with
         the <code>actiontype</code> value set to <code>"statusline"</code>
         in order to override the text of the browser statusline. In particular,
-        this could be used to hide the URL text of an untrusted link e.g.</p>
+        an attacker could use this
+        to hide the URL text of an untrusted link e.g.</p>
 
         <pre data-include="examples/example-maction-statusline.html"
              data-include-format="text"></pre>
 
-        <p>This feature has been removed in MathML Core
-        and the <a><code>&lt;maction&gt;</code></a> element essentially behaves
+        <p>This feature is not available in MathML Core, where
+        the <a><code>&lt;maction&gt;</code></a> element essentially behaves
         like an <a><code>&lt;mrow&gt;</code></a> container with extra style.
       </div>
+      <p>An attacker can try to hang the UA by inserting very large
+        stretchy operators, effectively making the algorithm
+        <a>shaping of the glyph assembly</a> deal with a huge amount of
+        glyphs. UAs may work around this issue
+        by limiting <a>r<sub>min</sub></a> and
+        <code>GlyphAssembly.partCount</code> to
+        maximum values.</p>
+      <p>As described in
+        <a data-cite="CSS-FONTS-4#security">CSS Fonts Module</a>,
+        an attacker can try to rely on malformed or malicious fonts to
+        exploit potential security faults in browser implementations.
+        Because the <a href="#opentype-math-table">OpenType MATH table</a>
+        is used extensively in this specification, UAs should ensure their font
+        sanitization mechanisms are able to deal with that table.</p>
+      <p>Finally,
+        in order to reduce attack surface, some UAs expose runtime options
+        to disable part of the web platform. Disabling MathML layout can
+        essentially be
+        achieved by forcing elements in the DOM tree to be put in the HTML
+        namespace and disabling <a href="#css-extensions-for-math-layout"></a>.
+      </p>
     </section>
     <section class="appendix informative">
       <h2>Privacy Considerations</h2>
