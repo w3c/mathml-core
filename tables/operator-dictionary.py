@@ -519,10 +519,6 @@ def convertToSurrogatePairs():
 # Remove non-BMP characters.
 for name in knownTables:
     for entry in knownTables[name]["singleChar"]:
-        # FIXME(mathml-core/104): Decide what to do with all these supplemental
-        # arrows-C.
-        if entry >=0x1F800 and entry < 0x1F900:
-            continue
         assert entry < 0x10000 or isKnownNonBMP(entry)
     knownTables[name]["singleChar"] = [ entry for entry in knownTables[name]["singleChar"] if entry < 0x10000 ]
 
