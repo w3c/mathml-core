@@ -733,7 +733,27 @@ md.close()
 txt.close()
 print("done.");
 
-# Dump compact dictionary for C++-like table.
-#for r in compact_table:
-#    print('{0x%04X, %d}, ' % (r[0], r[1] - r[0]), end="")
-#print()
+# Generate C++-like tables.
+print("Generating operator-dictionary-compact.cpp... ", end="")
+cpp = open("operator-dictionary-compact.cpp", "w")
+cpp.write("\
+struct EntryRange {\n\
+  uint16_t entry;\n\
+  unsigned range_bounds_delta : 4;\n\
+};\n\
+static inline uint16_t ExtractKey(const EntryRange& range) {\n\
+  return range.entry & 0x3FFF;\n\
+}\n\
+static inline uint16_t ExtractCategory(const EntryRange& range) {\n\
+  return range.entry >> 12;\n\
+}\n");
+cpp.write("static const EntryRange compact_dictionary[] = {")
+for i in range(0, len(compact_table)):
+    if i > 0:
+        cpp.write(', ')
+    r = compact_table[i]
+    cpp.write('\n  {0x%04X, %d}' % (r[0], r[1] - r[0]))
+cpp.write("\n};")
+cpp.close()
+
+print("done.")

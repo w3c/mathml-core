@@ -6,3 +6,4 @@ unicode.xml
 *.aux
 *.dvi
 wpt-tests-generator.py
+tables/operator-dictionary-compact.cpp
