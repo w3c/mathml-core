@@ -4,7 +4,7 @@ from lxml import etree
 from download import downloadUnicodeXML
 from math import ceil
 from inline_axis_operators import stretchAxis, inlineAxisOperators
-
+from bisect import bisect_left
 import operator
 import json
 
@@ -489,7 +489,24 @@ md.close()
 print("done.");
 ################################################################################
 
-# Delete infix operators using default values.
+# Delete infix operators using default values. But before doing that, check
+# (for single char entries) whether they actually don't exist in another
+# category. Otherwise, such a category will be used when no explicit form is
+# specified, which will override the default values.
+# https://w3c.github.io/mathml-core/#ref-for-dfn-algorithm-for-determining-the-properties-of-an-embellished-operator-1
+
+for entry in knownTables["infixEntriesWithDefaultValues"]["singleChar"]:
+    otherCategories = []
+    for name in knownTables:
+        if name.startswith("infix") or name == "fence":
+            continue
+        i = bisect_left(knownTables[name]["singleChar"], entry)
+        if (i != len(knownTables[name]["singleChar"]) and
+            knownTables[name]["singleChar"][i] == entry):
+            otherCategories.append(name)
+    assert len(otherCategories) == 0, (
+        "U+%04X is in infixEntriesWithDefaultValues but also in %s" %
+        (entry, str(otherCategories)))
 del knownTables["infixEntriesWithDefaultValues"]
 
 # Convert nonBMP characters to surrogates pair (multiChar)
