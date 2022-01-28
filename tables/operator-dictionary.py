@@ -372,11 +372,15 @@ for value, count in sorted(otherValuesCount.items(),
    print("]")
    print("")
 
+assert otherValueTotalCount == 0, "Operator dictionary contains single-char entries that do not fit in one of the existing categories!"
+
 print("otherEntriesWithMultipleCharacters",
       len(otherEntriesWithMultipleCharacters))
 for name in otherEntriesWithMultipleCharacters:
    print("  * %s: %s" % (name, str(otherEntriesWithMultipleCharacters[name])))
 print("")
+
+assert len(otherEntriesWithMultipleCharacters) == 0, "Operator dictionary contains multiple-char entries that do not fit in one of the existing categories!"
 
 print("Other tables:\n")
 dumpKnownTables(True)
@@ -459,29 +463,6 @@ for name, item in sorted(knownTables.items(),
                                     separator))
             totalEntryCount += 1
             md.write("</tr>\n");
-
-# FIXME: decide what to do with these values.
-# Ugly hack for now, hopefully these edge cases will be handled normally later or removed.
-for value, count in sorted(otherValuesCount.items(),
-                           key=operator.itemgetter(1), reverse=True):
-    for entry in otherEntries[value]:
-        parsed_value = json.loads(value.replace("'", '"').replace("True", '"True"'))
-        md.write("<tr style='text-decoration: line-through;'>");
-        md.write("<td>&#x%0X; U+%04X</td>" % (entry, entry))
-        md.write("<td><code>%s</code></td>" % parsed_value["form"])
-        md.write(serializeValue(parsed_value,
-                                "properties" in parsed_value and "fence" in parsed_value["properties"],
-                                "properties" in parsed_value and "separator" in parsed_value["properties"]))
-        md.write("</tr>\n");
-for name in otherEntriesWithMultipleCharacters:
-    md.write("<tr style='text-decoration: line-through; background: lightblue'>");
-    md.write("<td>String ")
-    md.write(name)
-    md.write("</td>")
-    md.write("<td><code>%s</code></td>" % otherEntriesWithMultipleCharacters[name]["form"])
-    md.write(serializeValue(otherEntriesWithMultipleCharacters[name], False, False))
-    md.write("</tr>\n");
-
 md.write("</table>\n");
 md.write('<figcaption>Mapping from operator (Content, Form) to properties.<br/>Total size: %d entries, ≥ %d bytes<br/>(assuming \'Content\' uses at least one UTF-16 character, \'Stretch Axis\' 1 bit, \'Form\' 2 bits,the different combinations of \'rspace\' and \'space\' at least 3 bits, and the different combinations of properties 3 bits).</figcaption>' % (totalEntryCount, ceil(totalEntryCount * (16 + 1 + 2 + 3 + 3)/8.)))
 md.write('</figure>')
