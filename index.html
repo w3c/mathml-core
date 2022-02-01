@@ -52,17 +52,6 @@
                   status: "ED",
                   href: "https://w3c.github.io/mathml/"
               },
-              "gperf": {
-                  title: "gperf - Perfect Hash Function Generator",
-                  href: "https://www.gnu.org/software/gperf/"
-              },
-              "CMPH": {
-                  title: "CMPH - C Minimal Perfect Hashing Library",
-                  authors: [
-                      "Fabiano Cupertino Botelho et al."
-                  ],
-                  href: "http://cmph.sourceforge.net/index.html"
-              },
               "TEXBOOK": {
                   title: "The TeXBook",
                   date: "1984",
@@ -1671,31 +1660,35 @@
               <li>Otherwise, run the <a>algorithm for determining the <code>form</code> of an embellished operator</a>;</li>
               <li>
                 If the <a>core operator</a> contains only text
-                content T, the corresponding property from the
-                <a href="#operator-dictionary">Operator Dictionary</a>
-                is retrieved by looking for <code>Content=T,Form=F</code>
-                where <code>F</code> is the <a><code>form</code></a> calculated
-                at the previous step;
+                content <code>Content</code>, then set <code>Category</code>
+                to the result of the
+                <a>algorithm to determine the category of an operator</a>
+                <code>(Content, Form)</code>
+                where <code>Form</code> is the <a><code>form</code></a>
+                calculated at the previous step.
               </li>
               <li>
-                If no entry is found and the <a><code>form</code></a>
+                If <code>Category</code> is <code>Default</code> and
+                the <a><code>form</code></a>
                 of <a>embellished operator</a> was not explicitly specified
                 as an attribute on its <a>core operator</a>, then
-                user agents must try other dictionary entries for different
-                values of <code>F</code> in the following order:
-                <code>infix</code>, <code>prefix</code>, <code>postfix</code>;
+                <ol>
+                  <li>Set <code>Category</code> to the result of the
+                  <a>algorithm to determine the category of an operator</a>
+                  <code>(Content, Form)</code> where <code>Form</code> is
+                  <code>infix</code>.</li>
+                  <li>If <code>Category</code> is <code>Default</code>, then
+                    run the algorithm again with <code>Form</code> set to
+                    <code>prefix</code>.</li>
+                  <li>If <code>Category</code> is <code>Default</code>, then
+                    run the algorithm again with <code>Form</code> set to
+                    <code>postfix</code>.</li>
+                </ol>
               </li>
               <li>
-                Otherwise, use the value <code>false</code> for
-                <code>stretchy</code>,
-                <code>symmetric</code>,
-                <code>largeop</code> and
-                <code>movablelimits</code> properties ;
-                <code>0.2777777777777778em</code> for
-                <code>lspace</code> and
-                <code>rspace</code> properties ;
-                <code>1em</code> for the <code>minsize</code> property and
-                ∞ for the <code>maxsize</code> property.
+                Run the
+                <a>algorithm to set the properties of an operator from its
+                category</a> <code>Category</code>.
               </li>
             </ol>
             <p>When used during layout,
@@ -5541,149 +5534,124 @@
       <h2>Operator Tables</h2>
       <section id="operator-dictionary" class="normative">
         <h3>Operator Dictionary</h3>
-        <p>
-          The following dictionary for default values of
-          <a href="#dictionary-based-attributes"></a> of operators
-          when they are not specified via explicit attributes or equal to
-          the generic default values. Please refer to
-          <a href="#dictionary-based-attributes"></a> for explanation about
-          how to use this dictionary and how to
-          determine the values <code>Content</code> and
-          <code>Form</code> indexing it.
-          Tables below are suitable for computer manipulation,
+        <div class="note">
+          This section describes how to determine values of
+          <a href="#dictionary-based-attributes"></a> and
+          <a>stretch axis</a> of operators.
+          Compact tables below are suitable for computer manipulation,
           see <a href="#operator-dictionary-human"></a> for an alternative
           presentation.
-        </p>
-        <p>
-          This compact form removes about 800 entries from the original
-          <a href="#operator-dictionary-human">operator dictionary</a> that actually
-          correspond to default values.
-          They are not necessary since they are handled by the
-          fallback case of
-          <a href="#dictionary-based-attributes"></a> anyway. For other
-          (<code>Content</code>, <code>Form</code>)
-          key, the search is done as follows:
+        </div>
+        <p>The <dfn>algorithm to set the properties of an operator from its category</dfn> is as follows:</p>
+        <ul>
+          <li>Set <code>minsize</code> to <code>1em</code>.</li>
+          <li>Set <code>maxsize</code> to <code>∞</code>.</li>
+          <li>Find the row corresponding to the specified category
+            on <a href="#operator-dictionary-categories-values"></a>.
+          </li>
+          <li>Set <code>lspace</code> and <code>rspace</code> to the
+            value specified in the corresponding column.</li>
+          <li>For each property <code>stretchy</code>,
+            <code>symmetric</code>, <code>largeop</code>,
+            <code>movablelimits</code>, set that property to <code>true</code>
+            if it is listed in the last column or to <code>false</code>
+            otherwise.</li>
+        </ul>
+
+        <p>The <dfn>algorithm to determine the category of an operator</dfn>
+          (<code>Content</code>, <code>Form</code>) is as folllows:
         </p>
         <ol>
           <li>
-            Set properties <code>stretchy</code>, <code>symmetric</code>
-            <code>largeop</code>, <code>movablelimits</code>
- 	    to <code>false</code>.
-          </li>
-          <li>
             If <code>Content</code> as an UTF-16 string does not have length
-            or 1 or 2 then exit with <code>NotFound</code> status.
+            or 1 or 2 then exit with category <code>Default</code>.
           </li>
           <li>If <code>Content</code> is a single character in the
             range U+0320–U+03FF
-            then exit with <code>NotFound</code> status. Otherwise,
+            then exit with category <code>Default</code>. Otherwise,
             if it has two characters:
             <ul>
               <li>If <code>Content</code> is the surrogate pairs corresponding
                 to
                 U+1EEF0 ARABIC MATHEMATICAL OPERATOR MEEM WITH HAH WITH TATWEEL
                 or U+1EEF1 ARABIC MATHEMATICAL OPERATOR HAH WITH DAL and
-                <code>Form</code> is postfix,
-                then set properties according to category I of
-                <a href="#operator-dictionary-categories-values"></a>
-                and move to the last step.</li>
+                <code>Form</code> is <code>postfix</code>, exit with category
+                <code>I</code>.</li>
               <li>If the second character is
                 U+0338 COMBINING LONG SOLIDUS OVERLAY or
                 U+20D2 COMBINING LONG VERTICAL LINE OVERLAY then replace
-                <code>Content</code> with the first character.</li>
+                <code>Content</code> with the first character and move to step
+                3.</li>
               <li>Otherwise, if <code>Content</code> it is listed in
                 <a href="#operator-dictionary-compact-special-tables"><code>Operators_2_ascii_chars</code></a> then
                 replace <code>Content</code> with the
                 Unicode character
                 "U+0320 plus the index of <code>Content</code> in
-                <code>Operators_2_ascii_chars</code>".
+                <code>Operators_2_ascii_chars</code>" and move to step
+                3.
               </li>
-              <li>Otherwise exit with <code>NotFound</code> status.</li>
+              <li>Otherwise exit with category <code>Default</code>.</li>
             </ul>
           </li>
-          <li>
-            During this step, the algorithm will try and find a category
-            corresponding to (<code>Content</code>, <code>Form</code>) from
-            <a href="#operator-dictionary-category-table"></a> and
-            either exit with <code>NotFound</code> status or and move to
-            the next point. More precisely, this can be done as follows:
-            <ul>
-              <li>For categories that don't have an encoding in
-                <a href="#operator-dictionary-categories-values"></a>
-                (namely L, M) perform a few direct verifications
-                on (<code>Content</code>, <code>Form</code>)
-                according to <a href="#operator-dictionary-category-table"></a>.
-                If a result is found then set the properties according to
-                <a href="#operator-dictionary-categories-values"></a>.
-                Otherwise exit with <code>NotFound</code> status.
-              </li>
-              <li>For other categories, perform the following steps:
+          <li>If the category of
+            (<code>Content</code>, <code>Form</code>)
+            provided by table
+            <a href="#operator-dictionary-category-table"></a>
+            has N/A encoding in table
+            <a href="#operator-dictionary-categories-values"></a>
+            (namely if it has category L or M), then exit with that category.
+            Otherwise,
                 <ul>
                   <li>Set <code>Key</code> to <code>Content</code> if it is in
                     range U+0000–U+03FF ; or to <code>Content</code> − 0x1C00
                     if it is in range U+2000–U+2BFF. Otherwise, exit with
-                    <code>NotFound</code> status.
-                    <code>Key</code> is at most 0x0FFF.
+                    category <code>Default</code>.
                   </li>
                   <li>Add 0x0000, 0x1000, 0x2000
                     to <code>Key</code> according to whether <code>Form</code>
                     is <code>infix</code>, <code>prefix</code>,
                     <code>postfix</code> respectively.
-                    <code>Key</code> is at most 0x2FFF.
                   </li>
+                  <li>Assert: <code>Key</code> is at most 0x2FFF.</li>
                   <li>Search an <code>Entry</code> in table
                     <a href="#operator-dictionary-categories-hexa-table"></a>
-                    such <code>Entry</code> % 0x4000 is equal to
-                    <code>Key</code>. Either exit with
-                    <code>NotFound</code> status or
-                    set the properties corresponding to the category with
-                    encoding <code>Entry</code> / 0x1000 in
+                    such that <code>Entry</code> % 0x4000 is equal to
+                    <code>Key</code>. If one is found then return the category
+                    corresponding to encoding <code>Entry</code> / 0x1000 in
                     <a href="#operator-dictionary-categories-values"></a>.
+                    Otherwise, return category <code>Default</code>.
 		  </li>
                 </ul>
               </li>
             </ul>
-          </li>
-          <li>Return the calculated
-            (<code>lspace</code>, <code>rspace</code>,
-            <code>stretchy</code>, <code>symmetric</code>
-            <code>largeop</code>,
-            <code>movablelimits</code>)
-            value.
           </li>
         </ol>
         <div id="operator-dictionary-entries-compact"
              data-include="tables/operator-dictionary-compact.html"></div>
 
         <div class="note" id="operator-dictionary-compact-implementations">
-          <p>
-            When encoded as ranges, one can perform a binary search by looking
-            for the range start, followed by an extra check on the range length.
-            Since log is concave,
-            it is worse to do one binary search on each large subtable
-            of <a href="#operator-dictionary-category-table"></a> than one
-            binary search on the whole table of
-            <a href="#operator-dictionary-categories-hexa-table"></a>.
-            One can see that there are several contiguous
-            Unicode blocks, so
-            encoding tables as ranges allow to get almost 8 bits per entry.
-          </p>
-          <p>
-            Alternatively, it is possible to
-            use a perfect hash function to implement table lookup in constant
-            time [[?gperf]] [[?CMPH]]. This would instead take
-            16 bits per entry, plus 16 bits per extra empty entry
-            (for non-minimal perfect hash function) as well as extra data to
-            store the hash function parameters. For minimal perfect hash
-            function, the theorical lower bound for storing these parameters is
-            1.44bits/entry and existing algorithms range from close to that
-            limit up to 4bits/entry.
+          <ul>
+            <li>
+              Tables of
+              <a href="#operator-dictionary-category-table"></a> and
+              <a href="#operator-dictionary-categories-hexa-table"></a> are
+              encoded as ranges to take profit of the presence of many
+              contiguous Unicode blocks.
+            </li>
+            <li>
+              To quickly find an entry in these tables, one can still perform a
+              binary search over the range starts, followed by an
+              extra check on the range length.
+            </li>
+            <li>Since log is concave,
+              it is more efficient to perform one binary search
+              on the whole table of
+              <a href="#operator-dictionary-categories-hexa-table"></a>
+              rather than on each large subtable
+              of <a href="#operator-dictionary-category-table"></a>.
           </p>
         </div>
-      </section>
-      <section id="stretchy-operator-axis" class="normative">
-        <h3>Stretchy Operator Axis</h3>
-        <p>
+        <p id="stretchy-operator-axis">
           The <dfn>intrinsic stretch axis</dfn> a Unicode character
           <code>c</code> is <em>inline</em> if it belongs to the list below.
           Otherwise, the intrinsic stretch axis of <code>c</code> is
@@ -5691,14 +5659,14 @@
         </p>
         <div data-include="tables/inline-axis-operators.html"></div>
         <div class="note">
-          The intrinsic stretch axis can be included as a boolean property of
-          the
-          <a href="#operator-dictionary">operator dictionary</a>. But since it
+          The intrinsic stretch axis could be included as a boolean property of
+          the operator dictionary. But since it
           does not depend on the form and since very few operators can stretch
           along the <a>inline axis</a>, it is better implemented as a separate
-          sorted array of 16-bytes items (with special handling for
+          sorted array. Each entry can be encoded with 16 bytes if
           U+1EEF0 ARABIC MATHEMATICAL OPERATOR MEEM WITH HAH WITH TATWEEL and
-          U+1EEF1 ARABIC MATHEMATICAL OPERATOR HAH WITH DAL).
+          U+1EEF1 ARABIC MATHEMATICAL OPERATOR HAH WITH DAL are tested
+          separately.
         </div>
       </section>
       <section id="operator-dictionary-human" class="informative">
