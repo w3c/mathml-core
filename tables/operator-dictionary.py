@@ -724,7 +724,7 @@ for codePoint in inlineAxisOperators:
     txt.write("U+%04X,\n" % codePoint)
     md.write("U+%04X,\n" % codePoint)
 md.write('</code>')
-md.write('<figcaption>Sorted list of unicode code point corresponding to operators with inline stretch axis.<br/>Total size: %d entries, %d bytes (assuming 16bits for all but the non-BMP entries)</figcaption>' % (len(inlineAxisOperators), 2  * (len(inlineAxisOperators) - nonBMPCount) + (4 * nonBMPCount)))
+md.write('<figcaption>Sorted list of unicode code points corresponding to operators with inline stretch axis.<br/>Total size: %d entries, %d bytes (assuming 16bits for all but the non-BMP entries)</figcaption>' % (len(inlineAxisOperators), 2  * (len(inlineAxisOperators) - nonBMPCount) + (4 * nonBMPCount)))
 md.write('</figure>')
 
 md.close()

@@ -1565,10 +1565,9 @@
               The <dfn>stretch axis</dfn> of an <a>embellished operator</a>
                 is <em>inline</em> if its
               <a>core operator</a> contains only text content
-              made of a unique character <code>c</code> and that
-              character has stretch axis <em>inline</em> per
-              <a href="#stretchy-operator-axis"></a>.
-              Otherwise, stretch axis of the <a>embellished operator</a>
+              made of a unique character <code>c</code>, and that character has
+              inline <a>intrinsic stretch axis</a>.
+              Otherwise, the stretch axis of the <a>embellished operator</a>
               is <em>block</em>.
             </p>
           </section>
@@ -5685,13 +5684,15 @@
       <section id="stretchy-operator-axis" class="normative">
         <h3>Stretchy Operator Axis</h3>
         <p>
-          The default stretch axis for all characters is
-          <em>block</em>. However, the
-          stretch axis for the following characters is <em>inline</em>:
+          The <dfn>intrinsic stretch axis</dfn> a Unicode character
+          <code>c</code> is <em>inline</em> if it belongs to the list below.
+          Otherwise, the intrinsic stretch axis of <code>c</code> is
+          <em>block</em>.
         </p>
         <div data-include="tables/inline-axis-operators.html"></div>
         <div class="note">
-          The stretch axis can be included as a boolean property of the
+          The intrinsic stretch axis can be included as a boolean property of
+          the
           <a href="#operator-dictionary">operator dictionary</a>. But since it
           does not depend on the form and since very few operators can stretch
           along the <a>inline axis</a>, it is better implemented as a separate
