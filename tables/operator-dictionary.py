@@ -52,8 +52,15 @@ def buildKey(characters, form):
 def toHexa(character):
     return "U+%04X" % character
 
-# Whether this is one of the known BMP characters handled in step 3 of
+# Whether this is one of the known "force default" character handled in step 3
+# of https://w3c.github.io/mathml-core/#operator-dictionary
+# These list of exceptions must remain small!
+def hasForceDefaultCategory(codePoint):
+    return codePoint in [0x007C, 0x223C]
+
+# Whether this is one of the known BMP characters handled in step 2 of
 # https://w3c.github.io/mathml-core/#operator-dictionary
+# These list of exceptions must remain small!
 def isKnownNonBMP(codePoint):
     return codePoint in [0x1EEF0, 0x1EEF1]
 
@@ -477,6 +484,8 @@ print("done.");
 # https://w3c.github.io/mathml-core/#ref-for-dfn-algorithm-for-determining-the-properties-of-an-embellished-operator-1
 
 for entry in knownTables["infixEntriesWithDefaultValues"]["singleChar"]:
+    if hasForceDefaultCategory(entry):
+        continue
     otherCategories = []
     for name in knownTables:
         if name.startswith("infix") or name == "fence":

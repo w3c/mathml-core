@@ -5593,13 +5593,16 @@
               <li>Otherwise exit with category <code>Default</code>.</li>
             </ul>
           </li>
-          <li>If the category of
+          <li>If <code>Form</code> is infix and <code>Content</code> corresponds
+            to one of U+007C VERTICAL LINE or U+223C TILDE OPERATOR then exit
+            with category <code>ForceDefault</code>. If the category of
             (<code>Content</code>, <code>Form</code>)
             provided by table
             <a href="#operator-dictionary-category-table"></a>
             has N/A encoding in table
             <a href="#operator-dictionary-categories-values"></a>
-            (namely if it has category L or M), then exit with that category.
+            (namely if it has category <code>L</code> or <code>M</code>), then
+            exit with that category.
             Otherwise,
                 <ul>
                   <li>Set <code>Key</code> to <code>Content</code> if it is in
