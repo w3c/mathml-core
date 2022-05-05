@@ -2,45 +2,40 @@
 /* vim: set ts=4 et sw=4 tw=80: */
 
 /*
-  Massage each engines data into a nice indexed
+  Get the latest aligned run data from WPT,
+  massage it into a nice indexed
   result set (testPath:result) for quick reference
 */
+let wptDataPromise = async function () {
+    let f = await fetch('https://wpt.fyi/api/runs?aligned');
+    let data = await f.json();
+    let ids = data.map(rec => rec.id).join();
 
+    // Note: this may get a bit "too much", but it doesn't matter to results
+    f = await fetch(`https://wpt.fyi/api/search?label=master&label=experimental&q=math&run_ids=${ids}`);
+    data = await f.json();
 
-async function getBrowserWPTData(browser) {
-    let ret = {
-        engine: browser,
-        results: {}
-    }
-    let data = await fetchWebPlatformTestResults(browser);
-    data.results.forEach(item => {
-      if (item.status === "OK") {
-          // Check all the subtests.
-          item.status = "FAIL";
-          if (item.subtests && item.subtests.length > 0) {
-              item.status = "PASS";
-              for (i in item.subtests) {
-                  if (item.subtests[i].status !== "PASS") {
-                      item.status = "FAIL";
-                      break;
-                  }
-              }
-          }
-      }
-      ret.results[item.test] = item.status;
-    })
-    return ret
-}
+    return data.runs.map((run, i) => {
+        let retVal = {
+            engine: run.browser_name,
+            results: {}
+        };
 
-/*
-  We can launch these early and get data
-*/
-let wptDataPromise = Promise.all([
-//    getBrowserWPTData('blink'),
-    getBrowserWPTData('chrome'),
-    getBrowserWPTData('firefox'),
-    getBrowserWPTData('safari')
-])
+        data.results.forEach((item) => {
+            retVal.results[item.test] = (
+                item.legacy_status[i].passes
+                ==
+                item.legacy_status[i].total
+                )
+                ?
+                "PASS"
+                :
+                "FAIL";
+
+       })
+       return retVal;
+    });
+}();
 
 /*
   Before we start, re-attach
@@ -83,7 +78,7 @@ async function loadWebPlaformTestsResults() {
     let ENGINE_LOGOS = {
         'firefox': "https://test.csswg.org/harness/img/gecko.svg",
         'safari': "https://test.csswg.org/harness/img/webkit.svg",
-        //        'blink': "https://pbs.twimg.com/profile_images/1576817016/igalia_400x400.png",
+        'edge': "https://test.csswg.org/harness/img/edge.svg",
         'chrome': "https://test.csswg.org/harness/img/blink.svg",
     };
 
@@ -143,7 +138,7 @@ async function loadWebPlaformTestsResults() {
         let frag = document.createRange().createContextualFragment(source);
         annotationEl.appendChild(frag);
 
-    });
 
+    });
     document.getElementById("implementation-report").insertAdjacentHTML("beforeend", `<div style="margin-left: 2em; margin-right: 2em"><a href="${respecConfig.implementationReportURI}">Implementation Report</a></div>`);
 }
