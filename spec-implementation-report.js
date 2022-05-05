@@ -11,7 +11,7 @@ let wptDataPromise = async function () {
     let data = await f.json();
     let ids = data.map(rec => rec.id).join();
 
-    // Note: this will get a bit "too much", but it doesn't matter 
+    // Note: this may get a bit "too much", but it doesn't matter to results
     f = await fetch(`https://wpt.fyi/api/search?label=master&label=experimental&q=math&run_ids=${ids}`);
     data = await f.json();
 
