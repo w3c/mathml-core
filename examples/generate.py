@@ -7,7 +7,7 @@ import re
 import subprocess
 import sys
 
-CHROMIUM_PATH = "chromium-mathml"
+CHROMIUM_PATH = "chromium"
 IMAGE_MAGICK = "convert"
 
 def generateScreenShot(name):
@@ -42,12 +42,13 @@ def generateScreenShot(name):
                             image])
             break
      
-print("Generation assumes development version chromium-mathml is available.")
-print("Use the commited examples in git.\n")
+print("Generation assumes chromium is available.")
+print("Use the committed examples in git.\n")
 
 # Generate screenshot for the specified file example, or for all of them.
 if len(sys.argv) >= 2:
     generateScreenShot(sys.argv[1])
 else:
     for name in glob.glob("example-*.html"):
-        generateScreenShot(name)
+        if not name.startswith("example-without-screenshot"):
+            generateScreenShot(name)
