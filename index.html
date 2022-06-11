@@ -52,6 +52,10 @@
                   status: "ED",
                   href: "https://w3c.github.io/mathml/"
               },
+              "HOUDINI": {
+                  title: "CSS-TAG Houdini Editor Drafts",
+                  href: "https://drafts.css-houdini.org/"
+              },
               "TEXBOOK": {
                   title: "The TeXBook",
                   date: "1984",
@@ -116,7 +120,8 @@
         formulas using additional rules from the TeXBook’s Appendix G
         [[?TEXBOOK]] and from the Open Font Format [[OPEN-FONT-FORMAT]],
         [[OPEN-TYPE-MATH-ILLUMINATED]]. It also relies on modern browser
-        implementations and web technologies [[HTML]] clarifying interactions
+        implementations and web technologies [[HTML]] [[SVG]] [[CSS2]] [[DOM]],
+        clarifying interactions
         with them when needed or introducing new low-level primitives to
         improve the web platform layering.
       </p>
@@ -135,8 +140,10 @@
         greatly improve MathML interoperability. Moreover, effort on MathML
         layering will enable users to implement the rest of the MathML 4
         specification, or more generally to extend MathML Core, using
-        modern web technologies such as shadow DOM, custom elements,
-        CSS layout API or other Houdini APIs.
+        modern web technologies such as
+        <a href="DOM##shadow-trees">shadow trees</a>,
+        <a href="HTML#custom-elements">custom elements</a> or
+        APIs from [[HOUDINI]].
       </p>
     </section>
     <section class="normative">
