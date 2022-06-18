@@ -471,7 +471,7 @@ for name, item in sorted(knownTables.items(),
             totalEntryCount += 1
             md.write("</tr>\n");
 md.write("</table>\n");
-md.write('<figcaption>Mapping from operator (Content, Form) to properties.<br/>Total size: %d entries, ≥ %d bytes<br/>(assuming \'Content\' uses at least one UTF-16 character, \'Stretch Axis\' 1 bit, \'Form\' 2 bits,the different combinations of \'rspace\' and \'space\' at least 3 bits, and the different combinations of properties 3 bits).</figcaption>' % (totalEntryCount, ceil(totalEntryCount * (16 + 1 + 2 + 3 + 3)/8.)))
+md.write('<figcaption>Mapping from operator (Content, Form) to properties.<br/>Total size: %d entries, ≥ %d bytes<br/>(assuming \'Content\' uses at least one UTF-16 character, \'Stretch Axis\' 1 bit, \'Form\' 2 bits, the different combinations of \'rspace\' and \'space\' at least 3 bits, and the different combinations of properties 3 bits).</figcaption>' % (totalEntryCount, ceil(totalEntryCount * (16 + 1 + 2 + 3 + 3)/8.)))
 md.write('</figure>')
 md.close()
 print("done.");
@@ -593,7 +593,7 @@ for name, item in sorted(knownTables.items(),
     md.write("</code></td>")
     md.write("</tr>\n")
 md.write("</table>");
-md.write('<figcaption>Special tables for the operator dictionary.<br/>Total size: %d entries, %d bytes.<br/>(assuming characters are UTF-16 and 1-byte range lengths)</figcaption>' % (totalEntryCount, totalBytes))
+md.write('<figcaption>Special tables for the operator dictionary.<br/>Total size: %d entries, %d bytes<br/>(assuming characters are UTF-16 and 1-byte range lengths).</figcaption>' % (totalEntryCount, totalBytes))
 md.write('</figure>')
 
 totalEntryCount = 0
@@ -628,7 +628,7 @@ for name, item in sorted(knownTables.items(),
     value_index += 1;
     md.write("</tr>\n")
 md.write("</table>");
-md.write('<figcaption>Mapping from operator (Content, Form) to a category.<br/>Total size: %d entries, %d bytes.<br/>(assuming characters are UTF-16 and 1-byte range lengths)</figcaption>' % (totalEntryCount, totalBytes))
+md.write('<figcaption>Mapping from operator (Content, Form) to a category.<br/>Total size: %d entries, %d bytes<br/>(assuming characters are UTF-16 and 1-byte range lengths).</figcaption>' % (totalEntryCount, totalBytes))
 md.write('</figure>')
 
 def formValueFromString(value):
@@ -668,7 +668,7 @@ for name, item in sorted(knownTables.items(),
     value_index += 1
 
 md.write("</table>");
-md.write('<figcaption>Operators values for each category.<br/>The third column provides a 4bits encoding of the categories<br/>where the 2 least significant bits encodes the form infix (0), prefix (1) and postfix (2).</figcaption>')
+md.write('<figcaption>Operators values for each category.<br/>The third column provides a 4-bit encoding of the categories<br/>where the 2 least significant bits encode the form infix (0), prefix (1) and postfix (2).</figcaption>')
 md.write('</figure>')
 
 # Calculate compact form for the largest categories.
@@ -734,7 +734,7 @@ for codePoint in inlineAxisOperators:
     txt.write("U+%04X,\n" % codePoint)
     md.write("U+%04X,\n" % codePoint)
 md.write('</code>')
-md.write('<figcaption>Sorted list of unicode code points corresponding to operators with inline stretch axis.<br/>Total size: %d entries, %d bytes (assuming 16bits for all but the non-BMP entries)</figcaption>' % (len(inlineAxisOperators), 2  * (len(inlineAxisOperators) - nonBMPCount) + (4 * nonBMPCount)))
+md.write('<figcaption>Sorted list of Unicode code points corresponding to operators with inline stretch axis.<br/>Total size: %d entries, %d bytes (assuming 16 bits for all but the non-BMP entries).</figcaption>' % (len(inlineAxisOperators), 2  * (len(inlineAxisOperators) - nonBMPCount) + (4 * nonBMPCount)))
 md.write('</figure>')
 
 md.close()
