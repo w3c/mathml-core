@@ -106,7 +106,7 @@
       <p>
         The [[MATHML3]] specification has several shortcomings that make it
         hard to implement consistently across web rendering engines or to
-        extend with user-defined constructions e.g.
+        extend with user-defined constructions, e.g.:
       </p>
       <ul>
         <li>It is a huge and standalone specification.</li>
@@ -153,7 +153,7 @@
         <p id="mathml-elements">
           The term <dfn>MathML element</dfn> refers to any element in the
           <a data-cite="INFRA#mathml-namespace">MathML namespace</a>.
-          The MathML element defined in this specification are called the
+          The MathML elements defined in this specification are called the
           <dfn>MathML Core elements</dfn> and are listed below.
           Any MathML element that is not listed below is called an
           <dfn>Unknown MathML element</dfn>.
@@ -194,7 +194,7 @@
         <p>The <dfn>grouping elements</dfn> are
           <a>&lt;maction&gt;</a>,
           <a>&lt;math&gt;</a>,
-          <a>&lt;merror&gt;</a>
+          <a>&lt;merror&gt;</a>,
           <a>&lt;mphantom&gt;</a>,
           <a>&lt;mprescripts&gt;</a>,
           <a>&lt;mrow&gt;</a>,
@@ -300,7 +300,7 @@
               without forced line breaking.
               The baselines specified by the layout algorithm of the
               <a><code>&lt;mrow&gt;</code></a> are used for vertical
-              alignement. Note that
+              alignment. Note that
               the middle of sum and equal symbols or fractions are all aligned,
               but not with the alphabetical baseline of the surrounding
               text.</p>
@@ -386,7 +386,7 @@
             <dfn><code>data-*</code></dfn>,
             <dfn><code>nonce</code></dfn> and
             <dfn><code>tabindex</code></dfn>
-            attributes have the same syntax and semantic as defined for
+            attributes have the same syntax and semantics as defined for
             <a data-cite="HTML/../#the-id-attribute">id</a>,
             <a data-cite="HTML/../#classes">class</a>,
             <a data-cite="HTML/../#the-style-attribute">style</a>,
@@ -470,8 +470,8 @@
             <a data-cite="HTML/../#presentational-hints">presentational hint</a> setting the element's
             <a data-cite="CSS-FONTS-4#font-size-prop"><code>font-size</code></a>
             property to the corresponding value.
-            The <code>mathsize</code> property indicates indicates the desired height
-            of glyphs in math formulas but also scale other parts (spacing, shifts,
+            The <code>mathsize</code> property indicates the desired height
+            of glyphs in math formulas but also scales other parts (spacing, shifts,
             line thickness of bars etc) accordingly.
           </p>
           <div class="note">
@@ -615,7 +615,7 @@
           </p>
           <div class="example" id="displaystyle-scriptlevel-example">
             <p>
-              In this example, a <a>&lt;munder&gt;</a>
+              In this example, an <a>&lt;munder&gt;</a>
               element is used to attach a
               script "A" to a base "∑". By default, the summation
               symbol is rendered with the font-size inherited from its
@@ -672,13 +672,13 @@
           <div class="example" id="html-svg-example">
             <p>
               In this example, inline MathML and SVG elements are used inside
-              a HTML document. SVG elements <code>&lt;switch&gt;</code> and
+              an HTML document. SVG elements <code>&lt;switch&gt;</code> and
               <code>&lt;foreignObject&gt;</code> (with
               proper <code>&lt;requiredExtensions&gt;</code>) are used to
               embed a MathML formula with a text fallback, inside a diagram.
               HTML <code>input</code> element is used within the
               <a>&lt;mtext&gt;</a>
-              include an interactive input field inside a mathematical
+              to include an interactive input field inside a mathematical
               formula.
             </p>
             <pre data-include="examples/example-html-svg.html"
@@ -788,7 +788,7 @@
           </div>
         </section>
         <section id="dom-and-javascript">
-          <h4>DOM and Javascript</h4>
+          <h4>DOM and JavaScript</h4>
           <p>
             User agents supporting
             <a data-cite="HTML/../#webappapis">Web application APIs</a>
@@ -857,7 +857,7 @@
           </p>
           <p>
             The contents of embedded <a><code>&lt;math&gt;</code></a> elements
-            (including HTML elements inside token elements),
+            (including HTML elements inside token elements)
             contribute to the sequential focus order of the containing owner HTML
             document (combined sequential focus order).
           </p>
@@ -889,7 +889,7 @@
               <code>table-row</code> and
               <code>table-cell</code>.
             </li>
-            <li>For the all but the first children of the <a>&lt;maction&gt;</a>
+            <li>For all but the first children of the <a>&lt;maction&gt;</a>
               and <a>&lt;semantics&gt;</a> elements, it is equal to
               <code>none</code>.
             </li>
@@ -966,15 +966,15 @@
                 <li>
                   The <dfn>alphabetic baseline</dfn>
                   which typically aligns with the bottom of uppercase Latin
-                  glyphs. The algebric distance from the
-                  <a>alphabetic baseline</a> to the <a>line-over</a> edge of the box is the called
-                  <dfn>line-ascent</dfn>. The algebric distance from the
+                  glyphs. The algebraic distance from the
+                  <a>alphabetic baseline</a> to the <a>line-over</a> edge of the box is called the
+                  <dfn>line-ascent</dfn>. The algebraic distance from the
                   <a>line-under</a> edge to the <a>alphabetic baseline</a> of the box
-                  is the called <dfn>line-descent</dfn>.
+                  is called the <dfn>line-descent</dfn>.
                 </li>
                 <li>
-                  The <dfn>mathematical baseline</dfn> also called
-                  <dfn>math axis</dfn> which typically aligns with the fraction
+                  The <dfn>mathematical baseline</dfn>, also called
+                  <dfn>math axis</dfn>, which typically aligns with the fraction
                   bar, middle of fences and binary operators. It is shifted away from the <a>alphabetic baseline</a> by <a>AxisHeight</a> towards the <a>line-over</a>.
                 </li>
                 <li>
@@ -982,7 +982,7 @@
                   theorical limit of the content drawn, excluding any
                   extra space.
                   If not specified, it is aligned with the <a>line-over</a> edge.
-                  The algebric distance from the <a>alphabetic baseline</a> to
+                  The algebraic distance from the <a>alphabetic baseline</a> to
                   the <a>ink-over baseline</a> is called the
                   <dfn>ink line-ascent</dfn>.
                 </li>
@@ -991,7 +991,7 @@
                   theorical limit of the content drawn, excluding any
                   extra space.
                   If not specified, it is aligned with the <a>line-under</a> edge.
-                  The algebric distance from the <a>ink-under baseline</a>
+                  The algebraic distance from the <a>ink-under baseline</a>
                   to the <a>alphabetic baseline</a> is called the
                   <dfn>ink line-descent</dfn>.
                 </li>
@@ -1081,7 +1081,7 @@
             flow-relative directions, line-relative directions or
             the <a>alphabetic baseline</a>.
             It is always possible to pass from one description to the other
-            because position of child boxes are always performed after the
+            because position of child boxes is always performed after the
             metrics of the box and of its child boxes are calculated.
           </div>
           <div class="example">
@@ -1289,7 +1289,7 @@
         <div class="note">
           In practice, most MathML token elements just contain simple text
           for variables, numbers, operators etc and don't need sophisticated
-          layout. However, it can contain contain text with line breaks or
+          layout. However, it can contain text with line breaks or
           arbitrary HTML5 phrasing elements.
         </div>
         <section id="text-mtext">
@@ -1350,7 +1350,7 @@
               </li>
               <li>
                 If the text content is made of a single glyph and this glyph
-                has an entry an entry in the
+                has an entry in the
                 <a>MathItalicsCorrectionInfo</a> table then the specified
                 value is used as the <a>italic correction</a>.
               </li>
@@ -1484,11 +1484,11 @@
                  data-include-format="text"></pre>
             <img src="examples/example-mo-1.png" alt="mo example 1"/>
             <p>
-              Another use case is for big operator such as summation.
-              When <a>displaystyle</a> is true, such an operator are drawn
+              Another use case is for big operators such as summation.
+              When <a>displaystyle</a> is true, such an operator is drawn
               larger but one can change that with the <a>largeop</a> attribute.
-              When <a>displaystyle</a> is false, underscript are actually
-              rendered as subscript but one can change that with the
+              When <a>displaystyle</a> is false, underscripts are actually
+              rendered as subscripts but one can change that with the
               <a>movablelimits</a> attribute.
             </p>
             <pre data-include="examples/example-mo-2.html"
@@ -1501,7 +1501,7 @@
               <a>stretchy</a> attribute e.g. to force an unstretched arrow.
               The <a>symmetric</a> attribute allows to indicate whether
               the operator
-              should stretchy symmetrically above and below the baseline.
+              should stretch symmetrically above and below the baseline.
               Finally the <a>minsize</a> and <a>maxsize</a> attributes add
               additional constraints over the stretch size.
             </p>
@@ -1525,13 +1525,13 @@
             <ol>
               <li>An <a><code>&lt;mo&gt;</code></a> element;</li>
               <li>
-                A <a>scripted element</a> or an
+                a <a>scripted element</a> or an
                 <a><code>&lt;mfrac&gt;</code></a>,
                 whose first <a>in-flow</a> child exists and is an
                 <a>embellished operator</a>;
               </li>
               <li>
-                A <a>grouping element</a> or <a>&lt;mpadded&gt;</a>,
+                a <a>grouping element</a> or <a>&lt;mpadded&gt;</a>,
                 whose <a>in-flow</a> children consist (in any order) of one
                 <a>embellished operator</a> and zero or more
                 <a>space-like</a> elements.
@@ -1587,14 +1587,14 @@
               <li>If the <code>form</code> attribute is present and valid
                 on the <a>core operator</a>, then its
                 <a data-cite="INFRA#ascii-lowercase">ASCII lowercased value</a>
-                is used;
+                is used.
               </li>
               <li>If the embellished operator is the first <a>in-flow</a> child of a
                 <a>grouping element</a>,
                 <a>&lt;mpadded&gt;</a> or
                 <a>&lt;msqrt&gt;</a> with more than one <a>in-flow</a> child
                 (ignoring all <a>space-like</a> children) then it has
-                form <code>prefix</code>;
+                form <code>prefix</code>.
               </li>
               <li>Or, if the embellished operator is the last <a>in-flow</a> child of
                 a
@@ -1603,11 +1603,11 @@
                 <a><code>&lt;msqrt&gt;</code></a>
                 with more than one <a>in-flow</a> child
                 (ignoring all <a>space-like</a> children) then it has
-                form <code>postfix</code>;
+                form <code>postfix</code>.
               </li>
               <li>Or, if the embellished operator is an <a>in-flow</a> child of a
                 <a>scripted element</a>, other than the first <a>in-flow</a>
-                child, then it has form <code>postfix</code>;
+                child, then it has form <code>postfix</code>.
               </li>
               <li>
                 Otherwise, the embellished operator has form
@@ -1619,7 +1619,7 @@
               <dfn><code>stretchy</code></dfn>,
               <dfn><code>symmetric</code></dfn>,
               <dfn><code>largeop</code></dfn>,
-              <dfn><code>movablelimits</code></dfn>,
+              <dfn><code>movablelimits</code></dfn>
               properties of an <a>embellished operator</a> are
               either <code>false</code> or <code>true</code>. In the latter
               case, it
@@ -1664,8 +1664,8 @@
                 attribute is present and valid
                 on the <a>core operator</a>, then the
                 <a data-cite="INFRA#ascii-lowercase">ASCII lowercased value</a>
-                of this property is used;</li>
-              <li>Otherwise, run the <a>algorithm for determining the <code>form</code> of an embellished operator</a>;</li>
+                of this property is used.</li>
+              <li>Otherwise, run the <a>algorithm for determining the <code>form</code> of an embellished operator</a>.</li>
               <li>
                 If the <a>core operator</a> contains only text
                 content <code>Content</code>, then set <code>Category</code>
@@ -1679,7 +1679,7 @@
                 If <code>Category</code> is <code>Default</code> and
                 the <a><code>form</code></a>
                 of <a>embellished operator</a> was not explicitly specified
-                as an attribute on its <a>core operator</a>, then
+                as an attribute on its <a>core operator</a>:
                 <ol>
                   <li>Set <code>Category</code> to the result of the
                   <a>algorithm to determine the category of an operator</a>
@@ -1752,22 +1752,21 @@
               <li>
                 If the content of the <code>&lt;mo&gt;</code> element is not
                 made
-                of a single character <code>c</code> then fallback to the
+                of a single character <code>c</code> then fall back to the
                 layout algorithm of <a href="#layout-of-mtext"></a>.
               </li>
               <li>
                 If the operator has the <a>stretchy</a> property:
                 <ul>
                   <li>
-                    If the <a>stretch axis</a> of the operator is inline
-                    then
+                    If the <a>stretch axis</a> of the operator is inline:
                     <ol>
                       <li>
                         If it is not possible to <a>shape a stretchy glyph</a>
                         corresponding to <code>c</code> in the inline direction
                         with the
                         <a data-cite="CSS-FONTS-4#first-available-font">first available font</a>
-                        then fallback to the
+                        then fall back to the
                         layout algorithm of <a href="#layout-of-mtext"></a>.
                       </li>
                       <li>
@@ -1781,7 +1780,7 @@
                         <a>inline stretch size constraint</a>
                         <code>T<sub>inline</sub></code>
                         then
-                        fallback to the
+                        fall back to the
                         layout algorithm of <a href="#layout-of-mtext"></a>.
                       </li>
                       <li>
@@ -1809,7 +1808,7 @@
                         corresponding to <code>c</code> in the block direction
                         with the
                         <a data-cite="CSS-FONTS-4#first-available-font">first available font</a>
-                        then fallback to the
+                        then fall back to the
                         layout algorithm of <a href="#layout-of-mtext"></a>.
                       </li>
                       <li>
@@ -1824,7 +1823,7 @@
                         <a>block stretch size constraint</a>
                         <code>(U<sub>ascent</sub>, U<sub>descent</sub>)</code>
                         then
-                        fallback to the
+                        fall back to the
                         layout algorithm of <a href="#layout-of-mtext"></a>.
                       </li>
                       <li>If the operator has the <a>symmetric</a> property
@@ -1857,7 +1856,7 @@
                       <li>
                         Let <code>minsize</code> and <code>maxsize</code>
                         be the <a>minsize</a> and <a>maxsize</a> properties on the
-                        operator. Percentage values are intepreted relative
+                        operator. Percentage values are interpreted relative
                         to <code>T</code> =
                         <code>T<sub>ascent</sub></code> +
                         <code>T<sub>descent</sub></code>.
@@ -1865,14 +1864,14 @@
                         to 0.
                         If <code>maxsize</code> &lt; <code>minsize</code> then
                         set <code>maxsize</code> to <code>minsize</code>.
-                        Then 0 ≤ <code>minsize</code> ≤ <code>maxsize</code>:
+                        If 0 ≤ <code>minsize</code> ≤ <code>maxsize</code>:
                         <ul>
                           <li>
                             If <code>T</code> &le; 0 then set
                             <code>T<sub>ascent</sub></code> to <code>minsize</code> / 2  and
                             then set <code>T<sub>descent</sub></code>
                             to <code>minsize</code> −
-                            <code>T<sub>ascent</sub></code>                            
+                            <code>T<sub>ascent</sub></code>.                            
                           </li>
                           <li>
                             Otherwise, if
@@ -1949,9 +1948,9 @@
                       Use the
                       <code>MathVariants</code>
                       table to try and find a glyph of height at least
-                      <a>DisplayOperatorMinHeight</a>
-                      If none is found, fallback to the
-                      largest non-base glyph. If none is found, fallback to
+                      <a>DisplayOperatorMinHeight</a>.
+                      If none is found, fall back to the
+                      largest non-base glyph. If none is found, fall back to
                       the layout algorithm of <a href="#layout-of-mtext"></a>.
                     </p>
                   </li>
@@ -1972,7 +1971,7 @@
                 </figure>
               </li>
               <li>
-                Other fallback to the
+                Otherwise fall back to the
                 layout algorithm of <a href="#layout-of-mtext"></a>.
               </li>
             </ol>
@@ -2063,11 +2062,11 @@
               if it is:
             </p>
             <ol>
-              <li>An
+              <li>an
                 <a><code>&lt;mtext&gt;</code></a> or
                 <a><code>&lt;mspace&gt;</code></a>;
               </li>
-              <li>Or a
+              <li>or a
                 <a>grouping element</a> or <a>&lt;mpadded&gt;</a>
                 all of whose <a>in-flow</a> children are <a>space-like</a>.
               </li>
@@ -2161,8 +2160,8 @@
             The <code>&lt;mrow&gt;</code> element accepts the attributes described
             in <a href="#global-attributes"></a>. An <code>&lt;mrow&gt;</code>
             element with <a>in-flow</a> children
-            child<sub>1</sub>, child<sub>2</sub>, … child<sub>N</sub>
-            is laid out as show on <a href="#figure-box-mrow"></a>. The child boxes
+            child<sub>1</sub>, child<sub>2</sub>, …, child<sub>N</sub>
+            is laid out as shown on <a href="#figure-box-mrow"></a>. The child boxes
             are put in a row one after the other with all their
             <a>alphabetic baselines</a>
             aligned.
@@ -2172,7 +2171,7 @@
             <figcaption>Box model for the <code>&lt;mrow&gt;</code> element</figcaption>
           </figure>
           <div class="note">
-            Because the box model ensure alignment of <a>alphabetic baselines</a>,
+            Because the box model ensures alignment of <a>alphabetic baselines</a>,
             fraction bars or symmetric stretchy operators
             will also be aligned along the <a>math axis</a> in the typical case when
             <a>AxisHeight</a> is the same for all <a>in-flow</a> children.
@@ -2193,7 +2192,7 @@
                 If there is a <a>block stretch size constraint</a>
                 or an <a>inline stretch size constraint</a>
                 then the element being laid out is an
-                <a>embellished operator</a>. Layout the one <a>in-flow</a> child that
+                <a>embellished operator</a>. Lay out the one <a>in-flow</a> child that
                 is an <a>embellished operator</a>
                 with the same stretch size constraint and
                 all the other <a>in-flow</a> children
@@ -2204,7 +2203,7 @@
                 split the list of <a>in-flow</a> children into a first list
                 <code>L<sub>ToStretch</sub></code> containing
                 <a>embellished operators</a> with
-                a <a>stretchy</a> property and block <a>stretch axis</a> ;
+                a <a>stretchy</a> property and block <a>stretch axis</a>;
                 and a second list <code>L<sub>NotToStretch</sub></code>.
               </li>
               <li>
@@ -2224,7 +2223,7 @@
                 have been laid out in the previous step.
               </li>
               <li>
-                Layout or relayout all the elements of
+                Lay out or relayout all the elements of
                 <code>L<sub>ToStretch</sub></code> with
                 <a>block stretch size constraint</a>
                 <code>(U<sub>ascent</sub>, U<sub>descent</sub>)</code>.
@@ -2249,7 +2248,7 @@
             <div class="note">
               Large operators may have nonzero <a>italic correction</a> but that one
               is used when attaching scripts.
-              More generally, all <a>embellished operator</a>
+              More generally, all <a>embellished operators</a>
               are treated as non-slanted since the spacing around them is
               calculated as specified by <a><code>lspace</code></a> and
               <a><code>rspace</code></a>.
@@ -2276,7 +2275,7 @@
                     <code>previous-italic-correction</code>.
                   </li>
                   <li>
-                    If the child is an <a>embellished operators</a>
+                    If the child is an <a>embellished operator</a>
                     and <code>add-space</code> is true then
                     increment <code>inline-offset</code> by
                     its <a><code>lspace</code></a> property.
@@ -2293,7 +2292,7 @@
                     its <a>italic correction</a>. Otherwise set it to 0.
                   </li>
                   <li>
-                    If the child is an <a>embellished operators</a>
+                    If the child is an <a>embellished operator</a>
                     and <code>add-space</code> is true then
                     increment <code>inline-offset</code> by
                     its <a><code>rspace</code></a> property.
@@ -2350,7 +2349,7 @@
                     <code>previous-italic-correction</code>.
                   </li>
                   <li>
-                    If the child is an <a>embellished operators</a>
+                    If the child is an <a>embellished operator</a>
                     and <code>add-space</code> is true then
                     increment <code>inline-offset</code> by
                     its <a><code>lspace</code></a> property.
@@ -2370,7 +2369,7 @@
                     its <a>italic correction</a>. Otherwise set it to 0.
                   </li>
                   <li>
-                    If the child is an <a>embellished operators</a>
+                    If the child is an <a>embellished operator</a>
                     and <code>add-space</code> is true then
                     increment <code>inline-offset</code> by
                     its <a><code>rspace</code></a> property.
@@ -2454,7 +2453,7 @@
           </p>
           <div class="note" id="fraction-css-rules-on-children">
             In practice, an <code>&lt;mfrac&gt;</code> element has two children
-            that are <a>in-flow</a>. Hence the CSS rules basically performs
+            that are <a>in-flow</a>. Hence the CSS rules basically perform
             <a><code>scriptlevel</code></a>, <a><code>displaystyle</code></a>
             and <a>math-shift</a>
             changes for the <a>numerator</a> and
@@ -2490,7 +2489,7 @@
               If there is an <a>inline stretch size constraint</a>
               or a <a>block stretch size constraint</a> then
               the <a>numerator</a> is also laid out with the same stretch size
-              constraint
+              constraint,
               otherwise it is laid out without any stretch
               size constraint. The <a>denominator</a> is always laid out without
               any stretch size constraint.
@@ -2574,7 +2573,7 @@
             </ul>
             <p>
               The <a>inline offset</a> of the <a>numerator</a> (respectively <a>denominator</a>)
-              is the half the <a>inline size</a> of the content −
+              is half the <a>inline size</a> of the content −
               half the <a>inline size</a> of
               the <a>numerator</a>'s <a>margin box</a>
               (respectively <a>denominator</a>'s <a>margin box</a>).
@@ -2583,7 +2582,7 @@
               The <a>alphabetic baseline</a> of the <a>numerator</a> (respectively <a>denominator</a>)
               is shifted away from the <a>alphabetic baseline</a> by a distance of
               <code>NumeratorShift</code> (respectively
-              <code>DenominatorShift</code> )
+              <code>DenominatorShift</code>)
               towards the <a>line-over</a> (respectively <a>line-under</a>).
             </p>
             <p>
@@ -2639,7 +2638,7 @@
               the <a>ink line-descent</a> of the <a>numerator</a>'s <a>margin box</a>).
               If <a>math-style</a> is <code>compact</code>
               then <code>GapMin</code>
-              is <a>StackGapMin</a>
+              is <a>StackGapMin</a>,
               otherwise <a>math-style</a> is <code>normal</code>
               and it is <a>StackDisplayStyleGapMin</a>.
               If Δ = <code>GapMin</code> − <code>Gap</code> is positive then
@@ -2722,7 +2721,7 @@
             The <code>&lt;msqrt&gt;</code> and <code>&lt;mroot&gt;</code>
             elements sets <a>math-shift</a> to
             <code>compact</code>.
-            The <code>&lt;mroot&gt;</code> element sets
+            The <code>&lt;mroot&gt;</code> element
             increments <a><code>scriptlevel</code></a> by 2, and sets <a><code>displaystyle</code></a> to "false" in all
             but its first child.
             The <a href="#user-agent-stylesheet">user agent stylesheet</a>
@@ -2751,7 +2750,7 @@
           </p>
           <div class="note" id="mroot-css-rules-on-children">
             In practice, an <code>&lt;mroot&gt;</code> element has two children
-            that are <a>in-flow</a>. Hence the CSS rules basically performs
+            that are <a>in-flow</a>. Hence the CSS rules basically perform
             <a><code>scriptlevel</code></a> and <a><code>displaystyle</code></a> changes for the index.
           </div>
           <p>
@@ -3188,7 +3187,7 @@
           several more specialized scripting elements.
         </p>
         <p>
-          In addition to sub/superscript elements, MathML has overscript and
+          In addition to sub-/superscript elements, MathML has overscript and
           underscript elements that place scripts above and below the base.
           These elements can be used to place limits on large operators, or for
           placing accents and lines above or below the base.
@@ -3204,7 +3203,7 @@
             <a href="#global-attributes"></a>.
           </p>
           <div class="example" id="msub-msup-msubsup-example">
-            <p>The following example, shows basic use of subscripts and
+            <p>The following example shows basic use of subscripts and
               superscripts. The font-size is automatically scaled down
               within the scripts.
             </p>
@@ -3274,7 +3273,7 @@
             <p>
               The
               <a>min-content inline size</a> (respectively <a>max-content inline size</a>) of the content is the
-              <a>min-content inline size</a> (respectively <a>max-content inline size</a>) inline size of the <a>msub base</a>'s <a>margin box</a> −
+              <a>min-content inline size</a> (respectively <a>max-content inline size</a>) of the <a>msub base</a>'s <a>margin box</a> −
               <code>LargeOpItalicCorrection</code> +
               <a>min-content inline size</a> (respectively <a>max-content inline size</a>) of
               the <a>msub subscript</a>'s <a>margin box</a> + <a>SpaceAfterScript</a>.
@@ -3284,7 +3283,7 @@
               <a>inline stretch size constraint</a>
               or a <a>block stretch size constraint</a>
               then the <a>msub base</a> is also laid out with the same stretch size
-              contraint and otherwise it is laid out without any stretch
+              constraint and otherwise it is laid out without any stretch
               size constraint. The scripts are always laid out without
               any stretch size constraint.
             </p>
@@ -3310,7 +3309,7 @@
             </p>
             <ul>
               <li>The <a>line-ascent</a> of the <a>msub base</a>'s <a>margin box</a>.</li>
-              <li>The <a>line-ascent</a> of the subcript's <a>margin box</a> −
+              <li>The <a>line-ascent</a> of the subscript's <a>margin box</a> −
                 <code>SubShift</code>.</li>
             </ul>
             <p>
@@ -3318,7 +3317,7 @@
             </p>
             <ul>
               <li>The <a>line-descent</a> of the <a>msub base</a>'s <a>margin box</a>.</li>
-              <li>The <a>line-descent</a> of the subcript's <a>margin box</a> +
+              <li>The <a>line-descent</a> of the subscript's <a>margin box</a> +
                 <code>SubShift</code>.</li>
             </ul>
             <p>
@@ -3363,7 +3362,7 @@
               <a>inline stretch size constraint</a>
               or a <a>block stretch size constraint</a>
               then the <a>msup base</a> is also laid out with the same stretch size
-              contraint and otherwise it is laid out without any stretch
+              constraint and otherwise it is laid out without any stretch
               size constraint. The scripts are always laid out without
               any stretch size constraint.
             </p>
@@ -3394,7 +3393,7 @@
             </p>
             <ul>
               <li>The <a>line-ascent</a> of the <a>msup base</a>'s <a>margin box</a>.</li>
-              <li>The <a>line-ascent</a> of the supercript's <a>margin box</a> +
+              <li>The <a>line-ascent</a> of the superscript's <a>margin box</a> +
                 <code>SuperShift</code>.</li>
             </ul>
             <p>
@@ -3402,7 +3401,7 @@
             </p>
             <ul>
               <li>The <a>line-descent</a> of the <a>msup base</a>'s <a>margin box</a>.</li>
-              <li>The <a>line-descent</a> of the supercript's <a>margin box</a> −
+              <li>The <a>line-descent</a> of the superscript's <a>margin box</a> −
                 <code>SuperShift</code>.</li>
             </ul>
             <p>
@@ -3446,7 +3445,7 @@
               <a>inline stretch size constraint</a>
               or a <a>block stretch size constraint</a>
               then the <a>msubsup base</a> is also laid out with the same stretch size
-              contraint and otherwise it is laid out without any stretch
+              constraint and otherwise it is laid out without any stretch
               size constraint. The scripts are always laid out without
               any stretch size constraint.
             </p>
@@ -3455,7 +3454,7 @@
               <a>inline stretch size constraint</a>
               or a <a>block stretch size constraint</a>
               then the <a>msubsup base</a> is also laid out with the same stretch size
-              contraint and otherwise it is laid out without any stretch
+              constraint and otherwise it is laid out without any stretch
               size constraint. The scripts are always laid out without
               any stretch size constraint.
             </p>
@@ -3495,7 +3494,7 @@
               <a>ink line-ascent</a> (respectively <a>line-ascent</a>, <a>ink line-descent</a>,
               <a>line-descent</a>) of the content
               calculated in
-              in <a href="#base-with-subscript"></a> and
+              <a href="#base-with-subscript"></a> and
               <a href="#base-with-superscript"></a>
               but using the adjusted values <code>SubShift</code> and
               <code>SuperShift</code> above.
@@ -3555,7 +3554,7 @@
           </p>
           <p>
             <dfn><code>accent</code></dfn>,
-            <dfn><code>accentunder</code></dfn>,
+            <dfn><code>accentunder</code></dfn>
             attributes, if present, must have values that are <a>booleans</a>.
             If these attributes are absent or invalid, they are treated as
             equal to <code>false</code>.
@@ -3563,7 +3562,7 @@
             <a href="#displaystyle-and-scriptlevel-in-scripts"></a>.
           </p>
           <div class="example" id="munder-mover-munderover-example">
-            <p>The following example, shows basic use of under and over scripts.
+            <p>The following example shows basic use of under- and overscripts.
               The font-size is automatically scaled down within the scripts,
               unless they are meant to be accents.
             </p>
@@ -3629,12 +3628,12 @@
             </p>
             <p>
               Otherwise, the
-              <code>&lt;mover&gt;</code>, <code>&lt;mover&gt;</code> and
+              <code>&lt;munder&gt;</code>, <code>&lt;mover&gt;</code> and
               <code>&lt;munderover&gt;</code> layout algorithms are respectively
               described in
               <a href="#base-with-underscript"></a>,
               <a href="#base-with-overscript"></a> and
-              <a href="#base-with-underscript-and-overscript"></a>
+              <a href="#base-with-underscript-and-overscript"></a>.
             </p>
           </section>
           <section>
@@ -3650,7 +3649,7 @@
                 <a>inline stretch size constraint</a> or
                 <a>block stretch size constraint</a>
                 then the element being laid out is an
-                <a>embellished operator</a>. Layout the base
+                <a>embellished operator</a>. Lay out the base
                 with the same stretch size constraint.
               </li>
               <li>
@@ -3658,7 +3657,7 @@
                 laid out yet into a first list
                 <code>L<sub>ToStretch</sub></code> containing
                 <a>embellished operators</a> with
-                a <a>stretchy</a> property and inline <a>stretch axis</a> ;
+                a <a>stretchy</a> property and inline <a>stretch axis</a>;
                 and a second list <code>L<sub>NotToStretch</sub></code>.
               </li>
               <li>
@@ -3676,7 +3675,7 @@
                 previous step.
               </li>
               <li>
-                Layout or relayout all the elements of
+                Lay out or relayout all the elements of
                 <code>L<sub>ToStretch</sub></code>
                 with <a>inline stretch size constraint</a> <code>T</code>.
               </li>
@@ -3724,8 +3723,8 @@
               </li>
               <li>The minimum of:
                 <ul>
-                  <li>−Half the <a>inline size</a> of the <a>munder base</a>'s <a>margin box</a>.</li>
-                  <li>−Half the <a>inline size</a> of the <a>munder underscript</a>'s <a>margin box</a> −
+                  <li>−half the <a>inline size</a> of the <a>munder base</a>'s <a>margin box</a>.</li>
+                  <li>−half the <a>inline size</a> of the <a>munder underscript</a>'s <a>margin box</a> −
                     half <code>LargeOpItalicCorrection</code>.</li>
                 </ul>
               </li>
@@ -3858,7 +3857,7 @@
               </li>
               <li>The minimum of:
                 <ul>
-                  <li>−Half the <a>inline size</a> of the <a>mover base</a>'s <a>margin box</a>.</li>
+                  <li>−half the <a>inline size</a> of the <a>mover base</a>'s <a>margin box</a>.</li>
                   <li>−<code>TopAccentAttachment</code> +
                     half <code>LargeOpItalicCorrection</code>.</li>
                 </ul>
@@ -3937,7 +3936,7 @@
               more or less <a>AccentBaseHeight</a> above their <a>alphabetic baselines</a>. Hence,
               the previous rule will guarantee that all the overscript bottoms
               are aligned while still avoiding collision with the bases.
-              However, MathML can have arbitrary accent overscripts
+              However, MathML can have arbitrary accent overscripts, so
               a more general and simpler rule is provided above: Ensure
               that the bottom of overscript is at least
               <a>AccentBaseHeight</a> above the <a>alphabetic baseline</a> of the base.
@@ -4036,7 +4035,7 @@
         <section id="prescripts-and-tensor-indices-mmultiscripts">
           <h4>Prescripts and Tensor Indices <code>&lt;mmultiscripts&gt;</code></h4>
           <p>
-            Presubscripts and tensor notations are represented
+            Presubscripts and tensor notations are represented by
             the <dfn><code>&lt;mmultiscripts&gt;</code></dfn>
             with hints given by the
             <dfn><code>&lt;mprescripts&gt;</code></dfn>
@@ -4044,12 +4043,12 @@
             and
             <dfn><code>&lt;none&gt;</code></dfn> elements
             (to indicate empty scripts).
-            These element accept the attributes described in
+            These elements accept the attributes described in
             <a href="#global-attributes"></a>.
           </p>
           <div class="example" id="mmultiscripts-example">
             <p>
-              The following example, shows basic use of prescripts
+              The following example shows basic use of prescripts
               and postscripts, involving
               <a>&lt;none&gt;</a> and <a>&lt;mprescripts&gt;</a>.
               The font-size is automatically scaled down within the scripts.
@@ -4083,7 +4082,7 @@
           <ul>
             <li>
               A first <a>in-flow</a> child, called the
-              <dfn>mmultiscripts base</dfn>, that is not a an
+              <dfn>mmultiscripts base</dfn>, that is not an
               <a><code>&lt;mprescripts&gt;</code></a> element.
             </li>
             <li>
@@ -4142,7 +4141,7 @@
               "<a>inline size</a>" with "<a>min-content inline size</a>"
               (respectively "<a>max-content inline size</a>") for the
               <a>mmultiscripts base</a>'s
-              <a>margin box</a> and scripts's <a>margin boxes</a>.
+              <a>margin box</a> and scripts' <a>margin boxes</a>.
             </p>
             <p>
               If there is an <a>inline stretch size constraint</a> or a
@@ -4206,7 +4205,7 @@
                   <a>SpaceAfterScript</a>.
                 </p>
               </li>
-              <li>Return <code>inline-size</code></li>
+              <li>Return <code>inline-size</code>.</li>
             </ol>
             <p>
               <code>SubShift</code> (respectively <code>SuperShift</code>)
@@ -4322,7 +4321,7 @@
                   </li>
                   <li>
                     Increment <code>inline-offset</code> by
-                    <code>pair-inline-size</code>
+                    <code>pair-inline-size</code>.
                   </li>
                   <li>
                     Increment <code>inline-offset</code> by
@@ -4382,12 +4381,12 @@
             The <code>&lt;msub&gt;</code> and <code>&lt;msubsup&gt;</code>
             elements set <a><code>math-shift</code></a> to
             <code>compact</code> on their second child.
-            An <a><code>&lt;mover&gt;</code></a> and
+            <a><code>&lt;mover&gt;</code></a> and
             <a><code>&lt;munderover&gt;</code></a>
             elements with an <a><code>accent</code></a>
             attribute that is an
             <a data-cite="INFRA#ascii-case-insensitive">ASCII case-insensitive</a>
-            match to <code>true</code> also sets <a><code>math-shift</code></a> to
+            match to <code>true</code> also set <a><code>math-shift</code></a> to
             <code>compact</code> within their first child.
           </p>
           <p>
@@ -4400,8 +4399,8 @@
             In practice, all the children of the MathML elements described in
             this section are <a>in-flow</a> and the
             <code>&lt;mprescripts&gt;</code> is empty.
-            Hence the CSS rules essentially performs automatic <a><code>displaystyle</code></a> and
-            <a><code>scriptlevel</code></a> changes for the scripts ; and
+            Hence the CSS rules essentially perform automatic <a><code>displaystyle</code></a> and
+            <a><code>scriptlevel</code></a> changes for the scripts; and
             <a><code>math-shift</code></a> changes for
             subscripts and sometimes the base.
           </div>
@@ -4424,7 +4423,7 @@
         </p>
         <div class="example" id="tables-example">
           <p>
-            The following example, how tabular layout allows to write a
+            The following example shows how tabular layout allows to write a
             matrix. Note that it is vertically centered with the fraction
             bar and the middle of the equal sign.
           </p>
@@ -4488,7 +4487,7 @@
           <p>
             The <dfn><code>columnspan</code></dfn> (respectively
             <dfn><code>rowspan</code></dfn>) attribute has the same
-            syntax and semantic as the
+            syntax and semantics as the
             <a data-cite="HTML/../#attr-tdth-colspan"><code>colspan</code></a>
             (respectively
             <a data-cite="HTML/../#attr-tdth-rowspan"><code>rowspan</code></a>)
@@ -4525,7 +4524,7 @@
         </p>
         <div class="example" id="maction-example">
           <p>
-            The following example, shows the "toggle" action type from
+            The following example shows the "toggle" action type from
             [[MathML3]]
             where the renderer alternately displays the selected subexpression,
             starting from "one third" and cycling through them when there is a
@@ -4540,7 +4539,7 @@
         </div>
         <p>
           The layout algorithm of the <code>&lt;maction&gt;</code> element
-          the same as the <code>&lt;mrow&gt;</code> element.
+          is the same as the <code>&lt;mrow&gt;</code> element.
           The <a href="#user-agent-stylesheet">user agent stylesheet</a>
           must contain the following rules in order to hide all but
           its first child element,
@@ -4569,7 +4568,7 @@
         </p>
         <div class="example" id="semantics-example">
           <p>
-            The following example, shows how the fraction "one half" can be
+            The following example shows how the fraction "one half" can be
             annotated with a textual annotation (LaTeX) or an XML annotation
             (content MathML). These annotations are not intended to be rendered
             by the user agent.
@@ -4610,7 +4609,7 @@
           annotations
           for <a data-cite="HTML/../#html-integration-point">HTML integration point</a>,
           clipboard copy, alternative rendering, etc.
-          In particular, CSS can be used to render alternative annotations e.g.
+          In particular, CSS can be used to render alternative annotations, e.g.
           <pre class="css">
             /* Hide the annotated child. */
             semantics > :first-child { display: none; }
@@ -4669,7 +4668,7 @@
         <div class="example" id="display-example">
           <p>
             In the following example, the default layout of the
-            MathML <a>&lt;mrow&gt;</a> element is overriden to render its
+            MathML <a>&lt;mrow&gt;</a> element is overridden to render its
             content as a grid.
           </p>
           <pre data-include="examples/example-display.html"
@@ -4745,7 +4744,7 @@
             "A" with bold variant,
             "gl" with fraktur variant,
             "n" using italic variant and
-            and "R" using double-struck variant.
+            "R" using double-struck variant.
           </p>
           <img src="examples/example-text-transform.png" alt="text-transform example"/>
           <p>Values other than <code>math-auto</code> are intended to infer
@@ -4753,7 +4752,7 @@
             In the previous example, one can guess that the author
             decided to use the convention of bold variables for
             matrices, fraktur variables for Lie algebras and double-struck
-            variables for set of numbers. Although the corresponding
+            variables for sets of numbers. Although the corresponding
             Unicode
             characters could have been used directly in these cases, it may
             be helpful for authoring tools or polyfills to support these
@@ -4764,8 +4763,8 @@
             with normal style and identifiers with a single letter
             (e.g. the variable "n") with italic style. The
             <code>math-auto</code> property is intended to implement this
-            default behavior, which can be overriden by authors if necessary.
-            Note that mathematical fonts are designed with special kind
+            default behavior, which can be overridden by authors if necessary.
+            Note that mathematical fonts are designed with a special kind
             of italic glyphs located at the
             Unicode positions of
             <a href="#italic-mappings"></a>, which  differ from the shaping
@@ -4801,7 +4800,7 @@
         </table>
         <p>
           When <code>math-style</code> is <code>compact</code>,
-          the math layout on descendants try to minimize the
+          the math layout on descendants tries to minimize the
           <a data-cite="CSS-WRITING-MODES-3#extent">logical height</a> by
           applying the following rules:
         </p>
@@ -4814,9 +4813,9 @@
           <li>Operators with the <a>largeop</a> property
             do not follow rules from <a href="#layout-of-operators"></a>
             to make them bigger.</li>
-          <li>Under/over scripts attached to an operator with
-            the <a>movablelimits</a> property are actually drawn as sub/super
-            scripts as described in <a href="#children-of-munder-mover-munderover"></a>.</li>
+          <li>Under-/overscripts attached to an operator with
+            the <a>movablelimits</a> property are actually drawn as sub-/superscripts
+            as described in <a href="#children-of-munder-mover-munderover"></a>.</li>
           <li>Smaller vertical gaps and shifts from the <a href="#opentype-math-table">OpenType MATH table</a> are used for fractions and radicals,
             as described in
             <a href="#fraction-with-nonzero-line-thickness"></a>,
@@ -4825,7 +4824,7 @@
         </ul>
           <div class="example" id="math-style-example">
             <p>The following example shows a
-              mathematical formula renderered with
+              mathematical formula rendered with
               its <a><code>&lt;math&gt;</code></a> root styled with
               <code>math-style: compact</code> (left) and
               <code>math-style: normal</code> (right).
@@ -4834,7 +4833,7 @@
               subscript and superscript of the ∑. In the latter case, the ∑ is
               drawn bigger than normal text and
               vertical gaps within fractions (even relative to current
-              font-size) is larger.
+              font-size) are larger.
             </p>
             <img src="examples/example-math-style.png" alt="math-style example"/>
             <p>These two <code>math-style</code> values typically correspond to
@@ -4847,7 +4846,7 @@
               The <a>math-style</a> property allows to easily implement these
               features for MathML in the
               <a href="#user-agent-stylesheet">User Agent Stylesheet</a>
-              and with the <a>displaystyle</a> attribute ; and also exposes
+              and with the <a>displaystyle</a> attribute; and also exposes
               them to polyfills.
             </p>
           </div>
@@ -4882,7 +4881,7 @@
         <p>
           This property is used for positioning superscript during the layout
           of MathML <a>scripted elements</a>.
-          See § <a href="#subscripts-and-superscripts-msub-msup-msubsup"></a>
+          See § <a href="#subscripts-and-superscripts-msub-msup-msubsup"></a>,
           <a href="#prescripts-and-tensor-indices-mmultiscripts"></a> and
           <a href="#underscripts-and-overscripts-munder-mover-munderover"></a>.
         </p>
@@ -4994,7 +4993,7 @@
                 and decrement E by 1.</li>
             </ul>
           </li>
-          <li>Multiply S by C<sup>E</sup></li>
+          <li>Multiply S by C<sup>E</sup>.</li>
           <li>Return S if <code>InvertScaleFactor</code> is false and 1/S otherwise.</li>
         </ol>
           <div class="example" id="font-size-scriptlevel-example">
@@ -5032,7 +5031,7 @@
         a C-like notation
         <code>Table.Subtable1[index].Subtable2.Parameter</code> is used to
         denote OpenType parameters.
-        Such parameters may not be available (e.g. if the font lack one of the
+        Such parameters may not be available (e.g. if the font lacks one of the
         subtable, has an invalid offset, etc) and so fallback options are
         provided.
       </p>
@@ -5191,7 +5190,7 @@
             of italics correction values. Use the corresponding value in
             <code>MATH.MathGlyphInfo.MathItalicsCorrectionInfo.italicsCorrection</code>
             if there is one for the requested glyph or
-            or <code>0</code> otherwise.
+            <code>0</code> otherwise.
           </dd>
           <dt><dfn>MathTopAccentAttachment</dfn></dt>
           <dd>
@@ -5201,7 +5200,7 @@
             Use the corresponding value in
             <code>MATH.MathGlyphInfo.MathTopAccentAttachment.topAccentAttachment</code>
             if there is one for the requested glyph or
-            or half the advance width of the glyph otherwise.
+            half the advance width of the glyph otherwise.
           </dd>
         </dl>
       </section>
@@ -5289,8 +5288,8 @@
           <p>
             <dfn>r<sub>min</sub></dfn> is the minimal number of repetitions
             needed to obtain an assembly of
-            size at least T i.e. the minimal r such that
-            <a>AssembySize</a>(<a>o<sub>min</sub></a>, r)) ≥ T.
+            size at least T, i.e. the minimal r such that
+            <a>AssembySize</a>(<a>o<sub>min</sub></a>, r) ≥ T.
             It is defined as the maximum between 0 and the ceiling of
             ((T − <a>S<sub>NonExt</sub></a> + <a>o<sub>min</sub></a> (<a>N<sub>NonExt</sub></a> − 1)) / <a>S<sub>Ext,NonOverlapping</sub></a>).
           </p>
@@ -5335,7 +5334,7 @@
           </p>
           <ul>
             <li>If <code>GlyphAssembly</code> is vertical,
-              the width is the maximum advance width of the glyphs of id
+              the width is the maximum advance width of the glyphs of ID
               <code>GlyphPartRecord.glyphID</code> for all the
               <code>GlyphPartRecord</code> in
               <code>GlyphAssembly.partRecords</code>,
@@ -5348,7 +5347,7 @@
               the width is <a>glyph assembly stretch size</a>
               for a given target size <code>T</code> while
               the ascent (respectively descent) is the
-              maximum ascent (respectively descent) of the glyphs of id
+              maximum ascent (respectively descent) of the glyphs of ID
               <code>GlyphPartRecord.glyphID</code> for all the
               <code>GlyphPartRecord</code> in
               <code>GlyphAssembly.partRecords</code>.
@@ -5379,7 +5378,7 @@
               Repeat the following steps:
               <ol>
                 <li>
-                  If <code>RepetitionCounter</code> is 0, then
+                  If <code>RepetitionCounter</code> is 0:
                   <ol>
                     <li>Increment <code>PartIndex</code>.</li>
                     <li>If <code>PartIndex</code> is
@@ -5397,13 +5396,13 @@
                 <li>
                   <ul>
                     <li>If the glyph assembly is horizontal then
-                      draw the glyph of id
+                      draw the glyph of ID
                       <code>Part.glyphID</code>
                       so that its (left, baseline) coordinates
                       are at position <code>(x, y)</code>.
                       Set <code>x</code> to
                       <code>x + Part.fullAdvance −
-                        <a>o<sub>max</sub></a></code>
+                        <a>o<sub>max</sub></a>.</code>
                     </li>
                     <li>Otherwise (if the glyph assembly is vertical),
                       then
@@ -5413,7 +5412,7 @@
                       are at position <code>(x, y)</code>.
                       Set <code>y</code> to
                       <code>y − Part.fullAdvance +
-                        <a>o<sub>max</sub></a></code>
+                        <a>o<sub>max</sub></a>.</code>
                     </li>
                   </ul>
                 </li>
@@ -5460,7 +5459,7 @@
             axis</a> will return the maximum width of all possible
             vertical constructions for that glyph.
             In practice, math fonts are designed so that
-            vertical constructions almost constant width so possible
+            vertical constructions are almost constant width, so possible
             over-estimation of the actual width is small.
           </div>
           <p>
@@ -5474,7 +5473,7 @@
               in the <code>MathVariants.horizGlyphConstructionOffsets</code>
               table  (respectively
               <code>MathVariants.vertGlyphConstructionOffsets</code> table)
-              for the given glyph the exit with failure.
+              for the given glyph then exit with failure.
             </li>
             <li>
               If the glyph's advance width
@@ -5504,7 +5503,7 @@
               correction, perform <a>shaping of the glyph assembly</a> and
               exit with success.
             </li>
-            <li>If none of the stretch option above allowed to cover the target
+            <li>If none of the stretch options above allowed to cover the target
               size <code>T</code>, then choose last one that was tried and exit
               with success.
             </li>
@@ -5512,7 +5511,7 @@
           <div class="note">
             If a font does not provide tables for stretchy constructions, User
             Agents may use their own internal constructions as a fallback
-            such that
+            such as
             the one suggested in <a href="#unicode-based-glyph-assemblies"></a>.
           </div>
         </section>
@@ -5590,7 +5589,7 @@
                 U+20D2 COMBINING LONG VERTICAL LINE OVERLAY then replace
                 <code>Content</code> with the first character and move to step
                 3.</li>
-              <li>Otherwise, if <code>Content</code> it is listed in
+              <li>Otherwise, if <code>Content</code> is listed in
                 <a href="#operator-dictionary-compact-special-tables"><code>Operators_2_ascii_chars</code></a> then
                 replace <code>Content</code> with the
                 Unicode character
@@ -5611,10 +5610,10 @@
             <a href="#operator-dictionary-categories-values"></a>
             (namely if it has category <code>L</code> or <code>M</code>), then
             exit with that category.
-            Otherwise,
+            Otherwise:
                 <ul>
                   <li>Set <code>Key</code> to <code>Content</code> if it is in
-                    range U+0000–U+03FF ; or to <code>Content</code> − 0x1C00
+                    range U+0000–U+03FF; or to <code>Content</code> − 0x1C00
                     if it is in range U+2000–U+2BFF. Otherwise, exit with
                     category <code>Default</code>.
                   </li>
@@ -5698,7 +5697,7 @@
           <a><code>stretchy</code></a>,
           <a><code>symmetric</code></a>,
           <a><code>largeop</code></a>,
-          <a><code>movablelimits</code></a>,
+          <a><code>movablelimits</code></a>
           are <code>true</code>
           if they are listed in the "properties" column.
         </p>
@@ -5716,25 +5715,25 @@
       <section class="informative">
         <h2>Unicode-based Glyph Assemblies</h2>
         <p>
-          The following table provide fallback that user agents may use for
+          The following table provides fallback that user agents may use for
           stretching a given <em>base character</em> when the font does not
           provide a <code>MATH.MathVariants</code> table.
           The algorithms of
           <a href="#size-variants-for-operators-mathvariants"></a>
-          works the same except with some adjustments:
+          work the same except with some adjustments:
         </p>
         <ul>
           <li>
             Entries are indexed by the base character.
           </li>
           <li>
-            All the glyph IDs and metrics have to be deduced from unicode
+            All the glyph IDs and metrics have to be deduced from Unicode
             code points.
           </li>
           <li>
             If the <em>glyph construction</em> is horizontal then
             the entry corresponds to
-            a <code>MathVariants.horizGlyphConstructionOffsets[]</code> item ;
+            a <code>MathVariants.horizGlyphConstructionOffsets[]</code> item;
             if it is vertical it corresponds to
             a <code>MathVariants.vertGlyphConstructionOffsets[]</code> item.
           </li>
@@ -5758,7 +5757,7 @@
               <li>Followed by an <em>extender</em> character.</li>
               <li>Optionally followed by this:
                 <ul>
-                  <li>Optionally, an (non-extender) <em>middle</em> character
+                  <li>Optionally, a (non-extender) <em>middle</em> character
                     and the same extender character previously mentioned.</li>
 			<li>A (non-extender) <em>top/right</em> character.</li>
                 </ul>
@@ -5847,7 +5846,7 @@
         of [[MathML3]] for the people that contributed to that specification.
       </p>
       <p>We would like to thank the people who, through their input and
-        feedback on public communication channels have helped us with the
+        feedback on public communication channels, have helped us with the
         creation of this specification:
         André Greiner-Petter,
         Anne van Kesteren,
@@ -5977,7 +5976,7 @@
       <div class="example" id="canvas-example">
         <p>
           In the following example, the canvas image is set to the image of
-          some MathML content with a HTML link to <code>https://example.org/</code>.
+          some MathML content with an HTML link to <code>https://example.org/</code>.
           It should not be possible for an attacker to determine whether that
           link was visited by reading pixels via <a data-cite="HTML#dom-context-2d-getimagedata">context.getImageData</a>.
           For more about links in MathML, see
@@ -5987,7 +5986,7 @@
              data-include-format="text"></pre>
       </div>
       <p>
-        This specification describes layout of a DOM
+        This specification describes layout of DOM
         <a data-cite="HTML/../#element">elements</a> which may involve system
         fonts. Like for HTML/CSS layout,
         it is thus possible to use JavaScript APIs
@@ -5995,7 +5994,7 @@
         <a data-cite="HTML#dom-context-2d-getimagedata">context.getImageData</a> on content embedded in a canvas context, or even just
         <a data-cite="CSSOM-VIEW#dom-element-getboundingclientrect">getBoundingClientRect()</a>)
         to measure box sizes and positions and infer data from system fonts.
-        By combining miscelleneaous tests on such fonts and
+        By combining miscellaneous tests on such fonts and
         comparing measurements against results of well-known fonts, an attacker
         can try and determine the default fonts of the user.
       </p>
@@ -6010,7 +6009,7 @@
       <div class="example" id="font-information-leakage-2">
         <p>The following
         HTML+CSS+JavaScript document tries to determine whether the
-        UI serif font provide Asian glyphs:</p>
+        UI serif font provides Asian glyphs:</p>
         <pre data-include="examples/example-without-screenshot-font-information-leakage-2.html"
              data-include-format="text"></pre>
         <p>
@@ -6020,7 +6019,7 @@
         HTML+CSS document contains the same text rendered with
         <a data-cite="CSS-TEXT-DECOR-4#text-decoration-thickness">text-decoration-thickness</a> set to <code>from-font</code> and <code>1em</code> (here
         100 pixels)
-        respectively. By comparing the heights of the two under lines,
+        respectively. By comparing the heights of the two underlines,
         one can calculate a good approximation of the
         <code>underlineThickness</code> value from the PostScript Table
         [[OPEN-FONT-FORMAT]].
@@ -6041,7 +6040,7 @@
       <p>Although none of these parameters taken individually are personal,
         implementing this specification increases the set of exposed
         font information that can be used by an attacker to implement
-        fingerprinting techniques. Typically, they could help dermine
+        fingerprinting techniques. Typically, they could help determine
         available and preferred math fonts for a user.
       </p>
     </section>
@@ -6059,7 +6058,7 @@
         <p>
           All of the text of this specification is normative except sections
           explicitly marked as non-normative, examples, and notes.
-          [[RFC2119]].
+          [[RFC2119]]
         </p>
         <p>
           Examples in this specification are introduced with the words
