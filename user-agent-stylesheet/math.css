@@ -15,8 +15,10 @@ math {
   math-depth: 0;
 }
 math[display="block" i] {
+  display: block math;
   math-style: normal;
 }
 math[display="inline" i] {
   display: inline math;
+  math-style: compact;
 }
