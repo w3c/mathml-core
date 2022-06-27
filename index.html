@@ -366,6 +366,8 @@
             <li><a><code>scriptlevel</code></a></li>
             <li><a><code>style</code></a></li>
             <li><a><code>tabindex</code></a></li>
+            <li><a><code>intent</code></a></li>
+            <li><a><code>arg</code></a></li>
             <li><a href="#event-handler-content-attributes"><code>on*</code> event handler attributes</a></li>
           </ul>
         </section>
@@ -553,7 +555,7 @@
             <code>ssXY</code> properties from [[OPEN-FONT-FORMAT]]
             to provide both styles. Page authors may use the
             <a data-cite="CSS-FONTS-4#font-variant-alternates-prop"><code>font-variant-alternates</code></a> property with corresponding OpenType font features
-            to access these glyphs.
+            to access these glyphs.</p>
           </div>
         </section>
         <section id="the-displaystyle-and-scriptlevel-attributes">
@@ -632,7 +634,18 @@
             and <code>false</code> and 2, respectively.
           </div>
         </section>
-      </section>
+        <section id="the-intent-and-arg-attributes">
+          <h4>The <code>intent</code> and <code>arg</code> attributes</h4>
+          <p>MathML Core Level 1 defines no behavior for
+          <dfn><code>intent</code></dfn> and
+          <dfn><code>arg</code></dfn> however these attributes should
+          be accepted as valid. [[MATHML4]] specifies how these
+          attributes may be used to improve the accessibilty of
+          Presentation MathML. Future levels of MathML Core may
+          specify processing of these attributes in Web Platform
+          implementations.
+	  </p>
+	</section>
       <section>
         <h3>Integration in the Web Platform</h3>
         <section id="html-and-svg">
