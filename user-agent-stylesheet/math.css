@@ -10,15 +10,13 @@ math {
   font-style: normal;
   font-weight: normal;
   display: inline math;
-  math-style: compact;
   math-shift: normal;
+  math-style: compact;
   math-depth: 0;
 }
 math[display="block" i] {
-  display: block math;
   math-style: normal;
 }
 math[display="inline" i] {
   display: inline math;
-  math-style: compact;
 }
