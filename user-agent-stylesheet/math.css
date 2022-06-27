@@ -12,7 +12,7 @@ math {
   display: inline math;
   math-style: compact;
   math-shift: normal;
-  math-level: 0;
+  math-depth: 0;
 }
 math[display="block" i] {
   display: block math;
