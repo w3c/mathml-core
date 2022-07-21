@@ -1258,6 +1258,54 @@
           <div class="issue" data-number="76">Define what inline percentages resolve against</div>
           <div class="issue" data-number="77">Define what block percentages resolve against</div>
         </section>
+        <section id="anonymous-mrow-boxes">
+          <h4>Anonymous &lt;mrow&gt; boxes</h4>
+          <p>An <dfn>anonymous box</dfn> is a box without any associated
+            element in the DOM tree and which is generated for layout purpose
+            only. The properties of anonymous boxes are inherited from the
+            enclosing non-anonymous box while non-inherited properties have
+            their initial value.
+            An <dfn>anonymous &lt;mrow&gt; box</dfn> is
+            an <a>anonymous box</a> with <code>display</code> equal to
+            <code>block math</code> and which is laid out as
+            described in section <a href="#layout-of-mrow"></a>.
+          </p>
+          <p>If a MathML element
+            <dfn>generates an anonymous &lt;mrow&gt; box</dfn> if it wraps
+            in children in an anonymous &lt;mrow&gt; box i.e.
+            its subtree in the visual formatting model is made of an
+            <a>anonymous &lt;mrow&gt; box</a>
+            which itself contains the boxes associated to the children of this
+            MathML element.
+          </p>
+          <div class="example" id="anonymous-mrow-example">
+            <p>In the following example, the <a>&lt;math&gt;</a> and
+              <a>&lt;mrow&gt;</a> elements are laid out as described in section
+              <a href="#layout-of-mrow"></a>. In particular, the
+              <code>&lt;math&gt;</code> element adds proper spacing around its
+              <code>&lt;mo&gt;≠&lt;/mo&gt;</code> child and the
+              <code>&lt;mrow&gt;</code> element stretches its
+              <code>&lt;mo&gt;|&lt;/mo&gt;</code> children vertically.
+            </p>
+            <p>The <a>&lt;mtd&gt;</a> element has
+              <code>display: table-cell</code> and the
+              <a>&lt;msqrt&gt;</a> element displays a radical symbol around its
+              children. However, they also place their children in a way that
+              is similar to what is described in section
+              <a href="#layout-of-mrow"></a>: the
+              <code>&lt;msqrt&gt;</code> element adds proper spacing around its
+              <code>&lt;mo&gt;+&lt;/mo&gt;</code> child while the
+              <code>&lt;mtd&gt;</code> element stretches its
+              <code>&lt;mo&gt;</code> children vertically.
+              In order to make this possible,
+              each of these two elements
+              <a>generates an anonymous &lt;mrow&gt; box</a>.
+            </p>
+            <pre data-include="examples/example-anonymous-mrow-nodes.html"
+                 data-include-format="text"></pre>
+            <img src="examples/example-anonymous-mrow-nodes.png" alt="math example (display)"/>
+          </div>
+        </section>
         <section id="stacking-contexts">
           <h4>Stacking contexts</h4>
           <p>MathML elements can overlap due to various spacing rules. They
@@ -1566,6 +1614,12 @@
               inline <a>intrinsic stretch axis</a>.
               Otherwise, the stretch axis of the <a>embellished operator</a>
               is <em>block</em>.
+            </p>
+            <p>
+              The same definitions apply for boxes in the
+              visual formatting model where an
+              <a>anonymous &lt;mrow&gt; box</a> is treated as a
+              <a>grouping element</a>.
             </p>
           </section>
           <section id="dictionary-based-attributes">
@@ -2071,6 +2125,12 @@
                 all of whose <a>in-flow</a> children are <a>space-like</a>.
               </li>
             </ol>
+            <p>
+              The same definitions apply for boxes in the
+              visual formatting model where an
+              <a>anonymous &lt;mrow&gt; box</a> is treated as a
+              <a>grouping element</a>.
+            </p>
             <div class="note">
               Note that an <a><code>&lt;mphantom&gt;</code></a> is not
               automatically defined to be space-like, unless its content is
@@ -2233,7 +2293,8 @@
           <section id="layout-of-mrow">
             <h5>Layout of <code>&lt;mrow&gt;</code></h5>
             <p>
-              If the element does not have its computed
+              If the box is not an <a>anonymous &lt;mrow&gt; box</a>
+              and the associated element does not have its computed
               <a><code>display</code> property</a> equal to
               <code>block math</code> or <code>inline math</code>
               then it is laid out according to the CSS specification where
@@ -2261,7 +2322,8 @@
             <ol>
               <li>
                 Set <code>add-space</code> to true if
-                the element is a <a>&lt;math&gt;</a> or is not an
+                the box corresponds to a <a>&lt;math&gt;</a> element
+                or is not an
                 <a>embellished operator</a>; and to false otherwise.
               </li>
               <li>Set <code>inline-offset</code> to 0.</li>
@@ -2336,7 +2398,8 @@
             <ol>
               <li>
                 Set <code>add-space</code> to true if
-                the element is a <a>&lt;math&gt;</a> or is not an
+                the box corresponds to a <a>&lt;math&gt;</a> element
+                or is not an
                 <a>embellished operator</a>; and to false otherwise.
               </li>
               <li>Set <code>inline-offset</code> to 0.</li>
@@ -2754,12 +2817,9 @@
             <a><code>scriptlevel</code></a> and <a><code>displaystyle</code></a> changes for the index.
           </div>
           <p>
-            The children of the
-            <code>&lt;msqrt&gt;</code> element are laid out
-            using the algorithm of the <a><code>&lt;mrow&gt;</code></a> element
-            to produce a box that is also called the <dfn>msqrt base</dfn>.
-            In particular, the
-            <a>algorithm for stretching operators along the block axis</a> is used.
+            The <code>&lt;msqrt&gt;</code> element
+            <a>generates an anonymous &lt;mrow&gt; box</a>
+            called the <dfn>msqrt base</dfn>.
           </p>
           <section id="radical-symbol">
             <h5>Radical symbol</h5>
@@ -3067,11 +3127,9 @@
           <section>
             <h5>Inner box and requested parameters</h5>
             <p>
-              <a>In-flow</a> children
-              of the <code>&lt;mpadded&gt;</code> element are laid out
-              using the algorithm of the <a><code>&lt;mrow&gt;</code></a> element
-              to produce the
-              <dfn>mpadded inner box</dfn> for the content with parameters called
+              The <a>&lt;mpadded&gt;</a> element
+              <a>generates an anonymous &lt;mrow&gt; box</a> called the
+              <dfn>mpadded inner box</dfn> with parameters called
               inner inline size, inner <a>line-ascent</a> and inner line-descent.
               The requested <code>&lt;mpadded&gt;</code>
               parameters are determined as follows:
@@ -4502,6 +4560,10 @@
             <code>columnspan</code> as in [[MathML3]] and not
             <code>colspan</code> as in [[HTML]].
           </div>
+          <p>
+            The <code>&lt;mtd&gt;</code> element
+            <a>generates an anonymous &lt;mrow&gt; box</a>.
+          </p>
         </section>
       </section>
       <section id="enlivening-expressions">
