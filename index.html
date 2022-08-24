@@ -329,16 +329,16 @@
           <dl>
             <dt><dfn>unsigned-integer</dfn></dt>
             <dd>An
-              <a data-cite="CSS-VALUES-3#integer-value"><code>&lt;integer&gt;</code></a> value as defined in
-              [[CSS-VALUES-3]], whose first character is neither
+              <a data-cite="CSS-VALUES-4#integer-value"><code>&lt;integer&gt;</code></a> value as defined in
+              [[CSS-VALUES-4]], whose first character is neither
               U+002D HYPHEN-MINUS character (-) nor
               U+002B PLUS SIGN (+).
             </dd>
             <dt><dfn>length-percentage</dfn></dt>
             <dd>A
-              <a data-cite="CSS-VALUES-3#typedef-length-percentage"><code>&lt;length-percentage&gt;</code></a>
+              <a data-cite="CSS-VALUES-4#typedef-length-percentage"><code>&lt;length-percentage&gt;</code></a>
               value as defined in
-              [[CSS-VALUES-3]]
+              [[CSS-VALUES-4]]
             </dd>
             <dt><dfn>color</dfn></dt>
             <dd>A
@@ -4699,7 +4699,18 @@
           from <a data-cite="CSS-DISPLAY-3"></a>
           is extended with a new inner display type:
         </p>
-        <code>&lt;display&gt; = <a data-cite="CSS-DISPLAY-3#typedef-display-inside">&lt;display-inside-old&gt;</a> <a data-cite="CSS-VALUES-3#comb-one">|</a> math</code>
+        <table class="def propdef partial" data-link-for-hint="display-inside">
+          <tbody>
+            <tr>
+              <th>Name:</th>
+              <td><a class="css" data-link-type="property" data-cite="CSS-DISPLAY-3#typedef-display-inside">display-inside</a></td>
+            </tr>
+            <tr class="value">
+              <th><a data-cite="CSS-VALUES-4#value-defs">New values:</a></th>
+              <td class="prod">math</td>
+            </tr>
+          </tbody>
+        </table>
         <p>
           For elements that are not <a>MathML elements</a>, if the specified
           value of <code>display</code> is <code>inline math</code> or
@@ -4748,7 +4759,19 @@
           from <a data-cite="CSS-TEXT-3"></a>
           is extended with new values:
         </p>
-        <code>&lt;text-transform&gt; = <a data-cite="CSS-TEXT-3#text-transform-property">&lt;text-transform-old&gt;</a> <a data-cite="CSS-VALUES-3#comb-one">|</a> math-auto | math-bold | math-italic | math-bold-italic | math-double-struck | math-bold-fraktur | math-script | math-bold-script | math-fraktur | math-sans-serif | math-bold-sans-serif | math-sans-serif-italic | math-sans-serif-bold-italic | math-monospace | math-initial | math-tailed | math-looped | math-stretched</code>
+        <table class="def propdef partial" data-link-for-hint="text-transform">
+          <tbody>
+            <tr>
+              <th>Name:</th>
+              <td><a class="css" data-link-type="property" data-cite="CSS-TEXT-3#text-transform-property" id="ref-for-propdef-text-transform">text-transform</a>
+              </td>
+            </tr>
+            <tr class="value">
+              <th><a data-cite="CSS-VALUES-4#value-defs">New values:</a></th>
+              <td class="prod">math-auto <a data-cite="CSS-VALUES-4#comb-one">|</a> math-bold | math-italic | math-bold-italic | math-double-struck | math-bold-fraktur | math-script | math-bold-script | math-fraktur | math-sans-serif | math-bold-sans-serif | math-sans-serif-italic | math-sans-serif-bold-italic | math-monospace | math-initial | math-tailed | math-looped | math-stretched</td>
+            </tr>
+          </tbody>
+        </table>
         <p>If the specified value of text-transform is <code>math-auto</code>
           and the inherited value is not <code>none</code> then the
           computed value is the inherited value.</p>
@@ -4854,24 +4877,24 @@
               </td>
             </tr>
             <tr class="value">
-              <th><a href="https://www.w3.org/TR/css-values/#value-defs">Value:</a></th>
-              <td class="prod">normal <a data-link-type="grammar" href="https://www.w3.org/TR/css-values-4/#comb-one">|</a> compact</td>
+              <th><a data-cite="CSS-VALUES-4#value-defs">Value:</a></th>
+              <td class="prod">normal <a data-link-type="grammar" data-cite="CSS-VALUES-4#comb-one">|</a> compact</td>
             </tr>
             <tr>
-              <th><a href="https://www.w3.org/TR/css-cascade/#initial-values">Initial:</a></th>
+              <th><a data-cite="CSS-CASCADE-4#initial-values">Initial:</a></th>
               <td>normal</td>
             </tr>
             <tr>
-              <th><a href="https://www.w3.org/TR/css-cascade/#applies-to">Applies to:</a></th>
+              <th><a data-cite="CSS-CASCADE-4#applies-to">Applies to:</a></th>
               <td>All elements</td>
             </tr>
             <tr>
-              <th><a href="https://www.w3.org/TR/css-cascade/#inherited-property">Inherited:</a></th>
+              <th><a data-cite="CSS-CASCADE-4#inherited-property">Inherited:</a></th>
               <td>yes</td>
             </tr>
             <tr><th><a href="https://www.w3.org/TR/css-values/#percentages">Percentages:</a></th><td>n/a</td></tr>
             <tr>
-              <th><a href="https://www.w3.org/TR/css-cascade/#computed">Computed value:</a></th>
+              <th><a data-cite="CSS-CASCADE-4#computed">Computed value:</a></th>
               <td>specified keyword</td>
             </tr>
             <tr>
@@ -4952,24 +4975,24 @@
               </td>
             </tr>
             <tr class="value">
-              <th><a href="https://www.w3.org/TR/css-values/#value-defs">Value:</a></th>
-              <td class="prod">normal <a data-link-type="grammar" href="https://www.w3.org/TR/css-values-4/#comb-one">|</a> compact</td>
+              <th><a data-cite="CSS-VALUES-4#value-defs">Value:</a></th>
+              <td class="prod">normal <a data-link-type="grammar" data-cite="CSS-VALUES-4#comb-one">|</a> compact</td>
             </tr>
             <tr>
-              <th><a href="https://www.w3.org/TR/css-cascade/#initial-values">Initial:</a></th>
+              <th><a data-cite="CSS-CASCADE-4#initial-values">Initial:</a></th>
               <td>normal</td>
             </tr>
             <tr>
-              <th><a href="https://www.w3.org/TR/css-cascade/#applies-to">Applies to:</a></th>
+              <th><a data-cite="CSS-CASCADE-4#applies-to">Applies to:</a></th>
               <td>All elements</td>
             </tr>
             <tr>
-              <th><a href="https://www.w3.org/TR/css-cascade/#inherited-property">Inherited:</a></th>
+              <th><a data-cite="CSS-CASCADE-4#inherited-property">Inherited:</a></th>
               <td>yes</td>
             </tr>
             <tr><th><a href="https://www.w3.org/TR/css-values/#percentages">Percentages:</a></th><td>n/a</td></tr>
             <tr>
-              <th><a href="https://www.w3.org/TR/css-cascade/#computed">Computed value:</a></th>
+              <th><a data-cite="CSS-CASCADE-4#computed">Computed value:</a></th>
               <td>specified keyword</td>
             </tr>
             <tr>
@@ -5042,24 +5065,24 @@
               </td>
             </tr>
             <tr class="value">
-              <th><a href="https://www.w3.org/TR/css-values/#value-defs">Value:</a></th>
-              <td class="prod">auto-add <a data-link-type="grammar" href="https://www.w3.org/TR/css-values-4/#comb-one">|</a> add(&lt;integer&gt;) <a data-link-type="grammar" href="https://www.w3.org/TR/css-values-4/#comb-one">|</a> &lt;integer&gt;</td>
+              <th><a data-cite="CSS-VALUES-4#value-defs">Value:</a></th>
+              <td class="prod">auto-add <a data-link-type="grammar" data-cite="CSS-VALUES-4#comb-one">|</a> add(&lt;integer&gt;) <a data-link-type="grammar" data-cite="CSS-VALUES-4#comb-one">|</a> &lt;integer&gt;</td>
             </tr>
             <tr>
-              <th><a href="https://www.w3.org/TR/css-cascade/#initial-values">Initial:</a></th>
+              <th><a data-cite="CSS-CASCADE-4#initial-values">Initial:</a></th>
               <td>0</td>
             </tr>
             <tr>
-              <th><a href="https://www.w3.org/TR/css-cascade/#applies-to">Applies to:</a></th>
+              <th><a data-cite="CSS-CASCADE-4#applies-to">Applies to:</a></th>
               <td>All elements</td>
             </tr>
             <tr>
-              <th><a href="https://www.w3.org/TR/css-cascade/#inherited-property">Inherited:</a></th>
+              <th><a data-cite="CSS-CASCADE-4#inherited-property">Inherited:</a></th>
               <td>yes</td>
             </tr>
             <tr><th><a href="https://www.w3.org/TR/css-values/#percentages">Percentages:</a></th><td>n/a</td></tr>
             <tr>
-              <th><a href="https://www.w3.org/TR/css-cascade/#computed">Computed value:</a></th>
+              <th><a data-cite="CSS-CASCADE-4#computed">Computed value:</a></th>
               <td>an integer, see below</td>
             </tr>
             <tr>
