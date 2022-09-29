@@ -242,10 +242,11 @@
             The <code>&lt;math&gt;</code>
             element accepts the attributes described
             in <a href="#global-attributes"></a> as well as the
-            following attribute:
+            following attributes:
           </p>
           <ul>
             <li><a>display</a></li>
+            <li><a>alttext</a></li>
           </ul>
           <p>
             The
@@ -266,6 +267,13 @@
             attribute is absent or has an invalid value, the User Agent
             stylesheet treats it the same as <code>inline</code>.
           </p>
+
+            
+	  <p>Systems implementing MathML Core may ignore
+	  <dfn><code>alttext</code></dfn>, however it is used by as
+	  alternative text by some legacy systems that do not
+	  implement math layout.</p>
+	   
           <p>
             If the <code>&lt;math&gt;</code> element does not have its computed
             <a><code>display</code> property</a> equal to
@@ -326,13 +334,6 @@
           </p>
           <pre class="css" data-include="user-agent-stylesheet/math.css"></pre>
 
-	  <p>The <code>&lt;math&gt;</code>
-            element should also accept following attribute as described in
-            <a href="#the-intent-and-arg-attributes"></a>.</p>
-            
-	    <ul>
-             <li><a><code>alttext</code></a></li>
-            </ul>
 
         </section>
         <section id="types-for-mathml-attribute-values">
@@ -374,9 +375,8 @@
             <li><a><code>scriptlevel</code></a></li>
             <li><a><code>style</code></a></li>
             <li><a><code>tabindex</code></a></li>
-            <li><a><code>intent</code></a></li>
-            <li><a><code>arg</code></a></li>
             <li><a href="#event-handler-content-attributes"><code>on*</code> event handler attributes</a></li>
+            <li>additional attributes, as described in <a href="#other-valid-attributes"></a></li>
           </ul>
         </section>
         <section id="attributes-common-to-html-and-mathml-elements">
@@ -643,20 +643,17 @@
             and <code>false</code> and 2, respectively.
           </div>
         </section>
-        <section id="the-intent-and-arg-attributes">
-          <h4>The <code>intent</code>, <code>arg</code> and <code>alttext</code> attributes</h4>
-          <p>MathML Core Level 1 defines no behavior for
-          <dfn><code>intent</code></dfn>, 
-          <dfn><code>arg</code></dfn> and
-	  <dfn><code>alttext</code></dfn> however these attributes should
-          be accepted as valid. [[MATHML4]] specifies how
-	  <code>intent</code> and <code>arg</code>
-          may be used to improve the accessibilty of
-          Presentation MathML. The <code>alttext</code> attribute may be used as alternative text by systems that do not implement MathML.</p>
-	  <p>
-	  <p>Future levels of MathML Core may
-          specify processing of these attributes in Web Platform
-          implementations.
+        <section id="other-valid-attributes">
+          <h4>Attributes Reserved as Valid</h4>
+          <p>The attributes
+          <code>intent</code> and <code>arg</code>
+	  are reserved as valid attributes.</p>
+          <p>While MathML Core Level 1 defines no behavior for these
+          attributes, and no functionality is currently implied by
+          this specification, validators must treat them as
+          valid. Future versions of this specification may or may not
+          define them. Authors should be aware that they are currently
+          in development and subject to change.
 	  </p>
 	</section>
       <section>
@@ -5815,9 +5812,8 @@
 		  </li>
                 </ul>
               </li>
-            </ul>
-          </li>
-        </ol>
+            </ol>
+          </section>
         <div id="operator-dictionary-entries-compact"
              data-include="tables/operator-dictionary-compact.html"></div>
 
@@ -5841,7 +5837,8 @@
               <a href="#operator-dictionary-categories-hexa-table"></a>
               rather than on each large subtable
               of <a href="#operator-dictionary-category-table"></a>.
-          </p>
+          </li>
+	  </ul>
         </div>
         <p id="stretchy-operator-axis">
           The <dfn>intrinsic stretch axis</dfn> a Unicode character
@@ -6115,7 +6112,7 @@
 
         <p>This feature is not available in MathML Core, where
         the <a><code>&lt;maction&gt;</code></a> element essentially behaves
-        like an <a><code>&lt;mrow&gt;</code></a> container with extra style.
+        like an <a><code>&lt;mrow&gt;</code></a> container with extra style.</p>
       </div>
       <p>An attacker can try to hang the UA by inserting very large
         stretchy operators, effectively making the algorithm
@@ -6194,7 +6191,6 @@
         UI serif font provides Asian glyphs:</p>
         <pre data-include="examples/example-without-screenshot-font-information-leakage-2.html"
              data-include-format="text"></pre>
-        <p>
       </div>
       <div class="example" id="font-information-leakage-3">
         <p>The following
@@ -6208,7 +6204,6 @@
         </p>
         <pre data-include="examples/example-without-screenshot-font-information-leakage-3.html"
              data-include-format="text"></pre>
-        <p>
       </div>
       <p>This specification relies on information from
         <a href="#opentype-math-table"></a> to render MathML content. One
