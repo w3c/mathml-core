@@ -266,13 +266,15 @@
             If the <code>display</code>
             attribute is absent or has an invalid value, the User Agent
             stylesheet treats it the same as <code>inline</code>.
+          </p> 
+	  <p>
+           This specification does not define any observable behavior that is
+           specific to the <dfn><code>alttext</code></dfn> attribute.
           </p>
-
-            
-	  <p>Systems implementing MathML Core may ignore
-	  <dfn><code>alttext</code></dfn>, however it is used by as
+          <div class="note">
+	  The <a><code>alttext</code></a> attribute may be used as
 	  alternative text by some legacy systems that do not
-	  implement math layout.</p>
+	  implement math layout.</div>
 	   
           <p>
             If the <code>&lt;math&gt;</code> element does not have its computed
@@ -333,8 +335,6 @@
             has rules to reset them by default.
           </p>
           <pre class="css" data-include="user-agent-stylesheet/math.css"></pre>
-
-
         </section>
         <section id="types-for-mathml-attribute-values">
           <h4>Types for MathML Attribute Values</h4>
@@ -646,15 +646,18 @@
         <section id="other-valid-attributes">
           <h4>Attributes Reserved as Valid</h4>
           <p>The attributes
-          <code>intent</code> and <code>arg</code>
+          <dfn><code>intent</code></dfn> and <dfn><code>arg</code></dfn>
 	  are reserved as valid attributes.</p>
-          <p>While MathML Core Level 1 defines no behavior for these
-          attributes, and no functionality is currently implied by
-          this specification, validators must treat them as
-          valid. Future versions of this specification may or may not
-          define them. Authors should be aware that they are currently
-          in development and subject to change.
-	  </p>
+          <p>
+           This specification does not define any observable behavior that is
+           specific to the <a><code>intent</code></a> and <a><code>arg</code></a> attributes.
+          </p>
+          <div class="note">
+           These attributes are described in [[MATHML4]] and
+	   future versions of this specification may or may not
+           define them. Authors should be aware that they are currently
+           in development and subject to change.
+	  </div>
 	</section>
       <section>
         <h3>Integration in the Web Platform</h3>
