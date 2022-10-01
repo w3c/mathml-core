@@ -328,6 +328,7 @@
         </section>
         <section id="types-for-mathml-attribute-values">
           <h4>Types for MathML Attribute Values</h4>
+          <p>In addition to CSS data types, some MathML attributes rely on the following MathML-specific types:</p>
           <dl>
             <dt><dfn>unsigned-integer</dfn></dt>
             <dd>An
@@ -335,17 +336,6 @@
               [[CSS-VALUES-4]], whose first character is neither
               U+002D HYPHEN-MINUS character (-) nor
               U+002B PLUS SIGN (+).
-            </dd>
-            <dt><dfn>length-percentage</dfn></dt>
-            <dd>A
-              <a data-cite="CSS-VALUES-4#typedef-length-percentage"><code>&lt;length-percentage&gt;</code></a>
-              value as defined in
-              [[CSS-VALUES-4]]
-            </dd>
-            <dt><dfn>color</dfn></dt>
-            <dd>A
-              <a data-cite="CSS-COLOR-3#colorunits"><code>&lt;color&gt;</code></a>
-              value as defined in [[CSS-COLOR-3]]
             </dd>
             <dt><dfn>boolean</dfn></dt>
             <dd>A string that is an
@@ -452,7 +442,8 @@
             and
             <dfn><code>mathbackground</code></dfn>
             attributes, if present, must
-            have a value that is a <a>color</a>.
+            have a value that is a
+            <a data-cite="CSS-COLOR-3#colorunits"><code>&lt;color&gt;</code></a>.
             In that case, the user agent is expected to treat these attributes as a
             <a data-cite="HTML/../#presentational-hints">presentational hint</a> setting the element's
             <a data-cite="CSS-COLOR-3#foreground"><code>color</code></a> and
@@ -467,7 +458,7 @@
             The
             <dfn><code>mathsize</code></dfn>
             attribute, if present, must
-            have a value that is a valid <a>length-percentage</a>.
+            have a value that is a valid <a data-cite="CSS-VALUES-4#typedef-length-percentage"><code>&lt;length-percentage&gt;</code></a>.
             In that case, the user agent is expected to treat the attribute as a
             <a data-cite="HTML/../#presentational-hints">presentational hint</a> setting the element's
             <a data-cite="CSS-FONTS-4#font-size-prop"><code>font-size</code></a>
@@ -1692,17 +1683,17 @@
               <dfn><code>rspace</code></dfn>,
               <dfn><code>minsize</code></dfn>
               properties of an <a>embellished operator</a> are
-              <a>length-percentage</a>.
+              <a data-cite="CSS-VALUES-4#typedef-length-percentage"><code>&lt;length-percentage&gt;</code></a>.
               The <dfn><code>maxsize</code></dfn> property
               of an <a>embellished operator</a> is either a
-              <a>length-percentage</a> or ∞.
+              <a data-cite="CSS-VALUES-4#typedef-length-percentage"><code>&lt;length-percentage&gt;</code></a> or ∞.
               The
               <code>lspace</code>,
               <code>rspace</code>,
               <code>minsize</code> and
               <code>maxsize</code> attributes on the
               <a><code>&lt;mo&gt;</code></a> element, if present,
-              must be a <a>length-percentage</a>.
+              must be a <a data-cite="CSS-VALUES-4#typedef-length-percentage"><code>&lt;length-percentage&gt;</code></a>.
             </p>
             <p>
               The <dfn id="algorithm-for-determining-the-properties-of-an-embellished-operator">algorithm for determining the properties of
@@ -2065,7 +2056,7 @@
             <dfn id="attribute-mspace-width"><code>mspace@width</code></dfn>,
             <dfn id="attribute-mspace-height"><code>mspace@height</code></dfn>,
             <dfn id="attribute-mspace-depth"><code>mspace@depth</code></dfn>, if present, must
-            have a value that is a valid <a>length-percentage</a>.
+            have a value that is a valid <a data-cite="CSS-VALUES-4#typedef-length-percentage"><code>&lt;length-percentage&gt;</code></a>.
             An unspecified attribute, a percentage  value, or an invalid value
             is interpreted as <code>0</code>.
             If one of the requested values calculated is negative then it is
@@ -2478,7 +2469,7 @@
             attribute indicates the <dfn>fraction line thickness</dfn>
             to use for the fraction bar.
             If present, it must
-            have a value that is a valid <a>length-percentage</a>.
+            have a value that is a valid <a data-cite="CSS-VALUES-4#typedef-length-percentage"><code>&lt;length-percentage&gt;</code></a>.
             If the attribute is absent or has an invalid value,
             <a>FractionRuleThickness</a> is used as the default
             value. A percentage is interpreted relative to that default value.
@@ -3111,7 +3102,7 @@
             and
             <dfn id="attribute-mpadded-voffset"><code>mpadded@voffset</code></dfn>
             if present, must
-            have a value that is a valid <a>length-percentage</a>.
+            have a value that is a valid <a data-cite="CSS-VALUES-4#typedef-length-percentage"><code>&lt;length-percentage&gt;</code></a>.
           </p>
           <div class="example" id="mpadded-example">
             <p>In the following example, <a>&lt;mpadded&gt;</a> is used to
@@ -3141,7 +3132,8 @@
               <li>If the <code>width</code> (respectively <code>height</code>,
                 <code>depth</code>, <code>lspace</code>, <code>voffset</code>)
                 attribute is absent, invalid or a
-                <a><code>length-percentage</code></a> then the requested width
+                <a data-cite="CSS-VALUES-4#typedef-length-percentage"><code>&lt;length-percentage&gt;</code></a>
+                then the requested width
                 (respectively height, depth, lspace, voffset)
                 is the inner inline size
                 (respectively inner <a>line-ascent</a>, inner line-descent,
