@@ -432,7 +432,7 @@ md.write(automaticallyGenerated)
 
 md.write('<figure id="operator-dictionary-table">')
 md.write("<table class='sortable'>\n");
-md.write("<tr><th>Content</th><th>Stretch Axis</th><th>form</th><th>rspace</th><th>lspace</th><th>properties</th></tr>\n")
+md.write("<tr><th>Content</th><th>Stretch Axis</th><th>form</th><th>lspace</th><th>rspace</th><th>properties</th></tr>\n")
 for name, item in sorted(knownTables.items(),
                          key=(lambda v: len(v[1]["singleChar"])),
                          reverse=True):
@@ -644,7 +644,7 @@ category_for_form = [0, 0, 0]
 value_index = 0
 md.write('<figure id="operator-dictionary-categories-values">')
 md.write("<table>");
-md.write("<tr><th>Category</th><th>Form</th><th>Encoding</th><th>rspace</th><th>lspace</th><th>properties</th></tr>\n")
+md.write("<tr><th>Category</th><th>Form</th><th>Encoding</th><th>lspace</th><th>rspace</th><th>properties</th></tr>\n")
 md.write("<tr><td>Default</td><td>N/A</td><td>N/A</td><td><code>0.2777777777777778em</code></td><td><code>0.2777777777777778em</code></td><td>N/A</td></tr>\n");
 md.write("<tr><td>ForceDefault</td><td>N/A</td><td>N/A</td><td><code>0.2777777777777778em</code></td><td><code>0.2777777777777778em</code></td><td>N/A</td></tr>\n");
 for name, item in sorted(knownTables.items(),
