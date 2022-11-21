@@ -1,4 +1,5 @@
 * {
   font-size: math;
   display: block math;
+  writing-mode: horizontal-tb !important;
 }
