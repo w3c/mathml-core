@@ -761,16 +761,27 @@
             All documents containing <a>MathML Core elements</a> must include
             CSS rules described in <a href="#user-agent-stylesheet"></a>
             as part of user-agent level style sheet defaults.
-          </p>
-          <p>
-            The following CSS features are not supported and
-            must be ignored:
+            In particular, this adds <code>!important</code> rules for
+            the following properties on all MathML elements:
           </p>
           <ul>
-            <li>Vertical math layout:
-              <code>writing-mode</code>
-              is treated as <code>horizontal-tb</code> on all MathML
-              elements.</li>
+            <li>
+              <a data-cite="CSS-WRITING-MODES-3#writing-mode">writing mode</a>
+              forced to <code>horizontal-lr</code>.
+            </li>
+            <li>
+              <a data-cite="CSS-OVERFLOW-3#propdef-overflow">overflow</a>
+              forced to <code>hidden</code>.
+            </li>
+            <li>
+              <a data-cite="CSS2#propdef-float">float</a>
+              forced to <code>none</code>.
+            </li>
+          </ul>
+          <p>
+            The following CSS features are not supported and must be ignored:
+          </p>
+          <ul>
             <li>
               Line breaking inside math formulas:
               <code>white-space</code>
@@ -786,11 +797,6 @@
               with computed display value
               <a href="#new-display-math-value"><code>block math</code> or
                 <code>inline math</code></a>.
-            </li>
-            <li>
-              Floats:
-              <code>float</code> and <code>clear</code>
-              are treated as <code>none</code> on all MathML elements.
             </li>
             <li>
               Alignment properties:
