@@ -190,7 +190,6 @@
           <li><a>&lt;mtr&gt;</a></li>
           <li><a>&lt;munder&gt;</a></li>
           <li><a>&lt;munderover&gt;</a></li>
-          <li><a>&lt;none&gt;</a></li>
           <li><a>&lt;semantics&gt;</a></li>
         </ol>
         <p>The <dfn>grouping elements</dfn> are
@@ -201,7 +200,6 @@
           <a>&lt;mprescripts&gt;</a>,
           <a>&lt;mrow&gt;</a>,
           <a>&lt;mstyle&gt;</a>,
-          <a>&lt;none&gt;</a>,
           <a>&lt;semantics&gt;</a> and <a>unknown MathML elements</a>.</p>
         <p>The <dfn>scripted elements</dfn> are
           <a>&lt;mmultiscripts&gt;</a>,
@@ -4111,21 +4109,18 @@
           <h4>Prescripts and Tensor Indices <code>&lt;mmultiscripts&gt;</code></h4>
           <p>
             Presubscripts and tensor notations are represented by
-            the <dfn><code>&lt;mmultiscripts&gt;</code></dfn>
-            with hints given by the
-            <dfn><code>&lt;mprescripts&gt;</code></dfn>
-            (to distinguish postscripts and prescripts)
-            and
-            <dfn><code>&lt;none&gt;</code></dfn> elements
-            (to indicate empty scripts).
-            These elements accept the attributes described in
+            the <dfn><code>&lt;mmultiscripts&gt;</code></dfn> element.
+            The <dfn><code>&lt;mprescripts&gt;</code></dfn> element is
+            used as a separator between the postscripts and prescripts.
+            These two elements accept the attributes described in
             <a href="#global-attributes"></a>.
           </p>
           <div class="example" id="mmultiscripts-example">
             <p>
               The following example shows basic use of prescripts
-              and postscripts, involving
-              <a>&lt;none&gt;</a> and <a>&lt;mprescripts&gt;</a>.
+              and postscripts, involving a <a>&lt;mprescripts&gt;</a>.
+              Empty <a>&lt;mrow&gt;</a> elements are used at positions where
+              no scripts are rendered.
               The font-size is automatically scaled down within the scripts.
             </p>
             <pre data-include="examples/example-mmultiscripts.html"
@@ -4134,9 +4129,9 @@
           </div>
           <p>
             If the
-            <code>&lt;mmultiscripts&gt;</code>,
-            <code>&lt;mprescripts&gt;</code> or
-            <code>&lt;none&gt;</code> elements do not have their
+            <code>&lt;mmultiscripts&gt;</code> or
+            <code>&lt;mprescripts&gt;</code>
+            elements do not have their
             computed
             <a><code>display</code> property</a> equal to <code>block math</code>
             or <code>inline math</code>
@@ -4145,9 +4140,9 @@
             Otherwise, the layout below is performed.
           </p>
           <p>
-            The empty
-            <code>&lt;mprescripts&gt;</code> and <code>&lt;none&gt;</code>
-            elements are laid out as an <a><code>&lt;mrow&gt;</code></a>
+            The
+            <code>&lt;mprescripts&gt;</code>
+            element is laid out as an <a><code>&lt;mrow&gt;</code></a>
             element.
           </p>
           <p>
@@ -4184,15 +4179,11 @@
             If an <code>&lt;mmultiscripts&gt;</code> element is not valid then
             it is laid out the same as the
             <a><code>&lt;mrow&gt;</code></a> element.
-            Otherwise the layout algorithm is explained below.
+            Otherwise the layout algorithm is performed as in
+            <a href="#base-with-prescripts-and-postscripts"></a>.
           </p>
-          <div class="note">
-            The <code>&lt;none&gt;</code> element is preserved for backward
-            compatibility reasons but is actually not taken into account
-            in the layout algorithm.
-          </div>
           <section>
-            <h5>Base with prescripts and postscripts</h5>
+            <h5 id="base-with-prescripts-and-postscripts">Base with prescripts and postscripts</h5>
             <p>
               The <code>&lt;mmultiscripts&gt;</code> element is laid out as
               shown on <a href="#figure-box-mmultiscripts"></a>.
@@ -4419,7 +4410,7 @@
                 <code>&lt;msub&gt;</code>
                 (respectively <code>&lt;msup&gt;</code>) element.
                 In order to keep the algorithm simple, no attempt is made to
-                handle empty or <code>&lt;none&gt;</code> scripts in a special
+                handle empty scripts in a special
                 way.
               </p>
             </div>
