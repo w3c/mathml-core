@@ -44,7 +44,7 @@
           mdn: false,
           testSuiteURI: "https://github.com/web-platform-tests/wpt/tree/master/mathml/",
           implementationReportURI: "https://wpt.fyi/results/?label=master&label=experimental&aligned&q=math%20%20not%28path%3A%2Fjs%29",
-        xref: ['html', 'infra', 'css-display-3', 'css-text-3', 'web-animations', 'css-fonts-4', 'dom', 'cssom-view', 'css-sizing-3', 'css-align-3', 'css-box-4', 'css-values-4', 'css-backgrounds-3', 'css-text-decor-4', 'svg'],
+        xref: ['html', 'infra', 'css-display-3', 'css-text-3', 'web-animations', 'css-fonts-4', 'dom', 'cssom-view', 'css-sizing-3', 'css-align-3', 'css-box-4', 'css-values-4', 'css-backgrounds-3', 'css-text-decor-4', 'svg', 'css-writing-modes-4', 'css-color-4', 'css-box-4'],
           localBiblio: {
               "MATHML4": {
                   title: "Mathematical Markup Language (MathML) Version 4.0",
@@ -405,7 +405,7 @@
             to <code>ltr</code> or <code>rtl</code>.
             In that case, the user agent is expected to treat the attribute as a
             <a data-cite="HTML/../#presentational-hints">presentational hint</a> setting the element's
-            <a data-cite="CSS-WRITING-MODES-3#direction"><code>direction</code></a>
+            <a data-xref-type="css-property">direction</a>
             property to the corresponding value.
             More precisely, an
             <a>ASCII case-insensitive</a> match
@@ -419,7 +419,7 @@
             written from left to right and so the
             <a>user agent stylesheet</a> resets
             the
-            <a data-cite="CSS-WRITING-MODES-3#direction"><code>direction</code></a>
+            <a data-xref-type="css-property">direction</a>
             property accordingly on the [^math^]
             elements.
           </div>
@@ -452,10 +452,10 @@
             <dfn class="element-attr">mathbackground</dfn>
             attributes, if present, must
             have a value that is a
-            <a data-cite="CSS-COLOR-3#colorunits"><code>&lt;color&gt;</code></a>.
+            <a data-xref-type="css-type">&lt;color&gt;</a>.
             In that case, the user agent is expected to treat these attributes as a
             <a data-cite="HTML/../#presentational-hints">presentational hint</a> setting the element's
-            <a data-cite="CSS-COLOR-3#foreground"><code>color</code></a> and
+            <a data-xref-type="css-property">color</a> and
             <a data-xref-type="css-property">background-color</a>
             properties to the corresponding values.
             The <code>mathcolor</code> attribute describes the foreground fill
@@ -509,7 +509,7 @@
             <code>stretched</code>.
             In that case, the user agent is expected to treat the attribute as a
             <a data-cite="HTML/../#presentational-hints">presentational hint</a> setting the element's
-            <a><code>text-transform</code></a>
+            <a data-xref-type="css-property">text-transform</a>
             property to the corresponding value.
             More precisely, an
             <a>ASCII case-insensitive</a> match
@@ -759,7 +759,7 @@
             CSS rules described in <a href="#user-agent-stylesheet"></a>
             as part of user-agent level style sheet defaults.
             In particular, this adds <code>!important</code> rules to force
-            <a data-cite="CSS-WRITING-MODES-3#writing-mode"><code>writing mode</code></a>
+            <a>writing mode</a>
             to <code>horizontal-lr</code> on all MathML elements.
           </p>
           <p>
@@ -912,36 +912,36 @@
           </ul>
           <p>
             In order to specify math layout in different
-            <a data-cite="CSS-WRITING-MODES-3#writing-mode">writing modes</a>,
-            this specification uses concepts from [[CSS-WRITING-MODES-3]]:
+            <a>writing modes</a>,
+            this specification uses concepts from [[CSS-WRITING-MODES-4]]:
           </p>
           <ul>
             <li>
-              <a data-cite="CSS-WRITING-MODES-3#abstract-dimensions">abstract dimensions</a>:
-              <a data-cite="CSS-WRITING-MODES-3#block-dimension"><dfn>block dimension</dfn></a>,
-              <a data-cite="CSS-WRITING-MODES-3#inline-dimension"><dfn>inline dimension</dfn></a>,
-              <a data-cite="CSS-WRITING-MODES-3#block-axis"><dfn>block axis</dfn></a>,
-              <a data-cite="CSS-WRITING-MODES-3#inline-axis"><dfn>inline axis</dfn></a>,
-              <a data-cite="CSS-WRITING-MODES-3#block-size"><dfn>block size</dfn></a>,
-              <a data-cite="CSS-WRITING-MODES-3#inline-size"><dfn>inline size</dfn></a>.
+              <a>abstract dimensions</a>:
+              <a>block dimension</a>,
+              <a>inline dimension</a>,
+              <a>block axis</a>,
+              <a>inline axis</a>,
+              <a>block size</a>,
+              <a>inline size</a>.
             </li>
             <li>
-              <a data-cite="CSS-WRITING-MODES-3#logical-directions">flow-relative directions</a>:
-              <a data-cite="CSS-WRITING-MODES-3#inline-start"><dfn>inline-start</dfn></a>,
-              <a data-cite="CSS-WRITING-MODES-3#inline-end"><dfn>inline-end</dfn></a>,
-              <a data-cite="CSS-WRITING-MODES-3#block-start"><dfn>block-start</dfn></a>.
+              <a>flow-relative directions</a>:
+              <a>inline-start</a>,
+              <a>inline-end</a>,
+              <a>block-start</a>.
             </li>
             <li>
-              <a data-cite="CSS-WRITING-MODES-3#line-relative-direction">line-relative directions</a>:
-              <a data-cite="CSS-WRITING-MODES-3#line-left"><dfn>line-left</dfn></a>,
-              <a data-cite="CSS-WRITING-MODES-3#line-over"><dfn>line-over</dfn></a>,
-              <a data-cite="CSS-WRITING-MODES-3#line-under"><dfn>line-under</dfn></a>.
+              <a>line-relative directions</a>:
+              <a>line-left</a>,
+              <a>line-over</a>,
+              <a>line-under</a>.
             </li>
           </ul>
           <div class="note">
             Unless specified otherwise,
             the figures in this specification use a
-            <a data-cite="CSS-WRITING-MODES-3#writing-mode">writing mode</a>
+            <a>writing mode</a>
             of <code>horizontal-lr</code> and <code>ltr</code>.
             See <a href="#box-model-horizontal-tb-rtl"></a>,
             <a href="#box-model-vertical-lr"></a> and
@@ -972,7 +972,7 @@
                 <a>first baseline set</a>
                 and
                 <a>last baseline set</a>.
-                The following <a data-cite="CSS-WRITING-MODES-3#intro-baselines"><dfn>baselines</dfn></a> are defined for MathML boxes:
+                The following <a>baselines</a> are defined for MathML boxes:
               </p>
               <ol>
                 <li>
@@ -1103,7 +1103,7 @@
               <li>
                 The <a>inline offset</a> of a child box is
                 the <a>line-left offset</a> if the CSS property
-                <a data-cite="CSS-WRITING-MODES-3#direction">direction</a>
+                <a data-xref-type="css-property">direction</a>
                 is <code>ltr</code> and
                 is the <a>inline size</a> of the box −
                 (<a>line-left offset</a> + <a>inline size</a> of
@@ -1113,7 +1113,7 @@
                 The <a>block offset</a> of the <a>alphabetic baseline</a> of a box
                 is the <a>line-ascent</a>
                 if the CSS property
-                <a data-cite="CSS-WRITING-MODES-3#propdef-writing-mode">writing-mode</a>
+                <a data-xref-type="css-property">writing-mode</a>
                 is <code>horizontal-lr</code>,
                 <code>vertical-rl</code> or <code>sideways-rl</code>
                 and is the <a>line-descent</a> otherwise.
@@ -1203,7 +1203,7 @@
                 are obtained from the
                 <a>padding box</a>
                 by taking into account the corresponding
-                <a data-cite="CSS-BOX-3#borders"><code>border-width</code></a>
+                <a data-xref-type="css-property">border-width</a>
                 property as described in CSS.
               </p>
               <p>
@@ -1231,7 +1231,7 @@
                 are obtained from the
                 <a>border box</a>
                 by taking into account the corresponding
-                <a data-cite="CSS-BOX-3#margin-physical"><code>margin</code></a>
+                <a data-xref-type="css-property">margin</a>
                 properties as described in CSS.
               </p>
               <p>
@@ -1807,10 +1807,10 @@
             </p>
             <p>
               The text of the operator must only be painted if the
-              <a data-cite="CSS2/visufx.html#propdef-visibility"><code>visibility</code></a> of
+              <a data-xref-type="css-property">visibility</a> of
               the <code>&lt;mo&gt;</code> element is <code>visible</code>.
               In that case, it must be painted with the
-              <a data-cite="CSS-COLOR-3#foreground"><code>color</code></a>
+              <a data-xref-type="css-property">color</a>
               of the <code>&lt;mo&gt;</code> element.
             </p>
             <p>Operators are laid out as follows:</p>
@@ -2541,10 +2541,10 @@
               <code>&lt;mfrac&gt;</code>
               element is laid out as shown on <a href="#figure-box-mfrac"></a>.
               The fraction bar must only be painted if the
-              <a data-cite="CSS2/visufx.html#propdef-visibility"><code>visibility</code></a> of
+              <a data-xref-type="css-property">visibility</a> of
               the <code>&lt;mfrac&gt;</code> element is <code>visible</code>.
               In that case, the fraction bar must be painted with the
-              <a data-cite="CSS-COLOR-3#foreground"><code>color</code></a>
+              <a data-xref-type="css-property">color</a>
               of the <code>&lt;mfrac&gt;</code> element.
             </p>
             <figure id="figure-box-mfrac">
@@ -2837,11 +2837,11 @@
             <h5>Radical symbol</h5>
             <p>
               The radical symbol must only be painted if the
-              <a data-cite="CSS2/visufx.html#propdef-visibility"><code>visibility</code></a> of
+              <a data-xref-type="css-property">visibility</a> of
               the <code>&lt;msqrt&gt;</code> or <code>&lt;mroot&gt;</code>
               element is <code>visible</code>.
               In that case, the radical symbol must be painted with the
-              <a data-cite="CSS-COLOR-3#foreground"><code>color</code></a>
+              <a data-xref-type="css-property">color</a>
               of that element.
             </p>
             <p>
@@ -4506,7 +4506,7 @@
           <pre data-include="user-agent-stylesheet/mtable.css"></pre>
           <p>
             The <code>mtable</code> element is as a CSS
-            <a data-cite="CSS-DISPLAY-3#valdef-display-table">table</a>
+            <a data-xref-type="css-value" data-xref-for="display">table</a>
             and the
             <a>min-content inline size</a>, <a>max-content inline size</a>,
             <a>inline size</a>, <a>block size</a>,
@@ -4709,11 +4709,11 @@
           <tbody>
             <tr>
               <th>Name:</th>
-              <td><a class="css" data-link-type="property" data-cite="CSS-DISPLAY-3#propdef-display">display</a></td>
+              <td><a class="css" data-xref-type="css-property">display</a></td>
             </tr>
             <tr class="value">
               <th><a data-cite="CSS-VALUES-4#value-defs">New values:</a></th>
-              <td class="prod"><a data-cite="CSS-DISPLAY-3#typedef-display-outside">&ltdisplay-outside&gt;</a> <a data-cite="CSS-VALUES-4#comb-any">||</a> [ <a data-cite="CSS-DISPLAY-3#typedef-display-inside">&ltdisplay-inside&gt;</a> <a data-cite="CSS-VALUES-4#comb-one">|</a> math ]</td>
+              <td class="prod"><a data-xref-type="css-type">&lt;display-outside&gt;</a> <a data-cite="CSS-VALUES-4#comb-any">||</a> [ <a data-xref-type="css-type">&lt;display-inside&gt;</a> <a data-cite="CSS-VALUES-4#comb-one">|</a> math ]</td>
             </tr>
           </tbody>
         </table>
@@ -4761,7 +4761,7 @@
       </section>
       <section id="new-text-transform-values">
         <h3>New <code>text-transform</code> values</h3>
-        <p>The <dfn><code>text-transform</code></dfn> property
+        <p>The <a data-xref-type="css-property">text-transform</a> property
           from <a data-cite="CSS-TEXT-3"></a>
           is extended with new values:
         </p>
@@ -4769,7 +4769,7 @@
           <tbody>
             <tr>
               <th>Name:</th>
-              <td><a class="css" data-link-type="property" data-cite="CSS-TEXT-3#text-transform-property" id="ref-for-propdef-text-transform">text-transform</a>
+              <td><a class="css" data-xref-type="css-property" id="ref-for-propdef-text-transform">text-transform</a>
               </td>
             </tr>
             <tr class="value">
@@ -4920,7 +4920,7 @@
         <p>
           When <code>math-style</code> is <code>compact</code>,
           the math layout on descendants tries to minimize the
-          <a data-cite="CSS-WRITING-MODES-3#extent">logical height</a> by
+          <a>logical height</a> by
           applying the following rules:
         </p>
         <ul>
