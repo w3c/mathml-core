@@ -161,57 +161,57 @@
           <dfn>Unknown MathML element</dfn>.
         </p>
         <ol>
-          <li>[^&lt;annotation&gt;^]</li>
-          <li>[^&lt;annotation-xml&gt;^]</li>
-          <li>[^&lt;maction&gt;^]</li>
-          <li>[^&lt;math&gt;^]</li>
-          <li>[^&lt;merror&gt;^]</li>
-          <li>[^&lt;mfrac&gt;^]</li>
-          <li>[^&lt;mi&gt;^]</li>
-          <li>[^&lt;mmultiscripts&gt;^]</li>
-          <li>[^&lt;mn&gt;^]</li>
-          <li>[^&lt;mo&gt;^]</li>
-          <li>[^&lt;mover&gt;^]</li>
-          <li>[^&lt;mpadded&gt;^]</li>
-          <li>[^&lt;mphantom&gt;^]</li>
-          <li>[^&lt;mprescripts&gt;^]</li>
-          <li>[^&lt;mroot&gt;^]</li>
-          <li>[^&lt;mrow&gt;^]</li>
-          <li>[^&lt;ms&gt;^]</li>
-          <li>[^&lt;mspace&gt;^]</li>
-          <li>[^&lt;msqrt&gt;^]</li>
-          <li>[^&lt;mstyle&gt;^]</li>
-          <li>[^&lt;msub&gt;^]</li>
-          <li>[^&lt;msubsup&gt;^]</li>
-          <li>[^&lt;msup&gt;^]</li>
-          <li>[^&lt;mtable&gt;^]</li>
-          <li>[^&lt;mtd&gt;^]</li>
-          <li>[^&lt;mtext&gt;^]</li>
-          <li>[^&lt;mtr&gt;^]</li>
-          <li>[^&lt;munder&gt;^]</li>
-          <li>[^&lt;munderover&gt;^]</li>
-          <li>[^&lt;semantics&gt;^]</li>
+          <li>[^annotation^]</li>
+          <li>[^annotation-xml^]</li>
+          <li>[^maction^]</li>
+          <li>[^math^]</li>
+          <li>[^merror^]</li>
+          <li>[^mfrac^]</li>
+          <li>[^mi^]</li>
+          <li>[^mmultiscripts^]</li>
+          <li>[^mn^]</li>
+          <li>[^mo^]</li>
+          <li>[^mover^]</li>
+          <li>[^mpadded^]</li>
+          <li>[^mphantom^]</li>
+          <li>[^mprescripts^]</li>
+          <li>[^mroot^]</li>
+          <li>[^mrow^]</li>
+          <li>[^ms^]</li>
+          <li>[^mspace^]</li>
+          <li>[^msqrt^]</li>
+          <li>[^mstyle^]</li>
+          <li>[^msub^]</li>
+          <li>[^msubsup^]</li>
+          <li>[^msup^]</li>
+          <li>[^mtable^]</li>
+          <li>[^mtd^]</li>
+          <li>[^mtext^]</li>
+          <li>[^mtr^]</li>
+          <li>[^munder^]</li>
+          <li>[^munderover^]</li>
+          <li>[^semantics^]</li>
         </ol>
         <p>The <dfn>grouping elements</dfn> are
-          [^&lt;maction&gt;^],
-          [^&lt;math&gt;^],
-          [^&lt;merror&gt;^],
-          [^&lt;mphantom&gt;^],
-          [^&lt;mprescripts&gt;^],
-          [^&lt;mrow&gt;^],
-          [^&lt;mstyle&gt;^],
-          [^&lt;semantics&gt;^] and <a>unknown MathML elements</a>.</p>
+          [^maction^],
+          [^math^],
+          [^merror^],
+          [^mphantom^],
+          [^mprescripts^],
+          [^mrow^],
+          [^mstyle^],
+          [^semantics^] and <a>unknown MathML elements</a>.</p>
         <p>The <dfn>scripted elements</dfn> are
-          [^&lt;mmultiscripts&gt;^],
-          [^&lt;mover&gt;^],
-          [^&lt;msub&gt;^],
-          [^&lt;msubsup&gt;^],
-          [^&lt;msup&gt;^],
-          [^&lt;munder&gt;^] and
-          [^&lt;munderover&gt;^].
+          [^mmultiscripts^],
+          [^mover^],
+          [^msub^],
+          [^msubsup^],
+          [^msup^],
+          [^munder^] and
+          [^munderover^].
         </p>
         <p>The <dfn>radical elements</dfn> are
-          [^&lt;mroot&gt;^] and [^&lt;msqrt&gt;^].
+          [^mroot^] and [^msqrt^].
         </p>
         <p>
           The attributes defined in this specification have no namespace
@@ -232,7 +232,7 @@
         <section id="the-top-level-math-element">
           <h4>The Top-Level <code>&lt;math&gt;</code> Element</h4>
           <p>MathML specifies a single top-level or root
-            <dfn class="element" data-lt="math">&lt;math&gt;</dfn> element, which encapsulates each
+            <dfn class="element">math</dfn> element, which encapsulates each
             instance of MathML markup within a document. All other MathML content
             must be contained in a <code>&lt;math&gt;</code> element.
           </p>
@@ -281,7 +281,7 @@
             then it is laid out according to the CSS specification where
             the corresponding value is described.
             Otherwise the layout algorithm of the
-            <a><code>&lt;mrow&gt;</code></a> element is used to produce a
+            [^mrow^] element is used to produce a
             box. That MathML box is used as the content for the layout of
             the element, as described by CSS for <code>display: block</code>
             (if the computed value is <code>block math</code>) or
@@ -299,7 +299,7 @@
             respectively.
           </div>
           <div class="example" id="math-example">
-            <p>In the following example, a [^&lt;math&gt;^] formula
+            <p>In the following example, a [^math^] formula
               is rendered in display mode on a new line and taking full width,
               with the math content centered within the container:</p>
             <pre data-include="examples/example-math-display-block.html"
@@ -309,7 +309,7 @@
               inline mode. The formula is embedded in the paragraph of text
               without forced line breaking.
               The baselines specified by the layout algorithm of the
-              <a><code>&lt;mrow&gt;</code></a> are used for vertical
+              [^mrow^] are used for vertical
               alignment. Note that
               the middle of sum and equal symbols or fractions are all aligned,
               but not with the alphabetical baseline of the surrounding
@@ -420,7 +420,7 @@
             <a>user agent stylesheet</a> resets
             the
             <a data-cite="CSS-WRITING-MODES-3#direction"><code>direction</code></a>
-            property accordingly on the <a><code>&lt;math&gt;</code></a>
+            property accordingly on the [^math^]
             elements.
           </div>
           <div class="example" id="dir-example">
@@ -541,7 +541,7 @@
 	    <code>mathvariant</code> values other than <code>normal</code>
             are implemented for compatibility with full MathML and legacy editors that can't access characters in Plane 1 of Unicode. Authors are encouraged to use the corresponding Unicode characters.
             The <code>normal</code> value is still important to cancel automatic
-            italic of the <a><code>&lt;mi&gt;</code></a> element.
+            italic of the [^mi^] element.
           </div>
           <div class="note">
             <p>It is sometimes needed to distinguish between
@@ -617,7 +617,7 @@
           </p>
           <div class="example" id="displaystyle-scriptlevel-example">
             <p>
-              In this example, an [^&lt;munder&gt;^]
+              In this example, an [^munder^]
               element is used to attach a
               script "A" to a base "∑". By default, the summation
               symbol is rendered with the font-size inherited from its
@@ -693,7 +693,7 @@
               proper <code>&lt;requiredExtensions&gt;</code>) are used to
               embed a MathML formula with a text fallback, inside a diagram.
               HTML <code>input</code> element is used within the
-              [^&lt;mtext&gt;^]
+              [^mtext^]
               to include an interactive input field inside a mathematical
               formula.
             </p>
@@ -715,21 +715,21 @@
                 Any
                 <a>phrasing content</a>
                 can be used inside
-                <a><code>&lt;mi&gt;</code></a>,
-                <a><code>&lt;mo&gt;</code></a>,
-                <a><code>&lt;mn&gt;</code></a>,
-                <a><code>&lt;ms&gt;</code></a> and
-                <a><code>&lt;mtext&gt;</code></a>
+                [^mi^],
+                [^mo^],
+                [^mn^],
+                [^ms^] and
+                [^mtext^]
                 elements.
               </li>
               <li>
                 The <code>&lt;svg&gt;</code> element can be used inside
-                <a><code>&lt;annotation-xml&gt;</code></a> elements.
+                [^annotation-xml^] elements.
               </li>
               <li>
                 Any <a>flow content</a>
                 can be used inside
-                <a><code>&lt;annotation-xml&gt;</code></a> elements with
+                [^annotation-xml^] elements with
                 encoding
                 <code>application/xhtml+xml</code> or <code>text/html</code>.
               </li>
@@ -868,7 +868,7 @@
             apply, as defined in that specification.
           </p>
           <p>
-            The contents of embedded <a><code>&lt;math&gt;</code></a> elements
+            The contents of embedded [^math^] elements
             (including HTML elements inside token elements)
             contribute to the sequential focus order of the containing owner HTML
             document (combined sequential focus order).
@@ -894,15 +894,15 @@
             </li>
             <li>
               For <a href="#tabular-math">Tabular MathML elements</a>
-              <a><code>&lt;mtable&gt;</code></a>,
-              <a><code>&lt;mtr&gt;</code></a>,
-              <a><code>&lt;mtd&gt;</code></a> it is respectively equal to
+              [^mtable^],
+              [^mtr^],
+              [^mtd^] it is respectively equal to
               <code>inline-table</code>,
               <code>table-row</code> and
               <code>table-cell</code>.
             </li>
-            <li>For all but the first children of the [^&lt;maction&gt;^]
-              and [^&lt;semantics&gt;^] elements, it is equal to
+            <li>For all but the first children of the [^maction^]
+              and [^semantics^] elements, it is equal to
               <code>none</code>.
             </li>
             <li>
@@ -1290,17 +1290,17 @@
             MathML element.
           </p>
           <div class="example" id="anonymous-mrow-example">
-            <p>In the following example, the [^&lt;math&gt;^] and
-              [^&lt;mrow&gt;^] elements are laid out as described in section
+            <p>In the following example, the [^math^] and
+              [^mrow^] elements are laid out as described in section
               <a href="#layout-of-mrow"></a>. In particular, the
               <code>&lt;math&gt;</code> element adds proper spacing around its
               <code>&lt;mo&gt;≠&lt;/mo&gt;</code> child and the
               <code>&lt;mrow&gt;</code> element stretches its
               <code>&lt;mo&gt;|&lt;/mo&gt;</code> children vertically.
             </p>
-            <p>The [^&lt;mtd&gt;^] element has
+            <p>The [^mtd^] element has
               <code>display: table-cell</code> and the
-              [^&lt;msqrt&gt;^] element displays a radical symbol around its
+              [^msqrt^] element displays a radical symbol around its
               children. However, they also place their children in a way that
               is similar to what is described in section
               <a href="#layout-of-mrow"></a>: the
@@ -1355,7 +1355,7 @@
           <h4>Text <code>&lt;mtext&gt;</code></h4>
           <p>
             The
-            <dfn class="element" data-lt="mtext">&lt;mtext&gt;</dfn>
+            <dfn class="element">mtext</dfn>
             element is used to represent arbitrary text
             that should be rendered as itself. In general, the
             <code>&lt;mtext&gt;</code> element is intended to denote
@@ -1366,7 +1366,7 @@
             in <a href="#global-attributes"></a>.
           </p>
           <div class="example" id="mtext-example">
-            <p>In the following example, [^&lt;mtext&gt;^] is used
+            <p>In the following example, [^mtext^] is used
               to put conditional words in a definition:</p>
             <pre data-include="examples/example-mtext.html"
                  data-include-format="text"></pre>
@@ -1426,7 +1426,7 @@
           <h4>Identifier <code>&lt;mi&gt;</code></h4>
           <p>
             The
-            <dfn class="element" data-lt="mi">&lt;mi&gt;</dfn>
+            <dfn class="element">mi</dfn>
             element represents a symbolic name or
             arbitrary text
             that should be rendered as an identifier. Identifiers can include
@@ -1435,7 +1435,7 @@
           <p>
             The <code>&lt;mi&gt;</code> element accepts the attributes described
             in <a href="#global-attributes"></a>. Its layout algorithm is
-            the same as the [^&lt;mtext&gt;^] element.
+            the same as the [^mtext^] element.
             The
             <a>user agent stylesheet</a>
             must contain the following property in order to implement automatic
@@ -1443,7 +1443,7 @@
           </p>
           <pre class="css" data-include="user-agent-stylesheet/mi.css"></pre>
           <div class="example" id="mi-example">
-            <p>In the following example, [^&lt;mi&gt;^] is used to render
+            <p>In the following example, [^mi^] is used to render
               variables and function names. Note that identifiers containing a
               single letter are italic by default.</p>
             <pre data-include="examples/example-mi.html"
@@ -1455,7 +1455,7 @@
           <h4>Number <code>&lt;mn&gt;</code></h4>
           <p>
             The
-            <dfn class="element" data-lt="mn">&lt;mn&gt;</dfn>
+            <dfn class="element">mn</dfn>
             element represents a "numeric literal" or
             other data that should be rendered as a numeric literal. Generally
             speaking, a numeric literal is a sequence of digits, perhaps including a
@@ -1465,10 +1465,10 @@
             The <code>&lt;mn&gt;</code> element accepts the attributes described
             in <a href="#global-attributes"></a>. Its layout algorithm is
             the same as the
-            <a><code>&lt;mtext&gt;</code></a> element.
+            [^mtext^] element.
           </p>
           <div class="example" id="mn-example">
-            <p>In the following example, [^&lt;mn&gt;^] is used to
+            <p>In the following example, [^mn^] is used to
               write a decimal number.</p>
             <pre data-include="examples/example-mn.html"
                  data-include-format="text"></pre>
@@ -1479,7 +1479,7 @@
           <h4>Operator, Fence, Separator or Accent <code>&lt;mo&gt;</code></h4>
           <p>
             The
-            <dfn class="element" data-lt="mo">&lt;mo&gt;</dfn>
+            <dfn class="element">mo</dfn>
             element represents an
             operator or anything that should be rendered as an operator.
             In general, the notational conventions for mathematical operators
@@ -1530,7 +1530,7 @@
         </div>
           <div class="example" id="mo-example">
             <p>
-              In the following example, the [^&lt;mo&gt;^] element
+              In the following example, the [^mo^] element
               is used for the binary operator +. Default spacing is symmetric
               around that operator. A tigher spacing is used if you rely
               on the <a><code>form</code></a> attribute to force it to be
@@ -1555,7 +1555,7 @@
             <img src="examples/example-mo-2.png" alt="mo example 2"/>
             <p>Operators are also used for stretchy symbols such as fences,
               accents, arrows etc. In the following example, the vertical arrow
-              stretches to the height of the [^&lt;mspace&gt;^] element.
+              stretches to the height of the [^mspace^] element.
               One can override default stretch behavior with the
               [^mo/stretchy^] attribute e.g. to force an unstretched arrow.
               The [^mo/symmetric^] attribute allows to indicate whether
@@ -1583,15 +1583,15 @@
               if it is:
             </p>
             <ol>
-              <li>An <a><code>&lt;mo&gt;</code></a> element;</li>
+              <li>An [^mo^] element;</li>
               <li>
                 a <a>scripted element</a> or an
-                <a><code>&lt;mfrac&gt;</code></a>,
+                [^mfrac^],
                 whose first <a>in-flow</a> child exists and is an
                 <a>embellished operator</a>;
               </li>
               <li>
-                a <a>grouping element</a> or [^&lt;mpadded&gt;^],
+                a <a>grouping element</a> or [^mpadded^],
                 whose <a>in-flow</a> children consist (in any order) of one
                 <a>embellished operator</a> and zero or more
                 <a>space-like</a> elements.
@@ -1603,17 +1603,17 @@
               follows:
             </p>
             <ol class="algorithm">
-              <li>The core operator of an <a><code>&lt;mo&gt;</code></a>
+              <li>The core operator of an [^mo^]
                 element; is the element itself.</li>
               <li>
                 The core operator of an embellished
                 <a>scripted element</a> or
-                <a><code>&lt;mfrac&gt;</code></a>
+                [^mfrac^]
                 element is the core operator of its first <a>in-flow</a> child.
               </li>
               <li>
                 The core operator of an embellished
-                <a>grouping element</a> or [^&lt;mpadded&gt;^]
+                <a>grouping element</a> or [^mpadded^]
                 is the core operator of its unique <a>embellished operator</a>
                 <a>in-flow</a> child.
               </li>
@@ -1642,7 +1642,7 @@
               <code>infix</code>, <code>prefix</code> or
               <code>postfix</code>.
               The corresponding <dfn class="element-attr" data-dfn-for="mo">form</dfn> attribute on the
-              <a><code>&lt;mo&gt;</code></a> element, if present, must be an
+              [^mo^] element, if present, must be an
               <a>ASCII case-insensitive</a>
               match to one of these values.
             </p>
@@ -1657,16 +1657,16 @@
               </li>
               <li>If the embellished operator is the first <a>in-flow</a> child of a
                 <a>grouping element</a>,
-                [^&lt;mpadded&gt;^] or
-                [^&lt;msqrt&gt;^] with more than one <a>in-flow</a> child
+                [^mpadded^] or
+                [^msqrt^] with more than one <a>in-flow</a> child
                 (ignoring all <a>space-like</a> children) then it has
                 form <code>prefix</code>.
               </li>
               <li>Or, if the embellished operator is the last <a>in-flow</a> child of
                 a
                 <a>grouping element</a>,
-                <a><code>&lt;mpadded&gt;</code></a> or
-                <a><code>&lt;msqrt&gt;</code></a>
+                [^mpadded^] or
+                [^msqrt^]
                 with more than one <a>in-flow</a> child
                 (ignoring all <a>space-like</a> children) then it has
                 form <code>postfix</code>.
@@ -1692,7 +1692,7 @@
               is said that the <a>embellished operator</a> <em>has</em> the
               property.
               The corresponding <dfn class="element-attr" data-dfn-for="mo">stretchy</dfn>, <dfn class="element-attr" data-dfn-for="mo">symmetric</dfn>, <dfn class="element-attr" data-dfn-for="mo">largeop</dfn>, <dfn class="element-attr" data-dfn-for="mo">movablelimits</dfn> attributes on the
-              <a><code>&lt;mo&gt;</code></a> element, if present, must be a
+              [^mo^] element, if present, must be a
               <a>boolean</a>.
             </p>
             <p>
@@ -1710,7 +1710,7 @@
               <dfn class="element-attr" data-dfn-for="mo">rspace</dfn>,
               <dfn class="element-attr" data-dfn-for="mo">minsize</dfn> and
               <dfn class="element-attr" data-dfn-for="mo">maxsize</dfn> attributes on the
-              <a><code>&lt;mo&gt;</code></a> element, if present,
+              [^mo^] element, if present,
               must be a <a data-xref-type="css-type">&lt;length-percentage&gt;</a>.
             </p>
             <p>
@@ -2056,7 +2056,7 @@
           <h4>Space <code>&lt;mspace&gt;</code></h4>
           <p>
             The
-            <dfn class="element" data-lt="mspace">&lt;mspace&gt;</dfn>
+            <dfn class="element">mspace</dfn>
             empty element represents a blank space of any
             desired size, as set by its attributes.
           </p>
@@ -2081,7 +2081,7 @@
             treated as <code>0</code>.
           </p>
           <div class="example" id="mspace-example">
-            <p>In the following example, [^&lt;mspace&gt;^] is used to
+            <p>In the following example, [^mspace^] is used to
               force spacing within the formula (a 1px blue border is
               added to easily visualize the space):</p>
             <pre data-include="examples/example-mspace.html"
@@ -2129,11 +2129,11 @@
             </p>
             <ol>
               <li>an
-                <a><code>&lt;mtext&gt;</code></a> or
-                <a><code>&lt;mspace&gt;</code></a>;
+                [^mtext^] or
+                [^mspace^];
               </li>
               <li>or a
-                <a>grouping element</a> or [^&lt;mpadded&gt;^]
+                <a>grouping element</a> or [^mpadded^]
                 all of whose <a>in-flow</a> children are <a>space-like</a>.
               </li>
             </ol>
@@ -2144,7 +2144,7 @@
               <a>grouping element</a>.
             </p>
             <div class="note">
-              Note that an <a><code>&lt;mphantom&gt;</code></a> is not
+              Note that an [^mphantom^] is not
               automatically defined to be space-like, unless its content is
               space-like. This is because operator spacing is affected by
               whether adjacent elements are space-like.
@@ -2160,7 +2160,7 @@
         <section id="string-literal-ms">
           <h4>String Literal <code>&lt;ms&gt;</code></h4>
           <p>
-            <dfn class="element" data-lt="ms">&lt;ms&gt;</dfn>
+            <dfn class="element">ms</dfn>
             element is used to represent
             "string literals" in expressions meant to be interpreted by computer
             algebra systems or other systems containing "programming languages".
@@ -2168,10 +2168,10 @@
           <p>
             The <code>&lt;ms&gt;</code> element accepts the attributes described
             in <a href="#global-attributes"></a>.  Its layout algorithm is
-            the same as the <a><code>&lt;mtext&gt;</code></a> element.
+            the same as the [^mtext^] element.
           </p>
           <div class="example" id="ms-example">
-            <p>In the following example, [^&lt;ms&gt;^] is used to
+            <p>In the following example, [^ms^] is used to
               write a literal string of characters:</p>
             <pre data-include="examples/example-ms.html"
                  data-include-format="text"></pre>
@@ -2203,22 +2203,22 @@
           <h4>Group Sub-Expressions <code>&lt;mrow&gt;</code></h4>
           <p>
             The
-            <dfn class="element" data-lt="mrow">&lt;mrow&gt;</dfn>
+            <dfn class="element">mrow</dfn>
             element is used to group together any number of sub-expressions, usually
             consisting of one or more <code>&lt;mo&gt;</code> elements acting as
             "operators" on one or more other expressions that are their "operands".
           </p>
           <div class="example" id="mrow-example">
-            <p>In the following example, [^&lt;mrow&gt;^] is used to
+            <p>In the following example, [^mrow^] is used to
               group a sum "1 + 2/3" as a fraction numerator (first child
-              of [^&lt;mfrac&gt;^]) and to construct a fenced expression
-              (first child of [^&lt;msup&gt;^]) that is raised to the power of 5.
-              Note that [^&lt;mrow&gt;^] alone does not add visual fences
+              of [^mfrac^]) and to construct a fenced expression
+              (first child of [^msup^]) that is raised to the power of 5.
+              Note that [^mrow^] alone does not add visual fences
               around its grouped content, one has to explicitly specify them
-              using the [^&lt;mo&gt;^] element.
+              using the [^mo^] element.
             </p>
             <p>
-              Within the [^&lt;mrow&gt;^] elements, one can see that
+              Within the [^mrow^] elements, one can see that
               vertical alignment of children (according to the
               <a>alphabetic baseline</a> or the <a>mathematical baseline</a>)
               is properly performed, fences are vertically stretched and
@@ -2334,7 +2334,7 @@
             <ol class="algorithm">
               <li>
                 Set <code>add-space</code> to true if
-                the box corresponds to a [^&lt;math&gt;^] element
+                the box corresponds to a [^math^] element
                 or is not an
                 <a>embellished operator</a>; and to false otherwise.
               </li>
@@ -2410,7 +2410,7 @@
             <ol class="algorithm">
               <li>
                 Set <code>add-space</code> to true if
-                the box corresponds to a [^&lt;math&gt;^] element
+                the box corresponds to a [^math^] element
                 or is not an
                 <a>embellished operator</a>; and to false otherwise.
               </li>
@@ -2461,7 +2461,7 @@
           <h4>Fractions <code>&lt;mfrac&gt;</code></h4>
           <p id="mfrac">
             The
-            <dfn class="element" data-lt="mfrac">&lt;mfrac&gt;</dfn>
+            <dfn class="element">mfrac</dfn>
             element is used for fractions. It can also be used to mark up
             fraction-like objects such as binomial coefficients and Legendre symbols.
           </p>
@@ -2521,7 +2521,7 @@
           <p>
             If the <code>&lt;mfrac&gt;</code> element
             has less or more than two <a>in-flow</a> children, its layout algorithm
-            is the same as the <a><code>&lt;mrow&gt;</code></a> element.
+            is the same as the [^mrow^] element.
             Otherwise, the first <a>in-flow</a> child is called
             <dfn>numerator</dfn>, the second <a>in-flow</a> child is called
             <dfn>denominator</dfn> and the layout algorithm is explained below.
@@ -2766,8 +2766,8 @@
           <p>
             The <a>radical elements</a> construct an expression with a
             root symbol √ with a line over the content.
-            The <dfn class="element" data-lt="msqrt">&lt;msqrt&gt;</dfn> element is
-            used for square roots, while the <dfn class="element" data-lt="mroot">&lt;mroot&gt;</dfn> element is
+            The <dfn class="element">msqrt</dfn> element is
+            used for square roots, while the <dfn class="element">mroot</dfn> element is
             used to draw radicals with indices, e.g. a cube root.
           </p>
           <p>
@@ -2777,15 +2777,15 @@
           </p>
           <div class="example" id="msqrt-mroot-example">
             <p>The following example contains a square root
-              written with [^&lt;msqrt&gt;^] and a cube root written
-              with [^&lt;mroot&gt;^].
-              Note that [^&lt;msqrt&gt;^] has several children and the
+              written with [^msqrt^] and a cube root written
+              with [^mroot^].
+              Note that [^msqrt^] has several children and the
               square root applies to all of them.
-              [^&lt;mroot&gt;^] has exactly two children: it is a
+              [^mroot^] has exactly two children: it is a
               root of index the second child (the number 3), applied to the
               first child (the square root).
               Also note these elements only change the font-size within the
-              [^&lt;mroot&gt;^] index, but it is scaled down more than
+              [^mroot^] index, but it is scaled down more than
               within the numerator and denumerator of the fraction.
             </p>
             <pre data-include="examples/example-msqrt-mroot.html"
@@ -2816,7 +2816,7 @@
             If the <code>&lt;mroot&gt;</code> has less or more than two
             <a>in-flow</a> children,
             its layout algorithm
-            is the same as the <a><code>&lt;mrow&gt;</code></a> element.
+            is the same as the [^mrow^] element.
             Otherwise, the first <a>in-flow</a> child is called
             <dfn>mroot base</dfn> and
             the second <a>in-flow</a> child is called
@@ -3036,26 +3036,26 @@
           <h4>Style Change <code>&lt;mstyle&gt;</code></h4>
           <p>
             Historically, the
-            <dfn class="element" data-lt="mstyle">&lt;mstyle&gt;</dfn>
+            <dfn class="element">mstyle</dfn>
             element was introduced to make
             style changes that affect the rendering of its contents.
           </p>
           <p>
             The <code>&lt;mstyle&gt;</code> element accepts the attributes described in
             <a href="#global-attributes"></a>. Its layout algorithm is the
-            same as the <a><code>&lt;mrow&gt;</code></a> element.
+            same as the [^mrow^] element.
           </p>
           <div class="note">
             <code>&lt;mstyle&gt;</code> is implemented for compatibility with full MathML. Authors whose only target is MathML Core are encouraged to use CSS for styling.
           </div>
           <div class="example" id="mstyle-example">
             <p>In the following example,
-              [^&lt;mstyle&gt;^] is used to set the <a>scriptlevel</a>
+              [^mstyle^] is used to set the <a>scriptlevel</a>
               and <a>displaystyle</a>.
               Observe this is respectively affecting the
               font-size and placement of subscripts of their
               descendants. In MathML Core, one could just have used
-              [^&lt;mrow&gt;^] elements instead.
+              [^mrow^] elements instead.
             </p>
             <pre data-include="examples/example-mstyle.html"
                  data-include-format="text"></pre>
@@ -3066,7 +3066,7 @@
           <h4>Error Message <code>&lt;merror&gt;</code></h4>
           <p>
             The
-            <dfn class="element" data-lt="merror">&lt;merror&gt;</dfn>
+            <dfn class="element">merror</dfn>
             element displays its contents as an
             ”error message”. The intent of this element is to provide a standard way
             for programs that generate MathML from other input to report syntax errors
@@ -3074,7 +3074,7 @@
           </p>
           <div class="example" id="merror-example">
             <p>In the following example,
-              [^&lt;merror&gt;^] is used to indicate a parsing error
+              [^merror^] is used to indicate a parsing error
               for some LaTeX-like input:
             </p>
             <pre data-include="examples/example-merror.html"
@@ -3084,7 +3084,7 @@
           <p>
             The <code>&lt;merror&gt;</code> element accepts the attributes described in
             <a href="#global-attributes"></a>. Its layout algorithm is the
-            same as the <a><code>&lt;mrow&gt;</code></a> element.
+            same as the [^mrow^] element.
             The <a>user agent stylesheet</a>
             must contain the following rule in order to visually highlight the error
             message:
@@ -3095,7 +3095,7 @@
           <h4>Adjust Space Around Content <code>&lt;mpadded&gt;</code></h4>
           <p>
             The
-            <dfn class="element" data-lt="mpadded">&lt;mpadded&gt;</dfn>
+            <dfn class="element">mpadded</dfn>
             element renders the same as its <a>in-flow</a> child content, but with the
             size and relative positioning point of its
             content modified according to <code>&lt;mpadded&gt;</code>’s attributes.
@@ -3123,10 +3123,10 @@
             have a value that is a valid <a data-xref-type="css-type">&lt;length-percentage&gt;</a>.
           </p>
           <div class="example" id="mpadded-example">
-            <p>In the following example, [^&lt;mpadded&gt;^] is used to
+            <p>In the following example, [^mpadded^] is used to
               tweak spacing around a fraction
               (a blue background is used to visualize it).
-              Without attributes, it behaves like an [^&lt;mrow&gt;^] but
+              Without attributes, it behaves like an [^mrow^] but
               the attributes allow to specify the size of the box
               (width, height, depth) and position of the fraction within that
               box (lspace and voffset).
@@ -3139,7 +3139,7 @@
           <section>
             <h5>Inner box and requested parameters</h5>
             <p>
-              The [^&lt;mpadded&gt;^] element
+              The [^mpadded^] element
               <a>generates an anonymous &lt;mrow&gt; box</a> called the
               <dfn>mpadded inner box</dfn> with parameters called
               inner inline size, inner <a>line-ascent</a> and inner line-descent.
@@ -3216,7 +3216,7 @@
           <h4>Making Sub-Expressions Invisible <code>&lt;mphantom&gt;</code></h4>
           <p>
             Historically, the
-            <dfn class="element" data-lt="mphantom">&lt;mphantom&gt;</dfn>
+            <dfn class="element">mphantom</dfn>
             element was introduced to render
             its content invisibly, but with the same metrics size and other dimensions,
             including <a>alphabetic baseline</a> position that its contents would have if they were
@@ -3224,7 +3224,7 @@
           </p>
           <div class="example" id="mphantom-example">
             <p>In the following example,
-              [^&lt;mphantom&gt;^] is used to ensure alignment of
+              [^mphantom^] is used to ensure alignment of
               corresponding parts of the numerator and denominator of a
               fraction:
             </p>
@@ -3235,7 +3235,7 @@
           <p>
             The <code>&lt;mphantom&gt;</code> element accepts the attributes described
             in <a href="#global-attributes"></a>. Its layout algorithm is
-            the same as the <a><code>&lt;mrow&gt;</code></a> element.
+            the same as the [^mrow^] element.
             The <a>user agent stylesheet</a>
             must contain the following rule in order to hide the content:
           </p>
@@ -3266,9 +3266,9 @@
         <section id="subscripts-and-superscripts-msub-msup-msubsup">
           <h4>Subscripts and Superscripts <code>&lt;msub&gt;</code>, <code>&lt;msup&gt;</code>, <code>&lt;msubsup&gt;</code></h4>
           <p>
-            The <dfn class="element" data-lt="msub">&lt;msub&gt;</dfn>,
-            <dfn class="element" data-lt="msup">&lt;msup&gt;</dfn> and
-            <dfn class="element" data-lt="msubsup">&lt;msubsup&gt;</dfn> elements are used to attach
+            The <dfn class="element">msub</dfn>,
+            <dfn class="element">msup</dfn> and
+            <dfn class="element">msubsup</dfn> elements are used to attach
             subscript and superscript to a MathML expression.
             They accept the attributes described in
             <a href="#global-attributes"></a>.
@@ -3300,7 +3300,7 @@
             <p>
               If the <code>&lt;msub&gt;</code> element
               has less or more than two <a>in-flow</a> children, its layout algorithm
-              is the same as the <a><code>&lt;mrow&gt;</code></a> element.
+              is the same as the [^mrow^] element.
               Otherwise, the first <a>in-flow</a> child is called the
               <dfn>msub base</dfn>, the second <a>in-flow</a> child is called the
               <dfn>msub subscript</dfn> and the layout algorithm is explained
@@ -3309,7 +3309,7 @@
             <p>
               If the <code>&lt;msup&gt;</code> element
               has less or more than two <a>in-flow</a> children, its layout algorithm
-              is the same as the <a><code>&lt;mrow&gt;</code></a> element.
+              is the same as the [^mrow^] element.
               Otherwise, the first <a>in-flow</a> child is called the
               <dfn>msup base</dfn>, the second <a>in-flow</a> child is called the
               <dfn>msup superscript</dfn> and the layout algorithm is explained
@@ -3318,7 +3318,7 @@
             <p>
               If the <code>&lt;msubsup&gt;</code> element
               has less or more than three <a>in-flow</a> children, its layout algorithm
-              is the same as the <a><code>&lt;mrow&gt;</code></a> element.
+              is the same as the [^mrow^] element.
               Otherwise, the first <a>in-flow</a> child is called the
               <dfn>msubsup base</dfn>, the second <a>in-flow</a> child
               is called the <dfn>msubsup subscript</dfn>,
@@ -3600,9 +3600,9 @@
         <section id="underscripts-and-overscripts-munder-mover-munderover">
           <h4>Underscripts and Overscripts <code>&lt;munder&gt;</code>, <code>&lt;mover&gt;</code>, <code>&lt;munderover&gt;</code></h4>
           <p>
-            The <dfn class="element" data-lt="munder">&lt;munder&gt;</dfn>,
-            <dfn class="element" data-lt="mover">&lt;mover&gt;</dfn> and
-            <dfn class="element" data-lt="munderover">&lt;munderover&gt;</dfn> elements are used to
+            The <dfn class="element">munder</dfn>,
+            <dfn class="element">mover</dfn> and
+            <dfn class="element">munderover</dfn> elements are used to
             attach
             accents or limits placed under or over a MathML expression.
           </p>
@@ -3659,7 +3659,7 @@
             <p>
               If the <code>&lt;munder&gt;</code> element
               has less or more than two <a>in-flow</a> children, its layout algorithm
-              is the same as the <a><code>&lt;mrow&gt;</code></a> element.
+              is the same as the [^mrow^] element.
               Otherwise, the first <a>in-flow</a> child is called the
               <dfn>munder base</dfn> and the second <a>in-flow</a> child is called the
               <dfn>munder underscript</dfn>.
@@ -3667,7 +3667,7 @@
             <p>
               If the <code>&lt;mover&gt;</code> element
               has less or more than two <a>in-flow</a> children, its layout algorithm
-              is the same as the <a><code>&lt;mrow&gt;</code></a> element.
+              is the same as the [^mrow^] element.
               Otherwise, the first <a>in-flow</a> child is called the
               <dfn>mover base</dfn> and the second <a>in-flow</a> child is called the
               <dfn>mover overscript</dfn>.
@@ -3675,7 +3675,7 @@
             <p>
               If the <code>&lt;munderover&gt;</code> element
               has less or more than three <a>in-flow</a> children, its layout algorithm
-              is the same as the <a><code>&lt;mrow&gt;</code></a> element.
+              is the same as the [^mrow^] element.
               Otherwise, the first <a>in-flow</a> child is called the
               <dfn>munderover base</dfn>, the second <a>in-flow</a> child
               is called the <dfn>munderover underscript</dfn>
@@ -4107,8 +4107,8 @@
           <h4>Prescripts and Tensor Indices <code>&lt;mmultiscripts&gt;</code></h4>
           <p>
             Presubscripts and tensor notations are represented by
-            the <dfn class="element" data-lt="mmultiscripts">&lt;mmultiscripts&gt;</dfn> element.
-            The <dfn class="element" data-lt="mprescripts">&lt;mprescripts&gt;</dfn> element is
+            the <dfn class="element">mmultiscripts</dfn> element.
+            The <dfn class="element">mprescripts</dfn> element is
             used as a separator between the postscripts and prescripts.
             These two elements accept the attributes described in
             <a href="#global-attributes"></a>.
@@ -4116,8 +4116,8 @@
           <div class="example" id="mmultiscripts-example">
             <p>
               The following example shows basic use of prescripts
-              and postscripts, involving a [^&lt;mprescripts&gt;^].
-	      Empty [^&lt;mrow&gt;^] elements are used at positions where
+              and postscripts, involving a [^mprescripts^].
+	      Empty [^mrow^] elements are used at positions where
               no scripts are rendered.
               The font-size is automatically scaled down within the scripts.
             </p>
@@ -4140,7 +4140,7 @@
           <p>
             The
             <code>&lt;mprescripts&gt;</code>
-            element is laid out as an <a><code>&lt;mrow&gt;</code></a>
+            element is laid out as an [^mrow^]
             element.
           </p>
           <p>
@@ -4151,12 +4151,12 @@
             <li>
               A first <a>in-flow</a> child, called the
               <dfn>mmultiscripts base</dfn>, that is not an
-              <a><code>&lt;mprescripts&gt;</code></a> element.
+              [^mprescripts^] element.
             </li>
             <li>
               Followed by an even number of <a>in-flow</a> children called
               <dfn>mmultiscripts postscripts</dfn>, none of them being a
-              <a><code>&lt;mprescripts&gt;</code></a> element.
+              [^mprescripts^] element.
               These scripts form a (possibly empty) list
               subscript, superscript, subscript, superscript,
               subscript, superscript, etc.
@@ -4165,10 +4165,10 @@
               <dfn>subscript/superscript pair</dfn>.
             </li>
             <li>Optionally followed by
-              an <a><code>&lt;mprescripts&gt;</code></a> element and
+              an [^mprescripts^] element and
               an even number of <a>in-flow</a> children called
               <dfn>mmultiscripts prescripts</dfn>, none of them being a
-              <a><code>&lt;mprescripts&gt;</code></a> element.
+              [^mprescripts^] element.
               These scripts form a (possibly empty) list of
               <a>subscript/superscript pair</a>.
             </li>
@@ -4176,7 +4176,7 @@
           <p>
             If an <code>&lt;mmultiscripts&gt;</code> element is not valid then
             it is laid out the same as the
-            <a><code>&lt;mrow&gt;</code></a> element.
+            [^mrow^] element.
             Otherwise the layout algorithm is performed as in
             <a href="#base-with-prescripts-and-postscripts"></a>.
           </p>
@@ -4421,15 +4421,15 @@
             <a><code>displaystyle</code></a> to <code>false</code> and
             to increment <a><code>scriptlevel</code></a> in all child
             elements but the first one.
-            However, an <a><code>&lt;mover&gt;</code></a> (respectively
-            <a><code>&lt;munderover&gt;</code></a>)
+            However, an [^mover^] (respectively
+            [^munderover^])
             element with an [^mover/accent^]
             attribute that is an
             <a>ASCII case-insensitive</a>
             match to <code>true</code> does not increment scriptlevel within
             its second child (respectively third child). Similarly,
-            <a><code>&lt;mover&gt;</code></a> and
-            <a><code>&lt;munderover&gt;</code></a> elements
+            [^mover^] and
+            [^munderover^] elements
             with an [^mover/accentunder^]
             attribute that is an
             <a>ASCII case-insensitive</a>
@@ -4439,14 +4439,14 @@
           <p><code>&lt;mmultiscripts&gt;</code> sets
             <a><code>math-shift</code></a> to
             <code>compact</code> on its children at even position if they are
-            before an [^&lt;mprescripts&gt;^], and on those at odd position
+            before an [^mprescripts^], and on those at odd position
             if they are after
-            an [^&lt;mprescripts&gt;^].
+            an [^mprescripts^].
             The <code>&lt;msub&gt;</code> and <code>&lt;msubsup&gt;</code>
             elements set <a><code>math-shift</code></a> to
             <code>compact</code> on their second child.
-            <a><code>&lt;mover&gt;</code></a> and
-            <a><code>&lt;munderover&gt;</code></a>
+            [^mover^] and
+            [^munderover^]
             elements with an [^mover/accent^]
             attribute that is an
             <a>ASCII case-insensitive</a>
@@ -4475,9 +4475,9 @@
         <p>
           Matrices, arrays and other table-like mathematical notation are marked up
           using
-          <a><code>&lt;mtable&gt;</code></a>
-          <a><code>&lt;mtr&gt;</code></a>
-          <a><code>&lt;mtd&gt;</code></a>
+          [^mtable^]
+          [^mtr^]
+          [^mtd^]
           elements.  These  elements are similar to the
           [^table^],
           [^tr^]
@@ -4497,7 +4497,7 @@
         </div>
         <section id="table-or-matrix-mtable">
           <h4>Table or Matrix <code>&lt;mtable&gt;</code></h4>
-          <p>The <dfn class="element" data-lt="mtable">&lt;mtable&gt;</dfn> is laid out as an
+          <p>The <dfn class="element">mtable</dfn> is laid out as an
             <code>inline-table</code> and sets
             <code>displaystyle</code> to <code>false</code>. The
             <a>user agent stylesheet</a> must contain
@@ -4523,7 +4523,7 @@
         <section>
           <h4>Row in Table or Matrix <code>&lt;mtr&gt;</code></h4>
           <p>
-            The <dfn class="element" data-lt="mtr">&lt;mtr&gt;</dfn> is laid out as
+            The <dfn class="element">mtr</dfn> is laid out as
             <code>table-row</code>. The
             <a>user agent stylesheet</a> must contain
             the following rules in order to implement that behavior:
@@ -4537,7 +4537,7 @@
         <section>
           <h4>Entry in Table or Matrix <code>&lt;mtd&gt;</code></h4>
           <p>
-            The <dfn class="element" data-lt="mtd">&lt;mtd&gt;</dfn> is laid out as
+            The <dfn class="element">mtd</dfn> is laid out as
             a <code>table-cell</code> with content centered in the cell and
             a default padding. The
             <a>user agent stylesheet</a> must contain
@@ -4576,7 +4576,7 @@
         <h3>Enlivening Expressions</h3>
         <p>
           Historically, the
-          <dfn class="element" data-lt="maction">&lt;maction&gt;</dfn>
+          <dfn class="element">maction</dfn>
           element provides a mechanism
           for binding actions to expressions.
         </p>
@@ -4628,15 +4628,15 @@
         <h3>Semantics and Presentation</h3>
         <p>
           The
-          <dfn class="element" data-lt="semantics">&lt;semantics&gt;</dfn>
+          <dfn class="element">semantics</dfn>
           element is the container element that associates
           annotations with a MathML expression. Typically, the
           <code>&lt;semantics&gt;</code> element has as its first child element
           a MathML expression to be annotated while subsequent child elements
           represent
-          text annotations within an <dfn class="element" data-lt="annotation">&lt;annotation&gt;</dfn>
+          text annotations within an <dfn class="element">annotation</dfn>
           element, or more complex markup annotations within
-          an <dfn class="element" data-lt="annotation-xml">&lt;annotation-xml&gt;</dfn> element.
+          an <dfn class="element">annotation-xml</dfn> element.
         </p>
         <div class="example" id="semantics-example">
           <p>
@@ -4652,7 +4652,7 @@
         <p>
           The <code>&lt;semantics&gt;</code> element accepts the attributes
           described in <a href="#global-attributes"></a>. Its layout algorithm
-          is the same as the <a><code>&lt;mrow&gt;</code></a> element.
+          is the same as the [^mrow^] element.
           The <a>user agent stylesheet</a>
           must contain the following rule in order to only render the annotated
           MathML expression:
@@ -4674,7 +4674,7 @@
         <p>
           The layout algorithm of the <code>&lt;annotation-xml&gt;</code>
           and <code>&lt;annotation&gt;</code>
-          element is the same as the <a><code>&lt;mtext&gt;</code></a> element.
+          element is the same as the [^mtext^] element.
         </p>
         <div class="note">
           Authors can use the [^annotation/encoding^] attribute to distinguish
@@ -4722,12 +4722,12 @@
           value of <code>display</code> is <code>inline math</code> or
           <code>block math</code> then the computed value is
           <code>block flow</code> and <code>inline flow</code> respectively.
-          For the <a><code>&lt;mtable&gt;</code></a> element
+          For the [^mtable^] element
           the computed value is <code>block table</code> and
           <code>inline table</code> respectively.
-          For the <a><code>&lt;mtr&gt;</code></a> element, the computed value
+          For the [^mtr^] element, the computed value
           is <code>table-row</code>.
-          For the <a><code>&lt;mtd&gt;</code></a> element, the computed value
+          For the [^mtd^] element, the computed value
           is <code>table-cell</code>.
         </p>
         <p>
@@ -4737,7 +4737,7 @@
           control box generation and layout according to their tag name, as
           described in the relevant sections.
           <a>Unknown MathML elements</a>
-          behave the same as the <a><code>&lt;mrow&gt;</code></a> element.
+          behave the same as the [^mrow^] element.
         </p>
         <div class="note">
           The <code>display: block math</code> and
@@ -4751,7 +4751,7 @@
         <div class="example" id="display-example">
           <p>
             In the following example, the default layout of the
-            MathML [^&lt;mrow&gt;^] element is overridden to render its
+            MathML [^mrow^] element is overridden to render its
             content as a grid.
           </p>
           <pre data-include="examples/example-display.html"
@@ -4927,7 +4927,7 @@
           <li>The <a data-xref-type="css-property">font-size</a> is scaled down when
             its specified value is <code>math</code> and
             the computed value of <a><code>math-depth</code></a> is
-            <code>auto-add</code> (default for [^&lt;mfrac&gt;^])
+            <code>auto-add</code> (default for [^mfrac^])
             as described in <a href="#the-math-script-level-property"></a>.</li>
           <li>Operators with the [=embellished operator/largeop=] property
             do not follow rules from <a href="#layout-of-operators"></a>
@@ -4944,7 +4944,7 @@
           <div class="example" id="math-style-example">
             <p>The following example shows a
               mathematical formula rendered with
-              its <a><code>&lt;math&gt;</code></a> root styled with
+              its [^math^] root styled with
               <code>math-style: compact</code> (left) and
               <code>math-style: normal</code> (right).
               In the former case, the font-size is automatically scaled down
@@ -6089,7 +6089,7 @@
       </div>
       <div class="note">
         <p>In [[MathML3]], it was possible to use the
-        <a><code>&lt;maction&gt;</code></a> element with
+        [^maction^] element with
         the <code>actiontype</code> value set to <code>"statusline"</code>
         in order to override the text of the browser statusline. In particular,
         an attacker could use this
@@ -6099,8 +6099,8 @@
              data-include-format="text"></pre>
 
         <p>This feature is not available in MathML Core, where
-        the <a><code>&lt;maction&gt;</code></a> element essentially behaves
-        like an <a><code>&lt;mrow&gt;</code></a> container with extra style.</p>
+        the [^maction^] element essentially behaves
+        like an [^mrow^] container with extra style.</p>
       </div>
       <p>An attacker can try to hang the UA by inserting very large
         stretchy operators, effectively making the algorithm
