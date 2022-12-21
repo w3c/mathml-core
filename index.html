@@ -282,14 +282,14 @@
             the corresponding value is described.
             Otherwise the layout algorithm of the
             [^mrow^] element is used to produce a
-            box. That MathML box is used as the content for the layout of
+            <a>math content box</a>. That <a>math content box</a> is used as the content for the layout of
             the element, as described by CSS for <code>display: block</code>
             (if the computed value is <code>block math</code>) or
             <code>display: inline</code>
             (if the computed value is <code>inline math</code>).
             Additionally, if the computed
             [^math/display^] property</a> is equal to
-            <code>block math</code> then that MathML box is rendered
+            <code>block math</code> then that <a>math content box</a> is rendered
             horizontally centered within the content box.
           </p>
           <div class="note">
@@ -952,10 +952,9 @@
             writing modes that are sometimes used for math layout.
           </div>
           <p>
-            MathML boxes have several parameters in order to perform layout in
-            a way that is compatible with CSS but also to take into account
-            very accurate positions and spacing within math formulas.
-            Each math box has the following parameters:
+            Boxes used for MathML elements rely on several parameters in order to perform layout
+            in a way that is compatible with CSS but also to take into account
+            very accurate positions and spacing within math formulas:
           </p>
           <ol>
             <li>Inline metrics.
@@ -994,7 +993,7 @@
                 </li>
                 <li>
                   The <dfn>ink-over baseline</dfn>, indicating the <a>line-over</a>
-                  theorical limit of the content drawn, excluding any
+                  theorical limit of the math content drawn, excluding any
                   extra space.
                   If not specified, it is aligned with the <a>line-over</a> edge.
                   The algebraic distance from the <a>alphabetic baseline</a> to
@@ -1003,7 +1002,7 @@
                 </li>
                 <li>
                   The <dfn>ink-under baseline</dfn>, indicating the <a>line-under</a>
-                  theorical limit of the content drawn, excluding any
+                  theorical limit of the math content drawn, excluding any
                   extra space.
                   If not specified, it is aligned with the <a>line-under</a> edge.
                   The algebraic distance from the <a>ink-under baseline</a>
@@ -1129,14 +1128,15 @@
         <section id="layout-algorithms">
           <h4>Layout Algorithms</h4>
           <p>
-            The layout algorithms described in this chapter for MathML boxes
-            have the following structure:
+            Each MathML element has an associated <dfn>math content box</dfn>, which is
+            calculated as described in this chapter's layout algorithms using the following
+            structure:
           </p>
           <ol>
             <li>
               Calculation of <a>min-content inline size</a>
               and <a>max-content inline size</a>
-              of the content.
+              of the math content.
             </li>
             <li>
               Box layout:
@@ -1149,10 +1149,10 @@
                   <a>ink line-ascent</a>,
                   <a>ink line-descent</a>,
                   <a>line-ascent</a> and
-                  <a>line-ascent</a> of the content.
+                  <a>line-ascent</a> of the math content.
                 </li>
                 <li>
-                  Calculation of offsets of child boxes within the content box
+                  Calculation of offsets of child boxes within the <a>math content box</a>
                   as
                   well as sizes and offsets of extra graphical items
                   (bars, radical symbol, etc).
@@ -1164,18 +1164,18 @@
             </li>
           </ol>
           <p>
-            During box layout, the following extra steps must be performed:
+            The following extra steps must be performed:
           </p>
           <ul>
             <li>
               After calculating the <a>line-ascent</a> and <a>line-descent</a>
-              the <a>block size</a> is set to their sum.
+              of a <a>math content box</a>, its <a>block size</a> is set to their sum.
             </li>
             <li>
               The box metrics, offsets, <a>baselines</a>, <a>italic correction</a> and
               <a>top accent attachment</a> of the
               <a>content box</a>
-              are set to the one calculated for the content.
+              are set to the one calculated for the <a>math content box</a>.
             </li>
             <li>
               <p>
@@ -1840,7 +1840,7 @@
                       </li>
                       <li>
                         The <a>min-content inline size</a> and
-                        <a>max-content inline size</a> of the content
+                        <a>max-content inline size</a> of the math content
                         are set to the one obtained by the layout algorithm of
                         <a href="#layout-of-mtext"></a>.
                       </li>
@@ -1853,7 +1853,7 @@
                         layout algorithm of <a href="#layout-of-mtext"></a>.
                       </li>
                       <li>
-                        The <a>inline size</a> and (ink) block metrics of the content
+                        The <a>inline size</a> and (ink) block metrics of the math content
                         are given by algorithm to
                         <a>shape a stretchy glyph</a> to <a>inline dimension</a>
                         <code>T<sub>inline</sub></code>.
@@ -1882,7 +1882,7 @@
                       </li>
                       <li>
                         The <a>min-content inline size</a> and
-                        <a>max-content inline size</a> of the content
+                        <a>max-content inline size</a> of the math content
                         are set to the
                         <a>preferred inline size of a glyph stretched
                           along the block axis</a>.
@@ -1970,19 +1970,19 @@
                         <a>ink line-descent</a>,
                         <a>line-ascent</a> and
                         <a>line-descent</a>
-                        of the content
+                        of the math content
                         are obtained by the algorithm to
                         <a>shape a stretchy glyph</a>
                         to <a>block dimension</a>
                         <code>T<sub>ascent</sub></code> +
                         <code>T<sub>descent</sub></code>.
-                        The <a>inline size</a> of the content is the width of
+                        The <a>inline size</a> of the math content is the width of
                         the stretchy glyph. The stretchy glyph is shifted
                         towards the <a>line-under</a> by a value Δ so that its
                         center aligns with the center of the target:
-                        the ink ascent of the content is
+                        the ink ascent of the math content is
                         the ascent of the stretchy glyph − Δ
-                        and the ink descent of the content is
+                        and the ink descent of the math content is
                         the descent of the stretchy glyph + Δ.
                         These centers have coordinates "½(ascent − descent)"
                         so Δ = [(ascent of stretchy glyph − descent of stretchy glyph) − (<code>T<sub>ascent</sub></code> − <code>T<sub>descent</sub></code>)] / 2.
@@ -2026,7 +2026,7 @@
                   <li>
                     The <a>min-content inline size</a>,
                     <a>max-content inline size</a>,
-                    <a>inline size</a> and block metrics of the content
+                    <a>inline size</a> and block metrics of the math content
                     are given by the
                     glyph found.
                   </li>
@@ -2046,7 +2046,7 @@
             </ol>
             <p>If the algorithm to <a>shape a stretchy glyph</a> has been
               used for one of the step above, then the <a>italic correction</a>
-              of the content is set to the value returned by that algorithm.
+              of the math content is set to the value returned by that algorithm.
             </p>
             <div class="note">
               If <code>maxsize</code> is equal to its default value ∞
@@ -2102,9 +2102,9 @@
             the <code>&lt;mspace&gt;</code> element is laid out as shown on
             <a href="#figure-box-mspace"></a>.
             The <a>min-content inline size</a> and
-            <a>max-content inline size</a> of the content are
+            <a>max-content inline size</a> of the math content are
             equal to the requested inline size.
-            The <a>inline size</a>, <a>line-ascent</a> and <a>line-descent</a> of the content
+            The <a>inline size</a>, <a>line-ascent</a> and <a>line-descent</a> of the math content
             are respectively
             the requested inline size, line-ascent and line-descent.
           </p>
@@ -2389,20 +2389,20 @@
               <a>algorithm for stretching operators along the block axis</a>.
             </p>
             <p>
-              The <a>inline size</a> of the content is calculated like
+              The <a>inline size</a> of the math content is calculated like
               the <a>min-content inline size</a> and
-              <a>max-content inline size</a> of the content,
+              <a>max-content inline size</a> of the math content,
               using the <a>inline size</a> of the
               <a>in-flow</a> children's <a>margin boxes</a> instead.
             </p>
             <p>
               The <a>ink line-ascent</a> (respectively <a>line-ascent</a>)
-              of the content
+              of the math content
               is the maximum of the
               <a>ink line-ascents</a> (respectively <a>line-ascents</a>)
               of all the <a>in-flow</a> children's <a>margin boxes</a>. Similarly,
               the <a>ink line-descent</a> (respectively <a>line-descent</a>)
-              of the content is the maximum of the <a>ink line-descents</a>
+              of the math content is the maximum of the <a>ink line-descents</a>
               (respectively <a>ink line-ascents</a>)
               of all the <a>in-flow</a> children's <a>margin boxes</a>.
             </p>
@@ -2455,7 +2455,7 @@
                 </ol>
               </li>
             </ol>
-            <p>The <a>italic correction</a> of the content is set to the italic
+            <p>The <a>italic correction</a> of the math content is set to the italic
               correction of the last <a>in-flow</a> child, which is
               the final value of <code>previous-italic-correction</code>.</p>
           </section>
@@ -2573,7 +2573,7 @@
               any stretch size constraint.
             </p>
             <p>
-              The <a>inline size</a> of the content
+              The <a>inline size</a> of the math content
               is the maximum between the <a>inline size</a> of the
               <a>numerator</a>'s <a>margin box</a> and the <a>inline size</a> of the
               <a>denominator</a>'s <a>margin box</a>.
@@ -2615,7 +2615,7 @@
               </li>
             </ul>
             <p>
-              The <a>line-ascent</a> of the content is the maximum between:
+              The <a>line-ascent</a> of the math content is the maximum between:
             </p>
             <ul>
               <li>
@@ -2632,7 +2632,7 @@
               </li>
             </ul>
             <p>
-              The <a>line-descent</a> of the content is the maximum between:
+              The <a>line-descent</a> of the math content is the maximum between:
             </p>
             <ul>
               <li>
@@ -2651,7 +2651,7 @@
             </ul>
             <p>
               The <a>inline offset</a> of the <a>numerator</a> (respectively <a>denominator</a>)
-              is half the <a>inline size</a> of the content −
+              is half the <a>inline size</a> of the math content −
               half the <a>inline size</a> of
               the <a>numerator</a>'s <a>margin box</a>
               (respectively <a>denominator</a>'s <a>margin box</a>).
@@ -2665,8 +2665,7 @@
             </p>
             <p>
               The <a>inline size</a> of the fraction bar is the
-              <a>inline size</a> of the
-              content and its
+              <a>inline size</a> of the math content and its
               <a>inline offset</a> is 0.
               The center of the fraction bar is shifted away from the <a>alphabetic baseline</a>
               by a distance of <a>AxisHeight</a> towards the <a>line-over</a>.
@@ -2687,7 +2686,7 @@
             </figure>
             <p>
               The <a>min-content inline size</a>, <a>max-content inline size</a>
-              and <a>inline size</a> of the content are calculated the same
+              and <a>inline size</a> of the math content are calculated the same
               as in <a href="#fraction-with-nonzero-line-thickness"></a>.
             </p>
             <p>
@@ -2724,7 +2723,7 @@
               are respectively increased by Δ/2 and Δ − Δ/2.
             </p>
             <p>
-              The <a>line-ascent</a> of the content is the maximum between:
+              The <a>line-ascent</a> of the math content is the maximum between:
             </p>
             <ul>
               <li>
@@ -2737,7 +2736,7 @@
               </li>
             </ul>
             <p>
-              The <a>line-descent</a> of the content is the maximum between:
+              The <a>line-descent</a> of the math content is the maximum between:
             </p>
             <ul>
               <li>
@@ -2883,8 +2882,7 @@
             <p>
               The <a>min-content inline size</a>
                (respectively <a>max-content inline size</a>)
-              of the
-              content is
+              of the math content is
               the sum of the
               <a>preferred inline size of a glyph stretched along the
                 block axis</a>
@@ -2894,12 +2892,12 @@
               of the <a>msqrt base</a>'s <a>margin box</a>.
             </p>
             <p>
-              The <a>inline size</a> of the content is the sum of the advance width
+              The <a>inline size</a> of the math content is the sum of the advance width
               of the <a>box metrics of the radical glyph</a> and
               of the <a>inline size</a> of the <a>msqrt base</a>'s margin's box.
             </p>
             <p>
-              The <a>line-ascent</a> of the content is the maximum between:
+              The <a>line-ascent</a> of the math content is the maximum between:
             </p>
             <ul>
               <li>The <a>line-ascent</a> of the <a>msqrt base</a>'s <a>margin box</a>.</li>
@@ -2908,14 +2906,14 @@
                 and <a>RadicalExtraAscender</a>.</li>
             </ul>
             <p>
-              The <a>line-descent</a> of the content is the maximum between:
+              The <a>line-descent</a> of the math content is the maximum between:
             </p>
             <ul>
               <li>The <a>line-descent</a> of the <a>msqrt base</a>'s <a>margin box</a>.</li>
               <li>The sum of the <a>line-ascent</a> and <a>line-descent</a> for the
                 <a>box metrics of the radical glyph</a> and of the
                 <a>RadicalExtraAscender</a>, minus the
-                <a>line-ascent</a> of the content.
+                <a>line-ascent</a> of the math content.
               </li>
             </ul>
             <p>
@@ -2930,7 +2928,7 @@
               The <a>block size</a> of the overbar is
               <a>RadicalRuleThickness</a>. Its vertical center is shifted away
               from the <a>alphabetic baseline</a> by a distance towards the <a>line-over</a>
-              equal to the <a>line-ascent</a> of the content, minus
+              equal to the <a>line-ascent</a> of the math content, minus
               the <a>RadicalExtraAscender</a>,
               minus half the <a>RadicalRuleThickness</a>.
             </p>
@@ -2968,8 +2966,7 @@
             </figure>
             <p>
               The <a>min-content inline size</a>
-              (respectively <a>max-content inline size</a>) of the
-              content is the sum
+              (respectively <a>max-content inline size</a>) of the math content is the sum
               of max(0, <a>RadicalKernBeforeDegree</a>),
               the <a>mroot index</a>'s
               <a>min-content inline size</a>
@@ -2988,14 +2985,14 @@
               is max(−<a>inline size</a> of the index's <a>margin box</a>,
               <a>RadicalKernAfterDegree</a>).</p>
             <p>
-              The <a>inline size</a> of the content is the sum of
+              The <a>inline size</a> of the math content is the sum of
               <a>AdjustedRadicalKernBeforeDegree</a>,
               the <a>inline size</a> of the index's <a>margin box</a>,
               <a>AdjustedRadicalKernAfterDegree</a>
               and of the <a>inline size</a> of B.
             </p>
             <p>
-              The <a>line-ascent</a> of the content is the maximum between:
+              The <a>line-ascent</a> of the math content is the maximum between:
             </p>
             <ul>
               <li>−the <a>line-descent</a> of B +
@@ -3004,7 +3001,7 @@
                 index's <a>margin box</a></li>
               <li>The <a>line-ascent</a> of B</li>
             </ul>
-            <p>The <a>line-descent</a> of the content is the maximum between:</p>
+            <p>The <a>line-descent</a> of the math content is the maximum between:</p>
             <ul>
               <li>the <a>line-descent</a> of B −
                 <a>RadicalDegreeBottomRaisePercent</a> ×
@@ -3193,20 +3190,20 @@
             </figure>
             <p>
               The <a>min-content inline size</a> (respectively <a>max-content inline size</a>)
-              of the content
+              of the math content
               is the requested width calculated in
               <a href="#inner-box-and-requested-parameters"></a>
               but using the <a>min-content inline size</a> (respectively <a>max-content inline size</a>) of the
               <a>mpadded inner box</a> instead of the "inner inline size".
             </p>
             <p>
-              The <a>inline size</a> of the content
+              The <a>inline size</a> of the math content
               is the requested width calculated in
               <a href="#inner-box-and-requested-parameters"></a>.
             </p>
             <p>
-              The <a>line-ascent</a> of the content is the requested height.
-              The <a>line-descent</a> of the content is the requested depth.
+              The <a>line-ascent</a> of the math content is the requested height.
+              The <a>line-descent</a> of the math content is the requested depth.
             </p>
             <p>
               The <a>mpadded inner box</a> is placed so that its <a>alphabetic baseline</a> is
@@ -3346,7 +3343,7 @@
             </figure>
             <p>
               The
-              <a>min-content inline size</a> (respectively <a>max-content inline size</a>) of the content is the
+              <a>min-content inline size</a> (respectively <a>max-content inline size</a>) of the math content is the
               <a>min-content inline size</a> (respectively <a>max-content inline size</a>) of the <a>msub base</a>'s <a>margin box</a> −
               <code>LargeOpItalicCorrection</code> +
               <a>min-content inline size</a> (respectively <a>max-content inline size</a>) of
@@ -3362,7 +3359,7 @@
               any stretch size constraint.
             </p>
             <p>
-              The <a>inline size</a> of the content
+              The <a>inline size</a> of the math content
               is the inline size of the <a>msub base</a>'s <a>margin box</a> −
               <code>LargeOpItalicCorrection</code> +
               the <a>inline size</a> of
@@ -3379,7 +3376,7 @@
                 <a>msub base</a>'s <a>margin box</a></li>
             </ul>
             <p>
-              The <a>line-ascent</a> of the content is the maximum between:
+              The <a>line-ascent</a> of the math content is the maximum between:
             </p>
             <ul>
               <li>The <a>line-ascent</a> of the <a>msub base</a>'s <a>margin box</a>.</li>
@@ -3387,7 +3384,7 @@
                 <code>SubShift</code>.</li>
             </ul>
             <p>
-              The <a>line-descent</a> of the content is the maximum between:
+              The <a>line-descent</a> of the math content is the maximum between:
             </p>
             <ul>
               <li>The <a>line-descent</a> of the <a>msub base</a>'s <a>margin box</a>.</li>
@@ -3422,8 +3419,8 @@
             </figure>
             <p>
               The
-              <a>min-content inline size</a> (respectively <a>max-content inline size</a>) of
-              the content
+              <a>min-content inline size</a> (respectively <a>max-content inline size</a>)
+              of the math content
               is the
               <a>min-content inline size</a> (respectively <a>max-content inline size</a>) of
               the <a>msup base</a>'s <a>margin box</a> +
@@ -3441,7 +3438,7 @@
               any stretch size constraint.
             </p>
             <p>
-              The <a>inline size</a> of the content
+              The <a>inline size</a> of the math content
               is the <a>inline size</a> of the <a>msup base</a>'s <a>margin box</a> +
               <code>ItalicCorrection</code> +
               the <a>inline size</a> of
@@ -3463,7 +3460,7 @@
                 − <a>SuperscriptBaselineDropMax</a></li>
             </ul>
             <p>
-              The <a>line-ascent</a> of the content is the maximum between:
+              The <a>line-ascent</a> of the math content is the maximum between:
             </p>
             <ul>
               <li>The <a>line-ascent</a> of the <a>msup base</a>'s <a>margin box</a>.</li>
@@ -3471,7 +3468,7 @@
                 <code>SuperShift</code>.</li>
             </ul>
             <p>
-              The <a>line-descent</a> of the content is the maximum between:
+              The <a>line-descent</a> of the math content is the maximum between:
             </p>
             <ul>
               <li>The <a>line-descent</a> of the <a>msup base</a>'s <a>margin box</a>.</li>
@@ -3508,9 +3505,9 @@
             <p>
               The
               <a>min-content inline size</a> (respectively <a>max-content inline size</a> and
-              <a>inline size</a>) of the content is the maximum between the
+              <a>inline size</a>) of the math content is the maximum between the
               <a>min-content inline size</a> (respectively <a>max-content inline size</a> and
-              <a>inline size</a>) of the content calculated in
+              <a>inline size</a>) of the math content calculated in
               <a href="#base-with-subscript"></a> and
               <a href="#base-with-superscript"></a>.
             </p>
@@ -3562,11 +3559,11 @@
             </ol>
             <p>
               The <a>ink line-ascent</a> (respectively <a>line-ascent</a>, <a>ink line-descent</a>,
-              <a>line-descent</a>) of the content
+              <a>line-descent</a>) of the math content
               is set to the maximum
               of the
               <a>ink line-ascent</a> (respectively <a>line-ascent</a>, <a>ink line-descent</a>,
-              <a>line-descent</a>) of the content
+              <a>line-descent</a>) of the math content
               calculated in
               <a href="#base-with-subscript"></a> and
               <a href="#base-with-superscript"></a>
@@ -3771,8 +3768,8 @@
             </figure>
             <p>
               The <a>min-content inline size</a> (respectively <a>max-content inline size</a>)
-              of the content are
-              calculated like the <a>inline size</a> of the content below
+              of the math content are
+              calculated like the <a>inline size</a> of the math content below
               but replacing the
               <a>inline sizes</a> of the <a>munder base</a>'s <a>margin box</a> and <a>munder underscript</a>'s <a>margin box</a>
               with the
@@ -3784,7 +3781,7 @@
               using the <a>algorithm for stretching operators along the inline axis</a>.
             </p>
             <p>
-              The <a>inline size</a> of the content is
+              The <a>inline size</a> of the math content is
               calculated by determining the absolute difference between:
             </p>
             <ul>
@@ -3859,7 +3856,7 @@
               </li>
             </ol>
             <p>
-              The <a>line-ascent</a> of the content is the maximum between:
+              The <a>line-ascent</a> of the math content is the maximum between:
             </p>
             <ul>
               <li>The <a>line-ascent</a> of the <a>munder base</a>'s <a>margin box</a>.</li>
@@ -3867,7 +3864,7 @@
                 <code>UnderShift</code>.</li>
             </ul>
             <p>
-              The <a>line-descent</a> of the content is the maximum between:
+              The <a>line-descent</a> of the math content is the maximum between:
             </p>
             <ul>
               <li>The <a>line-descent</a> of the <a>munder base</a>'s <a>margin box</a>.</li>
@@ -3898,8 +3895,8 @@
             </figure>
             <p>
               The <a>min-content inline size</a> (respectively <a>max-content inline size</a>)
-              of the content are
-              calculated like the <a>inline size</a> of the content
+              of the math content are
+              calculated like the <a>inline size</a> of the math content
               below but replacing the
               <a>inline sizes</a> of the <a>mover base</a>'s <a>margin box</a> and <a>mover overscript</a>'s <a>margin box</a> with
               the <a>min-content inline size</a> (respectively <a>max-content inline size</a>) of the <a>mover base</a>'s <a>margin box</a> and <a>mover overscript</a>'s <a>margin box</a>.
@@ -3915,7 +3912,7 @@
               if it is undefined.
             </p>
             <p>
-              The <a>inline size</a> of the content is
+              The <a>inline size</a> of the math content is
               calculated by
               applying the <a>algorithm for stretching operators along the inline axis</a> for
               layout and determining the absolute difference between:
@@ -4016,7 +4013,7 @@
               <a>AccentBaseHeight</a> above the <a>alphabetic baseline</a> of the base.
             </div>
             <p>
-              The <a>line-ascent</a> of the content is the maximum between:
+              The <a>line-ascent</a> of the math content is the maximum between:
             </p>
             <ul>
               <li>The <a>line-ascent</a> of the <a>mover base</a>'s <a>margin box</a>.</li>
@@ -4024,7 +4021,7 @@
                 <code>OverShift</code> + <code>OverExtraAscender</code>.</li>
             </ul>
             <p>
-              The <a>line-descent</a> of the content is the maximum between:
+              The <a>line-descent</a> of the math content is the maximum between:
             </p>
             <ul>
               <li>The <a>line-descent</a> of the <a>mover base</a>'s <a>margin box</a>.</li>
@@ -4058,7 +4055,7 @@
             </figure>
             <p>
               The <a>min-content inline size</a>, <a>max-content inline size</a>
-              and <a>inline size</a> of the content
+              and <a>inline size</a> of the math content
               are calculated as an absolute difference
               between a maximum <a>inline offset</a> and minimum <a>inline offset</a>.
               These extrema are calculated by taking the extremum value
@@ -4076,7 +4073,7 @@
               using the <a>algorithm for stretching operators along the inline axis</a>.
             </p>
             <p>
-              The <a>line-ascent</a> and <a>line-descent</a> of the content
+              The <a>line-ascent</a> and <a>line-descent</a> of the math content
               are also calculated by taking the extremum value
               of the extrema calculated in
               <a href="#base-with-underscript"></a> and
@@ -4201,9 +4198,9 @@
             </figure>
             <p>
               The
-              <a>min-content inline size</a> (respectively <a>max-content inline size</a>) of the
-              content is
-              calculated the same as the <a>inline size</a> of the content
+              <a>min-content inline size</a> (respectively <a>max-content inline size</a>)
+              of the math content is
+              calculated the same as the <a>inline size</a> of the math content
               below, but replacing
               "<a>inline size</a>" with "<a>min-content inline size</a>"
               (respectively "<a>max-content inline size</a>") for the
@@ -4220,7 +4217,7 @@
               any stretch size constraint.
             </p>
             <p>
-              The <a>inline size</a> of the content
+              The <a>inline size</a> of the math content
               is calculated with the following algorithm:
             </p>
             <ol class="algorithm">
@@ -4282,7 +4279,7 @@
               <a href="#base-with-subscript-and-superscript"></a>.
             </p>
             <p>
-              The <a>line-ascent</a> of the content is calculated
+              The <a>line-ascent</a> of the math content is calculated
               by taking the maximum of all the <a>line-ascent</a>
               of each <a>subscript/superscript pair</a> as described in
               <a href="#base-with-subscript-and-superscript"></a>
@@ -4290,7 +4287,7 @@
               <code>SuperShift</code> values calculated above.
             </p>
             <p>
-              The <a>line-descent</a> of the content is calculated
+              The <a>line-descent</a> of the math content is calculated
               by taking the maximum of all the <a>line-descent</a>
               of each <a>subscript/superscript pair</a> as described in
               <a href="#base-with-subscript-and-superscript"></a>
