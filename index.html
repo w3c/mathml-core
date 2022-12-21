@@ -780,17 +780,6 @@
               is treated as <code>nowrap</code> on all MathML elements.
             </li>
             <li>
-              Sizes:
-              <code>width</code>,
-              <code>height</code>,
-              <code>inline-size</code> and
-              <code>block-size</code>
-              are treated as <code>auto</code> on elements
-              with computed display value
-              <a href="#new-display-math-value"><code>block math</code> or
-                <code>inline math</code></a>.
-            </li>
-            <li>
               Alignment properties:
               <code>align-content</code>, <code>justify-content</code>,
               <code>align-self</code>, <code>justify-self</code> have
@@ -1172,10 +1161,20 @@
               of a <a>math content box</a>, its <a>block size</a> is set to their sum.
             </li>
             <li>
-              The box metrics, offsets, <a>baselines</a>, <a>italic correction</a> and
+              By default,
+              the box metrics, offsets, <a>baselines</a>, <a>italic correction</a> and
               <a>top accent attachment</a> of the
               <a>content box</a>
               are set to the one calculated for the <a>math content box</a>.
+              However if a different size is specified for the
+              <a>content box</a> (via
+              <a data-xref-type="css-property">width</a>,
+              <a data-xref-type="css-property">height</a> or related
+              properties), that size is used instead and the
+              the inline-start and block-start edges of the
+              <a>math content box</a> are aligned with the ones of the
+              <a>content box</a>, unless otherwise specified in
+              a specific layout algorithm.
             </li>
             <li>
               <p>
@@ -1267,8 +1266,6 @@
             box layout and child boxes are laid out without
             any stretch size constraint.
           </p>
-          <div class="issue" data-number="75">Interpret
-            width/height/inline-size/block-size?</div>
           <div class="issue" data-number="76">Define what inline percentages resolve against</div>
           <div class="issue" data-number="77">Define what block percentages resolve against</div>
         </section>
@@ -2673,10 +2670,17 @@
               towards the <a>line-over</a> (respectively <a>line-under</a>).
             </p>
             <p>
+              The <a>math content box</a> is placed within the
+              <a>content box</a> so that their block-start edges
+              are aligned and the middles of these edges are at the same
+              position.
+            </p>
+            <p>
               The <a>inline size</a> of the fraction bar is the
-              <a>inline size</a> of the math content and its
-              <a>inline offset</a> is 0.
-              The center of the fraction bar is shifted away from the <a>alphabetic baseline</a>
+              <a>inline size</a> of the <a>content box</a> and its
+              inline-start edge is the aligned with the one the
+              <a>content box</a>.
+              The center of the fraction bar is shifted away from the <a>alphabetic baseline</a> of the <a>math content box</a>
               by a distance of <a>AxisHeight</a> towards the <a>line-over</a>.
               Its <a>block size</a> is the
               <a>fraction line thickness</a>.
@@ -2769,6 +2773,12 @@
               <code>TopShift</code> (respectively −
               <code>BottomShift</code>) towards the
               <a>line-over</a> (respectively <a>line-under</a>).
+            </p>
+            <p>
+              The <a>math content box</a> is placed within the
+              <a>content box</a> so that their block-start edges
+              are aligned and the middles of these edges are at the same
+              position.
             </p>
           </section>
         </section>
@@ -3886,6 +3896,12 @@
               the <a>ink line-descent</a> of the <a>munder base</a>'s <a>margin box</a>
               + <code>UnderShift</code>.
             </p>
+            <p>
+              The <a>math content box</a> is placed within the
+              <a>content box</a> so that their block-start edges
+              are aligned and the middles of these edges are at the same
+              position.
+            </p>
           </section>
           <section>
             <h4>Base with overscript</h4>
@@ -4042,6 +4058,12 @@
               and towards the <a>line-over</a> by a distance equal to
               the <a>ink line-ascent</a> of the base + <code>OverShift</code>.
             </p>
+            <p>
+              The <a>math content box</a> is placed within the
+              <a>content box</a> so that their block-start edges
+              are aligned and the middles of these edges are at the same
+              position.
+            </p>
           </section>
           <section>
             <h4>Base with underscript and overscript</h4>
@@ -4095,6 +4117,12 @@
               are calculated as in sections
               <a href="#base-with-underscript"></a> and
               <a href="#base-with-overscript"></a>.
+            </p>
+            <p>
+              The <a>math content box</a> is placed within the
+              <a>content box</a> so that their block-start edges
+              are aligned and the middles of these edges are at the same
+              position.
             </p>
             <div class="note">
               <p>
