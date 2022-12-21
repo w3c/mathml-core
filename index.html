@@ -1386,29 +1386,29 @@
               Otherwise, the layout below is performed.
             </p>
             <p>
-              The <code>mtext</code> element is laid out as a
-              <a>block box</a>
-              and the <a>min-content inline size</a>,
-              <a>max-content inline size</a>,
-              <a>inline size</a>, <a>block size</a>,
-              <a>first baseline set</a> and <a>last baseline set</a> are determined
-              accordingly.
-            </p>
-            <p>
               If the <code>&lt;mtext&gt;</code> element contains only text
               content without
               <a>forced line break</a>
               or
               <a>soft wrap opportunity</a>
-              then in addition:
+              then, the anonymous child node generated for that text is
+              laid out as defined in the relevant CSS specification and:
             </p>
             <ul>
-              <li>
-                The <a>ink-over baseline</a> (respectively and
-                <a>ink-under baseline</a>) is set to align with
-                the <a>line-over</a> edge
-                (respectively and <a>ink-under baseline</a>) of the
+              <li>The <a>min-content inline size</a>,
+                <a>max-content inline size</a> and <a>inline size</a> of
+                the <a>math content box</a> are equal to the one of the
+                anonymous child.</li>
+              <li>The <a>ink line-ascent</a> and <a>ink line-descent</a>
+                of the <a>math content box</a> are set so that
+                its <a>ink-over baseline</a>, <a>ink-under baseline</a>
+                and <a>alphabetic baseline</a> match the one of the
                 ink bounding box of the text.
+              </li>
+              <li>The <a>line-ascent</a>
+                (respectively <a>line-descent</a>) of the
+                <a>math content box</a> is set to the <a>ink line-ascent</a>
+                (respectively <a>ink line-descent</a>).
               </li>
               <li>
                 If the text content is made of a single glyph and this glyph
@@ -1423,6 +1423,15 @@
                 the <code>&lt;mtext&gt;</code> element.
 	      </li>
             </ul>
+            <p>
+              Otherwise, the <code>mtext</code> element is laid out as a
+              <a>block box</a>
+              and corresponding <a>min-content inline size</a>,
+              <a>max-content inline size</a>,
+              <a>inline size</a>, <a>block size</a>,
+              <a>first baseline set</a> and <a>last baseline set</a> are
+              used for the <a>math content box</a>.
+            </p>
           </section>
         </section>
         <section>
