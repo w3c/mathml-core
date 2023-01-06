@@ -2084,11 +2084,43 @@
             <dfn id="attribute-mspace-height" class="element-attr" data-dfn-for="mspace">height</dfn>,
             <dfn id="attribute-mspace-depth" class="element-attr" data-dfn-for="mspace">depth</dfn>, if present, must
             have a value that is a valid <a data-xref-type="css-type">&lt;length-percentage&gt;</a>.
-            An unspecified attribute, a percentage  value, or an invalid value
-            is interpreted as <code>0</code>.
-            If one of the requested values calculated is negative then it is
-            treated as <code>0</code>.
           </p>
+          <ul>
+            <li>
+              If the <code>width</code>
+              attribute is present, valid and not a percentage then
+              that attribute is used as a
+              <a data-cite="HTML/../#presentational-hints">presentational hint</a>
+              setting the element's
+              <a data-xref-type="css-property">width</a>
+              property to the corresponding value.
+            </li>
+            <li>
+              If the <code>height</code>
+              attribute is absent, invalid or a percentage then the requested
+              line-ascent is <code>0</code>.
+              Otherwise the requested line-ascent is the resolved
+              value of the <code>height</code> attribute, clamping
+              negative values to <code>0</code>.
+            </li>
+            <li>
+              If both the <code>height</code> and <code>depth</code> attributes
+              are present, valid and not a percentage then they are used as a
+              <a data-cite="HTML/../#presentational-hints">presentational hint</a>
+              setting the element's
+              <a data-xref-type="css-property">height</a>
+              property to the concatenation of the strings
+              "<code>calc(</code>", the <code>height</code> attribute value,
+              "<code> + </code>", the <code>depth</code> attribute value,
+              and "<code>)</code>".
+              If only one of these attributes is
+              present, valid and not a percentage then it is treated as a
+              <a data-cite="HTML/../#presentational-hints">presentational hint</a>
+              setting the element's
+              <a data-xref-type="css-property">height</a>
+              property to the corresponding value.
+            </li>
+          </ul>
           <div class="example" id="mspace-example">
             <p>In the following example, [^mspace^] is used to
               force spacing within the formula (a 1px blue border is
@@ -2107,12 +2139,14 @@
             Otherwise,
             the <code>&lt;mspace&gt;</code> element is laid out as shown on
             <a href="#figure-box-mspace"></a>.
-            The <a>min-content inline size</a> and
-            <a>max-content inline size</a> of the math content are
-            equal to the requested inline size.
-            The <a>inline size</a>, <a>line-ascent</a> and <a>line-descent</a> of the math content
-            are respectively
-            the requested inline size, line-ascent and line-descent.
+            The <a>min-content inline size</a>,
+            <a>max-content inline size</a> and <a>inline size</a> of the math
+            content are equal to the resolved value of the
+            <a data-xref-type="css-property">width</a> property.
+            The <a>block size</a> of the math content is equal to the resolved
+            value of the <a data-xref-type="css-property">height</a> property.
+            The <a>line-ascent</a> of the math content is equal to the
+            requested line-ascent determined above.
           </p>
           <figure id="figure-box-mspace">
             <img src="figures/mspacebox.svg">
@@ -3162,33 +3196,58 @@
               <a>generates an anonymous &lt;mrow&gt; box</a> called the
               <dfn>mpadded inner box</dfn> with parameters called
               inner inline size, inner <a>line-ascent</a> and inner line-descent.
+            </p>
+            <p>
               The requested <code>&lt;mpadded&gt;</code>
               parameters are determined as follows:
             </p>
             <ul class="algorithm">
-              <li>If the <code>width</code> (respectively <code>height</code>,
-                <code>depth</code>, <code>lspace</code>, <code>voffset</code>)
-                attribute is absent, invalid or a percentage
-                then the requested width
-                (respectively height, depth, lspace, voffset)
-                is the inner inline size
-                (respectively inner <a>line-ascent</a>, inner line-descent,
-                <code>0</code>,
-                <code>0</code>).
+              <li>
+                The requested width
+                is the resolved value of the
+                <a data-xref-type="css-property">width</a> property.
+                If the <code>width</code>
+                attribute is present, valid and not a percentage then
+                that attribute is used as a
+                <a data-cite="HTML/../#presentational-hints">presentational hint</a>
+                setting the element's
+                <a data-xref-type="css-property">width</a>
+                property to the corresponding value.
               </li>
-              <li>Otherwise the requested width
-                (respectively height, depth, lspace, voffset) is the resolved
-                value of the <code>width</code> attribute
-                (respectively <code>height</code>, <code>depth</code>,
-                <code>lspace</code>, <code>voffset</code> attributes).
-                If one of the requested width, depth, height or lspace values
-                is negative then it is treated as <code>0</code>.
+              <li>
+                If the <code>height</code>
+                attribute is absent, invalid or a percentage then the requested
+                height is the inner <a>line-ascent</a>.
+                Otherwise the requested height is the resolved
+                value of the <code>height</code> attribute, clamping
+                negative values to <code>0</code>.
+              </li>
+              <li>
+                If the <code>depth</code>
+                attribute is absent, invalid or a percentage then the requested
+                depth is the inner <a>line-ascent</a>.
+                Otherwise the requested depth is the resolved
+                value of the <code>depth</code> attribute, clamping
+                negative values to <code>0</code>.
+              </li>
+              <li>
+                If the <code>lspace</code>
+                attribute is absent, invalid or a percentage then the requested
+                lspace is 0. Otherwise the requested lspace is the resolved
+                value of the <code>lspace</code> attribute, clamping
+                negative values to <code>0</code>.
+              </li>
+              <li>
+                If the <code>voffset</code>
+                attribute is absent, invalid or a percentage then the requested
+                voffset is 0. Otherwise the requested voffset is the resolved
+                value of the <code>voffset</code> attribute.
+                <div class="note">
+                  Negative <code>voffset</code> values are not clamped to
+                  <code>0</code>.
+                </div>
               </li>
             </ul>
-            <div class="note">
-              Negative <code>voffset</code> values are not clamped to
-              <code>0</code>.
-            </div>
           </section>
           <section>
             <h5>Layout of <code>&lt;mpadded&gt;</code></h5>
