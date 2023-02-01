@@ -4644,22 +4644,25 @@
             in <a href="#global-attributes"></a> as well as the following attributes:
           </p>
           <ul id="mtd-attributes">
-            <li><a>columnspan</a></li>
+            <li><a>colspan</a></li>
             <li><a>rowspan</a></li>
           </ul>
           <p>
-            The <dfn><code>columnspan</code></dfn> (respectively
+            The <dfn><code>colspan</code></dfn> (respectively
             <dfn><code>rowspan</code></dfn>) attribute has the same
             syntax and semantics as the
             [^td/colspan^]
             (respectively
             [^td/rowspan^])
             attribute on the <code>&lt;td&gt;</code> element from [[HTML]].
+            In particular, the parsing of these attributes is handled as
+            described in the
+            <a data-cite="HTML/../#algorithm-for-processing-rows">algorithm for processing rows</a>.
           </p>
           <div class="note">
-            The name for the column spanning attribute is
-            <code>columnspan</code> as in [[MathML3]] and not
-            <code>colspan</code> as in [[HTML]].
+            The name of the column spanning attribute in [[MathML3]] and earlier
+            versions was <code>columnspan</code>. For consistency with [[HTML]],
+            this specification uses <code>colspan</code> instead.
           </div>
           <p>
             The <code>&lt;mtd&gt;</code> element
