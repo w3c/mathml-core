@@ -488,60 +488,23 @@
             attribute,
             if present, must be an
             <a>ASCII case-insensitive</a>
-            match to one of:
-            <code>normal</code>,
-            <code>bold</code>,
-            <code>italic</code>,
-            <code>bold-italic</code>,
-            <code>double-struck</code>,
-            <code>bold-fraktur</code>,
-            <code>script</code>,
-            <code>bold-script</code>,
-            <code>fraktur</code>,
-            <code>sans-serif</code>,
-            <code>bold-sans-serif</code>,
-            <code>sans-serif-italic</code>,
-            <code>sans-serif-bold-italic</code>,
-            <code>monospace</code>,
-            <code>initial</code>,
-            <code>tailed</code>,
-            <code>looped</code>, or
-            <code>stretched</code>.
+            match of <code>normal</code>.
             In that case, the user agent is expected to treat the attribute as a
             <a data-cite="HTML/../#presentational-hints">presentational hint</a> setting the element's
             <a data-xref-type="css-property">text-transform</a>
-            property to the corresponding value.
-            More precisely, an
-            <a>ASCII case-insensitive</a> match
-            to <code>normal</code> is mapped to <code>none</code>
-            while any other valid value is mapped to its
-            [=ASCII lowercase=]d value,
-            prefixed with <code>math-</code>.
+            property to <code>none</code>. Otherwise it has no effects.
           </p>
-          <p>
-            The <code>mathvariant</code> attribute defines logical classes of token
-            elements. Each class provides a collection of typographically-related
-            symbolic tokens with specific meaning within a given mathematical
-            expression.
-            For <code>mathvariant</code> values other than <code>normal</code>,
-            this is done by using glyphs of
-            Mathematical Alphanumeric Symbols [[UNICODE]].
-          </p>
-          <div class="example" id="mathvariant-example">
-            <p>
-              In the following example, the <a>mathvariant</a> attribute
-              is used to render different A letters. Note that by default
-              variables use mathematical italic.
-            </p>
-            <pre data-include="examples/example-mathvariant.html"
-                 data-include-format="text"></pre>
-            <img src="examples/example-mathvariant.png" alt="mathvariant example">
-          </div>
           <div class="note">
-	    <code>mathvariant</code> values other than <code>normal</code>
-            are implemented for compatibility with full MathML and legacy editors that can't access characters in Plane 1 of Unicode. Authors are encouraged to use the corresponding Unicode characters.
-            The <code>normal</code> value is still important to cancel automatic
-            italic of the [^mi^] element.
+            <p>In [[MathML3]], the <code>mathvariant</code> attribute was used
+              to define logical classes of token elements, each class providing
+              a collection of typographically-related symbolic tokens with
+              specific meaning within a given mathematical expression.</p>
+            <p>
+              In MathML Core, this attribute is only used to cancel automatic
+              italic of the [^mi^] element. For other use cases, the proper
+              Mathematical Alphanumeric Symbols [[UNICODE]] should be used
+              instead. See also section <a href="#new-text-transform-mappings"></a>.
+            </p>
           </div>
           <div class="note">
             <p>It is sometimes needed to distinguish between
@@ -4859,10 +4822,10 @@
         </div>
       </section>
       <section id="new-text-transform-values">
-        <h3>New <code>text-transform</code> values</h3>
+        <h3>New <code>text-transform</code> value</h3>
         <p>The <a data-xref-type="css-property">text-transform</a> property
           from <a data-cite="CSS-TEXT-3"></a>
-          is extended with new values:
+          is extended with a new value:
         </p>
         <table class="def propdef partial" data-link-for-hint="text-transform">
           <tbody>
@@ -4872,86 +4835,18 @@
               </td>
             </tr>
             <tr class="value">
-              <th><a data-cite="CSS-VALUES-4#value-defs">New values:</a></th>
-              <td class="prod">math-auto <a data-cite="CSS-VALUES-4#comb-one">|</a> math-bold | math-italic | math-bold-italic | math-double-struck | math-bold-fraktur | math-script | math-bold-script | math-fraktur | math-sans-serif | math-bold-sans-serif | math-sans-serif-italic | math-sans-serif-bold-italic | math-monospace | math-initial | math-tailed | math-looped | math-stretched</td>
+              <th><a data-cite="CSS-VALUES-4#value-defs">New value:</a></th>
+              <td class="prod">math-auto</td>
             </tr>
           </tbody>
         </table>
-        <p>If the specified value of text-transform is <code>math-auto</code>
-          and the inherited value is not <code>none</code> then the
-          computed value is the inherited value.</p>
         <p>
-          On text nodes containing a single character, <code>math-auto</code> has
-          the same effect as <code>math-italic</code>, otherwise it has no effects.
-        </p>
-        <p>
-          For the
-          <code>math-bold</code>,
-          <code>math-italic</code>,
-          <code>math-bold-italic</code>,
-          <code>math-double-struck</code>,
-          <code>math-bold-fraktur</code>,
-          <code>math-script</code>,
-          <code>math-bold-script</code>,
-          <code>math-fraktur</code>,
-          <code>math-sans-serif</code>,
-          <code>math-bold-sans-serif</code>,
-          <code>math-sans-serif-italic</code>,
-          <code>math-sans-serif-bold-italic</code>,
-          <code>math-monospace</code>,
-          <code>math-initial</code>,
-          <code>math-tailed</code>,
-          <code>math-looped</code> and
-          <code>math-stretched</code>
-          values, the transformed text is
-          obtained by performing conversion of each character according to
-          the corresponding
-          <a href="#bold-mappings">bold</a>,
-          <a href="#italic-mappings">italic</a>,
-          <a href="#bold-italic-mappings">bold-italic</a>,
-          <a href="#double-struck-mappings">double-struck</a>,
-          <a href="#bold-fraktur-mappings">bold-fraktur</a>,
-          <a href="#script-mappings">script</a>,
-          <a href="#bold-script-mappings">bold-script</a>,
-          <a href="#fraktur-mappings">fraktur</a>,
-          <a href="#sans-serif-mappings">sans-serif</a>,
-          <a href="#bold-sans-serif-mappings">bold-sans-serif</a>,
-          <a href="#sans-serif-italic-mappings">sans-serif-italic</a>,
-          <a href="#sans-serif-bold-italic-mappings">sans-serif-bold-italic</a>,
-          <a href="#monospace-mappings">monospace</a>,
-          <a href="#initial-mappings">initial</a>,
-          <a href="#tailed-mappings">tailed</a>,
-          <a href="#looped-mappings">looped</a>,
-          <a href="#stretched-mappings">stretched</a> tables.
-        </p>
-        <p>
-          User agents may decide to rely on italic, bold and bold-italic
-          font-level properties when available fonts lack the proper glyphs to
-          perform <code>math-auto</code>, <code>math-italic</code>,
-          <code>math-bold</code>, <code>math-bold-italic</code> character-level
-          transforms.
+          On text nodes containing a single character, if the computed value
+          is <code>math-auto</code> then the transformed text is obtained by
+          performing conversion of each character according to the
+          <a href="#italic-mappings">italic</a> table.
         </p>
         <div class="example" id="text-transform-example">
-          <p>The following example shows a
-            mathematical formula
-            where "exp" is rendered with normal variant,
-            "A" with bold variant,
-            "gl" with fraktur variant,
-            "n" using italic variant and
-            "R" using double-struck variant.
-          </p>
-          <img src="examples/example-text-transform.png" alt="text-transform example">
-          <p>Values other than <code>math-auto</code> are intended to infer
-            specific context-dependent mathematical meaning.
-            In the previous example, one can guess that the author
-            decided to use the convention of bold variables for
-            matrices, fraktur variables for Lie algebras and double-struck
-            variables for sets of numbers. Although the corresponding
-            Unicode
-            characters could have been used directly in these cases, it may
-            be helpful for authoring tools or polyfills to support these
-            transformations via the <code>text-transform</code> property.
-          </p>
           <p>A common style convention is to render
             identifiers with multiple letters (e.g. the function name "exp")
             with normal style and identifiers with a single letter
@@ -6034,72 +5929,87 @@
       </section>
     </section>
     <section>
-      <h3>New <code>text-transform</code> Mappings</h3>
-      <section id="bold-script-mappings">
+      <h3 id="new-text-transform-mappings">Mathematical Alphanumeric Symbols</h3>
+      <p>
+        The following tables enumerate the mathematical alphanumeric symbols
+        with form bold, italic, fraktur, monospace, double-struck etc
+        that are available in Unicode.
+        For each of them, the character in its normal form is provided as
+        well as the difference between the code points of the transformed and
+        original characters.
+      </p>
+      <div class="note">
+        This difference can be used to simplify implementations. For example
+        for italic mappings, the code point of a uppercase latin letter is
+        increased by 0x1D3F3, the code point of a lowercase latin letter is
+        (generally) increased by 1D3ED, etc and the exceptions can be
+        handled separately.
+      </div>
+      <section class="informative" id="bold-script-mappings">
         <h4><code>bold-script</code> mappings</h4>
         <div data-include="tables/mathvariants-bold-script.html"></div>
       </section>
-      <section id="bold-italic-mappings">
+      <section class="informative" id="bold-italic-mappings">
         <h4><code>bold-italic</code> mappings</h4>
         <div data-include="tables/mathvariants-bold-italic.html"></div>
       </section>
-      <section id="tailed-mappings">
+      <section class="informative" id="tailed-mappings">
         <h4><code>tailed</code> mappings</h4>
         <div data-include="tables/mathvariants-tailed.html"></div>
       </section>
-      <section id="bold-mappings">
+      <section class="informative" id="bold-mappings">
         <h4><code>bold</code> mappings</h4>
         <div data-include="tables/mathvariants-bold.html"></div>
       </section>
-      <section id="fraktur-mappings">
+      <section class="informative" id="fraktur-mappings">
         <h4><code>fraktur</code> mappings</h4>
         <div data-include="tables/mathvariants-fraktur.html"></div>
       </section>
-      <section id="script-mappings">
+      <section class="informative" id="script-mappings">
         <h4><code>script</code> mappings</h4>
         <div data-include="tables/mathvariants-script.html"></div>
       </section>
-      <section id="monospace-mappings">
+      <section class="informative" id="monospace-mappings">
         <h4><code>monospace</code> mappings</h4>
         <div data-include="tables/mathvariants-monospace.html"></div>
       </section>
-      <section id="initial-mappings">
+      <section class="informative" id="initial-mappings">
         <h4><code>initial</code> mappings</h4>
         <div data-include="tables/mathvariants-initial.html"></div>
       </section>
-      <section id="sans-serif-mappings">
+      <section class="informative" id="sans-serif-mappings">
         <h4><code>sans-serif</code> mappings</h4>
         <div data-include="tables/mathvariants-sans-serif.html"></div>
       </section>
-      <section id="double-struck-mappings">
+      <section class="informative" id="double-struck-mappings">
         <h4><code>double-struck</code> mappings</h4>
         <div data-include="tables/mathvariants-double-struck.html"></div>
       </section>
-      <section id="looped-mappings">
+      <section class="informative" id="looped-mappings">
         <h4><code>looped</code> mappings</h4>
         <div data-include="tables/mathvariants-looped.html"></div>
       </section>
-      <section id="stretched-mappings">
+      <section class="informative" id="stretched-mappings">
         <h4><code>stretched</code> mappings</h4>
         <div data-include="tables/mathvariants-stretched.html"></div>
       </section>
-      <section id="italic-mappings">
+      <section class="normative" id="italic-mappings">
         <h4><code>italic</code> mappings</h4>
         <div data-include="tables/mathvariants-italic.html"></div>
       </section>
-      <section id="bold-fraktur-mappings">
+      <section class="informative" id="bold-fraktur-mappings">
         <h4><code>bold-fraktur</code> mappings</h4>
         <div data-include="tables/mathvariants-bold-fraktur.html"></div>
       </section>
-      <section id="sans-serif-bold-italic-mappings">
+      <section class="informative" id="sans-serif-bold-italic-mappings">
         <h4><code>sans-serif-bold-italic</code> mappings</h4>
         <div data-include="tables/mathvariants-sans-serif-bold-italic.html"></div>
       </section>
-      <section id="sans-serif-italic-mappings">
+      <section class="informative" id="sans-serif-italic-mappings">
         <h4><code>sans-serif-italic</code> mappings</h4>
         <div data-include="tables/mathvariants-sans-serif-italic.html"></div>
       </section>
-      <section id="bold-sans-serif-mappings">
+      <section class="informative" id="bold-sans-serif-mappings">
         <h4><code>bold-sans-serif</code> mappings</h4>
         <div data-include="tables/mathvariants-bold-sans-serif.html"></div>
       </section>
