@@ -368,7 +368,6 @@
             <li><a><code>mathbackground</code></a></li>
             <li><a><code>mathcolor</code></a></li>
             <li><a><code>mathsize</code></a></li>
-            <li><a><code>mathvariant</code></a></li>
             <li><a><code>nonce</code></a></li>
             <li><a><code>scriptlevel</code></a></li>
             <li><a><code>style</code></a></li>
@@ -478,33 +477,6 @@
           </p>
           <div class="note">
 	    The above attributes are implemented for compatibility with full MathML. Authors whose only target is MathML Core are encouraged to use CSS for styling.
-          </div>
-        </section>
-        <section id="the-mathvariant-attribute">
-          <h4>The <code>mathvariant</code> attribute</h4>
-          <p>
-            The
-            <dfn class="element-attr">mathvariant</dfn>
-            attribute,
-            if present, must be an
-            <a>ASCII case-insensitive</a>
-            match of <code>normal</code>.
-            In that case, the user agent is expected to treat the attribute as a
-            <a data-cite="HTML/../#presentational-hints">presentational hint</a> setting the element's
-            <a data-xref-type="css-property">text-transform</a>
-            property to <code>none</code>. Otherwise it has no effects.
-          </p>
-          <div class="note">
-            <p>In [[MathML3]], the <code>mathvariant</code> attribute was used
-              to define logical classes of token elements, each class providing
-              a collection of typographically-related symbolic tokens with
-              specific meaning within a given mathematical expression.</p>
-            <p>
-              In MathML Core, this attribute is only used to cancel automatic
-              italic of the [^mi^] element. For other use cases, the proper
-              Mathematical Alphanumeric Symbols [[UNICODE]] should be used
-              instead. See also section <a href="#new-text-transform-mappings"></a>.
-            </p>
           </div>
         </section>
         <section id="the-displaystyle-and-scriptlevel-attributes">
@@ -1374,7 +1346,7 @@
             </p>
           </section>
         </section>
-        <section>
+        <section id="the-mathvariant-attribute">
           <h4>Identifier <code>&lt;mi&gt;</code></h4>
           <p>
             The
@@ -1386,14 +1358,42 @@
           </p>
           <p>
             The <code>&lt;mi&gt;</code> element accepts the attributes described
-            in <a href="#global-attributes"></a>. Its layout algorithm is
-            the same as the [^mtext^] element.
-            The
+            in <a href="#global-attributes"></a> as well as the following attribute:
+          </p>
+          <ul>
+            <li>[^mi/mathvariant^]</li>
+          </ul>
+          <p>The layout algorithm is the same as the [^mtext^] element. The
             <a>user agent stylesheet</a>
             must contain the following property in order to implement automatic
-            italic:
+            italic via the text-transform value introduced in <a href="#new-text-transform-values"></a>:
           </p>
           <pre class="css" data-include="user-agent-stylesheet/mi.css"></pre>
+
+            <p>
+              The
+              <dfn class="element-attr">mathvariant</dfn>
+              attribute,
+              if present, must be an
+              <a>ASCII case-insensitive</a>
+              match of <code>normal</code>.
+              In that case, the user agent is expected to treat the attribute as a
+              <a data-cite="HTML/../#presentational-hints">presentational hint</a> setting the element's
+              <a data-xref-type="css-property">text-transform</a>
+              property to <code>none</code>. Otherwise it has no effects.
+            </p>
+            <div class="note">
+              <p>In [[MathML3]], the <code>mathvariant</code> attribute was used
+                to define logical classes of token elements, each class providing
+                a collection of typographically-related symbolic tokens with
+                specific meaning within a given mathematical expression.</p>
+              <p>
+                In MathML Core, this attribute is only used to cancel automatic
+                italic of the [^mi^] element. For other use cases, the proper
+                Mathematical Alphanumeric Symbols [[UNICODE]] should be used
+                instead. See also section <a href="#new-text-transform-mappings"></a>.
+              </p>
+            </div>
           <div class="example" id="mi-example">
             <p>In the following example, [^mi^] is used to render
               variables and function names. Note that identifiers containing a
