@@ -506,27 +506,6 @@
               instead. See also section <a href="#new-text-transform-mappings"></a>.
             </p>
           </div>
-          <div class="note">
-            <p>It is sometimes needed to distinguish between
-            Chancery and Roundhand style for MATHEMATICAL SCRIPT characters.
-            These are notably used in LaTeX for the
-            <code>\mathcal</code> and <code>\mathscr</code> commands.</p>
-            <p>One way to do that is to rely on
-            Chapter 23.4 Variation Selectors of
-            Unicode which describes a way to
-            specify selection of particular glyph variants [[UNICODE]].
-            Indeed, the
-            <code>StandardizedVariants.txt</code> file from the
-            Unicode Character Database indicates that variant selectors
-            U+FE00 and U+FE01 can be used on capital script to specify
-            Chancery and Roundhand respectively.</p>
-            <p>Alternatively, some
-            mathematical fonts rely on <code>salt</code> or
-            <code>ssXY</code> properties from [[OPEN-FONT-FORMAT]]
-            to provide both styles. Page authors may use the
-            <a data-xref-type="css-property">font-variant-alternates</a> property with corresponding OpenType font features
-            to access these glyphs.</p>
-          </div>
         </section>
         <section id="the-displaystyle-and-scriptlevel-attributes">
           <h4>The <code>displaystyle</code> and <code>scriptlevel</code> attributes</h4>
@@ -5945,6 +5924,27 @@
         (generally) increased by 1D3ED, etc and the exceptions can be
         handled separately.
       </div>
+          <div class="note">
+            <p>It is sometimes needed to distinguish between
+            Chancery and Roundhand style for MATHEMATICAL SCRIPT characters.
+            These are notably used in LaTeX for the
+            <code>\mathcal</code> and <code>\mathscr</code> commands.</p>
+            <p>One way to do that is to rely on
+            Chapter 23.4 Variation Selectors of
+            Unicode which describes a way to
+            specify selection of particular glyph variants [[UNICODE]].
+            Indeed, the
+            <code>StandardizedVariants.txt</code> file from the
+            Unicode Character Database indicates that variant selectors
+            U+FE00 and U+FE01 can be used on capital script to specify
+            Chancery and Roundhand respectively.</p>
+            <p>Alternatively, some
+            mathematical fonts rely on <code>salt</code> or
+            <code>ssXY</code> properties from [[OPEN-FONT-FORMAT]]
+            to provide both styles. Page authors may use the
+            <a data-xref-type="css-property">font-variant-alternates</a> property with corresponding OpenType font features
+            to access these glyphs.</p>
+          </div>
       <section class="informative" id="bold-script-mappings">
         <h4><code>bold-script</code> mappings</h4>
         <div data-include="tables/mathvariants-bold-script.html"></div>
