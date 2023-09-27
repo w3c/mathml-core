@@ -1339,7 +1339,7 @@
             </p>
           </section>
         </section>
-        <section id="the-mathvariant-attribute">
+        <section id="the-mi-element">
           <h4>Identifier <code>&lt;mi&gt;</code></h4>
           <p>
             The
@@ -1363,7 +1363,7 @@
           </p>
           <pre class="css" data-include="user-agent-stylesheet/mi.css"></pre>
 
-            <p>
+            <p id="the-mathvariant-attribute">
               The
               <dfn class="element-attr">mathvariant</dfn>
               attribute,
@@ -1396,7 +1396,7 @@
             <img src="examples/example-mi.png" alt="mi example">
           </div>
         </section>
-        <section>
+        <section id="the-mn-element">
           <h4>Number <code>&lt;mn&gt;</code></h4>
           <p>
             The
@@ -1472,7 +1472,7 @@
             <a href="#operator-dictionary-compact-special-tables"><code>Operators_fence</code></a> and <a href="#operator-dictionary-compact-special-tables"><code>Operators_separator</code></a> tables, or equivalently
             the <a href="#operator-dictionary-human">human-readable version</a>
             of the operator dictionary.
-        </div>
+          </div>
           <div class="example" id="mo-example">
             <p>
               In the following example, the [^mo^] element
@@ -2168,7 +2168,7 @@
           </div>
         </section>
       </section>
-      <section>
+      <section id="general-layout-schemata">
         <h3>General Layout Schemata</h3>
         <p>Besides tokens there are several families of MathML presentation
           elements. One family of elements deals with various "scripting"
@@ -2858,7 +2858,7 @@
               target size for the radical glyph.
             </p>
           </section>
-          <section>
+          <section id="square-root">
             <h5>Square root</h5>
             <p>
               The <code>&lt;msqrt&gt;</code> element is laid out as shown on
@@ -2936,7 +2936,7 @@
               </li>
             </ul>
           </section>
-          <section>
+          <section id="root-with-index">
             <h5>Root with index</h5>
             <p>
               The <code>&lt;mroot&gt;</code> element is laid out as shown on
@@ -3185,7 +3185,7 @@
               </li>
             </ul>
           </section>
-          <section>
+          <section id="layout-of-mpadded">
             <h5>Layout of <code>&lt;mpadded&gt;</code></h5>
             <p>
               If the <code>&lt;mpadded&gt;</code> element does not have its
@@ -3307,7 +3307,7 @@
             the corresponding value is described.
             Otherwise, the layout below is performed.
           </p>
-          <section>
+          <section id="children-of-msub">
             <h5>Children of <code>&lt;msub&gt;</code>,
             <code>&lt;msup&gt;</code>, <code>&lt;msubsup&gt;</code></h5>
             <p>
@@ -3340,7 +3340,7 @@
               in <a href="#base-with-subscript-and-superscript"></a>.
             </p>
           </section>
-          <section>
+          <section id="base-with-subscript">
             <h5>Base with subscript</h5>
             <p>
               The <code>&lt;msub&gt;</code> element is laid out as shown on
@@ -3416,7 +3416,7 @@
               towards the <a>line-under</a>.
             </p>
           </section>
-          <section>
+          <section id="base-with-superscript">
             <h5>Base with superscript</h5>
             <p>
               The <code>&lt;msup&gt;</code> element is laid out as shown on
@@ -3501,7 +3501,7 @@
               towards the <a>line-over</a>.
             </p>
           </section>
-          <section>
+          <section id="base-with-subscript-and-superscript">
             <h5>Base with subscript and superscript</h5>
             <p>
               The <code>&lt;msubsup&gt;</code> element is laid out as shown on
@@ -3666,7 +3666,7 @@
             the corresponding value is described.
             Otherwise, the layout below is performed.
           </p>
-          <section>
+          <section id="children-of-munder">
             <h5>Children of <code>&lt;munder&gt;</code>,
             <code>&lt;mover&gt;</code>, <code>&lt;munderover&gt;</code></h5>
             <p>
@@ -3765,7 +3765,7 @@
               </li>
             </ol>
           </section>
-          <section>
+          <section id="base-with-underscript">
             <h4>Base with underscript</h4>
             <p>
               The <code>&lt;munder&gt;</code> element is laid out as shown on
@@ -3898,7 +3898,7 @@
               position.
             </p>
           </section>
-          <section>
+          <section id="base-with-overscript">
             <h4>Base with overscript</h4>
             <p>
               The <code>&lt;mover&gt;</code> element is laid out as shown on
@@ -4060,7 +4060,7 @@
               position.
             </p>
           </section>
-          <section>
+          <section id="base-with-underscript-and-overscript">
             <h4>Base with underscript and overscript</h4>
             <p>
               The general layout of <code>&lt;munderover&gt;</code> is shown on
@@ -4551,7 +4551,7 @@
             in <a href="#global-attributes"></a>.
           </p>
         </section>
-        <section>
+        <section id="row-in-table-or-matrix">
           <h4>Row in Table or Matrix <code>&lt;mtr&gt;</code></h4>
           <p>
             The <dfn class="element">mtr</dfn> is laid out as
@@ -4565,7 +4565,7 @@
             in <a href="#global-attributes"></a>.
           </p>
         </section>
-        <section>
+        <section id="entry-in-table-or-matrix">
           <h4>Entry in Table or Matrix <code>&lt;mtd&gt;</code></h4>
           <p>
             The <dfn class="element">mtd</dfn> is laid out as
@@ -5182,7 +5182,7 @@
         <a data-xref-type="css-property">font-size</a>
         or zoom level.
       </p>
-      <section>
+      <section id="layout-constants">
         <h3>Layout constants (<code>MathConstants</code>)</h3>
         <p>These are global layout constants for the
           <a>first available font</a>:</p>
@@ -5310,7 +5310,7 @@
           <dd><code>MATH.MathConstants.radicalDegreeBottomRaisePercent / 100.0</code> or 0.6 if the constant is not available.</dd>
         </dl>
       </section>
-      <section>
+      <section id="glyph-information">
         <h3>Glyph information (<code>MathGlyphInfo</code>)</h3>
         <div class="note">MathTopAccentAttachment is at risk.</div>
         <p>
@@ -5338,13 +5338,13 @@
           </dd>
         </dl>
       </section>
-      <section>
+      <section id="size-variants-for-operators">
         <h3>Size variants for operators (<code>MathVariants</code>)</h3>
         <p>
           This section describes how to handle stretchy glyphs of arbitrary
           size using the <code>MATH.MathVariants</code> table.
         </p>
-        <section>
+        <section id="the-glyph-assembly">
           <h4>The <code>GlyphAssembly</code> table</h4>
           <p>
             This section is based on [[?OPEN-TYPE-MATH-IN-HARFBUZZ]].
@@ -5555,7 +5555,7 @@
             </li>
           </ol>
         </section>
-        <section>
+        <section id="algorithms-for-glyph-stretching">
           <h4>Algorithms for glyph stretching</h4>
           <p>
             The <dfn>preferred inline size of a glyph stretched along the block
@@ -5671,7 +5671,7 @@
 <span data-include-replace="true" data-include="user-agent-stylesheet/radicals.css"></span><span data-include-replace="true" data-include="user-agent-stylesheet/scripts.css"></span>
       </pre>
     </section>
-    <section>
+    <section id="operator-tables">
       <h2>Operator Tables</h2>
       <section id="operator-dictionary" class="normative">
         <h3>Operator Dictionary</h3>
