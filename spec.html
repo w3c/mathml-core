@@ -9,8 +9,7 @@
     </script>
     <script src="tables/sorttable.js"></script>
     <script class="remove" src="wpt/data-tests.js"></script>
-    <script class="remove" src="wpt/fetch-browser-results.js"></script>
-    <script class="remove" src="spec-implementation-report.js"></script>
+    <script class="remove" src="wpt/spec-implementation-report.js"></script>
     <script class="remove">
       var respecConfig = {
           specStatus: "CR",
@@ -726,12 +725,6 @@
           <p>The {{GlobalEventHandlers}} and
             <dfn class="interface" data-cite="HTML/../#htmlorsvgelement"><code>HTMLOrForeignElement</code></dfn>
             interfaces are defined in [[HTML]].</p>
-          <p>Each IDL attribute of the
-            <a><code>MathMLElement</code></a> interface
-            reflects the
-            corresponding MathML
-            <a href="#global-attributes">content attribute</a>.
-          </p>
           <div class="example" id="dom-idl-example">
             <p>
               In the following example, a MathML formula is used to render
@@ -1346,7 +1339,7 @@
             </p>
           </section>
         </section>
-        <section id="the-mathvariant-attribute">
+        <section id="the-mi-element">
           <h4>Identifier <code>&lt;mi&gt;</code></h4>
           <p>
             The
@@ -1370,7 +1363,7 @@
           </p>
           <pre class="css" data-include="user-agent-stylesheet/mi.css"></pre>
 
-            <p>
+            <p id="the-mathvariant-attribute">
               The
               <dfn class="element-attr">mathvariant</dfn>
               attribute,
@@ -1479,7 +1472,7 @@
             <a href="#operator-dictionary-compact-special-tables"><code>Operators_fence</code></a> and <a href="#operator-dictionary-compact-special-tables"><code>Operators_separator</code></a> tables, or equivalently
             the <a href="#operator-dictionary-human">human-readable version</a>
             of the operator dictionary.
-        </div>
+          </div>
           <div class="example" id="mo-example">
             <p>
               In the following example, the [^mo^] element
@@ -3132,7 +3125,7 @@
             <img src="examples/example-mpadded.png" alt="mpadded example">
           </div>
 
-          <section>
+          <section id="inner-box-and-requested-parameters">
             <h5>Inner box and requested parameters</h5>
             <p>
               The [^mpadded^] element
@@ -4587,11 +4580,11 @@
             in <a href="#global-attributes"></a> as well as the following attributes:
           </p>
           <ul id="mtd-attributes">
-            <li><a>colspan</a></li>
+            <li><a>columnspan</a></li>
             <li><a>rowspan</a></li>
           </ul>
           <p>
-            The <dfn><code>colspan</code></dfn> (respectively
+            The <dfn><code>columnspan</code></dfn> (respectively
             <dfn><code>rowspan</code></dfn>) attribute has the same
             syntax and semantics as the
             [^td/colspan^]
@@ -4600,12 +4593,13 @@
             attribute on the <code>&lt;td&gt;</code> element from [[HTML]].
             In particular, the parsing of these attributes is handled as
             described in the
-            <a data-cite="HTML/../#algorithm-for-processing-rows">algorithm for processing rows</a>.
+            <a data-cite="HTML/../#algorithm-for-processing-rows">algorithm for processing rows</a>, always reading "<code>colspan</code>" as
+            "<code>columnspan</code>".
           </p>
           <div class="note">
             The name of the column spanning attribute in [[MathML3]] and earlier
-            versions was <code>columnspan</code>. For consistency with [[HTML]],
-            this specification uses <code>colspan</code> instead.
+            versions is <code>columnspan</code> and is preserved for backward
+            compatibility reasons.
           </div>
           <p>
             The <code>&lt;mtd&gt;</code> element
