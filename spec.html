@@ -576,22 +576,8 @@
         <section id="html-and-svg">
           <h4>HTML and SVG</h4>
           <p>
-            When
-            <a data-cite="HTML/../#parsing">parsing HTML documents</a>
-            user agents must treat any tag name corresponding to a
-            <a>MathML Core Element</a> as belonging to the
-            <a>MathML namespace</a>.
-          </p>
-          <p>
-            Users agents must allow mixing HTML, SVG and MathML elements
-            as allowed by sections
-            <a data-cite="HTML/../#html-integration-point">HTML integration point</a>,
-            <a data-cite="HTML/../#mathml-text-integration-point">MathML integration point</a>,
-            <a data-cite="HTML/../#tree-construction-dispatcher">tree construction
-              dispatcher</a>,
-            <a data-cite="HTML/../#mathml">MathML</a> and
-            <a data-cite="HTML/../#svg-0">SVG</a>
-            from [[HTML]].
+            MathML can be mixed with HTML and SVG as described in the relevant
+            specifications [[HTML]] [[SVG]].
           </p>
           <p>
             When evaluating the SVG [^svg/requiredExtensions^]
@@ -609,45 +595,13 @@
               HTML <code>input</code> element is used within the
               [^mtext^]
               to include an interactive input field inside a mathematical
-              formula.
+              formula. See also <a href="#semantics-and-presentation"></a>
+              for an example of SVG and HTML inside an [^annotation-xml^]
+              element.
             </p>
             <pre data-include="examples/example-html-svg.html"
                  data-include-format="text"></pre>
             <img src="examples/example-html-svg.png" alt="html-svg example">
-          </div>
-          <div class="note">
-            <ul>
-              <li>
-                The <code>&lt;math&gt;</code> element can be used at
-                position permitted for
-                <a>flow content</a>
-                (e.g. a
-                <a data-cite="SVG/embedded.html#ForeignObjectElement"><code>&lt;foreignObject&gt;</code></a> element)
-                or <a>phrasing content</a>.
-              </li>
-              <li>
-                Any
-                <a>phrasing content</a>
-                can be used inside
-                [^mi^],
-                [^mo^],
-                [^mn^],
-                [^ms^] and
-                [^mtext^]
-                elements.
-              </li>
-              <li>
-                The <code>&lt;svg&gt;</code> element can be used inside
-                [^annotation-xml^] elements.
-              </li>
-              <li>
-                Any <a>flow content</a>
-                can be used inside
-                [^annotation-xml^] elements with
-                encoding
-                <code>application/xhtml+xml</code> or <code>text/html</code>.
-              </li>
-            </ul>
           </div>
         </section>
         <section id="css-styling">
@@ -4677,8 +4631,9 @@
           <p>
             The following example shows how the fraction "one half" can be
             annotated with a textual annotation (LaTeX) or an XML annotation
-            (content MathML). These annotations are not intended to be rendered
-            by the user agent.
+            (content MathML), which are not intended to be rendered
+            by the user agent. This fraction is also annotated with equivalent
+            SVG and HTML markup.
           </p>
           <pre data-include="examples/example-semantics.html"
                data-include-format="text"></pre>
