@@ -43,7 +43,7 @@
           mdn: false,
           testSuiteURI: "https://github.com/web-platform-tests/wpt/tree/master/mathml/",
           implementationReportURI: "https://wpt.fyi/results/?label=master&label=experimental&aligned&q=math%20%20not%28path%3A%2Fjs%29",
-        xref: ['html', 'infra', 'css-display-3', 'css-text-3', 'web-animations', 'css-fonts-4', 'dom', 'cssom-view', 'css-sizing-3', 'css-align-3', 'css-box-4', 'css-values-4', 'css-backgrounds-3', 'css-text-decor-4', 'svg', 'css-writing-modes-4', 'css-color-4', 'css-box-4'],
+          xref: ['html', 'infra', 'css-display-3', 'css-text-3', 'web-animations', 'css-fonts-4', 'dom', 'cssom-view', 'css-sizing-3', 'css-align-3', 'css-box-4', 'css-values-4', 'css-backgrounds-3', 'css-text-decor-4', 'svg', 'css-writing-modes-4', 'css-color-4', 'css-box-4', 'css-pseudo'],
           localBiblio: {
               "MATHML4": {
                   title: "Mathematical Markup Language (MathML) Version 4.0",
@@ -637,6 +637,15 @@
             <code>display</code> value is
             <code>block math</code> or <code>inline math</code>,
             and does not take them out-of-flow.
+          </p>
+          <p>
+            The <a data-xref-type="css-selector">::first-line</a> and
+            <a data-xref-type="css-selector">::first-letter</a>
+            pseudo-elements do not apply to elements whose computed
+            <code>display</code> value is
+            <code>block math</code> or <code>inline math</code>, and such
+            elements do not contribute a first formatted line or first letter
+            to their ancestors.
           </p>
           <p>
             The following CSS features are not supported and must be ignored:
