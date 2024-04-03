@@ -1827,14 +1827,29 @@
                         Otherwise set them to
                         <code>U<sub>ascent</sub></code> and
                         <code>U<sub>descent</sub></code> respectively.
+                        <div class="note">
+                          The property <code>T<sub>ascent</sub></code> − <a>AxisHeight</a> = <code>T<sub>descent</sub></code> + <a>AxisHeight</a> means that
+                          an operator stretching exactly
+                          <code>T<sub>ascent</sub></code> above the baseline
+                          and <code>T<sub>descent</sub></code> below the
+                          baseline would actually stretch symmetrically above
+                          and below the <a>math axis</a>.
+                          <code>S<sub>ascent</sub></code> and
+                          <code>S<sub>descent</sub></code> are the minimal
+                          values, that are respectively not less than
+                          <code>U<sub>ascent</sub></code> and
+                          <code>U<sub>descent</sub></code>, which satisfy
+                          this property.
+                        </div>
                       </li>
                       <li>
                         Let <code>minsize</code> and <code>maxsize</code>
                         be the [=embellished operator/minsize=] and [=embellished operator/maxsize=] properties on the
                         operator. Percentage values are interpreted relative
-                        to <code>T</code> =
+                        to the height of the glyph for <code>c</code>.
+                        Let <code>T</code> =
                         <code>T<sub>ascent</sub></code> +
-                        <code>T<sub>descent</sub></code>.
+                        <code>T<sub>descent</sub></code> be the target size.
                         If <code>minsize</code> &lt; 0 then set <code>minsize</code>
                         to 0.
                         If <code>maxsize</code> &lt; <code>minsize</code> then
@@ -1843,7 +1858,8 @@
                         <ul>
                           <li>
                             If <code>T</code> &le; 0 then set
-                            <code>T<sub>ascent</sub></code> to <code>minsize</code> / 2  and
+                            <code>T<sub>ascent</sub></code> to
+                            <code>minsize</code> / 2 + <a>AxisHeight</a> and
                             then set <code>T<sub>descent</sub></code>
                             to <code>minsize</code> −
                             <code>T<sub>ascent</sub></code>.                            
@@ -1851,24 +1867,34 @@
                           <li>
                             Otherwise, if
                             0 &lt; <code>T</code> &lt; <code>minsize</code>
-                            then first
-                            multiply
-                            <code>T<sub>ascent</sub></code>
-                            by <code>minsize</code> / <code>T</code>
-                            and then set <code>T<sub>descent</sub></code>
-                            to <code>minsize</code> -
+                            then set <code>T<sub>ascent</sub></code> to
+                            max(0, (<code>T<sub>ascent</sub></code> − <a>AxisHeight</a>) × <code>minsize</code> / <code>T</code> + <a>AxisHeight</a>) and
+                            <code>T<sub>descent</sub></code>
+                            to <code>minsize</code> −
                             <code>T<sub>ascent</sub></code>.
                           </li>
                           <li>
                             Otherwise, if <code>maxsize</code> &lt; <code>T</code>
-                            then first multiply
-                            <code>T<sub>ascent</sub></code> by
-                            <code>maxsize</code> / <code>T</code> and
-                            then set <code>T<sub>descent</sub></code>
+                            then set <code>T<sub>ascent</sub></code> to
+                            max(0, (<code>T<sub>ascent</sub></code> − <a>AxisHeight</a>) × <code>maxsize</code> / <code>T</code> + <a>AxisHeight</a>) and
+                            <code>T<sub>descent</sub></code>
                             to <code>maxsize</code> −
                             <code>T<sub>ascent</sub></code>.
                           </li>
                         </ul>
+                        <div class="note">
+                          The default <code>maxsize</code> is value ∞ is
+                          interpreted above as being larger than any other size,
+                          i.e.
+                          <code>minsize ≤ maxsize</code> is always true while
+                          <code>maxsize &lt; minsize</code> and
+                          <code>maxsize &lt; T</code> are always false.
+                        </div>
+                        <div class="note">
+                          This step ensures that the condition <code>minsize</code> ≤ <code>T</code> ≤ <code>maxsize</code> holds.
+                          Additionnally, if the target values correspond to symmetric stretching with respect to the <a>math axis</a> then property
+                          <code>T<sub>ascent</sub></code> − <a>AxisHeight</a> = <code>T<sub>descent</sub></code> + <a>AxisHeight</a> is preserved.
+                        </div>
                       </li>
                       <li>
                         The <a>inline size</a>,
@@ -1954,11 +1980,6 @@
               used for one of the step above, then the <a>italic correction</a>
               of the math content is set to the value returned by that algorithm.
             </p>
-            <div class="note">
-              If <code>maxsize</code> is equal to its default value ∞
-              then <code>minsize ≤ maxsize</code> is satisfied but
-              <code>maxsize &lt; T</code> is not.
-            </div>
           </section>
         </section>
         <section id="space-mspace">
