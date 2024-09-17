@@ -1356,8 +1356,21 @@
             </div>
           <div class="example" id="mi-example">
             <p>In the following example, [^mi^] is used to render
-              variables and function names. Note that identifiers containing a
-              single letter are italic by default.</p>
+              variables and function names. Note that per
+              <a href="#new-text-transform-values"></a> the default
+              style <code>text-transform: math-auto</code> has
+              no effect on the first <code>&lt;mi&gt;</code> ("cos" is made of three characters),
+              makes the second <code>&lt;mi&gt;</code> render as math italic ("c" is made of a single
+              character U+0063 Latin Small Letter C which is
+              mapped to
+              U+1D450 Mathematical Italic Small C per the
+              <a href="#italic-mappings">italic</a> table), has no effect
+              on the third <code>&lt;mi&gt;</code> (overridden by
+              <code>mathvariant="normal"</code>, setting
+              <code>text-transform</code> to none) or on the fourth
+              <code>&lt;mi&gt;</code> (no mapping defined for U+221E Infinity
+              in the <a href="#italic-mappings">italic</a> table).
+            </p>
             <pre data-include="examples/example-mi.html"
                  data-include-format="text"></pre>
             <img src="examples/example-mi.png" alt="mi example">
@@ -4807,9 +4820,10 @@
         </table>
         <p>
           On text nodes containing a single character, if the computed value
-          is <code>math-auto</code> then the transformed text is obtained by
-          performing conversion of each character according to the
-          <a href="#italic-mappings">italic</a> table.
+          is <code>math-auto</code> and the character is present in the
+          "Original" column of <a href="#italic-mappings"></a>
+          then it is converted to the corresponding character from the "italic"
+          column.
         </p>
         <div class="example" id="text-transform-example">
           <p>A common style convention is to render
