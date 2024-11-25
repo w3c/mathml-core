@@ -7,19 +7,15 @@ on:
 jobs:
   main:
     name: Deploy to GitHub pages
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
-     - uses: actions/checkout@v2
-     - run: |
-          git fetch
-          git checkout gh-pages
-          git reset main --hard
-          git push -f
+     - uses: actions/checkout@v4
      - uses: w3c/spec-prod@v2
        with:
           GH_PAGES_BRANCH: gh-pages
           TOOLCHAIN: respec
           SOURCE: spec.html
-          DESTINATION: index.html
           VALIDATE_MARKUP: false
 
