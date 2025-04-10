@@ -1961,25 +1961,65 @@
                 then:
                 <ol>
                   <li>
-                    <p>
-                      Use the
-                      <code>MathVariants</code>
-                      table to try and find a glyph of height at least
-                      <a>DisplayOperatorMinHeight</a>.
-                      If none is found, fall back to the
-                      largest non-base glyph. If none is found, fall back to
-                      the layout algorithm of <a href="#layout-of-mtext"></a>.
-                    </p>
+                    If it is not possible to <a>shape a stretchy glyph</a>
+                    corresponding to <code>c</code> in the block direction
+                    with the
+                    <a>first available font</a>
+                    then fall back to the
+                    layout algorithm of <a href="#layout-of-mtext"></a>.
+                    <div class="note">
+                      Here we treat a non-[=embellished operator/stretchy=] [=embellished operator/largeop=]
+                      glyph as stretchy with target dimension <a>DisplayOperatorMinHeight</a>.
+                    </div>
                   </li>
                   <li>
-                    The <a>min-content inline size</a>,
-                    <a>max-content inline size</a>,
-                    <a>inline size</a> and block metrics of the math content
-                    are given by the
-                    glyph found.
+                    The <a>min-content inline size</a> and
+                    <a>max-content inline size</a> of the math content
+                    are set to the <a>preferred inline size of a glyph
+                    stretched along the block axis</a>.
                   </li>
                   <li>
-                    Paint the glyph.
+                    The <a>inline size</a>,
+                    <a>ink line-ascent</a>,
+                    <a>ink line-descent</a>,
+                    <a>line-ascent</a> and
+                    <a>line-descent</a>
+                    of the math content
+                    are obtained by the algorithm to
+                    <a>shape a stretchy glyph</a>
+                    to <a>block dimension</a>
+                    <a>DisplayOperatorMinHeight</a>.
+                    The <a>inline size</a> of the math content is the width of
+                    the stretchy glyph. The stretchy glyph is shifted
+                    towards the <a>line-under</a> by a value Δ so that its
+                    center aligns with the center of the target when
+                    [=embellished operator/symmetric=]:
+                    the ink ascent of the math content is
+                    the ascent of the stretchy glyph − Δ
+                    and the ink descent of the math content is
+                    the descent of the stretchy glyph + Δ.
+                    <ul>
+                      <li>
+                        If the operator has the [=embellished operator/symmetric=] property,
+                        then
+                        Δ = [(ascent of stretchy glyph − descent of stretchy glyph) − 2 * <a>AxisHeight</a>] / 2.
+                      </li>
+                      <li>
+                        Otherwise,
+                        Δ = 0.
+                      </li>
+                    </ul>
+                    <div class="note">
+                      The point of Δ here is simply to vertically align the operator when [=embellished operator/symmetric=].
+                    </div>
+                  </li>
+                  <li>
+                    The painting of the operator is performed by the
+                    algorithm to <a>shape a stretchy glyph</a>
+                    stretched to <a>block dimension</a>
+                    <a>DisplayOperatorMinHeight</a>
+                    and at position determined by the previous box metrics
+                    shifted by Δ towards the <a>line-over</a>.
                   </li>
                 </ol>
                 <figure id="figure-sum-base-and-displastyle-sizes">
