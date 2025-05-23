@@ -1738,6 +1738,10 @@
               <a data-xref-type="css-property">color</a>
               of the <code>&lt;mo&gt;</code> element.
             </p>
+            <p>
+              Let <code>dir</code> be the element's computed
+              <a data-xref-type="css-property">direction</a>.
+            </p>
             <p>Operators are laid out as follows:</p>
             <ol class="algorithm">
               <li>
@@ -1745,6 +1749,12 @@
                 made
                 of a single character <code>c</code> then fall back to the
                 layout algorithm of <a href="#layout-of-mtext"></a>.
+                If it is not possible to <a>get a glyph</a> corresponding to
+                <code>c</code> given directionality <code>dir</code>, then
+                fall back to the layout algorithm of <a href="#layout-of-mtext"></a>.
+                Otherwise, let <code>g</code> be the result of running
+                <a>get a glyph</a> corresponding to <code>c</code>
+                given directionality <code>dir</code>.
               </li>
               <li>
                 If the operator has the [=embellished operator/stretchy=] property:
@@ -1754,10 +1764,8 @@
                     <ol>
                       <li>
                         If it is not possible to <a>shape a stretchy glyph</a>
-                        corresponding to <code>c</code> in the inline direction
-                        with the
-                        <a>first available font</a>
-                        then fall back to the
+                        <code>g</code> in the inline direction with the
+                        <a>first available font</a> then fall back to the
                         layout algorithm of <a href="#layout-of-mtext"></a>.
                       </li>
                       <li>
@@ -1777,13 +1785,13 @@
                       <li>
                         The <a>inline size</a> and (ink) block metrics of the math content
                         are given by algorithm to
-                        <a>shape a stretchy glyph</a> to <a>inline dimension</a>
-                        <code>T<sub>inline</sub></code>.
+                        <a>shape a stretchy glyph</a> <code>g</code> to
+                        <a>inline dimension</a> <code>T<sub>inline</sub></code>.
                       </li>
                       <li>
                         The painting of the operator is performed by the
                         algorithm
-                        to <a>shape a stretchy glyph</a>
+                        to <a>shape a stretchy glyph</a> <code>g</code>
                         stretched to <a>inline dimension</a>
                         <code>T<sub>inline</sub></code> and
                         at position determined by the previous box metrics.
@@ -1796,10 +1804,8 @@
                     <ol>
                       <li>
                         If it is not possible to <a>shape a stretchy glyph</a>
-                        corresponding to <code>c</code> in the block direction
-                        with the
-                        <a>first available font</a>
-                        then fall back to the
+                        <code>g</code> in the block direction with the
+                        <a>first available font</a> then fall back to the
                         layout algorithm of <a href="#layout-of-mtext"></a>.
                       </li>
                       <li>
@@ -1862,7 +1868,7 @@
                         Let <code>minsize</code> and <code>maxsize</code>
                         be the [=embellished operator/minsize=] and [=embellished operator/maxsize=] properties on the
                         operator. Percentage values are interpreted relative
-                        to the height of the glyph for <code>c</code>.
+                        to the height of <code>g</code>.
                         Let <code>T</code> =
                         <code>T<sub>ascent</sub></code> +
                         <code>T<sub>descent</sub></code> be the target size.
@@ -1920,7 +1926,7 @@
                         <a>line-descent</a>
                         of the math content
                         are obtained by the algorithm to
-                        <a>shape a stretchy glyph</a>
+                        <a>shape a stretchy glyph</a> <code>g</code>
                         to <a>block dimension</a>
                         <code>T<sub>ascent</sub></code> +
                         <code>T<sub>descent</sub></code>.
@@ -1937,7 +1943,7 @@
                       </li>
                       <li>
                         The painting of the operator is performed by the
-                        algorithm to <a>shape a stretchy glyph</a>
+                        algorithm to <a>shape a stretchy glyph</a> <code>g</code>
                         stretched to <a>block dimension</a>
                         <code>T<sub>ascent</sub></code> +
                         <code>T<sub>descent</sub></code>
@@ -1961,25 +1967,63 @@
                 then:
                 <ol>
                   <li>
-                    <p>
-                      Use the
-                      <code>MathVariants</code>
-                      table to try and find a glyph of height at least
-                      <a>DisplayOperatorMinHeight</a>.
-                      If none is found, fall back to the
-                      largest non-base glyph. If none is found, fall back to
-                      the layout algorithm of <a href="#layout-of-mtext"></a>.
-                    </p>
+                    If it is not possible to <a>shape a stretchy glyph</a>
+                    <code>g</code> in the block direction with the
+                    <a>first available font</a> then fall back to the
+                    layout algorithm of <a href="#layout-of-mtext"></a>.
+                    <div class="note">
+                      Here we treat a non-[=embellished operator/stretchy=] [=embellished operator/largeop=]
+                      glyph as stretchy with target dimension <a>DisplayOperatorMinHeight</a>.
+                    </div>
                   </li>
                   <li>
-                    The <a>min-content inline size</a>,
-                    <a>max-content inline size</a>,
-                    <a>inline size</a> and block metrics of the math content
-                    are given by the
-                    glyph found.
+                    The <a>min-content inline size</a> and
+                    <a>max-content inline size</a> of the math content
+                    are set to the <a>preferred inline size of a glyph
+                    stretched along the block axis</a>.
                   </li>
                   <li>
-                    Paint the glyph.
+                    The <a>inline size</a>,
+                    <a>ink line-ascent</a>,
+                    <a>ink line-descent</a>,
+                    <a>line-ascent</a> and
+                    <a>line-descent</a>
+                    of the math content
+                    are obtained by the algorithm to
+                    <a>shape a stretchy glyph</a> <code>g</code>
+                    to <a>block dimension</a>
+                    <a>DisplayOperatorMinHeight</a>.
+                    The <a>inline size</a> of the math content is the width of
+                    the stretchy glyph. The stretchy glyph is shifted
+                    towards the <a>line-under</a> by a value Δ so that its
+                    center aligns with the center of the target when
+                    [=embellished operator/symmetric=]:
+                    the ink ascent of the math content is
+                    the ascent of the stretchy glyph − Δ
+                    and the ink descent of the math content is
+                    the descent of the stretchy glyph + Δ.
+                    <ul>
+                      <li>
+                        If the operator has the [=embellished operator/symmetric=] property,
+                        then
+                        Δ = [(ascent of stretchy glyph − descent of stretchy glyph) − 2 * <a>AxisHeight</a>] / 2.
+                      </li>
+                      <li>
+                        Otherwise,
+                        Δ = 0.
+                      </li>
+                    </ul>
+                    <div class="note">
+                      The point of Δ here is simply to vertically align the operator when [=embellished operator/symmetric=].
+                    </div>
+                  </li>
+                  <li>
+                    The painting of the operator is performed by the
+                    algorithm to <a>shape a stretchy glyph</a> <code>g</code>
+                    stretched to <a>block dimension</a>
+                    <a>DisplayOperatorMinHeight</a>
+                    and at position determined by the previous box metrics
+                    shifted by Δ towards the <a>line-over</a>.
                   </li>
                 </ol>
                 <figure id="figure-sum-base-and-displastyle-sizes">
@@ -2838,8 +2882,11 @@
               of that element.
             </p>
             <p>
-              The <dfn>radical glyph</dfn> is the glyph obtained for the
-              character U+221A SQUARE ROOT.
+              Let <code>dir</code> be the computed <a data-xref-type="css-property">direction</a>
+              of the <code>&lt;msqrt&gt;</code> or <code>&lt;mroot&gt;</code> element.
+              The <dfn>radical glyph</dfn> is the glyph obtained as a result of running
+              <a>get a glyph</a> corresponding to the U+221A SQUARE ROOT character
+              given <code>dir</code>.
             </p>
             <p>
               The <dfn>radical gap</dfn> is given by
@@ -2856,8 +2903,8 @@
             <p>
               The <dfn>box metrics of the radical glyph</dfn>
               and <dfn>painting of the surd</dfn> are given by the algorithm to
-              <a>shape a stretchy glyph</a> to <a>block dimension</a> the
-              target size for the radical glyph.
+              <a>shape a stretchy glyph</a> to the
+              target size for the radical glyph in the <a>block dimension</a>.
             </p>
           </section>
           <section>
@@ -5639,6 +5686,55 @@
             such as
             the one suggested in <a href="#unicode-based-glyph-assemblies"></a>.
           </div>
+          <p>
+            The algorithm to <dfn>get a glyph</dfn> corresponding to a character <code>c</code> given a directionality <code>dir</code>
+            is the following:
+          </p>
+          <ul class="algorithm">
+            <li>
+              Let <code>g</code> be the glyph corresponding to <code>c</code>
+              in the <a>first available font</a>.
+              If it is not possible to find such a glyph, then exit with failure.
+            </li>
+            <li>
+                If <code>dir</code> is <code>rtl</code>:
+                <ul>
+                  <li>
+                    If there exists an OpenType rtlm variant of
+                    <code>g</code> in the <a>first available font</a>,
+                    then return it and exit with success. [[OPEN-FONT-FORMAT]]
+                  </li>
+                  <li>
+                    Otherwise, if <code>c</code> has the Bidi_Mirrored property [[BIDI]]:
+                    <ul>
+                      <li>
+                        If <code>c</code> has a corresponding mirrored codepoint,
+                        <code>c'</code>, then return the glyph corresponding
+                        to <code>c'</code> and exit with success.
+                        If it is not possible to find such a glyph, then exit with failure.
+                      </li>
+                      <li>
+                        Otherwise, exit with failure.
+                      </li>
+                    </ul>
+                    <div class="note">
+                      These failure cases are for when a character should be mirrored
+                      according to its Bidi_Mirrored property, but no corresponding codepoint
+                      or glyph exists.
+                    </div>
+                  </li>
+                  <li>
+                    Otherwise, return <code>g</code> and exit with success.
+                  </li>
+                </ul>
+              </li>
+              <li class="assert">
+                Assert: <code>dir</code> is <code>ltr</code>.
+              </li>
+              <li>
+                Return <code>g</code> and exit with success.
+              </li>
+          </ul>
         </section>
       </section>
     </section>
