@@ -7,7 +7,7 @@
 
 ## Draft specification:
 
-[MathML Core - W3C Editor's Draft](https://mathml-refresh.github.io/mathml-core/)
+[MathML Core - (W3C Candidate Recommendation)](https://www.w3.org/TR/mathml-core/)
 
 ## Abstract
 **[MathML Core](https://mathml-refresh.github.io/mathml-core/)** is a definition of a fundamental subset of features described in the [current MathML 3 recommendation](https://www.w3.org/TR/MathML3/). It attempts to resolve several problems created by MathMLs origins, history and complex status, and properly define its integration in the modern Web Platform in rigorous ways.  The specific subset is derived based on what is widely developed, deployed, proven and used in practice. 
