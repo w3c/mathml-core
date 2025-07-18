@@ -1,6 +1,6 @@
 <!DOCTYPE html><html lang="en"><head>
 <meta charset="utf-8">
-<meta name="generator" content="ReSpec 35.4.1">
+<meta name="generator" content="ReSpec 35.4.2">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <style>
 .issue-label{text-transform:initial}
@@ -282,15 +282,15 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
     null,
     null
   ],
-  "publishISODate": "2025-06-24T00:00:00.000Z",
-  "generatedSubtitle": "W3C Editor's Draft 24 June 2025"
+  "publishISODate": "2025-07-18T00:00:00.000Z",
+  "generatedSubtitle": "W3C Editor's Draft 18 July 2025"
 }</script>
 <link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2021/W3C-ED"></head>
   <body class="h-entry" data-cite="WEBIDL html infra css-display-3 css-text-3 web-animations css-fonts-4 dom cssom-view css-sizing-3 css-align-3 css-box-4 css-values-4 css-backgrounds-3 css-text-decor-4 svg css-writing-modes-4 css-color-4 css-box-4 css-pseudo-4"><div class="head">
     <p class="logos"><a class="logo" href="https://www.w3.org/"><img crossorigin="" alt="W3C" height="48" src="https://www.w3.org/StyleSheets/TR/2021/logos/W3C" width="72">
   </a></p>
     <h1 id="title" class="title">MathML Core</h1> 
-    <p id="w3c-state"><a href="https://www.w3.org/standards/types#ED">W3C Editor's Draft</a> <time class="dt-published" datetime="2025-06-24">24 June 2025</time></p>
+    <p id="w3c-state"><a href="https://www.w3.org/standards/types#ED">W3C Editor's Draft</a> <time class="dt-published" datetime="2025-07-18">18 July 2025</time></p>
     <details open="">
       <summary>More details about this document</summary>
       <dl>
@@ -366,8 +366,7 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
       document at the time of its publication. A list of current <abbr title="World Wide Web Consortium">W3C</abbr>
       publications and the latest revision of this technical report can be found
       in the
-      <a href="https://www.w3.org/TR/"><abbr title="World Wide Web Consortium">W3C</abbr> standards and drafts index</a> at
-      https://www.w3.org/TR/.</em></p>
+      <a href="https://www.w3.org/TR/"><abbr title="World Wide Web Consortium">W3C</abbr> standards and drafts index</a>.</em></p>
     <p>
     This document was published by the <a href="https://www.w3.org/groups/wg/math">Math Working Group</a> as
     an Editor's Draft. 
@@ -375,7 +374,7 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
   imply endorsement by <abbr title="World Wide Web Consortium">W3C</abbr> and its Members. </p><p>
     This is a draft document and may be updated, replaced, or obsoleted by other
     documents at any time. It is inappropriate to cite this document as other
-    than work in progress.
+    than a work in progress.
     
   </p><p>
     
@@ -390,7 +389,7 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
           made in connection with the deliverables of
           the group; that page also includes
           instructions for disclosing a patent. An individual who has actual
-          knowledge of a patent which the individual believes contains
+          knowledge of a patent that the individual believes contains
           <a href="https://www.w3.org/policies/patent-policy/#def-essential">Essential Claim(s)</a>
           must disclose the information in accordance with
           <a href="https://www.w3.org/policies/patent-policy/#sec-Disclosure">section 6 of the <abbr title="World Wide Web Consortium">W3C</abbr> Patent Policy</a>.
@@ -2274,6 +2273,10 @@ interface <a class="internalDFN idlID" data-link-type="interface" href="#dom-mat
               <a data-link-type="css-property" href="https://www.w3.org/TR/css-color-4/#propdef-color">color</a>
               of the <code>&lt;mo&gt;</code> element.
             </p>
+            <p>
+              Let <code>dir</code> be the element's computed
+              <a data-link-type="css-property" href="https://www.w3.org/TR/css-writing-modes-4/#propdef-direction">direction</a>.
+            </p>
             <p>Operators are laid out as follows:</p>
             <ol class="algorithm">
               <li>
@@ -2281,6 +2284,12 @@ interface <a class="internalDFN idlID" data-link-type="interface" href="#dom-mat
                 made
                 of a single character <code>c</code> then fall back to the
                 layout algorithm of <a href="#layout-of-mtext" class="sec-ref"><bdi class="secno">3.2.1.1 </bdi>Layout of <code>&lt;mtext&gt;</code></a>.
+                If it is not possible to <a href="#dfn-get-a-glyph" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-get-a-glyph-1">get a glyph</a> corresponding to
+                <code>c</code> given directionality <code>dir</code>, then
+                fall back to the layout algorithm of <a href="#layout-of-mtext" class="sec-ref"><bdi class="secno">3.2.1.1 </bdi>Layout of <code>&lt;mtext&gt;</code></a>.
+                Otherwise, let <code>g</code> be the result of running
+                <a href="#dfn-get-a-glyph" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-get-a-glyph-2">get a glyph</a> corresponding to <code>c</code>
+                given directionality <code>dir</code>.
               </li>
               <li>
                 If the operator has the <a data-link-type="dfn|abstract-op" href="#dfn-stretchy" class="internalDFN" id="ref-for-dfn-stretchy-2"><code>stretchy</code></a> property:
@@ -2290,10 +2299,8 @@ interface <a class="internalDFN idlID" data-link-type="interface" href="#dom-mat
                     <ol>
                       <li>
                         If it is not possible to <a href="#dfn-shape-a-stretchy-glyph" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-shape-a-stretchy-glyph-1">shape a stretchy glyph</a>
-                        corresponding to <code>c</code> in the inline direction
-                        with the
-                        <a data-link-type="dfn" href="https://www.w3.org/TR/css-fonts-4/#first-available-font">first available font</a>
-                        then fall back to the
+                        <code>g</code> in the inline direction with the
+                        <a data-link-type="dfn" href="https://www.w3.org/TR/css-fonts-4/#first-available-font">first available font</a> then fall back to the
                         layout algorithm of <a href="#layout-of-mtext" class="sec-ref"><bdi class="secno">3.2.1.1 </bdi>Layout of <code>&lt;mtext&gt;</code></a>.
                       </li>
                       <li>
@@ -2313,13 +2320,13 @@ interface <a class="internalDFN idlID" data-link-type="interface" href="#dom-mat
                       <li>
                         The <a data-link-type="dfn" href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a> and (ink) block metrics of the math content
                         are given by algorithm to
-                        <a href="#dfn-shape-a-stretchy-glyph" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-shape-a-stretchy-glyph-2">shape a stretchy glyph</a> to <a data-link-type="dfn" href="https://www.w3.org/TR/css-writing-modes-4/#inline-dimension">inline dimension</a>
-                        <code>T<sub>inline</sub></code>.
+                        <a href="#dfn-shape-a-stretchy-glyph" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-shape-a-stretchy-glyph-2">shape a stretchy glyph</a> <code>g</code> to
+                        <a data-link-type="dfn" href="https://www.w3.org/TR/css-writing-modes-4/#inline-dimension">inline dimension</a> <code>T<sub>inline</sub></code>.
                       </li>
                       <li>
                         The painting of the operator is performed by the
                         algorithm
-                        to <a href="#dfn-shape-a-stretchy-glyph" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-shape-a-stretchy-glyph-3">shape a stretchy glyph</a>
+                        to <a href="#dfn-shape-a-stretchy-glyph" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-shape-a-stretchy-glyph-3">shape a stretchy glyph</a> <code>g</code>
                         stretched to <a data-link-type="dfn" href="https://www.w3.org/TR/css-writing-modes-4/#inline-dimension">inline dimension</a>
                         <code>T<sub>inline</sub></code> and
                         at position determined by the previous box metrics.
@@ -2332,10 +2339,8 @@ interface <a class="internalDFN idlID" data-link-type="interface" href="#dom-mat
                     <ol>
                       <li>
                         If it is not possible to <a href="#dfn-shape-a-stretchy-glyph" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-shape-a-stretchy-glyph-4">shape a stretchy glyph</a>
-                        corresponding to <code>c</code> in the block direction
-                        with the
-                        <a data-link-type="dfn" href="https://www.w3.org/TR/css-fonts-4/#first-available-font">first available font</a>
-                        then fall back to the
+                        <code>g</code> in the block direction with the
+                        <a data-link-type="dfn" href="https://www.w3.org/TR/css-fonts-4/#first-available-font">first available font</a> then fall back to the
                         layout algorithm of <a href="#layout-of-mtext" class="sec-ref"><bdi class="secno">3.2.1.1 </bdi>Layout of <code>&lt;mtext&gt;</code></a>.
                       </li>
                       <li>
@@ -2398,7 +2403,7 @@ interface <a class="internalDFN idlID" data-link-type="interface" href="#dom-mat
                         Let <code>minsize</code> and <code>maxsize</code>
                         be the <a data-link-type="dfn|abstract-op" href="#dfn-minsize" class="internalDFN" id="ref-for-dfn-minsize-2"><code>minsize</code></a> and <a data-link-type="dfn|abstract-op" href="#dfn-maxsize" class="internalDFN" id="ref-for-dfn-maxsize-1"><code>maxsize</code></a> properties on the
                         operator. Percentage values are interpreted relative
-                        to the height of the glyph for <code>c</code>.
+                        to the height of <code>g</code>.
                         Let <code>T</code> =
                         <code>T<sub>ascent</sub></code> +
                         <code>T<sub>descent</sub></code> be the target size.
@@ -2456,7 +2461,7 @@ interface <a class="internalDFN idlID" data-link-type="interface" href="#dom-mat
                         <a href="#dfn-line-descent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-descent-4">line-descent</a>
                         of the math content
                         are obtained by the algorithm to
-                        <a href="#dfn-shape-a-stretchy-glyph" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-shape-a-stretchy-glyph-5">shape a stretchy glyph</a>
+                        <a href="#dfn-shape-a-stretchy-glyph" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-shape-a-stretchy-glyph-5">shape a stretchy glyph</a> <code>g</code>
                         to <a data-link-type="dfn" href="https://www.w3.org/TR/css-writing-modes-4/#block-dimension">block dimension</a>
                         <code>T<sub>ascent</sub></code> +
                         <code>T<sub>descent</sub></code>.
@@ -2473,7 +2478,7 @@ interface <a class="internalDFN idlID" data-link-type="interface" href="#dom-mat
                       </li>
                       <li>
                         The painting of the operator is performed by the
-                        algorithm to <a href="#dfn-shape-a-stretchy-glyph" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-shape-a-stretchy-glyph-6">shape a stretchy glyph</a>
+                        algorithm to <a href="#dfn-shape-a-stretchy-glyph" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-shape-a-stretchy-glyph-6">shape a stretchy glyph</a> <code>g</code>
                         stretched to <a data-link-type="dfn" href="https://www.w3.org/TR/css-writing-modes-4/#block-dimension">block dimension</a>
                         <code>T<sub>ascent</sub></code> +
                         <code>T<sub>descent</sub></code>
@@ -2497,25 +2502,63 @@ interface <a class="internalDFN idlID" data-link-type="interface" href="#dom-mat
                 then:
                 <ol>
                   <li>
-                    <p>
-                      Use the
-                      <code>MathVariants</code>
-                      table to try and find a glyph of height at least
-                      <a href="#dfn-displayoperatorminheight" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-displayoperatorminheight-1">DisplayOperatorMinHeight</a>.
-                      If none is found, fall back to the
-                      largest non-base glyph. If none is found, fall back to
-                      the layout algorithm of <a href="#layout-of-mtext" class="sec-ref"><bdi class="secno">3.2.1.1 </bdi>Layout of <code>&lt;mtext&gt;</code></a>.
-                    </p>
+                    If it is not possible to <a href="#dfn-shape-a-stretchy-glyph" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-shape-a-stretchy-glyph-7">shape a stretchy glyph</a>
+                    <code>g</code> in the block direction with the
+                    <a data-link-type="dfn" href="https://www.w3.org/TR/css-fonts-4/#first-available-font">first available font</a> then fall back to the
+                    layout algorithm of <a href="#layout-of-mtext" class="sec-ref"><bdi class="secno">3.2.1.1 </bdi>Layout of <code>&lt;mtext&gt;</code></a>.
+                    <div class="note" role="note" id="issue-container-generatedID-17"><div role="heading" class="note-title marker" id="h-note-16" aria-level="6"><span>Note</span></div><div class="">
+                      Here we treat a non-<a data-link-type="dfn|abstract-op" href="#dfn-stretchy" class="internalDFN" id="ref-for-dfn-stretchy-3"><code>stretchy</code></a> <a data-link-type="dfn|abstract-op" href="#dfn-largeop" class="internalDFN" id="ref-for-dfn-largeop-3"><code>largeop</code></a>
+                      glyph as stretchy with target dimension <a href="#dfn-displayoperatorminheight" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-displayoperatorminheight-1">DisplayOperatorMinHeight</a>.
+                    </div></div>
                   </li>
                   <li>
-                    The <a data-link-type="dfn" href="https://www.w3.org/TR/css-sizing-3/#min-content-inline-size">min-content inline size</a>,
-                    <a data-link-type="dfn" href="https://www.w3.org/TR/css-sizing-3/#max-content-inline-size">max-content inline size</a>,
-                    <a data-link-type="dfn" href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a> and block metrics of the math content
-                    are given by the
-                    glyph found.
+                    The <a data-link-type="dfn" href="https://www.w3.org/TR/css-sizing-3/#min-content-inline-size">min-content inline size</a> and
+                    <a data-link-type="dfn" href="https://www.w3.org/TR/css-sizing-3/#max-content-inline-size">max-content inline size</a> of the math content
+                    are set to the <a href="#dfn-preferred-inline-size-of-a-glyph-stretched-along-the-block-axis" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-preferred-inline-size-of-a-glyph-stretched-along-the-block-axis-2">preferred inline size of a glyph
+                    stretched along the block axis</a>.
                   </li>
                   <li>
-                    Paint the glyph.
+                    The <a data-link-type="dfn" href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a>,
+                    <a href="#dfn-ink-line-ascent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-ink-line-ascent-6">ink line-ascent</a>,
+                    <a href="#dfn-ink-line-descent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-ink-line-descent-6">ink line-descent</a>,
+                    <a href="#dfn-line-ascent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-ascent-7">line-ascent</a> and
+                    <a href="#dfn-line-descent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-descent-5">line-descent</a>
+                    of the math content
+                    are obtained by the algorithm to
+                    <a href="#dfn-shape-a-stretchy-glyph" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-shape-a-stretchy-glyph-8">shape a stretchy glyph</a> <code>g</code>
+                    to <a data-link-type="dfn" href="https://www.w3.org/TR/css-writing-modes-4/#block-dimension">block dimension</a>
+                    <a href="#dfn-displayoperatorminheight" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-displayoperatorminheight-2">DisplayOperatorMinHeight</a>.
+                    The <a data-link-type="dfn" href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a> of the math content is the width of
+                    the stretchy glyph. The stretchy glyph is shifted
+                    towards the <a data-link-type="dfn" href="https://www.w3.org/TR/css-writing-modes-4/#line-under">line-under</a> by a value Δ so that its
+                    center aligns with the center of the target when
+                    <a data-link-type="dfn|abstract-op" href="#dfn-symmetric" class="internalDFN" id="ref-for-dfn-symmetric-3"><code>symmetric</code></a>:
+                    the ink ascent of the math content is
+                    the ascent of the stretchy glyph − Δ
+                    and the ink descent of the math content is
+                    the descent of the stretchy glyph + Δ.
+                    <ul>
+                      <li>
+                        If the operator has the <a data-link-type="dfn|abstract-op" href="#dfn-symmetric" class="internalDFN" id="ref-for-dfn-symmetric-4"><code>symmetric</code></a> property,
+                        then
+                        Δ = [(ascent of stretchy glyph − descent of stretchy glyph) − 2 * <a href="#dfn-axisheight" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-axisheight-17">AxisHeight</a>] / 2.
+                      </li>
+                      <li>
+                        Otherwise,
+                        Δ = 0.
+                      </li>
+                    </ul>
+                    <div class="note" role="note" id="issue-container-generatedID-18"><div role="heading" class="note-title marker" id="h-note-17" aria-level="6"><span>Note</span></div><div class="">
+                      The point of Δ here is simply to vertically align the operator when <a data-link-type="dfn|abstract-op" href="#dfn-symmetric" class="internalDFN" id="ref-for-dfn-symmetric-5"><code>symmetric</code></a>.
+                    </div></div>
+                  </li>
+                  <li>
+                    The painting of the operator is performed by the
+                    algorithm to <a href="#dfn-shape-a-stretchy-glyph" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-shape-a-stretchy-glyph-9">shape a stretchy glyph</a> <code>g</code>
+                    stretched to <a data-link-type="dfn" href="https://www.w3.org/TR/css-writing-modes-4/#block-dimension">block dimension</a>
+                    <a href="#dfn-displayoperatorminheight" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-displayoperatorminheight-3">DisplayOperatorMinHeight</a>
+                    and at position determined by the previous box metrics
+                    shifted by Δ towards the <a data-link-type="dfn" href="https://www.w3.org/TR/css-writing-modes-4/#line-over">line-over</a>.
                   </li>
                 </ol>
                 <figure id="figure-sum-base-and-displastyle-sizes">
@@ -2528,7 +2571,7 @@ interface <a class="internalDFN idlID" data-link-type="interface" href="#dom-mat
                 layout algorithm of <a href="#layout-of-mtext" class="sec-ref"><bdi class="secno">3.2.1.1 </bdi>Layout of <code>&lt;mtext&gt;</code></a>.
               </li>
             </ol>
-            <p>If the algorithm to <a href="#dfn-shape-a-stretchy-glyph" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-shape-a-stretchy-glyph-7">shape a stretchy glyph</a> has been
+            <p>If the algorithm to <a href="#dfn-shape-a-stretchy-glyph" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-shape-a-stretchy-glyph-10">shape a stretchy glyph</a> has been
               used for one of the step above, then the <a href="#dfn-italic-correction" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-italic-correction-6">italic correction</a>
               of the math content is set to the value returned by that algorithm.
             </p>
@@ -2633,14 +2676,14 @@ interface <a class="internalDFN idlID" data-link-type="interface" href="#dom-mat
             <a data-link-type="css-property" href="https://www.w3.org/TR/css-sizing-3/#propdef-width">width</a> property.
             The <a data-link-type="dfn" href="https://www.w3.org/TR/css-writing-modes-4/#block-size">block size</a> of the math content is equal to the resolved
             value of the <a data-link-type="css-property" href="https://www.w3.org/TR/css-sizing-3/#propdef-height">height</a> property.
-            The <a href="#dfn-line-ascent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-ascent-7">line-ascent</a> of the math content is equal to the
+            The <a href="#dfn-line-ascent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-ascent-8">line-ascent</a> of the math content is equal to the
             requested line-ascent determined above.
           </p>
           <figure id="figure-box-mspace">
             <img src="figures/mspacebox.svg">
             <figcaption><a class="self-link" href="#figure-box-mspace">Figure <bdi class="figno">9</bdi></a> <span class="fig-title">Box model for the <code>&lt;mspace&gt;</code> element</span></figcaption>
           </figure>
-          <div class="note" role="note" id="issue-container-generatedID-17"><div role="heading" class="note-title marker" id="h-note-16" aria-level="5"><span>Note</span></div><div class="">
+          <div class="note" role="note" id="issue-container-generatedID-19"><div role="heading" class="note-title marker" id="h-note-18" aria-level="5"><span>Note</span></div><div class="">
             The terminology height/depth comes from [<cite><a class="bibref" data-link-type="biblio" href="#bib-mathml3" title="Mathematical Markup Language (MathML) Version 3.0 2nd Edition">MATHML3</a></cite>], itself inspired
             from [<cite><a class="bibref" data-link-type="biblio" href="#bib-texbook" title="The TeXBook">TEXBOOK</a></cite>].
           </div></div>
@@ -2674,7 +2717,7 @@ interface <a class="internalDFN idlID" data-link-type="interface" href="#dom-mat
               <a href="#dfn-anonymous-mrow-box" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-anonymous-mrow-box-3">anonymous &lt;mrow&gt; box</a> is treated as a
               <a href="#dfn-grouping-elements" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-grouping-elements-7">grouping element</a>.
             </p>
-            <div class="note" role="note" id="issue-container-generatedID-18"><div role="heading" class="note-title marker" id="h-note-17" aria-level="6"><span>Note</span></div><div class="">
+            <div class="note" role="note" id="issue-container-generatedID-20"><div role="heading" class="note-title marker" id="h-note-19" aria-level="6"><span>Note</span></div><div class="">
               Note that an <code><a data-link-type="element" href="#dfn-mphantom" class="internalDFN" id="ref-for-dfn-mphantom-3">mphantom</a></code> is not
               automatically defined to be space-like, unless its content is
               space-like. This is because operator spacing is affected by
@@ -2711,7 +2754,7 @@ interface <a class="internalDFN idlID" data-link-type="interface" href="#dom-mat
 <span class="hljs-tag">&lt;/<span class="hljs-name">math</span>&gt;</span></code></pre>
             <img src="examples/example-ms.png" alt="ms example">
           </div>
-          <div class="note" role="note" id="issue-container-generatedID-19"><div role="heading" class="note-title marker" id="h-note-18" aria-level="5"><span>Note</span></div><div class="">
+          <div class="note" role="note" id="issue-container-generatedID-21"><div role="heading" class="note-title marker" id="h-note-20" aria-level="5"><span>Note</span></div><div class="">
             In MathML3, it was possible to use the <code>lquote</code> and
             <code>rquote</code> attributes to respectively specify the strings
             to use as opening and closing quotes. These are no longer supported
@@ -2802,11 +2845,11 @@ ms<span class="hljs-selector-attr">[rquote]</span><span class="hljs-selector-pse
             <img src="figures/mrowbox.svg">
             <figcaption><a class="self-link" href="#figure-box-mrow">Figure <bdi class="figno">10</bdi></a> <span class="fig-title">Box model for the <code>&lt;mrow&gt;</code> element</span></figcaption>
           </figure>
-          <div class="note" role="note" id="issue-container-generatedID-20"><div role="heading" class="note-title marker" id="h-note-19" aria-level="5"><span>Note</span></div><div class="">
+          <div class="note" role="note" id="issue-container-generatedID-22"><div role="heading" class="note-title marker" id="h-note-21" aria-level="5"><span>Note</span></div><div class="">
             Because the box model ensures alignment of <a href="#dfn-alphabetic-baseline" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-alphabetic-baseline-11">alphabetic baselines</a>,
             fraction bars or symmetric stretchy operators
             will also be aligned along the <a href="#dfn-math-axis" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-math-axis-3">math axis</a> in the typical case when
-            <a href="#dfn-axisheight" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-axisheight-17">AxisHeight</a> is the same for all <a data-link-type="dfn" href="https://www.w3.org/TR/css-display-3/#in-flow">in-flow</a> children.
+            <a href="#dfn-axisheight" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-axisheight-18">AxisHeight</a> is the same for all <a data-link-type="dfn" href="https://www.w3.org/TR/css-display-3/#in-flow">in-flow</a> children.
           </div></div>
           <section id="algorithm-for-stretching-operators-along-the-block-axis"><div class="header-wrapper"><h5 id="x3-3-1-1-algorithm-for-stretching-operators-along-the-block-axis"><bdi class="secno">3.3.1.1 </bdi>Algorithm for stretching operators along the block axis</h5><a class="self-link" href="#algorithm-for-stretching-operators-along-the-block-axis" aria-label="Permalink for Section 3.3.1.1"></a></div>
             
@@ -2835,7 +2878,7 @@ ms<span class="hljs-selector-attr">[rquote]</span><span class="hljs-selector-pse
                 split the list of <a data-link-type="dfn" href="https://www.w3.org/TR/css-display-3/#in-flow">in-flow</a> children into a first list
                 <code>L<sub>ToStretch</sub></code> containing
                 <a href="#dfn-embellished-operator" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-embellished-operator-19">embellished operators</a> with
-                a <a data-link-type="dfn|abstract-op" href="#dfn-stretchy" class="internalDFN" id="ref-for-dfn-stretchy-3"><code>stretchy</code></a> property and block <a data-link-type="dfn|abstract-op" href="#dfn-stretch-axis" class="internalDFN" id="ref-for-dfn-stretch-axis-3">stretch axis</a>;
+                a <a data-link-type="dfn|abstract-op" href="#dfn-stretchy" class="internalDFN" id="ref-for-dfn-stretchy-4"><code>stretchy</code></a> property and block <a data-link-type="dfn|abstract-op" href="#dfn-stretch-axis" class="internalDFN" id="ref-for-dfn-stretch-axis-3">stretch axis</a>;
                 and a second list <code>L<sub>NotToStretch</sub></code>.
               </li>
               <li>
@@ -2879,7 +2922,7 @@ ms<span class="hljs-selector-attr">[rquote]</span><span class="hljs-selector-pse
               <a href="#dfn-embellished-operator" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-embellished-operator-20">embellished operator</a>
               and has nonzero <a href="#dfn-italic-correction" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-italic-correction-7">italic correction</a>.
             </p>
-            <div class="note" role="note" id="issue-container-generatedID-21"><div role="heading" class="note-title marker" id="h-note-20" aria-level="6"><span>Note</span></div><div class="">
+            <div class="note" role="note" id="issue-container-generatedID-23"><div role="heading" class="note-title marker" id="h-note-22" aria-level="6"><span>Note</span></div><div class="">
               Large operators may have nonzero <a href="#dfn-italic-correction" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-italic-correction-8">italic correction</a> but that one
               is used when attaching scripts.
               More generally, all <a href="#dfn-embellished-operator" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-embellished-operator-21">embellished operators</a>
@@ -2954,14 +2997,14 @@ ms<span class="hljs-selector-attr">[rquote]</span><span class="hljs-selector-pse
               <a data-link-type="dfn" href="https://www.w3.org/TR/css-display-3/#in-flow">in-flow</a> children's <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin boxes</a> instead.
             </p>
             <p>
-              The <a href="#dfn-ink-line-ascent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-ink-line-ascent-6">ink line-ascent</a> (respectively <a href="#dfn-line-ascent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-ascent-8">line-ascent</a>)
+              The <a href="#dfn-ink-line-ascent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-ink-line-ascent-7">ink line-ascent</a> (respectively <a href="#dfn-line-ascent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-ascent-9">line-ascent</a>)
               of the math content
               is the maximum of the
-              <a href="#dfn-ink-line-ascent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-ink-line-ascent-7">ink line-ascents</a> (respectively <a href="#dfn-line-ascent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-ascent-9">line-ascents</a>)
+              <a href="#dfn-ink-line-ascent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-ink-line-ascent-8">ink line-ascents</a> (respectively <a href="#dfn-line-ascent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-ascent-10">line-ascents</a>)
               of all the <a data-link-type="dfn" href="https://www.w3.org/TR/css-display-3/#in-flow">in-flow</a> children's <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin boxes</a>. Similarly,
-              the <a href="#dfn-ink-line-descent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-ink-line-descent-6">ink line-descent</a> (respectively <a href="#dfn-line-descent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-descent-5">line-descent</a>)
-              of the math content is the maximum of the <a href="#dfn-ink-line-descent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-ink-line-descent-7">ink line-descents</a>
-              (respectively <a href="#dfn-ink-line-ascent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-ink-line-ascent-8">ink line-ascents</a>)
+              the <a href="#dfn-ink-line-descent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-ink-line-descent-7">ink line-descent</a> (respectively <a href="#dfn-line-descent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-descent-6">line-descent</a>)
+              of the math content is the maximum of the <a href="#dfn-ink-line-descent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-ink-line-descent-8">ink line-descents</a>
+              (respectively <a href="#dfn-ink-line-ascent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-ink-line-ascent-9">ink line-ascents</a>)
               of all the <a data-link-type="dfn" href="https://www.w3.org/TR/css-display-3/#in-flow">in-flow</a> children's <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin boxes</a>.
             </p>
             <p>
@@ -3121,7 +3164,7 @@ mfrac &gt; <span class="hljs-selector-pseudo">:nth-child</span>(<span class="hlj
             <dfn id="dfn-numerator" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">numerator</dfn>, the second <a data-link-type="dfn" href="https://www.w3.org/TR/css-display-3/#in-flow">in-flow</a> child is called
             <dfn id="dfn-denominator" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">denominator</dfn> and the layout algorithm is explained below.
           </p>
-          <div class="note" role="note" id="fraction-css-rules-on-children"><div role="heading" class="note-title marker" id="h-note-21" aria-level="5"><span>Note</span></div><div class="">
+          <div class="note" role="note" id="fraction-css-rules-on-children"><div role="heading" class="note-title marker" id="h-note-23" aria-level="5"><span>Note</span></div><div class="">
             In practice, an <code>&lt;mfrac&gt;</code> element has two children
             that are <a data-link-type="dfn" href="https://www.w3.org/TR/css-display-3/#in-flow">in-flow</a>. Hence the CSS rules basically perform
             <a href="#dfn-scriptlevel" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-scriptlevel-6"><code>scriptlevel</code></a>, <a href="#dfn-displaystyle" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-displaystyle-9"><code>displaystyle</code></a>
@@ -3179,13 +3222,13 @@ mfrac &gt; <span class="hljs-selector-pseudo">:nth-child</span>(<span class="hlj
                 (respectively <code>normal</code>).
               </li>
               <li>
-                The <a href="#dfn-axisheight" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-axisheight-18">AxisHeight</a> + half the
+                The <a href="#dfn-axisheight" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-axisheight-19">AxisHeight</a> + half the
                 <a href="#dfn-fraction-line-thickness" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-fraction-line-thickness-2">fraction line thickness</a> +
                 <a href="#dfn-fractionnumeratorgapmin" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-fractionnumeratorgapmin-1">FractionNumeratorGapMin</a>
                 (respectively <a href="#dfn-fractionnumdisplaystylegapmin" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-fractionnumdisplaystylegapmin-1">FractionNumDisplayStyleGapMin</a>)
                 if the <a href="#propdef-math-style" class="internalDFN" data-link-type="dfn" id="ref-for-propdef-math-style-5">math-style</a> is <code>compact</code>
                 (respectively <code>normal</code>) +
-                the <a href="#dfn-ink-line-descent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-ink-line-descent-8">ink line-descent</a> of the <a href="#dfn-numerator" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-numerator-5">numerator</a>'s <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a>.
+                the <a href="#dfn-ink-line-descent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-ink-line-descent-9">ink line-descent</a> of the <a href="#dfn-numerator" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-numerator-5">numerator</a>'s <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a>.
               </li>
             </ul>
             <p><code>DenominatorShift</code> is the maximum between:</p>
@@ -3202,41 +3245,41 @@ mfrac &gt; <span class="hljs-selector-pseudo">:nth-child</span>(<span class="hlj
                 (respectively <a href="#dfn-fractiondenomdisplaystylegapmin" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-fractiondenomdisplaystylegapmin-1">FractionDenomDisplayStyleGapMin</a>)
                 if the <a href="#propdef-math-style" class="internalDFN" data-link-type="dfn" id="ref-for-propdef-math-style-7">math-style</a> is <code>compact</code>
                 (respectively <code>normal</code>) +
-                the <a href="#dfn-ink-line-ascent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-ink-line-ascent-9">ink line-ascent</a> of the <a href="#dfn-denominator" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-denominator-5">denominator</a>'s <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a> −
-                the <a href="#dfn-axisheight" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-axisheight-19">AxisHeight</a>.
+                the <a href="#dfn-ink-line-ascent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-ink-line-ascent-10">ink line-ascent</a> of the <a href="#dfn-denominator" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-denominator-5">denominator</a>'s <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a> −
+                the <a href="#dfn-axisheight" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-axisheight-20">AxisHeight</a>.
               </li>
             </ul>
             <p>
-              The <a href="#dfn-line-ascent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-ascent-10">line-ascent</a> of the math content is the maximum between:
+              The <a href="#dfn-line-ascent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-ascent-11">line-ascent</a> of the math content is the maximum between:
             </p>
             <ul>
               <li>
                  <code>Numerator Shift</code> +
-                 the <a href="#dfn-line-ascent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-ascent-11">line-ascent</a> of the <a href="#dfn-numerator" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-numerator-6">numerator</a>'s <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a>.
+                 the <a href="#dfn-line-ascent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-ascent-12">line-ascent</a> of the <a href="#dfn-numerator" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-numerator-6">numerator</a>'s <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a>.
               </li>
               <li>
                 −<code>Denominator Shift</code> +
-                the <a href="#dfn-line-ascent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-ascent-12">line-ascent</a> of the <a href="#dfn-denominator" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-denominator-6">denominator</a>'s <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a>
+                the <a href="#dfn-line-ascent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-ascent-13">line-ascent</a> of the <a href="#dfn-denominator" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-denominator-6">denominator</a>'s <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a>
               </li>
               <li>
-                <a href="#dfn-axisheight" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-axisheight-20">AxisHeight</a> plus half the
+                <a href="#dfn-axisheight" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-axisheight-21">AxisHeight</a> plus half the
                 <a href="#dfn-fraction-line-thickness" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-fraction-line-thickness-4">fraction line thickness</a>.
               </li>
             </ul>
             <p>
-              The <a href="#dfn-line-descent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-descent-6">line-descent</a> of the math content is the maximum between:
+              The <a href="#dfn-line-descent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-descent-7">line-descent</a> of the math content is the maximum between:
             </p>
             <ul>
               <li>
                 −<code>Numerator Shift</code>
-                + the <a href="#dfn-line-descent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-descent-7">line-descent</a> of the <a href="#dfn-numerator" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-numerator-7">numerator</a>'s <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a>.
+                + the <a href="#dfn-line-descent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-descent-8">line-descent</a> of the <a href="#dfn-numerator" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-numerator-7">numerator</a>'s <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a>.
               </li>
               <li>
                 <code>Denominator Shift</code>
-                + the <a href="#dfn-line-descent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-descent-8">line-descent</a> of the <a href="#dfn-denominator" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-denominator-7">denominator</a>'s <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a>.
+                + the <a href="#dfn-line-descent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-descent-9">line-descent</a> of the <a href="#dfn-denominator" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-denominator-7">denominator</a>'s <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a>.
               </li>
               <li>
-                −<a href="#dfn-axisheight" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-axisheight-21">AxisHeight</a> plus half the
+                −<a href="#dfn-axisheight" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-axisheight-22">AxisHeight</a> plus half the
                 <a href="#dfn-fraction-line-thickness" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-fraction-line-thickness-5">fraction line thickness</a>.
               </li>
               <li>0</li>
@@ -3267,7 +3310,7 @@ mfrac &gt; <span class="hljs-selector-pseudo">:nth-child</span>(<span class="hlj
               inline-start edge is the aligned with the one the
               <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#content-box">content box</a>.
               The center of the fraction bar is shifted away from the <a href="#dfn-alphabetic-baseline" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-alphabetic-baseline-16">alphabetic baseline</a> of the <a href="#dfn-math-content-box" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-math-content-box-13">math content box</a>
-              by a distance of <a href="#dfn-axisheight" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-axisheight-22">AxisHeight</a> towards the <a data-link-type="dfn" href="https://www.w3.org/TR/css-writing-modes-4/#line-over">line-over</a>.
+              by a distance of <a href="#dfn-axisheight" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-axisheight-23">AxisHeight</a> towards the <a data-link-type="dfn" href="https://www.w3.org/TR/css-writing-modes-4/#line-over">line-over</a>.
               Its <a data-link-type="dfn" href="https://www.w3.org/TR/css-writing-modes-4/#block-size">block size</a> is the
               <a href="#dfn-fraction-line-thickness" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-fraction-line-thickness-6">fraction line thickness</a>.
             </p>
@@ -3309,9 +3352,9 @@ mfrac &gt; <span class="hljs-selector-pseudo">:nth-child</span>(<span class="hlj
             <p>
               The <code>Gap</code> is defined to be
               (<code>BottomShift</code> −
-              the <a href="#dfn-ink-line-ascent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-ink-line-ascent-10">ink line-ascent</a> of the <a href="#dfn-denominator" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-denominator-12">denominator</a>'s <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a>) +
+              the <a href="#dfn-ink-line-ascent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-ink-line-ascent-11">ink line-ascent</a> of the <a href="#dfn-denominator" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-denominator-12">denominator</a>'s <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a>) +
               (<code>TopShift</code> −
-              the <a href="#dfn-ink-line-descent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-ink-line-descent-9">ink line-descent</a> of the <a href="#dfn-numerator" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-numerator-12">numerator</a>'s <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a>).
+              the <a href="#dfn-ink-line-descent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-ink-line-descent-10">ink line-descent</a> of the <a href="#dfn-numerator" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-numerator-12">numerator</a>'s <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a>).
               If <a href="#propdef-math-style" class="internalDFN" data-link-type="dfn" id="ref-for-propdef-math-style-10">math-style</a> is <code>compact</code>
               then <code>GapMin</code>
               is <a href="#dfn-stackgapmin" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-stackgapmin-1">StackGapMin</a>,
@@ -3322,29 +3365,29 @@ mfrac &gt; <span class="hljs-selector-pseudo">:nth-child</span>(<span class="hlj
               are respectively increased by Δ/2 and Δ − Δ/2.
             </p>
             <p>
-              The <a href="#dfn-line-ascent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-ascent-13">line-ascent</a> of the math content is the maximum between:
+              The <a href="#dfn-line-ascent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-ascent-14">line-ascent</a> of the math content is the maximum between:
             </p>
             <ul>
               <li>
                  <code>TopShift</code> +
-                 the <a href="#dfn-line-ascent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-ascent-14">line-ascent</a> of the <a href="#dfn-numerator" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-numerator-13">numerator</a>'s <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a>.
+                 the <a href="#dfn-line-ascent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-ascent-15">line-ascent</a> of the <a href="#dfn-numerator" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-numerator-13">numerator</a>'s <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a>.
               </li>
               <li>
                 −<code>BottomShift</code>
-                + the <a href="#dfn-line-ascent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-ascent-15">line-ascent</a> of the <a href="#dfn-denominator" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-denominator-13">denominator</a>'s <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a>.
+                + the <a href="#dfn-line-ascent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-ascent-16">line-ascent</a> of the <a href="#dfn-denominator" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-denominator-13">denominator</a>'s <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a>.
               </li>
             </ul>
             <p>
-              The <a href="#dfn-line-descent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-descent-9">line-descent</a> of the math content is the maximum between:
+              The <a href="#dfn-line-descent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-descent-10">line-descent</a> of the math content is the maximum between:
             </p>
             <ul>
               <li>
                 −<code>TopShift</code>
-                + the <a href="#dfn-line-descent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-descent-10">line-descent</a> of the <a href="#dfn-numerator" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-numerator-14">numerator</a>'s <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a>.
+                + the <a href="#dfn-line-descent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-descent-11">line-descent</a> of the <a href="#dfn-numerator" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-numerator-14">numerator</a>'s <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a>.
               </li>
               <li>
                 <code>BottomShift</code>
-                + the <a href="#dfn-line-descent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-descent-11">line-descent</a> of the <a href="#dfn-denominator" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-denominator-14">denominator</a>'s <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a>.
+                + the <a href="#dfn-line-descent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-descent-12">line-descent</a> of the <a href="#dfn-denominator" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-denominator-14">denominator</a>'s <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a>.
               </li>
               <li>0</li>
             </ul>
@@ -3449,7 +3492,7 @@ mroot, msqrt {
             <dfn id="dfn-mroot-index" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">mroot index</dfn>
             and its layout algorithm is explained below.
           </p>
-          <div class="note" role="note" id="mroot-css-rules-on-children"><div role="heading" class="note-title marker" id="h-note-22" aria-level="5"><span>Note</span></div><div class="">
+          <div class="note" role="note" id="mroot-css-rules-on-children"><div role="heading" class="note-title marker" id="h-note-24" aria-level="5"><span>Note</span></div><div class="">
             In practice, an <code>&lt;mroot&gt;</code> element has two children
             that are <a data-link-type="dfn" href="https://www.w3.org/TR/css-display-3/#in-flow">in-flow</a>. Hence the CSS rules basically perform
             <a href="#dfn-scriptlevel" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-scriptlevel-8"><code>scriptlevel</code></a> and <a href="#dfn-displaystyle" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-displaystyle-11"><code>displaystyle</code></a> changes for the index.
@@ -3471,8 +3514,11 @@ mroot, msqrt {
               of that element.
             </p>
             <p>
-              The <dfn id="dfn-radical-glyph" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">radical glyph</dfn> is the glyph obtained for the
-              character U+221A SQUARE ROOT.
+              Let <code>dir</code> be the computed <a data-link-type="css-property" href="https://www.w3.org/TR/css-writing-modes-4/#propdef-direction">direction</a>
+              of the <code>&lt;msqrt&gt;</code> or <code>&lt;mroot&gt;</code> element.
+              The <dfn id="dfn-radical-glyph" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">radical glyph</dfn> is the glyph obtained as a result of running
+              <a href="#dfn-get-a-glyph" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-get-a-glyph-3">get a glyph</a> corresponding to the U+221A SQUARE ROOT character
+              given <code>dir</code>.
             </p>
             <p>
               The <dfn id="dfn-radical-gap" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">radical gap</dfn> is given by
@@ -3489,8 +3535,8 @@ mroot, msqrt {
             <p>
               The <dfn id="dfn-box-metrics-of-the-radical-glyph" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">box metrics of the radical glyph</dfn>
               and <dfn id="dfn-painting-of-the-surd" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">painting of the surd</dfn> are given by the algorithm to
-              <a href="#dfn-shape-a-stretchy-glyph" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-shape-a-stretchy-glyph-8">shape a stretchy glyph</a> to <a data-link-type="dfn" href="https://www.w3.org/TR/css-writing-modes-4/#block-dimension">block dimension</a> the
-              target size for the radical glyph.
+              <a href="#dfn-shape-a-stretchy-glyph" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-shape-a-stretchy-glyph-11">shape a stretchy glyph</a> to the
+              target size for the radical glyph in the <a data-link-type="dfn" href="https://www.w3.org/TR/css-writing-modes-4/#block-dimension">block dimension</a>.
             </p>
           </section>
           <section id="square-root"><div class="header-wrapper"><h5 id="x3-3-3-2-square-root"><bdi class="secno">3.3.3.2 </bdi>Square root</h5><a class="self-link" href="#square-root" aria-label="Permalink for Section 3.3.3.2"></a></div>
@@ -3508,7 +3554,7 @@ mroot, msqrt {
                (respectively <a data-link-type="dfn" href="https://www.w3.org/TR/css-sizing-3/#max-content-inline-size">max-content inline size</a>)
               of the math content is
               the sum of the
-              <a href="#dfn-preferred-inline-size-of-a-glyph-stretched-along-the-block-axis" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-preferred-inline-size-of-a-glyph-stretched-along-the-block-axis-2">preferred inline size of a glyph stretched along the
+              <a href="#dfn-preferred-inline-size-of-a-glyph-stretched-along-the-block-axis" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-preferred-inline-size-of-a-glyph-stretched-along-the-block-axis-3">preferred inline size of a glyph stretched along the
                 block axis</a>
               for the <a href="#dfn-radical-glyph" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-radical-glyph-1">radical glyph</a>
               and of the
@@ -3521,23 +3567,23 @@ mroot, msqrt {
               of the <a data-link-type="dfn" href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a> of the <a href="#dfn-msqrt-base" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-msqrt-base-2">msqrt base</a>'s margin's box.
             </p>
             <p>
-              The <a href="#dfn-line-ascent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-ascent-16">line-ascent</a> of the math content is the maximum between:
+              The <a href="#dfn-line-ascent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-ascent-17">line-ascent</a> of the math content is the maximum between:
             </p>
             <ul>
-              <li>The <a href="#dfn-line-ascent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-ascent-17">line-ascent</a> of the <a href="#dfn-msqrt-base" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-msqrt-base-3">msqrt base</a>'s <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a>.</li>
-              <li>The sum of the <a href="#dfn-ink-line-ascent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-ink-line-ascent-11">ink line-ascent</a> of the <a href="#dfn-msqrt-base" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-msqrt-base-4">msqrt base</a>,
+              <li>The <a href="#dfn-line-ascent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-ascent-18">line-ascent</a> of the <a href="#dfn-msqrt-base" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-msqrt-base-3">msqrt base</a>'s <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a>.</li>
+              <li>The sum of the <a href="#dfn-ink-line-ascent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-ink-line-ascent-12">ink line-ascent</a> of the <a href="#dfn-msqrt-base" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-msqrt-base-4">msqrt base</a>,
                 the <a href="#dfn-radical-gap" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-radical-gap-2">radical gap</a>, the <a href="#dfn-radicalrulethickness" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-radicalrulethickness-2">RadicalRuleThickness</a>
                 and <a href="#dfn-radicalextraascender" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-radicalextraascender-1">RadicalExtraAscender</a>.</li>
             </ul>
             <p>
-              The <a href="#dfn-line-descent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-descent-12">line-descent</a> of the math content is the maximum between:
+              The <a href="#dfn-line-descent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-descent-13">line-descent</a> of the math content is the maximum between:
             </p>
             <ul>
-              <li>The <a href="#dfn-line-descent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-descent-13">line-descent</a> of the <a href="#dfn-msqrt-base" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-msqrt-base-5">msqrt base</a>'s <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a>.</li>
-              <li>The sum of the <a href="#dfn-line-ascent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-ascent-18">line-ascent</a> and <a href="#dfn-line-descent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-descent-14">line-descent</a> for the
+              <li>The <a href="#dfn-line-descent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-descent-14">line-descent</a> of the <a href="#dfn-msqrt-base" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-msqrt-base-5">msqrt base</a>'s <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a>.</li>
+              <li>The sum of the <a href="#dfn-line-ascent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-ascent-19">line-ascent</a> and <a href="#dfn-line-descent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-descent-15">line-descent</a> for the
                 <a href="#dfn-box-metrics-of-the-radical-glyph" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-box-metrics-of-the-radical-glyph-2">box metrics of the radical glyph</a> and of the
                 <a href="#dfn-radicalextraascender" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-radicalextraascender-2">RadicalExtraAscender</a>, minus the
-                <a href="#dfn-line-ascent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-ascent-19">line-ascent</a> of the math content.
+                <a href="#dfn-line-ascent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-ascent-20">line-ascent</a> of the math content.
               </li>
             </ul>
             <p>
@@ -3552,7 +3598,7 @@ mroot, msqrt {
               The <a data-link-type="dfn" href="https://www.w3.org/TR/css-writing-modes-4/#block-size">block size</a> of the overbar is
               <a href="#dfn-radicalrulethickness" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-radicalrulethickness-3">RadicalRuleThickness</a>. Its vertical center is shifted away
               from the <a href="#dfn-alphabetic-baseline" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-alphabetic-baseline-21">alphabetic baseline</a> by a distance towards the <a data-link-type="dfn" href="https://www.w3.org/TR/css-writing-modes-4/#line-over">line-over</a>
-              equal to the <a href="#dfn-line-ascent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-ascent-20">line-ascent</a> of the math content, minus
+              equal to the <a href="#dfn-line-ascent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-ascent-21">line-ascent</a> of the math content, minus
               the <a href="#dfn-radicalextraascender" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-radicalextraascender-3">RadicalExtraAscender</a>,
               minus half the <a href="#dfn-radicalrulethickness" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-radicalrulethickness-4">RadicalRuleThickness</a>.
             </p>
@@ -3618,22 +3664,22 @@ mroot, msqrt {
               and of the <a data-link-type="dfn" href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a> of B.
             </p>
             <p>
-              The <a href="#dfn-line-ascent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-ascent-21">line-ascent</a> of the math content is the maximum between:
+              The <a href="#dfn-line-ascent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-ascent-22">line-ascent</a> of the math content is the maximum between:
             </p>
             <ul>
-              <li>−the <a href="#dfn-line-descent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-descent-15">line-descent</a> of B +
+              <li>−the <a href="#dfn-line-descent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-descent-16">line-descent</a> of B +
                 <a href="#dfn-radicaldegreebottomraisepercent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-radicaldegreebottomraisepercent-1">RadicalDegreeBottomRaisePercent</a> ×
-                the <a data-link-type="dfn" href="https://www.w3.org/TR/css-writing-modes-4/#block-size">block size</a> of B + the <a href="#dfn-line-ascent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-ascent-22">line-ascent</a> of the
+                the <a data-link-type="dfn" href="https://www.w3.org/TR/css-writing-modes-4/#block-size">block size</a> of B + the <a href="#dfn-line-ascent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-ascent-23">line-ascent</a> of the
                 index's <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a></li>
-              <li>The <a href="#dfn-line-ascent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-ascent-23">line-ascent</a> of B</li>
+              <li>The <a href="#dfn-line-ascent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-ascent-24">line-ascent</a> of B</li>
             </ul>
-            <p>The <a href="#dfn-line-descent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-descent-16">line-descent</a> of the math content is the maximum between:</p>
+            <p>The <a href="#dfn-line-descent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-descent-17">line-descent</a> of the math content is the maximum between:</p>
             <ul>
-              <li>the <a href="#dfn-line-descent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-descent-17">line-descent</a> of B −
+              <li>the <a href="#dfn-line-descent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-descent-18">line-descent</a> of B −
                 <a href="#dfn-radicaldegreebottomraisepercent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-radicaldegreebottomraisepercent-2">RadicalDegreeBottomRaisePercent</a> ×
-                the <a data-link-type="dfn" href="https://www.w3.org/TR/css-writing-modes-4/#block-size">block size</a> of B + the <a href="#dfn-line-ascent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-ascent-24">line-ascent</a> of the
+                the <a data-link-type="dfn" href="https://www.w3.org/TR/css-writing-modes-4/#block-size">block size</a> of B + the <a href="#dfn-line-ascent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-ascent-25">line-ascent</a> of the
                 index's <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a></li>
-              <li>The <a href="#dfn-line-descent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-descent-18">line-descent</a> of B</li>
+              <li>The <a href="#dfn-line-descent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-descent-19">line-descent</a> of B</li>
             </ul>
             <p>
               The <a href="#dfn-inline-offset" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-inline-offset-8">inline offset</a> of the index is
@@ -3647,10 +3693,10 @@ mroot, msqrt {
               The <a href="#dfn-alphabetic-baseline" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-alphabetic-baseline-24">alphabetic baseline</a> of the index is shifted away
               from the <a data-link-type="dfn" href="https://www.w3.org/TR/css-writing-modes-4/#line-under">line-under</a> edge by a distance of
               <a href="#dfn-radicaldegreebottomraisepercent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-radicaldegreebottomraisepercent-3">RadicalDegreeBottomRaisePercent</a> ×
-              the <a data-link-type="dfn" href="https://www.w3.org/TR/css-writing-modes-4/#block-size">block size</a> of B + the <a href="#dfn-line-descent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-descent-19">line-descent</a> of the
+              the <a data-link-type="dfn" href="https://www.w3.org/TR/css-writing-modes-4/#block-size">block size</a> of B + the <a href="#dfn-line-descent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-descent-20">line-descent</a> of the
               index's <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a>.
             </p>
-            <div class="note" role="note" id="issue-container-generatedID-22"><div role="heading" class="note-title marker" id="h-note-23" aria-level="6"><span>Note</span></div><div class="">
+            <div class="note" role="note" id="issue-container-generatedID-24"><div role="heading" class="note-title marker" id="h-note-25" aria-level="6"><span>Note</span></div><div class="">
               In general, the kerning before the root index is positive while
               the kerning after it is negative, which means that the root
               element will have some inline-start space and that the root index
@@ -3671,7 +3717,7 @@ mroot, msqrt {
             <a href="#global-attributes" class="sec-ref"><bdi class="secno">2.1.3 </bdi>Global Attributes</a>. Its layout algorithm is the
             same as the <code><a data-link-type="element" href="#dfn-mrow" class="internalDFN" id="ref-for-dfn-mrow-11">mrow</a></code> element.
           </p>
-          <div class="note" role="note" id="issue-container-generatedID-23"><div role="heading" class="note-title marker" id="h-note-24" aria-level="5"><span>Note</span></div><div class="">
+          <div class="note" role="note" id="issue-container-generatedID-25"><div role="heading" class="note-title marker" id="h-note-26" aria-level="5"><span>Note</span></div><div class="">
             <code>&lt;mstyle&gt;</code> is implemented for compatibility with full MathML. Authors whose only target is MathML Core are encouraged to use CSS for styling.
           </div></div>
           <div class="example" id="mstyle-example">
@@ -3819,7 +3865,7 @@ mroot, msqrt {
               The <code><a data-link-type="element" href="#dfn-mpadded" class="internalDFN" id="ref-for-dfn-mpadded-8">mpadded</a></code> element
               <a href="#dfn-generates-an-anonymous-mrow-box" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-generates-an-anonymous-mrow-box-3">generates an anonymous &lt;mrow&gt; box</a> called the
               <dfn id="dfn-mpadded-inner-box" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">mpadded inner box</dfn> with parameters called
-              inner inline size, inner <a href="#dfn-line-ascent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-ascent-25">line-ascent</a> and inner line-descent.
+              inner inline size, inner <a href="#dfn-line-ascent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-ascent-26">line-ascent</a> and inner line-descent.
             </p>
             <p>
               The requested <code>&lt;mpadded&gt;</code>
@@ -3841,7 +3887,7 @@ mroot, msqrt {
               <li>
                 If the <code>height</code>
                 attribute is absent, invalid or a percentage then the requested
-                height is the inner <a href="#dfn-line-ascent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-ascent-26">line-ascent</a>.
+                height is the inner <a href="#dfn-line-ascent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-ascent-27">line-ascent</a>.
                 Otherwise the requested height is the resolved
                 value of the <code>height</code> attribute, clamping
                 negative values to <code>0</code>.
@@ -3849,7 +3895,7 @@ mroot, msqrt {
               <li>
                 If the <code>depth</code>
                 attribute is absent, invalid or a percentage then the requested
-                depth is the inner <a href="#dfn-line-ascent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-ascent-27">line-ascent</a>.
+                depth is the inner <a href="#dfn-line-ascent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-ascent-28">line-ascent</a>.
                 Otherwise the requested depth is the resolved
                 value of the <code>depth</code> attribute, clamping
                 negative values to <code>0</code>.
@@ -3866,7 +3912,7 @@ mroot, msqrt {
                 attribute is absent, invalid or a percentage then the requested
                 voffset is 0. Otherwise the requested voffset is the resolved
                 value of the <code>voffset</code> attribute.
-                <div class="note" role="note" id="issue-container-generatedID-24"><div role="heading" class="note-title marker" id="h-note-25" aria-level="6"><span>Note</span></div><div class="">
+                <div class="note" role="note" id="issue-container-generatedID-26"><div role="heading" class="note-title marker" id="h-note-27" aria-level="6"><span>Note</span></div><div class="">
                   Negative <code>voffset</code> values are not clamped to
                   <code>0</code>.
                 </div></div>
@@ -3903,8 +3949,8 @@ mroot, msqrt {
               <a href="#inner-box-and-requested-parameters" class="sec-ref"><bdi class="secno">3.3.6.1 </bdi>Inner box and requested parameters</a>.
             </p>
             <p>
-              The <a href="#dfn-line-ascent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-ascent-28">line-ascent</a> of the math content is the requested height.
-              The <a href="#dfn-line-descent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-descent-20">line-descent</a> of the math content is the requested depth.
+              The <a href="#dfn-line-ascent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-ascent-29">line-ascent</a> of the math content is the requested height.
+              The <a href="#dfn-line-descent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-descent-21">line-descent</a> of the math content is the requested depth.
             </p>
             <p>
               The <a href="#dfn-mpadded-inner-box" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-mpadded-inner-box-2">mpadded inner box</a> is placed so that its <a href="#dfn-alphabetic-baseline" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-alphabetic-baseline-25">alphabetic baseline</a> is
@@ -3961,7 +4007,7 @@ mroot, msqrt {
           <pre aria-busy="false"><code class="hljs css">mphantom {
   <span class="hljs-attribute">visibility</span>: hidden;
 }</code></pre>
-          <div class="note" role="note" id="issue-container-generatedID-25"><div role="heading" class="note-title marker" id="h-note-26" aria-level="5"><span>Note</span></div><div class="">
+          <div class="note" role="note" id="issue-container-generatedID-27"><div role="heading" class="note-title marker" id="h-note-28" aria-level="5"><span>Note</span></div><div class="">
             <code>&lt;mphantom&gt;</code> is implemented for compatibility with full MathML. Authors whose only target is MathML Core are encouraged to use CSS for styling.
           </div></div>
         </section>
@@ -4071,7 +4117,7 @@ mroot, msqrt {
               <code>LargeOpItalicCorrection</code>
               is the <a href="#dfn-italic-correction" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-italic-correction-12">italic correction</a> of the <a href="#dfn-msub-base" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-msub-base-1">msub base</a>
               if it is an <a href="#dfn-embellished-operator" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-embellished-operator-28">embellished operator</a> with
-              the <a data-link-type="dfn|abstract-op" href="#dfn-largeop" class="internalDFN" id="ref-for-dfn-largeop-3"><code>largeop</code></a> property and 0 otherwise.
+              the <a data-link-type="dfn|abstract-op" href="#dfn-largeop" class="internalDFN" id="ref-for-dfn-largeop-4"><code>largeop</code></a> property and 0 otherwise.
             </p>
             <figure id="figure-box-msub">
               <img src="figures/msubbox.svg">
@@ -4106,25 +4152,25 @@ mroot, msqrt {
             </p>
             <ul>
               <li><a href="#dfn-subscriptshiftdown" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-subscriptshiftdown-1">SubscriptShiftDown</a></li>
-              <li>the <a href="#dfn-ink-line-ascent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-ink-line-ascent-12">ink line-ascent</a> of the
+              <li>the <a href="#dfn-ink-line-ascent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-ink-line-ascent-13">ink line-ascent</a> of the
                 subscript's <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a> − <a href="#dfn-subscripttopmax" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-subscripttopmax-1">SubscriptTopMax</a></li>
-              <li><a href="#dfn-subscriptbaselinedropmin" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-subscriptbaselinedropmin-1">SubscriptBaselineDropMin</a> + the <a href="#dfn-ink-line-descent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-ink-line-descent-10">ink line-descent</a> of the
+              <li><a href="#dfn-subscriptbaselinedropmin" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-subscriptbaselinedropmin-1">SubscriptBaselineDropMin</a> + the <a href="#dfn-ink-line-descent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-ink-line-descent-11">ink line-descent</a> of the
                 <a href="#dfn-msub-base" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-msub-base-5">msub base</a>'s <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a></li>
             </ul>
             <p>
-              The <a href="#dfn-line-ascent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-ascent-29">line-ascent</a> of the math content is the maximum between:
+              The <a href="#dfn-line-ascent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-ascent-30">line-ascent</a> of the math content is the maximum between:
             </p>
             <ul>
-              <li>The <a href="#dfn-line-ascent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-ascent-30">line-ascent</a> of the <a href="#dfn-msub-base" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-msub-base-6">msub base</a>'s <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a>.</li>
-              <li>The <a href="#dfn-line-ascent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-ascent-31">line-ascent</a> of the subscript's <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a> −
+              <li>The <a href="#dfn-line-ascent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-ascent-31">line-ascent</a> of the <a href="#dfn-msub-base" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-msub-base-6">msub base</a>'s <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a>.</li>
+              <li>The <a href="#dfn-line-ascent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-ascent-32">line-ascent</a> of the subscript's <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a> −
                 <code>SubShift</code>.</li>
             </ul>
             <p>
-              The <a href="#dfn-line-descent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-descent-21">line-descent</a> of the math content is the maximum between:
+              The <a href="#dfn-line-descent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-descent-22">line-descent</a> of the math content is the maximum between:
             </p>
             <ul>
-              <li>The <a href="#dfn-line-descent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-descent-22">line-descent</a> of the <a href="#dfn-msub-base" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-msub-base-7">msub base</a>'s <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a>.</li>
-              <li>The <a href="#dfn-line-descent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-descent-23">line-descent</a> of the subscript's <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a> +
+              <li>The <a href="#dfn-line-descent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-descent-23">line-descent</a> of the <a href="#dfn-msub-base" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-msub-base-7">msub base</a>'s <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a>.</li>
+              <li>The <a href="#dfn-line-descent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-descent-24">line-descent</a> of the subscript's <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a> +
                 <code>SubShift</code>.</li>
             </ul>
             <p>
@@ -4147,7 +4193,7 @@ mroot, msqrt {
               <code>ItalicCorrection</code>
               is the <a href="#dfn-italic-correction" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-italic-correction-13">italic correction</a> of the <a href="#dfn-msup-base" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-msup-base-1">msup base</a>
               if it is not an <a href="#dfn-embellished-operator" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-embellished-operator-29">embellished operator</a> with
-              the <a data-link-type="dfn|abstract-op" href="#dfn-largeop" class="internalDFN" id="ref-for-dfn-largeop-4"><code>largeop</code></a> property and 0 otherwise.
+              the <a data-link-type="dfn|abstract-op" href="#dfn-largeop" class="internalDFN" id="ref-for-dfn-largeop-5"><code>largeop</code></a> property and 0 otherwise.
             </p>
             <figure id="figure-box-msup">
               <img src="figures/msupbox.svg">
@@ -4190,25 +4236,25 @@ mroot, msqrt {
                 <code>compact</code>, or
                 <a href="#dfn-superscriptshiftup" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-superscriptshiftup-1">SuperscriptShiftUp</a> otherwise.</li>
               <li>
-                <a href="#dfn-superscriptbottommin" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-superscriptbottommin-1">SuperscriptBottomMin</a> + the <a href="#dfn-ink-line-descent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-ink-line-descent-11">ink line-descent</a> of the
+                <a href="#dfn-superscriptbottommin" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-superscriptbottommin-1">SuperscriptBottomMin</a> + the <a href="#dfn-ink-line-descent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-ink-line-descent-12">ink line-descent</a> of the
                 superscript's <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a></li>
-              <li>The <a href="#dfn-ink-line-ascent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-ink-line-ascent-13">ink line-ascent</a> of the <a href="#dfn-msup-base" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-msup-base-5">msup base</a>'s <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a>
+              <li>The <a href="#dfn-ink-line-ascent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-ink-line-ascent-14">ink line-ascent</a> of the <a href="#dfn-msup-base" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-msup-base-5">msup base</a>'s <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a>
                 − <a href="#dfn-superscriptbaselinedropmax" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-superscriptbaselinedropmax-1">SuperscriptBaselineDropMax</a></li>
             </ul>
             <p>
-              The <a href="#dfn-line-ascent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-ascent-32">line-ascent</a> of the math content is the maximum between:
+              The <a href="#dfn-line-ascent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-ascent-33">line-ascent</a> of the math content is the maximum between:
             </p>
             <ul>
-              <li>The <a href="#dfn-line-ascent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-ascent-33">line-ascent</a> of the <a href="#dfn-msup-base" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-msup-base-6">msup base</a>'s <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a>.</li>
-              <li>The <a href="#dfn-line-ascent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-ascent-34">line-ascent</a> of the superscript's <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a> +
+              <li>The <a href="#dfn-line-ascent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-ascent-34">line-ascent</a> of the <a href="#dfn-msup-base" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-msup-base-6">msup base</a>'s <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a>.</li>
+              <li>The <a href="#dfn-line-ascent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-ascent-35">line-ascent</a> of the superscript's <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a> +
                 <code>SuperShift</code>.</li>
             </ul>
             <p>
-              The <a href="#dfn-line-descent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-descent-24">line-descent</a> of the math content is the maximum between:
+              The <a href="#dfn-line-descent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-descent-25">line-descent</a> of the math content is the maximum between:
             </p>
             <ul>
-              <li>The <a href="#dfn-line-descent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-descent-25">line-descent</a> of the <a href="#dfn-msup-base" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-msup-base-7">msup base</a>'s <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a>.</li>
-              <li>The <a href="#dfn-line-descent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-descent-26">line-descent</a> of the superscript's <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a> −
+              <li>The <a href="#dfn-line-descent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-descent-26">line-descent</a> of the <a href="#dfn-msup-base" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-msup-base-7">msup base</a>'s <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a>.</li>
+              <li>The <a href="#dfn-line-descent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-descent-27">line-descent</a> of the superscript's <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a> −
                 <code>SuperShift</code>.</li>
             </ul>
             <p>
@@ -4268,9 +4314,9 @@ mroot, msqrt {
             <p>
               <code>SubSuperGap</code> is the gap between the two scripts
               along the <a data-link-type="dfn" href="https://www.w3.org/TR/css-writing-modes-4/#block-axis">block axis</a> and is defined by
-              (<code>SubShift</code> − the <a href="#dfn-ink-line-ascent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-ink-line-ascent-14">ink line-ascent</a> of the <a href="#dfn-msubsup-subscript" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-msubsup-subscript-1">msubsup subscript</a>'s
+              (<code>SubShift</code> − the <a href="#dfn-ink-line-ascent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-ink-line-ascent-15">ink line-ascent</a> of the <a href="#dfn-msubsup-subscript" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-msubsup-subscript-1">msubsup subscript</a>'s
               <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a>) +
-              (<code>SuperShift</code> − the <a href="#dfn-ink-line-descent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-ink-line-descent-12">ink line-descent</a> of the
+              (<code>SuperShift</code> − the <a href="#dfn-ink-line-descent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-ink-line-descent-13">ink line-descent</a> of the
               <a href="#dfn-msubsup-superscript" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-msubsup-superscript-1">msubsup superscript</a>'s <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a>).
               If <code>SubSuperGap</code> is not at least
               <a href="#dfn-subsuperscriptgapmin" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-subsuperscriptgapmin-1">SubSuperscriptGapMin</a> then the following steps are
@@ -4279,7 +4325,7 @@ mroot, msqrt {
             <ol class="algorithm">
               <li>
                 Let Δ be <a href="#dfn-superscriptbottommaxwithsubscript" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-superscriptbottommaxwithsubscript-1">SuperscriptBottomMaxWithSubscript</a>
-                − (<code>SuperShift</code> − the <a href="#dfn-ink-line-descent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-ink-line-descent-13">ink line-descent</a> of the
+                − (<code>SuperShift</code> − the <a href="#dfn-ink-line-descent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-ink-line-descent-14">ink line-descent</a> of the
                 <a href="#dfn-msubsup-superscript" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-msubsup-superscript-2">msubsup superscript</a>'s <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a>).
                 If Δ &gt; 0 then set Δ to the minimum between Δ set
                 <a href="#dfn-subsuperscriptgapmin" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-subsuperscriptgapmin-2">SubSuperscriptGapMin</a> − <code>SubSuperGap</code> and
@@ -4294,12 +4340,12 @@ mroot, msqrt {
               </li>
             </ol>
             <p>
-              The <a href="#dfn-ink-line-ascent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-ink-line-ascent-15">ink line-ascent</a> (respectively <a href="#dfn-line-ascent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-ascent-35">line-ascent</a>, <a href="#dfn-ink-line-descent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-ink-line-descent-14">ink line-descent</a>,
-              <a href="#dfn-line-descent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-descent-27">line-descent</a>) of the math content
+              The <a href="#dfn-ink-line-ascent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-ink-line-ascent-16">ink line-ascent</a> (respectively <a href="#dfn-line-ascent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-ascent-36">line-ascent</a>, <a href="#dfn-ink-line-descent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-ink-line-descent-15">ink line-descent</a>,
+              <a href="#dfn-line-descent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-descent-28">line-descent</a>) of the math content
               is set to the maximum
               of the
-              <a href="#dfn-ink-line-ascent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-ink-line-ascent-16">ink line-ascent</a> (respectively <a href="#dfn-line-ascent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-ascent-36">line-ascent</a>, <a href="#dfn-ink-line-descent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-ink-line-descent-15">ink line-descent</a>,
-              <a href="#dfn-line-descent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-descent-28">line-descent</a>) of the math content
+              <a href="#dfn-ink-line-ascent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-ink-line-ascent-17">ink line-ascent</a> (respectively <a href="#dfn-line-ascent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-ascent-37">line-ascent</a>, <a href="#dfn-ink-line-descent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-ink-line-descent-16">ink line-descent</a>,
+              <a href="#dfn-line-descent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-descent-29">line-descent</a>) of the math content
               calculated in
               <a href="#base-with-subscript" class="sec-ref"><bdi class="secno">3.4.1.2 </bdi>Base with subscript</a> and
               <a href="#base-with-superscript" class="sec-ref"><bdi class="secno">3.4.1.3 </bdi>Base with superscript</a>
@@ -4313,7 +4359,7 @@ mroot, msqrt {
               <a href="#base-with-subscript" class="sec-ref"><bdi class="secno">3.4.1.2 </bdi>Base with subscript</a> and
               <a href="#base-with-superscript" class="sec-ref"><bdi class="secno">3.4.1.3 </bdi>Base with superscript</a>.
             </p>
-            <div class="note" role="note" id="msubsup-with-empty-scripts"><div role="heading" class="note-title marker" id="h-note-27" aria-level="6"><span>Note</span></div><div class="">
+            <div class="note" role="note" id="msubsup-with-empty-scripts"><div role="heading" class="note-title marker" id="h-note-29" aria-level="6"><span>Note</span></div><div class="">
               <p>
                 Even when the <a href="#dfn-msubsup-subscript" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-msubsup-subscript-2">msubsup subscript</a> (respectively <a href="#dfn-msubsup-superscript" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-msubsup-superscript-3">msubsup superscript</a>) is an empty
                 box, <code>&lt;msubsup&gt;</code>
@@ -4491,7 +4537,7 @@ mroot, msqrt {
                 laid out yet into a first list
                 <code>L<sub>ToStretch</sub></code> containing
                 <a href="#dfn-embellished-operator" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-embellished-operator-32">embellished operators</a> with
-                a <a data-link-type="dfn|abstract-op" href="#dfn-stretchy" class="internalDFN" id="ref-for-dfn-stretchy-4"><code>stretchy</code></a> property and inline <a data-link-type="dfn|abstract-op" href="#dfn-stretch-axis" class="internalDFN" id="ref-for-dfn-stretch-axis-4">stretch axis</a>;
+                a <a data-link-type="dfn|abstract-op" href="#dfn-stretchy" class="internalDFN" id="ref-for-dfn-stretchy-5"><code>stretchy</code></a> property and inline <a data-link-type="dfn|abstract-op" href="#dfn-stretch-axis" class="internalDFN" id="ref-for-dfn-stretch-axis-4">stretch axis</a>;
                 and a second list <code>L<sub>NotToStretch</sub></code>.
               </li>
               <li>
@@ -4523,7 +4569,7 @@ mroot, msqrt {
               <code>LargeOpItalicCorrection</code>
               is the <a href="#dfn-italic-correction" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-italic-correction-14">italic correction</a> of the <a href="#dfn-munder-base" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-munder-base-1">munder base</a>
               if it is an <a href="#dfn-embellished-operator" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-embellished-operator-33">embellished operator</a> with
-              the <a data-link-type="dfn|abstract-op" href="#dfn-largeop" class="internalDFN" id="ref-for-dfn-largeop-5"><code>largeop</code></a> property and 0 otherwise.
+              the <a data-link-type="dfn|abstract-op" href="#dfn-largeop" class="internalDFN" id="ref-for-dfn-largeop-6"><code>largeop</code></a> property and 0 otherwise.
             </p>
             <figure id="figure-box-munder">
               <img src="figures/munderbox.svg">
@@ -4581,7 +4627,7 @@ mroot, msqrt {
                 <p>
                   The <a href="#dfn-munder-base" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-munder-base-7">munder base</a> is an
                   <a href="#dfn-embellished-operator" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-embellished-operator-34">embellished operator</a> with the
-                  <a data-link-type="dfn|abstract-op" href="#dfn-largeop" class="internalDFN" id="ref-for-dfn-largeop-6"><code>largeop</code></a> property.
+                  <a data-link-type="dfn|abstract-op" href="#dfn-largeop" class="internalDFN" id="ref-for-dfn-largeop-7"><code>largeop</code></a> property.
                   <code>UnderShift</code> is the maximum of
                 </p>
                 <ul>
@@ -4597,7 +4643,7 @@ mroot, msqrt {
                 <p>
                   The <a href="#dfn-munder-base" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-munder-base-8">munder base</a> is an
                   <a href="#dfn-embellished-operator" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-embellished-operator-35">embellished operator</a> with the
-                  <a data-link-type="dfn|abstract-op" href="#dfn-stretchy" class="internalDFN" id="ref-for-dfn-stretchy-5"><code>stretchy</code></a> property
+                  <a data-link-type="dfn|abstract-op" href="#dfn-stretchy" class="internalDFN" id="ref-for-dfn-stretchy-6"><code>stretchy</code></a> property
                   and <a data-link-type="dfn|abstract-op" href="#dfn-stretch-axis" class="internalDFN" id="ref-for-dfn-stretch-axis-5">stretch axis</a> inline.
                   <code>UnderShift</code> is the maximum of:
                 </p>
@@ -4619,26 +4665,26 @@ mroot, msqrt {
               </li>
             </ol>
             <p>
-              The <a href="#dfn-line-ascent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-ascent-37">line-ascent</a> of the math content is the maximum between:
+              The <a href="#dfn-line-ascent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-ascent-38">line-ascent</a> of the math content is the maximum between:
             </p>
             <ul>
-              <li>The <a href="#dfn-line-ascent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-ascent-38">line-ascent</a> of the <a href="#dfn-munder-base" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-munder-base-9">munder base</a>'s <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a>.</li>
-              <li>The <a href="#dfn-line-ascent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-ascent-39">line-ascent</a> of the <a href="#dfn-munder-underscript" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-munder-underscript-9">munder underscript</a>'s <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a> −
+              <li>The <a href="#dfn-line-ascent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-ascent-39">line-ascent</a> of the <a href="#dfn-munder-base" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-munder-base-9">munder base</a>'s <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a>.</li>
+              <li>The <a href="#dfn-line-ascent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-ascent-40">line-ascent</a> of the <a href="#dfn-munder-underscript" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-munder-underscript-9">munder underscript</a>'s <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a> −
                 <code>UnderShift</code>.</li>
             </ul>
             <p>
-              The <a href="#dfn-line-descent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-descent-29">line-descent</a> of the math content is the maximum between:
+              The <a href="#dfn-line-descent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-descent-30">line-descent</a> of the math content is the maximum between:
             </p>
             <ul>
-              <li>The <a href="#dfn-line-descent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-descent-30">line-descent</a> of the <a href="#dfn-munder-base" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-munder-base-10">munder base</a>'s <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a>.</li>
-              <li>The <a href="#dfn-line-descent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-descent-31">line-descent</a> of the <a href="#dfn-munder-underscript" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-munder-underscript-10">munder underscript</a>'s <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a> +
+              <li>The <a href="#dfn-line-descent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-descent-31">line-descent</a> of the <a href="#dfn-munder-base" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-munder-base-10">munder base</a>'s <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a>.</li>
+              <li>The <a href="#dfn-line-descent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-descent-32">line-descent</a> of the <a href="#dfn-munder-underscript" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-munder-underscript-10">munder underscript</a>'s <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a> +
                 <code>UnderShift</code> + <code>UnderExtraAscender</code>.</li>
             </ul>
             <p>
               The <a href="#dfn-alphabetic-baseline" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-alphabetic-baseline-36">alphabetic baseline</a> of the <a href="#dfn-munder-base" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-munder-base-11">munder base</a> is aligned with the <a href="#dfn-alphabetic-baseline" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-alphabetic-baseline-37">alphabetic baseline</a>.
               The <a href="#dfn-alphabetic-baseline" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-alphabetic-baseline-38">alphabetic baseline</a> of the <a href="#dfn-munder-underscript" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-munder-underscript-11">munder underscript</a> is shifted away from the <a href="#dfn-alphabetic-baseline" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-alphabetic-baseline-39">alphabetic baseline</a>
               and towards the <a data-link-type="dfn" href="https://www.w3.org/TR/css-writing-modes-4/#line-under">line-under</a> by a distance equal to
-              the <a href="#dfn-ink-line-descent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-ink-line-descent-16">ink line-descent</a> of the <a href="#dfn-munder-base" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-munder-base-12">munder base</a>'s <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a>
+              the <a href="#dfn-ink-line-descent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-ink-line-descent-17">ink line-descent</a> of the <a href="#dfn-munder-base" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-munder-base-12">munder base</a>'s <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a>
               + <code>UnderShift</code>.
             </p>
             <p>
@@ -4656,7 +4702,7 @@ mroot, msqrt {
               <code>LargeOpItalicCorrection</code>
               is the <a href="#dfn-italic-correction" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-italic-correction-15">italic correction</a> of the <a href="#dfn-mover-base" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-mover-base-1">mover base</a>
               if it is an <a href="#dfn-embellished-operator" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-embellished-operator-36">embellished operator</a> with
-              the <a data-link-type="dfn|abstract-op" href="#dfn-largeop" class="internalDFN" id="ref-for-dfn-largeop-7"><code>largeop</code></a> property and 0 otherwise.
+              the <a data-link-type="dfn|abstract-op" href="#dfn-largeop" class="internalDFN" id="ref-for-dfn-largeop-8"><code>largeop</code></a> property and 0 otherwise.
             </p>
             <figure id="figure-box-mover">
               <img src="figures/moverbox.svg">
@@ -4721,7 +4767,7 @@ mroot, msqrt {
                 <p>
                   The <a href="#dfn-mover-base" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-mover-base-7">mover base</a> is an
                   <a href="#dfn-embellished-operator" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-embellished-operator-37">embellished operator</a> with the
-                  <a data-link-type="dfn|abstract-op" href="#dfn-largeop" class="internalDFN" id="ref-for-dfn-largeop-8"><code>largeop</code></a> property.
+                  <a data-link-type="dfn|abstract-op" href="#dfn-largeop" class="internalDFN" id="ref-for-dfn-largeop-9"><code>largeop</code></a> property.
                   <code>OverShift</code> is the maximum of
                 </p>
                 <ul>
@@ -4737,7 +4783,7 @@ mroot, msqrt {
                 <p>
                   The <a href="#dfn-mover-base" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-mover-base-8">mover base</a> is an
                   <a href="#dfn-embellished-operator" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-embellished-operator-38">embellished operator</a> with the
-                  <a data-link-type="dfn|abstract-op" href="#dfn-stretchy" class="internalDFN" id="ref-for-dfn-stretchy-6"><code>stretchy</code></a> property and
+                  <a data-link-type="dfn|abstract-op" href="#dfn-stretchy" class="internalDFN" id="ref-for-dfn-stretchy-7"><code>stretchy</code></a> property and
                   <a data-link-type="dfn|abstract-op" href="#dfn-stretch-axis" class="internalDFN" id="ref-for-dfn-stretch-axis-6">stretch axis</a> inline.
                   <code>OverShift</code> is the maximum of:
                 </p>
@@ -4755,7 +4801,7 @@ mroot, msqrt {
                   <li><a href="#dfn-overbarverticalgap" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-overbarverticalgap-1">OverbarVerticalGap</a> if the
                     <code><a data-link-type="element-attr" href="#dfn-accent" class="internalDFN" id="ref-for-dfn-accent-3">accent</a></code> attribute is not an
                     <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#ascii-case-insensitive">ASCII case-insensitive</a> match to <code>true</code>.</li>
-                  <li>Or <a href="#dfn-accentbaseheight" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-accentbaseheight-1">AccentBaseHeight</a> minus the <a href="#dfn-line-ascent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-ascent-40">line-ascent</a>
+                  <li>Or <a href="#dfn-accentbaseheight" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-accentbaseheight-1">AccentBaseHeight</a> minus the <a href="#dfn-line-ascent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-ascent-41">line-ascent</a>
                     of the <a href="#dfn-mover-base" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-mover-base-9">mover base</a>'s <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a>
                     if this difference is nonnegative.</li>
                   <li>Or 0 otherwise.</li>
@@ -4765,8 +4811,8 @@ mroot, msqrt {
                 </p>
               </li>
             </ol>
-            <div class="note" role="note" id="issue-container-generatedID-26"><div role="heading" class="note-title marker" id="h-note-28" aria-level="6"><span>Note</span></div><div class="">
-              For accent overscripts and bases with <a href="#dfn-line-ascent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-ascent-41">line-ascents</a> that are at
+            <div class="note" role="note" id="issue-container-generatedID-28"><div role="heading" class="note-title marker" id="h-note-30" aria-level="6"><span>Note</span></div><div class="">
+              For accent overscripts and bases with <a href="#dfn-line-ascent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-ascent-42">line-ascents</a> that are at
               most
               <a href="#dfn-accentbaseheight" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-accentbaseheight-2">AccentBaseHeight</a>, the rule from
               [<cite><a class="bibref" data-link-type="biblio" href="#bib-open-font-format" title="Information technology — Coding of audio-visual objects — Part 22: Open Font Format">OPEN-FONT-FORMAT</a></cite>] [<cite><a class="bibref" data-link-type="biblio" href="#bib-texbook" title="The TeXBook">TEXBOOK</a></cite>] is actually to align the
@@ -4782,26 +4828,26 @@ mroot, msqrt {
               <a href="#dfn-accentbaseheight" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-accentbaseheight-4">AccentBaseHeight</a> above the <a href="#dfn-alphabetic-baseline" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-alphabetic-baseline-42">alphabetic baseline</a> of the base.
             </div></div>
             <p>
-              The <a href="#dfn-line-ascent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-ascent-42">line-ascent</a> of the math content is the maximum between:
+              The <a href="#dfn-line-ascent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-ascent-43">line-ascent</a> of the math content is the maximum between:
             </p>
             <ul>
-              <li>The <a href="#dfn-line-ascent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-ascent-43">line-ascent</a> of the <a href="#dfn-mover-base" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-mover-base-10">mover base</a>'s <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a>.</li>
-              <li>The <a href="#dfn-line-ascent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-ascent-44">line-ascent</a> of the <a href="#dfn-mover-overscript" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-mover-overscript-10">mover overscript</a>'s <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a> +
+              <li>The <a href="#dfn-line-ascent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-ascent-44">line-ascent</a> of the <a href="#dfn-mover-base" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-mover-base-10">mover base</a>'s <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a>.</li>
+              <li>The <a href="#dfn-line-ascent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-ascent-45">line-ascent</a> of the <a href="#dfn-mover-overscript" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-mover-overscript-10">mover overscript</a>'s <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a> +
                 <code>OverShift</code> + <code>OverExtraAscender</code>.</li>
             </ul>
             <p>
-              The <a href="#dfn-line-descent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-descent-32">line-descent</a> of the math content is the maximum between:
+              The <a href="#dfn-line-descent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-descent-33">line-descent</a> of the math content is the maximum between:
             </p>
             <ul>
-              <li>The <a href="#dfn-line-descent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-descent-33">line-descent</a> of the <a href="#dfn-mover-base" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-mover-base-11">mover base</a>'s <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a>.</li>
-              <li>The <a href="#dfn-line-descent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-descent-34">line-descent</a> of the <a href="#dfn-mover-overscript" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-mover-overscript-11">mover overscript</a>'s <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a> −
+              <li>The <a href="#dfn-line-descent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-descent-34">line-descent</a> of the <a href="#dfn-mover-base" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-mover-base-11">mover base</a>'s <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a>.</li>
+              <li>The <a href="#dfn-line-descent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-descent-35">line-descent</a> of the <a href="#dfn-mover-overscript" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-mover-overscript-11">mover overscript</a>'s <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a> −
                 <code>OverShift</code>.</li>
             </ul>
             <p>
               The <a href="#dfn-alphabetic-baseline" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-alphabetic-baseline-43">alphabetic baseline</a> of the <a href="#dfn-mover-base" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-mover-base-12">mover base</a> is aligned with the <a href="#dfn-alphabetic-baseline" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-alphabetic-baseline-44">alphabetic baseline</a>.
               The <a href="#dfn-alphabetic-baseline" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-alphabetic-baseline-45">alphabetic baseline</a> of the <a href="#dfn-mover-overscript" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-mover-overscript-12">mover overscript</a> is shifted away from the <a href="#dfn-alphabetic-baseline" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-alphabetic-baseline-46">alphabetic baseline</a>
               and towards the <a data-link-type="dfn" href="https://www.w3.org/TR/css-writing-modes-4/#line-over">line-over</a> by a distance equal to
-              the <a href="#dfn-ink-line-ascent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-ink-line-ascent-17">ink line-ascent</a> of the base + <code>OverShift</code>.
+              the <a href="#dfn-ink-line-ascent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-ink-line-ascent-18">ink line-ascent</a> of the base + <code>OverShift</code>.
             </p>
             <p>
               The <a href="#dfn-math-content-box" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-math-content-box-16">math content box</a> is placed within the
@@ -4848,7 +4894,7 @@ mroot, msqrt {
               using the <a href="#dfn-algorithm-for-stretching-operators-along-the-inline-axis" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-algorithm-for-stretching-operators-along-the-inline-axis-4">algorithm for stretching operators along the inline axis</a>.
             </p>
             <p>
-              The <a href="#dfn-line-ascent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-ascent-45">line-ascent</a> and <a href="#dfn-line-descent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-descent-35">line-descent</a> of the math content
+              The <a href="#dfn-line-ascent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-ascent-46">line-ascent</a> and <a href="#dfn-line-descent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-descent-36">line-descent</a> of the math content
               are also calculated by taking the extremum value
               of the extrema calculated in
               <a href="#base-with-underscript" class="sec-ref"><bdi class="secno">3.4.2.3 </bdi>Base with underscript</a> and
@@ -4869,7 +4915,7 @@ mroot, msqrt {
               are aligned and the middles of these edges are at the same
               position.
             </p>
-            <div class="note" role="note" id="issue-container-generatedID-27"><div role="heading" class="note-title marker" id="h-note-29" aria-level="6"><span>Note</span></div><div class="">
+            <div class="note" role="note" id="issue-container-generatedID-29"><div role="heading" class="note-title marker" id="h-note-31" aria-level="6"><span>Note</span></div><div class="">
               <p>
                 When the underscript (respectively overscript) is an empty
                 box, the base and overscript (respectively underscript) are laid
@@ -5072,16 +5118,16 @@ mroot, msqrt {
               <a href="#base-with-subscript-and-superscript" class="sec-ref"><bdi class="secno">3.4.1.4 </bdi>Base with subscript and superscript</a>.
             </p>
             <p>
-              The <a href="#dfn-line-ascent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-ascent-46">line-ascent</a> of the math content is calculated
-              by taking the maximum of all the <a href="#dfn-line-ascent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-ascent-47">line-ascent</a>
+              The <a href="#dfn-line-ascent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-ascent-47">line-ascent</a> of the math content is calculated
+              by taking the maximum of all the <a href="#dfn-line-ascent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-ascent-48">line-ascent</a>
               of each <a href="#dfn-subscript-superscript-pair" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-subscript-superscript-pair-6">subscript/superscript pair</a> as described in
               <a href="#base-with-subscript-and-superscript" class="sec-ref"><bdi class="secno">3.4.1.4 </bdi>Base with subscript and superscript</a>
               but using the <code>SubShift</code> and
               <code>SuperShift</code> values calculated above.
             </p>
             <p>
-              The <a href="#dfn-line-descent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-descent-36">line-descent</a> of the math content is calculated
-              by taking the maximum of all the <a href="#dfn-line-descent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-descent-37">line-descent</a>
+              The <a href="#dfn-line-descent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-descent-37">line-descent</a> of the math content is calculated
+              by taking the maximum of all the <a href="#dfn-line-descent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-descent-38">line-descent</a>
               of each <a href="#dfn-subscript-superscript-pair" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-subscript-superscript-pair-7">subscript/superscript pair</a> as described in
               <a href="#base-with-subscript-and-superscript" class="sec-ref"><bdi class="secno">3.4.1.4 </bdi>Base with subscript and superscript</a>
               but using the <code>SubShift</code> and
@@ -5187,7 +5233,7 @@ mroot, msqrt {
                 </ol>
               </li>
             </ol>
-            <div class="note" role="note" id="issue-container-generatedID-28"><div role="heading" class="note-title marker" id="h-note-30" aria-level="6"><span>Note</span></div><div class="">
+            <div class="note" role="note" id="issue-container-generatedID-30"><div role="heading" class="note-title marker" id="h-note-32" aria-level="6"><span>Note</span></div><div class="">
               <p>
                 An <code>&lt;mmultiscripts&gt;</code> with only one
                 <a href="#dfn-subscript-superscript-pair" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-subscript-superscript-pair-10">subscript/superscript pair</a> of
@@ -5278,7 +5324,7 @@ munderover<span class="hljs-selector-attr">[accent=<span class="hljs-string">"tr
 mmultiscripts &gt; mprescripts ~ <span class="hljs-selector-pseudo">:nth-child</span>(even) {
   <span class="hljs-attribute">math-shift</span>: inherit;
 }</code></pre>
-          <div class="note" role="note" id="scripted-elements-css-rules-on-children"><div role="heading" class="note-title marker" id="h-note-31" aria-level="5"><span>Note</span></div><div class="">
+          <div class="note" role="note" id="scripted-elements-css-rules-on-children"><div role="heading" class="note-title marker" id="h-note-33" aria-level="5"><span>Note</span></div><div class="">
             In practice, all the children of the MathML elements described in
             this section are <a data-link-type="dfn" href="https://www.w3.org/TR/css-display-3/#in-flow">in-flow</a> and the
             <code>&lt;mprescripts&gt;</code> is empty.
@@ -5421,7 +5467,7 @@ mmultiscripts &gt; mprescripts ~ <span class="hljs-selector-pseudo">:nth-child</
             <a href="https://html.spec.whatwg.org/#algorithm-for-processing-rows">algorithm for processing rows</a>, always reading "<code>colspan</code>" as
             "<code>columnspan</code>".
           </p>
-          <div class="note" role="note" id="issue-container-generatedID-29"><div role="heading" class="note-title marker" id="h-note-32" aria-level="5"><span>Note</span></div><div class="">
+          <div class="note" role="note" id="issue-container-generatedID-31"><div role="heading" class="note-title marker" id="h-note-34" aria-level="5"><span>Note</span></div><div class="">
             The name of the column spanning attribute in [<cite><a class="bibref" data-link-type="biblio" href="#bib-mathml3" title="Mathematical Markup Language (MathML) Version 3.0 2nd Edition">MathML3</a></cite>] and earlier
             versions is <code>columnspan</code> and is preserved for backward
             compatibility reasons.
@@ -5495,7 +5541,7 @@ mmultiscripts &gt; mprescripts ~ <span class="hljs-selector-pseudo">:nth-child</
         <pre aria-busy="false"><code class="hljs css">maction &gt; <span class="hljs-selector-pseudo">:not</span>(<span class="hljs-selector-pseudo">:first-child</span>) {
   <span class="hljs-attribute">display</span>: none;
 }</code></pre>
-        <div class="note" role="note" id="issue-container-generatedID-30"><div role="heading" class="note-title marker" id="h-note-33" aria-level="4"><span>Note</span></div><div class="">
+        <div class="note" role="note" id="issue-container-generatedID-32"><div role="heading" class="note-title marker" id="h-note-35" aria-level="4"><span>Note</span></div><div class="">
 	  <code>&lt;maction&gt;</code> is implemented for compatibility with full MathML. Authors whose only target is MathML Core are encouraged to use other HTML, CSS and JavaScript mechanisms to implement custom actions. They may
           rely on maction attributes defined in [<cite><a class="bibref" data-link-type="biblio" href="#bib-mathml3" title="Mathematical Markup Language (MathML) Version 3.0 2nd Edition">MathML3</a></cite>].
         </div></div>
@@ -5596,7 +5642,7 @@ mmultiscripts &gt; mprescripts ~ <span class="hljs-selector-pseudo">:nth-child</
           and <code>&lt;annotation&gt;</code>
           element is the same as the <code><a data-link-type="element" href="#dfn-mtext" class="internalDFN" id="ref-for-dfn-mtext-8">mtext</a></code> element.
         </p>
-        <div class="note" role="note" id="issue-container-generatedID-31"><div role="heading" class="note-title marker" id="h-note-34" aria-level="4"><span>Note</span></div><div class="">
+        <div class="note" role="note" id="issue-container-generatedID-33"><div role="heading" class="note-title marker" id="h-note-36" aria-level="4"><span>Note</span></div><div class="">
           Authors can use the <code><a data-link-type="element-attr" href="#dfn-encoding" class="internalDFN" id="ref-for-dfn-encoding-3">encoding</a></code> attribute to distinguish
           annotations
           for <a href="https://html.spec.whatwg.org/#html-integration-point">HTML integration point</a>,
@@ -5657,7 +5703,7 @@ semantics &gt; annotation-xml<span class="hljs-selector-attr">[encoding=<span cl
           <a href="#dfn-unknown-mathml-element" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-unknown-mathml-element-2">Unknown MathML elements</a>
           behave the same as the <code><a data-link-type="element" href="#dfn-mrow" class="internalDFN" id="ref-for-dfn-mrow-26">mrow</a></code> element.
         </p>
-        <div class="note" role="note" id="issue-container-generatedID-32"><div role="heading" class="note-title marker" id="h-note-35" aria-level="4"><span>Note</span></div><div class="">
+        <div class="note" role="note" id="issue-container-generatedID-34"><div role="heading" class="note-title marker" id="h-note-37" aria-level="4"><span>Note</span></div><div class="">
           The <code>display: block math</code> and
           <code>display: inline math</code> values provide a default
           layout for MathML elements while at the same time allowing
@@ -5786,7 +5832,7 @@ semantics &gt; annotation-xml<span class="hljs-selector-attr">[encoding=<span cl
             the computed value of <a href="#propdef-math-depth" class="internalDFN" data-link-type="dfn" id="ref-for-propdef-math-depth-2"><code>math-depth</code></a> is
             <code>auto-add</code> (default for <code><a data-link-type="element" href="#dfn-mfrac" class="internalDFN" id="ref-for-dfn-mfrac-5">mfrac</a></code>)
             as described in <a href="#the-math-script-level-property" class="sec-ref"><bdi class="secno">4.5 </bdi>The <code>math-depth</code> property</a>.</li>
-          <li>Operators with the <a data-link-type="dfn|abstract-op" href="#dfn-largeop" class="internalDFN" id="ref-for-dfn-largeop-9"><code>largeop</code></a> property
+          <li>Operators with the <a data-link-type="dfn|abstract-op" href="#dfn-largeop" class="internalDFN" id="ref-for-dfn-largeop-10"><code>largeop</code></a> property
             do not follow rules from <a href="#layout-of-operators" class="sec-ref"><bdi class="secno">3.2.4.3 </bdi>Layout of operators</a>
             to make them bigger.</li>
           <li>Under-/overscripts attached to an operator with
@@ -6060,7 +6106,7 @@ semantics &gt; annotation-xml<span class="hljs-selector-attr">[encoding=<span cl
         subtable, has an invalid offset, etc) and so fallback options are
         provided.
       </p>
-      <div class="note" role="note" id="issue-container-generatedID-33"><div role="heading" class="note-title marker" id="h-note-36" aria-level="3"><span>Note</span></div><div class="">
+      <div class="note" role="note" id="issue-container-generatedID-35"><div role="heading" class="note-title marker" id="h-note-38" aria-level="3"><span>Note</span></div><div class="">
         It is strongly encouraged to render MathML with a math font with
         the proper OpenType features. There is no guarantee that the fallback
         options provided will provide good enough rendering.
@@ -6203,7 +6249,7 @@ semantics &gt; annotation-xml<span class="hljs-selector-attr">[encoding=<span cl
       </section>
       <section id="glyph-information-mathglyphinfo"><div class="header-wrapper"><h3 id="x5-2-glyph-information-mathglyphinfo"><bdi class="secno">5.2 </bdi>Glyph information (<code>MathGlyphInfo</code>)</h3><a class="self-link" href="#glyph-information-mathglyphinfo" aria-label="Permalink for Section 5.2"></a></div>
         
-        <div class="note" role="note" id="issue-container-generatedID-34"><div role="heading" class="note-title marker" id="h-note-37" aria-level="4"><span>Note</span></div><div class="">MathTopAccentAttachment is at risk.</div></div>
+        <div class="note" role="note" id="issue-container-generatedID-36"><div role="heading" class="note-title marker" id="h-note-39" aria-level="4"><span>Note</span></div><div class="">MathTopAccentAttachment is at risk.</div></div>
         <p>
           These are per-glyph tables for the
           <a data-link-type="dfn" href="https://www.w3.org/TR/css-fonts-4/#first-available-font">first available font</a>:</p>
@@ -6383,7 +6429,7 @@ semantics &gt; annotation-xml<span class="hljs-selector-attr">[encoding=<span cl
             of the <a href="#dfn-glyph-assembly-ascent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-glyph-assembly-ascent-1">glyph assembly ascent</a> and
             <a href="#dfn-glyph-assembly-descent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-glyph-assembly-descent-1">glyph assembly descent</a>.
           </p>
-          <div class="note" role="note" id="issue-container-generatedID-35"><div role="heading" class="note-title marker" id="h-note-38" aria-level="5"><span>Note</span></div><div class="">
+          <div class="note" role="note" id="issue-container-generatedID-37"><div role="heading" class="note-title marker" id="h-note-40" aria-level="5"><span>Note</span></div><div class="">
             The horizontal (respectively vertical) metrics for a vertical
             (respectively horizontal) glyph assembly do not depend
             on the target size <code>T</code>.
@@ -6479,8 +6525,8 @@ semantics &gt; annotation-xml<span class="hljs-selector-attr">[encoding=<span cl
             </li>
             <li>Return <code>S</code>.</li>
           </ol>
-          <div class="note" role="note" id="issue-container-generatedID-36"><div role="heading" class="note-title marker" id="h-note-39" aria-level="5"><span>Note</span></div><div class="">
-            The <a href="#dfn-preferred-inline-size-of-a-glyph-stretched-along-the-block-axis" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-preferred-inline-size-of-a-glyph-stretched-along-the-block-axis-3">preferred inline size of a glyph stretched along the block
+          <div class="note" role="note" id="issue-container-generatedID-38"><div role="heading" class="note-title marker" id="h-note-41" aria-level="5"><span>Note</span></div><div class="">
+            The <a href="#dfn-preferred-inline-size-of-a-glyph-stretched-along-the-block-axis" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-preferred-inline-size-of-a-glyph-stretched-along-the-block-axis-4">preferred inline size of a glyph stretched along the block
             axis</a> will return the maximum width of all possible
             vertical constructions for that glyph.
             In practice, math fonts are designed so that
@@ -6533,12 +6579,61 @@ semantics &gt; annotation-xml<span class="hljs-selector-attr">[encoding=<span cl
               with success.
             </li>
           </ol>
-          <div class="note" role="note" id="issue-container-generatedID-37"><div role="heading" class="note-title marker" id="h-note-40" aria-level="5"><span>Note</span></div><div class="">
+          <div class="note" role="note" id="issue-container-generatedID-39"><div role="heading" class="note-title marker" id="h-note-42" aria-level="5"><span>Note</span></div><div class="">
             If a font does not provide tables for stretchy constructions, User
             Agents may use their own internal constructions as a fallback
             such as
             the one suggested in <a href="#unicode-based-glyph-assemblies" class="sec-ref"><bdi class="secno">B.4 </bdi>Unicode-based Glyph Assemblies</a>.
           </div></div>
+          <p>
+            The algorithm to <dfn id="dfn-get-a-glyph" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">get a glyph</dfn> corresponding to a character <code>c</code> given a directionality <code>dir</code>
+            is the following:
+          </p>
+          <ul class="algorithm">
+            <li>
+              Let <code>g</code> be the glyph corresponding to <code>c</code>
+              in the <a data-link-type="dfn" href="https://www.w3.org/TR/css-fonts-4/#first-available-font">first available font</a>.
+              If it is not possible to find such a glyph, then exit with failure.
+            </li>
+            <li>
+                If <code>dir</code> is <code>rtl</code>:
+                <ul>
+                  <li>
+                    If there exists an OpenType rtlm variant of
+                    <code>g</code> in the <a data-link-type="dfn" href="https://www.w3.org/TR/css-fonts-4/#first-available-font">first available font</a>,
+                    then return it and exit with success. [<cite><a class="bibref" data-link-type="biblio" href="#bib-open-font-format" title="Information technology — Coding of audio-visual objects — Part 22: Open Font Format">OPEN-FONT-FORMAT</a></cite>]
+                  </li>
+                  <li>
+                    Otherwise, if <code>c</code> has the Bidi_Mirrored property [<cite><a class="bibref" data-link-type="biblio" href="#bib-bidi" title="Unicode Bidirectional Algorithm">BIDI</a></cite>]:
+                    <ul>
+                      <li>
+                        If <code>c</code> has a corresponding mirrored codepoint,
+                        <code>c'</code>, then return the glyph corresponding
+                        to <code>c'</code> and exit with success.
+                        If it is not possible to find such a glyph, then exit with failure.
+                      </li>
+                      <li>
+                        Otherwise, exit with failure.
+                      </li>
+                    </ul>
+                    <div class="note" role="note" id="issue-container-generatedID-40"><div role="heading" class="note-title marker" id="h-note-43" aria-level="5"><span>Note</span></div><div class="">
+                      These failure cases are for when a character should be mirrored
+                      according to its Bidi_Mirrored property, but no corresponding codepoint
+                      or glyph exists.
+                    </div></div>
+                  </li>
+                  <li>
+                    Otherwise, return <code>g</code> and exit with success.
+                  </li>
+                </ul>
+              </li>
+              <li class="assert">
+                Assert: <code>dir</code> is <code>ltr</code>.
+              </li>
+              <li>
+                Return <code>g</code> and exit with success.
+              </li>
+          </ul>
         </section>
       </section>
     </section>
@@ -6666,7 +6761,7 @@ mmultiscripts &gt; mprescripts ~ <span class="hljs-selector-pseudo">:nth-child</
       
       <section id="operator-dictionary" class="normative"><div class="header-wrapper"><h3 id="b-1-operator-dictionary"><bdi class="secno">B.1 </bdi>Operator Dictionary</h3><a class="self-link" href="#operator-dictionary" aria-label="Permalink for Section B.1"></a></div>
         
-        <div class="note" role="note" id="issue-container-generatedID-38"><div role="heading" class="note-title marker" id="h-note-41" aria-level="4"><span>Note</span></div><div class="">
+        <div class="note" role="note" id="issue-container-generatedID-41"><div role="heading" class="note-title marker" id="h-note-44" aria-level="4"><span>Note</span></div><div class="">
           This section describes how to determine values of
           <a href="#dictionary-based-attributes" class="sec-ref"><bdi class="secno">3.2.4.2 </bdi>Dictionary-based attributes</a> and
           <a data-link-type="dfn|abstract-op" href="#dfn-stretch-axis" class="internalDFN" id="ref-for-dfn-stretch-axis-7">stretch axis</a> of operators.
@@ -6796,7 +6891,7 @@ mmultiscripts &gt; mprescripts ~ <span class="hljs-selector-pseudo">:nth-child</
 <tr><td>M</td><td>infix</td><td>N/A</td><td><code>0</code></td><td><code>0.16666666666666666em</code></td><td>N/A</td></tr>
 </tbody></table><figcaption><a class="self-link" href="#operator-dictionary-categories-values">Figure <bdi class="figno">26</bdi></a> <span class="fig-title">Operators values for each category.<br>The third column provides a 4-bit encoding of the categories<br>where the 2 least significant bits encode the form infix (0), prefix (1) and postfix (2).</span></figcaption></figure><figure id="operator-dictionary-categories-hexa-table">716 entries (236 ranges of length at most 16): <code>{0x8025}, {0x802A}, {0x402B}, {0x402D}, {0x802E}, {0xC02F}, [0x803F–0x8040], {0xC05C}, {0x805E}, {0xC05F}, {0x40B1}, {0x80B7}, {0x80D7}, {0x40F7}, {0x4322}, {0x8323}, {0x832E}, {0x8422}, {0x8443}, {0x4444}, [0xC461–0xC464], [0x0590–0x0595], [0x059A–0x05A9], [0x05AA–0x05AE], [0x05B0–0x05B5], {0x05B9}, [0x05BC–0x05CB], [0x05CC–0x05D5], [0x05DA–0x05E9], [0x05EA–0x05F0], [0x05F3–0x05FF], {0xC606}, [0x4612–0x4616], [0x8617–0x8619], [0x4627–0x462A], {0x4636}, {0x4638}, {0x8640}, [0x468C–0x468E], [0x4693–0x4696], {0x8697}, {0x4698}, [0x8699–0x869B], [0x469D–0x469F], [0x86A0–0x86A1], {0x86BA}, [0x46BB–0x46BD], [0x86C4–0x86C7], [0x86C9–0x86CC], [0x46CE–0x46CF], [0x46D2–0x46D3], [0x8705–0x8706], {0x0B94}, [0x4B95–0x4B97], {0x0B99}, [0x0B9B–0x0BA1], [0x0BA5–0x0BA6], [0x0BA8–0x0BAF], {0x0BB1}, {0x0BB3}, {0x0BB5}, {0x0BB8}, [0x0BBA–0x0BBE], {0x8BCB}, {0x8BCD}, [0x0BF0–0x0BF1], [0x0BF4–0x0BFF], [0x0D00–0x0D0F], [0x0D10–0x0D1F], {0x0D20}, [0x0D34–0x0D37], [0x0D42–0x0D51], [0x0D52–0x0D61], [0x0D62–0x0D71], [0x0D72–0x0D75], [0x0D7C–0x0D7F], {0x4DB8}, {0x4DBC}, [0x4DC4–0x4DC5], [0x8DC6–0x8DC8], [0x8DD4–0x8DD7], {0x8DE2}, [0x4DF5–0x4DFB], [0x8E1D–0x8E1E], [0x4E1F–0x4E2E], [0x8E2F–0x8E37], [0x4E38–0x4E3A], [0x8E3B–0x8E3D], {0x4E3E}, {0x8E3F}, [0x4E40–0x4E4F], {0x8E50}, [0x4E51–0x4E60], [0x4E61–0x4E63], [0x8E64–0x8E65], {0x4EDB}, [0x8EDC–0x8EDD], {0x4EF6}, {0x4EFB}, {0x4EFD}, {0x8EFE}, [0x0F04–0x0F07], [0x0F0C–0x0F11], [0x0F30–0x0F3E], [0x0F40–0x0F4C], [0x0F60–0x0F65], [0x0F6A–0x0F6D], [0x0F70–0x0F73], [0x0F7A–0x0F7D], [0x0F80–0x0F87], {0x0F95}, [0x0FA0–0x0FAF], {0x0FB8}, {0x1021}, {0x5028}, {0x102B}, {0x102D}, {0x505B}, [0x507B–0x507C], {0x10AC}, {0x10B1}, {0x1331}, {0x5416}, {0x1418}, {0x141C}, [0x1600–0x1601], [0x1603–0x1604], {0x1607}, [0xD60F–0xD611], [0x1612–0x1613], [0x161F–0x1622], [0x962B–0x9633], [0x1634–0x1635], {0x163C}, [0x16BE–0x16BF], [0xD6C0–0xD6C3], {0x5708}, {0x570A}, {0x1710}, {0x1719}, {0x5729}, {0x5B72}, [0x1B95–0x1B96], {0x1BC0}, {0x5BE6}, {0x5BE8}, {0x5BEA}, {0x5BEC}, {0x5BEE}, {0x5D80}, {0x5D83}, {0x5D85}, {0x5D87}, {0x5D89}, {0x5D8B}, {0x5D8D}, {0x5D8F}, {0x5D91}, {0x5D93}, {0x5D95}, {0x5D97}, {0x5D99}, [0x1D9B–0x1DAA], [0x1DAB–0x1DAF], {0x5DD8}, {0x5DDA}, {0x5DFC}, [0xDE00–0xDE0A], [0x9E0B–0x9E1A], [0x9E1B–0x9E1C], [0xDE1D–0xDE1E], [0x1EEC–0x1EED], {0xDEFC}, {0xDEFF}, [0x2021–0x2022], [0x2025–0x2027], {0x6029}, {0x605D}, [0xA05E–0xA05F], {0x2060}, [0x607C–0x607D], {0xA07E}, {0x20A8}, {0xA0AF}, {0x20B0}, [0x20B2–0x20B4], [0x20B8–0x20B9], [0xA2C6–0xA2C7], {0xA2C9}, [0x22CA–0x22CB], {0xA2CD}, [0x22D8–0x22DA], {0xA2DC}, {0x22DD}, {0xA2F7}, {0xA302}, {0x2311}, {0x2320}, {0x2325}, {0x2327}, {0x2331}, {0x6416}, [0x2419–0x241B], [0x241D–0x241F], [0x2432–0x2437], {0xA43E}, {0x2457}, [0x24DB–0x24DC], {0x6709}, {0x670B}, [0xA722–0xA723], {0x672A}, [0xA7B4–0xA7B5], {0x27CD}, [0xA7DC–0xA7E1], {0x6B73}, {0x6BE7}, {0x6BE9}, {0x6BEB}, {0x6BED}, {0x6BEF}, {0x6D80}, {0x6D84}, {0x6D86}, {0x6D88}, {0x6D8A}, {0x6D8C}, {0x6D8E}, {0x6D90}, {0x6D92}, {0x6D94}, {0x6D96}, [0x6D98–0x6D99], {0x6DD9}, {0x6DDB}, {0x6DFD}, </code><figcaption><a class="self-link" href="#operator-dictionary-categories-hexa-table">Figure <bdi class="figno">27</bdi></a> <span class="fig-title">List of entries for the largest categories, sorted by key.<br><code>Key</code> is <code>Entry</code> % 0x4000, category encoding is <code>Entry</code> / 0x1000.<br>Total size: 716 entries, 590 bytes<br>(assuming 4 bits for range lengths).</span></figcaption></figure></div>
 
-        <div class="note" role="note" id="operator-dictionary-compact-implementations"><div role="heading" class="note-title marker" id="h-note-42" aria-level="4"><span>Note</span></div><div class="">
+        <div class="note" role="note" id="operator-dictionary-compact-implementations"><div role="heading" class="note-title marker" id="h-note-45" aria-level="4"><span>Note</span></div><div class="">
           <ul>
             <li>
               Tables of
@@ -7073,7 +7168,7 @@ U+FE38,
 U+1EEF0,
 U+1EEF1,
 </code><figcaption><a class="self-link" href="#inline-stretch-axis">Figure <bdi class="figno">28</bdi></a> <span class="fig-title">Sorted list of Unicode code points corresponding to operators with inline stretch axis.<br>Total size: 246 entries, 492 bytes (assuming 16 bits for all but the non-BMP entries).</span></figcaption></figure></div>
-        <div class="note" role="note" id="issue-container-generatedID-39"><div role="heading" class="note-title marker" id="h-note-43" aria-level="4"><span>Note</span></div><div class="">
+        <div class="note" role="note" id="issue-container-generatedID-42"><div role="heading" class="note-title marker" id="h-note-46" aria-level="4"><span>Note</span></div><div class="">
           The intrinsic stretch axis could be included as a boolean property of
           the operator dictionary. But since it
           does not depend on the form and since very few operators can stretch
@@ -7099,9 +7194,9 @@ U+1EEF1,
           The values for <a data-link-type="dfn|abstract-op" href="#dfn-rspace" class="internalDFN" id="ref-for-dfn-rspace-5"><code>rspace</code></a> and <a data-link-type="dfn|abstract-op" href="#dfn-lspace" class="internalDFN" id="ref-for-dfn-lspace-5"><code>lspace</code></a> are indicated
           in the corresponding columns.
           The values of
-          <a data-link-type="dfn|abstract-op" href="#dfn-stretchy" class="internalDFN" id="ref-for-dfn-stretchy-7"><code>stretchy</code></a>,
-          <a data-link-type="dfn|abstract-op" href="#dfn-symmetric" class="internalDFN" id="ref-for-dfn-symmetric-3"><code>symmetric</code></a>,
-          <a data-link-type="dfn|abstract-op" href="#dfn-largeop" class="internalDFN" id="ref-for-dfn-largeop-10"><code>largeop</code></a>,
+          <a data-link-type="dfn|abstract-op" href="#dfn-stretchy" class="internalDFN" id="ref-for-dfn-stretchy-8"><code>stretchy</code></a>,
+          <a data-link-type="dfn|abstract-op" href="#dfn-symmetric" class="internalDFN" id="ref-for-dfn-symmetric-6"><code>symmetric</code></a>,
+          <a data-link-type="dfn|abstract-op" href="#dfn-largeop" class="internalDFN" id="ref-for-dfn-largeop-11"><code>largeop</code></a>,
           <a data-link-type="dfn|abstract-op" href="#dfn-movablelimits" class="internalDFN" id="ref-for-dfn-movablelimits-4"><code>movablelimits</code></a>
           are <code>true</code>
           if they are listed in the "properties" column.
@@ -8914,7 +9009,7 @@ U+1EEF1,
         of scripts specified in these attributes, following the same
         security restrictions as those applying to HTML or SVG elements.
       </p>
-      <div class="note" role="note" id="issue-container-generatedID-40"><div role="heading" class="note-title marker" id="h-note-44" aria-level="3"><span>Note</span></div><div class="">
+      <div class="note" role="note" id="issue-container-generatedID-43"><div role="heading" class="note-title marker" id="h-note-47" aria-level="3"><span>Note</span></div><div class="">
         <p>In [<cite><a class="bibref" data-link-type="biblio" href="#bib-mathml3" title="Mathematical Markup Language (MathML) Version 3.0 2nd Edition">MathML3</a></cite>], it was possible to make any element linkable
           via <code>href</code> or <code>xlink:href</code> attributes, with
           an URL pointing to an untrusted resource or even
@@ -8924,7 +9019,7 @@ U+1EEF1,
           HTML or SVG content inside MathML, including HTML or SVG links.
         </p>
       </div></div>
-      <div class="note" role="note" id="issue-container-generatedID-41"><div role="heading" class="note-title marker" id="h-note-45" aria-level="3"><span>Note</span></div><div class="">
+      <div class="note" role="note" id="issue-container-generatedID-44"><div role="heading" class="note-title marker" id="h-note-48" aria-level="3"><span>Note</span></div><div class="">
         <p>In [<cite><a class="bibref" data-link-type="biblio" href="#bib-mathml3" title="Mathematical Markup Language (MathML) Version 3.0 2nd Edition">MathML3</a></cite>], it was possible to use the
         <code><a data-link-type="element" href="#dfn-maction" class="internalDFN" id="ref-for-dfn-maction-4">maction</a></code> element with
         the <code>actiontype</code> value set to <code>"statusline"</code>
@@ -9158,7 +9253,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
           Informative notes begin with the word “Note” and are set apart from
           the normative text with <code>class="note"</code>, like this:
         </p>
-        <div class="note" role="note" id="issue-container-generatedID-42"><div role="heading" class="note-title marker" id="h-note-46" aria-level="3"><span>Note</span></div><p class="">
+        <div class="note" role="note" id="issue-container-generatedID-45"><div role="heading" class="note-title marker" id="h-note-49" aria-level="3"><span>Note</span></div><p class="">
           Note, this is an informative note.
         </p></div>
         <p>
@@ -9173,7 +9268,9 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
 
 <section id="references" class="appendix"><div class="header-wrapper"><h2 id="h-references"><bdi class="secno">H. </bdi>References</h2><a class="self-link" href="#references" aria-label="Permalink for Appendix H."></a></div><section id="normative-references"><div class="header-wrapper"><h3 id="h-1-normative-references"><bdi class="secno">H.1 </bdi>Normative references</h3><a class="self-link" href="#normative-references" aria-label="Permalink for Appendix H.1"></a></div>
     
-    <dl class="bibliography"><dt id="bib-css-align-3">[css-align-3]</dt><dd>
+    <dl class="bibliography"><dt id="bib-bidi">[BIDI]</dt><dd>
+      <a href="https://www.unicode.org/reports/tr9/tr9-50.html"><cite>Unicode Bidirectional Algorithm</cite></a>. Manish Goregaokar मनीष गोरेगांवकर; Robin Leroy.  Unicode Consortium. 2 September 2024. Unicode Standard Annex #9. URL: <a href="https://www.unicode.org/reports/tr9/tr9-50.html">https://www.unicode.org/reports/tr9/tr9-50.html</a>
+    </dd><dt id="bib-css-align-3">[css-align-3]</dt><dd>
       <a href="https://www.w3.org/TR/css-align-3/"><cite>CSS Box Alignment Module Level 3</cite></a>. Elika Etemad; Tab Atkins Jr. W3C. 11 March 2025. W3C Working Draft. URL: <a href="https://www.w3.org/TR/css-align-3/">https://www.w3.org/TR/css-align-3/</a>
     </dd><dt id="bib-css-backgrounds-3">[css-backgrounds-3]</dt><dd>
       <a href="https://www.w3.org/TR/css-backgrounds-3/"><cite>CSS Backgrounds and Borders Module Level 3</cite></a>. Elika Etemad; Brad Kemper.  W3C. 11 March 2024. CRD. URL: <a href="https://www.w3.org/TR/css-backgrounds-3/">https://www.w3.org/TR/css-backgrounds-3/</a>
@@ -9190,7 +9287,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
     </dd><dt id="bib-css-position-3">[CSS-POSITION-3]</dt><dd>
       <a href="https://www.w3.org/TR/css-position-3/"><cite>CSS Positioned Layout Module Level 3</cite></a>. Elika Etemad; Tab Atkins Jr. W3C. 11 March 2025. W3C Working Draft. URL: <a href="https://www.w3.org/TR/css-position-3/">https://www.w3.org/TR/css-position-3/</a>
     </dd><dt id="bib-css-pseudo-4">[css-pseudo-4]</dt><dd>
-      <a href="https://www.w3.org/TR/css-pseudo-4/"><cite>CSS Pseudo-Elements Module Level 4</cite></a>. Daniel Glazman; Elika Etemad; Alan Stearns.  W3C. 30 December 2022. W3C Working Draft. URL: <a href="https://www.w3.org/TR/css-pseudo-4/">https://www.w3.org/TR/css-pseudo-4/</a>
+      <a href="https://www.w3.org/TR/css-pseudo-4/"><cite>CSS Pseudo-Elements Module Level 4</cite></a>. Elika Etemad; Alan Stearns.  W3C. 27 June 2025. W3C Working Draft. URL: <a href="https://www.w3.org/TR/css-pseudo-4/">https://www.w3.org/TR/css-pseudo-4/</a>
     </dd><dt id="bib-css-sizing-3">[css-sizing-3]</dt><dd>
       <a href="https://www.w3.org/TR/css-sizing-3/"><cite>CSS Box Sizing Module Level 3</cite></a>. Tab Atkins Jr.; Elika Etemad.  W3C. 17 December 2021. W3C Working Draft. URL: <a href="https://www.w3.org/TR/css-sizing-3/">https://www.w3.org/TR/css-sizing-3/</a>
     </dd><dt id="bib-css-text-3">[css-text-3]</dt><dd>
@@ -9742,37 +9839,37 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
     </li><li>
       <a href="#ref-for-dfn-line-ascent-5" title="§ 3.2.1.1 Layout of <mtext>">§ 3.2.1.1 Layout of &lt;mtext&gt;</a> 
     </li><li>
-      <a href="#ref-for-dfn-line-ascent-6" title="§ 3.2.4.3 Layout of operators">§ 3.2.4.3 Layout of operators</a> 
+      <a href="#ref-for-dfn-line-ascent-6" title="§ 3.2.4.3 Layout of operators">§ 3.2.4.3 Layout of operators</a> <a href="#ref-for-dfn-line-ascent-7" title="Reference 2">(2)</a> 
     </li><li>
-      <a href="#ref-for-dfn-line-ascent-7" title="§ 3.2.5 Space <mspace>">§ 3.2.5 Space &lt;mspace&gt;</a> 
+      <a href="#ref-for-dfn-line-ascent-8" title="§ 3.2.5 Space <mspace>">§ 3.2.5 Space &lt;mspace&gt;</a> 
     </li><li>
-      <a href="#ref-for-dfn-line-ascent-8" title="§ 3.3.1.2 Layout of <mrow>">§ 3.3.1.2 Layout of &lt;mrow&gt;</a> <a href="#ref-for-dfn-line-ascent-9" title="Reference 2">(2)</a> 
+      <a href="#ref-for-dfn-line-ascent-9" title="§ 3.3.1.2 Layout of <mrow>">§ 3.3.1.2 Layout of &lt;mrow&gt;</a> <a href="#ref-for-dfn-line-ascent-10" title="Reference 2">(2)</a> 
     </li><li>
-      <a href="#ref-for-dfn-line-ascent-10" title="§ 3.3.2.1 Fraction with nonzero line thickness">§ 3.3.2.1 Fraction with nonzero line thickness</a> <a href="#ref-for-dfn-line-ascent-11" title="Reference 2">(2)</a> <a href="#ref-for-dfn-line-ascent-12" title="Reference 3">(3)</a> 
+      <a href="#ref-for-dfn-line-ascent-11" title="§ 3.3.2.1 Fraction with nonzero line thickness">§ 3.3.2.1 Fraction with nonzero line thickness</a> <a href="#ref-for-dfn-line-ascent-12" title="Reference 2">(2)</a> <a href="#ref-for-dfn-line-ascent-13" title="Reference 3">(3)</a> 
     </li><li>
-      <a href="#ref-for-dfn-line-ascent-13" title="§ 3.3.2.2 Fraction with zero line thickness">§ 3.3.2.2 Fraction with zero line thickness</a> <a href="#ref-for-dfn-line-ascent-14" title="Reference 2">(2)</a> <a href="#ref-for-dfn-line-ascent-15" title="Reference 3">(3)</a> 
+      <a href="#ref-for-dfn-line-ascent-14" title="§ 3.3.2.2 Fraction with zero line thickness">§ 3.3.2.2 Fraction with zero line thickness</a> <a href="#ref-for-dfn-line-ascent-15" title="Reference 2">(2)</a> <a href="#ref-for-dfn-line-ascent-16" title="Reference 3">(3)</a> 
     </li><li>
-      <a href="#ref-for-dfn-line-ascent-16" title="§ 3.3.3.2 Square root">§ 3.3.3.2 Square root</a> <a href="#ref-for-dfn-line-ascent-17" title="Reference 2">(2)</a> <a href="#ref-for-dfn-line-ascent-18" title="Reference 3">(3)</a> <a href="#ref-for-dfn-line-ascent-19" title="Reference 4">(4)</a> <a href="#ref-for-dfn-line-ascent-20" title="Reference 5">(5)</a> 
+      <a href="#ref-for-dfn-line-ascent-17" title="§ 3.3.3.2 Square root">§ 3.3.3.2 Square root</a> <a href="#ref-for-dfn-line-ascent-18" title="Reference 2">(2)</a> <a href="#ref-for-dfn-line-ascent-19" title="Reference 3">(3)</a> <a href="#ref-for-dfn-line-ascent-20" title="Reference 4">(4)</a> <a href="#ref-for-dfn-line-ascent-21" title="Reference 5">(5)</a> 
     </li><li>
-      <a href="#ref-for-dfn-line-ascent-21" title="§ 3.3.3.3 Root with index">§ 3.3.3.3 Root with index</a> <a href="#ref-for-dfn-line-ascent-22" title="Reference 2">(2)</a> <a href="#ref-for-dfn-line-ascent-23" title="Reference 3">(3)</a> <a href="#ref-for-dfn-line-ascent-24" title="Reference 4">(4)</a> 
+      <a href="#ref-for-dfn-line-ascent-22" title="§ 3.3.3.3 Root with index">§ 3.3.3.3 Root with index</a> <a href="#ref-for-dfn-line-ascent-23" title="Reference 2">(2)</a> <a href="#ref-for-dfn-line-ascent-24" title="Reference 3">(3)</a> <a href="#ref-for-dfn-line-ascent-25" title="Reference 4">(4)</a> 
     </li><li>
-      <a href="#ref-for-dfn-line-ascent-25" title="§ 3.3.6.1 Inner box and requested parameters">§ 3.3.6.1 Inner box and requested parameters</a> <a href="#ref-for-dfn-line-ascent-26" title="Reference 2">(2)</a> <a href="#ref-for-dfn-line-ascent-27" title="Reference 3">(3)</a> 
+      <a href="#ref-for-dfn-line-ascent-26" title="§ 3.3.6.1 Inner box and requested parameters">§ 3.3.6.1 Inner box and requested parameters</a> <a href="#ref-for-dfn-line-ascent-27" title="Reference 2">(2)</a> <a href="#ref-for-dfn-line-ascent-28" title="Reference 3">(3)</a> 
     </li><li>
-      <a href="#ref-for-dfn-line-ascent-28" title="§ 3.3.6.2 Layout of <mpadded>">§ 3.3.6.2 Layout of &lt;mpadded&gt;</a> 
+      <a href="#ref-for-dfn-line-ascent-29" title="§ 3.3.6.2 Layout of <mpadded>">§ 3.3.6.2 Layout of &lt;mpadded&gt;</a> 
     </li><li>
-      <a href="#ref-for-dfn-line-ascent-29" title="§ 3.4.1.2 Base with subscript">§ 3.4.1.2 Base with subscript</a> <a href="#ref-for-dfn-line-ascent-30" title="Reference 2">(2)</a> <a href="#ref-for-dfn-line-ascent-31" title="Reference 3">(3)</a> 
+      <a href="#ref-for-dfn-line-ascent-30" title="§ 3.4.1.2 Base with subscript">§ 3.4.1.2 Base with subscript</a> <a href="#ref-for-dfn-line-ascent-31" title="Reference 2">(2)</a> <a href="#ref-for-dfn-line-ascent-32" title="Reference 3">(3)</a> 
     </li><li>
-      <a href="#ref-for-dfn-line-ascent-32" title="§ 3.4.1.3 Base with superscript">§ 3.4.1.3 Base with superscript</a> <a href="#ref-for-dfn-line-ascent-33" title="Reference 2">(2)</a> <a href="#ref-for-dfn-line-ascent-34" title="Reference 3">(3)</a> 
+      <a href="#ref-for-dfn-line-ascent-33" title="§ 3.4.1.3 Base with superscript">§ 3.4.1.3 Base with superscript</a> <a href="#ref-for-dfn-line-ascent-34" title="Reference 2">(2)</a> <a href="#ref-for-dfn-line-ascent-35" title="Reference 3">(3)</a> 
     </li><li>
-      <a href="#ref-for-dfn-line-ascent-35" title="§ 3.4.1.4 Base with subscript and superscript">§ 3.4.1.4 Base with subscript and superscript</a> <a href="#ref-for-dfn-line-ascent-36" title="Reference 2">(2)</a> 
+      <a href="#ref-for-dfn-line-ascent-36" title="§ 3.4.1.4 Base with subscript and superscript">§ 3.4.1.4 Base with subscript and superscript</a> <a href="#ref-for-dfn-line-ascent-37" title="Reference 2">(2)</a> 
     </li><li>
-      <a href="#ref-for-dfn-line-ascent-37" title="§ 3.4.2.3 Base with underscript">§ 3.4.2.3 Base with underscript</a> <a href="#ref-for-dfn-line-ascent-38" title="Reference 2">(2)</a> <a href="#ref-for-dfn-line-ascent-39" title="Reference 3">(3)</a> 
+      <a href="#ref-for-dfn-line-ascent-38" title="§ 3.4.2.3 Base with underscript">§ 3.4.2.3 Base with underscript</a> <a href="#ref-for-dfn-line-ascent-39" title="Reference 2">(2)</a> <a href="#ref-for-dfn-line-ascent-40" title="Reference 3">(3)</a> 
     </li><li>
-      <a href="#ref-for-dfn-line-ascent-40" title="§ 3.4.2.4 Base with overscript">§ 3.4.2.4 Base with overscript</a> <a href="#ref-for-dfn-line-ascent-41" title="Reference 2">(2)</a> <a href="#ref-for-dfn-line-ascent-42" title="Reference 3">(3)</a> <a href="#ref-for-dfn-line-ascent-43" title="Reference 4">(4)</a> <a href="#ref-for-dfn-line-ascent-44" title="Reference 5">(5)</a> 
+      <a href="#ref-for-dfn-line-ascent-41" title="§ 3.4.2.4 Base with overscript">§ 3.4.2.4 Base with overscript</a> <a href="#ref-for-dfn-line-ascent-42" title="Reference 2">(2)</a> <a href="#ref-for-dfn-line-ascent-43" title="Reference 3">(3)</a> <a href="#ref-for-dfn-line-ascent-44" title="Reference 4">(4)</a> <a href="#ref-for-dfn-line-ascent-45" title="Reference 5">(5)</a> 
     </li><li>
-      <a href="#ref-for-dfn-line-ascent-45" title="§ 3.4.2.5 Base with underscript and overscript">§ 3.4.2.5 Base with underscript and overscript</a> 
+      <a href="#ref-for-dfn-line-ascent-46" title="§ 3.4.2.5 Base with underscript and overscript">§ 3.4.2.5 Base with underscript and overscript</a> 
     </li><li>
-      <a href="#ref-for-dfn-line-ascent-46" title="§ 3.4.3.1 Base with prescripts and postscripts">§ 3.4.3.1 Base with prescripts and postscripts</a> <a href="#ref-for-dfn-line-ascent-47" title="Reference 2">(2)</a> 
+      <a href="#ref-for-dfn-line-ascent-47" title="§ 3.4.3.1 Base with prescripts and postscripts">§ 3.4.3.1 Base with prescripts and postscripts</a> <a href="#ref-for-dfn-line-ascent-48" title="Reference 2">(2)</a> 
     </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-line-descent" aria-label="Links in this document to definition: line-descent">
@@ -9790,33 +9887,33 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
     </li><li>
       <a href="#ref-for-dfn-line-descent-3" title="§ 3.2.1.1 Layout of <mtext>">§ 3.2.1.1 Layout of &lt;mtext&gt;</a> 
     </li><li>
-      <a href="#ref-for-dfn-line-descent-4" title="§ 3.2.4.3 Layout of operators">§ 3.2.4.3 Layout of operators</a> 
+      <a href="#ref-for-dfn-line-descent-4" title="§ 3.2.4.3 Layout of operators">§ 3.2.4.3 Layout of operators</a> <a href="#ref-for-dfn-line-descent-5" title="Reference 2">(2)</a> 
     </li><li>
-      <a href="#ref-for-dfn-line-descent-5" title="§ 3.3.1.2 Layout of <mrow>">§ 3.3.1.2 Layout of &lt;mrow&gt;</a> 
+      <a href="#ref-for-dfn-line-descent-6" title="§ 3.3.1.2 Layout of <mrow>">§ 3.3.1.2 Layout of &lt;mrow&gt;</a> 
     </li><li>
-      <a href="#ref-for-dfn-line-descent-6" title="§ 3.3.2.1 Fraction with nonzero line thickness">§ 3.3.2.1 Fraction with nonzero line thickness</a> <a href="#ref-for-dfn-line-descent-7" title="Reference 2">(2)</a> <a href="#ref-for-dfn-line-descent-8" title="Reference 3">(3)</a> 
+      <a href="#ref-for-dfn-line-descent-7" title="§ 3.3.2.1 Fraction with nonzero line thickness">§ 3.3.2.1 Fraction with nonzero line thickness</a> <a href="#ref-for-dfn-line-descent-8" title="Reference 2">(2)</a> <a href="#ref-for-dfn-line-descent-9" title="Reference 3">(3)</a> 
     </li><li>
-      <a href="#ref-for-dfn-line-descent-9" title="§ 3.3.2.2 Fraction with zero line thickness">§ 3.3.2.2 Fraction with zero line thickness</a> <a href="#ref-for-dfn-line-descent-10" title="Reference 2">(2)</a> <a href="#ref-for-dfn-line-descent-11" title="Reference 3">(3)</a> 
+      <a href="#ref-for-dfn-line-descent-10" title="§ 3.3.2.2 Fraction with zero line thickness">§ 3.3.2.2 Fraction with zero line thickness</a> <a href="#ref-for-dfn-line-descent-11" title="Reference 2">(2)</a> <a href="#ref-for-dfn-line-descent-12" title="Reference 3">(3)</a> 
     </li><li>
-      <a href="#ref-for-dfn-line-descent-12" title="§ 3.3.3.2 Square root">§ 3.3.3.2 Square root</a> <a href="#ref-for-dfn-line-descent-13" title="Reference 2">(2)</a> <a href="#ref-for-dfn-line-descent-14" title="Reference 3">(3)</a> 
+      <a href="#ref-for-dfn-line-descent-13" title="§ 3.3.3.2 Square root">§ 3.3.3.2 Square root</a> <a href="#ref-for-dfn-line-descent-14" title="Reference 2">(2)</a> <a href="#ref-for-dfn-line-descent-15" title="Reference 3">(3)</a> 
     </li><li>
-      <a href="#ref-for-dfn-line-descent-15" title="§ 3.3.3.3 Root with index">§ 3.3.3.3 Root with index</a> <a href="#ref-for-dfn-line-descent-16" title="Reference 2">(2)</a> <a href="#ref-for-dfn-line-descent-17" title="Reference 3">(3)</a> <a href="#ref-for-dfn-line-descent-18" title="Reference 4">(4)</a> <a href="#ref-for-dfn-line-descent-19" title="Reference 5">(5)</a> 
+      <a href="#ref-for-dfn-line-descent-16" title="§ 3.3.3.3 Root with index">§ 3.3.3.3 Root with index</a> <a href="#ref-for-dfn-line-descent-17" title="Reference 2">(2)</a> <a href="#ref-for-dfn-line-descent-18" title="Reference 3">(3)</a> <a href="#ref-for-dfn-line-descent-19" title="Reference 4">(4)</a> <a href="#ref-for-dfn-line-descent-20" title="Reference 5">(5)</a> 
     </li><li>
-      <a href="#ref-for-dfn-line-descent-20" title="§ 3.3.6.2 Layout of <mpadded>">§ 3.3.6.2 Layout of &lt;mpadded&gt;</a> 
+      <a href="#ref-for-dfn-line-descent-21" title="§ 3.3.6.2 Layout of <mpadded>">§ 3.3.6.2 Layout of &lt;mpadded&gt;</a> 
     </li><li>
-      <a href="#ref-for-dfn-line-descent-21" title="§ 3.4.1.2 Base with subscript">§ 3.4.1.2 Base with subscript</a> <a href="#ref-for-dfn-line-descent-22" title="Reference 2">(2)</a> <a href="#ref-for-dfn-line-descent-23" title="Reference 3">(3)</a> 
+      <a href="#ref-for-dfn-line-descent-22" title="§ 3.4.1.2 Base with subscript">§ 3.4.1.2 Base with subscript</a> <a href="#ref-for-dfn-line-descent-23" title="Reference 2">(2)</a> <a href="#ref-for-dfn-line-descent-24" title="Reference 3">(3)</a> 
     </li><li>
-      <a href="#ref-for-dfn-line-descent-24" title="§ 3.4.1.3 Base with superscript">§ 3.4.1.3 Base with superscript</a> <a href="#ref-for-dfn-line-descent-25" title="Reference 2">(2)</a> <a href="#ref-for-dfn-line-descent-26" title="Reference 3">(3)</a> 
+      <a href="#ref-for-dfn-line-descent-25" title="§ 3.4.1.3 Base with superscript">§ 3.4.1.3 Base with superscript</a> <a href="#ref-for-dfn-line-descent-26" title="Reference 2">(2)</a> <a href="#ref-for-dfn-line-descent-27" title="Reference 3">(3)</a> 
     </li><li>
-      <a href="#ref-for-dfn-line-descent-27" title="§ 3.4.1.4 Base with subscript and superscript">§ 3.4.1.4 Base with subscript and superscript</a> <a href="#ref-for-dfn-line-descent-28" title="Reference 2">(2)</a> 
+      <a href="#ref-for-dfn-line-descent-28" title="§ 3.4.1.4 Base with subscript and superscript">§ 3.4.1.4 Base with subscript and superscript</a> <a href="#ref-for-dfn-line-descent-29" title="Reference 2">(2)</a> 
     </li><li>
-      <a href="#ref-for-dfn-line-descent-29" title="§ 3.4.2.3 Base with underscript">§ 3.4.2.3 Base with underscript</a> <a href="#ref-for-dfn-line-descent-30" title="Reference 2">(2)</a> <a href="#ref-for-dfn-line-descent-31" title="Reference 3">(3)</a> 
+      <a href="#ref-for-dfn-line-descent-30" title="§ 3.4.2.3 Base with underscript">§ 3.4.2.3 Base with underscript</a> <a href="#ref-for-dfn-line-descent-31" title="Reference 2">(2)</a> <a href="#ref-for-dfn-line-descent-32" title="Reference 3">(3)</a> 
     </li><li>
-      <a href="#ref-for-dfn-line-descent-32" title="§ 3.4.2.4 Base with overscript">§ 3.4.2.4 Base with overscript</a> <a href="#ref-for-dfn-line-descent-33" title="Reference 2">(2)</a> <a href="#ref-for-dfn-line-descent-34" title="Reference 3">(3)</a> 
+      <a href="#ref-for-dfn-line-descent-33" title="§ 3.4.2.4 Base with overscript">§ 3.4.2.4 Base with overscript</a> <a href="#ref-for-dfn-line-descent-34" title="Reference 2">(2)</a> <a href="#ref-for-dfn-line-descent-35" title="Reference 3">(3)</a> 
     </li><li>
-      <a href="#ref-for-dfn-line-descent-35" title="§ 3.4.2.5 Base with underscript and overscript">§ 3.4.2.5 Base with underscript and overscript</a> 
+      <a href="#ref-for-dfn-line-descent-36" title="§ 3.4.2.5 Base with underscript and overscript">§ 3.4.2.5 Base with underscript and overscript</a> 
     </li><li>
-      <a href="#ref-for-dfn-line-descent-36" title="§ 3.4.3.1 Base with prescripts and postscripts">§ 3.4.3.1 Base with prescripts and postscripts</a> <a href="#ref-for-dfn-line-descent-37" title="Reference 2">(2)</a> 
+      <a href="#ref-for-dfn-line-descent-37" title="§ 3.4.3.1 Base with prescripts and postscripts">§ 3.4.3.1 Base with prescripts and postscripts</a> <a href="#ref-for-dfn-line-descent-38" title="Reference 2">(2)</a> 
     </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-mathematical-baseline" aria-label="Links in this document to definition: mathematical baseline">
@@ -9876,23 +9973,23 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
     </li><li>
       <a href="#ref-for-dfn-ink-line-ascent-3" title="§ 3.2.1.1 Layout of <mtext>">§ 3.2.1.1 Layout of &lt;mtext&gt;</a> <a href="#ref-for-dfn-ink-line-ascent-4" title="Reference 2">(2)</a> 
     </li><li>
-      <a href="#ref-for-dfn-ink-line-ascent-5" title="§ 3.2.4.3 Layout of operators">§ 3.2.4.3 Layout of operators</a> 
+      <a href="#ref-for-dfn-ink-line-ascent-5" title="§ 3.2.4.3 Layout of operators">§ 3.2.4.3 Layout of operators</a> <a href="#ref-for-dfn-ink-line-ascent-6" title="Reference 2">(2)</a> 
     </li><li>
-      <a href="#ref-for-dfn-ink-line-ascent-6" title="§ 3.3.1.2 Layout of <mrow>">§ 3.3.1.2 Layout of &lt;mrow&gt;</a> <a href="#ref-for-dfn-ink-line-ascent-7" title="Reference 2">(2)</a> <a href="#ref-for-dfn-ink-line-ascent-8" title="Reference 3">(3)</a> 
+      <a href="#ref-for-dfn-ink-line-ascent-7" title="§ 3.3.1.2 Layout of <mrow>">§ 3.3.1.2 Layout of &lt;mrow&gt;</a> <a href="#ref-for-dfn-ink-line-ascent-8" title="Reference 2">(2)</a> <a href="#ref-for-dfn-ink-line-ascent-9" title="Reference 3">(3)</a> 
     </li><li>
-      <a href="#ref-for-dfn-ink-line-ascent-9" title="§ 3.3.2.1 Fraction with nonzero line thickness">§ 3.3.2.1 Fraction with nonzero line thickness</a> 
+      <a href="#ref-for-dfn-ink-line-ascent-10" title="§ 3.3.2.1 Fraction with nonzero line thickness">§ 3.3.2.1 Fraction with nonzero line thickness</a> 
     </li><li>
-      <a href="#ref-for-dfn-ink-line-ascent-10" title="§ 3.3.2.2 Fraction with zero line thickness">§ 3.3.2.2 Fraction with zero line thickness</a> 
+      <a href="#ref-for-dfn-ink-line-ascent-11" title="§ 3.3.2.2 Fraction with zero line thickness">§ 3.3.2.2 Fraction with zero line thickness</a> 
     </li><li>
-      <a href="#ref-for-dfn-ink-line-ascent-11" title="§ 3.3.3.2 Square root">§ 3.3.3.2 Square root</a> 
+      <a href="#ref-for-dfn-ink-line-ascent-12" title="§ 3.3.3.2 Square root">§ 3.3.3.2 Square root</a> 
     </li><li>
-      <a href="#ref-for-dfn-ink-line-ascent-12" title="§ 3.4.1.2 Base with subscript">§ 3.4.1.2 Base with subscript</a> 
+      <a href="#ref-for-dfn-ink-line-ascent-13" title="§ 3.4.1.2 Base with subscript">§ 3.4.1.2 Base with subscript</a> 
     </li><li>
-      <a href="#ref-for-dfn-ink-line-ascent-13" title="§ 3.4.1.3 Base with superscript">§ 3.4.1.3 Base with superscript</a> 
+      <a href="#ref-for-dfn-ink-line-ascent-14" title="§ 3.4.1.3 Base with superscript">§ 3.4.1.3 Base with superscript</a> 
     </li><li>
-      <a href="#ref-for-dfn-ink-line-ascent-14" title="§ 3.4.1.4 Base with subscript and superscript">§ 3.4.1.4 Base with subscript and superscript</a> <a href="#ref-for-dfn-ink-line-ascent-15" title="Reference 2">(2)</a> <a href="#ref-for-dfn-ink-line-ascent-16" title="Reference 3">(3)</a> 
+      <a href="#ref-for-dfn-ink-line-ascent-15" title="§ 3.4.1.4 Base with subscript and superscript">§ 3.4.1.4 Base with subscript and superscript</a> <a href="#ref-for-dfn-ink-line-ascent-16" title="Reference 2">(2)</a> <a href="#ref-for-dfn-ink-line-ascent-17" title="Reference 3">(3)</a> 
     </li><li>
-      <a href="#ref-for-dfn-ink-line-ascent-17" title="§ 3.4.2.4 Base with overscript">§ 3.4.2.4 Base with overscript</a> 
+      <a href="#ref-for-dfn-ink-line-ascent-18" title="§ 3.4.2.4 Base with overscript">§ 3.4.2.4 Base with overscript</a> 
     </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-ink-under-baseline" aria-label="Links in this document to definition: ink-under baseline">
@@ -9924,21 +10021,21 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
     </li><li>
       <a href="#ref-for-dfn-ink-line-descent-3" title="§ 3.2.1.1 Layout of <mtext>">§ 3.2.1.1 Layout of &lt;mtext&gt;</a> <a href="#ref-for-dfn-ink-line-descent-4" title="Reference 2">(2)</a> 
     </li><li>
-      <a href="#ref-for-dfn-ink-line-descent-5" title="§ 3.2.4.3 Layout of operators">§ 3.2.4.3 Layout of operators</a> 
+      <a href="#ref-for-dfn-ink-line-descent-5" title="§ 3.2.4.3 Layout of operators">§ 3.2.4.3 Layout of operators</a> <a href="#ref-for-dfn-ink-line-descent-6" title="Reference 2">(2)</a> 
     </li><li>
-      <a href="#ref-for-dfn-ink-line-descent-6" title="§ 3.3.1.2 Layout of <mrow>">§ 3.3.1.2 Layout of &lt;mrow&gt;</a> <a href="#ref-for-dfn-ink-line-descent-7" title="Reference 2">(2)</a> 
+      <a href="#ref-for-dfn-ink-line-descent-7" title="§ 3.3.1.2 Layout of <mrow>">§ 3.3.1.2 Layout of &lt;mrow&gt;</a> <a href="#ref-for-dfn-ink-line-descent-8" title="Reference 2">(2)</a> 
     </li><li>
-      <a href="#ref-for-dfn-ink-line-descent-8" title="§ 3.3.2.1 Fraction with nonzero line thickness">§ 3.3.2.1 Fraction with nonzero line thickness</a> 
+      <a href="#ref-for-dfn-ink-line-descent-9" title="§ 3.3.2.1 Fraction with nonzero line thickness">§ 3.3.2.1 Fraction with nonzero line thickness</a> 
     </li><li>
-      <a href="#ref-for-dfn-ink-line-descent-9" title="§ 3.3.2.2 Fraction with zero line thickness">§ 3.3.2.2 Fraction with zero line thickness</a> 
+      <a href="#ref-for-dfn-ink-line-descent-10" title="§ 3.3.2.2 Fraction with zero line thickness">§ 3.3.2.2 Fraction with zero line thickness</a> 
     </li><li>
-      <a href="#ref-for-dfn-ink-line-descent-10" title="§ 3.4.1.2 Base with subscript">§ 3.4.1.2 Base with subscript</a> 
+      <a href="#ref-for-dfn-ink-line-descent-11" title="§ 3.4.1.2 Base with subscript">§ 3.4.1.2 Base with subscript</a> 
     </li><li>
-      <a href="#ref-for-dfn-ink-line-descent-11" title="§ 3.4.1.3 Base with superscript">§ 3.4.1.3 Base with superscript</a> 
+      <a href="#ref-for-dfn-ink-line-descent-12" title="§ 3.4.1.3 Base with superscript">§ 3.4.1.3 Base with superscript</a> 
     </li><li>
-      <a href="#ref-for-dfn-ink-line-descent-12" title="§ 3.4.1.4 Base with subscript and superscript">§ 3.4.1.4 Base with subscript and superscript</a> <a href="#ref-for-dfn-ink-line-descent-13" title="Reference 2">(2)</a> <a href="#ref-for-dfn-ink-line-descent-14" title="Reference 3">(3)</a> <a href="#ref-for-dfn-ink-line-descent-15" title="Reference 4">(4)</a> 
+      <a href="#ref-for-dfn-ink-line-descent-13" title="§ 3.4.1.4 Base with subscript and superscript">§ 3.4.1.4 Base with subscript and superscript</a> <a href="#ref-for-dfn-ink-line-descent-14" title="Reference 2">(2)</a> <a href="#ref-for-dfn-ink-line-descent-15" title="Reference 3">(3)</a> <a href="#ref-for-dfn-ink-line-descent-16" title="Reference 4">(4)</a> 
     </li><li>
-      <a href="#ref-for-dfn-ink-line-descent-16" title="§ 3.4.2.3 Base with underscript">§ 3.4.2.3 Base with underscript</a> 
+      <a href="#ref-for-dfn-ink-line-descent-17" title="§ 3.4.2.3 Base with underscript">§ 3.4.2.3 Base with underscript</a> 
     </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-italic-correction" aria-label="Links in this document to definition: italic correction">
@@ -10392,17 +10489,17 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
     <li>
       <a href="#ref-for-dfn-stretchy-1" title="§ 3.2.4.2 Dictionary-based attributes">§ 3.2.4.2 Dictionary-based attributes</a> 
     </li><li>
-      <a href="#ref-for-dfn-stretchy-2" title="§ 3.2.4.3 Layout of operators">§ 3.2.4.3 Layout of operators</a> 
+      <a href="#ref-for-dfn-stretchy-2" title="§ 3.2.4.3 Layout of operators">§ 3.2.4.3 Layout of operators</a> <a href="#ref-for-dfn-stretchy-3" title="Reference 2">(2)</a> 
     </li><li>
-      <a href="#ref-for-dfn-stretchy-3" title="§ 3.3.1.1 Algorithm for stretching operators along the block axis">§ 3.3.1.1 Algorithm for stretching operators along the block axis</a> 
+      <a href="#ref-for-dfn-stretchy-4" title="§ 3.3.1.1 Algorithm for stretching operators along the block axis">§ 3.3.1.1 Algorithm for stretching operators along the block axis</a> 
     </li><li>
-      <a href="#ref-for-dfn-stretchy-4" title="§ 3.4.2.2 Algorithm for stretching operators along the inline axis">§ 3.4.2.2 Algorithm for stretching operators along the inline axis</a> 
+      <a href="#ref-for-dfn-stretchy-5" title="§ 3.4.2.2 Algorithm for stretching operators along the inline axis">§ 3.4.2.2 Algorithm for stretching operators along the inline axis</a> 
     </li><li>
-      <a href="#ref-for-dfn-stretchy-5" title="§ 3.4.2.3 Base with underscript">§ 3.4.2.3 Base with underscript</a> 
+      <a href="#ref-for-dfn-stretchy-6" title="§ 3.4.2.3 Base with underscript">§ 3.4.2.3 Base with underscript</a> 
     </li><li>
-      <a href="#ref-for-dfn-stretchy-6" title="§ 3.4.2.4 Base with overscript">§ 3.4.2.4 Base with overscript</a> 
+      <a href="#ref-for-dfn-stretchy-7" title="§ 3.4.2.4 Base with overscript">§ 3.4.2.4 Base with overscript</a> 
     </li><li>
-      <a href="#ref-for-dfn-stretchy-7" title="§ B.2 Operator Dictionary (human-readable)">§ B.2 Operator Dictionary (human-readable)</a> 
+      <a href="#ref-for-dfn-stretchy-8" title="§ B.2 Operator Dictionary (human-readable)">§ B.2 Operator Dictionary (human-readable)</a> 
     </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-symmetric" aria-label="Links in this document to definition: symmetric">
@@ -10416,9 +10513,9 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
     <li>
       <a href="#ref-for-dfn-symmetric-1" title="§ 3.2.4.2 Dictionary-based attributes">§ 3.2.4.2 Dictionary-based attributes</a> 
     </li><li>
-      <a href="#ref-for-dfn-symmetric-2" title="§ 3.2.4.3 Layout of operators">§ 3.2.4.3 Layout of operators</a> 
+      <a href="#ref-for-dfn-symmetric-2" title="§ 3.2.4.3 Layout of operators">§ 3.2.4.3 Layout of operators</a> <a href="#ref-for-dfn-symmetric-3" title="Reference 2">(2)</a> <a href="#ref-for-dfn-symmetric-4" title="Reference 3">(3)</a> <a href="#ref-for-dfn-symmetric-5" title="Reference 4">(4)</a> 
     </li><li>
-      <a href="#ref-for-dfn-symmetric-3" title="§ B.2 Operator Dictionary (human-readable)">§ B.2 Operator Dictionary (human-readable)</a> 
+      <a href="#ref-for-dfn-symmetric-6" title="§ B.2 Operator Dictionary (human-readable)">§ B.2 Operator Dictionary (human-readable)</a> 
     </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-largeop" aria-label="Links in this document to definition: largeop">
@@ -10432,19 +10529,19 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
     <li>
       <a href="#ref-for-dfn-largeop-1" title="§ 3.2.4.2 Dictionary-based attributes">§ 3.2.4.2 Dictionary-based attributes</a> 
     </li><li>
-      <a href="#ref-for-dfn-largeop-2" title="§ 3.2.4.3 Layout of operators">§ 3.2.4.3 Layout of operators</a> 
+      <a href="#ref-for-dfn-largeop-2" title="§ 3.2.4.3 Layout of operators">§ 3.2.4.3 Layout of operators</a> <a href="#ref-for-dfn-largeop-3" title="Reference 2">(2)</a> 
     </li><li>
-      <a href="#ref-for-dfn-largeop-3" title="§ 3.4.1.2 Base with subscript">§ 3.4.1.2 Base with subscript</a> 
+      <a href="#ref-for-dfn-largeop-4" title="§ 3.4.1.2 Base with subscript">§ 3.4.1.2 Base with subscript</a> 
     </li><li>
-      <a href="#ref-for-dfn-largeop-4" title="§ 3.4.1.3 Base with superscript">§ 3.4.1.3 Base with superscript</a> 
+      <a href="#ref-for-dfn-largeop-5" title="§ 3.4.1.3 Base with superscript">§ 3.4.1.3 Base with superscript</a> 
     </li><li>
-      <a href="#ref-for-dfn-largeop-5" title="§ 3.4.2.3 Base with underscript">§ 3.4.2.3 Base with underscript</a> <a href="#ref-for-dfn-largeop-6" title="Reference 2">(2)</a> 
+      <a href="#ref-for-dfn-largeop-6" title="§ 3.4.2.3 Base with underscript">§ 3.4.2.3 Base with underscript</a> <a href="#ref-for-dfn-largeop-7" title="Reference 2">(2)</a> 
     </li><li>
-      <a href="#ref-for-dfn-largeop-7" title="§ 3.4.2.4 Base with overscript">§ 3.4.2.4 Base with overscript</a> <a href="#ref-for-dfn-largeop-8" title="Reference 2">(2)</a> 
+      <a href="#ref-for-dfn-largeop-8" title="§ 3.4.2.4 Base with overscript">§ 3.4.2.4 Base with overscript</a> <a href="#ref-for-dfn-largeop-9" title="Reference 2">(2)</a> 
     </li><li>
-      <a href="#ref-for-dfn-largeop-9" title="§ 4.3 The math-style property">§ 4.3 The math-style property</a> 
+      <a href="#ref-for-dfn-largeop-10" title="§ 4.3 The math-style property">§ 4.3 The math-style property</a> 
     </li><li>
-      <a href="#ref-for-dfn-largeop-10" title="§ B.2 Operator Dictionary (human-readable)">§ B.2 Operator Dictionary (human-readable)</a> 
+      <a href="#ref-for-dfn-largeop-11" title="§ B.2 Operator Dictionary (human-readable)">§ B.2 Operator Dictionary (human-readable)</a> 
     </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-movablelimits" aria-label="Links in this document to definition: movablelimits">
@@ -11810,7 +11907,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <p><b>Referenced in:</b></p>
       <ul>
     <li>
-      <a href="#ref-for-dfn-displayoperatorminheight-1" title="§ 3.2.4.3 Layout of operators">§ 3.2.4.3 Layout of operators</a> 
+      <a href="#ref-for-dfn-displayoperatorminheight-1" title="§ 3.2.4.3 Layout of operators">§ 3.2.4.3 Layout of operators</a> <a href="#ref-for-dfn-displayoperatorminheight-2" title="Reference 2">(2)</a> <a href="#ref-for-dfn-displayoperatorminheight-3" title="Reference 3">(3)</a> 
     </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-axisheight" aria-label="Links in this document to definition: axisHeight">
@@ -11824,11 +11921,11 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
     <li>
       <a href="#ref-for-dfn-axisheight-1" title="§ 3.1.1 Box Model">§ 3.1.1 Box Model</a> 
     </li><li>
-      <a href="#ref-for-dfn-axisheight-2" title="§ 3.2.4.3 Layout of operators">§ 3.2.4.3 Layout of operators</a> <a href="#ref-for-dfn-axisheight-3" title="Reference 2">(2)</a> <a href="#ref-for-dfn-axisheight-4" title="Reference 3">(3)</a> <a href="#ref-for-dfn-axisheight-5" title="Reference 4">(4)</a> <a href="#ref-for-dfn-axisheight-6" title="Reference 5">(5)</a> <a href="#ref-for-dfn-axisheight-7" title="Reference 6">(6)</a> <a href="#ref-for-dfn-axisheight-8" title="Reference 7">(7)</a> <a href="#ref-for-dfn-axisheight-9" title="Reference 8">(8)</a> <a href="#ref-for-dfn-axisheight-10" title="Reference 9">(9)</a> <a href="#ref-for-dfn-axisheight-11" title="Reference 10">(10)</a> <a href="#ref-for-dfn-axisheight-12" title="Reference 11">(11)</a> <a href="#ref-for-dfn-axisheight-13" title="Reference 12">(12)</a> <a href="#ref-for-dfn-axisheight-14" title="Reference 13">(13)</a> <a href="#ref-for-dfn-axisheight-15" title="Reference 14">(14)</a> <a href="#ref-for-dfn-axisheight-16" title="Reference 15">(15)</a> 
+      <a href="#ref-for-dfn-axisheight-2" title="§ 3.2.4.3 Layout of operators">§ 3.2.4.3 Layout of operators</a> <a href="#ref-for-dfn-axisheight-3" title="Reference 2">(2)</a> <a href="#ref-for-dfn-axisheight-4" title="Reference 3">(3)</a> <a href="#ref-for-dfn-axisheight-5" title="Reference 4">(4)</a> <a href="#ref-for-dfn-axisheight-6" title="Reference 5">(5)</a> <a href="#ref-for-dfn-axisheight-7" title="Reference 6">(6)</a> <a href="#ref-for-dfn-axisheight-8" title="Reference 7">(7)</a> <a href="#ref-for-dfn-axisheight-9" title="Reference 8">(8)</a> <a href="#ref-for-dfn-axisheight-10" title="Reference 9">(9)</a> <a href="#ref-for-dfn-axisheight-11" title="Reference 10">(10)</a> <a href="#ref-for-dfn-axisheight-12" title="Reference 11">(11)</a> <a href="#ref-for-dfn-axisheight-13" title="Reference 12">(12)</a> <a href="#ref-for-dfn-axisheight-14" title="Reference 13">(13)</a> <a href="#ref-for-dfn-axisheight-15" title="Reference 14">(14)</a> <a href="#ref-for-dfn-axisheight-16" title="Reference 15">(15)</a> <a href="#ref-for-dfn-axisheight-17" title="Reference 16">(16)</a> 
     </li><li>
-      <a href="#ref-for-dfn-axisheight-17" title="§ 3.3.1 Group Sub-Expressions <mrow>">§ 3.3.1 Group Sub-Expressions &lt;mrow&gt;</a> 
+      <a href="#ref-for-dfn-axisheight-18" title="§ 3.3.1 Group Sub-Expressions <mrow>">§ 3.3.1 Group Sub-Expressions &lt;mrow&gt;</a> 
     </li><li>
-      <a href="#ref-for-dfn-axisheight-18" title="§ 3.3.2.1 Fraction with nonzero line thickness">§ 3.3.2.1 Fraction with nonzero line thickness</a> <a href="#ref-for-dfn-axisheight-19" title="Reference 2">(2)</a> <a href="#ref-for-dfn-axisheight-20" title="Reference 3">(3)</a> <a href="#ref-for-dfn-axisheight-21" title="Reference 4">(4)</a> <a href="#ref-for-dfn-axisheight-22" title="Reference 5">(5)</a> 
+      <a href="#ref-for-dfn-axisheight-19" title="§ 3.3.2.1 Fraction with nonzero line thickness">§ 3.3.2.1 Fraction with nonzero line thickness</a> <a href="#ref-for-dfn-axisheight-20" title="Reference 2">(2)</a> <a href="#ref-for-dfn-axisheight-21" title="Reference 3">(3)</a> <a href="#ref-for-dfn-axisheight-22" title="Reference 4">(4)</a> <a href="#ref-for-dfn-axisheight-23" title="Reference 5">(5)</a> 
     </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-accentbaseheight" aria-label="Links in this document to definition: accentBaseHeight">
@@ -12628,11 +12725,11 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <p><b>Referenced in:</b></p>
       <ul>
     <li>
-      <a href="#ref-for-dfn-preferred-inline-size-of-a-glyph-stretched-along-the-block-axis-1" title="§ 3.2.4.3 Layout of operators">§ 3.2.4.3 Layout of operators</a> 
+      <a href="#ref-for-dfn-preferred-inline-size-of-a-glyph-stretched-along-the-block-axis-1" title="§ 3.2.4.3 Layout of operators">§ 3.2.4.3 Layout of operators</a> <a href="#ref-for-dfn-preferred-inline-size-of-a-glyph-stretched-along-the-block-axis-2" title="Reference 2">(2)</a> 
     </li><li>
-      <a href="#ref-for-dfn-preferred-inline-size-of-a-glyph-stretched-along-the-block-axis-2" title="§ 3.3.3.2 Square root">§ 3.3.3.2 Square root</a> 
+      <a href="#ref-for-dfn-preferred-inline-size-of-a-glyph-stretched-along-the-block-axis-3" title="§ 3.3.3.2 Square root">§ 3.3.3.2 Square root</a> 
     </li><li>
-      <a href="#ref-for-dfn-preferred-inline-size-of-a-glyph-stretched-along-the-block-axis-3" title="§ 5.3.2 Algorithms for glyph stretching">§ 5.3.2 Algorithms for glyph stretching</a> 
+      <a href="#ref-for-dfn-preferred-inline-size-of-a-glyph-stretched-along-the-block-axis-4" title="§ 5.3.2 Algorithms for glyph stretching">§ 5.3.2 Algorithms for glyph stretching</a> 
     </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-shape-a-stretchy-glyph" aria-label="Links in this document to definition: shape a stretchy glyph">
@@ -12644,9 +12741,23 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <p><b>Referenced in:</b></p>
       <ul>
     <li>
-      <a href="#ref-for-dfn-shape-a-stretchy-glyph-1" title="§ 3.2.4.3 Layout of operators">§ 3.2.4.3 Layout of operators</a> <a href="#ref-for-dfn-shape-a-stretchy-glyph-2" title="Reference 2">(2)</a> <a href="#ref-for-dfn-shape-a-stretchy-glyph-3" title="Reference 3">(3)</a> <a href="#ref-for-dfn-shape-a-stretchy-glyph-4" title="Reference 4">(4)</a> <a href="#ref-for-dfn-shape-a-stretchy-glyph-5" title="Reference 5">(5)</a> <a href="#ref-for-dfn-shape-a-stretchy-glyph-6" title="Reference 6">(6)</a> <a href="#ref-for-dfn-shape-a-stretchy-glyph-7" title="Reference 7">(7)</a> 
+      <a href="#ref-for-dfn-shape-a-stretchy-glyph-1" title="§ 3.2.4.3 Layout of operators">§ 3.2.4.3 Layout of operators</a> <a href="#ref-for-dfn-shape-a-stretchy-glyph-2" title="Reference 2">(2)</a> <a href="#ref-for-dfn-shape-a-stretchy-glyph-3" title="Reference 3">(3)</a> <a href="#ref-for-dfn-shape-a-stretchy-glyph-4" title="Reference 4">(4)</a> <a href="#ref-for-dfn-shape-a-stretchy-glyph-5" title="Reference 5">(5)</a> <a href="#ref-for-dfn-shape-a-stretchy-glyph-6" title="Reference 6">(6)</a> <a href="#ref-for-dfn-shape-a-stretchy-glyph-7" title="Reference 7">(7)</a> <a href="#ref-for-dfn-shape-a-stretchy-glyph-8" title="Reference 8">(8)</a> <a href="#ref-for-dfn-shape-a-stretchy-glyph-9" title="Reference 9">(9)</a> <a href="#ref-for-dfn-shape-a-stretchy-glyph-10" title="Reference 10">(10)</a> 
     </li><li>
-      <a href="#ref-for-dfn-shape-a-stretchy-glyph-8" title="§ 3.3.3.1 Radical symbol">§ 3.3.3.1 Radical symbol</a> 
+      <a href="#ref-for-dfn-shape-a-stretchy-glyph-11" title="§ 3.3.3.1 Radical symbol">§ 3.3.3.1 Radical symbol</a> 
+    </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-get-a-glyph" aria-label="Links in this document to definition: get a glyph">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-get-a-glyph" aria-label="Permalink for definition: get a glyph. Activate to close this dialog.">Permalink</a>
+         
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+      <a href="#ref-for-dfn-get-a-glyph-1" title="§ 3.2.4.3 Layout of operators">§ 3.2.4.3 Layout of operators</a> <a href="#ref-for-dfn-get-a-glyph-2" title="Reference 2">(2)</a> 
+    </li><li>
+      <a href="#ref-for-dfn-get-a-glyph-3" title="§ 3.3.3.1 Radical symbol">§ 3.3.3.1 Radical symbol</a> 
     </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-user-agent-stylesheet" aria-label="Links in this document to definition: User Agent Stylesheet">
