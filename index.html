@@ -1,6 +1,6 @@
 <!DOCTYPE html><html lang="en"><head>
 <meta charset="utf-8">
-<meta name="generator" content="ReSpec 35.4.2">
+<meta name="generator" content="ReSpec 35.5.1">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <style>
 .issue-label{text-transform:initial}
@@ -282,15 +282,15 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
     null,
     null
   ],
-  "publishISODate": "2025-07-18T00:00:00.000Z",
-  "generatedSubtitle": "W3C Editor's Draft 18 July 2025"
+  "publishISODate": "2025-09-30T00:00:00.000Z",
+  "generatedSubtitle": "W3C Editor's Draft 30 September 2025"
 }</script>
 <link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2021/W3C-ED"></head>
   <body class="h-entry" data-cite="WEBIDL html infra css-display-3 css-text-3 web-animations css-fonts-4 dom cssom-view css-sizing-3 css-align-3 css-box-4 css-values-4 css-backgrounds-3 css-text-decor-4 svg css-writing-modes-4 css-color-4 css-box-4 css-pseudo-4"><div class="head">
     <p class="logos"><a class="logo" href="https://www.w3.org/"><img crossorigin="" alt="W3C" height="48" src="https://www.w3.org/StyleSheets/TR/2021/logos/W3C" width="72">
   </a></p>
     <h1 id="title" class="title">MathML Core</h1> 
-    <p id="w3c-state"><a href="https://www.w3.org/standards/types#ED">W3C Editor's Draft</a> <time class="dt-published" datetime="2025-07-18">18 July 2025</time></p>
+    <p id="w3c-state"><a href="https://www.w3.org/standards/types#ED">W3C Editor's Draft</a> <time class="dt-published" datetime="2025-09-30">30 September 2025</time></p>
     <details open="">
       <summary>More details about this document</summary>
       <dl>
@@ -396,7 +396,7 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
         
   </p><p>
                       This document is governed by the
-                      <a id="w3c_process_revision" href="https://www.w3.org/policies/process/20231103/">03 November 2023 <abbr title="World Wide Web Consortium">W3C</abbr> Process Document</a>.
+                      <a id="w3c_process_revision" href="https://www.w3.org/policies/process/20250818/">18 August 2025 <abbr title="World Wide Web Consortium">W3C</abbr> Process Document</a>.
                     </p></section><nav id="toc"><h2 class="introductory" id="table-of-contents">Table of Contents</h2><ol class="toc"><li class="tocline"><a class="tocxref" href="#abstract">Abstract</a></li><li class="tocline"><a class="tocxref" href="#sotd">Status of This Document</a></li><li class="tocline"><a class="tocxref" href="#introduction"><bdi class="secno">1. </bdi>Introduction</a></li><li class="tocline"><a class="tocxref" href="#mathml-fundamentals"><bdi class="secno">2. </bdi>MathML Fundamentals</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#mathml-elements-and-attributes"><bdi class="secno">2.1 </bdi>Elements and attributes</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#the-top-level-math-element"><bdi class="secno">2.1.1 </bdi>The Top-Level <code>&lt;math&gt;</code> Element</a></li><li class="tocline"><a class="tocxref" href="#types-for-mathml-attribute-values"><bdi class="secno">2.1.2 </bdi>Types for MathML Attribute Values</a></li><li class="tocline"><a class="tocxref" href="#global-attributes"><bdi class="secno">2.1.3 </bdi>Global Attributes</a></li><li class="tocline"><a class="tocxref" href="#attributes-common-to-html-and-mathml-elements"><bdi class="secno">2.1.4 </bdi>Attributes common to HTML and MathML elements</a></li><li class="tocline"><a class="tocxref" href="#legacy-mathml-style-attributes"><bdi class="secno">2.1.5 </bdi>Legacy MathML Style Attributes</a></li><li class="tocline"><a class="tocxref" href="#the-displaystyle-and-scriptlevel-attributes"><bdi class="secno">2.1.6 </bdi>The <code>displaystyle</code> and <code>scriptlevel</code> attributes</a></li><li class="tocline"><a class="tocxref" href="#other-valid-attributes"><bdi class="secno">2.1.7 </bdi>Attributes Reserved as Valid</a></li></ol></li><li class="tocline"><a class="tocxref" href="#integration-in-the-web-platform"><bdi class="secno">2.2 </bdi>Integration in the Web Platform</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#html-and-svg"><bdi class="secno">2.2.1 </bdi>HTML and SVG</a></li><li class="tocline"><a class="tocxref" href="#css-styling"><bdi class="secno">2.2.2 </bdi>CSS styling</a></li><li class="tocline"><a class="tocxref" href="#dom-and-javascript"><bdi class="secno">2.2.3 </bdi>DOM and JavaScript</a></li><li class="tocline"><a class="tocxref" href="#text-layout"><bdi class="secno">2.2.4 </bdi>Text layout</a></li><li class="tocline"><a class="tocxref" href="#focus"><bdi class="secno">2.2.5 </bdi>Focus</a></li></ol></li></ol></li><li class="tocline"><a class="tocxref" href="#presentation-markup"><bdi class="secno">3. </bdi>Presentation Markup</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#visual-formatting-model"><bdi class="secno">3.1 </bdi>Visual formatting model</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#box-model"><bdi class="secno">3.1.1 </bdi>Box Model</a></li><li class="tocline"><a class="tocxref" href="#layout-algorithms"><bdi class="secno">3.1.2 </bdi>Layout Algorithms</a></li><li class="tocline"><a class="tocxref" href="#anonymous-mrow-boxes"><bdi class="secno">3.1.3 </bdi>Anonymous &lt;mrow&gt; boxes</a></li><li class="tocline"><a class="tocxref" href="#stacking-contexts"><bdi class="secno">3.1.4 </bdi>Stacking contexts</a></li></ol></li><li class="tocline"><a class="tocxref" href="#token-elements"><bdi class="secno">3.2 </bdi>Token Elements</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#text-mtext"><bdi class="secno">3.2.1 </bdi>Text <code>&lt;mtext&gt;</code></a><ol class="toc"><li class="tocline"><a class="tocxref" href="#layout-of-mtext"><bdi class="secno">3.2.1.1 </bdi>Layout of <code>&lt;mtext&gt;</code></a></li></ol></li><li class="tocline"><a class="tocxref" href="#the-mi-element"><bdi class="secno">3.2.2 </bdi>Identifier <code>&lt;mi&gt;</code></a></li><li class="tocline"><a class="tocxref" href="#number-mn"><bdi class="secno">3.2.3 </bdi>Number <code>&lt;mn&gt;</code></a></li><li class="tocline"><a class="tocxref" href="#operator-fence-separator-or-accent-mo"><bdi class="secno">3.2.4 </bdi>Operator, Fence, Separator or Accent <code>&lt;mo&gt;</code></a><ol class="toc"><li class="tocline"><a class="tocxref" href="#embellished-operators"><bdi class="secno">3.2.4.1 </bdi>Embellished operators</a></li><li class="tocline"><a class="tocxref" href="#dictionary-based-attributes"><bdi class="secno">3.2.4.2 </bdi>Dictionary-based attributes</a></li><li class="tocline"><a class="tocxref" href="#layout-of-operators"><bdi class="secno">3.2.4.3 </bdi>Layout of operators</a></li></ol></li><li class="tocline"><a class="tocxref" href="#space-mspace"><bdi class="secno">3.2.5 </bdi>Space <code>&lt;mspace&gt;</code></a><ol class="toc"><li class="tocline"><a class="tocxref" href="#definition-of-space-like-elements"><bdi class="secno">3.2.5.1 </bdi>Definition of space-like elements</a></li></ol></li><li class="tocline"><a class="tocxref" href="#string-literal-ms"><bdi class="secno">3.2.6 </bdi>String Literal <code>&lt;ms&gt;</code></a></li></ol></li><li class="tocline"><a class="tocxref" href="#general-layout-schemata"><bdi class="secno">3.3 </bdi>General Layout Schemata</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#horizontally-group-sub-expressions-mrow"><bdi class="secno">3.3.1 </bdi>Group Sub-Expressions <code>&lt;mrow&gt;</code></a><ol class="toc"><li class="tocline"><a class="tocxref" href="#algorithm-for-stretching-operators-along-the-block-axis"><bdi class="secno">3.3.1.1 </bdi>Algorithm for stretching operators along the block axis</a></li><li class="tocline"><a class="tocxref" href="#layout-of-mrow"><bdi class="secno">3.3.1.2 </bdi>Layout of <code>&lt;mrow&gt;</code></a></li></ol></li><li class="tocline"><a class="tocxref" href="#fractions-mfrac"><bdi class="secno">3.3.2 </bdi>Fractions <code>&lt;mfrac&gt;</code></a><ol class="toc"><li class="tocline"><a class="tocxref" href="#fraction-with-nonzero-line-thickness"><bdi class="secno">3.3.2.1 </bdi>Fraction with nonzero line thickness</a></li><li class="tocline"><a class="tocxref" href="#fraction-with-zero-line-thickness"><bdi class="secno">3.3.2.2 </bdi>Fraction with zero line thickness</a></li></ol></li><li class="tocline"><a class="tocxref" href="#radicals-msqrt-mroot"><bdi class="secno">3.3.3 </bdi>Radicals <code>&lt;msqrt&gt;</code>, <code>&lt;mroot&gt;</code></a><ol class="toc"><li class="tocline"><a class="tocxref" href="#radical-symbol"><bdi class="secno">3.3.3.1 </bdi>Radical symbol</a></li><li class="tocline"><a class="tocxref" href="#square-root"><bdi class="secno">3.3.3.2 </bdi>Square root</a></li><li class="tocline"><a class="tocxref" href="#root-with-index"><bdi class="secno">3.3.3.3 </bdi>Root with index</a></li></ol></li><li class="tocline"><a class="tocxref" href="#style-change-mstyle"><bdi class="secno">3.3.4 </bdi>Style Change <code>&lt;mstyle&gt;</code></a></li><li class="tocline"><a class="tocxref" href="#error-message-merror"><bdi class="secno">3.3.5 </bdi>Error Message <code>&lt;merror&gt;</code></a></li><li class="tocline"><a class="tocxref" href="#adjust-space-around-content-mpadded"><bdi class="secno">3.3.6 </bdi>Adjust Space Around Content <code>&lt;mpadded&gt;</code></a><ol class="toc"><li class="tocline"><a class="tocxref" href="#inner-box-and-requested-parameters"><bdi class="secno">3.3.6.1 </bdi>Inner box and requested parameters</a></li><li class="tocline"><a class="tocxref" href="#layout-of-mpadded"><bdi class="secno">3.3.6.2 </bdi>Layout of <code>&lt;mpadded&gt;</code></a></li></ol></li><li class="tocline"><a class="tocxref" href="#making-sub-expressions-invisible-mphantom"><bdi class="secno">3.3.7 </bdi>Making Sub-Expressions Invisible <code>&lt;mphantom&gt;</code></a></li></ol></li><li class="tocline"><a class="tocxref" href="#script-and-limit-schemata"><bdi class="secno">3.4 </bdi>Script and Limit Schemata</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#subscripts-and-superscripts-msub-msup-msubsup"><bdi class="secno">3.4.1 </bdi>Subscripts and Superscripts <code>&lt;msub&gt;</code>, <code>&lt;msup&gt;</code>, <code>&lt;msubsup&gt;</code></a><ol class="toc"><li class="tocline"><a class="tocxref" href="#children-of-msub-msup-msubsup"><bdi class="secno">3.4.1.1 </bdi>Children of <code>&lt;msub&gt;</code>,
             <code>&lt;msup&gt;</code>, <code>&lt;msubsup&gt;</code></a></li><li class="tocline"><a class="tocxref" href="#base-with-subscript"><bdi class="secno">3.4.1.2 </bdi>Base with subscript</a></li><li class="tocline"><a class="tocxref" href="#base-with-superscript"><bdi class="secno">3.4.1.3 </bdi>Base with superscript</a></li><li class="tocline"><a class="tocxref" href="#base-with-subscript-and-superscript"><bdi class="secno">3.4.1.4 </bdi>Base with subscript and superscript</a></li></ol></li><li class="tocline"><a class="tocxref" href="#underscripts-and-overscripts-munder-mover-munderover"><bdi class="secno">3.4.2 </bdi>Underscripts and Overscripts <code>&lt;munder&gt;</code>, <code>&lt;mover&gt;</code>, <code>&lt;munderover&gt;</code></a><ol class="toc"><li class="tocline"><a class="tocxref" href="#children-of-munder-mover-munderover"><bdi class="secno">3.4.2.1 </bdi>Children of <code>&lt;munder&gt;</code>,
             <code>&lt;mover&gt;</code>, <code>&lt;munderover&gt;</code></a></li><li class="tocline"><a class="tocxref" href="#algorithm-for-stretching-operators-along-the-inline-axis"><bdi class="secno">3.4.2.2 </bdi>Algorithm for stretching operators along the inline axis</a></li><li class="tocline"><a class="tocxref" href="#base-with-underscript"><bdi class="secno">3.4.2.3 </bdi>Base with underscript</a></li><li class="tocline"><a class="tocxref" href="#base-with-overscript"><bdi class="secno">3.4.2.4 </bdi>Base with overscript</a></li><li class="tocline"><a class="tocxref" href="#base-with-underscript-and-overscript"><bdi class="secno">3.4.2.5 </bdi>Base with underscript and overscript</a></li></ol></li><li class="tocline"><a class="tocxref" href="#prescripts-and-tensor-indices-mmultiscripts"><bdi class="secno">3.4.3 </bdi>Prescripts and Tensor Indices <code>&lt;mmultiscripts&gt;</code></a><ol class="toc"><li class="tocline"><a class="tocxref" href="#base-with-prescripts-and-postscripts"><bdi class="secno">3.4.3.1 </bdi>Base with prescripts and postscripts</a></li></ol></li><li class="tocline"><a class="tocxref" href="#displaystyle-and-scriptlevel-in-scripts"><bdi class="secno">3.4.4 </bdi>Displaystyle, scriptlevel and math-shift in scripts</a></li></ol></li><li class="tocline"><a class="tocxref" href="#tabular-math"><bdi class="secno">3.5 </bdi>Tabular Math</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#table-or-matrix-mtable"><bdi class="secno">3.5.1 </bdi>Table or Matrix <code>&lt;mtable&gt;</code></a></li><li class="tocline"><a class="tocxref" href="#row-in-table-or-matrix-mtr"><bdi class="secno">3.5.2 </bdi>Row in Table or Matrix <code>&lt;mtr&gt;</code></a></li><li class="tocline"><a class="tocxref" href="#entry-in-table-or-matrix-mtd"><bdi class="secno">3.5.3 </bdi>Entry in Table or Matrix <code>&lt;mtd&gt;</code></a></li></ol></li><li class="tocline"><a class="tocxref" href="#enlivening-expressions"><bdi class="secno">3.6 </bdi>Enlivening Expressions</a></li><li class="tocline"><a class="tocxref" href="#semantics-and-presentation"><bdi class="secno">3.7 </bdi>Semantics and Presentation</a></li></ol></li><li class="tocline"><a class="tocxref" href="#css-extensions-for-math-layout"><bdi class="secno">4. </bdi>CSS Extensions for Math Layout</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#new-display-math-value"><bdi class="secno">4.1 </bdi>The <code>display: block math</code>
@@ -2669,7 +2669,7 @@ interface <a class="internalDFN idlID" data-link-type="interface" href="#dom-mat
             the corresponding value is described.
             Otherwise,
             the <code>&lt;mspace&gt;</code> element is laid out as shown on
-            <a href="#figure-box-mspace" class="fig-ref" title="Box model for the <mspace> element">Figure <bdi class="">9</bdi></a>.
+            <a href="#figure-box-mspace" class="fig-ref" title="Box model for the &lt;mspace&gt; element">Figure <bdi class="">9</bdi></a>.
             The <a data-link-type="dfn" href="https://www.w3.org/TR/css-sizing-3/#min-content-inline-size">min-content inline size</a>,
             <a data-link-type="dfn" href="https://www.w3.org/TR/css-sizing-3/#max-content-inline-size">max-content inline size</a> and <a data-link-type="dfn" href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a> of the math
             content are equal to the resolved value of the
@@ -2836,7 +2836,7 @@ ms<span class="hljs-selector-attr">[rquote]</span><span class="hljs-selector-pse
             in <a href="#global-attributes" class="sec-ref"><bdi class="secno">2.1.3 </bdi>Global Attributes</a>. An <code>&lt;mrow&gt;</code>
             element with <a data-link-type="dfn" href="https://www.w3.org/TR/css-display-3/#in-flow">in-flow</a> children
             child<sub>1</sub>, child<sub>2</sub>, …, child<sub>N</sub>
-            is laid out as shown on <a href="#figure-box-mrow" class="fig-ref" title="Box model for the <mrow> element">Figure <bdi class="">10</bdi></a>. The child boxes
+            is laid out as shown on <a href="#figure-box-mrow" class="fig-ref" title="Box model for the &lt;mrow&gt; element">Figure <bdi class="">10</bdi></a>. The child boxes
             are put in a row one after the other with all their
             <a href="#dfn-alphabetic-baseline" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-alphabetic-baseline-10">alphabetic baselines</a>
             aligned.
@@ -3177,7 +3177,7 @@ mfrac &gt; <span class="hljs-selector-pseudo">:nth-child</span>(<span class="hlj
             <p>
               If the <a href="#dfn-fraction-line-thickness" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-fraction-line-thickness-1">fraction line thickness</a> is nonzero, the
               <code>&lt;mfrac&gt;</code>
-              element is laid out as shown on <a href="#figure-box-mfrac" class="fig-ref" title="Box model for the <mfrac> element">Figure <bdi class="">12</bdi></a>.
+              element is laid out as shown on <a href="#figure-box-mfrac" class="fig-ref" title="Box model for the &lt;mfrac&gt; element">Figure <bdi class="">12</bdi></a>.
               The fraction bar must only be painted if the
               <a data-link-type="css-property" href="https://www.w3.org/TR/css-display-3/#propdef-visibility">visibility</a> of
               the <code>&lt;mfrac&gt;</code> element is <code>visible</code>.
@@ -3320,7 +3320,7 @@ mfrac &gt; <span class="hljs-selector-pseudo">:nth-child</span>(<span class="hlj
             <p>
               If the <a href="#dfn-fraction-line-thickness" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-fraction-line-thickness-7">fraction line thickness</a> is zero,
               the <code>&lt;mfrac&gt;</code> element is instead laid out as
-              shown on <a href="#figure-box-mfrac-without-bar" class="fig-ref" title="Box model for the <mfrac> element without bar">Figure <bdi class="">13</bdi></a>.
+              shown on <a href="#figure-box-mfrac-without-bar" class="fig-ref" title="Box model for the &lt;mfrac&gt; element without bar">Figure <bdi class="">13</bdi></a>.
             </p>
             <figure id="figure-box-mfrac-without-bar">
               <img src="figures/mfracnobarbox.svg">
@@ -3543,7 +3543,7 @@ mroot, msqrt {
             
             <p>
               The <code>&lt;msqrt&gt;</code> element is laid out as shown on
-              <a href="#figure-box-msqrt" class="fig-ref" title="Box model for the <msqrt> element">Figure <bdi class="">14</bdi></a>.
+              <a href="#figure-box-msqrt" class="fig-ref" title="Box model for the &lt;msqrt&gt; element">Figure <bdi class="">14</bdi></a>.
             </p>
             <figure id="figure-box-msqrt">
               <img src="figures/msqrtbox.svg">
@@ -3621,11 +3621,11 @@ mroot, msqrt {
             
             <p>
               The <code>&lt;mroot&gt;</code> element is laid out as shown on
-              <a href="#figure-box-mroot" class="fig-ref" title="Box model for the <mroot> element">Figure <bdi class="">15</bdi></a>.
+              <a href="#figure-box-mroot" class="fig-ref" title="Box model for the &lt;mroot&gt; element">Figure <bdi class="">15</bdi></a>.
               The <a href="#dfn-mroot-index" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-mroot-index-1">mroot index</a> is first ignored and the <a href="#dfn-mroot-base" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-mroot-base-1">mroot base</a>
               and
               radical glyph are laid out as
-              shown on figure <a href="#figure-box-msqrt" class="fig-ref" title="Box model for the <msqrt> element">Figure <bdi class="">14</bdi></a>
+              shown on figure <a href="#figure-box-msqrt" class="fig-ref" title="Box model for the &lt;msqrt&gt; element">Figure <bdi class="">14</bdi></a>
               using the same algorithm as in
               <a href="#square-root" class="sec-ref"><bdi class="secno">3.3.3.2 </bdi>Square root</a>
               in order to produce a margin box B (represented in green).
@@ -3929,7 +3929,7 @@ mroot, msqrt {
               then it is laid out according to the CSS specification where
               the corresponding value is described.
               Otherwise, it is laid out as shown on
-              <a href="#figure-box-mpadded" class="fig-ref" title="Box model for the <mpadded> element">Figure <bdi class="">16</bdi></a>.
+              <a href="#figure-box-mpadded" class="fig-ref" title="Box model for the &lt;mpadded&gt; element">Figure <bdi class="">16</bdi></a>.
             </p>
             <figure id="figure-box-mpadded">
               <img src="figures/mpaddedbox.svg">
@@ -4113,7 +4113,7 @@ mroot, msqrt {
             
             <p>
               The <code>&lt;msub&gt;</code> element is laid out as shown on
-              <a href="#figure-box-msub" class="fig-ref" title="Box model for the <msub> element">Figure <bdi class="">17</bdi></a>.
+              <a href="#figure-box-msub" class="fig-ref" title="Box model for the &lt;msub&gt; element">Figure <bdi class="">17</bdi></a>.
               <code>LargeOpItalicCorrection</code>
               is the <a href="#dfn-italic-correction" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-italic-correction-12">italic correction</a> of the <a href="#dfn-msub-base" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-msub-base-1">msub base</a>
               if it is an <a href="#dfn-embellished-operator" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-embellished-operator-28">embellished operator</a> with
@@ -4189,7 +4189,7 @@ mroot, msqrt {
             
             <p>
               The <code>&lt;msup&gt;</code> element is laid out as shown on
-              <a href="#figure-box-msup" class="fig-ref" title="Box model for the <msup> element">Figure <bdi class="">18</bdi></a>.
+              <a href="#figure-box-msup" class="fig-ref" title="Box model for the &lt;msup&gt; element">Figure <bdi class="">18</bdi></a>.
               <code>ItalicCorrection</code>
               is the <a href="#dfn-italic-correction" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-italic-correction-13">italic correction</a> of the <a href="#dfn-msup-base" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-msup-base-1">msup base</a>
               if it is not an <a href="#dfn-embellished-operator" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-embellished-operator-29">embellished operator</a> with
@@ -4274,7 +4274,7 @@ mroot, msqrt {
             
             <p>
               The <code>&lt;msubsup&gt;</code> element is laid out as shown on
-              <a href="#figure-box-msup" class="fig-ref" title="Box model for the <msup> element">Figure <bdi class="">18</bdi></a>.
+              <a href="#figure-box-msup" class="fig-ref" title="Box model for the &lt;msup&gt; element">Figure <bdi class="">18</bdi></a>.
               <code>LargeOpItalicCorrection</code> and <code>SubShift</code>
               are set as in <a href="#base-with-subscript" class="sec-ref"><bdi class="secno">3.4.1.2 </bdi>Base with subscript</a>.
               <code>ItalicCorrection</code> and <code>SuperShift</code>
@@ -4565,7 +4565,7 @@ mroot, msqrt {
             
             <p>
               The <code>&lt;munder&gt;</code> element is laid out as shown on
-              <a href="#figure-box-munder" class="fig-ref" title="Box model for the <munder> element">Figure <bdi class="">20</bdi></a>.
+              <a href="#figure-box-munder" class="fig-ref" title="Box model for the &lt;munder&gt; element">Figure <bdi class="">20</bdi></a>.
               <code>LargeOpItalicCorrection</code>
               is the <a href="#dfn-italic-correction" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-italic-correction-14">italic correction</a> of the <a href="#dfn-munder-base" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-munder-base-1">munder base</a>
               if it is an <a href="#dfn-embellished-operator" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-embellished-operator-33">embellished operator</a> with
@@ -4698,7 +4698,7 @@ mroot, msqrt {
             
             <p>
               The <code>&lt;mover&gt;</code> element is laid out as shown on
-              <a href="#figure-box-mover" class="fig-ref" title="Box model for the <mover> element">Figure <bdi class="">21</bdi></a>.
+              <a href="#figure-box-mover" class="fig-ref" title="Box model for the &lt;mover&gt; element">Figure <bdi class="">21</bdi></a>.
               <code>LargeOpItalicCorrection</code>
               is the <a href="#dfn-italic-correction" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-italic-correction-15">italic correction</a> of the <a href="#dfn-mover-base" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-mover-base-1">mover base</a>
               if it is an <a href="#dfn-embellished-operator" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-embellished-operator-36">embellished operator</a> with
@@ -4860,7 +4860,7 @@ mroot, msqrt {
             
             <p>
               The general layout of <code>&lt;munderover&gt;</code> is shown on
-              <a href="#figure-box-munderover" class="fig-ref" title="Box model for the <munderover> element">Figure <bdi class="">22</bdi></a>. The
+              <a href="#figure-box-munderover" class="fig-ref" title="Box model for the &lt;munderover&gt; element">Figure <bdi class="">22</bdi></a>. The
               <code>LargeOpItalicCorrection</code>,
               <code>UnderShift</code>,
               <code>UnderExtraDescender</code>,
@@ -5023,7 +5023,7 @@ mroot, msqrt {
             
             <p>
               The <code>&lt;mmultiscripts&gt;</code> element is laid out as
-              shown on <a href="#figure-box-mmultiscripts" class="fig-ref" title="Box model for the <mmultiscripts> element">Figure <bdi class="">23</bdi></a>.
+              shown on <a href="#figure-box-mmultiscripts" class="fig-ref" title="Box model for the &lt;mmultiscripts&gt; element">Figure <bdi class="">23</bdi></a>.
               For each <a href="#dfn-subscript-superscript-pair" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-subscript-superscript-pair-2">subscript/superscript pair</a> of
               <a href="#dfn-mmultiscripts-postscripts" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-mmultiscripts-postscripts-1">mmultiscripts postscripts</a>,
               the <code>ItalicCorrection</code>
@@ -5812,7 +5812,7 @@ semantics &gt; annotation-xml<span class="hljs-selector-attr">[encoding=<span cl
             </tr>
             <tr>
               <th><a href="https://www.w3.org/TR/web-animations/#animation-type">Animation type:</a></th>
-              <td>not animatable</td>
+              <td>by computed value type</td>
             </tr>
             <tr>
               <th>Media:</th>
@@ -5911,7 +5911,7 @@ semantics &gt; annotation-xml<span class="hljs-selector-attr">[encoding=<span cl
             </tr>
             <tr>
               <th><a href="https://www.w3.org/TR/web-animations/#animation-type">Animation type</a>:</th>
-              <td>not animatable</td>
+              <td>by computed value type</td>
             </tr>
             <tr>
               <th>Media:</th>
@@ -6001,7 +6001,7 @@ semantics &gt; annotation-xml<span class="hljs-selector-attr">[encoding=<span cl
             </tr>
             <tr>
               <th><a href="https://www.w3.org/TR/web-animations/#animation-type">Animation type:</a></th>
-              <td>not animatable</td>
+              <td>by computed value type</td>
             </tr>
             <tr>
               <th>Media:</th>
@@ -9269,7 +9269,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
 <section id="references" class="appendix"><div class="header-wrapper"><h2 id="h-references"><bdi class="secno">H. </bdi>References</h2><a class="self-link" href="#references" aria-label="Permalink for Appendix H."></a></div><section id="normative-references"><div class="header-wrapper"><h3 id="h-1-normative-references"><bdi class="secno">H.1 </bdi>Normative references</h3><a class="self-link" href="#normative-references" aria-label="Permalink for Appendix H.1"></a></div>
     
     <dl class="bibliography"><dt id="bib-bidi">[BIDI]</dt><dd>
-      <a href="https://www.unicode.org/reports/tr9/tr9-50.html"><cite>Unicode Bidirectional Algorithm</cite></a>. Manish Goregaokar मनीष गोरेगांवकर; Robin Leroy.  Unicode Consortium. 2 September 2024. Unicode Standard Annex #9. URL: <a href="https://www.unicode.org/reports/tr9/tr9-50.html">https://www.unicode.org/reports/tr9/tr9-50.html</a>
+      <a href="https://www.unicode.org/reports/tr9/tr9-51.html"><cite>Unicode Bidirectional Algorithm</cite></a>. Manish Goregaokar मनीष गोरेगांवकर; Robin Leroy.  Unicode Consortium. 13 August 2025. Unicode Standard Annex #9. URL: <a href="https://www.unicode.org/reports/tr9/tr9-51.html">https://www.unicode.org/reports/tr9/tr9-51.html</a>
     </dd><dt id="bib-css-align-3">[css-align-3]</dt><dd>
       <a href="https://www.w3.org/TR/css-align-3/"><cite>CSS Box Alignment Module Level 3</cite></a>. Elika Etemad; Tab Atkins Jr. W3C. 11 March 2025. W3C Working Draft. URL: <a href="https://www.w3.org/TR/css-align-3/">https://www.w3.org/TR/css-align-3/</a>
     </dd><dt id="bib-css-backgrounds-3">[css-backgrounds-3]</dt><dd>
@@ -9324,7 +9324,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
     </dd><dt id="bib-css-text-decor-4">[css-text-decor-4]</dt><dd>
       <a href="https://www.w3.org/TR/css-text-decor-4/"><cite>CSS Text Decoration Module Level 4</cite></a>. Elika Etemad; Koji Ishii.  W3C. 4 May 2022. W3C Working Draft. URL: <a href="https://www.w3.org/TR/css-text-decor-4/">https://www.w3.org/TR/css-text-decor-4/</a>
     </dd><dt id="bib-cssom-view">[cssom-view]</dt><dd>
-      <a href="https://www.w3.org/TR/cssom-view-1/"><cite>CSSOM View Module</cite></a>. Simon Pieters.  W3C. 17 March 2016. W3C Working Draft. URL: <a href="https://www.w3.org/TR/cssom-view-1/">https://www.w3.org/TR/cssom-view-1/</a>
+      <a href="https://www.w3.org/TR/cssom-view-1/"><cite>CSSOM View Module</cite></a>. Simon Fraser; Emilio Cobos Álvarez.  W3C. 16 September 2025. W3C Working Draft. URL: <a href="https://www.w3.org/TR/cssom-view-1/">https://www.w3.org/TR/cssom-view-1/</a>
     </dd><dt id="bib-houdini">[HOUDINI]</dt><dd>
       <a href="https://drafts.css-houdini.org/"><cite>CSS-TAG Houdini Editor Drafts</cite></a>. URL: <a href="https://drafts.css-houdini.org/">https://drafts.css-houdini.org/</a>
     </dd><dt id="bib-mathml3">[MATHML3]</dt><dd>
@@ -9433,7 +9433,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <p><b>Referenced in:</b></p>
       <ul>
     <li>
-      <a href="#ref-for-dfn-radical-elements-1" title="§ 3.3.3 Radicals <msqrt>, <mroot>">§ 3.3.3 Radicals &lt;msqrt&gt;, &lt;mroot&gt;</a> 
+      <a href="#ref-for-dfn-radical-elements-1" title="§ 3.3.3 Radicals &lt;msqrt&gt;, &lt;mroot&gt;">§ 3.3.3 Radicals &lt;msqrt&gt;, &lt;mroot&gt;</a> 
     </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-mathml-attributes" aria-label="Links in this document to definition: MathML attributes">
@@ -9459,15 +9459,15 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
     <li>
       <a href="#ref-for-dfn-math-1" title="§ 2.1 Elements and attributes">§ 2.1 Elements and attributes</a> <a href="#ref-for-dfn-math-2" title="Reference 2">(2)</a> 
     </li><li>
-      <a href="#ref-for-dfn-math-3" title="§ 2.1.1 The Top-Level <math> Element">§ 2.1.1 The Top-Level &lt;math&gt; Element</a> 
+      <a href="#ref-for-dfn-math-3" title="§ 2.1.1 The Top-Level &lt;math&gt; Element">§ 2.1.1 The Top-Level &lt;math&gt; Element</a> 
     </li><li>
       <a href="#ref-for-dfn-math-4" title="§ 2.1.4 Attributes common to HTML and MathML elements">§ 2.1.4 Attributes common to HTML and MathML elements</a> 
     </li><li>
       <a href="#ref-for-dfn-math-5" title="§ 2.2.5 Focus">§ 2.2.5 Focus</a> 
     </li><li>
-      <a href="#ref-for-dfn-math-6" title="§ 3.1.3 Anonymous <mrow> boxes">§ 3.1.3 Anonymous &lt;mrow&gt; boxes</a> 
+      <a href="#ref-for-dfn-math-6" title="§ 3.1.3 Anonymous &lt;mrow&gt; boxes">§ 3.1.3 Anonymous &lt;mrow&gt; boxes</a> 
     </li><li>
-      <a href="#ref-for-dfn-math-7" title="§ 3.3.1.2 Layout of <mrow>">§ 3.3.1.2 Layout of &lt;mrow&gt;</a> <a href="#ref-for-dfn-math-8" title="Reference 2">(2)</a> 
+      <a href="#ref-for-dfn-math-7" title="§ 3.3.1.2 Layout of &lt;mrow&gt;">§ 3.3.1.2 Layout of &lt;mrow&gt;</a> <a href="#ref-for-dfn-math-8" title="Reference 2">(2)</a> 
     </li><li>
       <a href="#ref-for-dfn-math-9" title="§ 4.3 The math-style property">§ 4.3 The math-style property</a> 
     </li>
@@ -9483,29 +9483,29 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
     <li>
       <a href="#ref-for-dfn-display-1" title="§ 2.1 Elements and attributes">§ 2.1 Elements and attributes</a> 
     </li><li>
-      <a href="#ref-for-dfn-display-2" title="§ 2.1.1 The Top-Level <math> Element">§ 2.1.1 The Top-Level &lt;math&gt; Element</a> <a href="#ref-for-dfn-display-3" title="Reference 2">(2)</a> <a href="#ref-for-dfn-display-4" title="Reference 3">(3)</a> <a href="#ref-for-dfn-display-5" title="Reference 4">(4)</a> 
+      <a href="#ref-for-dfn-display-2" title="§ 2.1.1 The Top-Level &lt;math&gt; Element">§ 2.1.1 The Top-Level &lt;math&gt; Element</a> <a href="#ref-for-dfn-display-3" title="Reference 2">(2)</a> <a href="#ref-for-dfn-display-4" title="Reference 3">(3)</a> <a href="#ref-for-dfn-display-5" title="Reference 4">(4)</a> 
     </li><li>
       <a href="#ref-for-dfn-display-6" title="§ 3.1.1 Box Model">§ 3.1.1 Box Model</a> <a href="#ref-for-dfn-display-7" title="Reference 2">(2)</a> 
     </li><li>
-      <a href="#ref-for-dfn-display-8" title="§ 3.2.1.1 Layout of <mtext>">§ 3.2.1.1 Layout of &lt;mtext&gt;</a> 
+      <a href="#ref-for-dfn-display-8" title="§ 3.2.1.1 Layout of &lt;mtext&gt;">§ 3.2.1.1 Layout of &lt;mtext&gt;</a> 
     </li><li>
       <a href="#ref-for-dfn-display-9" title="§ 3.2.4.3 Layout of operators">§ 3.2.4.3 Layout of operators</a> 
     </li><li>
-      <a href="#ref-for-dfn-display-10" title="§ 3.2.5 Space <mspace>">§ 3.2.5 Space &lt;mspace&gt;</a> 
+      <a href="#ref-for-dfn-display-10" title="§ 3.2.5 Space &lt;mspace&gt;">§ 3.2.5 Space &lt;mspace&gt;</a> 
     </li><li>
-      <a href="#ref-for-dfn-display-11" title="§ 3.3.1.2 Layout of <mrow>">§ 3.3.1.2 Layout of &lt;mrow&gt;</a> 
+      <a href="#ref-for-dfn-display-11" title="§ 3.3.1.2 Layout of &lt;mrow&gt;">§ 3.3.1.2 Layout of &lt;mrow&gt;</a> 
     </li><li>
-      <a href="#ref-for-dfn-display-12" title="§ 3.3.2 Fractions <mfrac>">§ 3.3.2 Fractions &lt;mfrac&gt;</a> 
+      <a href="#ref-for-dfn-display-12" title="§ 3.3.2 Fractions &lt;mfrac&gt;">§ 3.3.2 Fractions &lt;mfrac&gt;</a> 
     </li><li>
-      <a href="#ref-for-dfn-display-13" title="§ 3.3.3 Radicals <msqrt>, <mroot>">§ 3.3.3 Radicals &lt;msqrt&gt;, &lt;mroot&gt;</a> 
+      <a href="#ref-for-dfn-display-13" title="§ 3.3.3 Radicals &lt;msqrt&gt;, &lt;mroot&gt;">§ 3.3.3 Radicals &lt;msqrt&gt;, &lt;mroot&gt;</a> 
     </li><li>
-      <a href="#ref-for-dfn-display-14" title="§ 3.3.6.2 Layout of <mpadded>">§ 3.3.6.2 Layout of &lt;mpadded&gt;</a> 
+      <a href="#ref-for-dfn-display-14" title="§ 3.3.6.2 Layout of &lt;mpadded&gt;">§ 3.3.6.2 Layout of &lt;mpadded&gt;</a> 
     </li><li>
-      <a href="#ref-for-dfn-display-15" title="§ 3.4.1 Subscripts and Superscripts <msub>, <msup>, <msubsup>">§ 3.4.1 Subscripts and Superscripts &lt;msub&gt;, &lt;msup&gt;, &lt;msubsup&gt;</a> 
+      <a href="#ref-for-dfn-display-15" title="§ 3.4.1 Subscripts and Superscripts &lt;msub&gt;, &lt;msup&gt;, &lt;msubsup&gt;">§ 3.4.1 Subscripts and Superscripts &lt;msub&gt;, &lt;msup&gt;, &lt;msubsup&gt;</a> 
     </li><li>
-      <a href="#ref-for-dfn-display-16" title="§ 3.4.2 Underscripts and Overscripts <munder>, <mover>, <munderover>">§ 3.4.2 Underscripts and Overscripts &lt;munder&gt;, &lt;mover&gt;, &lt;munderover&gt;</a> 
+      <a href="#ref-for-dfn-display-16" title="§ 3.4.2 Underscripts and Overscripts &lt;munder&gt;, &lt;mover&gt;, &lt;munderover&gt;">§ 3.4.2 Underscripts and Overscripts &lt;munder&gt;, &lt;mover&gt;, &lt;munderover&gt;</a> 
     </li><li>
-      <a href="#ref-for-dfn-display-17" title="§ 3.4.3 Prescripts and Tensor Indices <mmultiscripts>">§ 3.4.3 Prescripts and Tensor Indices &lt;mmultiscripts&gt;</a> 
+      <a href="#ref-for-dfn-display-17" title="§ 3.4.3 Prescripts and Tensor Indices &lt;mmultiscripts&gt;">§ 3.4.3 Prescripts and Tensor Indices &lt;mmultiscripts&gt;</a> 
     </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-alttext" aria-label="Links in this document to definition: alttext">
@@ -9517,7 +9517,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <p><b>Referenced in:</b></p>
       <ul>
     <li>
-      <a href="#ref-for-dfn-alttext-1" title="§ 2.1.1 The Top-Level <math> Element">§ 2.1.1 The Top-Level &lt;math&gt; Element</a> <a href="#ref-for-dfn-alttext-2" title="Reference 2">(2)</a> 
+      <a href="#ref-for-dfn-alttext-1" title="§ 2.1.1 The Top-Level &lt;math&gt; Element">§ 2.1.1 The Top-Level &lt;math&gt; Element</a> <a href="#ref-for-dfn-alttext-2" title="Reference 2">(2)</a> 
     </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-unsigned-integer" aria-label="Links in this document to definition: unsigned-integer">
@@ -9545,7 +9545,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
     </li><li>
       <a href="#ref-for-dfn-boolean-2" title="§ 3.2.4.2 Dictionary-based attributes">§ 3.2.4.2 Dictionary-based attributes</a> 
     </li><li>
-      <a href="#ref-for-dfn-boolean-3" title="§ 3.4.2 Underscripts and Overscripts <munder>, <mover>, <munderover>">§ 3.4.2 Underscripts and Overscripts &lt;munder&gt;, &lt;mover&gt;, &lt;munderover&gt;</a> 
+      <a href="#ref-for-dfn-boolean-3" title="§ 3.4.2 Underscripts and Overscripts &lt;munder&gt;, &lt;mover&gt;, &lt;munderover&gt;">§ 3.4.2 Underscripts and Overscripts &lt;munder&gt;, &lt;mover&gt;, &lt;munderover&gt;</a> 
     </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-id" aria-label="Links in this document to definition: id">
@@ -9709,13 +9709,13 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
     </li><li>
       <a href="#ref-for-dfn-displaystyle-2" title="§ 2.1.6 The displaystyle and scriptlevel attributes">§ 2.1.6 The displaystyle and scriptlevel attributes</a> <a href="#ref-for-dfn-displaystyle-3" title="Reference 2">(2)</a> <a href="#ref-for-dfn-displaystyle-4" title="Reference 3">(3)</a> 
     </li><li>
-      <a href="#ref-for-dfn-displaystyle-5" title="§ 3.2.4 Operator, Fence, Separator or Accent <mo>">§ 3.2.4 Operator, Fence, Separator or Accent &lt;mo&gt;</a> <a href="#ref-for-dfn-displaystyle-6" title="Reference 2">(2)</a> 
+      <a href="#ref-for-dfn-displaystyle-5" title="§ 3.2.4 Operator, Fence, Separator or Accent &lt;mo&gt;">§ 3.2.4 Operator, Fence, Separator or Accent &lt;mo&gt;</a> <a href="#ref-for-dfn-displaystyle-6" title="Reference 2">(2)</a> 
     </li><li>
-      <a href="#ref-for-dfn-displaystyle-7" title="§ 3.3.2 Fractions <mfrac>">§ 3.3.2 Fractions &lt;mfrac&gt;</a> <a href="#ref-for-dfn-displaystyle-8" title="Reference 2">(2)</a> <a href="#ref-for-dfn-displaystyle-9" title="Reference 3">(3)</a> 
+      <a href="#ref-for-dfn-displaystyle-7" title="§ 3.3.2 Fractions &lt;mfrac&gt;">§ 3.3.2 Fractions &lt;mfrac&gt;</a> <a href="#ref-for-dfn-displaystyle-8" title="Reference 2">(2)</a> <a href="#ref-for-dfn-displaystyle-9" title="Reference 3">(3)</a> 
     </li><li>
-      <a href="#ref-for-dfn-displaystyle-10" title="§ 3.3.3 Radicals <msqrt>, <mroot>">§ 3.3.3 Radicals &lt;msqrt&gt;, &lt;mroot&gt;</a> <a href="#ref-for-dfn-displaystyle-11" title="Reference 2">(2)</a> 
+      <a href="#ref-for-dfn-displaystyle-10" title="§ 3.3.3 Radicals &lt;msqrt&gt;, &lt;mroot&gt;">§ 3.3.3 Radicals &lt;msqrt&gt;, &lt;mroot&gt;</a> <a href="#ref-for-dfn-displaystyle-11" title="Reference 2">(2)</a> 
     </li><li>
-      <a href="#ref-for-dfn-displaystyle-12" title="§ 3.3.4 Style Change <mstyle>">§ 3.3.4 Style Change &lt;mstyle&gt;</a> 
+      <a href="#ref-for-dfn-displaystyle-12" title="§ 3.3.4 Style Change &lt;mstyle&gt;">§ 3.3.4 Style Change &lt;mstyle&gt;</a> 
     </li><li>
       <a href="#ref-for-dfn-displaystyle-13" title="§ 3.4.4 Displaystyle, scriptlevel and math-shift in scripts">§ 3.4.4 Displaystyle, scriptlevel and math-shift in scripts</a> <a href="#ref-for-dfn-displaystyle-14" title="Reference 2">(2)</a> 
     </li><li>
@@ -9735,11 +9735,11 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
     </li><li>
       <a href="#ref-for-dfn-scriptlevel-2" title="§ 2.1.6 The displaystyle and scriptlevel attributes">§ 2.1.6 The displaystyle and scriptlevel attributes</a> <a href="#ref-for-dfn-scriptlevel-3" title="Reference 2">(2)</a> <a href="#ref-for-dfn-scriptlevel-4" title="Reference 3">(3)</a> 
     </li><li>
-      <a href="#ref-for-dfn-scriptlevel-5" title="§ 3.3.2 Fractions <mfrac>">§ 3.3.2 Fractions &lt;mfrac&gt;</a> <a href="#ref-for-dfn-scriptlevel-6" title="Reference 2">(2)</a> 
+      <a href="#ref-for-dfn-scriptlevel-5" title="§ 3.3.2 Fractions &lt;mfrac&gt;">§ 3.3.2 Fractions &lt;mfrac&gt;</a> <a href="#ref-for-dfn-scriptlevel-6" title="Reference 2">(2)</a> 
     </li><li>
-      <a href="#ref-for-dfn-scriptlevel-7" title="§ 3.3.3 Radicals <msqrt>, <mroot>">§ 3.3.3 Radicals &lt;msqrt&gt;, &lt;mroot&gt;</a> <a href="#ref-for-dfn-scriptlevel-8" title="Reference 2">(2)</a> 
+      <a href="#ref-for-dfn-scriptlevel-7" title="§ 3.3.3 Radicals &lt;msqrt&gt;, &lt;mroot&gt;">§ 3.3.3 Radicals &lt;msqrt&gt;, &lt;mroot&gt;</a> <a href="#ref-for-dfn-scriptlevel-8" title="Reference 2">(2)</a> 
     </li><li>
-      <a href="#ref-for-dfn-scriptlevel-9" title="§ 3.3.4 Style Change <mstyle>">§ 3.3.4 Style Change &lt;mstyle&gt;</a> 
+      <a href="#ref-for-dfn-scriptlevel-9" title="§ 3.3.4 Style Change &lt;mstyle&gt;">§ 3.3.4 Style Change &lt;mstyle&gt;</a> 
     </li><li>
       <a href="#ref-for-dfn-scriptlevel-10" title="§ 3.4.4 Displaystyle, scriptlevel and math-shift in scripts">§ 3.4.4 Displaystyle, scriptlevel and math-shift in scripts</a> <a href="#ref-for-dfn-scriptlevel-11" title="Reference 2">(2)</a> 
     </li><li>
@@ -9793,11 +9793,11 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
     <li>
       <a href="#ref-for-dfn-alphabetic-baseline-1" title="§ 3.1.1 Box Model">§ 3.1.1 Box Model</a> <a href="#ref-for-dfn-alphabetic-baseline-2" title="Reference 2">(2)</a> <a href="#ref-for-dfn-alphabetic-baseline-3" title="Reference 3">(3)</a> <a href="#ref-for-dfn-alphabetic-baseline-4" title="Reference 4">(4)</a> <a href="#ref-for-dfn-alphabetic-baseline-5" title="Reference 5">(5)</a> <a href="#ref-for-dfn-alphabetic-baseline-6" title="Reference 6">(6)</a> <a href="#ref-for-dfn-alphabetic-baseline-7" title="Reference 7">(7)</a> 
     </li><li>
-      <a href="#ref-for-dfn-alphabetic-baseline-8" title="§ 3.2.1.1 Layout of <mtext>">§ 3.2.1.1 Layout of &lt;mtext&gt;</a> 
+      <a href="#ref-for-dfn-alphabetic-baseline-8" title="§ 3.2.1.1 Layout of &lt;mtext&gt;">§ 3.2.1.1 Layout of &lt;mtext&gt;</a> 
     </li><li>
-      <a href="#ref-for-dfn-alphabetic-baseline-9" title="§ 3.3.1 Group Sub-Expressions <mrow>">§ 3.3.1 Group Sub-Expressions &lt;mrow&gt;</a> <a href="#ref-for-dfn-alphabetic-baseline-10" title="Reference 2">(2)</a> <a href="#ref-for-dfn-alphabetic-baseline-11" title="Reference 3">(3)</a> 
+      <a href="#ref-for-dfn-alphabetic-baseline-9" title="§ 3.3.1 Group Sub-Expressions &lt;mrow&gt;">§ 3.3.1 Group Sub-Expressions &lt;mrow&gt;</a> <a href="#ref-for-dfn-alphabetic-baseline-10" title="Reference 2">(2)</a> <a href="#ref-for-dfn-alphabetic-baseline-11" title="Reference 3">(3)</a> 
     </li><li>
-      <a href="#ref-for-dfn-alphabetic-baseline-12" title="§ 3.3.1.2 Layout of <mrow>">§ 3.3.1.2 Layout of &lt;mrow&gt;</a> <a href="#ref-for-dfn-alphabetic-baseline-13" title="Reference 2">(2)</a> 
+      <a href="#ref-for-dfn-alphabetic-baseline-12" title="§ 3.3.1.2 Layout of &lt;mrow&gt;">§ 3.3.1.2 Layout of &lt;mrow&gt;</a> <a href="#ref-for-dfn-alphabetic-baseline-13" title="Reference 2">(2)</a> 
     </li><li>
       <a href="#ref-for-dfn-alphabetic-baseline-14" title="§ 3.3.2.1 Fraction with nonzero line thickness">§ 3.3.2.1 Fraction with nonzero line thickness</a> <a href="#ref-for-dfn-alphabetic-baseline-15" title="Reference 2">(2)</a> <a href="#ref-for-dfn-alphabetic-baseline-16" title="Reference 3">(3)</a> 
     </li><li>
@@ -9807,9 +9807,9 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
     </li><li>
       <a href="#ref-for-dfn-alphabetic-baseline-22" title="§ 3.3.3.3 Root with index">§ 3.3.3.3 Root with index</a> <a href="#ref-for-dfn-alphabetic-baseline-23" title="Reference 2">(2)</a> <a href="#ref-for-dfn-alphabetic-baseline-24" title="Reference 3">(3)</a> 
     </li><li>
-      <a href="#ref-for-dfn-alphabetic-baseline-25" title="§ 3.3.6.2 Layout of <mpadded>">§ 3.3.6.2 Layout of &lt;mpadded&gt;</a> <a href="#ref-for-dfn-alphabetic-baseline-26" title="Reference 2">(2)</a> 
+      <a href="#ref-for-dfn-alphabetic-baseline-25" title="§ 3.3.6.2 Layout of &lt;mpadded&gt;">§ 3.3.6.2 Layout of &lt;mpadded&gt;</a> <a href="#ref-for-dfn-alphabetic-baseline-26" title="Reference 2">(2)</a> 
     </li><li>
-      <a href="#ref-for-dfn-alphabetic-baseline-27" title="§ 3.3.7 Making Sub-Expressions Invisible <mphantom>">§ 3.3.7 Making Sub-Expressions Invisible &lt;mphantom&gt;</a> 
+      <a href="#ref-for-dfn-alphabetic-baseline-27" title="§ 3.3.7 Making Sub-Expressions Invisible &lt;mphantom&gt;">§ 3.3.7 Making Sub-Expressions Invisible &lt;mphantom&gt;</a> 
     </li><li>
       <a href="#ref-for-dfn-alphabetic-baseline-28" title="§ 3.4.1.2 Base with subscript">§ 3.4.1.2 Base with subscript</a> <a href="#ref-for-dfn-alphabetic-baseline-29" title="Reference 2">(2)</a> <a href="#ref-for-dfn-alphabetic-baseline-30" title="Reference 3">(3)</a> <a href="#ref-for-dfn-alphabetic-baseline-31" title="Reference 4">(4)</a> 
     </li><li>
@@ -9837,13 +9837,13 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
     </li><li>
       <a href="#ref-for-dfn-line-ascent-2" title="§ 3.1.2 Layout Algorithms">§ 3.1.2 Layout Algorithms</a> <a href="#ref-for-dfn-line-ascent-3" title="Reference 2">(2)</a> <a href="#ref-for-dfn-line-ascent-4" title="Reference 3">(3)</a> 
     </li><li>
-      <a href="#ref-for-dfn-line-ascent-5" title="§ 3.2.1.1 Layout of <mtext>">§ 3.2.1.1 Layout of &lt;mtext&gt;</a> 
+      <a href="#ref-for-dfn-line-ascent-5" title="§ 3.2.1.1 Layout of &lt;mtext&gt;">§ 3.2.1.1 Layout of &lt;mtext&gt;</a> 
     </li><li>
       <a href="#ref-for-dfn-line-ascent-6" title="§ 3.2.4.3 Layout of operators">§ 3.2.4.3 Layout of operators</a> <a href="#ref-for-dfn-line-ascent-7" title="Reference 2">(2)</a> 
     </li><li>
-      <a href="#ref-for-dfn-line-ascent-8" title="§ 3.2.5 Space <mspace>">§ 3.2.5 Space &lt;mspace&gt;</a> 
+      <a href="#ref-for-dfn-line-ascent-8" title="§ 3.2.5 Space &lt;mspace&gt;">§ 3.2.5 Space &lt;mspace&gt;</a> 
     </li><li>
-      <a href="#ref-for-dfn-line-ascent-9" title="§ 3.3.1.2 Layout of <mrow>">§ 3.3.1.2 Layout of &lt;mrow&gt;</a> <a href="#ref-for-dfn-line-ascent-10" title="Reference 2">(2)</a> 
+      <a href="#ref-for-dfn-line-ascent-9" title="§ 3.3.1.2 Layout of &lt;mrow&gt;">§ 3.3.1.2 Layout of &lt;mrow&gt;</a> <a href="#ref-for-dfn-line-ascent-10" title="Reference 2">(2)</a> 
     </li><li>
       <a href="#ref-for-dfn-line-ascent-11" title="§ 3.3.2.1 Fraction with nonzero line thickness">§ 3.3.2.1 Fraction with nonzero line thickness</a> <a href="#ref-for-dfn-line-ascent-12" title="Reference 2">(2)</a> <a href="#ref-for-dfn-line-ascent-13" title="Reference 3">(3)</a> 
     </li><li>
@@ -9855,7 +9855,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
     </li><li>
       <a href="#ref-for-dfn-line-ascent-26" title="§ 3.3.6.1 Inner box and requested parameters">§ 3.3.6.1 Inner box and requested parameters</a> <a href="#ref-for-dfn-line-ascent-27" title="Reference 2">(2)</a> <a href="#ref-for-dfn-line-ascent-28" title="Reference 3">(3)</a> 
     </li><li>
-      <a href="#ref-for-dfn-line-ascent-29" title="§ 3.3.6.2 Layout of <mpadded>">§ 3.3.6.2 Layout of &lt;mpadded&gt;</a> 
+      <a href="#ref-for-dfn-line-ascent-29" title="§ 3.3.6.2 Layout of &lt;mpadded&gt;">§ 3.3.6.2 Layout of &lt;mpadded&gt;</a> 
     </li><li>
       <a href="#ref-for-dfn-line-ascent-30" title="§ 3.4.1.2 Base with subscript">§ 3.4.1.2 Base with subscript</a> <a href="#ref-for-dfn-line-ascent-31" title="Reference 2">(2)</a> <a href="#ref-for-dfn-line-ascent-32" title="Reference 3">(3)</a> 
     </li><li>
@@ -9885,11 +9885,11 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
     </li><li>
       <a href="#ref-for-dfn-line-descent-2" title="§ 3.1.2 Layout Algorithms">§ 3.1.2 Layout Algorithms</a> 
     </li><li>
-      <a href="#ref-for-dfn-line-descent-3" title="§ 3.2.1.1 Layout of <mtext>">§ 3.2.1.1 Layout of &lt;mtext&gt;</a> 
+      <a href="#ref-for-dfn-line-descent-3" title="§ 3.2.1.1 Layout of &lt;mtext&gt;">§ 3.2.1.1 Layout of &lt;mtext&gt;</a> 
     </li><li>
       <a href="#ref-for-dfn-line-descent-4" title="§ 3.2.4.3 Layout of operators">§ 3.2.4.3 Layout of operators</a> <a href="#ref-for-dfn-line-descent-5" title="Reference 2">(2)</a> 
     </li><li>
-      <a href="#ref-for-dfn-line-descent-6" title="§ 3.3.1.2 Layout of <mrow>">§ 3.3.1.2 Layout of &lt;mrow&gt;</a> 
+      <a href="#ref-for-dfn-line-descent-6" title="§ 3.3.1.2 Layout of &lt;mrow&gt;">§ 3.3.1.2 Layout of &lt;mrow&gt;</a> 
     </li><li>
       <a href="#ref-for-dfn-line-descent-7" title="§ 3.3.2.1 Fraction with nonzero line thickness">§ 3.3.2.1 Fraction with nonzero line thickness</a> <a href="#ref-for-dfn-line-descent-8" title="Reference 2">(2)</a> <a href="#ref-for-dfn-line-descent-9" title="Reference 3">(3)</a> 
     </li><li>
@@ -9899,7 +9899,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
     </li><li>
       <a href="#ref-for-dfn-line-descent-16" title="§ 3.3.3.3 Root with index">§ 3.3.3.3 Root with index</a> <a href="#ref-for-dfn-line-descent-17" title="Reference 2">(2)</a> <a href="#ref-for-dfn-line-descent-18" title="Reference 3">(3)</a> <a href="#ref-for-dfn-line-descent-19" title="Reference 4">(4)</a> <a href="#ref-for-dfn-line-descent-20" title="Reference 5">(5)</a> 
     </li><li>
-      <a href="#ref-for-dfn-line-descent-21" title="§ 3.3.6.2 Layout of <mpadded>">§ 3.3.6.2 Layout of &lt;mpadded&gt;</a> 
+      <a href="#ref-for-dfn-line-descent-21" title="§ 3.3.6.2 Layout of &lt;mpadded&gt;">§ 3.3.6.2 Layout of &lt;mpadded&gt;</a> 
     </li><li>
       <a href="#ref-for-dfn-line-descent-22" title="§ 3.4.1.2 Base with subscript">§ 3.4.1.2 Base with subscript</a> <a href="#ref-for-dfn-line-descent-23" title="Reference 2">(2)</a> <a href="#ref-for-dfn-line-descent-24" title="Reference 3">(3)</a> 
     </li><li>
@@ -9925,7 +9925,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <p><b>Referenced in:</b></p>
       <ul>
     <li>
-      <a href="#ref-for-dfn-mathematical-baseline-1" title="§ 3.3.1 Group Sub-Expressions <mrow>">§ 3.3.1 Group Sub-Expressions &lt;mrow&gt;</a> 
+      <a href="#ref-for-dfn-mathematical-baseline-1" title="§ 3.3.1 Group Sub-Expressions &lt;mrow&gt;">§ 3.3.1 Group Sub-Expressions &lt;mrow&gt;</a> 
     </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-math-axis" aria-label="Links in this document to definition: math axis">
@@ -9939,9 +9939,9 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
     <li>
       <a href="#ref-for-dfn-math-axis-1" title="§ 3.2.4.3 Layout of operators">§ 3.2.4.3 Layout of operators</a> <a href="#ref-for-dfn-math-axis-2" title="Reference 2">(2)</a> 
     </li><li>
-      <a href="#ref-for-dfn-math-axis-3" title="§ 3.3.1 Group Sub-Expressions <mrow>">§ 3.3.1 Group Sub-Expressions &lt;mrow&gt;</a> 
+      <a href="#ref-for-dfn-math-axis-3" title="§ 3.3.1 Group Sub-Expressions &lt;mrow&gt;">§ 3.3.1 Group Sub-Expressions &lt;mrow&gt;</a> 
     </li><li>
-      <a href="#ref-for-dfn-math-axis-4" title="§ 3.5.1 Table or Matrix <mtable>">§ 3.5.1 Table or Matrix &lt;mtable&gt;</a> 
+      <a href="#ref-for-dfn-math-axis-4" title="§ 3.5.1 Table or Matrix &lt;mtable&gt;">§ 3.5.1 Table or Matrix &lt;mtable&gt;</a> 
     </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-ink-over-baseline" aria-label="Links in this document to definition: ink-over baseline">
@@ -9957,7 +9957,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
     </li><li>
       <a href="#ref-for-dfn-ink-over-baseline-2" title="§ 3.1.2 Layout Algorithms">§ 3.1.2 Layout Algorithms</a> 
     </li><li>
-      <a href="#ref-for-dfn-ink-over-baseline-3" title="§ 3.2.1.1 Layout of <mtext>">§ 3.2.1.1 Layout of &lt;mtext&gt;</a> 
+      <a href="#ref-for-dfn-ink-over-baseline-3" title="§ 3.2.1.1 Layout of &lt;mtext&gt;">§ 3.2.1.1 Layout of &lt;mtext&gt;</a> 
     </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-ink-line-ascent" aria-label="Links in this document to definition: ink line-ascent">
@@ -9971,11 +9971,11 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
     <li>
       <a href="#ref-for-dfn-ink-line-ascent-1" title="§ 3.1.2 Layout Algorithms">§ 3.1.2 Layout Algorithms</a> <a href="#ref-for-dfn-ink-line-ascent-2" title="Reference 2">(2)</a> 
     </li><li>
-      <a href="#ref-for-dfn-ink-line-ascent-3" title="§ 3.2.1.1 Layout of <mtext>">§ 3.2.1.1 Layout of &lt;mtext&gt;</a> <a href="#ref-for-dfn-ink-line-ascent-4" title="Reference 2">(2)</a> 
+      <a href="#ref-for-dfn-ink-line-ascent-3" title="§ 3.2.1.1 Layout of &lt;mtext&gt;">§ 3.2.1.1 Layout of &lt;mtext&gt;</a> <a href="#ref-for-dfn-ink-line-ascent-4" title="Reference 2">(2)</a> 
     </li><li>
       <a href="#ref-for-dfn-ink-line-ascent-5" title="§ 3.2.4.3 Layout of operators">§ 3.2.4.3 Layout of operators</a> <a href="#ref-for-dfn-ink-line-ascent-6" title="Reference 2">(2)</a> 
     </li><li>
-      <a href="#ref-for-dfn-ink-line-ascent-7" title="§ 3.3.1.2 Layout of <mrow>">§ 3.3.1.2 Layout of &lt;mrow&gt;</a> <a href="#ref-for-dfn-ink-line-ascent-8" title="Reference 2">(2)</a> <a href="#ref-for-dfn-ink-line-ascent-9" title="Reference 3">(3)</a> 
+      <a href="#ref-for-dfn-ink-line-ascent-7" title="§ 3.3.1.2 Layout of &lt;mrow&gt;">§ 3.3.1.2 Layout of &lt;mrow&gt;</a> <a href="#ref-for-dfn-ink-line-ascent-8" title="Reference 2">(2)</a> <a href="#ref-for-dfn-ink-line-ascent-9" title="Reference 3">(3)</a> 
     </li><li>
       <a href="#ref-for-dfn-ink-line-ascent-10" title="§ 3.3.2.1 Fraction with nonzero line thickness">§ 3.3.2.1 Fraction with nonzero line thickness</a> 
     </li><li>
@@ -10005,7 +10005,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
     </li><li>
       <a href="#ref-for-dfn-ink-under-baseline-2" title="§ 3.1.2 Layout Algorithms">§ 3.1.2 Layout Algorithms</a> 
     </li><li>
-      <a href="#ref-for-dfn-ink-under-baseline-3" title="§ 3.2.1.1 Layout of <mtext>">§ 3.2.1.1 Layout of &lt;mtext&gt;</a> 
+      <a href="#ref-for-dfn-ink-under-baseline-3" title="§ 3.2.1.1 Layout of &lt;mtext&gt;">§ 3.2.1.1 Layout of &lt;mtext&gt;</a> 
     </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-ink-line-descent" aria-label="Links in this document to definition: ink line-descent">
@@ -10019,11 +10019,11 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
     <li>
       <a href="#ref-for-dfn-ink-line-descent-1" title="§ 3.1.2 Layout Algorithms">§ 3.1.2 Layout Algorithms</a> <a href="#ref-for-dfn-ink-line-descent-2" title="Reference 2">(2)</a> 
     </li><li>
-      <a href="#ref-for-dfn-ink-line-descent-3" title="§ 3.2.1.1 Layout of <mtext>">§ 3.2.1.1 Layout of &lt;mtext&gt;</a> <a href="#ref-for-dfn-ink-line-descent-4" title="Reference 2">(2)</a> 
+      <a href="#ref-for-dfn-ink-line-descent-3" title="§ 3.2.1.1 Layout of &lt;mtext&gt;">§ 3.2.1.1 Layout of &lt;mtext&gt;</a> <a href="#ref-for-dfn-ink-line-descent-4" title="Reference 2">(2)</a> 
     </li><li>
       <a href="#ref-for-dfn-ink-line-descent-5" title="§ 3.2.4.3 Layout of operators">§ 3.2.4.3 Layout of operators</a> <a href="#ref-for-dfn-ink-line-descent-6" title="Reference 2">(2)</a> 
     </li><li>
-      <a href="#ref-for-dfn-ink-line-descent-7" title="§ 3.3.1.2 Layout of <mrow>">§ 3.3.1.2 Layout of &lt;mrow&gt;</a> <a href="#ref-for-dfn-ink-line-descent-8" title="Reference 2">(2)</a> 
+      <a href="#ref-for-dfn-ink-line-descent-7" title="§ 3.3.1.2 Layout of &lt;mrow&gt;">§ 3.3.1.2 Layout of &lt;mrow&gt;</a> <a href="#ref-for-dfn-ink-line-descent-8" title="Reference 2">(2)</a> 
     </li><li>
       <a href="#ref-for-dfn-ink-line-descent-9" title="§ 3.3.2.1 Fraction with nonzero line thickness">§ 3.3.2.1 Fraction with nonzero line thickness</a> 
     </li><li>
@@ -10049,11 +10049,11 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
     <li>
       <a href="#ref-for-dfn-italic-correction-1" title="§ 3.1.2 Layout Algorithms">§ 3.1.2 Layout Algorithms</a> <a href="#ref-for-dfn-italic-correction-2" title="Reference 2">(2)</a> <a href="#ref-for-dfn-italic-correction-3" title="Reference 3">(3)</a> <a href="#ref-for-dfn-italic-correction-4" title="Reference 4">(4)</a> 
     </li><li>
-      <a href="#ref-for-dfn-italic-correction-5" title="§ 3.2.1.1 Layout of <mtext>">§ 3.2.1.1 Layout of &lt;mtext&gt;</a> 
+      <a href="#ref-for-dfn-italic-correction-5" title="§ 3.2.1.1 Layout of &lt;mtext&gt;">§ 3.2.1.1 Layout of &lt;mtext&gt;</a> 
     </li><li>
       <a href="#ref-for-dfn-italic-correction-6" title="§ 3.2.4.3 Layout of operators">§ 3.2.4.3 Layout of operators</a> 
     </li><li>
-      <a href="#ref-for-dfn-italic-correction-7" title="§ 3.3.1.2 Layout of <mrow>">§ 3.3.1.2 Layout of &lt;mrow&gt;</a> <a href="#ref-for-dfn-italic-correction-8" title="Reference 2">(2)</a> <a href="#ref-for-dfn-italic-correction-9" title="Reference 3">(3)</a> <a href="#ref-for-dfn-italic-correction-10" title="Reference 4">(4)</a> <a href="#ref-for-dfn-italic-correction-11" title="Reference 5">(5)</a> 
+      <a href="#ref-for-dfn-italic-correction-7" title="§ 3.3.1.2 Layout of &lt;mrow&gt;">§ 3.3.1.2 Layout of &lt;mrow&gt;</a> <a href="#ref-for-dfn-italic-correction-8" title="Reference 2">(2)</a> <a href="#ref-for-dfn-italic-correction-9" title="Reference 3">(3)</a> <a href="#ref-for-dfn-italic-correction-10" title="Reference 4">(4)</a> <a href="#ref-for-dfn-italic-correction-11" title="Reference 5">(5)</a> 
     </li><li>
       <a href="#ref-for-dfn-italic-correction-12" title="§ 3.4.1.2 Base with subscript">§ 3.4.1.2 Base with subscript</a> 
     </li><li>
@@ -10089,7 +10089,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
     <li>
       <a href="#ref-for-dfn-inline-offset-1" title="§ 3.1.1 Box Model">§ 3.1.1 Box Model</a> <a href="#ref-for-dfn-inline-offset-2" title="Reference 2">(2)</a> 
     </li><li>
-      <a href="#ref-for-dfn-inline-offset-3" title="§ 3.3.1.2 Layout of <mrow>">§ 3.3.1.2 Layout of &lt;mrow&gt;</a> 
+      <a href="#ref-for-dfn-inline-offset-3" title="§ 3.3.1.2 Layout of &lt;mrow&gt;">§ 3.3.1.2 Layout of &lt;mrow&gt;</a> 
     </li><li>
       <a href="#ref-for-dfn-inline-offset-4" title="§ 3.3.2.1 Fraction with nonzero line thickness">§ 3.3.2.1 Fraction with nonzero line thickness</a> 
     </li><li>
@@ -10125,7 +10125,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
     <li>
       <a href="#ref-for-dfn-block-offset-1" title="§ 3.1.1 Box Model">§ 3.1.1 Box Model</a> <a href="#ref-for-dfn-block-offset-2" title="Reference 2">(2)</a> 
     </li><li>
-      <a href="#ref-for-dfn-block-offset-3" title="§ 3.3.1.2 Layout of <mrow>">§ 3.3.1.2 Layout of &lt;mrow&gt;</a> 
+      <a href="#ref-for-dfn-block-offset-3" title="§ 3.3.1.2 Layout of &lt;mrow&gt;">§ 3.3.1.2 Layout of &lt;mrow&gt;</a> 
     </li><li>
       <a href="#ref-for-dfn-block-offset-4" title="§ 3.3.3.2 Square root">§ 3.3.3.2 Square root</a> 
     </li><li>
@@ -10153,11 +10153,11 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <p><b>Referenced in:</b></p>
       <ul>
     <li>
-      <a href="#ref-for-dfn-math-content-box-1" title="§ 2.1.1 The Top-Level <math> Element">§ 2.1.1 The Top-Level &lt;math&gt; Element</a> <a href="#ref-for-dfn-math-content-box-2" title="Reference 2">(2)</a> <a href="#ref-for-dfn-math-content-box-3" title="Reference 3">(3)</a> 
+      <a href="#ref-for-dfn-math-content-box-1" title="§ 2.1.1 The Top-Level &lt;math&gt; Element">§ 2.1.1 The Top-Level &lt;math&gt; Element</a> <a href="#ref-for-dfn-math-content-box-2" title="Reference 2">(2)</a> <a href="#ref-for-dfn-math-content-box-3" title="Reference 3">(3)</a> 
     </li><li>
       <a href="#ref-for-dfn-math-content-box-4" title="§ 3.1.2 Layout Algorithms">§ 3.1.2 Layout Algorithms</a> <a href="#ref-for-dfn-math-content-box-5" title="Reference 2">(2)</a> <a href="#ref-for-dfn-math-content-box-6" title="Reference 3">(3)</a> <a href="#ref-for-dfn-math-content-box-7" title="Reference 4">(4)</a> 
     </li><li>
-      <a href="#ref-for-dfn-math-content-box-8" title="§ 3.2.1.1 Layout of <mtext>">§ 3.2.1.1 Layout of &lt;mtext&gt;</a> <a href="#ref-for-dfn-math-content-box-9" title="Reference 2">(2)</a> <a href="#ref-for-dfn-math-content-box-10" title="Reference 3">(3)</a> <a href="#ref-for-dfn-math-content-box-11" title="Reference 4">(4)</a> 
+      <a href="#ref-for-dfn-math-content-box-8" title="§ 3.2.1.1 Layout of &lt;mtext&gt;">§ 3.2.1.1 Layout of &lt;mtext&gt;</a> <a href="#ref-for-dfn-math-content-box-9" title="Reference 2">(2)</a> <a href="#ref-for-dfn-math-content-box-10" title="Reference 3">(3)</a> <a href="#ref-for-dfn-math-content-box-11" title="Reference 4">(4)</a> 
     </li><li>
       <a href="#ref-for-dfn-math-content-box-12" title="§ 3.3.2.1 Fraction with nonzero line thickness">§ 3.3.2.1 Fraction with nonzero line thickness</a> <a href="#ref-for-dfn-math-content-box-13" title="Reference 2">(2)</a> 
     </li><li>
@@ -10235,43 +10235,43 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <p><b>Referenced in:</b></p>
       <ul>
     <li>
-      <a href="#ref-for-dfn-anonymous-box-1" title="§ 3.1.3 Anonymous <mrow> boxes">§ 3.1.3 Anonymous &lt;mrow&gt; boxes</a> 
+      <a href="#ref-for-dfn-anonymous-box-1" title="§ 3.1.3 Anonymous &lt;mrow&gt; boxes">§ 3.1.3 Anonymous &lt;mrow&gt; boxes</a> 
     </li>
   </ul>
-    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-anonymous-mrow-box" aria-label="Links in this document to definition: anonymous <mrow> box">
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-anonymous-mrow-box" aria-label="Links in this document to definition: anonymous &lt;mrow&gt; box">
       <span class="caret"></span>
       <div>
-        <a class="self-link" href="#dfn-anonymous-mrow-box" aria-label="Permalink for definition: anonymous <mrow> box. Activate to close this dialog.">Permalink</a>
+        <a class="self-link" href="#dfn-anonymous-mrow-box" aria-label="Permalink for definition: anonymous &lt;mrow&gt; box. Activate to close this dialog.">Permalink</a>
          
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
     <li>
-      <a href="#ref-for-dfn-anonymous-mrow-box-1" title="§ 3.1.3 Anonymous <mrow> boxes">§ 3.1.3 Anonymous &lt;mrow&gt; boxes</a> 
+      <a href="#ref-for-dfn-anonymous-mrow-box-1" title="§ 3.1.3 Anonymous &lt;mrow&gt; boxes">§ 3.1.3 Anonymous &lt;mrow&gt; boxes</a> 
     </li><li>
       <a href="#ref-for-dfn-anonymous-mrow-box-2" title="§ 3.2.4.1 Embellished operators">§ 3.2.4.1 Embellished operators</a> 
     </li><li>
       <a href="#ref-for-dfn-anonymous-mrow-box-3" title="§ 3.2.5.1 Definition of space-like elements">§ 3.2.5.1 Definition of space-like elements</a> 
     </li><li>
-      <a href="#ref-for-dfn-anonymous-mrow-box-4" title="§ 3.3.1.2 Layout of <mrow>">§ 3.3.1.2 Layout of &lt;mrow&gt;</a> 
+      <a href="#ref-for-dfn-anonymous-mrow-box-4" title="§ 3.3.1.2 Layout of &lt;mrow&gt;">§ 3.3.1.2 Layout of &lt;mrow&gt;</a> 
     </li>
   </ul>
-    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-generates-an-anonymous-mrow-box" aria-label="Links in this document to definition: generates an anonymous <mrow> box">
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-generates-an-anonymous-mrow-box" aria-label="Links in this document to definition: generates an anonymous &lt;mrow&gt; box">
       <span class="caret"></span>
       <div>
-        <a class="self-link" href="#dfn-generates-an-anonymous-mrow-box" aria-label="Permalink for definition: generates an anonymous <mrow> box. Activate to close this dialog.">Permalink</a>
+        <a class="self-link" href="#dfn-generates-an-anonymous-mrow-box" aria-label="Permalink for definition: generates an anonymous &lt;mrow&gt; box. Activate to close this dialog.">Permalink</a>
          
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
     <li>
-      <a href="#ref-for-dfn-generates-an-anonymous-mrow-box-1" title="§ 3.1.3 Anonymous <mrow> boxes">§ 3.1.3 Anonymous &lt;mrow&gt; boxes</a> 
+      <a href="#ref-for-dfn-generates-an-anonymous-mrow-box-1" title="§ 3.1.3 Anonymous &lt;mrow&gt; boxes">§ 3.1.3 Anonymous &lt;mrow&gt; boxes</a> 
     </li><li>
-      <a href="#ref-for-dfn-generates-an-anonymous-mrow-box-2" title="§ 3.3.3 Radicals <msqrt>, <mroot>">§ 3.3.3 Radicals &lt;msqrt&gt;, &lt;mroot&gt;</a> 
+      <a href="#ref-for-dfn-generates-an-anonymous-mrow-box-2" title="§ 3.3.3 Radicals &lt;msqrt&gt;, &lt;mroot&gt;">§ 3.3.3 Radicals &lt;msqrt&gt;, &lt;mroot&gt;</a> 
     </li><li>
       <a href="#ref-for-dfn-generates-an-anonymous-mrow-box-3" title="§ 3.3.6.1 Inner box and requested parameters">§ 3.3.6.1 Inner box and requested parameters</a> 
     </li><li>
-      <a href="#ref-for-dfn-generates-an-anonymous-mrow-box-4" title="§ 3.5.3 Entry in Table or Matrix <mtd>">§ 3.5.3 Entry in Table or Matrix &lt;mtd&gt;</a> 
+      <a href="#ref-for-dfn-generates-an-anonymous-mrow-box-4" title="§ 3.5.3 Entry in Table or Matrix &lt;mtd&gt;">§ 3.5.3 Entry in Table or Matrix &lt;mtd&gt;</a> 
     </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-mtext" aria-label="Links in this document to definition: mtext">
@@ -10287,15 +10287,15 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
     </li><li>
       <a href="#ref-for-dfn-mtext-2" title="§ 2.2.1 HTML and SVG">§ 2.2.1 HTML and SVG</a> 
     </li><li>
-      <a href="#ref-for-dfn-mtext-3" title="§ 3.2.1 Text <mtext>">§ 3.2.1 Text &lt;mtext&gt;</a> 
+      <a href="#ref-for-dfn-mtext-3" title="§ 3.2.1 Text &lt;mtext&gt;">§ 3.2.1 Text &lt;mtext&gt;</a> 
     </li><li>
-      <a href="#ref-for-dfn-mtext-4" title="§ 3.2.2 Identifier <mi>">§ 3.2.2 Identifier &lt;mi&gt;</a> 
+      <a href="#ref-for-dfn-mtext-4" title="§ 3.2.2 Identifier &lt;mi&gt;">§ 3.2.2 Identifier &lt;mi&gt;</a> 
     </li><li>
-      <a href="#ref-for-dfn-mtext-5" title="§ 3.2.3 Number <mn>">§ 3.2.3 Number &lt;mn&gt;</a> 
+      <a href="#ref-for-dfn-mtext-5" title="§ 3.2.3 Number &lt;mn&gt;">§ 3.2.3 Number &lt;mn&gt;</a> 
     </li><li>
       <a href="#ref-for-dfn-mtext-6" title="§ 3.2.5.1 Definition of space-like elements">§ 3.2.5.1 Definition of space-like elements</a> 
     </li><li>
-      <a href="#ref-for-dfn-mtext-7" title="§ 3.2.6 String Literal <ms>">§ 3.2.6 String Literal &lt;ms&gt;</a> 
+      <a href="#ref-for-dfn-mtext-7" title="§ 3.2.6 String Literal &lt;ms&gt;">§ 3.2.6 String Literal &lt;ms&gt;</a> 
     </li><li>
       <a href="#ref-for-dfn-mtext-8" title="§ 3.7 Semantics and Presentation">§ 3.7 Semantics and Presentation</a> 
     </li>
@@ -10311,7 +10311,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
     <li>
       <a href="#ref-for-dfn-mi-1" title="§ 2.1 Elements and attributes">§ 2.1 Elements and attributes</a> 
     </li><li>
-      <a href="#ref-for-dfn-mi-2" title="§ 3.2.2 Identifier <mi>">§ 3.2.2 Identifier &lt;mi&gt;</a> <a href="#ref-for-dfn-mi-3" title="Reference 2">(2)</a> 
+      <a href="#ref-for-dfn-mi-2" title="§ 3.2.2 Identifier &lt;mi&gt;">§ 3.2.2 Identifier &lt;mi&gt;</a> <a href="#ref-for-dfn-mi-3" title="Reference 2">(2)</a> 
     </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-mathvariant" aria-label="Links in this document to definition: mathvariant">
@@ -10323,7 +10323,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <p><b>Referenced in:</b></p>
       <ul>
     <li>
-      <a href="#ref-for-dfn-mathvariant-1" title="§ 3.2.2 Identifier <mi>">§ 3.2.2 Identifier &lt;mi&gt;</a> 
+      <a href="#ref-for-dfn-mathvariant-1" title="§ 3.2.2 Identifier &lt;mi&gt;">§ 3.2.2 Identifier &lt;mi&gt;</a> 
     </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-mn" aria-label="Links in this document to definition: mn">
@@ -10337,7 +10337,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
     <li>
       <a href="#ref-for-dfn-mn-1" title="§ 2.1 Elements and attributes">§ 2.1 Elements and attributes</a> 
     </li><li>
-      <a href="#ref-for-dfn-mn-2" title="§ 3.2.3 Number <mn>">§ 3.2.3 Number &lt;mn&gt;</a> 
+      <a href="#ref-for-dfn-mn-2" title="§ 3.2.3 Number &lt;mn&gt;">§ 3.2.3 Number &lt;mn&gt;</a> 
     </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-mo" aria-label="Links in this document to definition: mo">
@@ -10351,13 +10351,13 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
     <li>
       <a href="#ref-for-dfn-mo-1" title="§ 2.1 Elements and attributes">§ 2.1 Elements and attributes</a> 
     </li><li>
-      <a href="#ref-for-dfn-mo-2" title="§ 3.2.4 Operator, Fence, Separator or Accent <mo>">§ 3.2.4 Operator, Fence, Separator or Accent &lt;mo&gt;</a> 
+      <a href="#ref-for-dfn-mo-2" title="§ 3.2.4 Operator, Fence, Separator or Accent &lt;mo&gt;">§ 3.2.4 Operator, Fence, Separator or Accent &lt;mo&gt;</a> 
     </li><li>
       <a href="#ref-for-dfn-mo-3" title="§ 3.2.4.1 Embellished operators">§ 3.2.4.1 Embellished operators</a> <a href="#ref-for-dfn-mo-4" title="Reference 2">(2)</a> 
     </li><li>
       <a href="#ref-for-dfn-mo-5" title="§ 3.2.4.2 Dictionary-based attributes">§ 3.2.4.2 Dictionary-based attributes</a> <a href="#ref-for-dfn-mo-6" title="Reference 2">(2)</a> <a href="#ref-for-dfn-mo-7" title="Reference 3">(3)</a> 
     </li><li>
-      <a href="#ref-for-dfn-mo-8" title="§ 3.3.1 Group Sub-Expressions <mrow>">§ 3.3.1 Group Sub-Expressions &lt;mrow&gt;</a> 
+      <a href="#ref-for-dfn-mo-8" title="§ 3.3.1 Group Sub-Expressions &lt;mrow&gt;">§ 3.3.1 Group Sub-Expressions &lt;mrow&gt;</a> 
     </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-fence" aria-label="Links in this document to definition: fence">
@@ -10369,7 +10369,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <p><b>Referenced in:</b></p>
       <ul>
     <li>
-      <a href="#ref-for-dfn-fence-1" title="§ 3.2.4 Operator, Fence, Separator or Accent <mo>">§ 3.2.4 Operator, Fence, Separator or Accent &lt;mo&gt;</a> <a href="#ref-for-dfn-fence-2" title="Reference 2">(2)</a> 
+      <a href="#ref-for-dfn-fence-1" title="§ 3.2.4 Operator, Fence, Separator or Accent &lt;mo&gt;">§ 3.2.4 Operator, Fence, Separator or Accent &lt;mo&gt;</a> <a href="#ref-for-dfn-fence-2" title="Reference 2">(2)</a> 
     </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-separator" aria-label="Links in this document to definition: separator">
@@ -10381,7 +10381,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <p><b>Referenced in:</b></p>
       <ul>
     <li>
-      <a href="#ref-for-dfn-separator-1" title="§ 3.2.4 Operator, Fence, Separator or Accent <mo>">§ 3.2.4 Operator, Fence, Separator or Accent &lt;mo&gt;</a> <a href="#ref-for-dfn-separator-2" title="Reference 2">(2)</a> 
+      <a href="#ref-for-dfn-separator-1" title="§ 3.2.4 Operator, Fence, Separator or Accent &lt;mo&gt;">§ 3.2.4 Operator, Fence, Separator or Accent &lt;mo&gt;</a> <a href="#ref-for-dfn-separator-2" title="Reference 2">(2)</a> 
     </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-embellished-operator" aria-label="Links in this document to definition: embellished operator">
@@ -10401,13 +10401,13 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
     </li><li>
       <a href="#ref-for-dfn-embellished-operator-17" title="§ 3.3.1.1 Algorithm for stretching operators along the block axis">§ 3.3.1.1 Algorithm for stretching operators along the block axis</a> <a href="#ref-for-dfn-embellished-operator-18" title="Reference 2">(2)</a> <a href="#ref-for-dfn-embellished-operator-19" title="Reference 3">(3)</a> 
     </li><li>
-      <a href="#ref-for-dfn-embellished-operator-20" title="§ 3.3.1.2 Layout of <mrow>">§ 3.3.1.2 Layout of &lt;mrow&gt;</a> <a href="#ref-for-dfn-embellished-operator-21" title="Reference 2">(2)</a> <a href="#ref-for-dfn-embellished-operator-22" title="Reference 3">(3)</a> <a href="#ref-for-dfn-embellished-operator-23" title="Reference 4">(4)</a> <a href="#ref-for-dfn-embellished-operator-24" title="Reference 5">(5)</a> <a href="#ref-for-dfn-embellished-operator-25" title="Reference 6">(6)</a> <a href="#ref-for-dfn-embellished-operator-26" title="Reference 7">(7)</a> <a href="#ref-for-dfn-embellished-operator-27" title="Reference 8">(8)</a> 
+      <a href="#ref-for-dfn-embellished-operator-20" title="§ 3.3.1.2 Layout of &lt;mrow&gt;">§ 3.3.1.2 Layout of &lt;mrow&gt;</a> <a href="#ref-for-dfn-embellished-operator-21" title="Reference 2">(2)</a> <a href="#ref-for-dfn-embellished-operator-22" title="Reference 3">(3)</a> <a href="#ref-for-dfn-embellished-operator-23" title="Reference 4">(4)</a> <a href="#ref-for-dfn-embellished-operator-24" title="Reference 5">(5)</a> <a href="#ref-for-dfn-embellished-operator-25" title="Reference 6">(6)</a> <a href="#ref-for-dfn-embellished-operator-26" title="Reference 7">(7)</a> <a href="#ref-for-dfn-embellished-operator-27" title="Reference 8">(8)</a> 
     </li><li>
       <a href="#ref-for-dfn-embellished-operator-28" title="§ 3.4.1.2 Base with subscript">§ 3.4.1.2 Base with subscript</a> 
     </li><li>
       <a href="#ref-for-dfn-embellished-operator-29" title="§ 3.4.1.3 Base with superscript">§ 3.4.1.3 Base with superscript</a> 
     </li><li>
-      <a href="#ref-for-dfn-embellished-operator-30" title="§ 3.4.2.1 Children of <munder>, <mover>, <munderover>">§ 3.4.2.1 Children of &lt;munder&gt;, &lt;mover&gt;, &lt;munderover&gt;</a> 
+      <a href="#ref-for-dfn-embellished-operator-30" title="§ 3.4.2.1 Children of &lt;munder&gt;, &lt;mover&gt;, &lt;munderover&gt;">§ 3.4.2.1 Children of &lt;munder&gt;, &lt;mover&gt;, &lt;munderover&gt;</a> 
     </li><li>
       <a href="#ref-for-dfn-embellished-operator-31" title="§ 3.4.2.2 Algorithm for stretching operators along the inline axis">§ 3.4.2.2 Algorithm for stretching operators along the inline axis</a> <a href="#ref-for-dfn-embellished-operator-32" title="Reference 2">(2)</a> 
     </li><li>
@@ -10463,7 +10463,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <p><b>Referenced in:</b></p>
       <ul>
     <li>
-      <a href="#ref-for-dfn-form-1" title="§ 3.2.4 Operator, Fence, Separator or Accent <mo>">§ 3.2.4 Operator, Fence, Separator or Accent &lt;mo&gt;</a> 
+      <a href="#ref-for-dfn-form-1" title="§ 3.2.4 Operator, Fence, Separator or Accent &lt;mo&gt;">§ 3.2.4 Operator, Fence, Separator or Accent &lt;mo&gt;</a> 
     </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-algorithm-for-determining-the-form-of-an-embellished-operator" aria-label="Links in this document to definition: algorithm for determining the form of an embellished operator">
@@ -10555,7 +10555,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
     <li>
       <a href="#ref-for-dfn-movablelimits-1" title="§ 3.2.4.2 Dictionary-based attributes">§ 3.2.4.2 Dictionary-based attributes</a> 
     </li><li>
-      <a href="#ref-for-dfn-movablelimits-2" title="§ 3.4.2.1 Children of <munder>, <mover>, <munderover>">§ 3.4.2.1 Children of &lt;munder&gt;, &lt;mover&gt;, &lt;munderover&gt;</a> 
+      <a href="#ref-for-dfn-movablelimits-2" title="§ 3.4.2.1 Children of &lt;munder&gt;, &lt;mover&gt;, &lt;munderover&gt;">§ 3.4.2.1 Children of &lt;munder&gt;, &lt;mover&gt;, &lt;munderover&gt;</a> 
     </li><li>
       <a href="#ref-for-dfn-movablelimits-3" title="§ 4.3 The math-style property">§ 4.3 The math-style property</a> 
     </li><li>
@@ -10571,7 +10571,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <p><b>Referenced in:</b></p>
       <ul>
     <li>
-      <a href="#ref-for-dfn-stretchy-0-1" title="§ 3.2.4 Operator, Fence, Separator or Accent <mo>">§ 3.2.4 Operator, Fence, Separator or Accent &lt;mo&gt;</a> <a href="#ref-for-dfn-stretchy-0-2" title="Reference 2">(2)</a> 
+      <a href="#ref-for-dfn-stretchy-0-1" title="§ 3.2.4 Operator, Fence, Separator or Accent &lt;mo&gt;">§ 3.2.4 Operator, Fence, Separator or Accent &lt;mo&gt;</a> <a href="#ref-for-dfn-stretchy-0-2" title="Reference 2">(2)</a> 
     </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-symmetric-0" aria-label="Links in this document to definition: symmetric">
@@ -10583,7 +10583,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <p><b>Referenced in:</b></p>
       <ul>
     <li>
-      <a href="#ref-for-dfn-symmetric-0-1" title="§ 3.2.4 Operator, Fence, Separator or Accent <mo>">§ 3.2.4 Operator, Fence, Separator or Accent &lt;mo&gt;</a> <a href="#ref-for-dfn-symmetric-0-2" title="Reference 2">(2)</a> 
+      <a href="#ref-for-dfn-symmetric-0-1" title="§ 3.2.4 Operator, Fence, Separator or Accent &lt;mo&gt;">§ 3.2.4 Operator, Fence, Separator or Accent &lt;mo&gt;</a> <a href="#ref-for-dfn-symmetric-0-2" title="Reference 2">(2)</a> 
     </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-largeop-0" aria-label="Links in this document to definition: largeop">
@@ -10595,7 +10595,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <p><b>Referenced in:</b></p>
       <ul>
     <li>
-      <a href="#ref-for-dfn-largeop-0-1" title="§ 3.2.4 Operator, Fence, Separator or Accent <mo>">§ 3.2.4 Operator, Fence, Separator or Accent &lt;mo&gt;</a> <a href="#ref-for-dfn-largeop-0-2" title="Reference 2">(2)</a> 
+      <a href="#ref-for-dfn-largeop-0-1" title="§ 3.2.4 Operator, Fence, Separator or Accent &lt;mo&gt;">§ 3.2.4 Operator, Fence, Separator or Accent &lt;mo&gt;</a> <a href="#ref-for-dfn-largeop-0-2" title="Reference 2">(2)</a> 
     </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-movablelimits-0" aria-label="Links in this document to definition: movablelimits">
@@ -10607,7 +10607,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <p><b>Referenced in:</b></p>
       <ul>
     <li>
-      <a href="#ref-for-dfn-movablelimits-0-1" title="§ 3.2.4 Operator, Fence, Separator or Accent <mo>">§ 3.2.4 Operator, Fence, Separator or Accent &lt;mo&gt;</a> <a href="#ref-for-dfn-movablelimits-0-2" title="Reference 2">(2)</a> 
+      <a href="#ref-for-dfn-movablelimits-0-1" title="§ 3.2.4 Operator, Fence, Separator or Accent &lt;mo&gt;">§ 3.2.4 Operator, Fence, Separator or Accent &lt;mo&gt;</a> <a href="#ref-for-dfn-movablelimits-0-2" title="Reference 2">(2)</a> 
     </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-lspace" aria-label="Links in this document to definition: lspace">
@@ -10621,7 +10621,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
     <li>
       <a href="#ref-for-dfn-lspace-1" title="§ 3.2.4.2 Dictionary-based attributes">§ 3.2.4.2 Dictionary-based attributes</a> 
     </li><li>
-      <a href="#ref-for-dfn-lspace-2" title="§ 3.3.1.2 Layout of <mrow>">§ 3.3.1.2 Layout of &lt;mrow&gt;</a> <a href="#ref-for-dfn-lspace-3" title="Reference 2">(2)</a> <a href="#ref-for-dfn-lspace-4" title="Reference 3">(3)</a> 
+      <a href="#ref-for-dfn-lspace-2" title="§ 3.3.1.2 Layout of &lt;mrow&gt;">§ 3.3.1.2 Layout of &lt;mrow&gt;</a> <a href="#ref-for-dfn-lspace-3" title="Reference 2">(2)</a> <a href="#ref-for-dfn-lspace-4" title="Reference 3">(3)</a> 
     </li><li>
       <a href="#ref-for-dfn-lspace-5" title="§ B.2 Operator Dictionary (human-readable)">§ B.2 Operator Dictionary (human-readable)</a> 
     </li>
@@ -10637,7 +10637,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
     <li>
       <a href="#ref-for-dfn-rspace-1" title="§ 3.2.4.2 Dictionary-based attributes">§ 3.2.4.2 Dictionary-based attributes</a> 
     </li><li>
-      <a href="#ref-for-dfn-rspace-2" title="§ 3.3.1.2 Layout of <mrow>">§ 3.3.1.2 Layout of &lt;mrow&gt;</a> <a href="#ref-for-dfn-rspace-3" title="Reference 2">(2)</a> <a href="#ref-for-dfn-rspace-4" title="Reference 3">(3)</a> 
+      <a href="#ref-for-dfn-rspace-2" title="§ 3.3.1.2 Layout of &lt;mrow&gt;">§ 3.3.1.2 Layout of &lt;mrow&gt;</a> <a href="#ref-for-dfn-rspace-3" title="Reference 2">(2)</a> <a href="#ref-for-dfn-rspace-4" title="Reference 3">(3)</a> 
     </li><li>
       <a href="#ref-for-dfn-rspace-5" title="§ B.2 Operator Dictionary (human-readable)">§ B.2 Operator Dictionary (human-readable)</a> 
     </li>
@@ -10677,7 +10677,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <p><b>Referenced in:</b></p>
       <ul>
     <li>
-      <a href="#ref-for-dfn-lspace-0-1" title="§ 3.2.4 Operator, Fence, Separator or Accent <mo>">§ 3.2.4 Operator, Fence, Separator or Accent &lt;mo&gt;</a> <a href="#ref-for-dfn-lspace-0-2" title="Reference 2">(2)</a> 
+      <a href="#ref-for-dfn-lspace-0-1" title="§ 3.2.4 Operator, Fence, Separator or Accent &lt;mo&gt;">§ 3.2.4 Operator, Fence, Separator or Accent &lt;mo&gt;</a> <a href="#ref-for-dfn-lspace-0-2" title="Reference 2">(2)</a> 
     </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-rspace-0" aria-label="Links in this document to definition: rspace">
@@ -10689,7 +10689,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <p><b>Referenced in:</b></p>
       <ul>
     <li>
-      <a href="#ref-for-dfn-rspace-0-1" title="§ 3.2.4 Operator, Fence, Separator or Accent <mo>">§ 3.2.4 Operator, Fence, Separator or Accent &lt;mo&gt;</a> <a href="#ref-for-dfn-rspace-0-2" title="Reference 2">(2)</a> 
+      <a href="#ref-for-dfn-rspace-0-1" title="§ 3.2.4 Operator, Fence, Separator or Accent &lt;mo&gt;">§ 3.2.4 Operator, Fence, Separator or Accent &lt;mo&gt;</a> <a href="#ref-for-dfn-rspace-0-2" title="Reference 2">(2)</a> 
     </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-minsize-0" aria-label="Links in this document to definition: minsize">
@@ -10701,7 +10701,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <p><b>Referenced in:</b></p>
       <ul>
     <li>
-      <a href="#ref-for-dfn-minsize-0-1" title="§ 3.2.4 Operator, Fence, Separator or Accent <mo>">§ 3.2.4 Operator, Fence, Separator or Accent &lt;mo&gt;</a> <a href="#ref-for-dfn-minsize-0-2" title="Reference 2">(2)</a> 
+      <a href="#ref-for-dfn-minsize-0-1" title="§ 3.2.4 Operator, Fence, Separator or Accent &lt;mo&gt;">§ 3.2.4 Operator, Fence, Separator or Accent &lt;mo&gt;</a> <a href="#ref-for-dfn-minsize-0-2" title="Reference 2">(2)</a> 
     </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-maxsize-0" aria-label="Links in this document to definition: maxsize">
@@ -10713,7 +10713,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <p><b>Referenced in:</b></p>
       <ul>
     <li>
-      <a href="#ref-for-dfn-maxsize-0-1" title="§ 3.2.4 Operator, Fence, Separator or Accent <mo>">§ 3.2.4 Operator, Fence, Separator or Accent &lt;mo&gt;</a> <a href="#ref-for-dfn-maxsize-0-2" title="Reference 2">(2)</a> 
+      <a href="#ref-for-dfn-maxsize-0-1" title="§ 3.2.4 Operator, Fence, Separator or Accent &lt;mo&gt;">§ 3.2.4 Operator, Fence, Separator or Accent &lt;mo&gt;</a> <a href="#ref-for-dfn-maxsize-0-2" title="Reference 2">(2)</a> 
     </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-algorithm-for-determining-the-properties-of-an-embellished-operator" aria-label="Links in this document to definition: algorithm for determining the properties of an embellished operator tests: 1 mo-single-char-and-children">
@@ -10739,9 +10739,9 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
     <li>
       <a href="#ref-for-dfn-mspace-1" title="§ 2.1 Elements and attributes">§ 2.1 Elements and attributes</a> 
     </li><li>
-      <a href="#ref-for-dfn-mspace-2" title="§ 3.2.4 Operator, Fence, Separator or Accent <mo>">§ 3.2.4 Operator, Fence, Separator or Accent &lt;mo&gt;</a> 
+      <a href="#ref-for-dfn-mspace-2" title="§ 3.2.4 Operator, Fence, Separator or Accent &lt;mo&gt;">§ 3.2.4 Operator, Fence, Separator or Accent &lt;mo&gt;</a> 
     </li><li>
-      <a href="#ref-for-dfn-mspace-3" title="§ 3.2.5 Space <mspace>">§ 3.2.5 Space &lt;mspace&gt;</a> 
+      <a href="#ref-for-dfn-mspace-3" title="§ 3.2.5 Space &lt;mspace&gt;">§ 3.2.5 Space &lt;mspace&gt;</a> 
     </li><li>
       <a href="#ref-for-dfn-mspace-4" title="§ 3.2.5.1 Definition of space-like elements">§ 3.2.5.1 Definition of space-like elements</a> 
     </li>
@@ -10755,7 +10755,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <p><b>Referenced in:</b></p>
       <ul>
     <li>
-      <a href="#ref-for-attribute-mspace-width-1" title="§ 3.2.5 Space <mspace>">§ 3.2.5 Space &lt;mspace&gt;</a> 
+      <a href="#ref-for-attribute-mspace-width-1" title="§ 3.2.5 Space &lt;mspace&gt;">§ 3.2.5 Space &lt;mspace&gt;</a> 
     </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-attribute-mspace-height" aria-label="Links in this document to definition: height">
@@ -10767,7 +10767,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <p><b>Referenced in:</b></p>
       <ul>
     <li>
-      <a href="#ref-for-attribute-mspace-height-1" title="§ 3.2.5 Space <mspace>">§ 3.2.5 Space &lt;mspace&gt;</a> 
+      <a href="#ref-for-attribute-mspace-height-1" title="§ 3.2.5 Space &lt;mspace&gt;">§ 3.2.5 Space &lt;mspace&gt;</a> 
     </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-attribute-mspace-depth" aria-label="Links in this document to definition: depth">
@@ -10779,7 +10779,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <p><b>Referenced in:</b></p>
       <ul>
     <li>
-      <a href="#ref-for-attribute-mspace-depth-1" title="§ 3.2.5 Space <mspace>">§ 3.2.5 Space &lt;mspace&gt;</a> 
+      <a href="#ref-for-attribute-mspace-depth-1" title="§ 3.2.5 Space &lt;mspace&gt;">§ 3.2.5 Space &lt;mspace&gt;</a> 
     </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-space-like" aria-label="Links in this document to definition: space-like element">
@@ -10809,7 +10809,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
     <li>
       <a href="#ref-for-dfn-ms-1" title="§ 2.1 Elements and attributes">§ 2.1 Elements and attributes</a> 
     </li><li>
-      <a href="#ref-for-dfn-ms-2" title="§ 3.2.6 String Literal <ms>">§ 3.2.6 String Literal &lt;ms&gt;</a> 
+      <a href="#ref-for-dfn-ms-2" title="§ 3.2.6 String Literal &lt;ms&gt;">§ 3.2.6 String Literal &lt;ms&gt;</a> 
     </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-mrow" aria-label="Links in this document to definition: mrow">
@@ -10823,29 +10823,29 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
     <li>
       <a href="#ref-for-dfn-mrow-1" title="§ 2.1 Elements and attributes">§ 2.1 Elements and attributes</a> <a href="#ref-for-dfn-mrow-2" title="Reference 2">(2)</a> 
     </li><li>
-      <a href="#ref-for-dfn-mrow-3" title="§ 2.1.1 The Top-Level <math> Element">§ 2.1.1 The Top-Level &lt;math&gt; Element</a> <a href="#ref-for-dfn-mrow-4" title="Reference 2">(2)</a> 
+      <a href="#ref-for-dfn-mrow-3" title="§ 2.1.1 The Top-Level &lt;math&gt; Element">§ 2.1.1 The Top-Level &lt;math&gt; Element</a> <a href="#ref-for-dfn-mrow-4" title="Reference 2">(2)</a> 
     </li><li>
-      <a href="#ref-for-dfn-mrow-5" title="§ 3.1.3 Anonymous <mrow> boxes">§ 3.1.3 Anonymous &lt;mrow&gt; boxes</a> 
+      <a href="#ref-for-dfn-mrow-5" title="§ 3.1.3 Anonymous &lt;mrow&gt; boxes">§ 3.1.3 Anonymous &lt;mrow&gt; boxes</a> 
     </li><li>
-      <a href="#ref-for-dfn-mrow-6" title="§ 3.3.1 Group Sub-Expressions <mrow>">§ 3.3.1 Group Sub-Expressions &lt;mrow&gt;</a> <a href="#ref-for-dfn-mrow-7" title="Reference 2">(2)</a> <a href="#ref-for-dfn-mrow-8" title="Reference 3">(3)</a> 
+      <a href="#ref-for-dfn-mrow-6" title="§ 3.3.1 Group Sub-Expressions &lt;mrow&gt;">§ 3.3.1 Group Sub-Expressions &lt;mrow&gt;</a> <a href="#ref-for-dfn-mrow-7" title="Reference 2">(2)</a> <a href="#ref-for-dfn-mrow-8" title="Reference 3">(3)</a> 
     </li><li>
-      <a href="#ref-for-dfn-mrow-9" title="§ 3.3.2 Fractions <mfrac>">§ 3.3.2 Fractions &lt;mfrac&gt;</a> 
+      <a href="#ref-for-dfn-mrow-9" title="§ 3.3.2 Fractions &lt;mfrac&gt;">§ 3.3.2 Fractions &lt;mfrac&gt;</a> 
     </li><li>
-      <a href="#ref-for-dfn-mrow-10" title="§ 3.3.3 Radicals <msqrt>, <mroot>">§ 3.3.3 Radicals &lt;msqrt&gt;, &lt;mroot&gt;</a> 
+      <a href="#ref-for-dfn-mrow-10" title="§ 3.3.3 Radicals &lt;msqrt&gt;, &lt;mroot&gt;">§ 3.3.3 Radicals &lt;msqrt&gt;, &lt;mroot&gt;</a> 
     </li><li>
-      <a href="#ref-for-dfn-mrow-11" title="§ 3.3.4 Style Change <mstyle>">§ 3.3.4 Style Change &lt;mstyle&gt;</a> <a href="#ref-for-dfn-mrow-12" title="Reference 2">(2)</a> 
+      <a href="#ref-for-dfn-mrow-11" title="§ 3.3.4 Style Change &lt;mstyle&gt;">§ 3.3.4 Style Change &lt;mstyle&gt;</a> <a href="#ref-for-dfn-mrow-12" title="Reference 2">(2)</a> 
     </li><li>
-      <a href="#ref-for-dfn-mrow-13" title="§ 3.3.5 Error Message <merror>">§ 3.3.5 Error Message &lt;merror&gt;</a> 
+      <a href="#ref-for-dfn-mrow-13" title="§ 3.3.5 Error Message &lt;merror&gt;">§ 3.3.5 Error Message &lt;merror&gt;</a> 
     </li><li>
-      <a href="#ref-for-dfn-mrow-14" title="§ 3.3.6 Adjust Space Around Content <mpadded>">§ 3.3.6 Adjust Space Around Content &lt;mpadded&gt;</a> 
+      <a href="#ref-for-dfn-mrow-14" title="§ 3.3.6 Adjust Space Around Content &lt;mpadded&gt;">§ 3.3.6 Adjust Space Around Content &lt;mpadded&gt;</a> 
     </li><li>
-      <a href="#ref-for-dfn-mrow-15" title="§ 3.3.7 Making Sub-Expressions Invisible <mphantom>">§ 3.3.7 Making Sub-Expressions Invisible &lt;mphantom&gt;</a> 
+      <a href="#ref-for-dfn-mrow-15" title="§ 3.3.7 Making Sub-Expressions Invisible &lt;mphantom&gt;">§ 3.3.7 Making Sub-Expressions Invisible &lt;mphantom&gt;</a> 
     </li><li>
-      <a href="#ref-for-dfn-mrow-16" title="§ 3.4.1.1 Children of <msub>, <msup>, <msubsup>">§ 3.4.1.1 Children of &lt;msub&gt;, &lt;msup&gt;, &lt;msubsup&gt;</a> <a href="#ref-for-dfn-mrow-17" title="Reference 2">(2)</a> <a href="#ref-for-dfn-mrow-18" title="Reference 3">(3)</a> 
+      <a href="#ref-for-dfn-mrow-16" title="§ 3.4.1.1 Children of &lt;msub&gt;, &lt;msup&gt;, &lt;msubsup&gt;">§ 3.4.1.1 Children of &lt;msub&gt;, &lt;msup&gt;, &lt;msubsup&gt;</a> <a href="#ref-for-dfn-mrow-17" title="Reference 2">(2)</a> <a href="#ref-for-dfn-mrow-18" title="Reference 3">(3)</a> 
     </li><li>
-      <a href="#ref-for-dfn-mrow-19" title="§ 3.4.2.1 Children of <munder>, <mover>, <munderover>">§ 3.4.2.1 Children of &lt;munder&gt;, &lt;mover&gt;, &lt;munderover&gt;</a> <a href="#ref-for-dfn-mrow-20" title="Reference 2">(2)</a> <a href="#ref-for-dfn-mrow-21" title="Reference 3">(3)</a> 
+      <a href="#ref-for-dfn-mrow-19" title="§ 3.4.2.1 Children of &lt;munder&gt;, &lt;mover&gt;, &lt;munderover&gt;">§ 3.4.2.1 Children of &lt;munder&gt;, &lt;mover&gt;, &lt;munderover&gt;</a> <a href="#ref-for-dfn-mrow-20" title="Reference 2">(2)</a> <a href="#ref-for-dfn-mrow-21" title="Reference 3">(3)</a> 
     </li><li>
-      <a href="#ref-for-dfn-mrow-22" title="§ 3.4.3 Prescripts and Tensor Indices <mmultiscripts>">§ 3.4.3 Prescripts and Tensor Indices &lt;mmultiscripts&gt;</a> <a href="#ref-for-dfn-mrow-23" title="Reference 2">(2)</a> <a href="#ref-for-dfn-mrow-24" title="Reference 3">(3)</a> 
+      <a href="#ref-for-dfn-mrow-22" title="§ 3.4.3 Prescripts and Tensor Indices &lt;mmultiscripts&gt;">§ 3.4.3 Prescripts and Tensor Indices &lt;mmultiscripts&gt;</a> <a href="#ref-for-dfn-mrow-23" title="Reference 2">(2)</a> <a href="#ref-for-dfn-mrow-24" title="Reference 3">(3)</a> 
     </li><li>
       <a href="#ref-for-dfn-mrow-25" title="§ 3.7 Semantics and Presentation">§ 3.7 Semantics and Presentation</a> 
     </li><li>
@@ -10863,7 +10863,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <p><b>Referenced in:</b></p>
       <ul>
     <li>
-      <a href="#ref-for-dfn-algorithm-for-stretching-operators-along-the-block-axis-1" title="§ 3.3.1.2 Layout of <mrow>">§ 3.3.1.2 Layout of &lt;mrow&gt;</a> 
+      <a href="#ref-for-dfn-algorithm-for-stretching-operators-along-the-block-axis-1" title="§ 3.3.1.2 Layout of &lt;mrow&gt;">§ 3.3.1.2 Layout of &lt;mrow&gt;</a> 
     </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-slanted" aria-label="Links in this document to definition: slanted">
@@ -10875,7 +10875,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <p><b>Referenced in:</b></p>
       <ul>
     <li>
-      <a href="#ref-for-dfn-slanted-1" title="§ 3.3.1.2 Layout of <mrow>">§ 3.3.1.2 Layout of &lt;mrow&gt;</a> <a href="#ref-for-dfn-slanted-2" title="Reference 2">(2)</a> <a href="#ref-for-dfn-slanted-3" title="Reference 3">(3)</a> <a href="#ref-for-dfn-slanted-4" title="Reference 4">(4)</a> 
+      <a href="#ref-for-dfn-slanted-1" title="§ 3.3.1.2 Layout of &lt;mrow&gt;">§ 3.3.1.2 Layout of &lt;mrow&gt;</a> <a href="#ref-for-dfn-slanted-2" title="Reference 2">(2)</a> <a href="#ref-for-dfn-slanted-3" title="Reference 3">(3)</a> <a href="#ref-for-dfn-slanted-4" title="Reference 4">(4)</a> 
     </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-mfrac" aria-label="Links in this document to definition: mfrac">
@@ -10891,7 +10891,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
     </li><li>
       <a href="#ref-for-dfn-mfrac-2" title="§ 3.2.4.1 Embellished operators">§ 3.2.4.1 Embellished operators</a> <a href="#ref-for-dfn-mfrac-3" title="Reference 2">(2)</a> 
     </li><li>
-      <a href="#ref-for-dfn-mfrac-4" title="§ 3.3.1 Group Sub-Expressions <mrow>">§ 3.3.1 Group Sub-Expressions &lt;mrow&gt;</a> 
+      <a href="#ref-for-dfn-mfrac-4" title="§ 3.3.1 Group Sub-Expressions &lt;mrow&gt;">§ 3.3.1 Group Sub-Expressions &lt;mrow&gt;</a> 
     </li><li>
       <a href="#ref-for-dfn-mfrac-5" title="§ 4.3 The math-style property">§ 4.3 The math-style property</a> 
     </li>
@@ -10907,7 +10907,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
     <li>
       <a href="#ref-for-dfn-linethickness-1" title="§ 2.1 Elements and attributes">§ 2.1 Elements and attributes</a> 
     </li><li>
-      <a href="#ref-for-dfn-linethickness-2" title="§ 3.3.2 Fractions <mfrac>">§ 3.3.2 Fractions &lt;mfrac&gt;</a> <a href="#ref-for-dfn-linethickness-3" title="Reference 2">(2)</a> 
+      <a href="#ref-for-dfn-linethickness-2" title="§ 3.3.2 Fractions &lt;mfrac&gt;">§ 3.3.2 Fractions &lt;mfrac&gt;</a> <a href="#ref-for-dfn-linethickness-3" title="Reference 2">(2)</a> 
     </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-fraction-line-thickness" aria-label="Links in this document to definition: fraction line thickness">
@@ -10933,7 +10933,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <p><b>Referenced in:</b></p>
       <ul>
     <li>
-      <a href="#ref-for-dfn-numerator-1" title="§ 3.3.2 Fractions <mfrac>">§ 3.3.2 Fractions &lt;mfrac&gt;</a> 
+      <a href="#ref-for-dfn-numerator-1" title="§ 3.3.2 Fractions &lt;mfrac&gt;">§ 3.3.2 Fractions &lt;mfrac&gt;</a> 
     </li><li>
       <a href="#ref-for-dfn-numerator-2" title="§ 3.3.2.1 Fraction with nonzero line thickness">§ 3.3.2.1 Fraction with nonzero line thickness</a> <a href="#ref-for-dfn-numerator-3" title="Reference 2">(2)</a> <a href="#ref-for-dfn-numerator-4" title="Reference 3">(3)</a> <a href="#ref-for-dfn-numerator-5" title="Reference 4">(4)</a> <a href="#ref-for-dfn-numerator-6" title="Reference 5">(5)</a> <a href="#ref-for-dfn-numerator-7" title="Reference 6">(6)</a> <a href="#ref-for-dfn-numerator-8" title="Reference 7">(7)</a> <a href="#ref-for-dfn-numerator-9" title="Reference 8">(8)</a> <a href="#ref-for-dfn-numerator-10" title="Reference 9">(9)</a> 
     </li><li>
@@ -10949,7 +10949,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <p><b>Referenced in:</b></p>
       <ul>
     <li>
-      <a href="#ref-for-dfn-denominator-1" title="§ 3.3.2 Fractions <mfrac>">§ 3.3.2 Fractions &lt;mfrac&gt;</a> 
+      <a href="#ref-for-dfn-denominator-1" title="§ 3.3.2 Fractions &lt;mfrac&gt;">§ 3.3.2 Fractions &lt;mfrac&gt;</a> 
     </li><li>
       <a href="#ref-for-dfn-denominator-2" title="§ 3.3.2.1 Fraction with nonzero line thickness">§ 3.3.2.1 Fraction with nonzero line thickness</a> <a href="#ref-for-dfn-denominator-3" title="Reference 2">(2)</a> <a href="#ref-for-dfn-denominator-4" title="Reference 3">(3)</a> <a href="#ref-for-dfn-denominator-5" title="Reference 4">(4)</a> <a href="#ref-for-dfn-denominator-6" title="Reference 5">(5)</a> <a href="#ref-for-dfn-denominator-7" title="Reference 6">(6)</a> <a href="#ref-for-dfn-denominator-8" title="Reference 7">(7)</a> <a href="#ref-for-dfn-denominator-9" title="Reference 8">(8)</a> <a href="#ref-for-dfn-denominator-10" title="Reference 9">(9)</a> 
     </li><li>
@@ -10967,11 +10967,11 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
     <li>
       <a href="#ref-for-dfn-msqrt-1" title="§ 2.1 Elements and attributes">§ 2.1 Elements and attributes</a> <a href="#ref-for-dfn-msqrt-2" title="Reference 2">(2)</a> 
     </li><li>
-      <a href="#ref-for-dfn-msqrt-3" title="§ 3.1.3 Anonymous <mrow> boxes">§ 3.1.3 Anonymous &lt;mrow&gt; boxes</a> 
+      <a href="#ref-for-dfn-msqrt-3" title="§ 3.1.3 Anonymous &lt;mrow&gt; boxes">§ 3.1.3 Anonymous &lt;mrow&gt; boxes</a> 
     </li><li>
       <a href="#ref-for-dfn-msqrt-4" title="§ 3.2.4.2 Dictionary-based attributes">§ 3.2.4.2 Dictionary-based attributes</a> <a href="#ref-for-dfn-msqrt-5" title="Reference 2">(2)</a> 
     </li><li>
-      <a href="#ref-for-dfn-msqrt-6" title="§ 3.3.3 Radicals <msqrt>, <mroot>">§ 3.3.3 Radicals &lt;msqrt&gt;, &lt;mroot&gt;</a> <a href="#ref-for-dfn-msqrt-7" title="Reference 2">(2)</a> 
+      <a href="#ref-for-dfn-msqrt-6" title="§ 3.3.3 Radicals &lt;msqrt&gt;, &lt;mroot&gt;">§ 3.3.3 Radicals &lt;msqrt&gt;, &lt;mroot&gt;</a> <a href="#ref-for-dfn-msqrt-7" title="Reference 2">(2)</a> 
     </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-mroot" aria-label="Links in this document to definition: mroot">
@@ -10985,7 +10985,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
     <li>
       <a href="#ref-for-dfn-mroot-1" title="§ 2.1 Elements and attributes">§ 2.1 Elements and attributes</a> <a href="#ref-for-dfn-mroot-2" title="Reference 2">(2)</a> 
     </li><li>
-      <a href="#ref-for-dfn-mroot-3" title="§ 3.3.3 Radicals <msqrt>, <mroot>">§ 3.3.3 Radicals &lt;msqrt&gt;, &lt;mroot&gt;</a> <a href="#ref-for-dfn-mroot-4" title="Reference 2">(2)</a> <a href="#ref-for-dfn-mroot-5" title="Reference 3">(3)</a> 
+      <a href="#ref-for-dfn-mroot-3" title="§ 3.3.3 Radicals &lt;msqrt&gt;, &lt;mroot&gt;">§ 3.3.3 Radicals &lt;msqrt&gt;, &lt;mroot&gt;</a> <a href="#ref-for-dfn-mroot-4" title="Reference 2">(2)</a> <a href="#ref-for-dfn-mroot-5" title="Reference 3">(3)</a> 
     </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-mroot-base" aria-label="Links in this document to definition: mroot base">
@@ -11109,7 +11109,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
     <li>
       <a href="#ref-for-dfn-mstyle-1" title="§ 2.1 Elements and attributes">§ 2.1 Elements and attributes</a> <a href="#ref-for-dfn-mstyle-2" title="Reference 2">(2)</a> 
     </li><li>
-      <a href="#ref-for-dfn-mstyle-3" title="§ 3.3.4 Style Change <mstyle>">§ 3.3.4 Style Change &lt;mstyle&gt;</a> 
+      <a href="#ref-for-dfn-mstyle-3" title="§ 3.3.4 Style Change &lt;mstyle&gt;">§ 3.3.4 Style Change &lt;mstyle&gt;</a> 
     </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-merror" aria-label="Links in this document to definition: merror">
@@ -11123,7 +11123,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
     <li>
       <a href="#ref-for-dfn-merror-1" title="§ 2.1 Elements and attributes">§ 2.1 Elements and attributes</a> <a href="#ref-for-dfn-merror-2" title="Reference 2">(2)</a> 
     </li><li>
-      <a href="#ref-for-dfn-merror-3" title="§ 3.3.5 Error Message <merror>">§ 3.3.5 Error Message &lt;merror&gt;</a> 
+      <a href="#ref-for-dfn-merror-3" title="§ 3.3.5 Error Message &lt;merror&gt;">§ 3.3.5 Error Message &lt;merror&gt;</a> 
     </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-mpadded" aria-label="Links in this document to definition: mpadded">
@@ -11143,7 +11143,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
     </li><li>
       <a href="#ref-for-dfn-mpadded-6" title="§ 3.2.5.1 Definition of space-like elements">§ 3.2.5.1 Definition of space-like elements</a> 
     </li><li>
-      <a href="#ref-for-dfn-mpadded-7" title="§ 3.3.6 Adjust Space Around Content <mpadded>">§ 3.3.6 Adjust Space Around Content &lt;mpadded&gt;</a> 
+      <a href="#ref-for-dfn-mpadded-7" title="§ 3.3.6 Adjust Space Around Content &lt;mpadded&gt;">§ 3.3.6 Adjust Space Around Content &lt;mpadded&gt;</a> 
     </li><li>
       <a href="#ref-for-dfn-mpadded-8" title="§ 3.3.6.1 Inner box and requested parameters">§ 3.3.6.1 Inner box and requested parameters</a> 
     </li>
@@ -11157,7 +11157,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <p><b>Referenced in:</b></p>
       <ul>
     <li>
-      <a href="#ref-for-attribute-mpadded-width-1" title="§ 3.3.6 Adjust Space Around Content <mpadded>">§ 3.3.6 Adjust Space Around Content &lt;mpadded&gt;</a> 
+      <a href="#ref-for-attribute-mpadded-width-1" title="§ 3.3.6 Adjust Space Around Content &lt;mpadded&gt;">§ 3.3.6 Adjust Space Around Content &lt;mpadded&gt;</a> 
     </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-attribute-mpadded-height" aria-label="Links in this document to definition: height">
@@ -11169,7 +11169,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <p><b>Referenced in:</b></p>
       <ul>
     <li>
-      <a href="#ref-for-attribute-mpadded-height-1" title="§ 3.3.6 Adjust Space Around Content <mpadded>">§ 3.3.6 Adjust Space Around Content &lt;mpadded&gt;</a> 
+      <a href="#ref-for-attribute-mpadded-height-1" title="§ 3.3.6 Adjust Space Around Content &lt;mpadded&gt;">§ 3.3.6 Adjust Space Around Content &lt;mpadded&gt;</a> 
     </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-attribute-mpadded-depth" aria-label="Links in this document to definition: depth">
@@ -11181,7 +11181,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <p><b>Referenced in:</b></p>
       <ul>
     <li>
-      <a href="#ref-for-attribute-mpadded-depth-1" title="§ 3.3.6 Adjust Space Around Content <mpadded>">§ 3.3.6 Adjust Space Around Content &lt;mpadded&gt;</a> 
+      <a href="#ref-for-attribute-mpadded-depth-1" title="§ 3.3.6 Adjust Space Around Content &lt;mpadded&gt;">§ 3.3.6 Adjust Space Around Content &lt;mpadded&gt;</a> 
     </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-attribute-mpadded-lspace" aria-label="Links in this document to definition: lspace">
@@ -11193,7 +11193,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <p><b>Referenced in:</b></p>
       <ul>
     <li>
-      <a href="#ref-for-attribute-mpadded-lspace-1" title="§ 3.3.6 Adjust Space Around Content <mpadded>">§ 3.3.6 Adjust Space Around Content &lt;mpadded&gt;</a> 
+      <a href="#ref-for-attribute-mpadded-lspace-1" title="§ 3.3.6 Adjust Space Around Content &lt;mpadded&gt;">§ 3.3.6 Adjust Space Around Content &lt;mpadded&gt;</a> 
     </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-attribute-mpadded-voffset" aria-label="Links in this document to definition: voffset">
@@ -11205,7 +11205,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <p><b>Referenced in:</b></p>
       <ul>
     <li>
-      <a href="#ref-for-attribute-mpadded-voffset-1" title="§ 3.3.6 Adjust Space Around Content <mpadded>">§ 3.3.6 Adjust Space Around Content &lt;mpadded&gt;</a> 
+      <a href="#ref-for-attribute-mpadded-voffset-1" title="§ 3.3.6 Adjust Space Around Content &lt;mpadded&gt;">§ 3.3.6 Adjust Space Around Content &lt;mpadded&gt;</a> 
     </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-mpadded-inner-box" aria-label="Links in this document to definition: mpadded inner box">
@@ -11217,7 +11217,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <p><b>Referenced in:</b></p>
       <ul>
     <li>
-      <a href="#ref-for-dfn-mpadded-inner-box-1" title="§ 3.3.6.2 Layout of <mpadded>">§ 3.3.6.2 Layout of &lt;mpadded&gt;</a> <a href="#ref-for-dfn-mpadded-inner-box-2" title="Reference 2">(2)</a> 
+      <a href="#ref-for-dfn-mpadded-inner-box-1" title="§ 3.3.6.2 Layout of &lt;mpadded&gt;">§ 3.3.6.2 Layout of &lt;mpadded&gt;</a> <a href="#ref-for-dfn-mpadded-inner-box-2" title="Reference 2">(2)</a> 
     </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-mphantom" aria-label="Links in this document to definition: mphantom">
@@ -11233,7 +11233,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
     </li><li>
       <a href="#ref-for-dfn-mphantom-3" title="§ 3.2.5.1 Definition of space-like elements">§ 3.2.5.1 Definition of space-like elements</a> 
     </li><li>
-      <a href="#ref-for-dfn-mphantom-4" title="§ 3.3.7 Making Sub-Expressions Invisible <mphantom>">§ 3.3.7 Making Sub-Expressions Invisible &lt;mphantom&gt;</a> 
+      <a href="#ref-for-dfn-mphantom-4" title="§ 3.3.7 Making Sub-Expressions Invisible &lt;mphantom&gt;">§ 3.3.7 Making Sub-Expressions Invisible &lt;mphantom&gt;</a> 
     </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-msub" aria-label="Links in this document to definition: msub">
@@ -11259,7 +11259,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
     <li>
       <a href="#ref-for-dfn-msup-1" title="§ 2.1 Elements and attributes">§ 2.1 Elements and attributes</a> <a href="#ref-for-dfn-msup-2" title="Reference 2">(2)</a> 
     </li><li>
-      <a href="#ref-for-dfn-msup-3" title="§ 3.3.1 Group Sub-Expressions <mrow>">§ 3.3.1 Group Sub-Expressions &lt;mrow&gt;</a> 
+      <a href="#ref-for-dfn-msup-3" title="§ 3.3.1 Group Sub-Expressions &lt;mrow&gt;">§ 3.3.1 Group Sub-Expressions &lt;mrow&gt;</a> 
     </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-msubsup" aria-label="Links in this document to definition: msubsup">
@@ -11409,7 +11409,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <p><b>Referenced in:</b></p>
       <ul>
     <li>
-      <a href="#ref-for-dfn-accent-1" title="§ 3.4.2 Underscripts and Overscripts <munder>, <mover>, <munderover>">§ 3.4.2 Underscripts and Overscripts &lt;munder&gt;, &lt;mover&gt;, &lt;munderover&gt;</a> <a href="#ref-for-dfn-accent-2" title="Reference 2">(2)</a> 
+      <a href="#ref-for-dfn-accent-1" title="§ 3.4.2 Underscripts and Overscripts &lt;munder&gt;, &lt;mover&gt;, &lt;munderover&gt;">§ 3.4.2 Underscripts and Overscripts &lt;munder&gt;, &lt;mover&gt;, &lt;munderover&gt;</a> <a href="#ref-for-dfn-accent-2" title="Reference 2">(2)</a> 
     </li><li>
       <a href="#ref-for-dfn-accent-3" title="§ 3.4.2.4 Base with overscript">§ 3.4.2.4 Base with overscript</a> 
     </li><li>
@@ -11425,7 +11425,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <p><b>Referenced in:</b></p>
       <ul>
     <li>
-      <a href="#ref-for-dfn-accentunder-1" title="§ 3.4.2 Underscripts and Overscripts <munder>, <mover>, <munderover>">§ 3.4.2 Underscripts and Overscripts &lt;munder&gt;, &lt;mover&gt;, &lt;munderover&gt;</a> <a href="#ref-for-dfn-accentunder-2" title="Reference 2">(2)</a> 
+      <a href="#ref-for-dfn-accentunder-1" title="§ 3.4.2 Underscripts and Overscripts &lt;munder&gt;, &lt;mover&gt;, &lt;munderover&gt;">§ 3.4.2 Underscripts and Overscripts &lt;munder&gt;, &lt;mover&gt;, &lt;munderover&gt;</a> <a href="#ref-for-dfn-accentunder-2" title="Reference 2">(2)</a> 
     </li><li>
       <a href="#ref-for-dfn-accentunder-3" title="§ 3.4.2.3 Base with underscript">§ 3.4.2.3 Base with underscript</a> 
     </li><li>
@@ -11555,7 +11555,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
     <li>
       <a href="#ref-for-dfn-mprescripts-1" title="§ 2.1 Elements and attributes">§ 2.1 Elements and attributes</a> <a href="#ref-for-dfn-mprescripts-2" title="Reference 2">(2)</a> 
     </li><li>
-      <a href="#ref-for-dfn-mprescripts-3" title="§ 3.4.3 Prescripts and Tensor Indices <mmultiscripts>">§ 3.4.3 Prescripts and Tensor Indices &lt;mmultiscripts&gt;</a> <a href="#ref-for-dfn-mprescripts-4" title="Reference 2">(2)</a> <a href="#ref-for-dfn-mprescripts-5" title="Reference 3">(3)</a> <a href="#ref-for-dfn-mprescripts-6" title="Reference 4">(4)</a> <a href="#ref-for-dfn-mprescripts-7" title="Reference 5">(5)</a> 
+      <a href="#ref-for-dfn-mprescripts-3" title="§ 3.4.3 Prescripts and Tensor Indices &lt;mmultiscripts&gt;">§ 3.4.3 Prescripts and Tensor Indices &lt;mmultiscripts&gt;</a> <a href="#ref-for-dfn-mprescripts-4" title="Reference 2">(2)</a> <a href="#ref-for-dfn-mprescripts-5" title="Reference 3">(3)</a> <a href="#ref-for-dfn-mprescripts-6" title="Reference 4">(4)</a> <a href="#ref-for-dfn-mprescripts-7" title="Reference 5">(5)</a> 
     </li><li>
       <a href="#ref-for-dfn-mprescripts-8" title="§ 3.4.4 Displaystyle, scriptlevel and math-shift in scripts">§ 3.4.4 Displaystyle, scriptlevel and math-shift in scripts</a> <a href="#ref-for-dfn-mprescripts-9" title="Reference 2">(2)</a> 
     </li>
@@ -11593,7 +11593,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <p><b>Referenced in:</b></p>
       <ul>
     <li>
-      <a href="#ref-for-dfn-subscript-superscript-pair-1" title="§ 3.4.3 Prescripts and Tensor Indices <mmultiscripts>">§ 3.4.3 Prescripts and Tensor Indices &lt;mmultiscripts&gt;</a> 
+      <a href="#ref-for-dfn-subscript-superscript-pair-1" title="§ 3.4.3 Prescripts and Tensor Indices &lt;mmultiscripts&gt;">§ 3.4.3 Prescripts and Tensor Indices &lt;mmultiscripts&gt;</a> 
     </li><li>
       <a href="#ref-for-dfn-subscript-superscript-pair-2" title="§ 3.4.3.1 Base with prescripts and postscripts">§ 3.4.3.1 Base with prescripts and postscripts</a> <a href="#ref-for-dfn-subscript-superscript-pair-3" title="Reference 2">(2)</a> <a href="#ref-for-dfn-subscript-superscript-pair-4" title="Reference 3">(3)</a> <a href="#ref-for-dfn-subscript-superscript-pair-5" title="Reference 4">(4)</a> <a href="#ref-for-dfn-subscript-superscript-pair-6" title="Reference 5">(5)</a> <a href="#ref-for-dfn-subscript-superscript-pair-7" title="Reference 6">(6)</a> <a href="#ref-for-dfn-subscript-superscript-pair-8" title="Reference 7">(7)</a> <a href="#ref-for-dfn-subscript-superscript-pair-9" title="Reference 8">(8)</a> <a href="#ref-for-dfn-subscript-superscript-pair-10" title="Reference 9">(9)</a> 
     </li>
@@ -11659,7 +11659,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
     </li><li>
       <a href="#ref-for-dfn-mtd-2" title="§ 3.1.1 Box Model">§ 3.1.1 Box Model</a> 
     </li><li>
-      <a href="#ref-for-dfn-mtd-3" title="§ 3.1.3 Anonymous <mrow> boxes">§ 3.1.3 Anonymous &lt;mrow&gt; boxes</a> 
+      <a href="#ref-for-dfn-mtd-3" title="§ 3.1.3 Anonymous &lt;mrow&gt; boxes">§ 3.1.3 Anonymous &lt;mrow&gt; boxes</a> 
     </li><li>
       <a href="#ref-for-dfn-mtd-4" title="§ 3.5 Tabular Math">§ 3.5 Tabular Math</a> 
     </li><li>
@@ -11675,7 +11675,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <p><b>Referenced in:</b></p>
       <ul>
     <li>
-      <a href="#ref-for-dfn-columnspan-1" title="§ 3.5.3 Entry in Table or Matrix <mtd>">§ 3.5.3 Entry in Table or Matrix &lt;mtd&gt;</a> 
+      <a href="#ref-for-dfn-columnspan-1" title="§ 3.5.3 Entry in Table or Matrix &lt;mtd&gt;">§ 3.5.3 Entry in Table or Matrix &lt;mtd&gt;</a> 
     </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-rowspan" aria-label="Links in this document to definition: rowspan">
@@ -11687,7 +11687,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <p><b>Referenced in:</b></p>
       <ul>
     <li>
-      <a href="#ref-for-dfn-rowspan-1" title="§ 3.5.3 Entry in Table or Matrix <mtd>">§ 3.5.3 Entry in Table or Matrix &lt;mtd&gt;</a> <a href="#ref-for-dfn-rowspan-2" title="Reference 2">(2)</a> 
+      <a href="#ref-for-dfn-rowspan-1" title="§ 3.5.3 Entry in Table or Matrix &lt;mtd&gt;">§ 3.5.3 Entry in Table or Matrix &lt;mtd&gt;</a> <a href="#ref-for-dfn-rowspan-2" title="Reference 2">(2)</a> 
     </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-maction" aria-label="Links in this document to definition: maction">
@@ -11793,7 +11793,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <p><b>Referenced in:</b></p>
       <ul>
     <li>
-      <a href="#ref-for-propdef-math-style-1" title="§ 2.1.1 The Top-Level <math> Element">§ 2.1.1 The Top-Level &lt;math&gt; Element</a> 
+      <a href="#ref-for-propdef-math-style-1" title="§ 2.1.1 The Top-Level &lt;math&gt; Element">§ 2.1.1 The Top-Level &lt;math&gt; Element</a> 
     </li><li>
       <a href="#ref-for-propdef-math-style-2" title="§ 2.1.6 The displaystyle and scriptlevel attributes">§ 2.1.6 The displaystyle and scriptlevel attributes</a> 
     </li><li>
@@ -11805,7 +11805,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
     </li><li>
       <a href="#ref-for-propdef-math-style-12" title="§ 3.3.3.1 Radical symbol">§ 3.3.3.1 Radical symbol</a> <a href="#ref-for-propdef-math-style-13" title="Reference 2">(2)</a> 
     </li><li>
-      <a href="#ref-for-propdef-math-style-14" title="§ 3.4.2.1 Children of <munder>, <mover>, <munderover>">§ 3.4.2.1 Children of &lt;munder&gt;, &lt;mover&gt;, &lt;munderover&gt;</a> 
+      <a href="#ref-for-propdef-math-style-14" title="§ 3.4.2.1 Children of &lt;munder&gt;, &lt;mover&gt;, &lt;munderover&gt;">§ 3.4.2.1 Children of &lt;munder&gt;, &lt;mover&gt;, &lt;munderover&gt;</a> 
     </li><li>
       <a href="#ref-for-propdef-math-style-15" title="§ 4.3 The math-style property">§ 4.3 The math-style property</a> 
     </li><li>
@@ -11823,9 +11823,9 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <p><b>Referenced in:</b></p>
       <ul>
     <li>
-      <a href="#ref-for-propdef-math-shift-1" title="§ 3.3.2 Fractions <mfrac>">§ 3.3.2 Fractions &lt;mfrac&gt;</a> <a href="#ref-for-propdef-math-shift-2" title="Reference 2">(2)</a> 
+      <a href="#ref-for-propdef-math-shift-1" title="§ 3.3.2 Fractions &lt;mfrac&gt;">§ 3.3.2 Fractions &lt;mfrac&gt;</a> <a href="#ref-for-propdef-math-shift-2" title="Reference 2">(2)</a> 
     </li><li>
-      <a href="#ref-for-propdef-math-shift-3" title="§ 3.3.3 Radicals <msqrt>, <mroot>">§ 3.3.3 Radicals &lt;msqrt&gt;, &lt;mroot&gt;</a> 
+      <a href="#ref-for-propdef-math-shift-3" title="§ 3.3.3 Radicals &lt;msqrt&gt;, &lt;mroot&gt;">§ 3.3.3 Radicals &lt;msqrt&gt;, &lt;mroot&gt;</a> 
     </li><li>
       <a href="#ref-for-propdef-math-shift-4" title="§ 3.4.1.3 Base with superscript">§ 3.4.1.3 Base with superscript</a> 
     </li><li>
@@ -11923,7 +11923,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
     </li><li>
       <a href="#ref-for-dfn-axisheight-2" title="§ 3.2.4.3 Layout of operators">§ 3.2.4.3 Layout of operators</a> <a href="#ref-for-dfn-axisheight-3" title="Reference 2">(2)</a> <a href="#ref-for-dfn-axisheight-4" title="Reference 3">(3)</a> <a href="#ref-for-dfn-axisheight-5" title="Reference 4">(4)</a> <a href="#ref-for-dfn-axisheight-6" title="Reference 5">(5)</a> <a href="#ref-for-dfn-axisheight-7" title="Reference 6">(6)</a> <a href="#ref-for-dfn-axisheight-8" title="Reference 7">(7)</a> <a href="#ref-for-dfn-axisheight-9" title="Reference 8">(8)</a> <a href="#ref-for-dfn-axisheight-10" title="Reference 9">(9)</a> <a href="#ref-for-dfn-axisheight-11" title="Reference 10">(10)</a> <a href="#ref-for-dfn-axisheight-12" title="Reference 11">(11)</a> <a href="#ref-for-dfn-axisheight-13" title="Reference 12">(12)</a> <a href="#ref-for-dfn-axisheight-14" title="Reference 13">(13)</a> <a href="#ref-for-dfn-axisheight-15" title="Reference 14">(14)</a> <a href="#ref-for-dfn-axisheight-16" title="Reference 15">(15)</a> <a href="#ref-for-dfn-axisheight-17" title="Reference 16">(16)</a> 
     </li><li>
-      <a href="#ref-for-dfn-axisheight-18" title="§ 3.3.1 Group Sub-Expressions <mrow>">§ 3.3.1 Group Sub-Expressions &lt;mrow&gt;</a> 
+      <a href="#ref-for-dfn-axisheight-18" title="§ 3.3.1 Group Sub-Expressions &lt;mrow&gt;">§ 3.3.1 Group Sub-Expressions &lt;mrow&gt;</a> 
     </li><li>
       <a href="#ref-for-dfn-axisheight-19" title="§ 3.3.2.1 Fraction with nonzero line thickness">§ 3.3.2.1 Fraction with nonzero line thickness</a> <a href="#ref-for-dfn-axisheight-20" title="Reference 2">(2)</a> <a href="#ref-for-dfn-axisheight-21" title="Reference 3">(3)</a> <a href="#ref-for-dfn-axisheight-22" title="Reference 4">(4)</a> <a href="#ref-for-dfn-axisheight-23" title="Reference 5">(5)</a> 
     </li>
@@ -12317,7 +12317,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <p><b>Referenced in:</b></p>
       <ul>
     <li>
-      <a href="#ref-for-dfn-fractionrulethickness-1" title="§ 3.3.2 Fractions <mfrac>">§ 3.3.2 Fractions &lt;mfrac&gt;</a> 
+      <a href="#ref-for-dfn-fractionrulethickness-1" title="§ 3.3.2 Fractions &lt;mfrac&gt;">§ 3.3.2 Fractions &lt;mfrac&gt;</a> 
     </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-fractiondenominatorgapmin" aria-label="Links in this document to definition: fractionDenominatorGapMin">
@@ -12487,7 +12487,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <p><b>Referenced in:</b></p>
       <ul>
     <li>
-      <a href="#ref-for-dfn-mathitalicscorrectioninfo-1" title="§ 3.2.1.1 Layout of <mtext>">§ 3.2.1.1 Layout of &lt;mtext&gt;</a> 
+      <a href="#ref-for-dfn-mathitalicscorrectioninfo-1" title="§ 3.2.1.1 Layout of &lt;mtext&gt;">§ 3.2.1.1 Layout of &lt;mtext&gt;</a> 
     </li><li>
       <a href="#ref-for-dfn-mathitalicscorrectioninfo-2" title="§ 5.3.2 Algorithms for glyph stretching">§ 5.3.2 Algorithms for glyph stretching</a> <a href="#ref-for-dfn-mathitalicscorrectioninfo-3" title="Reference 2">(2)</a> 
     </li>
@@ -12501,7 +12501,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <p><b>Referenced in:</b></p>
       <ul>
     <li>
-      <a href="#ref-for-dfn-mathtopaccentattachment-1" title="§ 3.2.1.1 Layout of <mtext>">§ 3.2.1.1 Layout of &lt;mtext&gt;</a> 
+      <a href="#ref-for-dfn-mathtopaccentattachment-1" title="§ 3.2.1.1 Layout of &lt;mtext&gt;">§ 3.2.1.1 Layout of &lt;mtext&gt;</a> 
     </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-omin" aria-label="Links in this document to definition: omin">
@@ -12769,25 +12769,25 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <p><b>Referenced in:</b></p>
       <ul>
     <li>
-      <a href="#ref-for-dfn-user-agent-stylesheet-1" title="§ 2.1.1 The Top-Level <math> Element">§ 2.1.1 The Top-Level &lt;math&gt; Element</a> <a href="#ref-for-dfn-user-agent-stylesheet-2" title="Reference 2">(2)</a> 
+      <a href="#ref-for-dfn-user-agent-stylesheet-1" title="§ 2.1.1 The Top-Level &lt;math&gt; Element">§ 2.1.1 The Top-Level &lt;math&gt; Element</a> <a href="#ref-for-dfn-user-agent-stylesheet-2" title="Reference 2">(2)</a> 
     </li><li>
       <a href="#ref-for-dfn-user-agent-stylesheet-3" title="§ 2.1.4 Attributes common to HTML and MathML elements">§ 2.1.4 Attributes common to HTML and MathML elements</a> 
     </li><li>
-      <a href="#ref-for-dfn-user-agent-stylesheet-4" title="§ 3.2.2 Identifier <mi>">§ 3.2.2 Identifier &lt;mi&gt;</a> 
+      <a href="#ref-for-dfn-user-agent-stylesheet-4" title="§ 3.2.2 Identifier &lt;mi&gt;">§ 3.2.2 Identifier &lt;mi&gt;</a> 
     </li><li>
-      <a href="#ref-for-dfn-user-agent-stylesheet-5" title="§ 3.3.2 Fractions <mfrac>">§ 3.3.2 Fractions &lt;mfrac&gt;</a> 
+      <a href="#ref-for-dfn-user-agent-stylesheet-5" title="§ 3.3.2 Fractions &lt;mfrac&gt;">§ 3.3.2 Fractions &lt;mfrac&gt;</a> 
     </li><li>
-      <a href="#ref-for-dfn-user-agent-stylesheet-6" title="§ 3.3.3 Radicals <msqrt>, <mroot>">§ 3.3.3 Radicals &lt;msqrt&gt;, &lt;mroot&gt;</a> 
+      <a href="#ref-for-dfn-user-agent-stylesheet-6" title="§ 3.3.3 Radicals &lt;msqrt&gt;, &lt;mroot&gt;">§ 3.3.3 Radicals &lt;msqrt&gt;, &lt;mroot&gt;</a> 
     </li><li>
-      <a href="#ref-for-dfn-user-agent-stylesheet-7" title="§ 3.3.5 Error Message <merror>">§ 3.3.5 Error Message &lt;merror&gt;</a> 
+      <a href="#ref-for-dfn-user-agent-stylesheet-7" title="§ 3.3.5 Error Message &lt;merror&gt;">§ 3.3.5 Error Message &lt;merror&gt;</a> 
     </li><li>
-      <a href="#ref-for-dfn-user-agent-stylesheet-8" title="§ 3.3.7 Making Sub-Expressions Invisible <mphantom>">§ 3.3.7 Making Sub-Expressions Invisible &lt;mphantom&gt;</a> 
+      <a href="#ref-for-dfn-user-agent-stylesheet-8" title="§ 3.3.7 Making Sub-Expressions Invisible &lt;mphantom&gt;">§ 3.3.7 Making Sub-Expressions Invisible &lt;mphantom&gt;</a> 
     </li><li>
-      <a href="#ref-for-dfn-user-agent-stylesheet-9" title="§ 3.5.1 Table or Matrix <mtable>">§ 3.5.1 Table or Matrix &lt;mtable&gt;</a> 
+      <a href="#ref-for-dfn-user-agent-stylesheet-9" title="§ 3.5.1 Table or Matrix &lt;mtable&gt;">§ 3.5.1 Table or Matrix &lt;mtable&gt;</a> 
     </li><li>
-      <a href="#ref-for-dfn-user-agent-stylesheet-10" title="§ 3.5.2 Row in Table or Matrix <mtr>">§ 3.5.2 Row in Table or Matrix &lt;mtr&gt;</a> 
+      <a href="#ref-for-dfn-user-agent-stylesheet-10" title="§ 3.5.2 Row in Table or Matrix &lt;mtr&gt;">§ 3.5.2 Row in Table or Matrix &lt;mtr&gt;</a> 
     </li><li>
-      <a href="#ref-for-dfn-user-agent-stylesheet-11" title="§ 3.5.3 Entry in Table or Matrix <mtd>">§ 3.5.3 Entry in Table or Matrix &lt;mtd&gt;</a> 
+      <a href="#ref-for-dfn-user-agent-stylesheet-11" title="§ 3.5.3 Entry in Table or Matrix &lt;mtd&gt;">§ 3.5.3 Entry in Table or Matrix &lt;mtd&gt;</a> 
     </li><li>
       <a href="#ref-for-dfn-user-agent-stylesheet-12" title="§ 3.6 Enlivening Expressions">§ 3.6 Enlivening Expressions</a> 
     </li><li>
