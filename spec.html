@@ -161,6 +161,7 @@
           <dfn>Unknown MathML element</dfn>.
         </p>
         <ol>
+          <li>[^a^]</li>
           <li>[^annotation^]</li>
           <li>[^annotation-xml^]</li>
           <li>[^maction^]</li>
@@ -4658,6 +4659,37 @@
           </p>
         </section>
       </section>
+      <section id="the-a-element">
+        <h3>Linking <code>&lt;a&gt;</code></h3>
+        <p>
+            The
+            <dfn class="element">a</dfn>
+            element is used to group together any number of sub-expressions equivalently
+	    to [^mrow^]. It's main purpose is to enable the specification fo hyperlinks
+	    via the use of the <code>href</code> attribute.
+          </p>
+          <p>
+            The <code>&lt;a&gt;</code> element accepts the attributes described
+            in <a href="#global-attributes"></a> as well as the all the attributes of the
+	    <a href="https://html.spec.whatwg.org/#the-a-element">corresponding element in HTML</a>.
+	    The primary additional attribute is [^a/href^].
+	  </p>
+	   <ul id="a-attributes">
+            <li>[^a/href^]</li>
+          </ul>
+          <p>
+            If the
+            <dfn data-dfn-for="a" class="element-attr">href</dfn>
+            attribute is used then the <code>&lt;a&gt;</code> element creates a hyperlink
+	    to the URL sprecifoed by the <code>href</code> attribute. The linking behavior
+	    is as described for the <code>a</code> element in HTML.
+          </p>
+
+	  <p> The layout algorithm of the <code>&lt;a&gt;</code> element
+          is the same as the <code>&lt;mrow&gt;</code> element.
+          Note that this means that in the absence of an <code>href</code> attribute,
+	  <code>&lt;a&gt;</code> may be seen as equivalent to <code>&lt;mrow&gt;</code>.</p>
+        </section>
       <section id="enlivening-expressions">
         <h3>Enlivening Expressions</h3>
         <p>
