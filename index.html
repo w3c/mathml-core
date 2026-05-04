@@ -1,6 +1,6 @@
 <!DOCTYPE html><html lang="en"><head>
 <meta charset="utf-8">
-<meta name="generator" content="ReSpec 35.8.0">
+<meta name="generator" content="ReSpec 37.0.0">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <style>
 .issue-label{text-transform:initial}
@@ -57,6 +57,7 @@ dfn{cursor:pointer}
 .dfn-panel .marker{padding:.1em;margin-left:.5em;border-radius:.2em;text-align:center;white-space:nowrap;font-size:90%;color:#040b1c}
 .dfn-panel .marker.dfn-exported{background:#d1edfd;box-shadow:0 0 0 .125em #1ca5f940}
 .dfn-panel .marker.idl-block{background:#8ccbf2;box-shadow:0 0 0 .125em #0670b161}
+.dfn-panel .marker.cddl-block{background:#8ccbf2;box-shadow:0 0 0 .125em #0670b161}
 .dfn-panel a:not(:hover){text-decoration:none!important;border-bottom:none!important}
 .dfn-panel a[href]:hover{border-bottom-width:1px}
 .dfn-panel ul{padding:0}
@@ -86,6 +87,10 @@ a.bibref{text-decoration:none}
 .respec-offending-element{background:url(data:image/gif;base64,R0lGODdhBAADAPEAANv///8AAP///wAAACwAAAAABAADAEACBZQjmIAFADs=) bottom repeat-x}
 }
 #references :target{background:#eaf3ff;animation:pop .4s ease-in-out 0s 1}
+@media (prefers-color-scheme:dark){
+#references :target{background:color-mix(in srgb, #eaf3ff 15%, transparent)}
+}
+body:has(input[name=color-scheme][value=dark]:checked) #references :target{background:color-mix(in srgb, #eaf3ff 15%, transparent)}
 cite .bibref{font-style:italic}
 a[href].orcid{padding-left:4px;padding-right:4px}
 a[href].orcid>svg{margin-bottom:-2px}
@@ -102,7 +107,7 @@ details.respec-tests-details>li{padding-left:1em}
 .self-link:hover{opacity:1;text-decoration:none;background-color:transparent}
 aside.example .marker>a.self-link{color:inherit}
 .header-wrapper{display:flex;align-items:baseline}
-:is(h2,h3,h4,h5,h6):not(#toc>h2,#abstract>h2,#sotd>h2,.head>h2){position:relative;left:-.5em}
+:is(h2,h3,h4,h5,h6):not(#toc>h2,#abstract>h2,#sotd>h2,.head>h2):has(+a.self-link){position:relative;left:-.5em}
 :is(h2,h3,h4,h5,h6):not(#toch2)+a.self-link{color:inherit;order:-1;position:relative;left:-1.1em;font-size:1rem;opacity:.5}
 :is(h2,h3,h4,h5,h6)+a.self-link::before{content:"§";text-decoration:none;color:var(--heading-text)}
 :is(h2,h3)+a.self-link{top:-.2em}
@@ -113,6 +118,8 @@ dd{margin-left:0}
 @media print{
 .removeOnSave{display:none}
 }
+body:has(input[name=color-scheme][value=light]:checked),head:not(:has(meta[name=color-scheme][content~=dark]))+body{color-scheme:light}
+body:has(input[name=color-scheme][value=dark]:checked){color-scheme:dark}
 </style>
     
 <script src="tables/sorttable.js"></script>
@@ -121,6 +128,13 @@ dd{margin-left:0}
     
   
 <meta name="color-scheme" content="light">
+<style>
+:root{--assertion-border:#aaa;--assertion-bg:#eee;--assertion-text:black}
+.assert{border-left:.5em solid #aaa;padding:.3em;border-color:#aaa;border-color:var(--assertion-border);background:#eee;background:var(--assertion-bg);color:#000;color:var(--assertion-text)}
+@media (prefers-color-scheme:dark){
+:root{--assertion-border:#444;--assertion-bg:var(--borderedblock-bg);--assertion-text:var(--text)}
+}
+</style>
 <meta name="description" content="This specification defines a core subset of Mathematical Markup
         Language, or MathML, that is suitable for browser implementation.
         MathML is a markup language for describing mathematical notation
@@ -128,9 +142,36 @@ dd{margin-left:0}
         enable mathematics to be served, received, and processed on the World
         Wide Web, just as HTML has enabled this functionality for text.">
 <style>
-.hljs{--base:#fafafa;--mono-1:#383a42;--mono-2:#686b77;--mono-3:#717277;--hue-1:#0b76c5;--hue-2:#336ae3;--hue-3:#a626a4;--hue-4:#42803c;--hue-5:#ca4706;--hue-5-2:#c91243;--hue-6:#986801;--hue-6-2:#9a6a01}
+.hljs,body:has(input[name=color-scheme][value=light]:checked) .hljs,head:not(:has(meta[name=color-scheme][content~=dark]))+body .hljs{--base:#fafafa;--mono-1:#383a42;--mono-2:#686b77;--mono-3:#717277;--hue-1:#0b76c5;--hue-2:#336ae3;--hue-3:#a626a4;--hue-4:#42803c;--hue-5:#ca4706;--hue-5-2:#c91243;--hue-6:#986801;--hue-6-2:#9a6a01}
 @media (prefers-color-scheme:dark){
-.hljs{--base:#282c34;--mono-1:#abb2bf;--mono-2:#818896;--mono-3:#5c6370;--hue-1:#56b6c2;--hue-2:#61aeee;--hue-3:#c678dd;--hue-4:#98c379;--hue-5:#e06c75;--hue-5-2:#be5046;--hue-6:#d19a66;--hue-6-2:#e6c07b}
+.hljs{
+  --base: #282c34;
+  --mono-1: #abb2bf;
+  --mono-2: #818896;
+  --mono-3: #5c6370;
+  --hue-1: #56b6c2;
+  --hue-2: #61aeee;
+  --hue-3: #c678dd;
+  --hue-4: #98c379;
+  --hue-5: #e06c75;
+  --hue-5-2: #be5046;
+  --hue-6: #d19a66;
+  --hue-6-2: #e6c07b;
+}
+}
+body:has(input[name=color-scheme][value=dark]:checked) .hljs{
+  --base: #282c34;
+  --mono-1: #abb2bf;
+  --mono-2: #818896;
+  --mono-3: #5c6370;
+  --hue-1: #56b6c2;
+  --hue-2: #61aeee;
+  --hue-3: #c678dd;
+  --hue-4: #98c379;
+  --hue-5: #e06c75;
+  --hue-5-2: #be5046;
+  --hue-6: #d19a66;
+  --hue-6-2: #e6c07b;
 }
 .hljs{display:block;overflow-x:auto;padding:.5em;color:#383a42;color:var(--mono-1,#383a42);background:#fafafa;background:var(--base,#fafafa)}
 .hljs-comment,.hljs-quote{color:#717277;color:var(--mono-3,#717277);font-style:italic}
@@ -163,18 +204,11 @@ var.respec-hl{background:0 0;color:#000;box-shadow:unset}
 }
 </style>
 <style>
-var{position:relative;cursor:pointer}
+var[data-type]{position:relative}
 var[data-type]::after,var[data-type]::before{position:absolute;left:50%;top:-6px;opacity:0;transition:opacity .4s;pointer-events:none}
 var[data-type]::before{content:"";transform:translateX(-50%);border-width:4px 6px 0 6px;border-style:solid;border-color:transparent;border-top-color:#222}
 var[data-type]::after{content:attr(data-type);transform:translateX(-50%) translateY(-100%);background:#222;text-align:center;font-family:"Dank Mono","Fira Code",monospace;font-style:normal;padding:6px;border-radius:3px;color:#daca88;text-indent:0;font-weight:400}
 var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
-</style>
-<style>
-:root{--assertion-border:#aaa;--assertion-bg:#eee;--assertion-text:black}
-.assert{border-left:.5em solid #aaa;padding:.3em;border-color:#aaa;border-color:var(--assertion-border);background:#eee;background:var(--assertion-bg);color:#000;color:var(--assertion-text)}
-@media (prefers-color-scheme:dark){
-:root{--assertion-border:#444;--assertion-bg:var(--borderedblock-bg);--assertion-text:var(--text)}
-}
 </style>
 <script id="initialUserConfig" type="application/json">{
   "specStatus": "ED",
@@ -282,15 +316,15 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
     null,
     null
   ],
-  "publishISODate": "2026-03-16T00:00:00.000Z",
-  "generatedSubtitle": "W3C Editor's Draft 16 March 2026"
+  "publishISODate": "2026-05-04T00:00:00.000Z",
+  "generatedSubtitle": "W3C Editor's Draft 04 May 2026"
 }</script>
 <link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2021/W3C-ED"></head>
   <body class="h-entry" data-cite="WEBIDL html infra css-display-3 css-text-3 web-animations css-fonts-4 dom cssom-view css-sizing-3 css-align-3 css-box-4 css-values-4 css-backgrounds-3 css-text-decor-4 svg css-writing-modes-4 css-color-4 css-box-4 css-pseudo-4"><div class="head">
     <p class="logos"><a class="logo" href="https://www.w3.org/"><img crossorigin="" alt="W3C" height="48" src="https://www.w3.org/StyleSheets/TR/2021/logos/W3C" width="72">
   </a></p>
     <h1 id="title" class="title">MathML Core</h1> 
-    <p id="w3c-state"><a href="https://www.w3.org/standards/types#ED">W3C Editor's Draft</a> <time class="dt-published" datetime="2026-03-16">16 March 2026</time></p>
+    <p id="w3c-state"><a href="https://www.w3.org/standards/types#ED">W3C Editor's Draft</a> <time class="dt-published" datetime="2026-05-04">04 May 2026</time></p>
     <details open="">
       <summary>More details about this document</summary>
       <dl>
@@ -313,7 +347,9 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
         
         
         
-        <dt>Editors:</dt><dd class="editor p-author h-card vcard" data-editor-id="4238">
+        <dt>
+                Editors:
+              </dt><dd class="editor p-author h-card vcard" data-editor-id="4238">
     <a class="u-url url p-name fn" href="https://github.com/davidcarlisle">David Carlisle</a> (<span class="p-org org h-org">NAG</span>)
   </dd><dd class="editor p-author h-card vcard" data-editor-id="112458">
     <a class="u-url url p-name fn" href="https://frederic-wang.fr">Frédéric Wang</a> (<span class="p-org org h-org">Igalia</span>)
@@ -370,8 +406,9 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
     <p>
     This document was published by the <a href="https://www.w3.org/groups/wg/math">Math Working Group</a> as
     an Editor's Draft. 
-  </p><p>Publication as an Editor's Draft does not
-  imply endorsement by <abbr title="World Wide Web Consortium">W3C</abbr> and its Members. </p><p>
+  </p><p>Publication as
+  an Editor's Draft does not imply endorsement
+  by <abbr title="World Wide Web Consortium">W3C</abbr> and its Members. </p><p>
     This is a draft document and may be updated, replaced, or obsoleted by other
     documents at any time. It is inappropriate to cite this document as other
     than a work in progress.
@@ -569,7 +606,7 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
            This specification does not define any observable behavior that is
            specific to the <dfn class="element-attr" data-dfn-for="math" data-dfn-type="element-attr" id="dfn-alttext" tabindex="0" aria-haspopup="dialog" data-export="">alttext</dfn> attribute.
           </p>
-          <div class="note" role="note" id="issue-container-generatedID"><div role="heading" class="note-title marker" id="h-note" aria-level="5"><span>Note</span></div><div class="">
+          <div class="note" role="note" id="issue-container-generatedID"><div class="note-title marker" id="h-note"><span>Note</span></div><div class="">
 	  The <code><a data-link-type="element-attr" href="#dfn-alttext" class="internalDFN" id="ref-for-dfn-alttext-2">alttext</a></code> attribute may be used as
 	  alternative text by some legacy systems that do not
 	  implement math layout.</div></div>
@@ -592,7 +629,7 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
             <code>block math</code> then that <a href="#dfn-math-content-box" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-math-content-box-3">math content box</a> is rendered
             horizontally centered within the content box.
           </p>
-          <div class="note" role="note" id="issue-container-generatedID-0"><div role="heading" class="note-title marker" id="h-note-0" aria-level="5"><span>Note</span></div><div class="">
+          <div class="note" role="note" id="issue-container-generatedID-0"><div class="note-title marker" id="h-note-0"><span>Note</span></div><div class="">
             T<sub>E</sub>X's display mode <code>$$...$$</code>
             and inline mode <code>$...$</code> correspond to
             <code>display="block"</code> and <code>display="inline"</code>
@@ -756,7 +793,7 @@ math<span class="hljs-selector-attr">[display=<span class="hljs-string">"inline"
             to <code>rtl</code> is mapped to <code>rtl</code> while
             an <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#ascii-case-insensitive">ASCII case-insensitive</a> match to <code>ltr</code> is mapped to <code>ltr</code>.
           </p>
-          <div class="note" role="note" id="issue-container-generatedID-1"><div role="heading" class="note-title marker" id="h-note-1" aria-level="5"><span>Note</span></div><div class="">
+          <div class="note" role="note" id="issue-container-generatedID-1"><div class="note-title marker" id="h-note-1"><span>Note</span></div><div class="">
             The <a href="#dfn-dir" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-dir-2">dir</a>  attribute is used to set the directionality of math
             formulas, which is often <code>rtl</code> in Arabic speaking world.
             However, languages written from right to left often embed math
@@ -835,7 +872,7 @@ math<span class="hljs-selector-attr">[display=<span class="hljs-string">"inline"
             of glyphs in math formulas but also scales other parts (spacing, shifts,
             line thickness of bars etc) accordingly.
           </p>
-          <div class="note" role="note" id="issue-container-generatedID-2"><div role="heading" class="note-title marker" id="h-note-2" aria-level="5"><span>Note</span></div><div class="">
+          <div class="note" role="note" id="issue-container-generatedID-2"><div class="note-title marker" id="h-note-2"><span>Note</span></div><div class="">
 	    The above attributes are implemented for compatibility with full MathML. Authors whose only target is MathML Core are encouraged to use CSS for styling.
           </div></div>
         </section>
@@ -917,7 +954,7 @@ math<span class="hljs-selector-attr">[display=<span class="hljs-string">"inline"
 <span class="hljs-tag">&lt;/<span class="hljs-name">math</span>&gt;</span></code></pre>
             <img src="examples/example-displaystyle-scriptlevel.png" alt="displaystyle-scriptlevel example">
           </div>
-          <div class="note" role="note" id="issue-container-generatedID-3"><div role="heading" class="note-title marker" id="h-note-3" aria-level="5"><span>Note</span></div><div class="">
+          <div class="note" role="note" id="issue-container-generatedID-3"><div class="note-title marker" id="h-note-3"><span>Note</span></div><div class="">
             T<sub>E</sub>X's <code>\displaystyle</code>, <code>\textstyle</code>,
             <code>\scriptstyle</code>, and <code>\scriptscriptstyle</code> correspond
             to <a href="#dfn-displaystyle" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-displaystyle-4"><code>displaystyle</code></a> and <a href="#dfn-scriptlevel" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-scriptlevel-4"><code>scriptlevel</code></a> as
@@ -936,7 +973,7 @@ math<span class="hljs-selector-attr">[display=<span class="hljs-string">"inline"
            This specification does not define any observable behavior that is
            specific to the <a href="#dfn-intent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-intent-1"><code>intent</code></a> and <a href="#dfn-arg" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-arg-1"><code>arg</code></a> attributes.
           </p>
-          <div class="note" role="note" id="issue-container-generatedID-4"><div role="heading" class="note-title marker" id="h-note-4" aria-level="5"><span>Note</span></div><div class="">
+          <div class="note" role="note" id="issue-container-generatedID-4"><div class="note-title marker" id="h-note-4"><span>Note</span></div><div class="">
            These attributes are described in [<cite><a class="bibref" data-link-type="biblio" href="#bib-mathml4" title="Mathematical Markup Language (MathML) Version 4.0">MATHML4</a></cite>] and
 	   future versions of this specification may or may not
            define them. Authors should be aware that they are currently
@@ -1090,7 +1127,7 @@ math<span class="hljs-selector-attr">[display=<span class="hljs-string">"inline"
               no effects on MathML elements.
             </li>
           </ul>
-          <div class="note" role="note" id="issue-container-generatedID-5"><div role="heading" class="note-title marker" id="h-note-5" aria-level="5"><span>Note</span></div><div class="">
+          <div class="note" role="note" id="issue-container-generatedID-5"><div class="note-title marker" id="h-note-5"><span>Note</span></div><div class="">
             These features might be handled in future versions of this document.
             For now, authors are discouraged from setting a different value for
             these properties as that might lead to backward incompatibility
@@ -1111,12 +1148,12 @@ math<span class="hljs-selector-attr">[display=<span class="hljs-string">"inline"
             must implement, and expose to scripts, the following
             <dfn class="interface" data-export="" data-dfn-type="interface" id="dom-mathmlelement" data-idl="interface" data-title="MathMLElement" data-dfn-for="" tabindex="0" aria-haspopup="dialog"><code>MathMLElement</code></dfn> interface.
           </p>
-          <pre class="idl def" id="webidl-1630693908"><span class="idlHeader"><a class="self-link" href="#webidl-1630693908">WebIDL</a></span><code><span data-idl="" class="idlInterface" id="idl-def-mathmlelement" data-title="MathMLElement">[<span class="extAttr"><a data-link-type="extended-attribute" href="https://webidl.spec.whatwg.org/#Exposed">Exposed</a>=Window</span>]
+          <pre class="idl def" id="webidl-1298971770"><span class="idlHeader"><a class="self-link" href="#webidl-1298971770">WebIDL</a></span><code><span data-idl="" class="idlInterface" id="idl-def-mathmlelement" data-title="MathMLElement">[<span class="extAttr"><a data-link-type="extended-attribute" href="https://webidl.spec.whatwg.org/#Exposed">Exposed</a>=Window</span>]
 interface <a class="internalDFN idlID" data-link-type="interface" href="#dom-mathmlelement" id="ref-for-dom-mathmlelement-1"><code>MathMLElement</code></a> : <span class="idlSuperclass"><a data-link-type="interface" href="https://dom.spec.whatwg.org/#element">Element</a></span> { };</span><span class="idlIncludes">
 <a data-link-type="idl" href="#dom-mathmlelement" class="internalDFN" id="ref-for-dom-mathmlelement-2"><code>MathMLElement</code></a> includes <a data-link-type="interface" href="https://html.spec.whatwg.org/multipage/webappapis.html#globaleventhandlers">GlobalEventHandlers</a>;</span><span class="idlIncludes">
-<a data-link-type="idl" href="#dom-mathmlelement" class="internalDFN" id="ref-for-dom-mathmlelement-3"><code>MathMLElement</code></a> includes <a data-link-type="idl" href="https://html.spec.whatwg.org/#htmlorsvgelement"><code>HTMLOrForeignElement</code></a>;</span></code></pre>
+<a data-link-type="idl" href="#dom-mathmlelement" class="internalDFN" id="ref-for-dom-mathmlelement-3"><code>MathMLElement</code></a> includes <a data-link-type="idl" href="https://html.spec.whatwg.org/#htmlorsvgelement"><code>HTMLOrSVGOrMathMLElement</code></a>;</span></code></pre>
           <p>The <a data-link-type="interface" data-lt="GlobalEventHandlers" href="https://html.spec.whatwg.org/multipage/webappapis.html#globaleventhandlers"><code>GlobalEventHandlers</code></a> and
-            <dfn class="interface externalDFN" id="dfn-htmlorforeignelement" data-no-export="" data-dfn-type="dfn"><a href="https://html.spec.whatwg.org/#htmlorsvgelement"><code>HTMLOrForeignElement</code></a></dfn>
+            <dfn class="interface externalDFN" id="dfn-htmlorsvgormathmlelement" data-no-export="" data-dfn-type="dfn"><a href="https://html.spec.whatwg.org/#htmlorsvgelement"><code>HTMLOrSVGOrMathMLElement</code></a></dfn>
             interfaces are defined in [<cite><a class="bibref" data-link-type="biblio" href="#bib-html" title="HTML Standard">HTML</a></cite>].</p>
           <div class="example" id="dom-idl-example">
             <p>
@@ -1140,10 +1177,6 @@ interface <a class="internalDFN idlID" data-link-type="interface" href="#dom-mat
 <span class="hljs-tag">&lt;/<span class="hljs-name">math</span>&gt;</span></code></pre>
             <img src="examples/example-dom-idl.png" alt="dom-idl example">
           </div>
-          <div class="issue" id="issue-container-generatedID-6"><div role="heading" class="issue-title marker" id="h-issue" aria-level="5"><span>Issue</span></div><div class="">
-            <a href="https://github.com/whatwg/html/pull/5248">Rename
-              HTMLOrSVGElement</a> and define MathMLElement in [<cite><a class="bibref" data-link-type="biblio" href="#bib-html" title="HTML Standard">HTML</a></cite>].
-          </div></div>
         </section>
         <section id="text-layout"><div class="header-wrapper"><h4 id="x2-2-4-text-layout"><bdi class="secno">2.2.4 </bdi>Text layout</h4><a class="self-link" href="#text-layout" aria-label="Permalink for Section 2.2.4"></a></div>
           
@@ -1243,7 +1276,7 @@ interface <a class="internalDFN idlID" data-link-type="interface" href="#dom-mat
               <a data-link-type="dfn" href="https://www.w3.org/TR/css-writing-modes-4/#line-under">line-under</a>.
             </li>
           </ul>
-          <div class="note" role="note" id="issue-container-generatedID-7"><div role="heading" class="note-title marker" id="h-note-6" aria-level="5"><span>Note</span></div><div class="">
+          <div class="note" role="note" id="issue-container-generatedID-6"><div class="note-title marker" id="h-note-6"><span>Note</span></div><div class="">
             Unless specified otherwise,
             the figures in this specification use a
             <a data-link-type="dfn" href="https://www.w3.org/TR/css-writing-modes-4/#writing-mode">writing mode</a>
@@ -1312,7 +1345,7 @@ interface <a class="internalDFN idlID" data-link-type="interface" href="#dom-mat
                   <dfn data-plurals="ink line-descents" id="dfn-ink-line-descent" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">ink line-descent</dfn>.
                 </li>
               </ol>
-              <div class="note" role="note" id="issue-container-generatedID-8"><div role="heading" class="note-title marker" id="h-note-7" aria-level="5"><span>Note</span></div><div class="">
+              <div class="note" role="note" id="issue-container-generatedID-7"><div class="note-title marker" id="h-note-7"><span>Note</span></div><div class="">
                 For math layout, it is very important to rely on the ink extent
                 when positioning text. This is not the case for more complex
                 notations (e.g. square root).
@@ -1389,7 +1422,7 @@ interface <a class="internalDFN idlID" data-link-type="interface" href="#dom-mat
             <img src="figures/vertical-rl.svg">
             <figcaption><a class="self-link" href="#box-model-vertical-rl">Figure <bdi class="figno">6</bdi></a> <span class="fig-title">Box model for writing mode <code>vertical-rl</code> and <code>ltr</code> that may be used in e.g. Japanese math.</span></figcaption>
           </figure>
-          <div class="note" role="note" id="issue-container-generatedID-9"><div role="heading" class="note-title marker" id="h-note-8" aria-level="5"><span>Note</span></div><div class="">
+          <div class="note" role="note" id="issue-container-generatedID-8"><div class="note-title marker" id="h-note-8"><span>Note</span></div><div class="">
             The position of child boxes and graphical items inside a MathML
             box are expressed using the <a href="#dfn-inline-offset" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-inline-offset-1">inline offset</a>
             and <a href="#dfn-block-offset" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-block-offset-1">block offset</a>.
@@ -1424,7 +1457,7 @@ interface <a class="internalDFN idlID" data-link-type="interface" href="#dom-mat
               </li>
             </ul>
           </div>
-	  <div class="issue" id="issue-container-number-78"><div role="heading" class="issue-title marker" id="h-issue-0" aria-level="5"><a href="https://github.com/w3c/mathml-core/issues/78"><span class="issue-number">Issue 78</span></a><span class="issue-label">: Ink ascent/descent <a class="respec-gh-label" href="https://github.com/w3c/mathml-core/issues/?q=is%3Aissue+is%3Aopen+label%3A%22opentype%2Ftex%22" style="background-color: rgb(108, 210, 224); color: rgb(0, 0, 0);" aria-label="GitHub label: opentype/tex">opentype/tex</a><a class="respec-gh-label" href="https://github.com/w3c/mathml-core/issues/?q=is%3Aissue+is%3Aopen+label%3A%22needs-tests%22" style="background-color: rgb(252, 82, 136); color: rgb(0, 0, 0);" aria-label="GitHub label: needs-tests">needs-tests</a></span></div><div class="">Improve definition of ink ascent/descent?</div></div>
+	  <div class="issue" id="issue-container-number-78"><div class="issue-title marker" id="h-issue"><a href="https://github.com/w3c/mathml-core/issues/78"><span class="issue-number">Issue 78</span></a><span class="issue-label">: Ink ascent/descent <a class="respec-gh-label" href="https://github.com/w3c/mathml-core/issues/?q=is%3Aissue+is%3Aopen+label%3A%22opentype%2Ftex%22" style="background-color: rgb(108, 210, 224); color: rgb(0, 0, 0);" aria-label="GitHub label: opentype/tex">opentype/tex</a><a class="respec-gh-label" href="https://github.com/w3c/mathml-core/issues/?q=is%3Aissue+is%3Aopen+label%3A%22needs-tests%22" style="background-color: rgb(252, 82, 136); color: rgb(0, 0, 0);" aria-label="GitHub label: needs-tests">needs-tests</a></span></div><div class="">Improve definition of ink ascent/descent?</div></div>
 	  
 </section>
         <section id="layout-algorithms"><div class="header-wrapper"><h4 id="x3-1-2-layout-algorithms"><bdi class="secno">3.1.2 </bdi>Layout Algorithms</h4><a class="self-link" href="#layout-algorithms" aria-label="Permalink for Section 3.1.2"></a></div>
@@ -1562,7 +1595,7 @@ interface <a class="internalDFN idlID" data-link-type="interface" href="#dom-mat
               </p>
             </li>
           </ul>
-          <div class="note" role="note" id="issue-container-generatedID-10"><div role="heading" class="note-title marker" id="h-note-9" aria-level="5"><span>Note</span></div><div class="">
+          <div class="note" role="note" id="issue-container-generatedID-9"><div class="note-title marker" id="h-note-9"><span>Note</span></div><div class="">
             Per the description above, <a href="https://www.w3.org/TR/CSS2/box.html#collapsing-margins">margin-collapsing</a> does not apply to MathML elements.
           </div></div>
           <p>
@@ -1579,8 +1612,8 @@ interface <a class="internalDFN idlID" data-link-type="interface" href="#dom-mat
             box layout and child boxes are laid out without
             any stretch size constraint.
           </p>
-          <div class="issue" id="issue-container-number-76"><div role="heading" class="issue-title marker" id="h-issue-1" aria-level="5"><a href="https://github.com/w3c/mathml-core/issues/76"><span class="issue-number">Issue 76</span></a><span class="issue-label">: Define what inline percentages resolve against. <a class="respec-gh-label" href="https://github.com/w3c/mathml-core/issues/?q=is%3Aissue+is%3Aopen+label%3A%22css%2Fhtml5%22" style="background-color: rgb(107, 6, 123); color: rgb(255, 255, 255);" aria-label="GitHub label: css/html5">css/html5</a><a class="respec-gh-label" href="https://github.com/w3c/mathml-core/issues/?q=is%3Aissue+is%3Aopen+label%3A%22need+specification+update%22" style="background-color: rgb(235, 29, 125); color: rgb(0, 0, 0);" aria-label="GitHub label: need specification update">need specification update</a><a class="respec-gh-label" href="https://github.com/w3c/mathml-core/issues/?q=is%3Aissue+is%3Aopen+label%3A%22needs-tests%22" style="background-color: rgb(252, 82, 136); color: rgb(0, 0, 0);" aria-label="GitHub label: needs-tests">needs-tests</a></span></div><div class="">Define what inline percentages resolve against</div></div>
-          <div class="issue" id="issue-container-number-77"><div role="heading" class="issue-title marker" id="h-issue-2" aria-level="5"><a href="https://github.com/w3c/mathml-core/issues/77"><span class="issue-number">Issue 77</span></a><span class="issue-label">: Define what block percentages resolve against. <a class="respec-gh-label" href="https://github.com/w3c/mathml-core/issues/?q=is%3Aissue+is%3Aopen+label%3A%22css%2Fhtml5%22" style="background-color: rgb(107, 6, 123); color: rgb(255, 255, 255);" aria-label="GitHub label: css/html5">css/html5</a><a class="respec-gh-label" href="https://github.com/w3c/mathml-core/issues/?q=is%3Aissue+is%3Aopen+label%3A%22need+specification+update%22" style="background-color: rgb(235, 29, 125); color: rgb(0, 0, 0);" aria-label="GitHub label: need specification update">need specification update</a><a class="respec-gh-label" href="https://github.com/w3c/mathml-core/issues/?q=is%3Aissue+is%3Aopen+label%3A%22needs-tests%22" style="background-color: rgb(252, 82, 136); color: rgb(0, 0, 0);" aria-label="GitHub label: needs-tests">needs-tests</a></span></div><div class="">Define what block percentages resolve against</div></div>
+          <div class="issue" id="issue-container-number-76"><div class="issue-title marker" id="h-issue-0"><a href="https://github.com/w3c/mathml-core/issues/76"><span class="issue-number">Issue 76</span></a><span class="issue-label">: Define what inline percentages resolve against. <a class="respec-gh-label" href="https://github.com/w3c/mathml-core/issues/?q=is%3Aissue+is%3Aopen+label%3A%22css%2Fhtml5%22" style="background-color: rgb(107, 6, 123); color: rgb(255, 255, 255);" aria-label="GitHub label: css/html5">css/html5</a><a class="respec-gh-label" href="https://github.com/w3c/mathml-core/issues/?q=is%3Aissue+is%3Aopen+label%3A%22need+specification+update%22" style="background-color: rgb(235, 29, 125); color: rgb(0, 0, 0);" aria-label="GitHub label: need specification update">need specification update</a><a class="respec-gh-label" href="https://github.com/w3c/mathml-core/issues/?q=is%3Aissue+is%3Aopen+label%3A%22needs-tests%22" style="background-color: rgb(252, 82, 136); color: rgb(0, 0, 0);" aria-label="GitHub label: needs-tests">needs-tests</a></span></div><div class="">Define what inline percentages resolve against</div></div>
+          <div class="issue" id="issue-container-number-77"><div class="issue-title marker" id="h-issue-1"><a href="https://github.com/w3c/mathml-core/issues/77"><span class="issue-number">Issue 77</span></a><span class="issue-label">: Define what block percentages resolve against. <a class="respec-gh-label" href="https://github.com/w3c/mathml-core/issues/?q=is%3Aissue+is%3Aopen+label%3A%22css%2Fhtml5%22" style="background-color: rgb(107, 6, 123); color: rgb(255, 255, 255);" aria-label="GitHub label: css/html5">css/html5</a><a class="respec-gh-label" href="https://github.com/w3c/mathml-core/issues/?q=is%3Aissue+is%3Aopen+label%3A%22need+specification+update%22" style="background-color: rgb(235, 29, 125); color: rgb(0, 0, 0);" aria-label="GitHub label: need specification update">need specification update</a><a class="respec-gh-label" href="https://github.com/w3c/mathml-core/issues/?q=is%3Aissue+is%3Aopen+label%3A%22needs-tests%22" style="background-color: rgb(252, 82, 136); color: rgb(0, 0, 0);" aria-label="GitHub label: needs-tests">needs-tests</a></span></div><div class="">Define what block percentages resolve against</div></div>
         </section>
         <section id="anonymous-mrow-boxes"><div class="header-wrapper"><h4 id="x3-1-3-anonymous-mrow-boxes"><bdi class="secno">3.1.3 </bdi>Anonymous &lt;mrow&gt; boxes</h4><a class="self-link" href="#anonymous-mrow-boxes" aria-label="Permalink for Section 3.1.3"></a></div>
           
@@ -1691,7 +1724,7 @@ interface <a class="internalDFN idlID" data-link-type="interface" href="#dom-mat
           prominently in MathML markup. By contrast, in textual data,
           individual words rarely need to be marked up or styled specially.
         </p>
-        <div class="note" role="note" id="issue-container-generatedID-11"><div role="heading" class="note-title marker" id="h-note-10" aria-level="4"><span>Note</span></div><div class="">
+        <div class="note" role="note" id="issue-container-generatedID-10"><div class="note-title marker" id="h-note-10"><span>Note</span></div><div class="">
           In practice, most MathML token elements just contain simple text
           for variables, numbers, operators etc and don't need sophisticated
           layout. However, it can contain text with line breaks or
@@ -1832,7 +1865,7 @@ interface <a class="internalDFN idlID" data-link-type="interface" href="#dom-mat
               <a data-link-type="css-property" href="https://www.w3.org/TR/css-text-3/#propdef-text-transform">text-transform</a>
               property to <code>none</code>. Otherwise it has no effects.
             </p>
-            <div class="note" role="note" id="issue-container-generatedID-12"><div role="heading" class="note-title marker" id="h-note-11" aria-level="5"><span>Note</span></div><div class="">
+            <div class="note" role="note" id="issue-container-generatedID-11"><div class="note-title marker" id="h-note-11"><span>Note</span></div><div class="">
               <p>In [<cite><a class="bibref" data-link-type="biblio" href="#bib-mathml3" title="Mathematical Markup Language (MathML) Version 3.0 2nd Edition">MathML3</a></cite>], the <code>mathvariant</code> attribute was used
                 to define logical classes of token elements, each class providing
                 a collection of typographically-related symbolic tokens with
@@ -1942,7 +1975,7 @@ interface <a class="internalDFN idlID" data-link-type="interface" href="#dom-mat
             This specification does not define any observable behavior that is
             specific to the <dfn class="element-attr" data-dfn-for="mo" data-dfn-type="element-attr" id="dfn-fence" tabindex="0" aria-haspopup="dialog" data-export="">fence</dfn> and <dfn class="element-attr" data-dfn-for="mo" data-dfn-type="element-attr" id="dfn-separator" tabindex="0" aria-haspopup="dialog" data-export="">separator</dfn> attributes.
           </p>
-          <div class="note" role="note" id="issue-container-generatedID-13"><div role="heading" class="note-title marker" id="h-note-12" aria-level="5"><span>Note</span></div><div class="">
+          <div class="note" role="note" id="issue-container-generatedID-12"><div class="note-title marker" id="h-note-12"><span>Note</span></div><div class="">
             Authors may use the
             <code><a data-link-type="element-attr" href="#dfn-fence" class="internalDFN" id="ref-for-dfn-fence-2">fence</a></code> and <code><a data-link-type="element-attr" href="#dfn-separator" class="internalDFN" id="ref-for-dfn-separator-2">separator</a></code>
             to describe specific semantics of operators.
@@ -2385,7 +2418,7 @@ interface <a class="internalDFN idlID" data-link-type="interface" href="#dom-mat
                         Otherwise set them to
                         <code>U<sub>ascent</sub></code> and
                         <code>U<sub>descent</sub></code> respectively.
-                        <div class="note" role="note" id="issue-container-generatedID-14"><div role="heading" class="note-title marker" id="h-note-13" aria-level="6"><span>Note</span></div><div class="">
+                        <div class="note" role="note" id="issue-container-generatedID-13"><div class="note-title marker" id="h-note-13"><span>Note</span></div><div class="">
                           The property <code>T<sub>ascent</sub></code> − <a href="#dfn-axisheight" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-axisheight-8">AxisHeight</a> = <code>T<sub>descent</sub></code> + <a href="#dfn-axisheight" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-axisheight-9">AxisHeight</a> means that
                           an operator stretching exactly
                           <code>T<sub>ascent</sub></code> above the baseline
@@ -2440,7 +2473,7 @@ interface <a class="internalDFN idlID" data-link-type="interface" href="#dom-mat
                             <code>T<sub>ascent</sub></code>.
                           </li>
                         </ul>
-                        <div class="note" role="note" id="issue-container-generatedID-15"><div role="heading" class="note-title marker" id="h-note-14" aria-level="6"><span>Note</span></div><div class="">
+                        <div class="note" role="note" id="issue-container-generatedID-14"><div class="note-title marker" id="h-note-14"><span>Note</span></div><div class="">
                           The default <code>maxsize</code> is value ∞ is
                           interpreted above as being larger than any other size,
                           i.e.
@@ -2448,7 +2481,7 @@ interface <a class="internalDFN idlID" data-link-type="interface" href="#dom-mat
                           <code>maxsize &lt; minsize</code> and
                           <code>maxsize &lt; T</code> are always false.
                         </div></div>
-                        <div class="note" role="note" id="issue-container-generatedID-16"><div role="heading" class="note-title marker" id="h-note-15" aria-level="6"><span>Note</span></div><div class="">
+                        <div class="note" role="note" id="issue-container-generatedID-15"><div class="note-title marker" id="h-note-15"><span>Note</span></div><div class="">
                           This step ensures that the condition <code>minsize</code> ≤ <code>T</code> ≤ <code>maxsize</code> holds.
                           Additionnally, if the target values correspond to symmetric stretching with respect to the <a href="#dfn-math-axis" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-math-axis-2">math axis</a> then property
                           <code>T<sub>ascent</sub></code> − <a href="#dfn-axisheight" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-axisheight-15">AxisHeight</a> = <code>T<sub>descent</sub></code> + <a href="#dfn-axisheight" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-axisheight-16">AxisHeight</a> is preserved.
@@ -2507,7 +2540,7 @@ interface <a class="internalDFN idlID" data-link-type="interface" href="#dom-mat
                     <code>g</code> in the block direction with the
                     <a data-link-type="dfn" href="https://www.w3.org/TR/css-fonts-4/#first-available-font">first available font</a> then fall back to the
                     layout algorithm of <a href="#layout-of-mtext" class="sec-ref"><bdi class="secno">3.2.1.1 </bdi>Layout of <code>&lt;mtext&gt;</code></a>.
-                    <div class="note" role="note" id="issue-container-generatedID-17"><div role="heading" class="note-title marker" id="h-note-16" aria-level="6"><span>Note</span></div><div class="">
+                    <div class="note" role="note" id="issue-container-generatedID-16"><div class="note-title marker" id="h-note-16"><span>Note</span></div><div class="">
                       Here we treat a non-<a data-link-type="dfn|abstract-op" href="#dfn-stretchy" class="internalDFN" id="ref-for-dfn-stretchy-3"><code>stretchy</code></a> <a data-link-type="dfn|abstract-op" href="#dfn-largeop" class="internalDFN" id="ref-for-dfn-largeop-3"><code>largeop</code></a>
                       glyph as stretchy with target dimension <a href="#dfn-displayoperatorminheight" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-displayoperatorminheight-1">DisplayOperatorMinHeight</a>.
                     </div></div>
@@ -2549,7 +2582,7 @@ interface <a class="internalDFN idlID" data-link-type="interface" href="#dom-mat
                         Δ = 0.
                       </li>
                     </ul>
-                    <div class="note" role="note" id="issue-container-generatedID-18"><div role="heading" class="note-title marker" id="h-note-17" aria-level="6"><span>Note</span></div><div class="">
+                    <div class="note" role="note" id="issue-container-generatedID-17"><div class="note-title marker" id="h-note-17"><span>Note</span></div><div class="">
                       The point of Δ here is simply to vertically align the operator when <a data-link-type="dfn|abstract-op" href="#dfn-symmetric" class="internalDFN" id="ref-for-dfn-symmetric-5"><code>symmetric</code></a>.
                     </div></div>
                   </li>
@@ -2684,7 +2717,7 @@ interface <a class="internalDFN idlID" data-link-type="interface" href="#dom-mat
             <img src="figures/mspacebox.svg">
             <figcaption><a class="self-link" href="#figure-box-mspace">Figure <bdi class="figno">9</bdi></a> <span class="fig-title">Box model for the <code>&lt;mspace&gt;</code> element</span></figcaption>
           </figure>
-          <div class="note" role="note" id="issue-container-generatedID-19"><div role="heading" class="note-title marker" id="h-note-18" aria-level="5"><span>Note</span></div><div class="">
+          <div class="note" role="note" id="issue-container-generatedID-18"><div class="note-title marker" id="h-note-18"><span>Note</span></div><div class="">
             The terminology height/depth comes from [<cite><a class="bibref" data-link-type="biblio" href="#bib-mathml3" title="Mathematical Markup Language (MathML) Version 3.0 2nd Edition">MATHML3</a></cite>], itself inspired
             from [<cite><a class="bibref" data-link-type="biblio" href="#bib-texbook" title="The TeXBook">TEXBOOK</a></cite>].
           </div></div>
@@ -2718,7 +2751,7 @@ interface <a class="internalDFN idlID" data-link-type="interface" href="#dom-mat
               <a href="#dfn-anonymous-mrow-box" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-anonymous-mrow-box-3">anonymous &lt;mrow&gt; box</a> is treated as a
               <a href="#dfn-grouping-elements" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-grouping-elements-7">grouping element</a>.
             </p>
-            <div class="note" role="note" id="issue-container-generatedID-20"><div role="heading" class="note-title marker" id="h-note-19" aria-level="6"><span>Note</span></div><div class="">
+            <div class="note" role="note" id="issue-container-generatedID-19"><div class="note-title marker" id="h-note-19"><span>Note</span></div><div class="">
               Note that an <code><a data-link-type="element" href="#dfn-mphantom" class="internalDFN" id="ref-for-dfn-mphantom-3">mphantom</a></code> is not
               automatically defined to be space-like, unless its content is
               space-like. This is because operator spacing is affected by
@@ -2755,7 +2788,7 @@ interface <a class="internalDFN idlID" data-link-type="interface" href="#dom-mat
 <span class="hljs-tag">&lt;/<span class="hljs-name">math</span>&gt;</span></code></pre>
             <img src="examples/example-ms.png" alt="ms example">
           </div>
-          <div class="note" role="note" id="issue-container-generatedID-21"><div role="heading" class="note-title marker" id="h-note-20" aria-level="5"><span>Note</span></div><div class="">
+          <div class="note" role="note" id="issue-container-generatedID-20"><div class="note-title marker" id="h-note-20"><span>Note</span></div><div class="">
             In MathML3, it was possible to use the <code>lquote</code> and
             <code>rquote</code> attributes to respectively specify the strings
             to use as opening and closing quotes. These are no longer supported
@@ -2846,7 +2879,7 @@ ms<span class="hljs-selector-attr">[rquote]</span><span class="hljs-selector-pse
             <img src="figures/mrowbox.svg">
             <figcaption><a class="self-link" href="#figure-box-mrow">Figure <bdi class="figno">10</bdi></a> <span class="fig-title">Box model for the <code>&lt;mrow&gt;</code> element</span></figcaption>
           </figure>
-          <div class="note" role="note" id="issue-container-generatedID-22"><div role="heading" class="note-title marker" id="h-note-21" aria-level="5"><span>Note</span></div><div class="">
+          <div class="note" role="note" id="issue-container-generatedID-21"><div class="note-title marker" id="h-note-21"><span>Note</span></div><div class="">
             Because the box model ensures alignment of <a href="#dfn-alphabetic-baseline" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-alphabetic-baseline-11">alphabetic baselines</a>,
             fraction bars or symmetric stretchy operators
             will also be aligned along the <a href="#dfn-math-axis" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-math-axis-3">math axis</a> in the typical case when
@@ -2923,7 +2956,7 @@ ms<span class="hljs-selector-attr">[rquote]</span><span class="hljs-selector-pse
               <a href="#dfn-embellished-operator" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-embellished-operator-20">embellished operator</a>
               and has nonzero <a href="#dfn-italic-correction" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-italic-correction-7">italic correction</a>.
             </p>
-            <div class="note" role="note" id="issue-container-generatedID-23"><div role="heading" class="note-title marker" id="h-note-22" aria-level="6"><span>Note</span></div><div class="">
+            <div class="note" role="note" id="issue-container-generatedID-22"><div class="note-title marker" id="h-note-22"><span>Note</span></div><div class="">
               Large operators may have nonzero <a href="#dfn-italic-correction" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-italic-correction-8">italic correction</a> but that one
               is used when attaching scripts.
               More generally, all <a href="#dfn-embellished-operator" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-embellished-operator-21">embellished operators</a>
@@ -3165,7 +3198,7 @@ mfrac &gt; <span class="hljs-selector-pseudo">:nth-child</span>(<span class="hlj
             <dfn id="dfn-numerator" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">numerator</dfn>, the second <a data-link-type="dfn" href="https://www.w3.org/TR/css-display-3/#in-flow">in-flow</a> child is called
             <dfn id="dfn-denominator" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">denominator</dfn> and the layout algorithm is explained below.
           </p>
-          <div class="note" role="note" id="fraction-css-rules-on-children"><div role="heading" class="note-title marker" id="h-note-23" aria-level="5"><span>Note</span></div><div class="">
+          <div class="note" role="note" id="fraction-css-rules-on-children"><div class="note-title marker" id="h-note-23"><span>Note</span></div><div class="">
             In practice, an <code>&lt;mfrac&gt;</code> element has two children
             that are <a data-link-type="dfn" href="https://www.w3.org/TR/css-display-3/#in-flow">in-flow</a>. Hence the CSS rules basically perform
             <a href="#dfn-scriptlevel" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-scriptlevel-6"><code>scriptlevel</code></a>, <a href="#dfn-displaystyle" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-displaystyle-9"><code>displaystyle</code></a>
@@ -3493,7 +3526,7 @@ mroot, msqrt {
             <dfn id="dfn-mroot-index" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">mroot index</dfn>
             and its layout algorithm is explained below.
           </p>
-          <div class="note" role="note" id="mroot-css-rules-on-children"><div role="heading" class="note-title marker" id="h-note-24" aria-level="5"><span>Note</span></div><div class="">
+          <div class="note" role="note" id="mroot-css-rules-on-children"><div class="note-title marker" id="h-note-24"><span>Note</span></div><div class="">
             In practice, an <code>&lt;mroot&gt;</code> element has two children
             that are <a data-link-type="dfn" href="https://www.w3.org/TR/css-display-3/#in-flow">in-flow</a>. Hence the CSS rules basically perform
             <a href="#dfn-scriptlevel" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-scriptlevel-8"><code>scriptlevel</code></a> and <a href="#dfn-displaystyle" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-displaystyle-11"><code>displaystyle</code></a> changes for the index.
@@ -3697,7 +3730,7 @@ mroot, msqrt {
               the <a data-link-type="dfn" href="https://www.w3.org/TR/css-writing-modes-4/#block-size">block size</a> of B + the <a href="#dfn-line-descent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-descent-20">line-descent</a> of the
               index's <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a>.
             </p>
-            <div class="note" role="note" id="issue-container-generatedID-24"><div role="heading" class="note-title marker" id="h-note-25" aria-level="6"><span>Note</span></div><div class="">
+            <div class="note" role="note" id="issue-container-generatedID-23"><div class="note-title marker" id="h-note-25"><span>Note</span></div><div class="">
               In general, the kerning before the root index is positive while
               the kerning after it is negative, which means that the root
               element will have some inline-start space and that the root index
@@ -3718,7 +3751,7 @@ mroot, msqrt {
             <a href="#global-attributes" class="sec-ref"><bdi class="secno">2.1.3 </bdi>Global Attributes</a>. Its layout algorithm is the
             same as the <code><a data-link-type="element" href="#dfn-mrow" class="internalDFN" id="ref-for-dfn-mrow-11">mrow</a></code> element.
           </p>
-          <div class="note" role="note" id="issue-container-generatedID-25"><div role="heading" class="note-title marker" id="h-note-26" aria-level="5"><span>Note</span></div><div class="">
+          <div class="note" role="note" id="issue-container-generatedID-24"><div class="note-title marker" id="h-note-26"><span>Note</span></div><div class="">
             <code>&lt;mstyle&gt;</code> is implemented for compatibility with full MathML. Authors whose only target is MathML Core are encouraged to use CSS for styling.
           </div></div>
           <div class="example" id="mstyle-example">
@@ -3913,7 +3946,7 @@ mroot, msqrt {
                 attribute is absent, invalid or a percentage then the requested
                 voffset is 0. Otherwise the requested voffset is the resolved
                 value of the <code>voffset</code> attribute.
-                <div class="note" role="note" id="issue-container-generatedID-26"><div role="heading" class="note-title marker" id="h-note-27" aria-level="6"><span>Note</span></div><div class="">
+                <div class="note" role="note" id="issue-container-generatedID-25"><div class="note-title marker" id="h-note-27"><span>Note</span></div><div class="">
                   Negative <code>voffset</code> values are not clamped to
                   <code>0</code>.
                 </div></div>
@@ -4008,7 +4041,7 @@ mroot, msqrt {
           <pre aria-busy="false"><code class="hljs css">mphantom {
   <span class="hljs-attribute">visibility</span>: hidden;
 }</code></pre>
-          <div class="note" role="note" id="issue-container-generatedID-27"><div role="heading" class="note-title marker" id="h-note-28" aria-level="5"><span>Note</span></div><div class="">
+          <div class="note" role="note" id="issue-container-generatedID-26"><div class="note-title marker" id="h-note-28"><span>Note</span></div><div class="">
             <code>&lt;mphantom&gt;</code> is implemented for compatibility with full MathML. Authors whose only target is MathML Core are encouraged to use CSS for styling.
           </div></div>
         </section>
@@ -4360,7 +4393,7 @@ mroot, msqrt {
               <a href="#base-with-subscript" class="sec-ref"><bdi class="secno">3.4.1.2 </bdi>Base with subscript</a> and
               <a href="#base-with-superscript" class="sec-ref"><bdi class="secno">3.4.1.3 </bdi>Base with superscript</a>.
             </p>
-            <div class="note" role="note" id="msubsup-with-empty-scripts"><div role="heading" class="note-title marker" id="h-note-29" aria-level="6"><span>Note</span></div><div class="">
+            <div class="note" role="note" id="msubsup-with-empty-scripts"><div class="note-title marker" id="h-note-29"><span>Note</span></div><div class="">
               <p>
                 Even when the <a href="#dfn-msubsup-subscript" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-msubsup-subscript-2">msubsup subscript</a> (respectively <a href="#dfn-msubsup-superscript" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-msubsup-superscript-3">msubsup superscript</a>) is an empty
                 box, <code>&lt;msubsup&gt;</code>
@@ -4812,7 +4845,7 @@ mroot, msqrt {
                 </p>
               </li>
             </ol>
-            <div class="note" role="note" id="issue-container-generatedID-28"><div role="heading" class="note-title marker" id="h-note-30" aria-level="6"><span>Note</span></div><div class="">
+            <div class="note" role="note" id="issue-container-generatedID-27"><div class="note-title marker" id="h-note-30"><span>Note</span></div><div class="">
               For accent overscripts and bases with <a href="#dfn-line-ascent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-ascent-42">line-ascents</a> that are at
               most
               <a href="#dfn-accentbaseheight" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-accentbaseheight-2">AccentBaseHeight</a>, the rule from
@@ -4916,7 +4949,7 @@ mroot, msqrt {
               are aligned and the middles of these edges are at the same
               position.
             </p>
-            <div class="note" role="note" id="issue-container-generatedID-29"><div role="heading" class="note-title marker" id="h-note-31" aria-level="6"><span>Note</span></div><div class="">
+            <div class="note" role="note" id="issue-container-generatedID-28"><div class="note-title marker" id="h-note-31"><span>Note</span></div><div class="">
               <p>
                 When the underscript (respectively overscript) is an empty
                 box, the base and overscript (respectively underscript) are laid
@@ -5234,7 +5267,7 @@ mroot, msqrt {
                 </ol>
               </li>
             </ol>
-            <div class="note" role="note" id="issue-container-generatedID-30"><div role="heading" class="note-title marker" id="h-note-32" aria-level="6"><span>Note</span></div><div class="">
+            <div class="note" role="note" id="issue-container-generatedID-29"><div class="note-title marker" id="h-note-32"><span>Note</span></div><div class="">
               <p>
                 An <code>&lt;mmultiscripts&gt;</code> with only one
                 <a href="#dfn-subscript-superscript-pair" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-subscript-superscript-pair-10">subscript/superscript pair</a> of
@@ -5325,7 +5358,7 @@ munderover<span class="hljs-selector-attr">[accent=<span class="hljs-string">"tr
 mmultiscripts &gt; mprescripts ~ <span class="hljs-selector-pseudo">:nth-child</span>(even) {
   <span class="hljs-attribute">math-shift</span>: inherit;
 }</code></pre>
-          <div class="note" role="note" id="scripted-elements-css-rules-on-children"><div role="heading" class="note-title marker" id="h-note-33" aria-level="5"><span>Note</span></div><div class="">
+          <div class="note" role="note" id="scripted-elements-css-rules-on-children"><div class="note-title marker" id="h-note-33"><span>Note</span></div><div class="">
             In practice, all the children of the MathML elements described in
             this section are <a data-link-type="dfn" href="https://www.w3.org/TR/css-display-3/#in-flow">in-flow</a> and the
             <code>&lt;mprescripts&gt;</code> is empty.
@@ -5468,7 +5501,7 @@ mmultiscripts &gt; mprescripts ~ <span class="hljs-selector-pseudo">:nth-child</
             <a href="https://html.spec.whatwg.org/#algorithm-for-processing-rows">algorithm for processing rows</a>, always reading "<code>colspan</code>" as
             "<code>columnspan</code>".
           </p>
-          <div class="note" role="note" id="issue-container-generatedID-31"><div role="heading" class="note-title marker" id="h-note-34" aria-level="5"><span>Note</span></div><div class="">
+          <div class="note" role="note" id="issue-container-generatedID-30"><div class="note-title marker" id="h-note-34"><span>Note</span></div><div class="">
             The name of the column spanning attribute in [<cite><a class="bibref" data-link-type="biblio" href="#bib-mathml3" title="Mathematical Markup Language (MathML) Version 3.0 2nd Edition">MathML3</a></cite>] and earlier
             versions is <code>columnspan</code> and is preserved for backward
             compatibility reasons.
@@ -5508,7 +5541,7 @@ mmultiscripts &gt; mprescripts ~ <span class="hljs-selector-pseudo">:nth-child</
 	  <p> The layout algorithm of the <code>&lt;a&gt;</code> element
           is the same as the <code>&lt;mrow&gt;</code> element.</p>
 
-	  <div class="note" role="note" id="issue-container-generatedID-32"><div role="heading" class="note-title marker" id="h-note-35" aria-level="4"><span>Note</span></div><div class="">
+	  <div class="note" role="note" id="issue-container-generatedID-31"><div class="note-title marker" id="h-note-35"><span>Note</span></div><div class="">
           Note that this means that in the absence of an <code>href</code> attribute,
 	  <code>&lt;a&gt;</code> may be seen as equivalent to <code>&lt;mrow&gt;</code>.</div></div>
         </section>
@@ -5575,7 +5608,7 @@ mmultiscripts &gt; mprescripts ~ <span class="hljs-selector-pseudo">:nth-child</
         <pre aria-busy="false"><code class="hljs css">maction &gt; <span class="hljs-selector-pseudo">:not</span>(<span class="hljs-selector-pseudo">:first-child</span>) {
   <span class="hljs-attribute">display</span>: none;
 }</code></pre>
-        <div class="note" role="note" id="issue-container-generatedID-33"><div role="heading" class="note-title marker" id="h-note-36" aria-level="4"><span>Note</span></div><div class="">
+        <div class="note" role="note" id="issue-container-generatedID-32"><div class="note-title marker" id="h-note-36"><span>Note</span></div><div class="">
 	  <code>&lt;maction&gt;</code> is implemented for compatibility with full MathML. Authors whose only target is MathML Core are encouraged to use other HTML, CSS and JavaScript mechanisms to implement custom actions. They may
           rely on maction attributes defined in [<cite><a class="bibref" data-link-type="biblio" href="#bib-mathml3" title="Mathematical Markup Language (MathML) Version 3.0 2nd Edition">MathML3</a></cite>].
         </div></div>
@@ -5676,7 +5709,7 @@ mmultiscripts &gt; mprescripts ~ <span class="hljs-selector-pseudo">:nth-child</
           and <code>&lt;annotation&gt;</code>
           element is the same as the <code><a data-link-type="element" href="#dfn-mtext" class="internalDFN" id="ref-for-dfn-mtext-8">mtext</a></code> element.
         </p>
-        <div class="note" role="note" id="issue-container-generatedID-34"><div role="heading" class="note-title marker" id="h-note-37" aria-level="4"><span>Note</span></div><div class="">
+        <div class="note" role="note" id="issue-container-generatedID-33"><div class="note-title marker" id="h-note-37"><span>Note</span></div><div class="">
           Authors can use the <code><a data-link-type="element-attr" href="#dfn-encoding" class="internalDFN" id="ref-for-dfn-encoding-3">encoding</a></code> attribute to distinguish
           annotations
           for <a href="https://html.spec.whatwg.org/#html-integration-point">HTML integration point</a>,
@@ -5737,7 +5770,7 @@ semantics &gt; annotation-xml<span class="hljs-selector-attr">[encoding=<span cl
           <a href="#dfn-unknown-mathml-element" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-unknown-mathml-element-2">Unknown MathML elements</a>
           behave the same as the <code><a data-link-type="element" href="#dfn-mrow" class="internalDFN" id="ref-for-dfn-mrow-27">mrow</a></code> element.
         </p>
-        <div class="note" role="note" id="issue-container-generatedID-35"><div role="heading" class="note-title marker" id="h-note-38" aria-level="4"><span>Note</span></div><div class="">
+        <div class="note" role="note" id="issue-container-generatedID-34"><div class="note-title marker" id="h-note-38"><span>Note</span></div><div class="">
           The <code>display: block math</code> and
           <code>display: inline math</code> values provide a default
           layout for MathML elements while at the same time allowing
@@ -6140,7 +6173,7 @@ semantics &gt; annotation-xml<span class="hljs-selector-attr">[encoding=<span cl
         subtable, has an invalid offset, etc) and so fallback options are
         provided.
       </p>
-      <div class="note" role="note" id="issue-container-generatedID-36"><div role="heading" class="note-title marker" id="h-note-39" aria-level="3"><span>Note</span></div><div class="">
+      <div class="note" role="note" id="issue-container-generatedID-35"><div class="note-title marker" id="h-note-39"><span>Note</span></div><div class="">
         It is strongly encouraged to render MathML with a math font with
         the proper OpenType features. There is no guarantee that the fallback
         options provided will provide good enough rendering.
@@ -6283,7 +6316,7 @@ semantics &gt; annotation-xml<span class="hljs-selector-attr">[encoding=<span cl
       </section>
       <section id="glyph-information-mathglyphinfo"><div class="header-wrapper"><h3 id="x5-2-glyph-information-mathglyphinfo"><bdi class="secno">5.2 </bdi>Glyph information (<code>MathGlyphInfo</code>)</h3><a class="self-link" href="#glyph-information-mathglyphinfo" aria-label="Permalink for Section 5.2"></a></div>
         
-        <div class="note" role="note" id="issue-container-generatedID-37"><div role="heading" class="note-title marker" id="h-note-40" aria-level="4"><span>Note</span></div><div class="">MathTopAccentAttachment is at risk.</div></div>
+        <div class="note" role="note" id="issue-container-generatedID-36"><div class="note-title marker" id="h-note-40"><span>Note</span></div><div class="">MathTopAccentAttachment is at risk.</div></div>
         <p>
           These are per-glyph tables for the
           <a data-link-type="dfn" href="https://www.w3.org/TR/css-fonts-4/#first-available-font">first available font</a>:</p>
@@ -6463,7 +6496,7 @@ semantics &gt; annotation-xml<span class="hljs-selector-attr">[encoding=<span cl
             of the <a href="#dfn-glyph-assembly-ascent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-glyph-assembly-ascent-1">glyph assembly ascent</a> and
             <a href="#dfn-glyph-assembly-descent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-glyph-assembly-descent-1">glyph assembly descent</a>.
           </p>
-          <div class="note" role="note" id="issue-container-generatedID-38"><div role="heading" class="note-title marker" id="h-note-41" aria-level="5"><span>Note</span></div><div class="">
+          <div class="note" role="note" id="issue-container-generatedID-37"><div class="note-title marker" id="h-note-41"><span>Note</span></div><div class="">
             The horizontal (respectively vertical) metrics for a vertical
             (respectively horizontal) glyph assembly do not depend
             on the target size <code>T</code>.
@@ -6559,7 +6592,7 @@ semantics &gt; annotation-xml<span class="hljs-selector-attr">[encoding=<span cl
             </li>
             <li>Return <code>S</code>.</li>
           </ol>
-          <div class="note" role="note" id="issue-container-generatedID-39"><div role="heading" class="note-title marker" id="h-note-42" aria-level="5"><span>Note</span></div><div class="">
+          <div class="note" role="note" id="issue-container-generatedID-38"><div class="note-title marker" id="h-note-42"><span>Note</span></div><div class="">
             The <a href="#dfn-preferred-inline-size-of-a-glyph-stretched-along-the-block-axis" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-preferred-inline-size-of-a-glyph-stretched-along-the-block-axis-4">preferred inline size of a glyph stretched along the block
             axis</a> will return the maximum width of all possible
             vertical constructions for that glyph.
@@ -6613,7 +6646,7 @@ semantics &gt; annotation-xml<span class="hljs-selector-attr">[encoding=<span cl
               with success.
             </li>
           </ol>
-          <div class="note" role="note" id="issue-container-generatedID-40"><div role="heading" class="note-title marker" id="h-note-43" aria-level="5"><span>Note</span></div><div class="">
+          <div class="note" role="note" id="issue-container-generatedID-39"><div class="note-title marker" id="h-note-43"><span>Note</span></div><div class="">
             If a font does not provide tables for stretchy constructions, User
             Agents may use their own internal constructions as a fallback
             such as
@@ -6650,7 +6683,7 @@ semantics &gt; annotation-xml<span class="hljs-selector-attr">[encoding=<span cl
                         Otherwise, exit with failure.
                       </li>
                     </ul>
-                    <div class="note" role="note" id="issue-container-generatedID-41"><div role="heading" class="note-title marker" id="h-note-44" aria-level="5"><span>Note</span></div><div class="">
+                    <div class="note" role="note" id="issue-container-generatedID-40"><div class="note-title marker" id="h-note-44"><span>Note</span></div><div class="">
                       These failure cases are for when a character should be mirrored
                       according to its Bidi_Mirrored property, but no corresponding codepoint
                       or glyph exists.
@@ -6795,7 +6828,7 @@ mmultiscripts &gt; mprescripts ~ <span class="hljs-selector-pseudo">:nth-child</
       
       <section id="operator-dictionary" class="normative"><div class="header-wrapper"><h3 id="b-1-operator-dictionary"><bdi class="secno">B.1 </bdi>Operator Dictionary</h3><a class="self-link" href="#operator-dictionary" aria-label="Permalink for Section B.1"></a></div>
         
-        <div class="note" role="note" id="issue-container-generatedID-42"><div role="heading" class="note-title marker" id="h-note-45" aria-level="4"><span>Note</span></div><div class="">
+        <div class="note" role="note" id="issue-container-generatedID-41"><div class="note-title marker" id="h-note-45"><span>Note</span></div><div class="">
           This section describes how to determine values of
           <a href="#dictionary-based-attributes" class="sec-ref"><bdi class="secno">3.2.4.2 </bdi>Dictionary-based attributes</a> and
           <a data-link-type="dfn|abstract-op" href="#dfn-stretch-axis" class="internalDFN" id="ref-for-dfn-stretch-axis-7">stretch axis</a> of operators.
@@ -6925,7 +6958,7 @@ mmultiscripts &gt; mprescripts ~ <span class="hljs-selector-pseudo">:nth-child</
 <tr><td>M</td><td>infix</td><td>N/A</td><td><code>0</code></td><td><code>0.16666666666666666em</code></td><td>N/A</td></tr>
 </tbody></table><figcaption><a class="self-link" href="#operator-dictionary-categories-values">Figure <bdi class="figno">26</bdi></a> <span class="fig-title">Operators values for each category.<br>The third column provides a 4-bit encoding of the categories<br>where the 2 least significant bits encode the form infix (0), prefix (1) and postfix (2).</span></figcaption></figure><figure id="operator-dictionary-categories-hexa-table">716 entries (236 ranges of length at most 16): <code>{0x8025}, {0x802A}, {0x402B}, {0x402D}, {0x802E}, {0xC02F}, [0x803F–0x8040], {0xC05C}, {0x805E}, {0xC05F}, {0x40B1}, {0x80B7}, {0x80D7}, {0x40F7}, {0x4322}, {0x8323}, {0x832E}, {0x8422}, {0x8443}, {0x4444}, [0xC461–0xC464], [0x0590–0x0595], [0x059A–0x05A9], [0x05AA–0x05AE], [0x05B0–0x05B5], {0x05B9}, [0x05BC–0x05CB], [0x05CC–0x05D5], [0x05DA–0x05E9], [0x05EA–0x05F0], [0x05F3–0x05FF], {0xC606}, [0x4612–0x4616], [0x8617–0x8619], [0x4627–0x462A], {0x4636}, {0x4638}, {0x8640}, [0x468C–0x468E], [0x4693–0x4696], {0x8697}, {0x4698}, [0x8699–0x869B], [0x469D–0x469F], [0x86A0–0x86A1], {0x86BA}, [0x46BB–0x46BD], [0x86C4–0x86C7], [0x86C9–0x86CC], [0x46CE–0x46CF], [0x46D2–0x46D3], [0x8705–0x8706], {0x0B94}, [0x4B95–0x4B97], {0x0B99}, [0x0B9B–0x0BA1], [0x0BA5–0x0BA6], [0x0BA8–0x0BAF], {0x0BB1}, {0x0BB3}, {0x0BB5}, {0x0BB8}, [0x0BBA–0x0BBE], {0x8BCB}, {0x8BCD}, [0x0BF0–0x0BF1], [0x0BF4–0x0BFF], [0x0D00–0x0D0F], [0x0D10–0x0D1F], {0x0D20}, [0x0D34–0x0D37], [0x0D42–0x0D51], [0x0D52–0x0D61], [0x0D62–0x0D71], [0x0D72–0x0D75], [0x0D7C–0x0D7F], {0x4DB8}, {0x4DBC}, [0x4DC4–0x4DC5], [0x8DC6–0x8DC8], [0x8DD4–0x8DD7], {0x8DE2}, [0x4DF5–0x4DFB], [0x8E1D–0x8E1E], [0x4E1F–0x4E2E], [0x8E2F–0x8E37], [0x4E38–0x4E3A], [0x8E3B–0x8E3D], {0x4E3E}, {0x8E3F}, [0x4E40–0x4E4F], {0x8E50}, [0x4E51–0x4E60], [0x4E61–0x4E63], [0x8E64–0x8E65], {0x4EDB}, [0x8EDC–0x8EDD], {0x4EF6}, {0x4EFB}, {0x4EFD}, {0x8EFE}, [0x0F04–0x0F07], [0x0F0C–0x0F11], [0x0F30–0x0F3E], [0x0F40–0x0F4C], [0x0F60–0x0F65], [0x0F6A–0x0F6D], [0x0F70–0x0F73], [0x0F7A–0x0F7D], [0x0F80–0x0F87], {0x0F95}, [0x0FA0–0x0FAF], {0x0FB8}, {0x1021}, {0x5028}, {0x102B}, {0x102D}, {0x505B}, [0x507B–0x507C], {0x10AC}, {0x10B1}, {0x1331}, {0x5416}, {0x1418}, {0x141C}, [0x1600–0x1601], [0x1603–0x1604], {0x1607}, [0xD60F–0xD611], [0x1612–0x1613], [0x161F–0x1622], [0x962B–0x9633], [0x1634–0x1635], {0x163C}, [0x16BE–0x16BF], [0xD6C0–0xD6C3], {0x5708}, {0x570A}, {0x1710}, {0x1719}, {0x5729}, {0x5B72}, [0x1B95–0x1B96], {0x1BC0}, {0x5BE6}, {0x5BE8}, {0x5BEA}, {0x5BEC}, {0x5BEE}, {0x5D80}, {0x5D83}, {0x5D85}, {0x5D87}, {0x5D89}, {0x5D8B}, {0x5D8D}, {0x5D8F}, {0x5D91}, {0x5D93}, {0x5D95}, {0x5D97}, {0x5D99}, [0x1D9B–0x1DAA], [0x1DAB–0x1DAF], {0x5DD8}, {0x5DDA}, {0x5DFC}, [0xDE00–0xDE0A], [0x9E0B–0x9E1A], [0x9E1B–0x9E1C], [0xDE1D–0xDE1E], [0x1EEC–0x1EED], {0xDEFC}, {0xDEFF}, [0x2021–0x2022], [0x2025–0x2027], {0x6029}, {0x605D}, [0xA05E–0xA05F], {0x2060}, [0x607C–0x607D], {0xA07E}, {0x20A8}, {0xA0AF}, {0x20B0}, [0x20B2–0x20B4], [0x20B8–0x20B9], [0xA2C6–0xA2C7], {0xA2C9}, [0x22CA–0x22CB], {0xA2CD}, [0x22D8–0x22DA], {0xA2DC}, {0x22DD}, {0xA2F7}, {0xA302}, {0x2311}, {0x2320}, {0x2325}, {0x2327}, {0x2331}, {0x6416}, [0x2419–0x241B], [0x241D–0x241F], [0x2432–0x2437], {0xA43E}, {0x2457}, [0x24DB–0x24DC], {0x6709}, {0x670B}, [0xA722–0xA723], {0x672A}, [0xA7B4–0xA7B5], {0x27CD}, [0xA7DC–0xA7E1], {0x6B73}, {0x6BE7}, {0x6BE9}, {0x6BEB}, {0x6BED}, {0x6BEF}, {0x6D80}, {0x6D84}, {0x6D86}, {0x6D88}, {0x6D8A}, {0x6D8C}, {0x6D8E}, {0x6D90}, {0x6D92}, {0x6D94}, {0x6D96}, [0x6D98–0x6D99], {0x6DD9}, {0x6DDB}, {0x6DFD}, </code><figcaption><a class="self-link" href="#operator-dictionary-categories-hexa-table">Figure <bdi class="figno">27</bdi></a> <span class="fig-title">List of entries for the largest categories, sorted by key.<br><code>Key</code> is <code>Entry</code> % 0x4000, category encoding is <code>Entry</code> / 0x1000.<br>Total size: 716 entries, 590 bytes<br>(assuming 4 bits for range lengths).</span></figcaption></figure></div>
 
-        <div class="note" role="note" id="operator-dictionary-compact-implementations"><div role="heading" class="note-title marker" id="h-note-46" aria-level="4"><span>Note</span></div><div class="">
+        <div class="note" role="note" id="operator-dictionary-compact-implementations"><div class="note-title marker" id="h-note-46"><span>Note</span></div><div class="">
           <ul>
             <li>
               Tables of
@@ -7202,7 +7235,7 @@ U+FE38,
 U+1EEF0,
 U+1EEF1,
 </code><figcaption><a class="self-link" href="#inline-stretch-axis">Figure <bdi class="figno">28</bdi></a> <span class="fig-title">Sorted list of Unicode code points corresponding to operators with inline stretch axis.<br>Total size: 246 entries, 492 bytes (assuming 16 bits for all but the non-BMP entries).</span></figcaption></figure></div>
-        <div class="note" role="note" id="issue-container-generatedID-43"><div role="heading" class="note-title marker" id="h-note-47" aria-level="4"><span>Note</span></div><div class="">
+        <div class="note" role="note" id="issue-container-generatedID-42"><div class="note-title marker" id="h-note-47"><span>Note</span></div><div class="">
           The intrinsic stretch axis could be included as a boolean property of
           the operator dictionary. But since it
           does not depend on the form and since very few operators can stretch
@@ -9087,7 +9120,7 @@ U+1EEF1,
         of scripts specified in these attributes, following the same
         security restrictions as those applying to HTML or SVG elements.
       </p>
-      <div class="note" role="note" id="issue-container-generatedID-44"><div role="heading" class="note-title marker" id="h-note-48" aria-level="3"><span>Note</span></div><div class="">
+      <div class="note" role="note" id="issue-container-generatedID-43"><div class="note-title marker" id="h-note-48"><span>Note</span></div><div class="">
         <p>In [<cite><a class="bibref" data-link-type="biblio" href="#bib-mathml3" title="Mathematical Markup Language (MathML) Version 3.0 2nd Edition">MathML3</a></cite>], it was possible to make any element linkable
           via <code>href</code> or <code>xlink:href</code> attributes, with
           an URL pointing to an untrusted resource or even
@@ -9097,7 +9130,7 @@ U+1EEF1,
           HTML or SVG content inside MathML, including HTML or SVG links.
         </p>
       </div></div>
-      <div class="note" role="note" id="issue-container-generatedID-45"><div role="heading" class="note-title marker" id="h-note-49" aria-level="3"><span>Note</span></div><div class="">
+      <div class="note" role="note" id="issue-container-generatedID-44"><div class="note-title marker" id="h-note-49"><span>Note</span></div><div class="">
         <p>In [<cite><a class="bibref" data-link-type="biblio" href="#bib-mathml3" title="Mathematical Markup Language (MathML) Version 3.0 2nd Edition">MathML3</a></cite>], it was possible to use the
         <code><a data-link-type="element" href="#dfn-maction" class="internalDFN" id="ref-for-dfn-maction-4">maction</a></code> element with
         the <code>actiontype</code> value set to <code>"statusline"</code>
@@ -9331,7 +9364,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
           Informative notes begin with the word “Note” and are set apart from
           the normative text with <code>class="note"</code>, like this:
         </p>
-        <div class="note" role="note" id="issue-container-generatedID-46"><div role="heading" class="note-title marker" id="h-note-50" aria-level="3"><span>Note</span></div><p class="">
+        <div class="note" role="note" id="issue-container-generatedID-45"><div class="note-title marker" id="h-note-50"><span>Note</span></div><p class="">
           Note, this is an informative note.
         </p></div>
         <p>
@@ -9343,89 +9376,12 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
     </section>
   
 
-<section id="references" class="appendix"><div class="header-wrapper"><h2 id="h-references"><bdi class="secno">H. </bdi>References</h2><a class="self-link" href="#references" aria-label="Permalink for Appendix H."></a></div><section id="normative-references"><div class="header-wrapper"><h3 id="h-1-normative-references"><bdi class="secno">H.1 </bdi>Normative references</h3><a class="self-link" href="#normative-references" aria-label="Permalink for Appendix H.1"></a></div>
-    
-    <dl class="bibliography"><dt id="bib-bidi">[BIDI]</dt><dd>
-      <a href="https://www.unicode.org/reports/tr9/tr9-51.html"><cite>Unicode Bidirectional Algorithm</cite></a>. Manish Goregaokar मनीष गोरेगांवकर; Robin Leroy.  Unicode Consortium. 13 August 2025. Unicode Standard Annex #9. URL: <a href="https://www.unicode.org/reports/tr9/tr9-51.html">https://www.unicode.org/reports/tr9/tr9-51.html</a>
-    </dd><dt id="bib-css-align-3">[css-align-3]</dt><dd>
-      <a href="https://www.w3.org/TR/css-align-3/"><cite>CSS Box Alignment Module Level 3</cite></a>. Elika Etemad; Tab Atkins Jr. W3C. 30 January 2026. W3C Working Draft. URL: <a href="https://www.w3.org/TR/css-align-3/">https://www.w3.org/TR/css-align-3/</a>
-    </dd><dt id="bib-css-backgrounds-3">[css-backgrounds-3]</dt><dd>
-      <a href="https://www.w3.org/TR/css-backgrounds-3/"><cite>CSS Backgrounds and Borders Module Level 3</cite></a>. Elika Etemad; Brad Kemper.  W3C. 11 March 2024. CRD. URL: <a href="https://www.w3.org/TR/css-backgrounds-3/">https://www.w3.org/TR/css-backgrounds-3/</a>
-    </dd><dt id="bib-css-box-4">[css-box-4]</dt><dd>
-      <a href="https://www.w3.org/TR/css-box-4/"><cite>CSS Box Model Module Level 4</cite></a>. Elika Etemad.  W3C. 4 August 2024. W3C Working Draft. URL: <a href="https://www.w3.org/TR/css-box-4/">https://www.w3.org/TR/css-box-4/</a>
-    </dd><dt id="bib-css-cascade-4">[CSS-CASCADE-4]</dt><dd>
-      <a href="https://www.w3.org/TR/css-cascade-4/"><cite>CSS Cascading and Inheritance Level 4</cite></a>. Elika Etemad; Tab Atkins Jr. W3C. 13 January 2022. W3C Candidate Recommendation. URL: <a href="https://www.w3.org/TR/css-cascade-4/">https://www.w3.org/TR/css-cascade-4/</a>
-    </dd><dt id="bib-css-color-4">[css-color-4]</dt><dd>
-      <a href="https://www.w3.org/TR/css-color-4/"><cite>CSS Color Module Level 4</cite></a>. Tab Atkins Jr.; Chris Lilley; Lea Verou.  W3C. 27 February 2026. CRD. URL: <a href="https://www.w3.org/TR/css-color-4/">https://www.w3.org/TR/css-color-4/</a>
-    </dd><dt id="bib-css-display-3">[CSS-DISPLAY-3]</dt><dd>
-      <a href="https://www.w3.org/TR/css-display-3/"><cite>CSS Display Module Level 3</cite></a>. Elika Etemad; Tab Atkins Jr. W3C. 30 March 2023. W3C Candidate Recommendation. URL: <a href="https://www.w3.org/TR/css-display-3/">https://www.w3.org/TR/css-display-3/</a>
-    </dd><dt id="bib-css-fonts-4">[CSS-FONTS-4]</dt><dd>
-      <a href="https://www.w3.org/TR/css-fonts-4/"><cite>CSS Fonts Module Level 4</cite></a>. Chris Lilley.  W3C. 3 March 2026. W3C Working Draft. URL: <a href="https://www.w3.org/TR/css-fonts-4/">https://www.w3.org/TR/css-fonts-4/</a>
-    </dd><dt id="bib-css-position-3">[CSS-POSITION-3]</dt><dd>
-      <a href="https://www.w3.org/TR/css-position-3/"><cite>CSS Positioned Layout Module Level 3</cite></a>. Elika Etemad; Tab Atkins Jr. W3C. 7 October 2025. W3C Working Draft. URL: <a href="https://www.w3.org/TR/css-position-3/">https://www.w3.org/TR/css-position-3/</a>
-    </dd><dt id="bib-css-pseudo-4">[css-pseudo-4]</dt><dd>
-      <a href="https://www.w3.org/TR/css-pseudo-4/"><cite>CSS Pseudo-Elements Module Level 4</cite></a>. Elika Etemad; Alan Stearns.  W3C. 27 June 2025. W3C Working Draft. URL: <a href="https://www.w3.org/TR/css-pseudo-4/">https://www.w3.org/TR/css-pseudo-4/</a>
-    </dd><dt id="bib-css-sizing-3">[css-sizing-3]</dt><dd>
-      <a href="https://www.w3.org/TR/css-sizing-3/"><cite>CSS Box Sizing Module Level 3</cite></a>. Tab Atkins Jr.; Elika Etemad.  W3C. 17 December 2021. W3C Working Draft. URL: <a href="https://www.w3.org/TR/css-sizing-3/">https://www.w3.org/TR/css-sizing-3/</a>
-    </dd><dt id="bib-css-text-3">[css-text-3]</dt><dd>
-      <a href="https://www.w3.org/TR/css-text-3/"><cite>CSS Text Module Level 3</cite></a>. Elika Etemad; Koji Ishii; Florian Rivoal.  W3C. 30 September 2024. CRD. URL: <a href="https://www.w3.org/TR/css-text-3/">https://www.w3.org/TR/css-text-3/</a>
-    </dd><dt id="bib-css-text-4">[CSS-TEXT-4]</dt><dd>
-      <a href="https://www.w3.org/TR/css-text-4/"><cite>CSS Text Module Level 4</cite></a>. Elika Etemad; Koji Ishii; Alan Stearns; Florian Rivoal.  W3C. 29 May 2024. W3C Working Draft. URL: <a href="https://www.w3.org/TR/css-text-4/">https://www.w3.org/TR/css-text-4/</a>
-    </dd><dt id="bib-css-values-4">[CSS-VALUES-4]</dt><dd>
-      <a href="https://www.w3.org/TR/css-values-4/"><cite>CSS Values and Units Module Level 4</cite></a>. Tab Atkins Jr.; Elika Etemad.  W3C. 12 March 2024. W3C Working Draft. URL: <a href="https://www.w3.org/TR/css-values-4/">https://www.w3.org/TR/css-values-4/</a>
-    </dd><dt id="bib-css-writing-modes-4">[CSS-WRITING-MODES-4]</dt><dd>
-      <a href="https://www.w3.org/TR/css-writing-modes-4/"><cite>CSS Writing Modes Level 4</cite></a>. Elika Etemad; Koji Ishii.  W3C. 30 July 2019. W3C Candidate Recommendation. URL: <a href="https://www.w3.org/TR/css-writing-modes-4/">https://www.w3.org/TR/css-writing-modes-4/</a>
-    </dd><dt id="bib-css2">[CSS2]</dt><dd>
-      <a href="https://www.w3.org/TR/CSS2/"><cite>Cascading Style Sheets Level 2 Revision 1 (CSS 2.1) Specification</cite></a>. Bert Bos; Tantek Çelik; Ian Hickson; Håkon Wium Lie.  W3C. 7 June 2011. W3C Recommendation. URL: <a href="https://www.w3.org/TR/CSS2/">https://www.w3.org/TR/CSS2/</a>
-    </dd><dt id="bib-dom">[DOM]</dt><dd>
-      <a href="https://dom.spec.whatwg.org/"><cite>DOM Standard</cite></a>. Anne van Kesteren.  WHATWG. Living Standard. URL: <a href="https://dom.spec.whatwg.org/">https://dom.spec.whatwg.org/</a>
-    </dd><dt id="bib-html">[HTML]</dt><dd>
-      <a href="https://html.spec.whatwg.org/multipage/"><cite>HTML Standard</cite></a>. Anne van Kesteren; Domenic Denicola; Dominic Farolino; Ian Hickson; Philip Jägenstedt; Simon Pieters.  WHATWG. Living Standard. URL: <a href="https://html.spec.whatwg.org/multipage/">https://html.spec.whatwg.org/multipage/</a>
-    </dd><dt id="bib-infra">[infra]</dt><dd>
-      <a href="https://infra.spec.whatwg.org/"><cite>Infra Standard</cite></a>. Anne van Kesteren; Domenic Denicola.  WHATWG. Living Standard. URL: <a href="https://infra.spec.whatwg.org/">https://infra.spec.whatwg.org/</a>
-    </dd><dt id="bib-open-font-format">[OPEN-FONT-FORMAT]</dt><dd>
-      <a href="https://www.iso.org/standard/74461.html"><cite>Information technology — Coding of audio-visual objects — Part 22: Open Font Format</cite></a>.  ISO/IEC. January 2019. Published. URL: <a href="https://www.iso.org/standard/74461.html">https://www.iso.org/standard/74461.html</a>
-    </dd><dt id="bib-rfc2119">[RFC2119]</dt><dd>
-      <a href="https://www.rfc-editor.org/rfc/rfc2119"><cite>Key words for use in RFCs to Indicate Requirement Levels</cite></a>. S. Bradner.  IETF. March 1997. Best Current Practice. URL: <a href="https://www.rfc-editor.org/rfc/rfc2119">https://www.rfc-editor.org/rfc/rfc2119</a>
-    </dd><dt id="bib-select">[SELECT]</dt><dd>
-      <a href="https://www.w3.org/TR/selectors-3/"><cite>Selectors Level 3</cite></a>. Tantek Çelik; Elika Etemad; Daniel Glazman; Ian Hickson; Peter Linss; John Williams.  W3C. 6 November 2018. W3C Recommendation. URL: <a href="https://www.w3.org/TR/selectors-3/">https://www.w3.org/TR/selectors-3/</a>
-    </dd><dt id="bib-svg">[SVG]</dt><dd>
-      <a href="https://www.w3.org/TR/SVG/"><cite>Scalable Vector Graphics (SVG) 1.0 Specification</cite></a>. Jon Ferraiolo.  W3C. 4 September 2001. W3C Recommendation. URL: <a href="https://www.w3.org/TR/SVG/">https://www.w3.org/TR/SVG/</a>
-    </dd><dt id="bib-webidl">[webidl]</dt><dd>
-      <a href="https://webidl.spec.whatwg.org/"><cite>Web IDL Standard</cite></a>. Edgar Chen; Timothy Gu.  WHATWG. Living Standard. URL: <a href="https://webidl.spec.whatwg.org/">https://webidl.spec.whatwg.org/</a>
-    </dd></dl>
-  </section><section id="informative-references"><div class="header-wrapper"><h3 id="h-2-informative-references"><bdi class="secno">H.2 </bdi>Informative references</h3><a class="self-link" href="#informative-references" aria-label="Permalink for Appendix H.2"></a></div>
-    
-    <dl class="bibliography"><dt id="bib-css-layout-api-1">[CSS-LAYOUT-API-1]</dt><dd>
-      <a href="https://www.w3.org/TR/css-layout-api-1/"><cite>CSS Layout API Level 1</cite></a>. Greg Whitworth; Ian Kilpatrick; Tab Atkins Jr.; Shane Stephens; Robert O'Callahan; Rossen Atanassov.  W3C. 12 April 2018. FPWD. URL: <a href="https://www.w3.org/TR/css-layout-api-1/">https://www.w3.org/TR/css-layout-api-1/</a>
-    </dd><dt id="bib-css-text-decor-4">[css-text-decor-4]</dt><dd>
-      <a href="https://www.w3.org/TR/css-text-decor-4/"><cite>CSS Text Decoration Module Level 4</cite></a>. Elika Etemad; Koji Ishii.  W3C. 4 May 2022. W3C Working Draft. URL: <a href="https://www.w3.org/TR/css-text-decor-4/">https://www.w3.org/TR/css-text-decor-4/</a>
-    </dd><dt id="bib-cssom-view">[cssom-view]</dt><dd>
-      <a href="https://www.w3.org/TR/cssom-view-1/"><cite>CSSOM View Module</cite></a>. Simon Fraser; Emilio Cobos Álvarez.  W3C. 16 September 2025. W3C Working Draft. URL: <a href="https://www.w3.org/TR/cssom-view-1/">https://www.w3.org/TR/cssom-view-1/</a>
-    </dd><dt id="bib-houdini">[HOUDINI]</dt><dd>
-      <a href="https://drafts.css-houdini.org/"><cite>CSS-TAG Houdini Editor Drafts</cite></a>. URL: <a href="https://drafts.css-houdini.org/">https://drafts.css-houdini.org/</a>
-    </dd><dt id="bib-mathml3">[MATHML3]</dt><dd>
-      <a href="https://www.w3.org/TR/MathML3/"><cite>Mathematical Markup Language (MathML) Version 3.0 2nd Edition</cite></a>. David Carlisle; Patrick D F Ion; Robert R Miner.  W3C. 10 April 2014. W3C Recommendation. URL: <a href="https://www.w3.org/TR/MathML3/">https://www.w3.org/TR/MathML3/</a>
-    </dd><dt id="bib-mathml4">[MATHML4]</dt><dd>
-      <a href="https://w3c.github.io/mathml/"><cite>Mathematical Markup Language (MathML) Version 4.0</cite></a>. David Carlisle et al.W3C Editor's Draft. URL: <a href="https://w3c.github.io/mathml/">https://w3c.github.io/mathml/</a>
-    </dd><dt id="bib-open-type-math-illuminated">[OPEN-TYPE-MATH-ILLUMINATED]</dt><dd>
-      <a href="https://www.tug.org/TUGboat/tb30-1/tb94vieth.pdf"><cite>OpenType Math Illuminated</cite></a>. Ulrik Vieth. 2009. URL: <a href="https://www.tug.org/TUGboat/tb30-1/tb94vieth.pdf">https://www.tug.org/TUGboat/tb30-1/tb94vieth.pdf</a>
-    </dd><dt id="bib-open-type-math-in-harfbuzz">[OPEN-TYPE-MATH-IN-HARFBUZZ]</dt><dd>
-      <a href="https://frederic-wang.fr/2016/04/16/opentype-math-in-harfbuzz/"><cite>OpenType MATH in HarfBuzz</cite></a>. Frédéric Wang. URL: <a href="https://frederic-wang.fr/2016/04/16/opentype-math-in-harfbuzz/">https://frederic-wang.fr/2016/04/16/opentype-math-in-harfbuzz/</a>
-    </dd><dt id="bib-texbook">[TEXBOOK]</dt><dd>
-      <cite>The TeXBook</cite>. Knuth, Donald E. Addison-Wesley Professional. 1984. 
-    </dd><dt id="bib-unicode">[UNICODE]</dt><dd>
-      <a href="https://www.unicode.org/versions/latest/"><cite>The Unicode Standard</cite></a>.  Unicode Consortium. URL: <a href="https://www.unicode.org/versions/latest/">https://www.unicode.org/versions/latest/</a>
-    </dd><dt id="bib-xml-entity-names">[xml-entity-names]</dt><dd>
-      <a href="https://www.w3.org/TR/xml-entity-names/"><cite>XML Entity Definitions for Characters (3rd Edition)</cite></a>. Patrick D F Ion; David Carlisle.  W3C. 7 March 2023. W3C Recommendation. URL: <a href="https://www.w3.org/TR/xml-entity-names/">https://www.w3.org/TR/xml-entity-names/</a>
-    </dd></dl>
-  </section></section><p role="navigation" id="back-to-top">
-    <a href="#title"><abbr title="Back to Top">↑</abbr></a>
-  </p><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-mathml-element" aria-label="Links in this document to definition: MathML element">
+<div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-mathml-element" aria-label="Links in this document to definition: MathML element">
       <span class="caret"></span>
       <div>
         <a class="self-link" href="#dfn-mathml-element" aria-label="Permalink for definition: MathML element. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -9442,6 +9398,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-mathml-core-elements" aria-label="Permalink for definition: MathML Core elements. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -9458,6 +9415,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-unknown-mathml-element" aria-label="Permalink for definition: Unknown MathML element. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -9472,6 +9430,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-grouping-elements" aria-label="Permalink for definition: grouping elements. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -9488,6 +9447,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-scripted-elements" aria-label="Permalink for definition: scripted elements. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -9506,6 +9466,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-radical-elements" aria-label="Permalink for definition: radical elements. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -9518,6 +9479,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-mathml-attributes" aria-label="Permalink for definition: MathML attributes. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -9530,6 +9492,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-math" aria-label="Permalink for definition: math. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -9554,6 +9517,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-display" aria-label="Permalink for definition: display. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -9590,6 +9554,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-alttext" aria-label="Permalink for definition: alttext. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -9602,6 +9567,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-unsigned-integer" aria-label="Permalink for definition: unsigned-integer. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -9614,6 +9580,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-boolean" aria-label="Permalink for definition: boolean. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -9630,6 +9597,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-id" aria-label="Permalink for definition: id. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -9644,6 +9612,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-class" aria-label="Permalink for definition: class. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -9658,6 +9627,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-style" aria-label="Permalink for definition: style. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -9674,6 +9644,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-data" aria-label="Permalink for definition: data-*. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -9686,6 +9657,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-autofocus" aria-label="Permalink for definition: autofocus. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -9700,6 +9672,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-nonce" aria-label="Permalink for definition: nonce. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -9714,6 +9687,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-tabindex" aria-label="Permalink for definition: tabindex. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -9728,6 +9702,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-dir" aria-label="Permalink for definition: dir. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -9742,6 +9717,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-mathcolor" aria-label="Permalink for definition: mathcolor. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -9754,6 +9730,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-mathbackground" aria-label="Permalink for definition: mathbackground. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -9766,6 +9743,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-mathsize" aria-label="Permalink for definition: mathsize. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -9778,6 +9756,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-displaystyle" aria-label="Permalink for definition: displaystyle. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -9804,6 +9783,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-scriptlevel" aria-label="Permalink for definition: scriptlevel. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -9828,6 +9808,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-intent" aria-label="Permalink for definition: intent. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -9840,6 +9821,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-arg" aria-label="Permalink for definition: arg. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -9851,7 +9833,8 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <span class="caret"></span>
       <div>
         <a class="self-link" href="#dom-mathmlelement" aria-label="Permalink for definition: MathMLElement. Activate to close this dialog.">Permalink</a>
-        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-1630693908">IDL</a>
+        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-1298971770">IDL</a>
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -9864,6 +9847,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-alphabetic-baseline" aria-label="Permalink for definition: alphabetic baseline. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -9906,6 +9890,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-line-ascent" aria-label="Permalink for definition: line-ascent. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -9954,6 +9939,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-line-descent" aria-label="Permalink for definition: line-descent. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -9998,6 +9984,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-mathematical-baseline" aria-label="Permalink for definition: mathematical baseline. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -10010,6 +9997,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-math-axis" aria-label="Permalink for definition: math axis. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -10026,6 +10014,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-ink-over-baseline" aria-label="Permalink for definition: ink-over baseline. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -10042,6 +10031,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-ink-line-ascent" aria-label="Permalink for definition: ink line-ascent. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -10074,6 +10064,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-ink-under-baseline" aria-label="Permalink for definition: ink-under baseline. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -10090,6 +10081,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-ink-line-descent" aria-label="Permalink for definition: ink line-descent. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -10120,6 +10112,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-italic-correction" aria-label="Permalink for definition: italic correction. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -10146,6 +10139,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-top-accent-attachment" aria-label="Permalink for definition: top accent attachment. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -10160,6 +10154,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-inline-offset" aria-label="Permalink for definition: inline offset. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -10196,6 +10191,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-block-offset" aria-label="Permalink for definition: block offset. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -10214,6 +10210,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-line-left-offset" aria-label="Permalink for definition: line-left offset. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -10226,6 +10223,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-math-content-box" aria-label="Permalink for definition: math content box. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -10252,6 +10250,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-inline-stretch-size-constraint" aria-label="Permalink for definition: inline stretch size constraint. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -10280,6 +10279,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-block-stretch-size-constraint" aria-label="Permalink for definition: block stretch size constraint. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -10308,6 +10308,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-anonymous-box" aria-label="Permalink for definition: anonymous box. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -10320,6 +10321,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-anonymous-mrow-box" aria-label="Permalink for definition: anonymous &lt;mrow&gt; box. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -10338,6 +10340,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-generates-an-anonymous-mrow-box" aria-label="Permalink for definition: generates an anonymous &lt;mrow&gt; box. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -10356,6 +10359,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-mtext" aria-label="Permalink for definition: mtext. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -10382,6 +10386,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-mi" aria-label="Permalink for definition: mi. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -10396,6 +10401,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-mathvariant" aria-label="Permalink for definition: mathvariant. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -10408,6 +10414,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-mn" aria-label="Permalink for definition: mn. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -10422,6 +10429,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-mo" aria-label="Permalink for definition: mo. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -10442,6 +10450,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-fence" aria-label="Permalink for definition: fence. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -10454,6 +10463,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-separator" aria-label="Permalink for definition: separator. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -10466,6 +10476,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-embellished-operator" aria-label="Permalink for definition: embellished operator. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -10498,6 +10509,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-core-operator" aria-label="Permalink for definition: core operator. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -10514,6 +10526,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-stretch-axis" aria-label="Permalink for definition: stretch axis. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -10536,6 +10549,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-form" aria-label="Permalink for definition: form. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -10548,6 +10562,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-algorithm-for-determining-the-form-of-an-embellished-operator" aria-label="Permalink for definition: algorithm for determining the form of an embellished operator. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -10560,6 +10575,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-stretchy" aria-label="Permalink for definition: stretchy. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -10584,6 +10600,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-symmetric" aria-label="Permalink for definition: symmetric. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -10600,6 +10617,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-largeop" aria-label="Permalink for definition: largeop. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -10626,6 +10644,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-movablelimits" aria-label="Permalink for definition: movablelimits. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -10644,6 +10663,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-stretchy-0" aria-label="Permalink for definition: stretchy. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -10656,6 +10676,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-symmetric-0" aria-label="Permalink for definition: symmetric. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -10668,6 +10689,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-largeop-0" aria-label="Permalink for definition: largeop. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -10680,6 +10702,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-movablelimits-0" aria-label="Permalink for definition: movablelimits. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -10692,6 +10715,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-lspace" aria-label="Permalink for definition: lspace. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -10708,6 +10732,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-rspace" aria-label="Permalink for definition: rspace. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -10724,6 +10749,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-minsize" aria-label="Permalink for definition: minsize. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -10738,6 +10764,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-maxsize" aria-label="Permalink for definition: maxsize. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -10750,6 +10777,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-lspace-0" aria-label="Permalink for definition: lspace. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -10762,6 +10790,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-rspace-0" aria-label="Permalink for definition: rspace. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -10774,6 +10803,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-minsize-0" aria-label="Permalink for definition: minsize. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -10786,6 +10816,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-maxsize-0" aria-label="Permalink for definition: maxsize. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -10798,6 +10829,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#algorithm-for-determining-the-properties-of-an-embellished-operator" aria-label="Permalink for definition: algorithm for determining the properties of an embellished operator tests: 1 mo-single-char-and-children. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -10810,6 +10842,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-mspace" aria-label="Permalink for definition: mspace. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -10828,6 +10861,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#attribute-mspace-width" aria-label="Permalink for definition: width. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -10840,6 +10874,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#attribute-mspace-height" aria-label="Permalink for definition: height. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -10852,6 +10887,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#attribute-mspace-depth" aria-label="Permalink for definition: depth. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -10864,6 +10900,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-space-like" aria-label="Permalink for definition: space-like element. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -10880,6 +10917,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-ms" aria-label="Permalink for definition: ms. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -10894,6 +10932,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-mrow" aria-label="Permalink for definition: mrow. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -10938,6 +10977,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-algorithm-for-stretching-operators-along-the-block-axis" aria-label="Permalink for definition: algorithm for stretching operators along the block axis. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -10950,6 +10990,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-slanted" aria-label="Permalink for definition: slanted. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -10962,6 +11003,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-mfrac" aria-label="Permalink for definition: mfrac. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -10980,6 +11022,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-linethickness" aria-label="Permalink for definition: linethickness. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -10994,6 +11037,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-fraction-line-thickness" aria-label="Permalink for definition: fraction line thickness. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -11008,6 +11052,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-numerator" aria-label="Permalink for definition: numerator. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -11024,6 +11069,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-denominator" aria-label="Permalink for definition: denominator. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -11040,6 +11086,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-msqrt" aria-label="Permalink for definition: msqrt. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -11058,6 +11105,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-mroot" aria-label="Permalink for definition: mroot. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -11072,6 +11120,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-mroot-base" aria-label="Permalink for definition: mroot base. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -11084,6 +11133,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-mroot-index" aria-label="Permalink for definition: mroot index. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -11096,6 +11146,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-msqrt-base" aria-label="Permalink for definition: msqrt base. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -11108,6 +11159,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-radical-glyph" aria-label="Permalink for definition: radical glyph. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -11120,6 +11172,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-radical-gap" aria-label="Permalink for definition: radical gap. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -11134,6 +11187,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-box-metrics-of-the-radical-glyph" aria-label="Permalink for definition: box metrics of the radical glyph. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -11146,6 +11200,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-painting-of-the-surd" aria-label="Permalink for definition: painting of the surd. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -11158,6 +11213,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-adjustedradicalkernbeforedegree" aria-label="Permalink for definition: AdjustedRadicalKernBeforeDegree. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -11170,6 +11226,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-adjustedradicalkernafterdegree" aria-label="Permalink for definition: AdjustedRadicalKernAfterDegree. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -11182,6 +11239,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-mstyle" aria-label="Permalink for definition: mstyle. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -11196,6 +11254,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-merror" aria-label="Permalink for definition: merror. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -11210,6 +11269,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-mpadded" aria-label="Permalink for definition: mpadded. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -11232,6 +11292,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#attribute-mpadded-width" aria-label="Permalink for definition: width. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -11244,6 +11305,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#attribute-mpadded-height" aria-label="Permalink for definition: height. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -11256,6 +11318,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#attribute-mpadded-depth" aria-label="Permalink for definition: depth. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -11268,6 +11331,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#attribute-mpadded-lspace" aria-label="Permalink for definition: lspace. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -11280,6 +11344,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#attribute-mpadded-voffset" aria-label="Permalink for definition: voffset. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -11292,6 +11357,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-mpadded-inner-box" aria-label="Permalink for definition: mpadded inner box. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -11304,6 +11370,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-mphantom" aria-label="Permalink for definition: mphantom. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -11320,6 +11387,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-msub" aria-label="Permalink for definition: msub. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -11332,6 +11400,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-msup" aria-label="Permalink for definition: msup. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -11346,6 +11415,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-msubsup" aria-label="Permalink for definition: msubsup. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -11358,6 +11428,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-msub-base" aria-label="Permalink for definition: msub base. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -11370,6 +11441,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-msub-subscript" aria-label="Permalink for definition: msub subscript. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -11382,6 +11454,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-msup-base" aria-label="Permalink for definition: msup base. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -11394,6 +11467,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-msup-superscript" aria-label="Permalink for definition: msup superscript. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -11406,6 +11480,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-msubsup-base" aria-label="Permalink for definition: msubsup base. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -11418,6 +11493,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-msubsup-subscript" aria-label="Permalink for definition: msubsup subscript. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -11430,6 +11506,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-msubsup-superscript" aria-label="Permalink for definition: msubsup superscript. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -11442,6 +11519,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-munder" aria-label="Permalink for definition: munder. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -11456,6 +11534,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-mover" aria-label="Permalink for definition: mover. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -11470,6 +11549,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-munderover" aria-label="Permalink for definition: munderover. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -11484,6 +11564,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-accent" aria-label="Permalink for definition: accent. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -11500,6 +11581,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-accentunder" aria-label="Permalink for definition: accentunder. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -11516,6 +11598,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-munder-base" aria-label="Permalink for definition: munder base. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -11528,6 +11611,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-munder-underscript" aria-label="Permalink for definition: munder underscript. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -11540,6 +11624,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-mover-base" aria-label="Permalink for definition: mover base. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -11552,6 +11637,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-mover-overscript" aria-label="Permalink for definition: mover overscript. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -11564,6 +11650,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-munderover-base" aria-label="Permalink for definition: munderover base. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -11576,6 +11663,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-munderover-underscript" aria-label="Permalink for definition: munderover underscript. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -11588,6 +11676,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-munderover-overscript" aria-label="Permalink for definition: munderover overscript. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -11600,6 +11689,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-algorithm-for-stretching-operators-along-the-inline-axis" aria-label="Permalink for definition: algorithm for stretching operators along the inline axis. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -11616,6 +11706,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-mmultiscripts" aria-label="Permalink for definition: mmultiscripts. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -11628,6 +11719,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-mprescripts" aria-label="Permalink for definition: mprescripts. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -11644,6 +11736,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-mmultiscripts-base" aria-label="Permalink for definition: mmultiscripts base. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -11656,6 +11749,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-mmultiscripts-postscripts" aria-label="Permalink for definition: mmultiscripts postscripts. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -11668,6 +11762,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-subscript-superscript-pair" aria-label="Permalink for definition: subscript/superscript pair. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -11682,6 +11777,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-mmultiscripts-prescripts" aria-label="Permalink for definition: mmultiscripts prescripts. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -11694,6 +11790,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-mtable" aria-label="Permalink for definition: mtable. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -11712,6 +11809,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-mtr" aria-label="Permalink for definition: mtr. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -11730,6 +11828,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-mtd" aria-label="Permalink for definition: mtd. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -11750,6 +11849,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-columnspan" aria-label="Permalink for definition: columnspan. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -11762,6 +11862,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-rowspan" aria-label="Permalink for definition: rowspan. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -11774,6 +11875,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-a" aria-label="Permalink for definition: a. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -11786,6 +11888,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-href" aria-label="Permalink for definition: href. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -11798,6 +11901,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-maction" aria-label="Permalink for definition: maction. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -11814,6 +11918,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-actiontype" aria-label="Permalink for definition: actiontype. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -11826,6 +11931,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-selection" aria-label="Permalink for definition: selection. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -11838,6 +11944,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-semantics" aria-label="Permalink for definition: semantics. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -11852,6 +11959,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-annotation" aria-label="Permalink for definition: annotation. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -11864,6 +11972,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-annotation-xml" aria-label="Permalink for definition: annotation-xml. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -11878,6 +11987,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-encoding" aria-label="Permalink for definition: encoding. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -11892,6 +12002,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#propdef-math-style" aria-label="Permalink for definition: math-style. Activate to close this dialog.">Permalink</a>
         <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> 
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -11922,6 +12033,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#propdef-math-shift" aria-label="Permalink for definition: math-shift. Activate to close this dialog.">Permalink</a>
         <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> 
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -11942,6 +12054,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#propdef-math-depth" aria-label="Permalink for definition: math-depth. Activate to close this dialog.">Permalink</a>
         <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> 
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -11958,6 +12071,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-default-fallback-constant" aria-label="Permalink for definition: Default fallback constant. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -11970,6 +12084,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-default-rule-thickness" aria-label="Permalink for definition: Default rule thickness. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -11982,6 +12097,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-scriptpercentscaledown" aria-label="Permalink for definition: scriptPercentScaleDown. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -11994,6 +12110,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-scriptscriptpercentscaledown" aria-label="Permalink for definition: scriptScriptPercentScaleDown. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -12006,6 +12123,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-displayoperatorminheight" aria-label="Permalink for definition: displayOperatorMinHeight. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -12018,6 +12136,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-axisheight" aria-label="Permalink for definition: axisHeight. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -12036,6 +12155,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-accentbaseheight" aria-label="Permalink for definition: accentBaseHeight. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -12048,6 +12168,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-subscriptshiftdown" aria-label="Permalink for definition: subscriptShiftDown. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -12060,6 +12181,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-subscripttopmax" aria-label="Permalink for definition: subscriptTopMax. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -12072,6 +12194,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-subscriptbaselinedropmin" aria-label="Permalink for definition: subscriptBaselineDropMin. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -12084,6 +12207,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-superscriptshiftup" aria-label="Permalink for definition: superscriptShiftUp. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -12098,6 +12222,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-superscriptshiftupcramped" aria-label="Permalink for definition: superscriptShiftUpCramped. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -12112,6 +12237,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-superscriptbottommin" aria-label="Permalink for definition: superscriptBottomMin. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -12124,6 +12250,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-superscriptbaselinedropmax" aria-label="Permalink for definition: superscriptBaselineDropMax. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -12136,6 +12263,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-subsuperscriptgapmin" aria-label="Permalink for definition: subSuperscriptGapMin. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -12148,6 +12276,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-superscriptbottommaxwithsubscript" aria-label="Permalink for definition: superscriptBottomMaxWithSubscript. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -12160,6 +12289,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-spaceafterscript" aria-label="Permalink for definition: spaceAfterScript. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -12176,6 +12306,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-upperlimitgapmin" aria-label="Permalink for definition: upperLimitGapMin. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -12188,6 +12319,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-upperlimitbaselinerisemin" aria-label="Permalink for definition: upperLimitBaselineRiseMin. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -12200,6 +12332,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-lowerlimitgapmin" aria-label="Permalink for definition: lowerLimitGapMin. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -12212,6 +12345,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-lowerlimitbaselinedropmin" aria-label="Permalink for definition: lowerLimitBaselineDropMin. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -12224,6 +12358,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-stacktopshiftup" aria-label="Permalink for definition: stackTopShiftUp. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -12236,6 +12371,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-stacktopdisplaystyleshiftup" aria-label="Permalink for definition: stackTopDisplayStyleShiftUp. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -12248,6 +12384,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-stackbottomshiftdown" aria-label="Permalink for definition: stackBottomShiftDown. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -12260,6 +12397,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-stackbottomdisplaystyleshiftdown" aria-label="Permalink for definition: stackBottomDisplayStyleShiftDown. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -12272,6 +12410,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-stackgapmin" aria-label="Permalink for definition: stackGapMin. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -12284,6 +12423,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-stackdisplaystylegapmin" aria-label="Permalink for definition: stackDisplayStyleGapMin. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -12296,6 +12436,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-stretchstacktopshiftup" aria-label="Permalink for definition: stretchStackTopShiftUp. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -12308,6 +12449,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-stretchstackbottomshiftdown" aria-label="Permalink for definition: stretchStackBottomShiftDown. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -12320,6 +12462,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-stretchstackgapabovemin" aria-label="Permalink for definition: stretchStackGapAboveMin. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -12332,6 +12475,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-stretchstackgapbelowmin" aria-label="Permalink for definition: stretchStackGapBelowMin. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -12344,6 +12488,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-fractionnumeratorshiftup" aria-label="Permalink for definition: fractionNumeratorShiftUp. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -12356,6 +12501,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-fractionnumeratordisplaystyleshiftup" aria-label="Permalink for definition: fractionNumeratorDisplayStyleShiftUp. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -12368,6 +12514,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-fractiondenominatorshiftdown" aria-label="Permalink for definition: fractionDenominatorShiftDown. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -12380,6 +12527,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-fractiondenominatordisplaystyleshiftdown" aria-label="Permalink for definition: fractionDenominatorDisplayStyleShiftDown. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -12392,6 +12540,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-fractionnumeratorgapmin" aria-label="Permalink for definition: fractionNumeratorGapMin. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -12404,6 +12553,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-fractionnumdisplaystylegapmin" aria-label="Permalink for definition: fractionNumDisplayStyleGapMin. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -12416,6 +12566,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-fractionrulethickness" aria-label="Permalink for definition: fractionRuleThickness. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -12428,6 +12579,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-fractiondenominatorgapmin" aria-label="Permalink for definition: fractionDenominatorGapMin. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -12440,6 +12592,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-fractiondenomdisplaystylegapmin" aria-label="Permalink for definition: fractionDenomDisplayStyleGapMin. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -12452,6 +12605,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-overbarverticalgap" aria-label="Permalink for definition: overbarVerticalGap. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -12464,6 +12618,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-overbarextraascender" aria-label="Permalink for definition: overbarExtraAscender. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -12476,6 +12631,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-underbarverticalgap" aria-label="Permalink for definition: underbarVerticalGap. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -12488,6 +12644,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-underbarextradescender" aria-label="Permalink for definition: underbarExtraDescender. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -12500,6 +12657,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-radicalverticalgap" aria-label="Permalink for definition: radicalVerticalGap. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -12512,6 +12670,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-radicaldisplaystyleverticalgap" aria-label="Permalink for definition: radicalDisplayStyleVerticalGap. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -12524,6 +12683,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-radicalrulethickness" aria-label="Permalink for definition: radicalRuleThickness. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -12538,6 +12698,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-radicalextraascender" aria-label="Permalink for definition: radicalExtraAscender. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -12550,6 +12711,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-radicalkernbeforedegree" aria-label="Permalink for definition: radicalKernBeforeDegree. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -12562,6 +12724,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-radicalkernafterdegree" aria-label="Permalink for definition: radicalKernAfterDegree. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -12574,6 +12737,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-radicaldegreebottomraisepercent" aria-label="Permalink for definition: radicalDegreeBottomRaisePercent. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -12586,6 +12750,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-mathitalicscorrectioninfo" aria-label="Permalink for definition: MathItalicsCorrectionInfo. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -12600,6 +12765,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-mathtopaccentattachment" aria-label="Permalink for definition: MathTopAccentAttachment. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -12612,6 +12778,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-omin" aria-label="Permalink for definition: omin. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -12624,6 +12791,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-next" aria-label="Permalink for definition: NExt. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -12636,6 +12804,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-nnonext" aria-label="Permalink for definition: NNonExt. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -12648,6 +12817,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-sext" aria-label="Permalink for definition: SExt. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -12660,6 +12830,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-snonext" aria-label="Permalink for definition: SNonExt. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -12672,6 +12843,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-sext-nonoverlapping" aria-label="Permalink for definition: SExt,NonOverlapping. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -12684,6 +12856,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-assemblyglyphcount" aria-label="Permalink for definition: AssemblyGlyphCount. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -12696,6 +12869,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-assembysize" aria-label="Permalink for definition: AssembySize. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -12708,6 +12882,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-rmin" aria-label="Permalink for definition: rmin. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -12722,6 +12897,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-omax-theorical" aria-label="Permalink for definition: omax,theorical. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -12734,6 +12910,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-omax" aria-label="Permalink for definition: omax. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -12746,6 +12923,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-glyph-assembly-stretch-size" aria-label="Permalink for definition: glyph assembly stretch size. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -12758,6 +12936,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-glyph-assembly-width" aria-label="Permalink for definition: glyph assembly width. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -12770,6 +12949,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-glyph-assembly-ascent" aria-label="Permalink for definition: glyph assembly ascent. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -12784,6 +12964,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-glyph-assembly-descent" aria-label="Permalink for definition: glyph assembly descent. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -12798,6 +12979,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-glyph-assembly-height" aria-label="Permalink for definition: glyph assembly height. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -12810,6 +12992,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-shaping-of-the-glyph-assembly" aria-label="Permalink for definition: shaping of the glyph assembly. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -12824,6 +13007,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-preferred-inline-size-of-a-glyph-stretched-along-the-block-axis" aria-label="Permalink for definition: preferred inline size of a glyph stretched along the block axis. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -12840,6 +13024,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-shape-a-stretchy-glyph" aria-label="Permalink for definition: shape a stretchy glyph. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -12854,6 +13039,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-get-a-glyph" aria-label="Permalink for definition: get a glyph. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -12868,6 +13054,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-user-agent-stylesheet" aria-label="Permalink for definition: User Agent Stylesheet. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -12908,6 +13095,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-algorithm-to-set-the-properties-of-an-operator-from-its-category" aria-label="Permalink for definition: algorithm to set the properties of an operator from its category. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -12920,6 +13108,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-algorithm-to-determine-the-category-of-an-operator" aria-label="Permalink for definition: algorithm to determine the category of an operator. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -12932,6 +13121,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <div>
         <a class="self-link" href="#dfn-intrinsic-stretch-axis" aria-label="Permalink for definition: intrinsic stretch axis. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -12939,7 +13129,96 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <a href="#ref-for-dfn-intrinsic-stretch-axis-1" title="§ 3.2.4.1 Embellished operators">§ 3.2.4.1 Embellished operators</a> 
     </li>
   </ul>
-    </div><script id="respec-highlight-vars">(() => {
+    </div><script id="respec-copy-paste">
+    document.querySelectorAll(".respec-button-copy-paste").forEach(function(btn) {
+      btn.addEventListener("click", function() {
+        var pre = this.closest("pre");
+        if (!pre) return;
+        var sel = this.dataset.copyHeader;
+        var clone = pre.cloneNode(true);
+        if (sel) { var h = clone.querySelector(sel); if (h) h.remove(); }
+        navigator.clipboard.writeText(clone.textContent);
+      });
+    });
+  </script><section id="references" class="appendix"><div class="header-wrapper"><h2 id="h-references"><bdi class="secno">H. </bdi>References</h2><a class="self-link" href="#references" aria-label="Permalink for Appendix H."></a></div><section id="normative-references"><div class="header-wrapper"><h3 id="h-1-normative-references"><bdi class="secno">H.1 </bdi>Normative references</h3><a class="self-link" href="#normative-references" aria-label="Permalink for Appendix H.1"></a></div>
+    
+    <dl class="bibliography"><dt id="bib-bidi">[BIDI]</dt><dd>
+      <a href="https://www.unicode.org/reports/tr9/tr9-51.html"><cite>Unicode Bidirectional Algorithm</cite></a>. Manish Goregaokar मनीष गोरेगांवकर; Robin Leroy.  Unicode Consortium. 13 August 2025. Unicode Standard Annex #9. URL: <a href="https://www.unicode.org/reports/tr9/tr9-51.html">https://www.unicode.org/reports/tr9/tr9-51.html</a>
+    </dd><dt id="bib-css-align-3">[css-align-3]</dt><dd>
+      <a href="https://www.w3.org/TR/css-align-3/"><cite>CSS Box Alignment Module Level 3</cite></a>. Elika Etemad; Tab Atkins Jr. W3C. 30 January 2026. W3C Working Draft. URL: <a href="https://www.w3.org/TR/css-align-3/">https://www.w3.org/TR/css-align-3/</a>
+    </dd><dt id="bib-css-backgrounds-3">[css-backgrounds-3]</dt><dd>
+      <a href="https://www.w3.org/TR/css-backgrounds-3/"><cite>CSS Backgrounds and Borders Module Level 3</cite></a>. Elika Etemad; Brad Kemper.  W3C. 11 March 2024. CRD. URL: <a href="https://www.w3.org/TR/css-backgrounds-3/">https://www.w3.org/TR/css-backgrounds-3/</a>
+    </dd><dt id="bib-css-box-4">[css-box-4]</dt><dd>
+      <a href="https://www.w3.org/TR/css-box-4/"><cite>CSS Box Model Module Level 4</cite></a>. Elika Etemad.  W3C. 4 August 2024. W3C Working Draft. URL: <a href="https://www.w3.org/TR/css-box-4/">https://www.w3.org/TR/css-box-4/</a>
+    </dd><dt id="bib-css-cascade-4">[CSS-CASCADE-4]</dt><dd>
+      <a href="https://www.w3.org/TR/css-cascade-4/"><cite>CSS Cascading and Inheritance Level 4</cite></a>. Elika Etemad; Tab Atkins Jr. W3C. 13 January 2022. W3C Candidate Recommendation. URL: <a href="https://www.w3.org/TR/css-cascade-4/">https://www.w3.org/TR/css-cascade-4/</a>
+    </dd><dt id="bib-css-color-4">[css-color-4]</dt><dd>
+      <a href="https://www.w3.org/TR/css-color-4/"><cite>CSS Color Module Level 4</cite></a>. Tab Atkins Jr.; Chris Lilley; Lea Verou.  W3C. 2 May 2026. CRD. URL: <a href="https://www.w3.org/TR/css-color-4/">https://www.w3.org/TR/css-color-4/</a>
+    </dd><dt id="bib-css-display-3">[CSS-DISPLAY-3]</dt><dd>
+      <a href="https://www.w3.org/TR/css-display-3/"><cite>CSS Display Module Level 3</cite></a>. Elika Etemad; Tab Atkins Jr. W3C. 30 March 2023. W3C Candidate Recommendation. URL: <a href="https://www.w3.org/TR/css-display-3/">https://www.w3.org/TR/css-display-3/</a>
+    </dd><dt id="bib-css-fonts-4">[CSS-FONTS-4]</dt><dd>
+      <a href="https://www.w3.org/TR/css-fonts-4/"><cite>CSS Fonts Module Level 4</cite></a>. Chris Lilley.  W3C. 22 April 2026. W3C Working Draft. URL: <a href="https://www.w3.org/TR/css-fonts-4/">https://www.w3.org/TR/css-fonts-4/</a>
+    </dd><dt id="bib-css-position-3">[CSS-POSITION-3]</dt><dd>
+      <a href="https://www.w3.org/TR/css-position-3/"><cite>CSS Positioned Layout Module Level 3</cite></a>. Elika Etemad; Tab Atkins Jr. W3C. 7 October 2025. W3C Working Draft. URL: <a href="https://www.w3.org/TR/css-position-3/">https://www.w3.org/TR/css-position-3/</a>
+    </dd><dt id="bib-css-pseudo-4">[css-pseudo-4]</dt><dd>
+      <a href="https://www.w3.org/TR/css-pseudo-4/"><cite>CSS Pseudo-Elements Module Level 4</cite></a>. Elika Etemad; Alan Stearns.  W3C. 27 June 2025. W3C Working Draft. URL: <a href="https://www.w3.org/TR/css-pseudo-4/">https://www.w3.org/TR/css-pseudo-4/</a>
+    </dd><dt id="bib-css-sizing-3">[css-sizing-3]</dt><dd>
+      <a href="https://www.w3.org/TR/css-sizing-3/"><cite>CSS Box Sizing Module Level 3</cite></a>. Tab Atkins Jr.; Elika Etemad.  W3C. 17 December 2021. W3C Working Draft. URL: <a href="https://www.w3.org/TR/css-sizing-3/">https://www.w3.org/TR/css-sizing-3/</a>
+    </dd><dt id="bib-css-text-3">[css-text-3]</dt><dd>
+      <a href="https://www.w3.org/TR/css-text-3/"><cite>CSS Text Module Level 3</cite></a>. Elika Etemad; Koji Ishii; Florian Rivoal.  W3C. 30 September 2024. CRD. URL: <a href="https://www.w3.org/TR/css-text-3/">https://www.w3.org/TR/css-text-3/</a>
+    </dd><dt id="bib-css-text-4">[CSS-TEXT-4]</dt><dd>
+      <a href="https://www.w3.org/TR/css-text-4/"><cite>CSS Text Module Level 4</cite></a>. Elika Etemad; Koji Ishii; Alan Stearns; Florian Rivoal.  W3C. 29 May 2024. W3C Working Draft. URL: <a href="https://www.w3.org/TR/css-text-4/">https://www.w3.org/TR/css-text-4/</a>
+    </dd><dt id="bib-css-values-4">[CSS-VALUES-4]</dt><dd>
+      <a href="https://www.w3.org/TR/css-values-4/"><cite>CSS Values and Units Module Level 4</cite></a>. Tab Atkins Jr.; Elika Etemad.  W3C. 12 March 2024. W3C Working Draft. URL: <a href="https://www.w3.org/TR/css-values-4/">https://www.w3.org/TR/css-values-4/</a>
+    </dd><dt id="bib-css-writing-modes-4">[CSS-WRITING-MODES-4]</dt><dd>
+      <a href="https://www.w3.org/TR/css-writing-modes-4/"><cite>CSS Writing Modes Level 4</cite></a>. Elika Etemad; Koji Ishii.  W3C. 30 July 2019. W3C Candidate Recommendation. URL: <a href="https://www.w3.org/TR/css-writing-modes-4/">https://www.w3.org/TR/css-writing-modes-4/</a>
+    </dd><dt id="bib-css2">[CSS2]</dt><dd>
+      <a href="https://www.w3.org/TR/CSS2/"><cite>Cascading Style Sheets Level 2 Revision 1 (CSS 2.1) Specification</cite></a>. Bert Bos; Tantek Çelik; Ian Hickson; Håkon Wium Lie.  W3C. 7 June 2011. W3C Recommendation. URL: <a href="https://www.w3.org/TR/CSS2/">https://www.w3.org/TR/CSS2/</a>
+    </dd><dt id="bib-dom">[DOM]</dt><dd>
+      <a href="https://dom.spec.whatwg.org/"><cite>DOM Standard</cite></a>. Anne van Kesteren.  WHATWG. Living Standard. URL: <a href="https://dom.spec.whatwg.org/">https://dom.spec.whatwg.org/</a>
+    </dd><dt id="bib-html">[HTML]</dt><dd>
+      <a href="https://html.spec.whatwg.org/multipage/"><cite>HTML Standard</cite></a>. Anne van Kesteren; Domenic Denicola; Dominic Farolino; Ian Hickson; Philip Jägenstedt; Simon Pieters.  WHATWG. Living Standard. URL: <a href="https://html.spec.whatwg.org/multipage/">https://html.spec.whatwg.org/multipage/</a>
+    </dd><dt id="bib-infra">[INFRA]</dt><dd>
+      <a href="https://infra.spec.whatwg.org/"><cite>Infra Standard</cite></a>. Anne van Kesteren; Domenic Denicola.  WHATWG. Living Standard. URL: <a href="https://infra.spec.whatwg.org/">https://infra.spec.whatwg.org/</a>
+    </dd><dt id="bib-open-font-format">[OPEN-FONT-FORMAT]</dt><dd>
+      <a href="https://www.iso.org/standard/74461.html"><cite>Information technology — Coding of audio-visual objects — Part 22: Open Font Format</cite></a>.  ISO/IEC. January 2019. Published. URL: <a href="https://www.iso.org/standard/74461.html">https://www.iso.org/standard/74461.html</a>
+    </dd><dt id="bib-rfc2119">[RFC2119]</dt><dd>
+      <a href="https://www.rfc-editor.org/rfc/rfc2119"><cite>Key words for use in RFCs to Indicate Requirement Levels</cite></a>. S. Bradner.  IETF. March 1997. Best Current Practice. URL: <a href="https://www.rfc-editor.org/rfc/rfc2119">https://www.rfc-editor.org/rfc/rfc2119</a>
+    </dd><dt id="bib-select">[SELECT]</dt><dd>
+      <a href="https://www.w3.org/TR/selectors-3/"><cite>Selectors Level 3</cite></a>. Tantek Çelik; Elika Etemad; Daniel Glazman; Ian Hickson; Peter Linss; John Williams.  W3C. 6 November 2018. W3C Recommendation. URL: <a href="https://www.w3.org/TR/selectors-3/">https://www.w3.org/TR/selectors-3/</a>
+    </dd><dt id="bib-svg">[SVG]</dt><dd>
+      <a href="https://www.w3.org/TR/SVG/"><cite>Scalable Vector Graphics (SVG) 1.0 Specification</cite></a>. Jon Ferraiolo.  W3C. 4 September 2001. W3C Recommendation. URL: <a href="https://www.w3.org/TR/SVG/">https://www.w3.org/TR/SVG/</a>
+    </dd><dt id="bib-webidl">[webidl]</dt><dd>
+      <a href="https://webidl.spec.whatwg.org/"><cite>Web IDL Standard</cite></a>. Edgar Chen; Timothy Gu.  WHATWG. Living Standard. URL: <a href="https://webidl.spec.whatwg.org/">https://webidl.spec.whatwg.org/</a>
+    </dd></dl>
+  </section><section id="informative-references"><div class="header-wrapper"><h3 id="h-2-informative-references"><bdi class="secno">H.2 </bdi>Informative references</h3><a class="self-link" href="#informative-references" aria-label="Permalink for Appendix H.2"></a></div>
+    
+    <dl class="bibliography"><dt id="bib-css-layout-api-1">[CSS-LAYOUT-API-1]</dt><dd>
+      <a href="https://www.w3.org/TR/css-layout-api-1/"><cite>CSS Layout API Level 1</cite></a>. Greg Whitworth; Ian Kilpatrick; Tab Atkins Jr.; Shane Stephens; Robert O'Callahan; Rossen Atanassov.  W3C. 12 April 2018. FPWD. URL: <a href="https://www.w3.org/TR/css-layout-api-1/">https://www.w3.org/TR/css-layout-api-1/</a>
+    </dd><dt id="bib-css-text-decor-4">[css-text-decor-4]</dt><dd>
+      <a href="https://www.w3.org/TR/css-text-decor-4/"><cite>CSS Text Decoration Module Level 4</cite></a>. Elika Etemad; Koji Ishii.  W3C. 4 May 2022. W3C Working Draft. URL: <a href="https://www.w3.org/TR/css-text-decor-4/">https://www.w3.org/TR/css-text-decor-4/</a>
+    </dd><dt id="bib-cssom-view">[cssom-view]</dt><dd>
+      <a href="https://www.w3.org/TR/cssom-view-1/"><cite>CSSOM View Module</cite></a>. Simon Fraser; Emilio Cobos Álvarez.  W3C. 16 September 2025. W3C Working Draft. URL: <a href="https://www.w3.org/TR/cssom-view-1/">https://www.w3.org/TR/cssom-view-1/</a>
+    </dd><dt id="bib-houdini">[HOUDINI]</dt><dd>
+      <a href="https://drafts.css-houdini.org/"><cite>CSS-TAG Houdini Editor Drafts</cite></a>. URL: <a href="https://drafts.css-houdini.org/">https://drafts.css-houdini.org/</a>
+    </dd><dt id="bib-mathml3">[MATHML3]</dt><dd>
+      <a href="https://www.w3.org/TR/MathML3/"><cite>Mathematical Markup Language (MathML) Version 3.0 2nd Edition</cite></a>. David Carlisle; Patrick D F Ion; Robert R Miner.  W3C. 10 April 2014. W3C Recommendation. URL: <a href="https://www.w3.org/TR/MathML3/">https://www.w3.org/TR/MathML3/</a>
+    </dd><dt id="bib-mathml4">[MATHML4]</dt><dd>
+      <a href="https://w3c.github.io/mathml/"><cite>Mathematical Markup Language (MathML) Version 4.0</cite></a>. David Carlisle et al.W3C Editor's Draft. URL: <a href="https://w3c.github.io/mathml/">https://w3c.github.io/mathml/</a>
+    </dd><dt id="bib-open-type-math-illuminated">[OPEN-TYPE-MATH-ILLUMINATED]</dt><dd>
+      <a href="https://www.tug.org/TUGboat/tb30-1/tb94vieth.pdf"><cite>OpenType Math Illuminated</cite></a>. Ulrik Vieth. 2009. URL: <a href="https://www.tug.org/TUGboat/tb30-1/tb94vieth.pdf">https://www.tug.org/TUGboat/tb30-1/tb94vieth.pdf</a>
+    </dd><dt id="bib-open-type-math-in-harfbuzz">[OPEN-TYPE-MATH-IN-HARFBUZZ]</dt><dd>
+      <a href="https://frederic-wang.fr/2016/04/16/opentype-math-in-harfbuzz/"><cite>OpenType MATH in HarfBuzz</cite></a>. Frédéric Wang. URL: <a href="https://frederic-wang.fr/2016/04/16/opentype-math-in-harfbuzz/">https://frederic-wang.fr/2016/04/16/opentype-math-in-harfbuzz/</a>
+    </dd><dt id="bib-texbook">[TEXBOOK]</dt><dd>
+      <cite>The TeXBook</cite>. Knuth, Donald E. Addison-Wesley Professional. 1984. 
+    </dd><dt id="bib-unicode">[UNICODE]</dt><dd>
+      <a href="https://www.unicode.org/versions/latest/"><cite>The Unicode Standard</cite></a>.  Unicode Consortium. URL: <a href="https://www.unicode.org/versions/latest/">https://www.unicode.org/versions/latest/</a>
+    </dd><dt id="bib-xml-entity-names">[xml-entity-names]</dt><dd>
+      <a href="https://www.w3.org/TR/xml-entity-names/"><cite>XML Entity Definitions for Characters (3rd Edition)</cite></a>. Patrick D F Ion; David Carlisle.  W3C. 7 March 2023. W3C Recommendation. URL: <a href="https://www.w3.org/TR/xml-entity-names/">https://www.w3.org/TR/xml-entity-names/</a>
+    </dd></dl>
+  </section></section><p role="navigation" id="back-to-top">
+    <a href="#title"><abbr title="Back to Top">↑</abbr></a>
+  </p><script id="respec-highlight-vars">(() => {
 // @ts-check
 
 if (document.respec) {
@@ -12954,9 +13233,12 @@ function setupVarHighlighter() {
     .forEach(varElem => varElem.addEventListener("click", highlightListener));
 }
 
+/**
+ * @param {MouseEvent} ev
+ */
 function highlightListener(ev) {
   ev.stopPropagation();
-  const { target: varElem } = ev;
+  const varElem = /** @type {HTMLElement} */ (ev.target);
   const hightligtedElems = highlightVars(varElem);
   const resetListener = () => {
     const hlColor = getHighlightColor(varElem);
@@ -12979,6 +13261,9 @@ const HL_COLORS = new Map([
   ["respec-hl-c7", true],
 ]);
 
+/**
+ * @param {HTMLElement} target
+ */
 function getHighlightColor(target) {
   // return current colors if applicable
   const { value } = target.classList;
@@ -12990,12 +13275,18 @@ function getHighlightColor(target) {
   if (HL_COLORS.get("respec-hl-c1") === true) return "respec-hl-c1";
 
   // otherwise get some other available color
-  return [...HL_COLORS.keys()].find(c => HL_COLORS.get(c)) || "respec-hl-c1";
+  return HL_COLORS.keys().find(c => HL_COLORS.get(c)) || "respec-hl-c1";
 }
 
+/**
+ * @param {HTMLElement} varElem
+ */
 function highlightVars(varElem) {
   const textContent = norm(varElem.textContent);
-  const parent = varElem.closest(".algorithm, section");
+  const parent = /** @type {HTMLElement} */ (
+    varElem.closest(".algorithm, section")
+  );
+  if (!parent) return [];
   const highlightColor = getHighlightColor(varElem);
 
   const varsToHighlight = [...parent.querySelectorAll("var")].filter(
@@ -13018,12 +13309,20 @@ function highlightVars(varElem) {
   return varsToHighlight;
 }
 
+/**
+ * @param {HTMLElement} el
+ * @param {string} highlightColor
+ */
 function removeHighlight(el, highlightColor) {
   el.classList.remove("respec-hl", highlightColor);
   // clean up empty class attributes so they don't come in export
   if (!el.classList.length) el.removeAttribute("class");
 }
 
+/**
+ * @param {HTMLElement} elem
+ * @param {string} highlightColor
+ */
 function addHighlight(elem, highlightColor) {
   elem.classList.add("respec-hl", highlightColor);
 }
@@ -13051,8 +13350,11 @@ function setupPanel() {
 }
 
 function panelListener() {
-  /** @type {HTMLElement} */
+  /** @type {HTMLElement | null} */
   let panel = null;
+  /**
+   * @param {KeyboardEvent|MouseEvent} event
+   */
   return event => {
     const { target, type } = event;
 
@@ -13060,24 +13362,34 @@ function panelListener() {
 
     // For keys, we only care about Enter key to activate the panel
     // otherwise it's activated via a click.
-    if (type === "keydown" && event.key !== "Enter") return;
+    if (
+      type === "keydown" &&
+      /** @type {KeyboardEvent} */ (event).key !== "Enter"
+    )
+      return;
 
     const action = deriveAction(event);
 
     switch (action) {
       case "show": {
         hidePanel(panel);
-        /** @type {HTMLElement} */
+        /** @type {HTMLElement | null} */
         const dfn = target.closest("dfn, .index-term");
+        if (!dfn?.id) break;
         panel = document.getElementById(`dfn-panel-for-${dfn.id}`);
-        const coords = deriveCoordinates(event);
+        if (!panel) break;
+        const coords = deriveCoordinates(
+          /** @type {MouseEvent|KeyboardEvent} */ (event)
+        );
         displayPanel(dfn, panel, coords);
         break;
       }
       case "dock": {
-        panel.style.left = null;
-        panel.style.top = null;
-        panel.classList.add("docked");
+        if (panel) {
+          panel.style.left = "";
+          panel.style.top = "";
+          panel.classList.add("docked");
+        }
         break;
       }
       case "hide": {
@@ -13128,7 +13440,8 @@ function deriveAction(event) {
     if (hitALink) {
       return target.classList.contains("self-link") ? "hide" : "dock";
     }
-    const panel = target.closest(".dfn-panel");
+
+    const panel = /** @type {HTMLElement} */ (target.closest(".dfn-panel"));
     return panel.classList.contains("docked") ? "hide" : "none";
   }
   if (document.querySelector(".dfn-panel:not([hidden])")) {
@@ -13172,9 +13485,9 @@ function displayPanel(dfn, panel, { x, y }) {
     const newLeft = Math.max(MARGIN, x + MARGIN - panelRect.width);
     const newCaretOffset = left - newLeft;
     panel.style.left = `${newLeft}px`;
-    /** @type {HTMLElement} */
+    /** @type {HTMLElement | null} */
     const caret = panel.querySelector(".caret");
-    caret.style.left = `${newCaretOffset}px`;
+    if (caret) caret.style.left = `${newCaretOffset}px`;
   }
 
   // As it's a dialog, we trap focus.
@@ -13223,6 +13536,9 @@ function trapFocus(panel, dfn) {
 function createTrapListener(anchors, panel, dfn) {
   const lastIndex = anchors.length - 1;
   let currentIndex = 0;
+  /**
+   * @param {KeyboardEvent} event
+   */
   return event => {
     switch (event.key) {
       // Hitting "Tab" traps us in a nice loop around elements.
@@ -13252,7 +13568,7 @@ function createTrapListener(anchors, panel, dfn) {
   };
 }
 
-/** @param {HTMLElement} panel */
+/** @param {HTMLElement | null} panel */
 function hidePanel(panel) {
   if (!panel) return;
   panel.hidden = true;
