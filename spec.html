@@ -687,7 +687,7 @@
           <p>
             All the nodes representing <a>MathML elements</a> in the DOM
             must implement, and expose to scripts, the following
-            <dfn class="interface">MathMLElement</dfn> interface.
+            <dfn class="interface">MathMLElement</dfn> interface, unless otherwise specified.
           </p>
           <pre class="idl" data-include="webidl/MathMLElement.idl"></pre>
           <p>The {{GlobalEventHandlers}} and
@@ -4691,6 +4691,36 @@
 	  <div class="note">
           Note that this means that in the absence of an <code>href</code> attribute,
 	  <code>&lt;a&gt;</code> may be seen as equivalent to <code>&lt;mrow&gt;</code>.</div>
+
+        <p>
+          The <code>&lt;a&gt;</code> element
+          must implement, and expose to scripts, the following
+          <dfn class="interface">MathMLAnchorElement</dfn> interface.
+        </p>
+        <pre class="idl" data-include="webidl/MathMLAnchorElement.idl"></pre>
+
+        <div class="algorithm" data-algorithm="mathmlanchorelement-href-getter">
+          <p>The <a href="#dom-mathmlanchorelement-href">href</a> getter steps are:</p>
+          <ol>
+            <li><a href="HTML/../#reinitialise-url">Reinitialize url</a>.</li>
+            <li>Let <var>url</var> be <a>this</a>'s <a>url</a>.</li>
+            <li>If <var>url</var> is null and <a>this</a> has no [^a/href^] content attribute, then return the empty string.</li>
+            <li>Otherwise, if <var>url</var> is null, then return <a>this</a>'s [^a/href^] content attribute's value.</li>
+            <li>Return <var>url</var>, serialized.</li>
+          </ol>
+        </div>
+
+        <div class="algorithm">
+          <p>The <dfn data-cite="HTML/../#concept-hyperlink-url-set">set the url</dfn> algorithm for a <code>MathMLAnchorElement</code> are:</p>
+          <ol>
+            <li>If <a>this</a> element's [^a/href^] content attribute is absent, then return.</li>
+            <li>Let <var>url</var> be the result of <a href="HTML/../#encoding-parsing-a-url">encoding-parsing a URL</a> given <a>this</a> element's [^a/href^] content attribute's value, relative to <a>this</a> element's <a href="DOM/../#concept-node-document">node document</a>.</li>
+            <li>If <var>url</var> is not failure, then set <a>this</a>'s <a>url</a> to <var>url</var>.</li>
+          </ol>
+        </div>
+
+        <p>To <dfn data-cite="HTML/../#update-href">update href</dfn> for a <code>MathMLAnchorElement</code>, set the element's [^a/href^] content attribute's
+          value to the element's <dfn data-cite="HTML/../#concept-hyperlink-url">url</dfn>, <dfn data-cite="URL/../#concept-url-serializer">serialized</dfn>.</p>
         </section>
       <section id="enlivening-expressions">
         <h3>Enlivening Expressions</h3>
