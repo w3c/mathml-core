@@ -316,15 +316,15 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
     null,
     null
   ],
-  "publishISODate": "2026-05-04T00:00:00.000Z",
-  "generatedSubtitle": "W3C Editor's Draft 04 May 2026"
+  "publishISODate": "2026-05-12T00:00:00.000Z",
+  "generatedSubtitle": "W3C Editor's Draft 12 May 2026"
 }</script>
 <link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2021/W3C-ED"></head>
   <body class="h-entry" data-cite="WEBIDL html infra css-display-3 css-text-3 web-animations css-fonts-4 dom cssom-view css-sizing-3 css-align-3 css-box-4 css-values-4 css-backgrounds-3 css-text-decor-4 svg css-writing-modes-4 css-color-4 css-box-4 css-pseudo-4"><div class="head">
     <p class="logos"><a class="logo" href="https://www.w3.org/"><img crossorigin="" alt="W3C" height="48" src="https://www.w3.org/StyleSheets/TR/2021/logos/W3C" width="72">
   </a></p>
     <h1 id="title" class="title">MathML Core</h1> 
-    <p id="w3c-state"><a href="https://www.w3.org/standards/types#ED">W3C Editor's Draft</a> <time class="dt-published" datetime="2026-05-04">04 May 2026</time></p>
+    <p id="w3c-state"><a href="https://www.w3.org/standards/types#ED">W3C Editor's Draft</a> <time class="dt-published" datetime="2026-05-12">12 May 2026</time></p>
     <details open="">
       <summary>More details about this document</summary>
       <dl>
@@ -1146,7 +1146,7 @@ math<span class="hljs-selector-attr">[display=<span class="hljs-string">"inline"
           <p>
             All the nodes representing <a href="#dfn-mathml-element" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-mathml-element-1">MathML elements</a> in the DOM
             must implement, and expose to scripts, the following
-            <dfn class="interface" data-export="" data-dfn-type="interface" id="dom-mathmlelement" data-idl="interface" data-title="MathMLElement" data-dfn-for="" tabindex="0" aria-haspopup="dialog"><code>MathMLElement</code></dfn> interface.
+            <dfn class="interface" data-export="" data-dfn-type="interface" id="dom-mathmlelement" data-idl="interface" data-title="MathMLElement" data-dfn-for="" tabindex="0" aria-haspopup="dialog"><code>MathMLElement</code></dfn> interface, unless otherwise specified.
           </p>
           <pre class="idl def" id="webidl-1298971770"><span class="idlHeader"><a class="self-link" href="#webidl-1298971770">WebIDL</a></span><code><span data-idl="" class="idlInterface" id="idl-def-mathmlelement" data-title="MathMLElement">[<span class="extAttr"><a data-link-type="extended-attribute" href="https://webidl.spec.whatwg.org/#Exposed">Exposed</a>=Window</span>]
 interface <a class="internalDFN idlID" data-link-type="interface" href="#dom-mathmlelement" id="ref-for-dom-mathmlelement-1"><code>MathMLElement</code></a> : <span class="idlSuperclass"><a data-link-type="interface" href="https://dom.spec.whatwg.org/#element">Element</a></span> { };</span><span class="idlIncludes">
@@ -5544,6 +5544,41 @@ mmultiscripts &gt; mprescripts ~ <span class="hljs-selector-pseudo">:nth-child</
 	  <div class="note" role="note" id="issue-container-generatedID-31"><div class="note-title marker" id="h-note-35"><span>Note</span></div><div class="">
           Note that this means that in the absence of an <code>href</code> attribute,
 	  <code>&lt;a&gt;</code> may be seen as equivalent to <code>&lt;mrow&gt;</code>.</div></div>
+
+        <p>
+          The <code>&lt;a&gt;</code> element
+          must implement, and expose to scripts, the following
+          <dfn class="interface" data-export="" data-dfn-type="interface" id="dom-mathmlanchorelement" data-idl="interface" data-title="MathMLAnchorElement" data-dfn-for="" tabindex="0" aria-haspopup="dialog"><code>MathMLAnchorElement</code></dfn> interface.
+        </p>
+        <pre class="idl def" id="webidl-617025194"><span class="idlHeader"><a class="self-link" href="#webidl-617025194">WebIDL</a></span><code><span data-idl="" class="idlInterface" id="idl-def-mathmlanchorelement" data-title="MathMLAnchorElement">[<span class="extAttr"><a data-link-type="extended-attribute" href="https://webidl.spec.whatwg.org/#Exposed">Exposed</a>=Window</span>]
+interface <a class="internalDFN idlID" data-link-type="interface" href="#dom-mathmlanchorelement" id="ref-for-dom-mathmlanchorelement-1"><code>MathMLAnchorElement</code></a> : <span class="idlSuperclass"><a data-link-type="idl" href="#dom-mathmlelement" class="internalDFN" id="ref-for-dom-mathmlelement-4"><code>MathMLElement</code></a></span> {<span data-idl="" class="idlAttribute" id="idl-def-mathmlanchorelement-href" data-title="href" data-dfn-for="MathMLAnchorElement">
+  [<span class="extAttr"><a data-link-type="extended-attribute" href="https://html.spec.whatwg.org/multipage/common-dom-interfaces.html#xattr-reflectsetter">ReflectSetter</a></span>] attribute<span class="idlType"> <a data-link-type="interface" href="https://webidl.spec.whatwg.org/#idl-USVString">USVString</a></span> <dfn data-export="" data-dfn-type="attribute" id="dom-mathmlanchorelement-href" data-idl="attribute" data-title="href" data-dfn-for="MathMLAnchorElement" data-type="USVString" data-lt="href" data-local-lt="MathMLAnchorElement.href" class="idlName" tabindex="0" aria-haspopup="dialog"><code>href</code></dfn>;</span><span data-idl="" class="idlAttribute" id="idl-def-mathmlanchorelement-target" data-title="target" data-dfn-for="MathMLAnchorElement">
+  [<span class="extAttr"><a data-link-type="extended-attribute" href="https://html.spec.whatwg.org/multipage/common-dom-interfaces.html#xattr-reflect">Reflect</a></span>] attribute<span class="idlType"> <a data-link-type="interface" href="https://webidl.spec.whatwg.org/#idl-DOMString">DOMString</a></span> <dfn data-export="" data-dfn-type="attribute" id="dom-mathmlanchorelement-target" data-idl="attribute" data-title="target" data-dfn-for="MathMLAnchorElement" data-type="DOMString" data-lt="target" data-local-lt="MathMLAnchorElement.target" class="idlName" tabindex="0" aria-haspopup="dialog"><code>target</code></dfn>;</span>
+};</span><span class="idlIncludes">
+<a data-link-type="idl" href="#dom-mathmlanchorelement" class="internalDFN" id="ref-for-dom-mathmlanchorelement-2"><code>MathMLAnchorElement</code></a> includes <a data-link-type="interface" href="https://html.spec.whatwg.org/multipage/links.html#hyperlinkelementutils">HyperlinkElementUtils</a>;</span></code></pre>
+
+        <div class="algorithm" data-algorithm="mathmlanchorelement-href-getter">
+          <p>The <a href="#dom-mathmlanchorelement-href" id="ref-for-dom-mathmlanchorelement-href-1">href</a> getter steps are:</p>
+          <ol>
+            <li><a href="HTML/../#reinitialise-url">Reinitialize url</a>.</li>
+            <li>Let <var>url</var> be <a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#this">this</a>'s <a data-link-type="dfn" href="https://html.spec.whatwg.org/#concept-hyperlink-url">url</a>.</li>
+            <li>If <var>url</var> is null and <a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#this">this</a> has no <code><a data-link-type="element-attr" href="#dfn-href" class="internalDFN" id="ref-for-dfn-href-3">href</a></code> content attribute, then return the empty string.</li>
+            <li>Otherwise, if <var>url</var> is null, then return <a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#this">this</a>'s <code><a data-link-type="element-attr" href="#dfn-href" class="internalDFN" id="ref-for-dfn-href-4">href</a></code> content attribute's value.</li>
+            <li>Return <var>url</var>, serialized.</li>
+          </ol>
+        </div>
+
+        <div class="algorithm">
+          <p>The <dfn id="dfn-set-the-url" class="externalDFN" data-no-export="" data-dfn-type="dfn"><a href="https://html.spec.whatwg.org/#concept-hyperlink-url-set">set the url</a></dfn> algorithm for a <code>MathMLAnchorElement</code> are:</p>
+          <ol>
+            <li>If <a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#this">this</a> element's <code><a data-link-type="element-attr" href="#dfn-href" class="internalDFN" id="ref-for-dfn-href-5">href</a></code> content attribute is absent, then return.</li>
+            <li>Let <var>url</var> be the result of <a href="HTML/../#encoding-parsing-a-url">encoding-parsing a URL</a> given <a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#this">this</a> element's <code><a data-link-type="element-attr" href="#dfn-href" class="internalDFN" id="ref-for-dfn-href-6">href</a></code> content attribute's value, relative to <a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#this">this</a> element's <a href="DOM/../#concept-node-document">node document</a>.</li>
+            <li>If <var>url</var> is not failure, then set <a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#this">this</a>'s <a data-link-type="dfn" href="https://html.spec.whatwg.org/#concept-hyperlink-url">url</a> to <var>url</var>.</li>
+          </ol>
+        </div>
+
+        <p>To <dfn id="dfn-update-href" class="externalDFN" data-no-export="" data-dfn-type="dfn"><a href="https://html.spec.whatwg.org/#update-href">update href</a></dfn> for a <code>MathMLAnchorElement</code>, set the element's <code><a data-link-type="element-attr" href="#dfn-href" class="internalDFN" id="ref-for-dfn-href-7">href</a></code> content attribute's
+          value to the element's <dfn id="dfn-url" class="externalDFN" data-no-export="" data-dfn-type="dfn"><a href="https://html.spec.whatwg.org/#concept-hyperlink-url">url</a></dfn>, <dfn id="dfn-serialized" class="externalDFN" data-no-export="" data-dfn-type="dfn"><a href="https://url.spec.whatwg.org/#concept-url-serializer">serialized</a></dfn>.</p>
         </section>
       <section id="enlivening-expressions"><div class="header-wrapper"><h3 id="x3-7-enlivening-expressions"><bdi class="secno">3.7 </bdi>Enlivening Expressions</h3><a class="self-link" href="#enlivening-expressions" aria-label="Permalink for Section 3.7"></a></div>
         
@@ -9840,6 +9875,8 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <ul>
     <li>
       <a href="#ref-for-dom-mathmlelement-1" title="§ 2.2.3 DOM and JavaScript">§ 2.2.3 DOM and JavaScript</a> <a href="#ref-for-dom-mathmlelement-2" title="Reference 2">(2)</a> <a href="#ref-for-dom-mathmlelement-3" title="Reference 3">(3)</a> 
+    </li><li>
+      <a href="#ref-for-dom-mathmlelement-4" title="§ 3.6 Linking &lt;a&gt;">§ 3.6 Linking &lt;a&gt;</a> 
     </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-alphabetic-baseline" aria-label="Links in this document to definition: alphabetic baseline">
@@ -11893,9 +11930,46 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <p><b>Referenced in:</b></p>
       <ul>
     <li>
-      <a href="#ref-for-dfn-href-1" title="§ 3.6 Linking &lt;a&gt;">§ 3.6 Linking &lt;a&gt;</a> <a href="#ref-for-dfn-href-2" title="Reference 2">(2)</a> 
+      <a href="#ref-for-dfn-href-1" title="§ 3.6 Linking &lt;a&gt;">§ 3.6 Linking &lt;a&gt;</a> <a href="#ref-for-dfn-href-2" title="Reference 2">(2)</a> <a href="#ref-for-dfn-href-3" title="Reference 3">(3)</a> <a href="#ref-for-dfn-href-4" title="Reference 4">(4)</a> <a href="#ref-for-dfn-href-5" title="Reference 5">(5)</a> <a href="#ref-for-dfn-href-6" title="Reference 6">(6)</a> <a href="#ref-for-dfn-href-7" title="Reference 7">(7)</a> 
     </li>
   </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dom-mathmlanchorelement" aria-label="Links in this document to definition: MathMLAnchorElement">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dom-mathmlanchorelement" aria-label="Permalink for definition: MathMLAnchorElement. Activate to close this dialog.">Permalink</a>
+        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-617025194">IDL</a>
+        
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+      <a href="#ref-for-dom-mathmlanchorelement-1" title="§ 3.6 Linking &lt;a&gt;">§ 3.6 Linking &lt;a&gt;</a> <a href="#ref-for-dom-mathmlanchorelement-2" title="Reference 2">(2)</a> 
+    </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dom-mathmlanchorelement-href" aria-label="Links in this document to definition: href">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dom-mathmlanchorelement-href" aria-label="Permalink for definition: href. Activate to close this dialog.">Permalink</a>
+        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> 
+        
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+      <a href="#ref-for-dom-mathmlanchorelement-href-1" title="§ 3.6 Linking &lt;a&gt;">§ 3.6 Linking &lt;a&gt;</a> 
+    </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dom-mathmlanchorelement-target" aria-label="Links in this document to definition: target">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dom-mathmlanchorelement-target" aria-label="Permalink for definition: target. Activate to close this dialog.">Permalink</a>
+        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> 
+        
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+      <li>Not referenced in this document.</li>
+    </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-maction" aria-label="Links in this document to definition: maction">
       <span class="caret"></span>
       <div>
@@ -13188,6 +13262,8 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
       <a href="https://www.w3.org/TR/selectors-3/"><cite>Selectors Level 3</cite></a>. Tantek Çelik; Elika Etemad; Daniel Glazman; Ian Hickson; Peter Linss; John Williams.  W3C. 6 November 2018. W3C Recommendation. URL: <a href="https://www.w3.org/TR/selectors-3/">https://www.w3.org/TR/selectors-3/</a>
     </dd><dt id="bib-svg">[SVG]</dt><dd>
       <a href="https://www.w3.org/TR/SVG/"><cite>Scalable Vector Graphics (SVG) 1.0 Specification</cite></a>. Jon Ferraiolo.  W3C. 4 September 2001. W3C Recommendation. URL: <a href="https://www.w3.org/TR/SVG/">https://www.w3.org/TR/SVG/</a>
+    </dd><dt id="bib-url">[URL]</dt><dd>
+      <a href="https://url.spec.whatwg.org/"><cite>URL Standard</cite></a>. Anne van Kesteren.  WHATWG. Living Standard. URL: <a href="https://url.spec.whatwg.org/">https://url.spec.whatwg.org/</a>
     </dd><dt id="bib-webidl">[webidl]</dt><dd>
       <a href="https://webidl.spec.whatwg.org/"><cite>Web IDL Standard</cite></a>. Edgar Chen; Timothy Gu.  WHATWG. Living Standard. URL: <a href="https://webidl.spec.whatwg.org/">https://webidl.spec.whatwg.org/</a>
     </dd></dl>
