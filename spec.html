@@ -5866,8 +5866,9 @@
                 <code>Form</code> is <code>postfix</code>, exit with category
                 <code>I</code>.</li>
               <li>If the second character is
-                U+0338 COMBINING LONG SOLIDUS OVERLAY or
-                U+20D2 COMBINING LONG VERTICAL LINE OVERLAY then replace
+                U+0338 COMBINING LONG SOLIDUS OVERLAY,
+                U+20D2 COMBINING LONG VERTICAL LINE OVERLAY,
+                or a variation selector in the range U+FE00-U+FE0F, then replace
                 <code>Content</code> with the first character and move to step
                 3.</li>
               <li>Otherwise, if <code>Content</code> is listed in
