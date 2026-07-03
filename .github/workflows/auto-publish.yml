@@ -15,7 +15,7 @@ jobs:
     permissions:
       contents: write
     steps:
-     - uses: actions/checkout@v4
+     - uses: actions/checkout@v5
      - uses: w3c/spec-prod@v2
        with:
           GH_PAGES_BRANCH: gh-pages
@@ -27,7 +27,7 @@ jobs:
     name: Build, validate and publish on /TR
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - uses: w3c/spec-prod@v2
         with:
           TOOLCHAIN: respec
