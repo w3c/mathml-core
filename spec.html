@@ -4668,21 +4668,32 @@
           </p>
           <p>
             The <code>&lt;a&gt;</code> element accepts the attributes described
-            in <a href="#global-attributes"></a> as well as the all the attributes of the
-	    <a href="https://html.spec.whatwg.org/#the-a-element">corresponding element in HTML</a>.
-	    The primary additional attribute is [^a/href^].
-	  </p>
-	   <ul id="a-attributes">
+            in <a href="#global-attributes"></a> as well as corresponding attributes of the
+            <a data-cite="HTML#the-a-element">HTML <code>&lt;a&gt;</code> element</a>:
+          </p>
+           <ul id="a-attributes">
             <li>[^a/href^]</li>
+            <li>[^a/target^]</li>
+            <li>[^a/download^]</li>
+            <li>[^a/ping^]</li>
+            <li>[^a/rel^]</li>
+            <li>[^a/hreflang^]</li>
+            <li>[^a/type^]</li>
+            <li>[^a/referrerpolicy^]</li>
           </ul>
           <p>
-            If the
-            <dfn data-dfn-for="a" class="element-attr">href</dfn>
-            attribute is used then the <code>&lt;a&gt;</code> element creates a hyperlink
-	    to the URL specified by the <code>href</code> attribute. The linking behavior
-	    is as described for the <code>a</code> element in HTML.
+            The
+            <dfn class="element-attr">href</dfn>,
+            <dfn class="element-attr">target</dfn>,
+            <dfn class="element-attr">download</dfn>,
+            <dfn class="element-attr">ping</dfn>,
+            <dfn class="element-attr">rel</dfn>,
+            <dfn class="element-attr">hreflang</dfn>,
+            <dfn class="element-attr">type</dfn> and
+            <dfn class="element-attr">referrerpolicy</dfn>
+            attributes have the same syntax and semantics as defined for the
+            <a data-cite="HTML#the-a-element">HTML <code>&lt;a&gt;</code> element</a>.
           </p>
-
 	  <p> The layout algorithm of the <code>&lt;a&gt;</code> element
           is the same as the <code>&lt;mrow&gt;</code> element.</p>
 
