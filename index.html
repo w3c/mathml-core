@@ -5427,7 +5427,11 @@ mmultiscripts &gt; mprescripts ~ <span class="hljs-selector-pseudo">:nth-child</
           
           <p>The <dfn class="element" data-dfn-type="element" id="dfn-mtable" tabindex="0" aria-haspopup="dialog" data-export="">mtable</dfn> is laid out as an
             <code>inline-table</code> and sets
-            <code>displaystyle</code> to <code>false</code>. The
+            <code>displaystyle</code> to <code>false</code>.
+	    Note that <code>false</code> is intended for tables used for matrices
+	    and similar constructs. Tables used for vertical layout of aligned equations
+	    will typically require  <code>displaystyle</code> set to <code>true</code>.</p>
+	 <p>The
             <a href="#dfn-user-agent-stylesheet" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-user-agent-stylesheet-9">user agent stylesheet</a> must contain
             the following rules in order to implement these properties:
           </p>
