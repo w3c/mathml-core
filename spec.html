@@ -4580,7 +4580,11 @@
           <h4>Table or Matrix <code>&lt;mtable&gt;</code></h4>
           <p>The <dfn class="element">mtable</dfn> is laid out as an
             <code>inline-table</code> and sets
-            <code>displaystyle</code> to <code>false</code>. The
+            <code>displaystyle</code> to <code>false</code>.
+	    Note that <code>false</code> is intended for tables used for matrices
+	    and similar constructs. Tables used for vertical layout of aligned equations
+	    will typically require  <code>displaystyle</code> set to <code>true</code>.</p>
+	 <p>The
             <a>user agent stylesheet</a> must contain
             the following rules in order to implement these properties:
           </p>
