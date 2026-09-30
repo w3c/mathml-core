@@ -1,6 +1,6 @@
 <!DOCTYPE html><html lang="en"><head>
 <meta charset="utf-8">
-<meta name="generator" content="ReSpec 37.1.0">
+<meta name="generator" content="ReSpec 37.4.0">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <style>
 .issue-label{text-transform:initial}
@@ -107,11 +107,11 @@ details.respec-tests-details>li{padding-left:1em}
 .self-link:hover{opacity:1;text-decoration:none;background-color:transparent}
 aside.example .marker>a.self-link{color:inherit}
 .header-wrapper{display:flex;align-items:baseline}
-:is(h2,h3,h4,h5,h6):not(#toc>h2,#abstract>h2,#sotd>h2,.head>h2):has(+a.self-link){position:relative;left:-.5em}
-:is(h2,h3,h4,h5,h6):not(#toch2)+a.self-link{color:inherit;order:-1;position:relative;left:-1.1em;font-size:1rem;opacity:.5}
-:is(h2,h3,h4,h5,h6)+a.self-link::before{content:"§";text-decoration:none;color:var(--heading-text)}
+:is(h2,h3,h4,h5,h6):not(:where(#toc>h2,#abstract>h2,#sotd>h2,.head>h2)):has(+a.self-link){position:relative;left:-.5em}
+:is(h2,h3,h4,h5,h6):not(:where(#toch2))+a.self-link{color:inherit;order:-1;position:relative;left:-1.1em;font-size:1rem;opacity:.8;text-decoration:none}
+:is(h2,h3,h4,h5,h6)+a.self-link::before{content:"§"}
 :is(h2,h3)+a.self-link{top:-.2em}
-:is(h4,h5,h6)+a.self-link::before{color:#000}
+:is(h2,h3)+a.self-link::before{color:var(--heading-text)}
 @media (max-width:767px){
 dd{margin-left:0}
 }
@@ -317,47 +317,48 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
     null,
     null
   ],
-  "publishISODate": "2026-07-27T00:00:00.000Z",
-  "generatedSubtitle": "W3C Editor's Draft 27 July 2026"
+  "publishISODate": "2026-09-30T00:00:00.000Z",
+  "generatedSubtitle": "W3C Editor's Draft 30 September 2026"
 }</script>
-<link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2021/W3C-ED"></head>
+<link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2021/W3C-ED">
+<link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2021/dark.css" disabled=""></head>
   <body class="h-entry" data-cite="WEBIDL html infra css-display-3 css-text-3 web-animations css-fonts-4 dom cssom cssom-view css-sizing-3 css-align-3 css-box-4 css-values-4 css-backgrounds-3 css-text-decor-4 svg css-writing-modes-4 css-color-4 css-box-4 css-pseudo-4"><div class="head">
     <p class="logos"><a class="logo" href="https://www.w3.org/"><img crossorigin="" alt="W3C" height="48" src="https://www.w3.org/StyleSheets/TR/2021/logos/W3C" width="72">
   </a></p>
     <h1 id="title" class="title">MathML Core</h1> 
-    <p id="w3c-state"><a href="https://www.w3.org/standards/types#ED">W3C Editor's Draft</a> <time class="dt-published" datetime="2026-07-27">27 July 2026</time></p>
+    <p id="w3c-state"><a href="https://www.w3.org/standards/types#ED">W3C Editor's Draft</a> <time class="dt-published" datetime="2026-09-30">30 September 2026</time></p>
     <details open="">
       <summary>More details about this document</summary>
       <dl>
         <dt>This version:</dt><dd>
-                <a class="u-url" href="https://w3c.github.io/mathml-core/">https://w3c.github.io/mathml-core/</a>
-              </dd>
+                  <a class="u-url" href="https://w3c.github.io/mathml-core/">https://w3c.github.io/mathml-core/</a>
+                </dd>
         <dt>Latest published version:</dt><dd>
-                <a href="https://www.w3.org/TR/mathml-core/">https://www.w3.org/TR/mathml-core/</a>
-              </dd>
+                  <a href="https://www.w3.org/TR/mathml-core/">https://www.w3.org/TR/mathml-core/</a>
+                </dd>
         <dt>Latest editor's draft:</dt><dd><a href="https://w3c.github.io/mathml-core/">https://w3c.github.io/mathml-core/</a></dd>
         <dt>History:</dt><dd>
-                    <a href="https://www.w3.org/standards/history/mathml-core/">https://www.w3.org/standards/history/mathml-core/</a>
-                  </dd><dd>
-                    <a href="https://github.com/w3c/mathml-core/commits/">Commit history</a>
-                  </dd>
+                        <a href="https://www.w3.org/standards/history/mathml-core/">https://www.w3.org/standards/history/mathml-core/</a>
+                      </dd><dd>
+                        <a href="https://github.com/w3c/mathml-core/commits/">Commit history</a>
+                      </dd>
         <dt>Test suite:</dt><dd><a href="https://github.com/web-platform-tests/wpt/tree/master/mathml/">https://github.com/web-platform-tests/wpt/tree/master/mathml/</a></dd>
         <dt>Implementation report:</dt><dd>
-                <a href="https://wpt.fyi/results/?label=master&amp;label=experimental&amp;aligned&amp;q=math%20%20not%28path%3A%2Fjs%29">https://wpt.fyi/results/?label=master&amp;label=experimental&amp;aligned&amp;q=math%20%20not%28path%3A%2Fjs%29</a>
-              </dd>
+                  <a href="https://wpt.fyi/results/?label=master&amp;label=experimental&amp;aligned&amp;q=math%20%20not%28path%3A%2Fjs%29">https://wpt.fyi/results/?label=master&amp;label=experimental&amp;aligned&amp;q=math%20%20not%28path%3A%2Fjs%29</a>
+                </dd>
         
         
         
         <dt>
-                Editors:
-              </dt><dd class="editor p-author h-card vcard" data-editor-id="4238">
+                  Editors:
+                </dt><dd class="editor p-author h-card vcard" data-editor-id="4238">
     <a class="u-url url p-name fn" href="https://github.com/davidcarlisle">David Carlisle</a> (<span class="p-org org h-org">NAG</span>)
   </dd><dd class="editor p-author h-card vcard" data-editor-id="112458">
     <a class="u-url url p-name fn" href="https://frederic-wang.fr">Frédéric Wang</a> (<span class="p-org org h-org">Igalia</span>)
   </dd>
         <dt>
-                Former editors:
-              </dt><dd class="editor p-author h-card vcard">
+                  Former editors:
+                </dt><dd class="editor p-author h-card vcard">
     <a class="u-url url p-name fn" href="http://www-personal.umich.edu/~pion/">Patrick Ion</a> (<span class="p-org org h-org">Mathematical Reviews, American Mathematical Society</span>)
   </dd><dd class="editor p-author h-card vcard">
     <span class="p-name fn">Robert Miner (deceased)</span> (<span class="p-org org h-org">Design Science, Inc.</span>)
@@ -422,20 +423,20 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
           Policy</a>.
       
     
-                <abbr title="World Wide Web Consortium">W3C</abbr> maintains a
-                <a rel="disclosure" href="https://www.w3.org/groups/wg/math/ipr">public list of any patent disclosures</a>
-          made in connection with the deliverables of
-          the group; that page also includes
-          instructions for disclosing a patent. An individual who has actual
-          knowledge of a patent that the individual believes contains
-          <a href="https://www.w3.org/policies/patent-policy/#def-essential">Essential Claim(s)</a>
-          must disclose the information in accordance with
-          <a href="https://www.w3.org/policies/patent-policy/#sec-Disclosure">section 6 of the <abbr title="World Wide Web Consortium">W3C</abbr> Patent Policy</a>.
-        
+                    <abbr title="World Wide Web Consortium">W3C</abbr> maintains a
+                    <a rel="disclosure" href="https://www.w3.org/groups/wg/math/ipr">public list of any patent disclosures</a>
+            made in connection with the deliverables of
+            the group; that page also includes
+            instructions for disclosing a patent. An individual who has actual
+            knowledge of a patent that the individual believes contains
+            <a href="https://www.w3.org/policies/patent-policy/#def-essential">Essential Claim(s)</a>
+            must disclose the information in accordance with
+            <a href="https://www.w3.org/policies/patent-policy/#sec-Disclosure">section 6 of the <abbr title="World Wide Web Consortium">W3C</abbr> Patent Policy</a>.
+          
   </p><p>
-                      This document is governed by the
-                      <a id="w3c_process_revision" href="https://www.w3.org/policies/process/20250818/">18 August 2025 <abbr title="World Wide Web Consortium">W3C</abbr> Process Document</a>.
-                    </p></section><nav id="toc"><h2 class="introductory" id="table-of-contents">Table of Contents</h2><ol class="toc"><li class="tocline"><a class="tocxref" href="#abstract">Abstract</a></li><li class="tocline"><a class="tocxref" href="#sotd">Status of This Document</a></li><li class="tocline"><a class="tocxref" href="#introduction"><bdi class="secno">1. </bdi>Introduction</a></li><li class="tocline"><a class="tocxref" href="#mathml-fundamentals"><bdi class="secno">2. </bdi>MathML Fundamentals</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#mathml-elements-and-attributes"><bdi class="secno">2.1 </bdi>Elements and attributes</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#the-top-level-math-element"><bdi class="secno">2.1.1 </bdi>The Top-Level <code>&lt;math&gt;</code> Element</a></li><li class="tocline"><a class="tocxref" href="#types-for-mathml-attribute-values"><bdi class="secno">2.1.2 </bdi>Types for MathML Attribute Values</a></li><li class="tocline"><a class="tocxref" href="#global-attributes"><bdi class="secno">2.1.3 </bdi>Global Attributes</a></li><li class="tocline"><a class="tocxref" href="#attributes-common-to-html-and-mathml-elements"><bdi class="secno">2.1.4 </bdi>Attributes common to HTML and MathML elements</a></li><li class="tocline"><a class="tocxref" href="#legacy-mathml-style-attributes"><bdi class="secno">2.1.5 </bdi>Legacy MathML Style Attributes</a></li><li class="tocline"><a class="tocxref" href="#the-displaystyle-and-scriptlevel-attributes"><bdi class="secno">2.1.6 </bdi>The <code>displaystyle</code> and <code>scriptlevel</code> attributes</a></li><li class="tocline"><a class="tocxref" href="#other-valid-attributes"><bdi class="secno">2.1.7 </bdi>Attributes Reserved as Valid</a></li></ol></li><li class="tocline"><a class="tocxref" href="#integration-in-the-web-platform"><bdi class="secno">2.2 </bdi>Integration in the Web Platform</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#html-and-svg"><bdi class="secno">2.2.1 </bdi>HTML and SVG</a></li><li class="tocline"><a class="tocxref" href="#css-styling"><bdi class="secno">2.2.2 </bdi>CSS styling</a></li><li class="tocline"><a class="tocxref" href="#dom-and-javascript"><bdi class="secno">2.2.3 </bdi>DOM and JavaScript</a></li><li class="tocline"><a class="tocxref" href="#text-layout"><bdi class="secno">2.2.4 </bdi>Text layout</a></li><li class="tocline"><a class="tocxref" href="#focus"><bdi class="secno">2.2.5 </bdi>Focus</a></li></ol></li></ol></li><li class="tocline"><a class="tocxref" href="#presentation-markup"><bdi class="secno">3. </bdi>Presentation Markup</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#visual-formatting-model"><bdi class="secno">3.1 </bdi>Visual formatting model</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#box-model"><bdi class="secno">3.1.1 </bdi>Box Model</a></li><li class="tocline"><a class="tocxref" href="#layout-algorithms"><bdi class="secno">3.1.2 </bdi>Layout Algorithms</a></li><li class="tocline"><a class="tocxref" href="#anonymous-mrow-boxes"><bdi class="secno">3.1.3 </bdi>Anonymous &lt;mrow&gt; boxes</a></li><li class="tocline"><a class="tocxref" href="#stacking-contexts"><bdi class="secno">3.1.4 </bdi>Stacking contexts</a></li></ol></li><li class="tocline"><a class="tocxref" href="#token-elements"><bdi class="secno">3.2 </bdi>Token Elements</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#text-mtext"><bdi class="secno">3.2.1 </bdi>Text <code>&lt;mtext&gt;</code></a><ol class="toc"><li class="tocline"><a class="tocxref" href="#layout-of-mtext"><bdi class="secno">3.2.1.1 </bdi>Layout of <code>&lt;mtext&gt;</code></a></li></ol></li><li class="tocline"><a class="tocxref" href="#the-mi-element"><bdi class="secno">3.2.2 </bdi>Identifier <code>&lt;mi&gt;</code></a></li><li class="tocline"><a class="tocxref" href="#number-mn"><bdi class="secno">3.2.3 </bdi>Number <code>&lt;mn&gt;</code></a></li><li class="tocline"><a class="tocxref" href="#operator-fence-separator-or-accent-mo"><bdi class="secno">3.2.4 </bdi>Operator, Fence, Separator or Accent <code>&lt;mo&gt;</code></a><ol class="toc"><li class="tocline"><a class="tocxref" href="#embellished-operators"><bdi class="secno">3.2.4.1 </bdi>Embellished operators</a></li><li class="tocline"><a class="tocxref" href="#dictionary-based-attributes"><bdi class="secno">3.2.4.2 </bdi>Dictionary-based attributes</a></li><li class="tocline"><a class="tocxref" href="#layout-of-operators"><bdi class="secno">3.2.4.3 </bdi>Layout of operators</a></li></ol></li><li class="tocline"><a class="tocxref" href="#space-mspace"><bdi class="secno">3.2.5 </bdi>Space <code>&lt;mspace&gt;</code></a><ol class="toc"><li class="tocline"><a class="tocxref" href="#definition-of-space-like-elements"><bdi class="secno">3.2.5.1 </bdi>Definition of space-like elements</a></li></ol></li><li class="tocline"><a class="tocxref" href="#string-literal-ms"><bdi class="secno">3.2.6 </bdi>String Literal <code>&lt;ms&gt;</code></a></li></ol></li><li class="tocline"><a class="tocxref" href="#general-layout-schemata"><bdi class="secno">3.3 </bdi>General Layout Schemata</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#horizontally-group-sub-expressions-mrow"><bdi class="secno">3.3.1 </bdi>Group Sub-Expressions <code>&lt;mrow&gt;</code></a><ol class="toc"><li class="tocline"><a class="tocxref" href="#algorithm-for-stretching-operators-along-the-block-axis"><bdi class="secno">3.3.1.1 </bdi>Algorithm for stretching operators along the block axis</a></li><li class="tocline"><a class="tocxref" href="#layout-of-mrow"><bdi class="secno">3.3.1.2 </bdi>Layout of <code>&lt;mrow&gt;</code></a></li></ol></li><li class="tocline"><a class="tocxref" href="#fractions-mfrac"><bdi class="secno">3.3.2 </bdi>Fractions <code>&lt;mfrac&gt;</code></a><ol class="toc"><li class="tocline"><a class="tocxref" href="#fraction-with-nonzero-line-thickness"><bdi class="secno">3.3.2.1 </bdi>Fraction with nonzero line thickness</a></li><li class="tocline"><a class="tocxref" href="#fraction-with-zero-line-thickness"><bdi class="secno">3.3.2.2 </bdi>Fraction with zero line thickness</a></li></ol></li><li class="tocline"><a class="tocxref" href="#radicals-msqrt-mroot"><bdi class="secno">3.3.3 </bdi>Radicals <code>&lt;msqrt&gt;</code>, <code>&lt;mroot&gt;</code></a><ol class="toc"><li class="tocline"><a class="tocxref" href="#radical-symbol"><bdi class="secno">3.3.3.1 </bdi>Radical symbol</a></li><li class="tocline"><a class="tocxref" href="#square-root"><bdi class="secno">3.3.3.2 </bdi>Square root</a></li><li class="tocline"><a class="tocxref" href="#root-with-index"><bdi class="secno">3.3.3.3 </bdi>Root with index</a></li></ol></li><li class="tocline"><a class="tocxref" href="#style-change-mstyle"><bdi class="secno">3.3.4 </bdi>Style Change <code>&lt;mstyle&gt;</code></a></li><li class="tocline"><a class="tocxref" href="#error-message-merror"><bdi class="secno">3.3.5 </bdi>Error Message <code>&lt;merror&gt;</code></a></li><li class="tocline"><a class="tocxref" href="#adjust-space-around-content-mpadded"><bdi class="secno">3.3.6 </bdi>Adjust Space Around Content <code>&lt;mpadded&gt;</code></a><ol class="toc"><li class="tocline"><a class="tocxref" href="#inner-box-and-requested-parameters"><bdi class="secno">3.3.6.1 </bdi>Inner box and requested parameters</a></li><li class="tocline"><a class="tocxref" href="#layout-of-mpadded"><bdi class="secno">3.3.6.2 </bdi>Layout of <code>&lt;mpadded&gt;</code></a></li></ol></li><li class="tocline"><a class="tocxref" href="#making-sub-expressions-invisible-mphantom"><bdi class="secno">3.3.7 </bdi>Making Sub-Expressions Invisible <code>&lt;mphantom&gt;</code></a></li></ol></li><li class="tocline"><a class="tocxref" href="#script-and-limit-schemata"><bdi class="secno">3.4 </bdi>Script and Limit Schemata</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#subscripts-and-superscripts-msub-msup-msubsup"><bdi class="secno">3.4.1 </bdi>Subscripts and Superscripts <code>&lt;msub&gt;</code>, <code>&lt;msup&gt;</code>, <code>&lt;msubsup&gt;</code></a><ol class="toc"><li class="tocline"><a class="tocxref" href="#children-of-msub-msup-msubsup"><bdi class="secno">3.4.1.1 </bdi>Children of <code>&lt;msub&gt;</code>,
+                          This document is governed by the
+                          <a id="w3c_process_revision" href="https://www.w3.org/policies/process/20250818/">18 August 2025 <abbr title="World Wide Web Consortium">W3C</abbr> Process Document</a>.
+                        </p></section><nav id="toc"><h2 class="introductory" id="table-of-contents">Table of Contents</h2><ol class="toc"><li class="tocline"><a class="tocxref" href="#abstract">Abstract</a></li><li class="tocline"><a class="tocxref" href="#sotd">Status of This Document</a></li><li class="tocline"><a class="tocxref" href="#introduction"><bdi class="secno">1. </bdi>Introduction</a></li><li class="tocline"><a class="tocxref" href="#mathml-fundamentals"><bdi class="secno">2. </bdi>MathML Fundamentals</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#mathml-elements-and-attributes"><bdi class="secno">2.1 </bdi>Elements and attributes</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#the-top-level-math-element"><bdi class="secno">2.1.1 </bdi>The Top-Level <code>&lt;math&gt;</code> Element</a></li><li class="tocline"><a class="tocxref" href="#types-for-mathml-attribute-values"><bdi class="secno">2.1.2 </bdi>Types for MathML Attribute Values</a></li><li class="tocline"><a class="tocxref" href="#global-attributes"><bdi class="secno">2.1.3 </bdi>Global Attributes</a></li><li class="tocline"><a class="tocxref" href="#attributes-common-to-html-and-mathml-elements"><bdi class="secno">2.1.4 </bdi>Attributes common to HTML and MathML elements</a></li><li class="tocline"><a class="tocxref" href="#legacy-mathml-style-attributes"><bdi class="secno">2.1.5 </bdi>Legacy MathML Style Attributes</a></li><li class="tocline"><a class="tocxref" href="#the-displaystyle-and-scriptlevel-attributes"><bdi class="secno">2.1.6 </bdi>The <code>displaystyle</code> and <code>scriptlevel</code> attributes</a></li><li class="tocline"><a class="tocxref" href="#other-valid-attributes"><bdi class="secno">2.1.7 </bdi>Attributes Reserved as Valid</a></li></ol></li><li class="tocline"><a class="tocxref" href="#integration-in-the-web-platform"><bdi class="secno">2.2 </bdi>Integration in the Web Platform</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#html-and-svg"><bdi class="secno">2.2.1 </bdi>HTML and SVG</a></li><li class="tocline"><a class="tocxref" href="#css-styling"><bdi class="secno">2.2.2 </bdi>CSS styling</a></li><li class="tocline"><a class="tocxref" href="#dom-and-javascript"><bdi class="secno">2.2.3 </bdi>DOM and JavaScript</a></li><li class="tocline"><a class="tocxref" href="#text-layout"><bdi class="secno">2.2.4 </bdi>Text layout</a></li><li class="tocline"><a class="tocxref" href="#focus"><bdi class="secno">2.2.5 </bdi>Focus</a></li></ol></li></ol></li><li class="tocline"><a class="tocxref" href="#presentation-markup"><bdi class="secno">3. </bdi>Presentation Markup</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#visual-formatting-model"><bdi class="secno">3.1 </bdi>Visual formatting model</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#box-model"><bdi class="secno">3.1.1 </bdi>Box Model</a></li><li class="tocline"><a class="tocxref" href="#layout-algorithms"><bdi class="secno">3.1.2 </bdi>Layout Algorithms</a></li><li class="tocline"><a class="tocxref" href="#anonymous-mrow-boxes"><bdi class="secno">3.1.3 </bdi>Anonymous &lt;mrow&gt; boxes</a></li><li class="tocline"><a class="tocxref" href="#stacking-contexts"><bdi class="secno">3.1.4 </bdi>Stacking contexts</a></li></ol></li><li class="tocline"><a class="tocxref" href="#token-elements"><bdi class="secno">3.2 </bdi>Token Elements</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#text-mtext"><bdi class="secno">3.2.1 </bdi>Text <code>&lt;mtext&gt;</code></a><ol class="toc"><li class="tocline"><a class="tocxref" href="#layout-of-mtext"><bdi class="secno">3.2.1.1 </bdi>Layout of <code>&lt;mtext&gt;</code></a></li></ol></li><li class="tocline"><a class="tocxref" href="#the-mi-element"><bdi class="secno">3.2.2 </bdi>Identifier <code>&lt;mi&gt;</code></a></li><li class="tocline"><a class="tocxref" href="#number-mn"><bdi class="secno">3.2.3 </bdi>Number <code>&lt;mn&gt;</code></a></li><li class="tocline"><a class="tocxref" href="#operator-fence-separator-or-accent-mo"><bdi class="secno">3.2.4 </bdi>Operator, Fence, Separator or Accent <code>&lt;mo&gt;</code></a><ol class="toc"><li class="tocline"><a class="tocxref" href="#embellished-operators"><bdi class="secno">3.2.4.1 </bdi>Embellished operators</a></li><li class="tocline"><a class="tocxref" href="#dictionary-based-attributes"><bdi class="secno">3.2.4.2 </bdi>Dictionary-based attributes</a></li><li class="tocline"><a class="tocxref" href="#layout-of-operators"><bdi class="secno">3.2.4.3 </bdi>Layout of operators</a></li></ol></li><li class="tocline"><a class="tocxref" href="#space-mspace"><bdi class="secno">3.2.5 </bdi>Space <code>&lt;mspace&gt;</code></a><ol class="toc"><li class="tocline"><a class="tocxref" href="#definition-of-space-like-elements"><bdi class="secno">3.2.5.1 </bdi>Definition of space-like elements</a></li></ol></li><li class="tocline"><a class="tocxref" href="#string-literal-ms"><bdi class="secno">3.2.6 </bdi>String Literal <code>&lt;ms&gt;</code></a></li></ol></li><li class="tocline"><a class="tocxref" href="#general-layout-schemata"><bdi class="secno">3.3 </bdi>General Layout Schemata</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#horizontally-group-sub-expressions-mrow"><bdi class="secno">3.3.1 </bdi>Group Sub-Expressions <code>&lt;mrow&gt;</code></a><ol class="toc"><li class="tocline"><a class="tocxref" href="#algorithm-for-stretching-operators-along-the-block-axis"><bdi class="secno">3.3.1.1 </bdi>Algorithm for stretching operators along the block axis</a></li><li class="tocline"><a class="tocxref" href="#layout-of-mrow"><bdi class="secno">3.3.1.2 </bdi>Layout of <code>&lt;mrow&gt;</code></a></li></ol></li><li class="tocline"><a class="tocxref" href="#fractions-mfrac"><bdi class="secno">3.3.2 </bdi>Fractions <code>&lt;mfrac&gt;</code></a><ol class="toc"><li class="tocline"><a class="tocxref" href="#fraction-with-nonzero-line-thickness"><bdi class="secno">3.3.2.1 </bdi>Fraction with nonzero line thickness</a></li><li class="tocline"><a class="tocxref" href="#fraction-with-zero-line-thickness"><bdi class="secno">3.3.2.2 </bdi>Fraction with zero line thickness</a></li></ol></li><li class="tocline"><a class="tocxref" href="#radicals-msqrt-mroot"><bdi class="secno">3.3.3 </bdi>Radicals <code>&lt;msqrt&gt;</code>, <code>&lt;mroot&gt;</code></a><ol class="toc"><li class="tocline"><a class="tocxref" href="#radical-symbol"><bdi class="secno">3.3.3.1 </bdi>Radical symbol</a></li><li class="tocline"><a class="tocxref" href="#square-root"><bdi class="secno">3.3.3.2 </bdi>Square root</a></li><li class="tocline"><a class="tocxref" href="#root-with-index"><bdi class="secno">3.3.3.3 </bdi>Root with index</a></li></ol></li><li class="tocline"><a class="tocxref" href="#style-change-mstyle"><bdi class="secno">3.3.4 </bdi>Style Change <code>&lt;mstyle&gt;</code></a></li><li class="tocline"><a class="tocxref" href="#error-message-merror"><bdi class="secno">3.3.5 </bdi>Error Message <code>&lt;merror&gt;</code></a></li><li class="tocline"><a class="tocxref" href="#adjust-space-around-content-mpadded"><bdi class="secno">3.3.6 </bdi>Adjust Space Around Content <code>&lt;mpadded&gt;</code></a><ol class="toc"><li class="tocline"><a class="tocxref" href="#inner-box-and-requested-parameters"><bdi class="secno">3.3.6.1 </bdi>Inner box and requested parameters</a></li><li class="tocline"><a class="tocxref" href="#layout-of-mpadded"><bdi class="secno">3.3.6.2 </bdi>Layout of <code>&lt;mpadded&gt;</code></a></li></ol></li><li class="tocline"><a class="tocxref" href="#making-sub-expressions-invisible-mphantom"><bdi class="secno">3.3.7 </bdi>Making Sub-Expressions Invisible <code>&lt;mphantom&gt;</code></a></li></ol></li><li class="tocline"><a class="tocxref" href="#script-and-limit-schemata"><bdi class="secno">3.4 </bdi>Script and Limit Schemata</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#subscripts-and-superscripts-msub-msup-msubsup"><bdi class="secno">3.4.1 </bdi>Subscripts and Superscripts <code>&lt;msub&gt;</code>, <code>&lt;msup&gt;</code>, <code>&lt;msubsup&gt;</code></a><ol class="toc"><li class="tocline"><a class="tocxref" href="#children-of-msub-msup-msubsup"><bdi class="secno">3.4.1.1 </bdi>Children of <code>&lt;msub&gt;</code>,
             <code>&lt;msup&gt;</code>, <code>&lt;msubsup&gt;</code></a></li><li class="tocline"><a class="tocxref" href="#base-with-subscript"><bdi class="secno">3.4.1.2 </bdi>Base with subscript</a></li><li class="tocline"><a class="tocxref" href="#base-with-superscript"><bdi class="secno">3.4.1.3 </bdi>Base with superscript</a></li><li class="tocline"><a class="tocxref" href="#base-with-subscript-and-superscript"><bdi class="secno">3.4.1.4 </bdi>Base with subscript and superscript</a></li></ol></li><li class="tocline"><a class="tocxref" href="#underscripts-and-overscripts-munder-mover-munderover"><bdi class="secno">3.4.2 </bdi>Underscripts and Overscripts <code>&lt;munder&gt;</code>, <code>&lt;mover&gt;</code>, <code>&lt;munderover&gt;</code></a><ol class="toc"><li class="tocline"><a class="tocxref" href="#children-of-munder-mover-munderover"><bdi class="secno">3.4.2.1 </bdi>Children of <code>&lt;munder&gt;</code>,
             <code>&lt;mover&gt;</code>, <code>&lt;munderover&gt;</code></a></li><li class="tocline"><a class="tocxref" href="#algorithm-for-stretching-operators-along-the-inline-axis"><bdi class="secno">3.4.2.2 </bdi>Algorithm for stretching operators along the inline axis</a></li><li class="tocline"><a class="tocxref" href="#base-with-underscript"><bdi class="secno">3.4.2.3 </bdi>Base with underscript</a></li><li class="tocline"><a class="tocxref" href="#base-with-overscript"><bdi class="secno">3.4.2.4 </bdi>Base with overscript</a></li><li class="tocline"><a class="tocxref" href="#base-with-underscript-and-overscript"><bdi class="secno">3.4.2.5 </bdi>Base with underscript and overscript</a></li></ol></li><li class="tocline"><a class="tocxref" href="#prescripts-and-tensor-indices-mmultiscripts"><bdi class="secno">3.4.3 </bdi>Prescripts and Tensor Indices <code>&lt;mmultiscripts&gt;</code></a><ol class="toc"><li class="tocline"><a class="tocxref" href="#base-with-prescripts-and-postscripts"><bdi class="secno">3.4.3.1 </bdi>Base with prescripts and postscripts</a></li></ol></li><li class="tocline"><a class="tocxref" href="#displaystyle-and-scriptlevel-in-scripts"><bdi class="secno">3.4.4 </bdi>Displaystyle, scriptlevel and math-shift in scripts</a></li></ol></li><li class="tocline"><a class="tocxref" href="#tabular-math"><bdi class="secno">3.5 </bdi>Tabular Math</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#table-or-matrix-mtable"><bdi class="secno">3.5.1 </bdi>Table or Matrix <code>&lt;mtable&gt;</code></a></li><li class="tocline"><a class="tocxref" href="#row-in-table-or-matrix-mtr"><bdi class="secno">3.5.2 </bdi>Row in Table or Matrix <code>&lt;mtr&gt;</code></a></li><li class="tocline"><a class="tocxref" href="#entry-in-table-or-matrix-mtd"><bdi class="secno">3.5.3 </bdi>Entry in Table or Matrix <code>&lt;mtd&gt;</code></a></li></ol></li><li class="tocline"><a class="tocxref" href="#the-a-element"><bdi class="secno">3.6 </bdi>Linking <code>&lt;a&gt;</code></a></li><li class="tocline"><a class="tocxref" href="#enlivening-expressions"><bdi class="secno">3.7 </bdi>Enlivening Expressions</a></li><li class="tocline"><a class="tocxref" href="#semantics-and-presentation"><bdi class="secno">3.8 </bdi>Semantics and Presentation</a></li></ol></li><li class="tocline"><a class="tocxref" href="#css-extensions-for-math-layout"><bdi class="secno">4. </bdi>CSS Extensions for Math Layout</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#new-display-math-value"><bdi class="secno">4.1 </bdi>The <code>display: block math</code>
           and <code>display: inline math</code> value</a></li><li class="tocline"><a class="tocxref" href="#math-auto-transform"><bdi class="secno">4.2 </bdi>The <code>math-auto</code> transform</a></li><li class="tocline"><a class="tocxref" href="#the-math-style-property"><bdi class="secno">4.3 </bdi>The <code>math-style</code> property</a></li><li class="tocline"><a class="tocxref" href="#the-math-shift"><bdi class="secno">4.4 </bdi>The <code>math-shift</code> property</a></li><li class="tocline"><a class="tocxref" href="#the-math-script-level-property"><bdi class="secno">4.5 </bdi>The <code>math-depth</code> property</a></li></ol></li><li class="tocline"><a class="tocxref" href="#opentype-math-table"><bdi class="secno">5. </bdi>OpenType <code>MATH</code> table</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#layout-constants-mathconstants"><bdi class="secno">5.1 </bdi>Layout constants (<code>MathConstants</code>)</a></li><li class="tocline"><a class="tocxref" href="#glyph-information-mathglyphinfo"><bdi class="secno">5.2 </bdi>Glyph information (<code>MathGlyphInfo</code>)</a></li><li class="tocline"><a class="tocxref" href="#size-variants-for-operators-mathvariants"><bdi class="secno">5.3 </bdi>Size variants for operators (<code>MathVariants</code>)</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#the-glyphassembly-table"><bdi class="secno">5.3.1 </bdi>The <code>GlyphAssembly</code> table</a></li><li class="tocline"><a class="tocxref" href="#algorithms-for-glyph-stretching"><bdi class="secno">5.3.2 </bdi>Algorithms for glyph stretching</a></li></ol></li></ol></li><li class="tocline"><a class="tocxref" href="#user-agent-stylesheet"><bdi class="secno">A. </bdi><span>User Agent Stylesheet</span></a></li><li class="tocline"><a class="tocxref" href="#operator-tables"><bdi class="secno">B. </bdi>Operator Tables</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#operator-dictionary"><bdi class="secno">B.1 </bdi>Operator Dictionary</a></li><li class="tocline"><a class="tocxref" href="#operator-dictionary-human"><bdi class="secno">B.2 </bdi>Operator Dictionary (human-readable)</a></li><li class="tocline"><a class="tocxref" href="#combining-character-equivalences"><bdi class="secno">B.3 </bdi>Combining Character Equivalences</a></li><li class="tocline"><a class="tocxref" href="#unicode-based-glyph-assemblies"><bdi class="secno">B.4 </bdi>Unicode-based Glyph Assemblies</a></li></ol></li><li class="tocline"><a class="tocxref" href="#new-text-transform-mappings"><bdi class="secno">C. </bdi>Mathematical Alphanumeric Symbols</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#italic-mappings"><bdi class="secno">C.1 </bdi><code>italic</code> mappings</a></li></ol></li><li class="tocline"><a class="tocxref" href="#acknowledgments"><bdi class="secno">D. </bdi>Acknowledgments</a></li><li class="tocline"><a class="tocxref" href="#security-considerations"><bdi class="secno">E. </bdi>Security Considerations</a></li><li class="tocline"><a class="tocxref" href="#privacy-considerations"><bdi class="secno">F. </bdi>Privacy Considerations</a></li><li class="tocline"><a class="tocxref" href="#conformance"><bdi class="secno">G. </bdi>Conformance</a></li><li class="tocline"><a class="tocxref" href="#references"><bdi class="secno">H. </bdi>References</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#normative-references"><bdi class="secno">H.1 </bdi>Normative references</a></li><li class="tocline"><a class="tocxref" href="#informative-references"><bdi class="secno">H.2 </bdi>Informative references</a></li></ol></li></ol></nav>
@@ -992,7 +993,7 @@ math<span class="hljs-selector-attr">[display=<span class="hljs-string">"inline"
             specifications [<cite><a class="bibref" data-link-type="biblio" href="#bib-html" title="HTML Standard">HTML</a></cite>] [<cite><a class="bibref" data-link-type="biblio" href="#bib-svg" title="Scalable Vector Graphics (SVG) 1.0 Specification">SVG</a></cite>].
           </p>
           <p>
-            When evaluating the SVG <code><a data-link-type="element-attr" href="https://www.w3.org/TR/SVG/struct.html#RequiredExtensionsAttribute">requiredExtensions</a></code>
+            When evaluating the SVG <a href="https://www.w3.org/TR/SVG/#RequiredExtensionsAttribute%22">requiredExtensions</a>
             attribute, user agents must claim support for the language extension
             identified by the
             <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#mathml-namespace">MathML namespace</a>.
@@ -1263,8 +1264,8 @@ interface <a class="internalDFN idlID" data-link-type="interface" href="#dom-mat
               <a data-link-type="dfn" href="https://www.w3.org/TR/css-writing-modes-4/#inline-dimension">inline dimension</a>,
               <a data-link-type="dfn" href="https://www.w3.org/TR/css-writing-modes-4/#block-axis">block axis</a>,
               <a data-link-type="dfn" href="https://www.w3.org/TR/css-writing-modes-4/#inline-axis">inline axis</a>,
-              <a data-link-type="dfn" href="https://www.w3.org/TR/css-writing-modes-4/#block-size">block size</a>,
-              <a data-link-type="dfn" href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a>.
+              <a href="https://www.w3.org/TR/css-writing-modes-4/#block-size">block size</a>,
+              <a href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a>.
             </li>
             <li>
               <a data-link-type="dfn" href="https://www.w3.org/TR/css-writing-modes-4/#flow-relative-direction">flow-relative directions</a>:
@@ -1298,7 +1299,7 @@ interface <a class="internalDFN idlID" data-link-type="interface" href="#dom-mat
             <li>Inline metrics.
               <a data-link-type="dfn" href="https://www.w3.org/TR/css-sizing-3/#min-content-inline-size">min-content inline size</a>,
               <a data-link-type="dfn" href="https://www.w3.org/TR/css-sizing-3/#max-content-inline-size">max-content inline size</a> and
-              <a data-link-type="dfn" href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a>
+              <a href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a>
               from CSS. See <a href="#box-model-generic" class="fig-ref" title="Generic Box Model for MathML elements">Figure <bdi class="">1</bdi></a>.
               <figure id="box-model-generic">
                 <img src="figures/horizontal-tb-ltr.svg">
@@ -1308,7 +1309,7 @@ interface <a class="internalDFN idlID" data-link-type="interface" href="#dom-mat
             <li>
               <p>
                 Block metrics.
-                The <a data-link-type="dfn" href="https://www.w3.org/TR/css-writing-modes-4/#block-size">block size</a>,
+                The <a href="https://www.w3.org/TR/css-writing-modes-4/#block-size">block size</a>,
                 <a data-link-type="dfn" href="https://www.w3.org/TR/css-align-3/#first-baseline-set">first baseline set</a>
                 and
                 <a data-link-type="dfn" href="https://www.w3.org/TR/css-align-3/#last-baseline-set">last baseline set</a>.
@@ -1445,8 +1446,8 @@ interface <a class="internalDFN idlID" data-link-type="interface" href="#dom-mat
                 the <a href="#dfn-line-left-offset" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-left-offset-1">line-left offset</a> if the CSS property
                 <a data-link-type="css-property" href="https://www.w3.org/TR/css-writing-modes-4/#propdef-direction">direction</a>
                 is <code>ltr</code> and
-                is the <a data-link-type="dfn" href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a> of the box −
-                (<a href="#dfn-line-left-offset" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-left-offset-2">line-left offset</a> + <a data-link-type="dfn" href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a> of
+                is the <a href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a> of the box −
+                (<a href="#dfn-line-left-offset" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-left-offset-2">line-left offset</a> + <a href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a> of
                 the child box) otherwise.
               </li>
               <li>
@@ -1483,7 +1484,7 @@ interface <a class="internalDFN idlID" data-link-type="interface" href="#dom-mat
                   Layout of <a data-link-type="dfn" href="https://www.w3.org/TR/css-display-3/#in-flow">in-flow</a> child boxes.
                 </li>
                 <li>
-                  Calculation of <a data-link-type="dfn" href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a>,
+                  Calculation of <a href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a>,
                   <a href="#dfn-ink-line-ascent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-ink-line-ascent-1">ink line-ascent</a>,
                   <a href="#dfn-ink-line-descent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-ink-line-descent-1">ink line-descent</a>,
                   <a href="#dfn-line-ascent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-ascent-2">line-ascent</a> and
@@ -1507,7 +1508,7 @@ interface <a class="internalDFN idlID" data-link-type="interface" href="#dom-mat
           <ul>
             <li>
               After calculating the <a href="#dfn-line-ascent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-ascent-4">line-ascent</a> and <a href="#dfn-line-descent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-descent-2">line-descent</a>
-              of a <a href="#dfn-math-content-box" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-math-content-box-5">math content box</a>, its <a data-link-type="dfn" href="https://www.w3.org/TR/css-writing-modes-4/#block-size">block size</a> is set to their sum.
+              of a <a href="#dfn-math-content-box" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-math-content-box-5">math content box</a>, its <a href="https://www.w3.org/TR/css-writing-modes-4/#block-size">block size</a> is set to their sum.
             </li>
             <li>
               By default,
@@ -1792,7 +1793,7 @@ interface <a class="internalDFN idlID" data-link-type="interface" href="#dom-mat
             </p>
             <ul>
               <li>The <a data-link-type="dfn" href="https://www.w3.org/TR/css-sizing-3/#min-content-inline-size">min-content inline size</a>,
-                <a data-link-type="dfn" href="https://www.w3.org/TR/css-sizing-3/#max-content-inline-size">max-content inline size</a> and <a data-link-type="dfn" href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a> of
+                <a data-link-type="dfn" href="https://www.w3.org/TR/css-sizing-3/#max-content-inline-size">max-content inline size</a> and <a href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a> of
                 the <a href="#dfn-math-content-box" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-math-content-box-8">math content box</a> are equal to the one of the
                 anonymous child.</li>
               <li>The <a href="#dfn-ink-line-ascent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-ink-line-ascent-3">ink line-ascent</a> and <a href="#dfn-ink-line-descent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-ink-line-descent-3">ink line-descent</a>
@@ -1824,7 +1825,7 @@ interface <a class="internalDFN idlID" data-link-type="interface" href="#dom-mat
               <a data-link-type="dfn" href="https://www.w3.org/TR/css-display-3/#block-box">block box</a>
               and corresponding <a data-link-type="dfn" href="https://www.w3.org/TR/css-sizing-3/#min-content-inline-size">min-content inline size</a>,
               <a data-link-type="dfn" href="https://www.w3.org/TR/css-sizing-3/#max-content-inline-size">max-content inline size</a>,
-              <a data-link-type="dfn" href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a>, <a data-link-type="dfn" href="https://www.w3.org/TR/css-writing-modes-4/#block-size">block size</a>,
+              <a href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a>, <a href="https://www.w3.org/TR/css-writing-modes-4/#block-size">block size</a>,
               <a data-link-type="dfn" href="https://www.w3.org/TR/css-align-3/#first-baseline-set">first baseline set</a> and <a data-link-type="dfn" href="https://www.w3.org/TR/css-align-3/#last-baseline-set">last baseline set</a> are
               used for the <a href="#dfn-math-content-box" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-math-content-box-11">math content box</a>.
             </p>
@@ -2355,7 +2356,7 @@ interface <a class="internalDFN idlID" data-link-type="interface" href="#dom-mat
                         layout algorithm of <a href="#layout-of-mtext" class="sec-ref"><bdi class="secno">3.2.1.1 </bdi>Layout of <code>&lt;mtext&gt;</code></a>.
                       </li>
                       <li>
-                        The <a data-link-type="dfn" href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a> and (ink) block metrics of the math content
+                        The <a href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a> and (ink) block metrics of the math content
                         are given by algorithm to
                         <a href="#dfn-shape-a-stretchy-glyph" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-shape-a-stretchy-glyph-2">shape a stretchy glyph</a> <code>g</code> to
                         <a data-link-type="dfn" href="https://www.w3.org/TR/css-writing-modes-4/#inline-dimension">inline dimension</a> <code>T<sub>inline</sub></code>.
@@ -2491,7 +2492,7 @@ interface <a class="internalDFN idlID" data-link-type="interface" href="#dom-mat
                         </div></div>
                       </li>
                       <li>
-                        The <a data-link-type="dfn" href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a>,
+                        The <a href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a>,
                         <a href="#dfn-ink-line-ascent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-ink-line-ascent-5">ink line-ascent</a>,
                         <a href="#dfn-ink-line-descent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-ink-line-descent-5">ink line-descent</a>,
                         <a href="#dfn-line-ascent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-ascent-6">line-ascent</a> and
@@ -2502,7 +2503,7 @@ interface <a class="internalDFN idlID" data-link-type="interface" href="#dom-mat
                         to <a data-link-type="dfn" href="https://www.w3.org/TR/css-writing-modes-4/#block-dimension">block dimension</a>
                         <code>T<sub>ascent</sub></code> +
                         <code>T<sub>descent</sub></code>.
-                        The <a data-link-type="dfn" href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a> of the math content is the width of
+                        The <a href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a> of the math content is the width of
                         the stretchy glyph. The stretchy glyph is shifted
                         towards the <a data-link-type="dfn" href="https://www.w3.org/TR/css-writing-modes-4/#line-under">line-under</a> by a value Δ so that its
                         center aligns with the center of the target:
@@ -2555,7 +2556,7 @@ interface <a class="internalDFN idlID" data-link-type="interface" href="#dom-mat
                     stretched along the block axis</a>.
                   </li>
                   <li>
-                    The <a data-link-type="dfn" href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a>,
+                    The <a href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a>,
                     <a href="#dfn-ink-line-ascent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-ink-line-ascent-6">ink line-ascent</a>,
                     <a href="#dfn-ink-line-descent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-ink-line-descent-6">ink line-descent</a>,
                     <a href="#dfn-line-ascent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-ascent-7">line-ascent</a> and
@@ -2565,7 +2566,7 @@ interface <a class="internalDFN idlID" data-link-type="interface" href="#dom-mat
                     <a href="#dfn-shape-a-stretchy-glyph" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-shape-a-stretchy-glyph-8">shape a stretchy glyph</a> <code>g</code>
                     to <a data-link-type="dfn" href="https://www.w3.org/TR/css-writing-modes-4/#block-dimension">block dimension</a>
                     <a href="#dfn-displayoperatorminheight" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-displayoperatorminheight-2">DisplayOperatorMinHeight</a>.
-                    The <a data-link-type="dfn" href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a> of the math content is the width of
+                    The <a href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a> of the math content is the width of
                     the stretchy glyph. The stretchy glyph is shifted
                     towards the <a data-link-type="dfn" href="https://www.w3.org/TR/css-writing-modes-4/#line-under">line-under</a> by a value Δ so that its
                     center aligns with the center of the target when
@@ -2708,10 +2709,10 @@ interface <a class="internalDFN idlID" data-link-type="interface" href="#dom-mat
             the <code>&lt;mspace&gt;</code> element is laid out as shown on
             <a href="#figure-box-mspace" class="fig-ref" title="Box model for the &lt;mspace&gt; element">Figure <bdi class="">9</bdi></a>.
             The <a data-link-type="dfn" href="https://www.w3.org/TR/css-sizing-3/#min-content-inline-size">min-content inline size</a>,
-            <a data-link-type="dfn" href="https://www.w3.org/TR/css-sizing-3/#max-content-inline-size">max-content inline size</a> and <a data-link-type="dfn" href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a> of the math
+            <a data-link-type="dfn" href="https://www.w3.org/TR/css-sizing-3/#max-content-inline-size">max-content inline size</a> and <a href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a> of the math
             content are equal to the resolved value of the
             <a data-link-type="css-property" href="https://www.w3.org/TR/css-sizing-3/#propdef-width">width</a> property.
-            The <a data-link-type="dfn" href="https://www.w3.org/TR/css-writing-modes-4/#block-size">block size</a> of the math content is equal to the resolved
+            The <a href="https://www.w3.org/TR/css-writing-modes-4/#block-size">block size</a> of the math content is equal to the resolved
             value of the <a data-link-type="css-property" href="https://www.w3.org/TR/css-sizing-3/#propdef-height">height</a> property.
             The <a href="#dfn-line-ascent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-ascent-8">line-ascent</a> of the math content is equal to the
             requested line-ascent determined above.
@@ -3027,10 +3028,10 @@ ms<span class="hljs-selector-attr">[rquote]</span><span class="hljs-selector-pse
               <a href="#dfn-algorithm-for-stretching-operators-along-the-block-axis" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-algorithm-for-stretching-operators-along-the-block-axis-1">algorithm for stretching operators along the block axis</a>.
             </p>
             <p>
-              The <a data-link-type="dfn" href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a> of the math content is calculated like
+              The <a href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a> of the math content is calculated like
               the <a data-link-type="dfn" href="https://www.w3.org/TR/css-sizing-3/#min-content-inline-size">min-content inline size</a> and
               <a data-link-type="dfn" href="https://www.w3.org/TR/css-sizing-3/#max-content-inline-size">max-content inline size</a> of the math content,
-              using the <a data-link-type="dfn" href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a> of the
+              using the <a href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a> of the
               <a data-link-type="dfn" href="https://www.w3.org/TR/css-display-3/#in-flow">in-flow</a> children's <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin boxes</a> instead.
             </p>
             <p>
@@ -3077,7 +3078,7 @@ ms<span class="hljs-selector-attr">[rquote]</span><span class="hljs-selector-pse
                   </li>
                   <li>
                     Increment <code>inline-offset</code> by
-                    the <a data-link-type="dfn" href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a> of the child's <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a>.
+                    the <a href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a> of the child's <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a>.
                   </li>
                   <li>
                     If the child is <a href="#dfn-slanted" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-slanted-4">slanted</a> then
@@ -3245,9 +3246,9 @@ mfrac &gt; <span class="hljs-selector-pseudo">:nth-child</span>(<span class="hlj
               any stretch size constraint.
             </p>
             <p>
-              The <a data-link-type="dfn" href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a> of the math content
-              is the maximum between the <a data-link-type="dfn" href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a> of the
-              <a href="#dfn-numerator" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-numerator-4">numerator</a>'s <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a> and the <a data-link-type="dfn" href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a> of the
+              The <a href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a> of the math content
+              is the maximum between the <a href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a> of the
+              <a href="#dfn-numerator" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-numerator-4">numerator</a>'s <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a> and the <a href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a> of the
               <a href="#dfn-denominator" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-denominator-4">denominator</a>'s <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a>.
             </p>
             <p><code>NumeratorShift</code> is the maximum between:</p>
@@ -3323,8 +3324,8 @@ mfrac &gt; <span class="hljs-selector-pseudo">:nth-child</span>(<span class="hlj
             </ul>
             <p>
               The <a href="#dfn-inline-offset" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-inline-offset-4">inline offset</a> of the <a href="#dfn-numerator" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-numerator-8">numerator</a> (respectively <a href="#dfn-denominator" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-denominator-8">denominator</a>)
-              is half the <a data-link-type="dfn" href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a> of the math content −
-              half the <a data-link-type="dfn" href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a> of
+              is half the <a href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a> of the math content −
+              half the <a href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a> of
               the <a href="#dfn-numerator" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-numerator-9">numerator</a>'s <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a>
               (respectively <a href="#dfn-denominator" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-denominator-9">denominator</a>'s <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a>).
             </p>
@@ -3342,13 +3343,13 @@ mfrac &gt; <span class="hljs-selector-pseudo">:nth-child</span>(<span class="hlj
               position.
             </p>
             <p>
-              The <a data-link-type="dfn" href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a> of the fraction bar is the
-              <a data-link-type="dfn" href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a> of the <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#content-box">content box</a> and its
+              The <a href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a> of the fraction bar is the
+              <a href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a> of the <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#content-box">content box</a> and its
               inline-start edge is the aligned with the one the
               <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#content-box">content box</a>.
               The center of the fraction bar is shifted away from the <a href="#dfn-alphabetic-baseline" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-alphabetic-baseline-16">alphabetic baseline</a> of the <a href="#dfn-math-content-box" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-math-content-box-13">math content box</a>
               by a distance of <a href="#dfn-axisheight" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-axisheight-23">AxisHeight</a> towards the <a data-link-type="dfn" href="https://www.w3.org/TR/css-writing-modes-4/#line-over">line-over</a>.
-              Its <a data-link-type="dfn" href="https://www.w3.org/TR/css-writing-modes-4/#block-size">block size</a> is the
+              Its <a href="https://www.w3.org/TR/css-writing-modes-4/#block-size">block size</a> is the
               <a href="#dfn-fraction-line-thickness" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-fraction-line-thickness-6">fraction line thickness</a>.
             </p>
           </section>
@@ -3365,7 +3366,7 @@ mfrac &gt; <span class="hljs-selector-pseudo">:nth-child</span>(<span class="hlj
             </figure>
             <p>
               The <a data-link-type="dfn" href="https://www.w3.org/TR/css-sizing-3/#min-content-inline-size">min-content inline size</a>, <a data-link-type="dfn" href="https://www.w3.org/TR/css-sizing-3/#max-content-inline-size">max-content inline size</a>
-              and <a data-link-type="dfn" href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a> of the math content are calculated the same
+              and <a href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a> of the math content are calculated the same
               as in <a href="#fraction-with-nonzero-line-thickness" class="sec-ref"><bdi class="secno">3.3.2.1 </bdi>Fraction with nonzero line thickness</a>.
             </p>
             <p>
@@ -3599,9 +3600,9 @@ mroot, msqrt {
               of the <a href="#dfn-msqrt-base" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-msqrt-base-1">msqrt base</a>'s <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a>.
             </p>
             <p>
-              The <a data-link-type="dfn" href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a> of the math content is the sum of the advance width
+              The <a href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a> of the math content is the sum of the advance width
               of the <a href="#dfn-box-metrics-of-the-radical-glyph" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-box-metrics-of-the-radical-glyph-1">box metrics of the radical glyph</a> and
-              of the <a data-link-type="dfn" href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a> of the <a href="#dfn-msqrt-base" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-msqrt-base-2">msqrt base</a>'s margin's box.
+              of the <a href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a> of the <a href="#dfn-msqrt-base" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-msqrt-base-2">msqrt base</a>'s margin's box.
             </p>
             <p>
               The <a href="#dfn-line-ascent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-ascent-17">line-ascent</a> of the math content is the maximum between:
@@ -3624,7 +3625,7 @@ mroot, msqrt {
               </li>
             </ul>
             <p>
-              The <a data-link-type="dfn" href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a> of the overbar is the <a data-link-type="dfn" href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a> of the
+              The <a href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a> of the overbar is the <a href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a> of the
               <a href="#dfn-msqrt-base" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-msqrt-base-6">msqrt base</a>'s margin's box.
               The <a href="#dfn-inline-offset" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-inline-offset-6">inline offsets</a> of the <a href="#dfn-msqrt-base" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-msqrt-base-7">msqrt base</a> and overbar are also the same
               and equal to the width of the
@@ -3632,7 +3633,7 @@ mroot, msqrt {
             </p>
             <p>
               The <a href="#dfn-alphabetic-baseline" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-alphabetic-baseline-19">alphabetic baseline</a> of the <a href="#dfn-msqrt-base" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-msqrt-base-8">msqrt base</a> is aligned with the <a href="#dfn-alphabetic-baseline" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-alphabetic-baseline-20">alphabetic baseline</a>.
-              The <a data-link-type="dfn" href="https://www.w3.org/TR/css-writing-modes-4/#block-size">block size</a> of the overbar is
+              The <a href="https://www.w3.org/TR/css-writing-modes-4/#block-size">block size</a> of the overbar is
               <a href="#dfn-radicalrulethickness" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-radicalrulethickness-3">RadicalRuleThickness</a>. Its vertical center is shifted away
               from the <a href="#dfn-alphabetic-baseline" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-alphabetic-baseline-21">alphabetic baseline</a> by a distance towards the <a data-link-type="dfn" href="https://www.w3.org/TR/css-writing-modes-4/#line-over">line-over</a>
               equal to the <a href="#dfn-line-ascent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-ascent-21">line-ascent</a> of the math content, minus
@@ -3691,14 +3692,14 @@ mroot, msqrt {
               <dfn id="dfn-adjustedradicalkernbeforedegree" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">AdjustedRadicalKernBeforeDegree</dfn> and
               <dfn id="dfn-adjustedradicalkernafterdegree" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">AdjustedRadicalKernAfterDegree</dfn> are respectively
               defined as max(0, <a href="#dfn-radicalkernbeforedegree" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-radicalkernbeforedegree-2">RadicalKernBeforeDegree</a>) and
-              is max(−<a data-link-type="dfn" href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a> of the index's <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a>,
+              is max(−<a href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a> of the index's <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a>,
               <a href="#dfn-radicalkernafterdegree" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-radicalkernafterdegree-3">RadicalKernAfterDegree</a>).</p>
             <p>
-              The <a data-link-type="dfn" href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a> of the math content is the sum of
+              The <a href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a> of the math content is the sum of
               <a href="#dfn-adjustedradicalkernbeforedegree" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-adjustedradicalkernbeforedegree-1">AdjustedRadicalKernBeforeDegree</a>,
-              the <a data-link-type="dfn" href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a> of the index's <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a>,
+              the <a href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a> of the index's <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a>,
               <a href="#dfn-adjustedradicalkernafterdegree" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-adjustedradicalkernafterdegree-1">AdjustedRadicalKernAfterDegree</a>
-              and of the <a data-link-type="dfn" href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a> of B.
+              and of the <a href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a> of B.
             </p>
             <p>
               The <a href="#dfn-line-ascent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-ascent-22">line-ascent</a> of the math content is the maximum between:
@@ -3706,7 +3707,7 @@ mroot, msqrt {
             <ul>
               <li>−the <a href="#dfn-line-descent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-descent-16">line-descent</a> of B +
                 <a href="#dfn-radicaldegreebottomraisepercent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-radicaldegreebottomraisepercent-1">RadicalDegreeBottomRaisePercent</a> ×
-                the <a data-link-type="dfn" href="https://www.w3.org/TR/css-writing-modes-4/#block-size">block size</a> of B + the <a href="#dfn-line-ascent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-ascent-23">line-ascent</a> of the
+                the <a href="https://www.w3.org/TR/css-writing-modes-4/#block-size">block size</a> of B + the <a href="#dfn-line-ascent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-ascent-23">line-ascent</a> of the
                 index's <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a></li>
               <li>The <a href="#dfn-line-ascent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-ascent-24">line-ascent</a> of B</li>
             </ul>
@@ -3714,7 +3715,7 @@ mroot, msqrt {
             <ul>
               <li>the <a href="#dfn-line-descent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-descent-18">line-descent</a> of B −
                 <a href="#dfn-radicaldegreebottomraisepercent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-radicaldegreebottomraisepercent-2">RadicalDegreeBottomRaisePercent</a> ×
-                the <a data-link-type="dfn" href="https://www.w3.org/TR/css-writing-modes-4/#block-size">block size</a> of B + the <a href="#dfn-line-ascent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-ascent-25">line-ascent</a> of the
+                the <a href="https://www.w3.org/TR/css-writing-modes-4/#block-size">block size</a> of B + the <a href="#dfn-line-ascent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-ascent-25">line-ascent</a> of the
                 index's <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a></li>
               <li>The <a href="#dfn-line-descent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-descent-19">line-descent</a> of B</li>
             </ul>
@@ -3723,14 +3724,14 @@ mroot, msqrt {
               <a href="#dfn-adjustedradicalkernbeforedegree" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-adjustedradicalkernbeforedegree-2">AdjustedRadicalKernBeforeDegree</a>.
               The inline-offset of the
               <a href="#dfn-mroot-base" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-mroot-base-2">mroot base</a> is the same + the
-              <a data-link-type="dfn" href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a> of the index's <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a>.
+              <a href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a> of the index's <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a>.
             </p>
             <p>
               The <a href="#dfn-alphabetic-baseline" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-alphabetic-baseline-22">alphabetic baseline</a> of B is aligned with the <a href="#dfn-alphabetic-baseline" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-alphabetic-baseline-23">alphabetic baseline</a>.
               The <a href="#dfn-alphabetic-baseline" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-alphabetic-baseline-24">alphabetic baseline</a> of the index is shifted away
               from the <a data-link-type="dfn" href="https://www.w3.org/TR/css-writing-modes-4/#line-under">line-under</a> edge by a distance of
               <a href="#dfn-radicaldegreebottomraisepercent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-radicaldegreebottomraisepercent-3">RadicalDegreeBottomRaisePercent</a> ×
-              the <a data-link-type="dfn" href="https://www.w3.org/TR/css-writing-modes-4/#block-size">block size</a> of B + the <a href="#dfn-line-descent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-descent-20">line-descent</a> of the
+              the <a href="https://www.w3.org/TR/css-writing-modes-4/#block-size">block size</a> of B + the <a href="#dfn-line-descent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-line-descent-20">line-descent</a> of the
               index's <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a>.
             </p>
             <div class="note" role="note" id="issue-container-generatedID-23"><div class="note-title marker" id="h-note-25"><span>Note</span></div><div class="">
@@ -3981,7 +3982,7 @@ mroot, msqrt {
               <a href="#dfn-mpadded-inner-box" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-mpadded-inner-box-1">mpadded inner box</a> instead of the "inner inline size".
             </p>
             <p>
-              The <a data-link-type="dfn" href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a> of the math content
+              The <a href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a> of the math content
               is the requested width calculated in
               <a href="#inner-box-and-requested-parameters" class="sec-ref"><bdi class="secno">3.3.6.1 </bdi>Inner box and requested parameters</a>.
             </p>
@@ -4178,10 +4179,10 @@ mroot, msqrt {
               any stretch size constraint.
             </p>
             <p>
-              The <a data-link-type="dfn" href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a> of the math content
+              The <a href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a> of the math content
               is the inline size of the <a href="#dfn-msub-base" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-msub-base-4">msub base</a>'s <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a> −
               <code>LargeOpItalicCorrection</code> +
-              the <a data-link-type="dfn" href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a> of
+              the <a href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a> of
               the <a href="#dfn-msub-subscript" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-msub-subscript-2">msub subscript</a>'s <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a> + <a href="#dfn-spaceafterscript" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-spaceafterscript-2">SpaceAfterScript</a>.
             </p>
             <p>
@@ -4212,7 +4213,7 @@ mroot, msqrt {
             </ul>
             <p>
               The <a href="#dfn-inline-offset" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-inline-offset-9">inline offset</a> of the <a href="#dfn-msub-base" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-msub-base-8">msub base</a> is 0 and the <a href="#dfn-inline-offset" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-inline-offset-10">inline offset</a> of the
-              <a href="#dfn-msub-subscript" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-msub-subscript-3">msub subscript</a> is the <a data-link-type="dfn" href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a> of the <a href="#dfn-msub-base" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-msub-base-9">msub base</a>'s <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a> −
+              <a href="#dfn-msub-subscript" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-msub-subscript-3">msub subscript</a> is the <a href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a> of the <a href="#dfn-msub-base" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-msub-base-9">msub base</a>'s <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a> −
               <code>LargeOpItalicCorrection</code>.
             </p>
             <p>
@@ -4257,10 +4258,10 @@ mroot, msqrt {
               any stretch size constraint.
             </p>
             <p>
-              The <a data-link-type="dfn" href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a> of the math content
-              is the <a data-link-type="dfn" href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a> of the <a href="#dfn-msup-base" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-msup-base-4">msup base</a>'s <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a> +
+              The <a href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a> of the math content
+              is the <a href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a> of the <a href="#dfn-msup-base" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-msup-base-4">msup base</a>'s <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a> +
               <code>ItalicCorrection</code> +
-              the <a data-link-type="dfn" href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a> of
+              the <a href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a> of
               the <a href="#dfn-msup-superscript" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-msup-superscript-2">msup superscript</a>'s <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a> + <a href="#dfn-spaceafterscript" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-spaceafterscript-4">SpaceAfterScript</a>.
             </p>
             <p>
@@ -4296,7 +4297,7 @@ mroot, msqrt {
             </ul>
             <p>
               The <a href="#dfn-inline-offset" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-inline-offset-11">inline offset</a> of the <a href="#dfn-msup-base" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-msup-base-8">msup base</a> is 0 and the <a href="#dfn-inline-offset" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-inline-offset-12">inline offset</a> of
-              <a href="#dfn-msup-superscript" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-msup-superscript-3">msup superscript</a> is the <a data-link-type="dfn" href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a> of the <a href="#dfn-msup-base" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-msup-base-9">msup base</a>'s <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a> +
+              <a href="#dfn-msup-superscript" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-msup-superscript-3">msup superscript</a> is the <a href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a> of the <a href="#dfn-msup-base" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-msup-base-9">msup base</a>'s <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a> +
               <code>ItalicCorrection</code>.
             </p>
             <p>
@@ -4324,9 +4325,9 @@ mroot, msqrt {
             <p>
               The
               <a data-link-type="dfn" href="https://www.w3.org/TR/css-sizing-3/#min-content-inline-size">min-content inline size</a> (respectively <a data-link-type="dfn" href="https://www.w3.org/TR/css-sizing-3/#max-content-inline-size">max-content inline size</a> and
-              <a data-link-type="dfn" href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a>) of the math content is the maximum between the
+              <a href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a>) of the math content is the maximum between the
               <a data-link-type="dfn" href="https://www.w3.org/TR/css-sizing-3/#min-content-inline-size">min-content inline size</a> (respectively <a data-link-type="dfn" href="https://www.w3.org/TR/css-sizing-3/#max-content-inline-size">max-content inline size</a> and
-              <a data-link-type="dfn" href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a>) of the math content calculated in
+              <a href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a>) of the math content calculated in
               <a href="#base-with-subscript" class="sec-ref"><bdi class="secno">3.4.1.2 </bdi>Base with subscript</a> and
               <a href="#base-with-superscript" class="sec-ref"><bdi class="secno">3.4.1.3 </bdi>Base with superscript</a>.
             </p>
@@ -4587,7 +4588,7 @@ mroot, msqrt {
               </li>
               <li>
                 Calculate the target size <code>T</code> to
-                the maximum <a data-link-type="dfn" href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a> of the
+                the maximum <a href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a> of the
                 <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin boxes</a> of child boxes that have been laid out in the
                 previous step.
               </li>
@@ -4615,9 +4616,9 @@ mroot, msqrt {
             <p>
               The <a data-link-type="dfn" href="https://www.w3.org/TR/css-sizing-3/#min-content-inline-size">min-content inline size</a> (respectively <a data-link-type="dfn" href="https://www.w3.org/TR/css-sizing-3/#max-content-inline-size">max-content inline size</a>)
               of the math content are
-              calculated like the <a data-link-type="dfn" href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a> of the math content below
+              calculated like the <a href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a> of the math content below
               but replacing the
-              <a data-link-type="dfn" href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline sizes</a> of the <a href="#dfn-munder-base" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-munder-base-2">munder base</a>'s <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a> and <a href="#dfn-munder-underscript" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-munder-underscript-1">munder underscript</a>'s <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a>
+              <a href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline sizes</a> of the <a href="#dfn-munder-base" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-munder-base-2">munder base</a>'s <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a> and <a href="#dfn-munder-underscript" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-munder-underscript-1">munder underscript</a>'s <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a>
               with the
               <a data-link-type="dfn" href="https://www.w3.org/TR/css-sizing-3/#min-content-inline-size">min-content inline size</a> (respectively <a data-link-type="dfn" href="https://www.w3.org/TR/css-sizing-3/#max-content-inline-size">max-content inline size</a>)
               of the <a href="#dfn-munder-base" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-munder-base-3">munder base</a>'s <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a> and <a href="#dfn-munder-underscript" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-munder-underscript-2">munder underscript</a>'s <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a>.
@@ -4627,21 +4628,21 @@ mroot, msqrt {
               using the <a href="#dfn-algorithm-for-stretching-operators-along-the-inline-axis" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-algorithm-for-stretching-operators-along-the-inline-axis-1">algorithm for stretching operators along the inline axis</a>.
             </p>
             <p>
-              The <a data-link-type="dfn" href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a> of the math content is
+              The <a href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a> of the math content is
               calculated by determining the absolute difference between:
             </p>
             <ul>
               <li>The maximum of:
                 <ul>
-                  <li>Half the <a data-link-type="dfn" href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a> of the <a href="#dfn-munder-base" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-munder-base-4">munder base</a>'s <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a>.</li>
-                  <li>Half the <a data-link-type="dfn" href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a> of the <a href="#dfn-munder-underscript" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-munder-underscript-3">munder underscript</a>'s <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a> −
+                  <li>Half the <a href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a> of the <a href="#dfn-munder-base" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-munder-base-4">munder base</a>'s <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a>.</li>
+                  <li>Half the <a href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a> of the <a href="#dfn-munder-underscript" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-munder-underscript-3">munder underscript</a>'s <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a> −
                     half <code>LargeOpItalicCorrection</code>.</li>
                 </ul>
               </li>
               <li>The minimum of:
                 <ul>
-                  <li>−half the <a data-link-type="dfn" href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a> of the <a href="#dfn-munder-base" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-munder-base-5">munder base</a>'s <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a>.</li>
-                  <li>−half the <a data-link-type="dfn" href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a> of the <a href="#dfn-munder-underscript" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-munder-underscript-4">munder underscript</a>'s <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a> −
+                  <li>−half the <a href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a> of the <a href="#dfn-munder-base" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-munder-base-5">munder base</a>'s <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a>.</li>
+                  <li>−half the <a href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a> of the <a href="#dfn-munder-underscript" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-munder-underscript-4">munder underscript</a>'s <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a> −
                     half <code>LargeOpItalicCorrection</code>.</li>
                 </ul>
               </li>
@@ -4649,9 +4650,9 @@ mroot, msqrt {
             <p>
               If m is the minimum calculated in the second item above then the
               <a href="#dfn-inline-offset" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-inline-offset-14">inline offset</a>
-              of the <a href="#dfn-munder-base" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-munder-base-6">munder base</a> is −m − half the <a data-link-type="dfn" href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a> of the base's <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a>.
+              of the <a href="#dfn-munder-base" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-munder-base-6">munder base</a> is −m − half the <a href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a> of the base's <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a>.
               The <a href="#dfn-inline-offset" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-inline-offset-15">inline offset</a> of the <a href="#dfn-munder-underscript" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-munder-underscript-5">munder underscript</a> is
-              −m − half the <a data-link-type="dfn" href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a> of the <a href="#dfn-munder-underscript" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-munder-underscript-6">munder underscript</a>'s <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a> −
+              −m − half the <a href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a> of the <a href="#dfn-munder-underscript" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-munder-underscript-6">munder underscript</a>'s <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a> −
               half <code>LargeOpItalicCorrection</code>.
             </p>
             <p>
@@ -4748,9 +4749,9 @@ mroot, msqrt {
             <p>
               The <a data-link-type="dfn" href="https://www.w3.org/TR/css-sizing-3/#min-content-inline-size">min-content inline size</a> (respectively <a data-link-type="dfn" href="https://www.w3.org/TR/css-sizing-3/#max-content-inline-size">max-content inline size</a>)
               of the math content are
-              calculated like the <a data-link-type="dfn" href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a> of the math content
+              calculated like the <a href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a> of the math content
               below but replacing the
-              <a data-link-type="dfn" href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline sizes</a> of the <a href="#dfn-mover-base" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-mover-base-2">mover base</a>'s <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a> and <a href="#dfn-mover-overscript" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-mover-overscript-1">mover overscript</a>'s <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a> with
+              <a href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline sizes</a> of the <a href="#dfn-mover-base" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-mover-base-2">mover base</a>'s <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a> and <a href="#dfn-mover-overscript" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-mover-overscript-1">mover overscript</a>'s <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a> with
               the <a data-link-type="dfn" href="https://www.w3.org/TR/css-sizing-3/#min-content-inline-size">min-content inline size</a> (respectively <a data-link-type="dfn" href="https://www.w3.org/TR/css-sizing-3/#max-content-inline-size">max-content inline size</a>) of the <a href="#dfn-mover-base" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-mover-base-3">mover base</a>'s <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a> and <a href="#dfn-mover-overscript" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-mover-overscript-2">mover overscript</a>'s <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a>.
             </p>
             <p>
@@ -4760,11 +4761,11 @@ mroot, msqrt {
             <p>
               The <code>TopAccentAttachment</code> is the
               <a href="#dfn-top-accent-attachment" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-top-accent-attachment-5">top accent attachment</a> of the <a href="#dfn-mover-overscript" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-mover-overscript-3">mover overscript</a> or
-              half the <a data-link-type="dfn" href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a> of the <a href="#dfn-mover-overscript" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-mover-overscript-4">mover overscript</a>'s <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a>
+              half the <a href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a> of the <a href="#dfn-mover-overscript" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-mover-overscript-4">mover overscript</a>'s <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a>
               if it is undefined.
             </p>
             <p>
-              The <a data-link-type="dfn" href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a> of the math content is
+              The <a href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a> of the math content is
               calculated by
               applying the <a href="#dfn-algorithm-for-stretching-operators-along-the-inline-axis" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-algorithm-for-stretching-operators-along-the-inline-axis-3">algorithm for stretching operators along the inline axis</a> for
               layout and determining the absolute difference between:
@@ -4772,15 +4773,15 @@ mroot, msqrt {
             <ul>
               <li>The maximum of:
                 <ul>
-                  <li>Half the <a data-link-type="dfn" href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a> of the <a href="#dfn-mover-base" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-mover-base-4">mover base</a>'s <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a>.</li>
-                  <li>The <a data-link-type="dfn" href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a> of the <a href="#dfn-mover-overscript" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-mover-overscript-5">mover overscript</a>'s <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a>
+                  <li>Half the <a href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a> of the <a href="#dfn-mover-base" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-mover-base-4">mover base</a>'s <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a>.</li>
+                  <li>The <a href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a> of the <a href="#dfn-mover-overscript" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-mover-overscript-5">mover overscript</a>'s <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a>
                     − <code>TopAccentAttachment</code> +
                     half <code>LargeOpItalicCorrection</code>.</li>
                 </ul>
               </li>
               <li>The minimum of:
                 <ul>
-                  <li>−half the <a data-link-type="dfn" href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a> of the <a href="#dfn-mover-base" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-mover-base-5">mover base</a>'s <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a>.</li>
+                  <li>−half the <a href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a> of the <a href="#dfn-mover-base" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-mover-base-5">mover base</a>'s <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a>.</li>
                   <li>−<code>TopAccentAttachment</code> +
                     half <code>LargeOpItalicCorrection</code>.</li>
                 </ul>
@@ -4789,9 +4790,9 @@ mroot, msqrt {
             <p>
               If m is the minimum calculated in the second item above then the
               <a href="#dfn-inline-offset" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-inline-offset-16">inline offset</a>
-              of the <a href="#dfn-mover-base" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-mover-base-6">mover base</a> is −m − half the <a data-link-type="dfn" href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a> of the base's margin.
+              of the <a href="#dfn-mover-base" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-mover-base-6">mover base</a> is −m − half the <a href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a> of the base's margin.
               The <a href="#dfn-inline-offset" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-inline-offset-17">inline offset</a> of the <a href="#dfn-mover-overscript" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-mover-overscript-6">mover overscript</a> is
-              −m − half the <a data-link-type="dfn" href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a> of the <a href="#dfn-mover-overscript" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-mover-overscript-7">mover overscript</a>'s <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a> +
+              −m − half the <a href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a> of the <a href="#dfn-mover-overscript" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-mover-overscript-7">mover overscript</a>'s <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a> +
               half <code>LargeOpItalicCorrection</code>.
             </p>
             <p>
@@ -4913,7 +4914,7 @@ mroot, msqrt {
             </figure>
             <p>
               The <a data-link-type="dfn" href="https://www.w3.org/TR/css-sizing-3/#min-content-inline-size">min-content inline size</a>, <a data-link-type="dfn" href="https://www.w3.org/TR/css-sizing-3/#max-content-inline-size">max-content inline size</a>
-              and <a data-link-type="dfn" href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a> of the math content
+              and <a href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a> of the math content
               are calculated as an absolute difference
               between a maximum <a href="#dfn-inline-offset" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-inline-offset-18">inline offset</a> and minimum <a href="#dfn-inline-offset" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-inline-offset-19">inline offset</a>.
               These extrema are calculated by taking the extremum value
@@ -5076,9 +5077,9 @@ mroot, msqrt {
               The
               <a data-link-type="dfn" href="https://www.w3.org/TR/css-sizing-3/#min-content-inline-size">min-content inline size</a> (respectively <a data-link-type="dfn" href="https://www.w3.org/TR/css-sizing-3/#max-content-inline-size">max-content inline size</a>)
               of the math content is
-              calculated the same as the <a data-link-type="dfn" href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a> of the math content
+              calculated the same as the <a href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a> of the math content
               below, but replacing
-              "<a data-link-type="dfn" href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a>" with "<a data-link-type="dfn" href="https://www.w3.org/TR/css-sizing-3/#min-content-inline-size">min-content inline size</a>"
+              "<a href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a>" with "<a data-link-type="dfn" href="https://www.w3.org/TR/css-sizing-3/#min-content-inline-size">min-content inline size</a>"
               (respectively "<a data-link-type="dfn" href="https://www.w3.org/TR/css-sizing-3/#max-content-inline-size">max-content inline size</a>") for the
               <a href="#dfn-mmultiscripts-base" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-mmultiscripts-base-1">mmultiscripts base</a>'s
               <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a> and scripts' <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin boxes</a>.
@@ -5093,7 +5094,7 @@ mroot, msqrt {
               any stretch size constraint.
             </p>
             <p>
-              The <a data-link-type="dfn" href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a> of the math content
+              The <a href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a> of the math content
               is calculated with the following algorithm:
             </p>
             <ol class="algorithm">
@@ -5106,12 +5107,12 @@ mroot, msqrt {
                   maximum of
                 </p>
                 <ul>
-                  <li>The <a data-link-type="dfn" href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a> of the subscript's <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a>.</li>
+                  <li>The <a href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a> of the subscript's <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a>.</li>
                   <li>The inline size of the superscript's <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a>.</li>
                 </ul>
               </li>
               <li>
-                Increment <code>inline-offset</code> by the <a data-link-type="dfn" href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a> of the
+                Increment <code>inline-offset</code> by the <a href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a> of the
                 <a href="#dfn-mmultiscripts-base" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-mmultiscripts-base-3">mmultiscripts base</a>'s <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a> and
                 set <code>inline-size</code> to <code>inline-offset</code>.
               </li>
@@ -5123,21 +5124,21 @@ mroot, msqrt {
                 </p>
                 <ul>
                   <li>
-                    x + the <a data-link-type="dfn" href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a> of the subscript's <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a> +
+                    x + the <a href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a> of the subscript's <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a> +
                     <code>LargeOpItalicCorrection</code>.
                   </li>
                   <li>
-                    x + the <a data-link-type="dfn" href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a> of the superscript's <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a> −
+                    x + the <a href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a> of the superscript's <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a> −
                     <code>ItalicCorrection</code>.
                   </li>
                 </ul>
                 <p>Increment <code>inline-offset</code> to the maximum of:</p>
                 <ul>
                   <li>
-                    the <a data-link-type="dfn" href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a> of the subscript's <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a>.
+                    the <a href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a> of the subscript's <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a>.
                   </li>
                   <li>
-                    the <a data-link-type="dfn" href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a> of the superscript's <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a>.
+                    the <a href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a> of the superscript's <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a>.
                   </li>
                 </ul>
                 <p>
@@ -5189,22 +5190,22 @@ mroot, msqrt {
                     Set <code>pair-inline-size</code> to the maximum of
                     <ul>
                       <li>
-                        the <a data-link-type="dfn" href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a> of the subscript's <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a>.
+                        the <a href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a> of the subscript's <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a>.
                       </li>
                       <li>
-                        the <a data-link-type="dfn" href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a> of the superscript's <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a>.
+                        the <a href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a> of the superscript's <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a>.
                       </li>
                     </ul>
                   </li>
                   <li>
                     Place the subscript at inline-start position
                     <code>inline-offset</code> + <code>pair-inline-size</code>
-                    − the <a data-link-type="dfn" href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a> of the subscript's <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a>.
+                    − the <a href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a> of the subscript's <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a>.
                   </li>
                   <li>
                     Place the superscript at inline-start position
                     <code>inline-offset</code> + <code>pair-inline-size</code>
-                    − the <a data-link-type="dfn" href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a> of the superscript's <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a>.
+                    − the <a href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a> of the superscript's <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a>.
                   </li>
                   <li>
                     Place the subscript (respectively superscript) so its
@@ -5236,10 +5237,10 @@ mroot, msqrt {
                     Set <code>pair-inline-size</code> to the maximum of
                     <ul>
                       <li>
-                        the <a data-link-type="dfn" href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a> of the subscript's <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a>.
+                        the <a href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a> of the subscript's <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a>.
                       </li>
                       <li>
-                        the <a data-link-type="dfn" href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a> of the superscript's <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a>.
+                        the <a href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a> of the superscript's <a data-link-type="dfn" href="https://www.w3.org/TR/css-box-4/#margin-box">margin box</a>.
                       </li>
                     </ul>
                   </li>
@@ -5444,7 +5445,7 @@ mmultiscripts &gt; mprescripts ~ <span class="hljs-selector-pseudo">:nth-child</
             <a data-link-type="css-value" href="https://www.w3.org/TR/css-display-3/#valdef-display-table">table</a>
             and the
             <a data-link-type="dfn" href="https://www.w3.org/TR/css-sizing-3/#min-content-inline-size">min-content inline size</a>, <a data-link-type="dfn" href="https://www.w3.org/TR/css-sizing-3/#max-content-inline-size">max-content inline size</a>,
-            <a data-link-type="dfn" href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a>, <a data-link-type="dfn" href="https://www.w3.org/TR/css-writing-modes-4/#block-size">block size</a>,
+            <a href="https://www.w3.org/TR/css-writing-modes-4/#inline-size">inline size</a>, <a href="https://www.w3.org/TR/css-writing-modes-4/#block-size">block size</a>,
             <a data-link-type="dfn" href="https://www.w3.org/TR/css-align-3/#first-baseline-set">first baseline set</a> and <a data-link-type="dfn" href="https://www.w3.org/TR/css-align-3/#last-baseline-set">last baseline set</a>
             sets are determined
             accordingly.
@@ -9429,6 +9430,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
     </section>
   
 
+
 <div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-mathml-element" aria-label="Links in this document to definition: MathML element">
       <span class="caret"></span>
       <div>
@@ -13326,7 +13328,7 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
   </script><section id="references" class="appendix"><div class="header-wrapper"><h2 id="h-references"><bdi class="secno">H. </bdi>References</h2><a class="self-link" href="#references" aria-label="Permalink for Appendix H."></a></div><section id="normative-references"><div class="header-wrapper"><h3 id="h-1-normative-references"><bdi class="secno">H.1 </bdi>Normative references</h3><a class="self-link" href="#normative-references" aria-label="Permalink for Appendix H.1"></a></div>
     
     <dl class="bibliography"><dt id="bib-bidi">[BIDI]</dt><dd>
-      <a href="https://www.unicode.org/reports/tr9/tr9-51.html"><cite>Unicode Bidirectional Algorithm</cite></a>. Manish Goregaokar मनीष गोरेगांवकर; Robin Leroy.  Unicode Consortium. 13 August 2025. Unicode Standard Annex #9. URL: <a href="https://www.unicode.org/reports/tr9/tr9-51.html">https://www.unicode.org/reports/tr9/tr9-51.html</a>
+      <a href="https://www.unicode.org/reports/tr9/tr9-52.html"><cite>Unicode Bidirectional Algorithm</cite></a>. Manish Goregaokar मनीष गोरेगांवकर; Robin Leroy.  Unicode Consortium. 1 September 2026. Unicode Standard Annex #9. URL: <a href="https://www.unicode.org/reports/tr9/tr9-52.html">https://www.unicode.org/reports/tr9/tr9-52.html</a>
     </dd><dt id="bib-css-align-3">[css-align-3]</dt><dd>
       <a href="https://www.w3.org/TR/css-align-3/"><cite>CSS Box Alignment Module Level 3</cite></a>. Elika Etemad; Tab Atkins Jr. W3C. 30 January 2026. W3C Working Draft. URL: <a href="https://www.w3.org/TR/css-align-3/">https://www.w3.org/TR/css-align-3/</a>
     </dd><dt id="bib-css-backgrounds-3">[css-backgrounds-3]</dt><dd>
@@ -13336,21 +13338,21 @@ image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;</code></pre>
     </dd><dt id="bib-css-cascade-4">[CSS-CASCADE-4]</dt><dd>
       <a href="https://www.w3.org/TR/css-cascade-4/"><cite>CSS Cascading and Inheritance Level 4</cite></a>. Elika Etemad; Tab Atkins Jr. W3C. 13 January 2022. W3C Candidate Recommendation. URL: <a href="https://www.w3.org/TR/css-cascade-4/">https://www.w3.org/TR/css-cascade-4/</a>
     </dd><dt id="bib-css-color-4">[css-color-4]</dt><dd>
-      <a href="https://www.w3.org/TR/css-color-4/"><cite>CSS Color Module Level 4</cite></a>. Tab Atkins Jr.; Chris Lilley; Lea Verou.  W3C. 17 July 2026. CRD. URL: <a href="https://www.w3.org/TR/css-color-4/">https://www.w3.org/TR/css-color-4/</a>
+      <a href="https://www.w3.org/TR/css-color-4/"><cite>CSS Color Module Level 4</cite></a>. Tab Atkins Jr.; Chris Lilley; Lea Verou.  W3C. 26 September 2026. CRD. URL: <a href="https://www.w3.org/TR/css-color-4/">https://www.w3.org/TR/css-color-4/</a>
     </dd><dt id="bib-css-display-3">[CSS-DISPLAY-3]</dt><dd>
       <a href="https://www.w3.org/TR/css-display-3/"><cite>CSS Display Module Level 3</cite></a>. Tab Atkins Jr.; Elika Etemad.  W3C. 5 June 2026. CRD. URL: <a href="https://www.w3.org/TR/css-display-3/">https://www.w3.org/TR/css-display-3/</a>
     </dd><dt id="bib-css-fonts-4">[CSS-FONTS-4]</dt><dd>
-      <a href="https://www.w3.org/TR/css-fonts-4/"><cite>CSS Fonts Module Level 4</cite></a>. Chris Lilley.  W3C. 22 April 2026. W3C Working Draft. URL: <a href="https://www.w3.org/TR/css-fonts-4/">https://www.w3.org/TR/css-fonts-4/</a>
+      <a href="https://www.w3.org/TR/css-fonts-4/"><cite>CSS Fonts Module Level 4</cite></a>. Chris Lilley.  W3C. 13 September 2026. W3C Working Draft. URL: <a href="https://www.w3.org/TR/css-fonts-4/">https://www.w3.org/TR/css-fonts-4/</a>
     </dd><dt id="bib-css-position-3">[CSS-POSITION-3]</dt><dd>
       <a href="https://www.w3.org/TR/css-position-3/"><cite>CSS Positioned Layout Module Level 3</cite></a>. Elika Etemad; Tab Atkins Jr. W3C. 7 October 2025. W3C Working Draft. URL: <a href="https://www.w3.org/TR/css-position-3/">https://www.w3.org/TR/css-position-3/</a>
     </dd><dt id="bib-css-pseudo-4">[css-pseudo-4]</dt><dd>
       <a href="https://www.w3.org/TR/css-pseudo-4/"><cite>CSS Pseudo-Elements Module Level 4</cite></a>. Elika Etemad; Alan Stearns.  W3C. 27 June 2025. W3C Working Draft. URL: <a href="https://www.w3.org/TR/css-pseudo-4/">https://www.w3.org/TR/css-pseudo-4/</a>
     </dd><dt id="bib-css-sizing-3">[css-sizing-3]</dt><dd>
-      <a href="https://www.w3.org/TR/css-sizing-3/"><cite>CSS Box Sizing Module Level 3</cite></a>. Tab Atkins Jr.; Elika Etemad.  W3C. 17 December 2021. W3C Working Draft. URL: <a href="https://www.w3.org/TR/css-sizing-3/">https://www.w3.org/TR/css-sizing-3/</a>
+      <a href="https://www.w3.org/TR/css-sizing-3/"><cite>CSS Box Sizing Module Level 3</cite></a>. Tab Atkins Jr.; Elika Etemad.  W3C. 4 September 2026. W3C Working Draft. URL: <a href="https://www.w3.org/TR/css-sizing-3/">https://www.w3.org/TR/css-sizing-3/</a>
     </dd><dt id="bib-css-text-3">[css-text-3]</dt><dd>
-      <a href="https://www.w3.org/TR/css-text-3/"><cite>CSS Text Module Level 3</cite></a>. Elika Etemad; Koji Ishii; Florian Rivoal.  W3C. 8 June 2026. CRD. URL: <a href="https://www.w3.org/TR/css-text-3/">https://www.w3.org/TR/css-text-3/</a>
+      <a href="https://www.w3.org/TR/css-text-3/"><cite>CSS Text Module Level 3</cite></a>. Elika Etemad; Koji Ishii; Florian Rivoal.  W3C. 14 August 2026. CRD. URL: <a href="https://www.w3.org/TR/css-text-3/">https://www.w3.org/TR/css-text-3/</a>
     </dd><dt id="bib-css-text-4">[CSS-TEXT-4]</dt><dd>
-      <a href="https://www.w3.org/TR/css-text-4/"><cite>CSS Text Module Level 4</cite></a>. Elika Etemad; Koji Ishii; Alan Stearns; Florian Rivoal.  W3C. 8 June 2026. W3C Working Draft. URL: <a href="https://www.w3.org/TR/css-text-4/">https://www.w3.org/TR/css-text-4/</a>
+      <a href="https://www.w3.org/TR/css-text-4/"><cite>CSS Text Module Level 4</cite></a>. Elika Etemad; Koji Ishii; Alan Stearns; Florian Rivoal.  W3C. 14 August 2026. W3C Working Draft. URL: <a href="https://www.w3.org/TR/css-text-4/">https://www.w3.org/TR/css-text-4/</a>
     </dd><dt id="bib-css-values-4">[CSS-VALUES-4]</dt><dd>
       <a href="https://www.w3.org/TR/css-values-4/"><cite>CSS Values and Units Module Level 4</cite></a>. Tab Atkins Jr.; Elika Etemad.  W3C. 12 March 2024. W3C Working Draft. URL: <a href="https://www.w3.org/TR/css-values-4/">https://www.w3.org/TR/css-values-4/</a>
     </dd><dt id="bib-css-writing-modes-4">[CSS-WRITING-MODES-4]</dt><dd>
